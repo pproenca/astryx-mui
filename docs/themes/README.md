@@ -13,7 +13,11 @@ page is guidance and an index, not a canonical record. Start a record from
 
 Current records:
 
-- [Neutral](../../packages/themes/neutral/neutral.spec.md) — draft
+- [Neutral](../../packages/themes/neutral/neutral.spec.md)
+- [Material 3](../../packages/themes/material3/material3.spec.md)
+
+For the component-by-component implementation and review loop, see
+[Material 3 component migration](../contributing/material3-migration.md).
 
 A theme record sits between system theming architecture and consumer/component
 records. It uses one typed `references` list for architecture, design, system,
