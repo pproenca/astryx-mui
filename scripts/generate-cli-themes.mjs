@@ -3,10 +3,13 @@
 
 /**
  * @file Bundles each public theme's source, strongly typed same-stem descriptor,
- * optional icons, and palette-authoring artifacts into
+ * local source dependencies, and palette-authoring artifacts into
  * `packages/cli/assets/templates/themes/` so `astryx theme add` can scaffold a
  * complete theme without the package installed. There is no central catalog.
  * Run from the repo root and commit the generated bundle.
+ * @input Public theme packages and their same-stem descriptors
+ * @output Self-contained CLI theme templates
+ * @position Theme package to CLI integration build
  */
 
 import * as fs from 'node:fs';
@@ -33,6 +36,51 @@ function toIdentifier(slug) {
 
 function readJSON(file) {
   return JSON.parse(fs.readFileSync(file, 'utf-8'));
+}
+
+/**
+ * Follow local imports used by the theme entry so a scaffold never receives a
+ * theme file with missing sibling modules. Keep the package's relative paths.
+ * @param {string} sourceDir
+ * @param {string} entry
+ * @returns {string[]}
+ */
+export function localThemeFiles(sourceDir, entry) {
+  const files = new Set();
+  const visit = relative => {
+    if (files.has(relative)) return;
+    const full = path.join(sourceDir, relative);
+    files.add(relative);
+    const content = fs.readFileSync(full, 'utf-8');
+    const imports = [
+      ...content.matchAll(/\bfrom\s+['"](\.[^'"]+)['"]/g),
+      ...content.matchAll(/\bimport\s*['"](\.[^'"]+)['"]/g),
+    ];
+    for (const [, specifier] of imports) {
+      const base = path.resolve(path.dirname(full), specifier);
+      if (!base.startsWith(`${sourceDir}${path.sep}`)) {
+        throw new Error(
+          `${relative} imports outside its theme source: ${specifier}`,
+        );
+      }
+      const candidates = [
+        base,
+        ...['.ts', '.tsx', '.json', '.js', '.mjs'].map(ext => `${base}${ext}`),
+      ];
+      const dependency = candidates.find(
+        candidate =>
+          fs.existsSync(candidate) && fs.statSync(candidate).isFile(),
+      );
+      if (!dependency) {
+        throw new Error(
+          `${relative} has unresolved local import: ${specifier}`,
+        );
+      }
+      visit(path.relative(sourceDir, dependency).split(path.sep).join('/'));
+    }
+  };
+  visit(entry);
+  return [...files].sort();
 }
 
 /**
@@ -112,10 +160,11 @@ function main() {
     const stem = `${id}Theme`;
     fs.mkdirSync(outDir, {recursive: true});
 
-    const files = [`${stem}.ts`, `${stem}.doc.mjs`];
-    for (const file of files) {
-      fs.copyFileSync(path.join(sourceDir, file), path.join(outDir, file));
-    }
+    const files = new Map(
+      [...localThemeFiles(sourceDir, `${stem}.ts`), `${stem}.doc.mjs`].map(
+        file => [file, path.join(sourceDir, file)],
+      ),
+    );
 
     // Keep optional theme-owned authoring artifacts with the template. A
     // palette-backed theme must remain reproducible after `theme add`.
@@ -141,14 +190,31 @@ function main() {
         source: path.join(THEMES_SRC_ROOT, slug, 'palette.config.json'),
         output: 'palette.config.json',
       },
+      {
+        source: path.join(THEMES_SRC_ROOT, slug, 'THIRD_PARTY_NOTICES.md'),
+        output: 'THIRD_PARTY_NOTICES.md',
+      },
+      {
+        source: path.join(THEMES_SRC_ROOT, slug, 'LICENSE-APACHE-2.0'),
+        output: 'LICENSE-APACHE-2.0',
+      },
+      {
+        source: path.join(THEMES_SRC_ROOT, slug, 'LICENSE'),
+        output: 'LICENSE',
+      },
     ];
     for (const file of optionalFiles) {
       if (!fs.existsSync(file.source)) continue;
-      files.push(file.output);
-      fs.copyFileSync(file.source, path.join(outDir, file.output));
+      files.set(file.output, file.source);
     }
 
-    console.log(`  bundled theme "${slug}" (${files.length} files)`);
+    for (const [file, source] of files) {
+      const output = path.join(outDir, file);
+      fs.mkdirSync(path.dirname(output), {recursive: true});
+      fs.copyFileSync(source, output);
+    }
+
+    console.log(`  bundled theme "${slug}" (${files.size} files)`);
   }
 
   console.log(

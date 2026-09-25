@@ -1,0 +1,86 @@
+{
+  "sourceCommit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+  "systemLevels": {
+    "level0": 0,
+    "level1": 1,
+    "level2": 2,
+    "level3": 3,
+    "level4": 4,
+    "level5": 5
+  },
+  "generatedDp": {
+    "level0": 0,
+    "level1": 1,
+    "level2": 3,
+    "level3": 6,
+    "level4": 8,
+    "level5": 12
+  },
+  "componentCssProperties": [
+    "--md-elevation-level",
+    "--md-elevation-shadow-color"
+  ],
+  "sampleColor": "rgb(1, 2, 3)",
+  "layers": {
+    "level0": {
+      "key": {
+        "boxShadow": "rgb(1, 2, 3) 0px 0px 0px 0px",
+        "opacity": 0.3
+      },
+      "ambient": {
+        "boxShadow": "rgb(1, 2, 3) 0px 0px 0px 0px",
+        "opacity": 0.15
+      }
+    },
+    "level1": {
+      "key": {
+        "boxShadow": "rgb(1, 2, 3) 0px 1px 2px 0px",
+        "opacity": 0.3
+      },
+      "ambient": {
+        "boxShadow": "rgb(1, 2, 3) 0px 1px 3px 1px",
+        "opacity": 0.15
+      }
+    },
+    "level2": {
+      "key": {
+        "boxShadow": "rgb(1, 2, 3) 0px 1px 2px 0px",
+        "opacity": 0.3
+      },
+      "ambient": {
+        "boxShadow": "rgb(1, 2, 3) 0px 2px 6px 2px",
+        "opacity": 0.15
+      }
+    },
+    "level3": {
+      "key": {
+        "boxShadow": "rgb(1, 2, 3) 0px 1px 3px 0px",
+        "opacity": 0.3
+      },
+      "ambient": {
+        "boxShadow": "rgb(1, 2, 3) 0px 4px 8px 3px",
+        "opacity": 0.15
+      }
+    },
+    "level4": {
+      "key": {
+        "boxShadow": "rgb(1, 2, 3) 0px 2px 3px 0px",
+        "opacity": 0.3
+      },
+      "ambient": {
+        "boxShadow": "rgb(1, 2, 3) 0px 6px 10px 4px",
+        "opacity": 0.15
+      }
+    },
+    "level5": {
+      "key": {
+        "boxShadow": "rgb(1, 2, 3) 0px 4px 4px 0px",
+        "opacity": 0.3
+      },
+      "ambient": {
+        "boxShadow": "rgb(1, 2, 3) 0px 8px 12px 6px",
+        "opacity": 0.15
+      }
+    }
+  }
+}

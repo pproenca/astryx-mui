@@ -3,11 +3,14 @@
 /**
  * @file Drift guard for the bundled CLI themes.
  *
- * `scripts/generate-cli-themes.mjs` copies each public theme's source,
- * strongly typed same-stem descriptor, and supported authoring artifacts into
- * the CLI bundle. This test pins every copied byte and rejects the obsolete
- * central catalog. When a theme changes, run `pnpm bundle:cli-themes` and commit
- * the regenerated bundle.
+ * `scripts/generate-cli-themes.mjs` copies each public theme's source graph,
+ * strongly typed same-stem descriptor, attribution, and authoring artifacts
+ * into the CLI bundle. This test pins every copied byte and rejects the
+ * obsolete central catalog. When a theme changes, run `pnpm bundle:cli-themes`
+ * and commit the regenerated bundle.
+ * @input Theme packages and generated CLI theme templates
+ * @output Bundle drift and local-import-closure assertions
+ * @position CLI theme packaging test
  */
 
 import {spawnSync} from 'node:child_process';
@@ -17,7 +20,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {describe, it, expect} from 'vitest';
 import {discoverBundledThemes} from '../packages/cli/foundation/discovery/theme-discovery.mjs';
-import {listThemeSlugs} from './generate-cli-themes.mjs';
+import {listThemeSlugs, localThemeFiles} from './generate-cli-themes.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, '..');
@@ -71,7 +74,10 @@ function expectedFiles(slug) {
   const id = toIdentifier(slug);
   const sourceDir = path.join(THEMES_SRC_ROOT, slug, 'src');
   const candidates = [
-    {source: path.join(sourceDir, `${id}Theme.ts`), output: `${id}Theme.ts`},
+    ...localThemeFiles(sourceDir, `${id}Theme.ts`).map(file => ({
+      source: path.join(sourceDir, file),
+      output: file,
+    })),
     {
       source: path.join(sourceDir, `${id}Theme.doc.mjs`),
       output: `${id}Theme.doc.mjs`,
@@ -97,8 +103,26 @@ function expectedFiles(slug) {
       source: path.join(THEMES_SRC_ROOT, slug, 'palette.config.json'),
       output: 'palette.config.json',
     },
+    {
+      source: path.join(THEMES_SRC_ROOT, slug, 'THIRD_PARTY_NOTICES.md'),
+      output: 'THIRD_PARTY_NOTICES.md',
+    },
+    {
+      source: path.join(THEMES_SRC_ROOT, slug, 'LICENSE-APACHE-2.0'),
+      output: 'LICENSE-APACHE-2.0',
+    },
+    {
+      source: path.join(THEMES_SRC_ROOT, slug, 'LICENSE'),
+      output: 'LICENSE',
+    },
   ];
-  return candidates.filter(file => fs.existsSync(file.source));
+  return [
+    ...new Map(
+      candidates
+        .filter(file => fs.existsSync(file.source))
+        .map(file => [file.output, file]),
+    ).values(),
+  ];
 }
 
 /** Theme dirs that exist but must never reach the CLI tarball. */
@@ -169,6 +193,36 @@ describe('CLI theme bundle is in sync with source', () => {
           path.join(cli, 'assets', 'templates', 'themes', 'ocean'),
         ),
       ).toEqual(['oceanTheme.doc.mjs', 'oceanTheme.ts']);
+    } finally {
+      fs.rmSync(root, {recursive: true, force: true});
+    }
+  });
+
+  it('copies nested local imports and fails on an unresolved dependency', () => {
+    const root = fs.mkdtempSync(path.join(os.tmpdir(), 'astryx-theme-graph-'));
+    try {
+      fs.mkdirSync(path.join(root, 'nested'));
+      fs.writeFileSync(
+        path.join(root, 'oceanTheme.ts'),
+        "import {helper} from './nested/helper';\nexport const oceanTheme = helper;\n",
+      );
+      fs.writeFileSync(
+        path.join(root, 'nested', 'helper.ts'),
+        "import tokens from './tokens.json';\nexport const helper = tokens;\n",
+      );
+      fs.writeFileSync(path.join(root, 'nested', 'tokens.json'), '{}\n');
+      expect(localThemeFiles(root, 'oceanTheme.ts')).toEqual([
+        'nested/helper.ts',
+        'nested/tokens.json',
+        'oceanTheme.ts',
+      ]);
+      fs.writeFileSync(
+        path.join(root, 'nested', 'helper.ts'),
+        "import tokens from './missing.json';\nexport const helper = tokens;\n",
+      );
+      expect(() => localThemeFiles(root, 'oceanTheme.ts')).toThrow(
+        'nested/helper.ts has unresolved local import: ./missing.json',
+      );
     } finally {
       fs.rmSync(root, {recursive: true, force: true});
     }
@@ -248,15 +302,16 @@ describe('CLI theme bundle is in sync with source', () => {
     });
   }
 
-  it('theme add copies each bundled theme in bundle order, without its descriptor', () => {
+  it('theme add copies every bundled theme file, without its descriptor', () => {
     const discovered = new Map(
       discoverBundledThemes().map(theme => [theme.slug, theme.files]),
     );
     for (const slug of slugs) {
-      expect(discovered.get(slug), slug).toEqual(
+      expect(discovered.get(slug)?.sort(), slug).toEqual(
         expectedFiles(slug)
           .map(file => file.output)
-          .filter(file => !file.endsWith('.doc.mjs')),
+          .filter(file => !file.endsWith('.doc.mjs'))
+          .sort(),
       );
     }
   });

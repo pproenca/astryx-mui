@@ -4,7 +4,7 @@
  * @file Direct-API tests for the `theme add` leaf. Copies real bundled themes
  * into a tmp cwd and asserts the receipt + on-disk effects, plus the guard rails
  * (unknown slug, no-overwrite, path traversal). Uses the maintained `neutral`
- * theme so the fixture stays stable.
+ * theme so the fixture stays stable. The scaffold retains package licenses.
  */
 
 import {describe, it, expect, beforeEach, afterEach} from 'vitest';
@@ -30,8 +30,8 @@ describe('themeAdd (api/theme/add)', () => {
     expect(result.data.slug).toBe('neutral');
     expect(result.data.package).toBe('@astryxdesign/cli');
     expect(result.data.outputDir).toBe(path.join('src', 'themes', 'neutral'));
-    // Exactly what the bundle has always copied, in that order: the CLI's own
-    // descriptor stays behind.
+    // The CLI's own descriptor stays behind; the package license travels with
+    // the copied source.
     expect(result.data.files).toEqual([
       'neutralTheme.ts',
       'icons.tsx',
@@ -40,6 +40,7 @@ describe('themeAdd (api/theme/add)', () => {
       'neutralPaletteRefs.generated.ts',
       'neutralPalettes.generated.receipt.json',
       'palette.config.json',
+      'LICENSE',
     ]);
     expect(
       fs.readdirSync(path.join(tmpDir, 'src', 'themes', 'neutral')).sort(),
