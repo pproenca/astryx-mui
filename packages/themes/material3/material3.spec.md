@@ -3,9 +3,9 @@ schema_version: 2
 template_version: 1
 kind: theme
 id: theme:material3
-authority: draft
-approved_by: null
-approved_at: null
+authority: current
+approved_by: pproenca
+approved_at: 2026-09-25
 review_triggers:
   [tokens, palette-values, component-mappings, contrast, artifacts]
 verified_by:
@@ -27,16 +27,15 @@ references:
     architecture:theme-tokens,
     architecture:theme-compilation,
     architecture:component-theming-surface,
-    design:color-emphasis,
     spec:AST-006,
   ]
 ---
 
 # Material 3 theme specification
 
-This draft owns one proposed maintained theme family. Existing current token,
-theme-authoring, compiler, and component contracts remain the authority while
-this theme is built and reviewed. It does not change Core token names, default
+This record owns the maintained Material 3 theme family. Existing current token,
+theme-authoring, compiler, and component contracts continue to govern their
+respective boundaries. This theme does not change Core token names, default
 values, or the behavior of existing themes.
 
 ## Intent and audience
@@ -50,7 +49,7 @@ kit is supporting design evidence, not an implementation oracle.
 
 ## Inheritance and base
 
-The package will define a standalone `material3Theme` from Astryx Core defaults.
+The package defines a standalone `material3Theme` from Astryx Core defaults.
 It will not extend Neutral: Neutral's palette, type, motion, and mappings are a
 different theme-family decision. `defineTheme` remains the authoring API. The
 same normalized theme must drive runtime injection and the built CSS/JS pair.
@@ -220,12 +219,12 @@ evidence.
 The color story must measure representative content, icon, control, and state
 pairings in light, dark, and high-contrast contexts. Foundation QA must inspect
 reduced motion and responsive layout as well as contrast. The current design
-and component records set shared requirements; this theme will record its exact
-pairings, exceptions, measured receipts, and known gaps as implementation lands.
+and component records set shared requirements; the foundation QA receipt records
+measured pairings, and each component story records its own exceptions and gaps.
 
 ## Build and artifact contract
 
-The package will export a source theme, a complete built theme, and matching
+The package exports a source theme, a complete built theme, and matching
 CSS using the same pattern as maintained Astryx themes. Runtime and static
 outputs must resolve the same values for each mode. Source revision and build
 receipts must identify the pinned Material Web input and Astryx code revision.
@@ -243,17 +242,19 @@ receipts must identify the pinned Material Web input and Astryx code revision.
 ## Decision log
 
 - 2026-09-25: The project owner chose a maintained Material 3 theme while
-  preserving the released Core token vocabulary. This draft records the
-  proposed implementation boundary; it is not an approved theme record.
+  preserving the released Core token vocabulary. This record fixes that
+  additive theme boundary; component parity remains a separate decision.
 
 ## Open questions
 
-- Decide whether this theme supports arbitrary-seed dynamic color generation;
-  the pinned baseline alone does not establish that algorithm's parity.
-- Review component-specific use of source-only motion, state, geometry, and
-  elevation values; do not infer CSS exposure from generated Sass.
-- Review exact component mappings and rendered evidence before promoting this
-  record to `current` under the repository's owner-review rule.
+No open question blocks this foundation contract. The following decisions belong
+to later, separately reviewed work:
+
+- Arbitrary-seed dynamic color generation is outside this baseline theme. A
+  separate decision and source-backed algorithm are required to add it.
+- Each component story must review its own use of source-only motion, state,
+  geometry, and elevation values, plus its rendered mapping, before claiming
+  Material 3 component parity. Generated Sass does not imply CSS exposure.
 
 ## Content boundary
 
