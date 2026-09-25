@@ -11,6 +11,7 @@ review_triggers:
 verified_by:
   [
     packages/themes/material3/src/material3Colors.test.ts,
+    packages/themes/material3/src/material3Typography.test.ts,
     packages/themes/material3/src/material3Theme.test.ts,
   ]
 package: '@astryxdesign/theme-material3'
@@ -89,6 +90,17 @@ Sass list, evaluated `values()` keys, generated-only roles, and public CSS
 exposure separately. A `Confirmed` mapping requires source, implementation,
 focused verification, and review evidence; an inventoried name alone is not
 parity.
+
+The pinned typography source supplies five reference typeface values and 62
+active size-specific typescale values. Its generated source also contains 15
+tracking values that the active Material Web typescale wrapper excludes. The
+theme may use those tracking values in Astryx's own component typography, but
+must not label them as Material Web CSS custom properties. Roboto at weights
+400, 500, and 700 is the source typeface; the theme supplies an Arial/system
+fallback and consumer docs must state that loading Roboto is needed for exact
+glyph metrics. A focused Chrome check covers computed size, line height,
+weight, spacing, family fallback, and line box for all 15 size-specific roles.
+Rendered glyph comparison with Roboto loaded remains part of foundation QA.
 
 ## Tonal palette definitions
 
