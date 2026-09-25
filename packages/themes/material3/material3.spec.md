@@ -15,6 +15,7 @@ verified_by:
     packages/themes/material3/src/material3Shape.test.ts,
     packages/themes/material3/src/material3Motion.test.ts,
     packages/themes/material3/scripts/check-spatial-browser.mjs,
+    packages/themes/material3/src/material3Elevation.test.ts,
     packages/themes/material3/src/material3Theme.test.ts,
   ]
 package: '@astryxdesign/theme-material3'
@@ -134,6 +135,19 @@ Chrome check covers every value and a CSS reduced-motion override that stops
 transition travel while retaining state-layer feedback. Component-specific
 motion and the current pressed-overlay behavior remain with their owners;
 individual component migration receipts must prove their reduced-motion states.
+
+The active Material Web elevation wrapper normalizes six levels to web values
+0–5; its generated source still carries dp values 0, 1, 3, 6, 8, and 12.
+`material3ElevationSource.json` records both series and extracts the rendered
+key and ambient shadows separately from pinned Sass in Chrome. Their opacities
+are 0.3 and 0.15. `material3ElevationLayers` substitutes the theme's shadow
+color while retaining both layers; it must not be flattened into one opaque
+`box-shadow`. The `--md-elevation-level` and `--md-elevation-shadow-color`
+properties belong to Material Web's elevation component, not system CSS roles.
+Tonal surface-container colors are separate from the shadow level; each
+component mapping must choose its surface, layer order, overflow behavior, and
+high-contrast boundary. A Chrome check covers all six levels over both pinned
+light and dark surface-container-low colors.
 
 ## Tonal palette definitions
 
