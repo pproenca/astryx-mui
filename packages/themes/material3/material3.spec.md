@@ -13,6 +13,7 @@ verified_by:
     packages/themes/material3/src/material3Colors.test.ts,
     packages/themes/material3/src/material3Typography.test.ts,
     packages/themes/material3/src/material3Shape.test.ts,
+    packages/themes/material3/src/material3Motion.test.ts,
     packages/themes/material3/src/material3Theme.test.ts,
   ]
 package: '@astryxdesign/theme-material3'
@@ -110,6 +111,16 @@ directional start/end forms in RTL. A Chrome check covers computed geometry for
 all seven CSS roles and both directions of the five Sass lists. Component
 shapes remain the responsibility of their component mappings.
 
+The pinned motion and state wrappers supply 16 duration values, 10 easing
+curves, and four state-layer opacities through Sass `values()` only. The
+generated motion `path` value is null and remains unsupported. The theme keeps
+these values as implementation data, and its state-layer helper composes the
+state opacity with the foreground color over the current surface. A focused
+Chrome check covers every value and a CSS reduced-motion override that stops
+transition travel while retaining state-layer feedback. Component-specific
+motion and the current pressed-overlay behavior remain with their owners;
+individual component migration receipts must prove their reduced-motion states.
+
 ## Tonal palette definitions
 
 The pinned `v0_192` baseline contains 91 named reference palette values and
@@ -182,7 +193,7 @@ receipts must identify the pinned Material Web input and Astryx code revision.
 
 - Decide whether this theme supports arbitrary-seed dynamic color generation;
   the pinned baseline alone does not establish that algorithm's parity.
-- Resolve each source-only motion, state, elevation, and tracking role when its
+- Resolve each source-only elevation role when its
   foundation story lands; do not infer CSS exposure from generated Sass.
 - Review exact component mappings and rendered evidence before promoting this
   record to `current` under the repository's owner-review rule.
