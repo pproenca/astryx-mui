@@ -1,0 +1,61 @@
+{
+  "name": "@astryxdesign/theme-material3",
+  "version": "0.6.3",
+  "displayName": "Material 3 Theme",
+  "private": false,
+  "description": "Source-backed Material 3 foundation theme for Astryx.",
+  "author": "Meta Open Source",
+  "license": "MIT",
+  "homepage": "https://github.com/facebook/astryx#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facebook/astryx.git",
+    "directory": "packages/themes/material3"
+  },
+  "bugs": {
+    "url": "https://github.com/facebook/astryx/issues"
+  },
+  "keywords": [
+    "astryx",
+    "theme",
+    "design-system",
+    "material-3",
+    "design-tokens"
+  ],
+  "sideEffects": false,
+  "main": "./dist/source.js",
+  "types": "./dist/source.d.ts",
+  "module": "./dist/source.mjs",
+  "exports": {
+    ".": {
+      "types": "./dist/source.d.ts",
+      "import": "./dist/source.mjs",
+      "require": "./dist/source.js"
+    },
+    "./built": {
+      "types": "./dist/material3.d.ts",
+      "import": "./dist/material3.js",
+      "require": "./dist/material3.js"
+    },
+    "./theme.css": {
+      "types": "./theme.css.d.ts",
+      "default": "./dist/theme.css"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "THIRD_PARTY_NOTICES.md",
+    "LICENSE-APACHE-2.0"
+  ],
+  "scripts": {
+    "build": "node ../../../scripts/clean-dist.mjs && astryx theme build src/material3Theme.ts -o dist/theme.css --icons-specifier ./icons.mjs && tsup && tsc --project tsconfig.build.json && node ../../../scripts/check-fully-specified.mjs"
+  },
+  "peerDependencies": {
+    "@astryxdesign/core": "0.6.3",
+    "react": ">=19"
+  },
+  "devDependencies": {
+    "@astryxdesign/cli": "0.6.3"
+  }
+}

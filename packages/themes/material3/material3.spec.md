@@ -17,7 +17,7 @@ verified_by:
     packages/themes/material3/scripts/check-spatial-browser.mjs,
     packages/themes/material3/src/material3Elevation.test.ts,
     packages/themes/material3/src/material3Icons.test.tsx,
-    packages/themes/material3/src/material3Theme.test.ts,
+    packages/themes/material3/scripts/check-theme-parity.mjs,
   ]
 package: '@astryxdesign/theme-material3'
 source_theme: packages/themes/material3/src/material3Theme.ts
@@ -55,6 +55,13 @@ It will not extend Neutral: Neutral's palette, type, motion, and mappings are a
 different theme-family decision. `defineTheme` remains the authoring API. The
 same normalized theme must drive runtime injection and the built CSS/JS pair.
 
+The source package now builds through `astryx theme build` and `tsup`. It emits
+`source`, `built`, and `theme.css` entry points with 97 portable overrides and
+168 theme-local roles. A parity check compares source and built token maps,
+checks each emitted local declaration, and resolves all 49 system colors in
+light and dark Chrome contexts. Component overrides still follow their own
+migration stories.
+
 ## Portable token overrides
 
 Existing `tokens` names remain the portable Core contract. The Material 3 theme
@@ -85,7 +92,7 @@ component geometry and prove the actual rendered result.
 
 ## Theme-local role definitions
 
-The theme will enroll CSS-backed Material roles through `localTokens`. For roles
+The theme enrolls CSS-backed Material roles through `localTokens`. For roles
 that Material Web's active wrapper exposes as CSS custom properties, the exact
 `--md-ref-typeface-*`, `--md-sys-color-*`, `--md-sys-typescale-*`, and supported
 `--md-sys-shape-*` spellings provide traceable Material names. These names are
@@ -98,10 +105,11 @@ Material Web's pinned [theming guide](https://github.com/material-components/mat
 explicitly excludes `--md-ref-palette-*` and `--md-sys-motion-*` as CSS token
 APIs. `md-item` likewise has no `--md-item-*` CSS properties in its
 [wrapper source](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/tokens/_md-comp-item.scss).
-Palette stops, motion values, elevation levels, state opacities, and generated
-typography tracking therefore remain source-backed theme implementation values
-until a specific emitted CSS role is justified and named as an Astryx-owned
-theme-local property. They are not advertised as Material Web CSS parity.
+Palette stops and elevation levels remain source-backed implementation values.
+Motion values, state opacities, and generated typography tracking are emitted
+only under `--astryx-theme-material3-*` names, so component rules can consume
+them without implying a Material Web CSS property. They are not advertised as
+Material Web CSS parity.
 
 The workbook's `Material access` and `Token mapping` sheets classify the pinned
 Sass list, evaluated `values()` keys, generated-only roles, and public CSS
@@ -149,6 +157,12 @@ Tonal surface-container colors are separate from the shadow level; each
 component mapping must choose its surface, layer order, overflow behavior, and
 high-contrast boundary. A Chrome check covers all six levels over both pinned
 light and dark surface-container-low colors.
+
+The portable `--shadow-low`/`med`/`high` bridge combines key and ambient
+shadows in one CSS `box-shadow` value for current Core consumers. That bridge
+does not exactly reproduce Material Web's two translucent pseudo-elements
+where the shadows overlap. Source-faithful components must use the separate
+`material3ElevationLayers` values during their own migration.
 
 The icon source is Google's official Material Symbols SVG repository at commit
 `bd8cb85bd4bad964fe6918f79665bb40c3a8efef`, licensed Apache-2.0.
@@ -236,8 +250,8 @@ receipts must identify the pinned Material Web input and Astryx code revision.
 
 - Decide whether this theme supports arbitrary-seed dynamic color generation;
   the pinned baseline alone does not establish that algorithm's parity.
-- Resolve each source-only elevation role when its
-  foundation story lands; do not infer CSS exposure from generated Sass.
+- Review component-specific use of source-only motion, state, geometry, and
+  elevation values; do not infer CSS exposure from generated Sass.
 - Review exact component mappings and rendered evidence before promoting this
   record to `current` under the repository's owner-review rule.
 
