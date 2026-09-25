@@ -1,0 +1,44 @@
+{
+  "sourceCommit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+  "cssCorners": {
+    "corner-extra-large": "28px",
+    "corner-extra-small": "4px",
+    "corner-full": "9999px",
+    "corner-large": "16px",
+    "corner-medium": "12px",
+    "corner-none": "0px",
+    "corner-small": "8px"
+  },
+  "sassOnlyCornerLists": {
+    "corner-extra-large-top": [
+      "28px",
+      "28px",
+      "0px",
+      "0px"
+    ],
+    "corner-extra-small-top": [
+      "4px",
+      "4px",
+      "0px",
+      "0px"
+    ],
+    "corner-large-end": [
+      "0px",
+      "16px",
+      "16px",
+      "0px"
+    ],
+    "corner-large-start": [
+      "16px",
+      "0px",
+      "0px",
+      "16px"
+    ],
+    "corner-large-top": [
+      "16px",
+      "16px",
+      "0px",
+      "0px"
+    ]
+  }
+}

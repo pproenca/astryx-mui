@@ -12,6 +12,7 @@ verified_by:
   [
     packages/themes/material3/src/material3Colors.test.ts,
     packages/themes/material3/src/material3Typography.test.ts,
+    packages/themes/material3/src/material3Shape.test.ts,
     packages/themes/material3/src/material3Theme.test.ts,
   ]
 package: '@astryxdesign/theme-material3'
@@ -101,6 +102,13 @@ fallback and consumer docs must state that loading Roboto is needed for exact
 glyph metrics. A focused Chrome check covers computed size, line height,
 weight, spacing, family fallback, and line box for all 15 size-specific roles.
 Rendered glyph comparison with Roboto loaded remains part of foundation QA.
+
+The pinned shape wrapper exposes seven single-corner CSS roles. Five additional
+multi-corner names are Sass-only lists, not settable `--md-sys-shape-*` custom
+properties. `material3Shape.ts` keeps those lists separate and mirrors the
+directional start/end forms in RTL. A Chrome check covers computed geometry for
+all seven CSS roles and both directions of the five Sass lists. Component
+shapes remain the responsibility of their component mappings.
 
 ## Tonal palette definitions
 
