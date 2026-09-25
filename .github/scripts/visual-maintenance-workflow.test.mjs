@@ -87,7 +87,7 @@ describe('CI baseline maintenance routing', () => {
       'release-check',
     ]);
     expect(visual.name).toBe('Stable visual regression');
-    expect(visual['runs-on']).toBe('2-core-ubuntu-arm');
+    expect(visual['runs-on']).toBe('ubuntu-24.04-arm');
     expect(publication['runs-on']).toBe('ubuntu-slim');
     expect(workflow.on).not.toHaveProperty('schedule');
   });
