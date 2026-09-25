@@ -1,2 +1,3 @@
-declare const css: string;
-export default css;
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
+export {};
