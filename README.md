@@ -1,30 +1,30 @@
 <!-- SYNC CONTRACT: Architecture changes require documentation updates. -->
 
-<div align="center">
-
-<img src="https://lookaside.facebook.com/assets/astryx/Astryx-Banner.png" alt="Astryx" width="100%" />
-
 # Astryx
 
-An open source design system that's fully customizable and built for how we build now: <br/> by people and the agents working alongside them.
+An independent adaptation of [Meta's Astryx](https://github.com/facebook/astryx),
+with a planned move to Material 3.
 
-**Currently in Beta** · Built on [React 19+](https://react.dev) and [StyleX](https://stylexjs.com)
+**Current status:** The code still implements the inherited Astryx design system.
+It does not yet claim Material 3 conformance. It is built on
+[React 19+](https://react.dev) and [StyleX](https://stylexjs.com).
 
-[![npm version](https://img.shields.io/npm/v/@astryxdesign/core?label=npm&color=cb3837&logo=npm)](https://www.npmjs.com/package/@astryxdesign/core)
-[![license MIT](https://img.shields.io/npm/l/@astryxdesign/core?color=blue)](LICENSE)
-[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/facebook/astryx/wiki/Contributing)
+## Origin and attribution
 
-[![Docs](https://img.shields.io/badge/Docs-astryx.atmeta.com-6741d9?logo=readthedocs&logoColor=white)](https://astryx.atmeta.com)
-[![Storybook](https://img.shields.io/badge/Storybook-live-ff4785?logo=storybook&logoColor=white)](https://facebook.github.io/astryx/storybook/)
-[![Sandbox](https://img.shields.io/badge/Sandbox-playground-A9792B)](https://facebook.github.io/astryx/sandbox/)
+Astryx was created and open-sourced by Meta Platforms, Inc. This repository
+continues that work independently and is not affiliated with or endorsed by
+Meta. The original Meta copyright and MIT permission notice remain in the
+[LICENSE](LICENSE) file and in the package license copies.
 
-**[Docs](https://astryx.atmeta.com)** · **[Storybook](https://facebook.github.io/astryx/storybook/)** · **[Sandbox](https://facebook.github.io/astryx/sandbox/)** · **[Contributing](https://github.com/facebook/astryx/wiki/Contributing)** · **[Discord](https://discord.com/invite/XnsUcFykEP)**
-
-</div>
+The [original project](https://github.com/facebook/astryx) remains the source
+for its own releases, documentation, and contributor processes. Changes to
+this repository belong here; see [Contributing](CONTRIBUTING.md).
 
 ## Overview
 
-Astryx is an open source design system that grew inside Meta over the last eight years, where it became the most-used and largest design system in the company — powering 13,000+ apps and shaped by the engineers, designers, and product teams who depend on it every day.
+The original Astryx grew inside Meta before its open-source release. This
+repository retains its component library and tooling while preparing a
+Material 3 adaptation.
 
 It ships 150+ accessible components, brand-level theming, dark mode, ready-to-ship templates, and a CLI as one cohesive system. You import pre-built CSS and use typed React components — no build plugin, no styling library to adopt — and both people and AI assistants build with the same tooling.
 
@@ -37,7 +37,11 @@ It ships 150+ accessible components, brand-level theming, dark mode, ready-to-sh
 
 ## Getting Started
 
-Astryx requires **React 19** or later (`react` and `react-dom` are peer dependencies of `@astryxdesign/core`).
+The current components require **React 19** or later (`react` and `react-dom`
+are peer dependencies of `@astryxdesign/core`). The commands below install
+published `@astryxdesign` packages, not a build of this checkout or a Material 3
+adaptation. To work with this repository's source, follow
+[Contributing](CONTRIBUTING.md#getting-started).
 
 Install Astryx, a theme, and its peer dependencies:
 
@@ -67,7 +71,7 @@ For reliable CLI access, add a script to your `package.json`:
 
 Then use it as `npm run astryx -- component --list`. This avoids path errors when AI assistants or new developers invoke the CLI directly.
 
-## Packages
+## Workspace packages
 
 | Package                                    | Description                                                                                          | README                             |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------- | ---------------------------------- |
@@ -106,24 +110,15 @@ Battle-tested design solutions for common interactions and workflows: table page
 | Directory   | Purpose                                                     |
 | ----------- | ----------------------------------------------------------- |
 | `apps/`     | Example apps, the docsite, and Storybook                    |
-| `packages/` | Published packages: core, cli, build, themes                |
+| `packages/` | Workspace packages: core, cli, build, themes                |
 | `internal/` | Internal tooling: test utilities, eslint plugin, vibe tests |
 
 ## Contributing
 
-We welcome contributions! See **[CONTRIBUTING.md](CONTRIBUTING.md)** for the full guide.
-
-Questions, or want a hand with a PR? Come find us in
-**[Discord](https://discord.com/invite/XnsUcFykEP)**.
-
-Our conventions and review rubrics live in the
-[Contributing wiki](https://github.com/facebook/astryx/wiki/Contributing) —
-including [API Conventions](https://github.com/facebook/astryx/wiki/API-Conventions),
-[Design Conventions](https://github.com/facebook/astryx/wiki/Design-Conventions),
-the [Component Lifecycle](https://github.com/facebook/astryx/wiki/Component-Lifecycle),
-and the [Contributing Templates](https://github.com/facebook/astryx/wiki/Contributing-Templates)
-and [Blog Review](https://github.com/facebook/astryx/wiki/Blog-Review-Rubric)
-rubrics. Read the relevant one before opening a PR.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup and
+[docs/contributing/](docs/contributing/README.md) for this repository's review
+process. The original project's wiki describes Meta's upstream process; it
+does not govern changes here.
 
 Quick start for contributors: this repo uses **Node 22+ on an active LTS line**
 and **pnpm 11**. Install pnpm directly, or enable
@@ -141,4 +136,5 @@ see the troubleshooting notes in
 
 ## License
 
-MIT
+This repository retains Meta's [MIT license and copyright notice](LICENSE).
+The same notice is included in publishable workspace packages.

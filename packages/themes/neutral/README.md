@@ -84,7 +84,7 @@ This is required for component-level theme overrides (colors, radii, typography)
 
 This theme uses system fonts; no external font loading is required.
 
-## Related Packages
+## Related published packages
 
 | Package                                                                              | Description                               |
 | ------------------------------------------------------------------------------------ | ----------------------------------------- |

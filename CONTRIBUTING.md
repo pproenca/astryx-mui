@@ -1,20 +1,16 @@
-# Contributing to Astryx
+# Contributing to this Astryx adaptation
 
-For the full contribution process — what we accept, how to propose new components, and how API decisions are made — read the **[Contributing wiki](https://github.com/facebook/astryx/wiki/Contributing)**.
+This repository continues [Meta's original Astryx](https://github.com/facebook/astryx)
+independently. Contributions to this adaptation go to
+[`pproenca/astryx-mui`](https://github.com/pproenca/astryx-mui), not the original
+project. The [MIT license](LICENSE) retains Meta's copyright notice.
 
-Key pages:
-
-- **[Pull request intents](docs/contributing/pull-requests.md)** — choose one primary intent, its evidence bar, and the matching PR template
-- **[API conventions guide](docs/contributing/api-conventions.md)** — practical naming, composition, styling, proposal, and review guidance linked to current owner records
-- **[Design Conventions](https://github.com/facebook/astryx/wiki/Design-Conventions)** — the design-side bar: tokens, spacing, radius, elevation, type, color, motion, and state representations
-- **[Specification Protocol](https://github.com/facebook/astryx/wiki/Component-Specification-Protocol)** — the 9-phase process for new components
-- **[Component Lifecycle](https://github.com/facebook/astryx/wiki/Component-Lifecycle)** — how components move from lab → core and templates from hidden → visible
-- **[API Arbitration](https://github.com/facebook/astryx/wiki/API-Arbitration)** — how we resolve API design questions
-- **[Contributing Templates](https://github.com/facebook/astryx/wiki/Contributing-Templates)** — building templates/blocks and the template grading rubric
-- **[Blog Review Rubric](https://github.com/facebook/astryx/wiki/Blog-Review-Rubric)** — how docsite blog posts are reviewed
-- **[Contributing with AI](https://github.com/facebook/astryx/wiki/Contributing-with-AI-Assistants)** — safe zones, spec protocol, and working with AI tools
-
-This file covers local development setup.
+Start with [AGENTS.md](AGENTS.md) and the [local knowledge map](docs/README.md)
+for the current source of authority. This file covers local development setup;
+the [pull request guide](docs/contributing/pull-requests.md) and
+[API conventions guide](docs/contributing/api-conventions.md) cover reviews and
+public component APIs. Meta's upstream wiki is historical context for this
+repository, not its contribution policy.
 
 ---
 
@@ -87,8 +83,8 @@ pnpm --version   # 11.x.x
 
 ```bash
 # Clone without downloading historical file contents up front
-git clone --filter=blob:none https://github.com/facebook/astryx.git
-cd astryx
+git clone --filter=blob:none https://github.com/pproenca/astryx-mui.git
+cd astryx-mui
 
 # Install dependencies
 pnpm install
@@ -120,8 +116,8 @@ serves the edited source, so the story updates on save — no rebuild, no restar
 
 ### Running the Doc Site
 
-The doc site (`apps/docsite/`) is a Next.js app that renders the component
-documentation at https://astryx.atmeta.com. To run it locally:
+The inherited doc site (`apps/docsite/`) is a Next.js app that renders the
+component documentation. To run this checkout locally:
 
 ```bash
 # First time only — build the workspace packages it depends on
@@ -289,13 +285,10 @@ export * from './MyComponent';
 
 ## Accessibility Checklist
 
-Every new component — and any change to an interactive one — must clear the
-**[Accessibility Checklist](https://github.com/facebook/astryx/wiki/Accessibility-Checklist)**
-(wiki) before review. The checklist lives on the wiki so accessibility
-experts can refine it without a code PR; reviewers block on it (it is `A1`–`A16`
-on the [Component Audit Rubric](https://github.com/facebook/astryx/wiki/Component-Audit-Rubric)),
-and it is a hard requirement for a lab → core promotion (see
-`packages/lab/README.md`).
+For accessibility changes, use the current component and family contracts,
+their tests, and the [pull request guide](docs/contributing/pull-requests.md).
+Meta's original [Accessibility Checklist](https://github.com/facebook/astryx/wiki/Accessibility-Checklist)
+is useful background, but it does not set this fork's review requirements.
 
 Two repo-side rules worth restating here:
 
@@ -616,39 +609,11 @@ yet" — open the PR as a draft and mark it ready for review when it's done.
 
 ## What's expected of a change
 
-The bar — what a change has to carry, and what blocks — lives on the
-**[Component Audit Rubric](https://github.com/facebook/astryx/wiki/Component-Audit-Rubric)**.
-It is stated there once, so it cannot drift between this file, the reviewer
-instructions, and the wiki. Read it before you open a PR: it is the same page
-the reviewer applies to your change, and every check carries an id
-(`A8`, `T1`, `P2`…) so a finding always points back to the rule behind it.
-
-What you will find there:
-
-- **[The bright lines that block](https://github.com/facebook/astryx/wiki/Component-Audit-Rubric#the-checks)** —
-  hardcoded colors (`T1`, `T3`) · removing a themeable surface (`T2`) · raw CSS
-  where StyleX suffices (`T8`) or raw HTML where a primitive exists (`T29`) · a
-  broken accessible path (`A8`) and the accessibility bright lines (`A1`, `A3`,
-  `A14`) · hardcoded user-facing strings (`I1`, `I2`, `A16`) · public
-  API-convention violations (`P1`–`P10`) · dropped passthroughs and breaking
-  changes (`P2`, `P11`, `P12`) · a public-repo leak (`L15`) · a missing
-  changeset (`X20`). Severity is set by **what breaks if it ships**, not by how
-  likely the trigger is — the rubric states each rule, its exceptions, and how
-  it is judged.
-- **[The bar for your kind of change](https://github.com/facebook/astryx/wiki/Component-Audit-Rubric#reviewing-a-change)** —
-  a bug fix owes evidence it was broken before and is fixed now; a new feature
-  runs the automatable checks plus whatever the diff touches; a new component in
-  `core` gets a full audit; a new component in `lab` is deliberately lax, with
-  the audit as the **promotion gate** rather than an entry fee.
-- **[Which checks your diff earns](https://github.com/facebook/astryx/wiki/Component-Audit-Rubric#reviewing-a-change)** —
-  a trigger table from what you touched to the checks that fire, so a two-line
-  fix is not reviewed like a new component.
-- **[Recorded component grades](https://github.com/facebook/astryx/wiki/Component-Audit-Rubric#recording-an-audit)** —
-  audited components have a score and an open-blocker count in the wiki's
-  `component-scores.json` ledger, which is useful context on what shape a
-  component is in before you change it. Most components are unaudited, which
-  means "no evidence", not "fine". **No PR is gated on a score**, and you are
-  never asked to fix problems you inherited by touching a file.
+The [pull request guide](docs/contributing/pull-requests.md) states the evidence
+expected for each change. Current records in `docs/` and alongside components
+define the behavior under review. The original project's audit rubric remains
+available in [Meta's wiki](https://github.com/facebook/astryx/wiki/Component-Audit-Rubric)
+as background, but it is not an authority for this adaptation.
 
 ### Before you push
 
@@ -693,8 +658,8 @@ Storybook story for anything you added or altered.
 ## Code Style
 
 The design-system rules — StyleX usage, semantic tokens, theming, API
-conventions, accessibility — are on the wiki and indexed from the
-[Component Audit Rubric](https://github.com/facebook/astryx/wiki/Component-Audit-Rubric).
+conventions, accessibility — are in [AGENTS.md](AGENTS.md), current records,
+and the [local contributing guides](docs/contributing/README.md).
 What this repo enforces mechanically:
 
 - TypeScript strict mode
@@ -806,26 +771,20 @@ and doesn't need network to use.
 
 ## Translations
 
-Astryx accepts community translations via Crowdin. To help translate astryx
-into your language, visit <https://crowdin.com/project/astryx>. New locales are
-picked up automatically after a maintainer reviews the auto-generated
-translations PR.
+The [Crowdin project](https://crowdin.com/project/astryx) belongs to Meta's
+original Astryx. Propose translation changes for this repository here rather
+than assuming an upstream translation PR will update this fork.
 
 Calendar’s compact weekday labels, such as `Su` and `Mo`, are generated from
 Unicode CLDR data because browsers do not provide that format.
 
-## Contributor License Agreement ("CLA")
+## Contributor License Agreement
 
-In order to accept your pull request, we need you to submit a CLA. You only need
-to do this once to work on any of Meta's open source projects.
-
-Complete your CLA here: <https://code.facebook.com/cla>
+Meta's CLA applies to contributions to its original project. This independent
+repository does not require contributors to submit Meta's CLA.
 
 ## Issues
 
-We use GitHub issues to track public bugs. Please ensure your description is
-clear and has sufficient instructions to be able to reproduce the issue.
-
-Meta has a [bounty program](https://bugbounty.meta.com/) for the safe disclosure
-of security bugs. In those cases, please go through the process outlined on that
-page and do not file a public issue.
+Issues are currently disabled in this repository. Propose a reproducible fix
+through a pull request. Do not put vulnerability details in a public pull
+request; see [SECURITY.md](SECURITY.md) for this fork's reporting status.

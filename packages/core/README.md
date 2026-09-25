@@ -59,17 +59,17 @@ astryx gap-report                   # report a missing capability
 
 > Prefix these with your runner: `npx astryx …` / `pnpm exec astryx …` once the CLI is installed, or `npx @astryxdesign/cli …` to run without installing.
 
-## Related Packages
+## Related published packages
 
 | Package                                                                                               | Description                                                   |
 | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
 | [`@astryxdesign/cli`](https://github.com/facebook/astryx/tree/main/packages/cli)                      | CLI tooling: component docs, templates, scaffolding, codemods |
 | [`@astryxdesign/theme-neutral`](https://github.com/facebook/astryx/tree/main/packages/themes/neutral) | Muted, minimal theme (Lucide icons)                           |
 
-## Resources
+## Original Astryx resources
 
-- [Component Storybook](https://facebook.github.io/astryx/)
-- [GitHub Repository](https://github.com/facebook/astryx)
+- [Meta's component Storybook](https://facebook.github.io/astryx/)
+- [Meta's original repository](https://github.com/facebook/astryx)
 
 ---
 
