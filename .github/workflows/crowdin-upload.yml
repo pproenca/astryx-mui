@@ -19,7 +19,7 @@ permissions: {}
 
 jobs:
   upload:
-    runs-on: 4-core-ubuntu
+    runs-on: ubuntu-24.04
     permissions: {}
     steps:
       # File-level context is a field on the Crowdin file record, and a

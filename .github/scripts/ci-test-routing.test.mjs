@@ -49,8 +49,8 @@ function declaredProjects() {
  * deliberate edit here.
  */
 const KNOWN_RUNNERS = new Set([
-  '2-core-ubuntu-arm',
-  '4-core-ubuntu',
+  'ubuntu-24.04-arm',
+  'ubuntu-24.04',
   'ubuntu-slim',
   'ubuntu-latest',
 ]);
@@ -276,7 +276,7 @@ describe('ci.yml RTL package sharding', () => {
 
   it('runs one bounded shard for every canonical component package', () => {
     expect(shard.strategy.matrix.package).toEqual([...COMPONENT_PACKAGE_NAMES]);
-    expect(shard['runs-on']).toBe('4-core-ubuntu');
+    expect(shard['runs-on']).toBe('ubuntu-24.04');
     expect(shard['timeout-minutes']).toBeLessThanOrEqual(30);
     expect(shard['continue-on-error']).not.toBe(true);
     const scope = shard.steps.find(

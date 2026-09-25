@@ -36,7 +36,7 @@ describe('ShadCN registry CI contract', () => {
   it('runs as a bounded fail-closed gate and feeds the required test context', () => {
     expect(job.needs).toEqual(['check-scope']);
     expect(job.if).toContain('always()');
-    expect(job['runs-on']).toBe('4-core-ubuntu');
+    expect(job['runs-on']).toBe('ubuntu-24.04');
     expect(job['timeout-minutes']).toBe(30);
     expect(step('Require successful scope classification').run).toContain(
       'refusing to skip required work',

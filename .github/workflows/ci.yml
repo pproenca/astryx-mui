@@ -141,7 +141,7 @@ jobs:
   docsite-test:
     needs: [check-scope, docsite-browser]
     if: ${{ github.event_name != 'workflow_dispatch' && always() && !cancelled() }}
-    runs-on: 2-core-ubuntu-arm
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
     steps:
@@ -207,7 +207,7 @@ jobs:
   docsite-browser:
     needs: [check-scope]
     if: github.event_name != 'workflow_dispatch' && needs.check-scope.outputs.spec_only != 'true' && needs.check-scope.outputs.tooling_only != 'true'
-    runs-on: 2-core-ubuntu-arm
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
     steps:
@@ -356,7 +356,7 @@ jobs:
   test-ui:
     needs: [check-scope]
     if: ${{ github.event_name != 'workflow_dispatch' && always() && !cancelled() && needs.check-scope.outputs.spec_only != 'true' }}
-    runs-on: 4-core-ubuntu
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     steps:
@@ -419,7 +419,7 @@ jobs:
   test-node:
     needs: [check-scope]
     if: ${{ github.event_name != 'workflow_dispatch' && always() && !cancelled() && needs.check-scope.outputs.spec_only != 'true' }}
-    runs-on: 2-core-ubuntu-arm
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
     steps:
@@ -467,7 +467,7 @@ jobs:
   registry-contract:
     needs: [check-scope]
     if: ${{ github.event_name != 'workflow_dispatch' && always() && !cancelled() && needs.check-scope.outputs.spec_only != 'true' }}
-    runs-on: 4-core-ubuntu
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     permissions:
       contents: read
@@ -558,7 +558,7 @@ jobs:
   build-storybook:
     needs: [check-scope]
     if: ${{ (github.event_name != 'workflow_dispatch' || inputs.operation == 'release-check') && always() && !cancelled() && needs.check-scope.outputs.spec_only != 'true' }}
-    runs-on: 2-core-ubuntu-arm
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
     outputs:
@@ -760,7 +760,7 @@ jobs:
   build-sandbox:
     needs: [check-scope]
     if: github.event_name == 'pull_request' && needs.check-scope.outputs.docsite_only != 'true' && needs.check-scope.outputs.spec_only != 'true' && needs.check-scope.outputs.tooling_only != 'true'
-    runs-on: 2-core-ubuntu-arm
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
     outputs:
@@ -865,7 +865,7 @@ jobs:
   pr-a11y:
     needs: [build-storybook, check-components]
     if: (github.event_name == 'pull_request' || (github.event_name == 'workflow_dispatch' && inputs.operation == 'release-check')) && needs.check-components.outputs.has_components == 'true'
-    runs-on: 2-core-ubuntu-arm
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
     steps:
@@ -1074,7 +1074,7 @@ jobs:
   test-build:
     needs: [check-scope]
     if: github.event_name != 'workflow_dispatch' && needs.check-scope.outputs.docsite_only != 'true' && needs.check-scope.outputs.spec_only != 'true' && needs.check-scope.outputs.tooling_only != 'true'
-    runs-on: 2-core-ubuntu-arm
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
     steps:
@@ -1102,7 +1102,7 @@ jobs:
   fixture-contrast:
     needs: [check-scope]
     if: github.event_name != 'workflow_dispatch' && needs.check-scope.outputs.docsite_only != 'true' && needs.check-scope.outputs.spec_only != 'true' && needs.check-scope.outputs.tooling_only != 'true'
-    runs-on: 2-core-ubuntu-arm
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
     steps:
@@ -1140,7 +1140,7 @@ jobs:
           needs.build-storybook.result == 'success' &&
           needs.check-components.result == 'success') ||
          (needs.maintenance-request.result == 'success' && inputs.operation == 'capture'))))
-    runs-on: 2-core-ubuntu-arm
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
     steps:
@@ -1489,7 +1489,7 @@ jobs:
       fail-fast: false
       matrix:
         package: [core, lab, charts, richtext, vega]
-    runs-on: 4-core-ubuntu
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     permissions:
       contents: read
