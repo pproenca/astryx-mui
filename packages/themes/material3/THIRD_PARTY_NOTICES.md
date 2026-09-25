@@ -46,3 +46,12 @@ The extraction scripts check the pinned commit and compare every committed
 color, typography, shape, motion, state, geometry, and elevation value against
 the Sass and browser results. Changes to this data should
 name the new upstream commit and retain source and license attribution.
+
+`src/material3IconSource.json` contains SVG path data from Google's official
+[Material Symbols repository](https://github.com/google/material-design-icons/tree/bd8cb85bd4bad964fe6918f79665bb40c3a8efef)
+at commit `bd8cb85bd4bad964fe6918f79665bb40c3a8efef`. The source files are
+the 24px outlined and selected filled SVGs under
+`symbols/web/*/materialsymbolsoutlined/`; each entry records its exact source
+path and SHA-256. Copyright Google LLC. The repository publishes these icons
+under Apache-2.0; the included license text applies. The theme renders the
+paths as SVGs and does not redistribute the Material Symbols font binary.

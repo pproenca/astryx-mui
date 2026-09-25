@@ -1,0 +1,287 @@
+{
+  "sourceRepository": "google/material-design-icons",
+  "sourceCommit": "bd8cb85bd4bad964fe6918f79665bb40c3a8efef",
+  "license": "Apache-2.0",
+  "artwork": {
+    "close": {
+      "symbol": "close",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/close/materialsymbolsoutlined/close_24px.svg",
+      "sha256": "a82592b0faa0b104a4d4b0530bb05c6a4bfed5728f5aad03ae8e7a19f32b5511",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"
+      ]
+    },
+    "chevronDown": {
+      "symbol": "keyboard_arrow_down",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/keyboard_arrow_down/materialsymbolsoutlined/keyboard_arrow_down_24px.svg",
+      "sha256": "0ede97ad33e3ca035e14c7219a78e37b0cfad9e215420b3c2926e121bdba7230",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"
+      ]
+    },
+    "chevronLeft": {
+      "symbol": "keyboard_arrow_left",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/keyboard_arrow_left/materialsymbolsoutlined/keyboard_arrow_left_24px.svg",
+      "sha256": "b1df6b8d30d0320c97db2368f7e41123e1a7817932aa01cd865013ed6f7c7048",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"
+      ]
+    },
+    "chevronRight": {
+      "symbol": "keyboard_arrow_right",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/keyboard_arrow_right/materialsymbolsoutlined/keyboard_arrow_right_24px.svg",
+      "sha256": "f6b777ee0ce9059b5f8eea987d813ab12c4f309ba431063153841c742e668ac0",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"
+      ]
+    },
+    "chevronsLeft": {
+      "symbol": "keyboard_double_arrow_left",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/keyboard_double_arrow_left/materialsymbolsoutlined/keyboard_double_arrow_left_24px.svg",
+      "sha256": "9fb6abe9a19903cab696741117397978b58906e78d15e0bd34bad1c293eb2b8b",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"
+      ]
+    },
+    "chevronsRight": {
+      "symbol": "keyboard_double_arrow_right",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/keyboard_double_arrow_right/materialsymbolsoutlined/keyboard_double_arrow_right_24px.svg",
+      "sha256": "7b679f5152489ee2cb623d1646db4fcd2957774a365347c32019376bd92247c6",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z"
+      ]
+    },
+    "check": {
+      "symbol": "check",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/check/materialsymbolsoutlined/check_24px.svg",
+      "sha256": "01edd53418816632be08e9565b8ca40d9028c230a8a67baaf4b8a1de20db00e6",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"
+      ]
+    },
+    "success": {
+      "symbol": "check_circle",
+      "variant": "filled",
+      "sourcePath": "symbols/web/check_circle/materialsymbolsoutlined/check_circle_fill1_24px.svg",
+      "sha256": "354897ca84a6336f4d7622cec60f0b9de01e23ea380d58cfc960b3f77f26794d",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "m424-296 282-282-56-56-226 226-114-114-56 56 170 170Zm56 216q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
+      ]
+    },
+    "error": {
+      "symbol": "error",
+      "variant": "filled",
+      "sourcePath": "symbols/web/error/materialsymbolsoutlined/error_fill1_24px.svg",
+      "sha256": "bfe383b54c8af1e397b6a1c44488f1118fa42cf1d3feffcb5517d07013532167",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
+      ]
+    },
+    "warning": {
+      "symbol": "warning",
+      "variant": "filled",
+      "sourcePath": "symbols/web/warning/materialsymbolsoutlined/warning_fill1_24px.svg",
+      "sha256": "01bc10dbeb00739bd44aa673cb719e45215d24be637fd1c1bf125fab1643315d",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "m40-120 440-760 440 760H40Zm440-120q17 0 28.5-11.5T520-280q0-17-11.5-28.5T480-320q-17 0-28.5 11.5T440-280q0 17 11.5 28.5T480-240Zm-40-120h80v-200h-80v200Z"
+      ]
+    },
+    "info": {
+      "symbol": "info",
+      "variant": "filled",
+      "sourcePath": "symbols/web/info/materialsymbolsoutlined/info_fill1_24px.svg",
+      "sha256": "150f8e521fe23a439861c774722efd82f5c591144386609f19f3d59782580b7c",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M440-280h80v-240h-80v240Zm40-320q17 0 28.5-11.5T520-640q0-17-11.5-28.5T480-680q-17 0-28.5 11.5T440-640q0 17 11.5 28.5T480-600Zm0 520q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"
+      ]
+    },
+    "calendar": {
+      "symbol": "calendar_month",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/calendar_month/materialsymbolsoutlined/calendar_month_24px.svg",
+      "sha256": "bdc60a3e813b0db2928261ff7376870a7af445a0bd498bcb83f43a7e6ef26987",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z"
+      ]
+    },
+    "clock": {
+      "symbol": "schedule",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/schedule/materialsymbolsoutlined/schedule_24px.svg",
+      "sha256": "6b6606472e4d807e4b2afc8cd667a48fa634341d44487580a7b350f8dd790170",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"
+      ]
+    },
+    "externalLink": {
+      "symbol": "open_in_new",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/open_in_new/materialsymbolsoutlined/open_in_new_24px.svg",
+      "sha256": "8b464b3779cc1d22fe0a84d722d6bc0f7fb425e7dafa46298636d376a3808458",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h560v-280h80v280q0 33-23.5 56.5T760-120H200Zm188-212-56-56 372-372H560v-80h280v280h-80v-144L388-332Z"
+      ]
+    },
+    "menu": {
+      "symbol": "menu",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/menu/materialsymbolsoutlined/menu_24px.svg",
+      "sha256": "30f1250c0ee5bfc0c4eaf6d4f2b4c25701b84c55af69929e93a5e751084f224d",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"
+      ]
+    },
+    "moreHorizontal": {
+      "symbol": "more_horiz",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/more_horiz/materialsymbolsoutlined/more_horiz_24px.svg",
+      "sha256": "498ade89fbbdd4f4ab9b90bb49bae4cc6b2dc0ff0f019b6b051ac641a7bd5872",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm240 0q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm240 0q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400Z"
+      ]
+    },
+    "search": {
+      "symbol": "search",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/search/materialsymbolsoutlined/search_24px.svg",
+      "sha256": "46d4ab85eba6eb4fe7c9a9a4c4db2fdf8fa9cc74c1f398ac72e7d872d490dd4c",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M784-120 532-372q-30 24-69 38t-83 14q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l252 252-56 56ZM380-400q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"
+      ]
+    },
+    "arrowUp": {
+      "symbol": "arrow_upward",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/arrow_upward/materialsymbolsoutlined/arrow_upward_24px.svg",
+      "sha256": "a902b4447496b87a48b3fe7be338a2e2b68ecf63341e0b90545f133b87207e87",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z"
+      ]
+    },
+    "arrowDown": {
+      "symbol": "arrow_downward",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/arrow_downward/materialsymbolsoutlined/arrow_downward_24px.svg",
+      "sha256": "480a48a9a11fcfe380851816636315f1e3b3ffc391fcd3f5f5135f6d46a62ee8",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M440-800v487L216-537l-56 57 320 320 320-320-56-57-224 224v-487h-80Z"
+      ]
+    },
+    "arrowsUpDown": {
+      "symbol": "unfold_more",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/unfold_more/materialsymbolsoutlined/unfold_more_24px.svg",
+      "sha256": "cb853164357cbfadc5e6cdc47a884a01bda937621c7a061d1c43b145c66bf91e",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M480-120 300-300l58-58 122 122 122-122 58 58-180 180ZM358-598l-58-58 180-180 180 180-58 58-122-122-122 122Z"
+      ]
+    },
+    "funnel": {
+      "symbol": "filter_alt",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/filter_alt/materialsymbolsoutlined/filter_alt_24px.svg",
+      "sha256": "414ab76d866ab388dcd4c986d8e1e4e71b89037320e3fc5019d19d98becbf6f7",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M440-160q-17 0-28.5-11.5T400-200v-240L168-736q-15-20-4.5-42t36.5-22h560q26 0 36.5 22t-4.5 42L560-440v240q0 17-11.5 28.5T520-160h-80Zm40-308 198-252H282l198 252Zm0 0Z"
+      ]
+    },
+    "eyeSlash": {
+      "symbol": "visibility_off",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/visibility_off/materialsymbolsoutlined/visibility_off_24px.svg",
+      "sha256": "3e59e535535441d5965efcd76011d0d9fca1df3b1ac3a065d4ce0aa9d6df6a87",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z"
+      ]
+    },
+    "viewColumns": {
+      "symbol": "view_column",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/view_column/materialsymbolsoutlined/view_column_24px.svg",
+      "sha256": "20f03db348fa6277f57b42c96e4535175dedd82019b307b13c2be051e39e4225",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M121-280v-400q0-33 23.5-56.5T201-760h559q33 0 56.5 23.5T840-680v400q0 33-23.5 56.5T760-200H201q-33 0-56.5-23.5T121-280Zm79 0h133v-400H200v400Zm213 0h133v-400H413v400Zm213 0h133v-400H626v400Z"
+      ]
+    },
+    "copy": {
+      "symbol": "content_copy",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/content_copy/materialsymbolsoutlined/content_copy_24px.svg",
+      "sha256": "3575c3fdb035a66097bed9a7597620e313ed1efa051eb586a7335348c3fdff35",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M360-240q-33 0-56.5-23.5T280-320v-480q0-33 23.5-56.5T360-880h360q33 0 56.5 23.5T800-800v480q0 33-23.5 56.5T720-240H360Zm0-80h360v-480H360v480ZM200-80q-33 0-56.5-23.5T120-160v-560h80v560h440v80H200Zm160-240v-480 480Z"
+      ]
+    },
+    "checkDouble": {
+      "symbol": "done_all",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/done_all/materialsymbolsoutlined/done_all_24px.svg",
+      "sha256": "4fb40147e4ba7c03f56730a7e3402285d402811ae8452c8f692e76a475767de6",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M268-240 42-466l57-56 170 170 56 56-57 56Zm226 0L268-466l56-57 170 170 368-368 56 57-424 424Zm0-226-57-56 198-198 57 56-198 198Z"
+      ]
+    },
+    "wrench": {
+      "symbol": "build",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/build/materialsymbolsoutlined/build_24px.svg",
+      "sha256": "50ee5a9864ac7c63d533c28c2f05ddb3195e49f1e9a955e642c8fa273940e113",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M686-132 444-376q-20 8-40.5 12t-43.5 4q-100 0-170-70t-70-170q0-36 10-68.5t28-61.5l146 146 72-72-146-146q29-18 61.5-28t68.5-10q100 0 170 70t70 170q0 23-4 43.5T584-516l244 242q12 12 12 29t-12 29l-84 84q-12 12-29 12t-29-12Zm29-85 27-27-256-256q18-20 26-46.5t8-53.5q0-60-38.5-104.5T386-758l74 74q12 12 12 28t-12 28L332-500q-12 12-28 12t-28-12l-74-74q9 57 53.5 95.5T360-440q26 0 52-8t47-25l256 256ZM472-488Z"
+      ]
+    },
+    "stop": {
+      "symbol": "stop",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/stop/materialsymbolsoutlined/stop_24px.svg",
+      "sha256": "34b51c2ec96ced6f87cd63fef4adb93bfe0add1d08846a2e9cea787678f6e356",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M320-640v320-320Zm-80 400v-480h480v480H240Zm80-80h320v-320H320v320Z"
+      ]
+    },
+    "microphone": {
+      "symbol": "mic",
+      "variant": "outlined",
+      "sourcePath": "symbols/web/mic/materialsymbolsoutlined/mic_24px.svg",
+      "sha256": "9303010d6ab8511a63e26cb1169473b3dc02dbc65bf1a1353493e1f1109f3fbb",
+      "viewBox": "0 -960 960 960",
+      "paths": [
+        "M480-400q-50 0-85-35t-35-85v-240q0-50 35-85t85-35q50 0 85 35t35 85v240q0 50-35 85t-85 35Zm0-240Zm-40 520v-123q-104-14-172-93t-68-184h80q0 83 58.5 141.5T480-320q83 0 141.5-58.5T680-520h80q0 105-68 184t-172 93v123h-80Zm40-360q17 0 28.5-11.5T520-520v-240q0-17-11.5-28.5T480-800q-17 0-28.5 11.5T440-760v240q0 17 11.5 28.5T480-480Z"
+      ]
+    }
+  }
+}

@@ -16,6 +16,7 @@ verified_by:
     packages/themes/material3/src/material3Motion.test.ts,
     packages/themes/material3/scripts/check-spatial-browser.mjs,
     packages/themes/material3/src/material3Elevation.test.ts,
+    packages/themes/material3/src/material3Icons.test.tsx,
     packages/themes/material3/src/material3Theme.test.ts,
   ]
 package: '@astryxdesign/theme-material3'
@@ -148,6 +149,20 @@ Tonal surface-container colors are separate from the shadow level; each
 component mapping must choose its surface, layer order, overflow behavior, and
 high-contrast boundary. A Chrome check covers all six levels over both pinned
 light and dark surface-container-low colors.
+
+The icon source is Google's official Material Symbols SVG repository at commit
+`bd8cb85bd4bad964fe6918f79665bb40c3a8efef`, licensed Apache-2.0.
+`material3IconSource.json` pins one 24px Outlined SVG per released Astryx shared
+icon meaning, with filled artwork for success, error, warning, and info.
+`material3IconRegistry` supplies all 28 through the existing theme-scoped
+`icons` resolver. Artwork scales to the existing Icon `xsm`/`sm`/`md`/`lg`
+sizes (12/16/20/24px equivalents at a 16px root) and inherits current color;
+it requires no icon font request. Material Web's icon default is 24px, while
+its filled Button uses an 18px icon and its icon button uses 24px. Those
+component-specific slot sizes and operable targets are owned by their
+component migrations; the foundation does not change Core Icon sizes or
+semantic icon names. A Chrome contact sheet verifies visible glyph geometry,
+and component QA must review meaning, size, direction, contrast, and targets.
 
 ## Tonal palette definitions
 
