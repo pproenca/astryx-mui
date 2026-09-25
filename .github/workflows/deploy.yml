@@ -83,7 +83,7 @@ jobs:
   # `ui` is the heavier project by ~4x here, so it takes the larger runner (see
   # ci.yml's lane comment).
   test-ui:
-    runs-on: 4-core-ubuntu
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     steps:
@@ -100,7 +100,7 @@ jobs:
           pnpm vitest run --project ui packages/core/src/Markdown/Markdown.fr23.perf.test.ts --no-file-parallelism
 
   test-node:
-    runs-on: 2-core-ubuntu-arm
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
     steps:
@@ -118,7 +118,7 @@ jobs:
   # every open PR, which typechecks the PR merged with main (see #3197).
   # Running them here closes that gap and blocks a broken deploy.
   typecheck:
-    runs-on: 2-core-ubuntu-arm
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
     steps:
@@ -191,7 +191,7 @@ jobs:
   # handed to `deploy` as artifacts, so a broken test run never publishes —
   # test still gates the push, it just no longer serializes the build.
   build:
-    runs-on: 2-core-ubuntu-arm
+    runs-on: ubuntu-24.04-arm
     permissions:
       contents: read
     steps:

@@ -18,7 +18,7 @@ permissions: {}
 
 jobs:
   dependency-check:
-    runs-on: 4-core-ubuntu
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
       id-token: write
