@@ -14,6 +14,7 @@ verified_by:
     packages/themes/material3/src/material3Typography.test.ts,
     packages/themes/material3/src/material3Shape.test.ts,
     packages/themes/material3/src/material3Motion.test.ts,
+    packages/themes/material3/scripts/check-spatial-browser.mjs,
     packages/themes/material3/src/material3Theme.test.ts,
   ]
 package: '@astryxdesign/theme-material3'
@@ -66,6 +67,19 @@ No Material role is added to `TokenName`, `tokenVar`, generated portable token
 docs, or Core defaults merely to make this theme work. Spacing and control size
 retain Astryx's portable vocabulary; Material-specific geometry belongs in the
 theme's component mappings until a separate shared Core decision is approved.
+
+The pinned Material Web checkout has no system spacing, size, or density Sass
+wrapper. `material3SpatialSource.json` instead captures 95 geometry values
+from 10 active component wrappers, with their supported CSS property status.
+Examples include a 40px filled-button container, a 40px icon-button state
+layer, 56px and 72px list rows, and a 52px by 32px switch track with a 48px
+touch target. The extractor checks the pinned Sass values and a Chrome
+reference fixture checks representative dimensions and logical padding in LTR
+and RTL. These source values are component-mapping inputs, not a new universal
+spacing or density scale. Astryx's `--spacing-*`, `--size-element-*`, and
+existing density props remain portable. Each component migration must decide
+how its sizes, content, focus and touch target map to the relevant Material
+component geometry and prove the actual rendered result.
 
 ## Theme-local role definitions
 
