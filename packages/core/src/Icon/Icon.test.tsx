@@ -17,6 +17,7 @@ import {Theme} from '../theme/Theme';
 import {defineTheme} from '../theme/defineTheme';
 import {resetThemes} from '../theme/themeRegistry';
 import {Icon} from './Icon';
+import {IconDefaultSizeProvider} from './IconDefaultSizeContext';
 import {registerIcons, resetIcons} from './globalIconRegistry';
 
 describe('Icon', () => {
@@ -169,6 +170,50 @@ describe('Icon', () => {
     expect(icon).toHaveAttribute('data-size', 'md');
     expect(getComputedStyle(icon).width).toBe('1.25rem');
     expect(getComputedStyle(icon).height).toBe('1.25rem');
+  });
+
+  it('uses the theme Icon default while preserving explicit and nearer slot sizes', () => {
+    const material = defineTheme({
+      name: 'icon-material-default',
+      iconDefaultSize: 'lg',
+    });
+    const neutral = defineTheme({name: 'icon-neutral-default'});
+
+    render(
+      <Theme theme={material}>
+        <Icon icon={TestIcon} data-testid="material-default" />
+        <Icon icon={TestIcon} size="md" data-testid="explicit-md" />
+        <IconDefaultSizeProvider value="sm">
+          <Icon icon={TestIcon} data-testid="slot-default" />
+        </IconDefaultSizeProvider>
+        <Theme theme={neutral}>
+          <Icon icon={TestIcon} data-testid="nested-neutral-default" />
+        </Theme>
+      </Theme>,
+    );
+
+    expect(screen.getByTestId('material-default')).toHaveAttribute(
+      'data-size',
+      'lg',
+    );
+    expect(getComputedStyle(screen.getByTestId('material-default')).width).toBe(
+      '1.5rem',
+    );
+    expect(screen.getByTestId('explicit-md')).toHaveAttribute(
+      'data-size',
+      'md',
+    );
+    expect(getComputedStyle(screen.getByTestId('explicit-md')).width).toBe(
+      '1.25rem',
+    );
+    expect(screen.getByTestId('slot-default')).toHaveAttribute(
+      'data-size',
+      'sm',
+    );
+    expect(screen.getByTestId('nested-neutral-default')).toHaveAttribute(
+      'data-size',
+      'md',
+    );
   });
 
   it('applies aria-hidden by default in string (registry) mode', () => {

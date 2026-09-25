@@ -1630,6 +1630,9 @@ function generateBuiltModule(
   // back. A field missing here is silently lost by the extending theme.
   // SYNC: packages/core/src/theme/defineTheme.ts (DefinedTheme)
   const inheritableFields =
+    (themeDef.iconDefaultSize !== undefined
+      ? `  iconDefaultSize: ${JSON.stringify(themeDef.iconDefaultSize)},\n`
+      : '') +
     (themeDef.__localTokenLineage !== undefined
       ? `  localTokens: ${JSON.stringify(themeDef.localTokens ?? {}, null, 2)
           .split('\n')
@@ -2279,9 +2282,8 @@ async function themeBuildInternal(
     // by name is how `extends` (and `color`, and `syntax`) used to be dropped
     // on the way in.
     // Fields that only ever appear on RAW defineTheme() input, never on an
-    // already-resolved theme. Their presence is how the build tells the two
-    // apart and decides to run defineTheme() itself. A field missing from this
-    // list is dropped without a word, so every new input field belongs here.
+    // already-resolved theme. Shared input/output fields such as
+    // iconDefaultSize require a separate raw-object check below.
     // SYNC: packages/core/src/theme/defineTheme.ts (DefineThemeInput)
     const INPUT_ONLY_FIELDS = [
       'extends',
@@ -2296,6 +2298,8 @@ async function themeBuildInternal(
     ];
     const needsResolution =
       INPUT_ONLY_FIELDS.some(field => themeDef[field] !== undefined) ||
+      (themeDef.iconDefaultSize !== undefined &&
+        themeDef.__axes === undefined) ||
       ('localTokens' in themeDef && themeDef.__localTokenLineage === undefined);
     if (needsResolution) {
       try {

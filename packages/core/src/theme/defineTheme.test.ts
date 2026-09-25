@@ -11,6 +11,25 @@ function generateThemeTestCSS(theme: Parameters<typeof generateThemeCSS>[0]) {
   return [prose, component].filter(Boolean).join('\n\n');
 }
 describe('defineTheme', () => {
+  it('inherits and overrides the theme Icon default without changing the size scale', () => {
+    const base = defineTheme({name: 'icon-base', iconDefaultSize: 'lg'});
+    expect(base.iconDefaultSize).toBe('lg');
+    expect(
+      defineTheme({name: 'icon-child', extends: base}).iconDefaultSize,
+    ).toBe('lg');
+    expect(
+      defineTheme({name: 'icon-override', extends: base, iconDefaultSize: 'sm'})
+        .iconDefaultSize,
+    ).toBe('sm');
+    expect(defineTheme({name: 'icon-neutral'}).iconDefaultSize).toBeUndefined();
+    expect(() =>
+      defineTheme({
+        name: 'icon-invalid',
+        iconDefaultSize: 'huge' as 'lg',
+      }),
+    ).toThrow(/iconDefaultSize must be xsm, sm, md, or lg/);
+  });
+
   it('creates a theme with name', () => {
     const theme = defineTheme({name: 'test'});
     expect(theme.name).toBe('test');

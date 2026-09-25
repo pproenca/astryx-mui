@@ -27,6 +27,8 @@ const colors = JSON.parse(
 );
 
 assert.deepEqual(source.material3Theme.tokens, built.material3Theme.tokens);
+assert.equal(source.material3Theme.iconDefaultSize, 'lg');
+assert.equal(built.material3Theme.iconDefaultSize, 'lg');
 assert.deepEqual(
   source.material3Theme.localTokens,
   built.material3Theme.localTokens,

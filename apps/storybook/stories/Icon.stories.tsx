@@ -1,9 +1,17 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
+/**
+ * @file Icon.stories.tsx
+ * @input Core Icon, Heroicons, and the Material 3 theme's semantic icon names
+ * @output Interactive Icon examples and a Material 3 review matrix
+ * @position Storybook component stories for Icon
+ */
+
 import type {Meta, StoryObj} from '@storybook/react';
-import {Icon} from '@astryxdesign/core/Icon';
+import {Icon, type IconName} from '@astryxdesign/core/Icon';
 import {HStack, VStack} from '@astryxdesign/core/Layout';
 import {Text} from '@astryxdesign/core/Text';
+import {material3IconRegistry} from '@astryxdesign/theme-material3';
 import {
   HomeIcon,
   HeartIcon,
@@ -61,6 +69,107 @@ export const Default: Story = {
     color: 'primary',
     size: 'md',
   },
+};
+
+const material3Names = Object.keys(material3IconRegistry) as IconName[];
+
+/**
+ * Review the actual theme-scoped Material Symbols SVGs. The toolbar switches
+ * light/dark and LTR/RTL; viewport controls expose narrow and wide wrapping.
+ * The size row keeps Astryx's precise scale visible beside Material Web's
+ * 24px default (`lg` at a 16px root).
+ */
+export const Material3Review: Story = {
+  name: 'Material 3 Review',
+  globals: {astryxTheme: 'material3'},
+  args: {
+    icon: 'search',
+    color: 'primary',
+    size: undefined,
+    label: 'Search',
+  },
+  argTypes: {
+    icon: {
+      control: 'select',
+      options: material3Names,
+      description: 'Material Symbols glyph from the active theme',
+    },
+  },
+  render: args => (
+    <VStack gap={6}>
+      <VStack gap={2}>
+        <h2>Interactive icon</h2>
+        <Icon
+          icon={args.icon ?? 'search'}
+          color={args.color}
+          size={args.size}
+          label={args.label}
+        />
+        <Text type="supporting">
+          Change its glyph, color, size, and accessible name in Controls.
+        </Text>
+      </VStack>
+
+      <VStack gap={2}>
+        <h2>Size and accessible name</h2>
+        <HStack gap={5} wrap="wrap" vAlign="center">
+          <VStack gap={1} hAlign="center">
+            <Icon icon="search" />
+            <Text type="supporting">Theme default</Text>
+          </VStack>
+          {(['xsm', 'sm', 'md', 'lg'] as const).map(size => (
+            <VStack key={size} gap={1} hAlign="center">
+              <Icon icon="search" size={size} />
+              <Text type="supporting">{size}</Text>
+            </VStack>
+          ))}
+          <VStack gap={1} hAlign="center">
+            <Icon icon="success" size="lg" label="Completed" />
+            <Text type="supporting">Named image</Text>
+          </VStack>
+        </HStack>
+        <Text type="supporting">
+          Material 3 defaults to 24px. Explicit Astryx md stays 20px, and lg is
+          24px at a 16px root. Unlabelled icons beside text are decorative.
+        </Text>
+      </VStack>
+
+      <VStack gap={2}>
+        <h2>Semantic colors</h2>
+        <HStack gap={5} wrap="wrap" vAlign="center">
+          {(
+            [
+              'primary',
+              'secondary',
+              'accent',
+              'disabled',
+              'success',
+              'error',
+              'warning',
+              'inherit',
+            ] as const
+          ).map(color => (
+            <VStack key={color} gap={1} hAlign="center">
+              <Icon icon="info" color={color} size="lg" />
+              <Text type="supporting">{color}</Text>
+            </VStack>
+          ))}
+        </HStack>
+      </VStack>
+
+      <VStack gap={2}>
+        <h2>Shared glyphs</h2>
+        <HStack gap={4} wrap="wrap" vAlign="center">
+          {material3Names.map(name => (
+            <VStack key={name} gap={1} hAlign="center">
+              <Icon icon={name} size="lg" />
+              <Text type="supporting">{name}</Text>
+            </VStack>
+          ))}
+        </HStack>
+      </VStack>
+    </VStack>
+  ),
 };
 
 /**

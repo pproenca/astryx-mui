@@ -168,12 +168,15 @@ The icon source is Google's official Material Symbols SVG repository at commit
 `material3IconSource.json` pins one 24px Outlined SVG per released Astryx shared
 icon meaning, with filled artwork for success, error, warning, and info.
 `material3IconRegistry` supplies all 28 through the existing theme-scoped
-`icons` resolver. Artwork scales to the existing Icon `xsm`/`sm`/`md`/`lg`
+`icons` resolver. The theme sets `iconDefaultSize: 'lg'` so an unsized
+standalone Icon follows Material Web's 24px default. Explicit `size="md"`
+remains 20px and nearer component-owned slot defaults still win. Artwork
+scales to the existing Icon `xsm`/`sm`/`md`/`lg`
 sizes (12/16/20/24px equivalents at a 16px root) and inherits current color;
 it requires no icon font request. Material Web's icon default is 24px, while
 its filled Button uses an 18px icon and its icon button uses 24px. Those
 component-specific slot sizes and operable targets are owned by their
-component migrations; the foundation does not change Core Icon sizes or
+component migrations; this theme does not change Core Icon size values or
 semantic icon names. A Chrome contact sheet verifies visible glyph geometry,
 and component QA must review meaning, size, direction, contrast, and targets.
 

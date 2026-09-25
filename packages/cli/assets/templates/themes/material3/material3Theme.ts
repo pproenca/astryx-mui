@@ -118,6 +118,7 @@ const shadowLayer = (level: 'level1' | 'level2' | 'level3') =>
 
 export const material3Theme = defineTheme({
   name: 'material3',
+  iconDefaultSize: 'lg',
   localTokens: material3LocalTokens,
   icons: material3IconRegistry,
   tokens: {
