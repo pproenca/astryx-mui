@@ -50,8 +50,8 @@ export const docs = {
       name: 'size',
       type: "'xsm' | 'sm' | 'md' | 'lg'",
       description:
-        'Icon size. An explicit value wins. When omitted, Icon uses the nearest default supplied by an owning Astryx component for its icon slot, then falls back to md when no contextual default exists.',
-      default: "Contextual; otherwise 'md'",
+        'Icon size. An explicit value wins. When omitted, Icon uses the nearest default supplied by an owning Astryx component, then the active theme iconDefaultSize, then md. Material 3 defaults to lg (24px at a 16px root); explicit md remains 20px.',
+      default: "Contextual; otherwise theme default or 'md'",
     },
     {
       name: 'label',

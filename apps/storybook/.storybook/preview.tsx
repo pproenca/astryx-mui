@@ -1,5 +1,12 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
+/**
+ * @file preview.tsx
+ * @input Astryx themes, Storybook globals, and component stories
+ * @output Theme, color-mode, and direction controls for interactive review
+ * @position Storybook preview decorators and toolbar configuration
+ */
+
 import type {Preview, Decorator} from '@storybook/react';
 import * as React from 'react';
 import {
@@ -11,6 +18,7 @@ import {butterTheme} from '@astryxdesign/theme-butter';
 import {chocolateTheme} from '@astryxdesign/theme-chocolate';
 import {gothicTheme} from '@astryxdesign/theme-gothic';
 import {matchaTheme} from '@astryxdesign/theme-matcha';
+import {material3Theme} from '@astryxdesign/theme-material3';
 import {neutralTheme} from '@astryxdesign/theme-neutral';
 import {probeTheme} from '@astryxdesign/theme-probe';
 import {stoneTheme} from '@astryxdesign/theme-stone';
@@ -28,6 +36,7 @@ const themes = {
   chocolate: chocolateTheme,
   gothic: gothicTheme,
   matcha: matchaTheme,
+  material3: material3Theme,
   neutral: neutralTheme,
   // A generated test fixture, not a design: it styles every declared theming
   // target so the visual gate can prove each one still paints. See
@@ -122,6 +131,7 @@ const preview: Preview = {
           {value: 'chocolate', title: 'Chocolate', icon: 'circle'},
           {value: 'gothic', title: 'Gothic', icon: 'moon'},
           {value: 'matcha', title: 'Matcha', icon: 'circlehollow'},
+          {value: 'material3', title: 'Material 3', icon: 'circle'},
           {value: 'probe', title: 'Probe (test fixture)', icon: 'beaker'},
           {value: 'y2k', title: 'Y2K', icon: 'lightning'},
         ],

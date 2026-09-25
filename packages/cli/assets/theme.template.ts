@@ -98,6 +98,13 @@ export const myTheme = defineTheme({
    */
   // extends: neutralTheme,
 
+  /**
+   * Default for Icons without an explicit size or a nearer component icon-slot
+   * default. Uses Icon's exact xsm/sm/md/lg scale (12/16/20/24px at 16px root).
+   * Omit to retain the Core standalone md default. Material 3 uses lg.
+   */
+  // iconDefaultSize: 'lg',
+
   // ───────────────────────────────────────────────────────────────────────
   // Scale configs — a few parameters generate a whole family of tokens.
   // Reach for these first. They keep a theme internally consistent and cover

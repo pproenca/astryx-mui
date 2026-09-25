@@ -38,6 +38,7 @@
 
 import type {ReactNode} from 'react';
 import type {IconName, NamespacedIconName} from '../Icon/globalIconRegistry';
+import type {IconSize} from '../Icon/IconSize.stylex';
 
 /**
  * Icon overrides a theme may declare: any built-in semantic name, plus the
@@ -210,6 +211,8 @@ export interface DefineThemeInput {
    * ```
    */
   extends?: DefinedTheme;
+  /** Default size for Icons without an explicit size or nearer component slot default. */
+  iconDefaultSize?: IconSize;
   /**
    * Unified typography configuration — fonts, scale, and weights.
    *
@@ -428,6 +431,8 @@ export interface DefinedTheme {
   components?: ComponentStyleMap;
   /** Icon registry */
   icons?: ThemeIconOverrides;
+  /** Default size for Icons in this theme, unless a nearer slot overrides it. */
+  iconDefaultSize?: IconSize;
   /** Indicator overrides for stateful control visuals, keyed by name */
   indicators?: IndicatorRegistry;
   /** Whether this theme has been pre-compiled by theme build CLI */
@@ -542,6 +547,14 @@ export function defineTheme(input: DefineThemeInput): ResolvedDefinedTheme {
     );
   }
   const base = input.extends;
+  if (
+    input.iconDefaultSize !== undefined &&
+    !(['xsm', 'sm', 'md', 'lg'] as const).includes(input.iconDefaultSize)
+  ) {
+    throw new Error(
+      `defineTheme("${input.name}"): iconDefaultSize must be xsm, sm, md, or lg.`,
+    );
+  }
 
   // The theme's own value axes and the resolved base an `extends` supplies.
   // The same axis metadata is retained so adaptation rules can complete partial
@@ -622,6 +635,7 @@ export function defineTheme(input: DefineThemeInput): ResolvedDefinedTheme {
       : {}),
     components,
     icons,
+    iconDefaultSize: input.iconDefaultSize ?? base?.iconDefaultSize,
     indicators,
     __inputTokens:
       base?.__inputTokens || input.tokens

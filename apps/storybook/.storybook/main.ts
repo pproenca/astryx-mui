@@ -1,7 +1,7 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
 /**
- * @input Workspace source entries, Storybook's Vite config, Astryx StyleX plugin.
+ * @input Workspace source entries including Material 3, Storybook's Vite config, Astryx StyleX plugin.
  * @output Storybook config with Vite and StyleX aliases from one package table.
  * @position Storybook configuration; keeps workspace packages usable unbuilt.
  */
@@ -73,6 +73,12 @@ export const workspaceAliases: WorkspaceAlias[] = [
     src: 'packages/themes/matcha/src',
     stylex: 'wildcard',
     vite: 'packages/themes/matcha/src/source.ts',
+  },
+  {
+    pkg: '@astryxdesign/theme-material3',
+    src: 'packages/themes/material3/src',
+    stylex: 'wildcard',
+    vite: 'packages/themes/material3/src/source.ts',
   },
   {
     pkg: '@astryxdesign/theme-neutral',

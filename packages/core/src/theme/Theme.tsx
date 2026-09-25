@@ -5,7 +5,7 @@
 /**
  * Theme Provider Component
  *
- * Applies theme tokens and sets color-scheme for light-dark() to work.
+ * Applies theme tokens, Icon default size, and color-scheme for light-dark().
  * Themes are created with `defineTheme()` and applied via CSS:
  * - Token overrides set as CSS custom properties on [data-astryx-theme]
  * - Component overrides scoped via @scope'd CSS selectors on stable Astryx
@@ -46,6 +46,7 @@ import {registerTheme} from './themeRegistry';
 import {dataAttr} from '../naming';
 import {ThemeContext} from './useTheme';
 import {warnOnce} from '../utils/devWarning';
+import {IconDefaultSizeProvider} from '../Icon/IconDefaultSizeContext';
 
 /**
  * Theme provider props
@@ -296,12 +297,14 @@ export function Theme({
   return (
     <ThemeContext value={ctxValue}>
       <ThemeNestingContext value={true}>
-        <div
-          {...stylex.props(wrapperStyles.base, colorSchemeStyle)}
-          data-astryx-theme={theme.name}
-          data-theme={mode === 'system' ? undefined : mode}>
-          {children}
-        </div>
+        <IconDefaultSizeProvider value={theme.iconDefaultSize ?? null}>
+          <div
+            {...stylex.props(wrapperStyles.base, colorSchemeStyle)}
+            data-astryx-theme={theme.name}
+            data-theme={mode === 'system' ? undefined : mode}>
+            {children}
+          </div>
+        </IconDefaultSizeProvider>
       </ThemeNestingContext>
     </ThemeContext>
   );

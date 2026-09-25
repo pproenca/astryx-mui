@@ -40,8 +40,9 @@ semantics. Consumer usage remains documented in `Icon.doc.mjs`.
 ## Compatibility and migration
 
 - Released default preserved: `yes` for explicit sizes and standalone Icons
-- Compatibility class: component-owned Icon slots may supply a contextual default;
-  explicit Icon sizes and the standalone `md` fallback remain unchanged
+  outside a theme that selects its own Icon default
+- Compatibility class: component-owned Icon slots and themes may supply a
+  contextual default; explicit Icon sizes and the final `md` fallback remain unchanged
 - Controlled/uncontrolled behavior: not applicable
 - Migration decision: no consumer migration; omit `size` when the owning Astryx
   component should select the contextual default
@@ -53,7 +54,7 @@ Consumer migration instructions belong in consumer docs and release notes.
 **Owns**
 
 - Accepting a semantic icon key or a supplied icon component as the glyph source.
-- Resolving explicit, component-owned contextual, and standalone size defaults.
+- Resolving explicit, component-owned contextual, theme, and standalone size defaults.
 - Applying Icon's size, color, theming target, and accessibility semantics to
   the rendered glyph.
 
@@ -71,12 +72,12 @@ Consumer migration instructions belong in consumer docs and release notes.
 
 ## Public concepts
 
-| Concept       | Closed values or states                                   | Meaning                                                   | Availability by variant/orientation/state | Default                                         | Owner            | Stability | Invalid-value behavior                                 |
-| ------------- | --------------------------------------------------------- | --------------------------------------------------------- | ----------------------------------------- | ----------------------------------------------- | ---------------- | --------- | ------------------------------------------------------ |
-| Glyph source  | semantic key, namespaced extension key, or icon component | Selects the visual symbol.                                | Every render                              | Required                                        | `component:Icon` | Stable    | TypeScript rejects unsupported built-in string values. |
-| Size          | `xsm`, `sm`, `md`, `lg`                                   | Selects the icon box size.                                | Every rendered glyph                      | nearest component-owned default; otherwise `md` | `component:Icon` | Stable    | TypeScript rejects unsupported values.                 |
-| Color         | documented semantic and palette values                    | Selects the glyph color or inherits it from context.      | Every rendered glyph                      | `inherit`                                       | `component:Icon` | Stable    | TypeScript rejects unsupported values.                 |
-| Accessibility | decorative or meaningfully labelled                       | Controls whether assistive technology receives the glyph. | Every rendered glyph                      | Decorative                                      | `component:Icon` | Stable    | Empty labels use the decorative behavior.              |
+| Concept       | Closed values or states                                   | Meaning                                                   | Availability by variant/orientation/state | Default                                                       | Owner            | Stability | Invalid-value behavior                                 |
+| ------------- | --------------------------------------------------------- | --------------------------------------------------------- | ----------------------------------------- | ------------------------------------------------------------- | ---------------- | --------- | ------------------------------------------------------ |
+| Glyph source  | semantic key, namespaced extension key, or icon component | Selects the visual symbol.                                | Every render                              | Required                                                      | `component:Icon` | Stable    | TypeScript rejects unsupported built-in string values. |
+| Size          | `xsm`, `sm`, `md`, `lg`                                   | Selects the icon box size.                                | Every rendered glyph                      | nearest component default; then theme default; otherwise `md` | `component:Icon` | Stable    | TypeScript rejects unsupported values.                 |
+| Color         | documented semantic and palette values                    | Selects the glyph color or inherits it from context.      | Every rendered glyph                      | `inherit`                                                     | `component:Icon` | Stable    | TypeScript rejects unsupported values.                 |
+| Accessibility | decorative or meaningfully labelled                       | Controls whether assistive technology receives the glyph. | Every rendered glyph                      | Decorative                                                    | `component:Icon` | Stable    | Empty labels use the decorative behavior.              |
 
 A namespaced key that does not resolve currently renders nothing. This is
 existing behavior, not an intentional fallback promise.
@@ -86,13 +87,13 @@ existing behavior, not an intentional fallback promise.
 Requirements identify their basis so observed code is not mistaken for an
 intentional decision.
 
-| ID  | Candidate invariant                                                                                                                                                                               | Basis                                                 | Draft review state                                      |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------- |
-| FR1 | Icon MUST present at most one glyph from the supplied semantic key, namespaced key, or icon component.                                                                                            | Documented promise and current tests.                 | Settled intent.                                         |
-| FR2 | Every rendered glyph MUST carry the `icon` theming target with its resolved size and selected color reflected as target data.                                                                     | Current source, docs, and theming tests.              | Settled intent.                                         |
-| FR3 | Icon MUST apply the resolved size as width and height for every glyph, plus font size where needed for 1em-based icon sources. This sizing contract MUST NOT promise an HTML or SVG element type. | Human decision, current source, and tests.            | Settled intent.                                         |
-| FR4 | Supported SVG and styling escape hatches MUST retain their established merge and override behavior.                                                                                               | Current source and regression tests.                  | Current compatibility behavior; verify before changing. |
-| FR5 | An explicit Icon `size` MUST win. Without one, Icon MUST use the nearest default supplied by an owning Astryx component for its documented icon slot; without such a default, Icon MUST use `md`. | Component-size precedence and Button sizing decision. | Settled intent.                                         |
+| ID  | Candidate invariant                                                                                                                                                                                         | Basis                                                                   | Draft review state                                      |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------- |
+| FR1 | Icon MUST present at most one glyph from the supplied semantic key, namespaced key, or icon component.                                                                                                      | Documented promise and current tests.                                   | Settled intent.                                         |
+| FR2 | Every rendered glyph MUST carry the `icon` theming target with its resolved size and selected color reflected as target data.                                                                               | Current source, docs, and theming tests.                                | Settled intent.                                         |
+| FR3 | Icon MUST apply the resolved size as width and height for every glyph, plus font size where needed for 1em-based icon sources. This sizing contract MUST NOT promise an HTML or SVG element type.           | Human decision, current source, and tests.                              | Settled intent.                                         |
+| FR4 | Supported SVG and styling escape hatches MUST retain their established merge and override behavior.                                                                                                         | Current source and regression tests.                                    | Current compatibility behavior; verify before changing. |
+| FR5 | An explicit Icon `size` MUST win. Without one, Icon MUST use the nearest default supplied by an owning Astryx component for its documented icon slot; then the active theme's Icon default; otherwise `md`. | Component-size precedence, Button sizing, and Material 3 Icon decision. | Settled intent.                                         |
 
 ### Allowed variation
 
@@ -114,7 +115,7 @@ intentional decision.
 | Semantic key                     | One resolved glyph carries the `icon` target.            | Theme, registry, or built-in artwork.          |
 | Namespaced extension key         | A resolved extension glyph carries the `icon` target.    | Consumer- or library-owned artwork.            |
 | Supplied icon component          | The supplied glyph carries the `icon` target.            | Component implementation and SVG internals.    |
-| Standalone Icon without `size`   | The resolved size is `md`.                               | Glyph source and color.                        |
+| Standalone Icon without `size`   | The active theme default applies; otherwise `md`.        | Glyph source and color.                        |
 | Owned icon slot without `size`   | The nearest documented component default is used.        | The owning component's declared size mapping.  |
 | Explicit Icon size in owned slot | The explicit Icon size wins over the contextual default. | Any supported Icon size.                       |
 | Unresolved namespaced key        | No glyph is currently rendered.                          | No fallback behavior is established by intent. |
@@ -122,7 +123,7 @@ intentional decision.
 ### Transformation and precedence order
 
 - **ORD1 — Size resolution.** Resolve explicit Icon `size` → nearest
-  component-owned contextual default → standalone `md` fallback.
+  component-owned contextual default → active theme Icon default → `md` fallback.
 - **ORD2 — Presentation.** Apply the target, resolved size, and component color
   styles, then merge consumer `xstyle`, `className`, inline `style`, and supported
   pass-through props in their established order.
@@ -216,8 +217,20 @@ implementation strategies rather than stable consumer concepts.
 A person should see an icon that is proportionate to the Astryx component that
 owns its slot without every caller repeating a size. The owning component may
 therefore provide the default while an explicit Icon size remains authoritative
-and a standalone Icon remains `md`. Provider objects, hooks, and context shape
+and a standalone Icon remains `md` without a theme default. Provider objects, hooks, and context shape
 remain private implementation details rather than public API.
+
+### DEC-3 — Material 3 theme selects the standalone Icon default
+
+**Reference:** `component:Icon/DEC-3`
+**Decider:** pproenca, 2026-09-25
+
+Material Web's `md-icon` is 24px by default. A theme may set
+`iconDefaultSize` for Icons without an explicit size or nearer component-owned
+slot default. Material 3 selects `lg` (24px at a 16px root). The explicit
+`xsm`/`sm`/`md`/`lg` sizes remain 12/16/20/24px, and an unconfigured theme
+retains the standalone `md` fallback. This keeps direct Material 3 defaults
+accurate while preserving exact smaller choices for callers and component slots.
 
 Rejected: an unconditional `md` default inside every composition, forcing every
 caller to repeat the owner-derived size, and exposing the provider mechanism as

@@ -4,9 +4,9 @@
 
 /**
  * @file IconDefaultSizeContext.ts
- * @input Uses React context and an optional Icon size prop
- * @output Supplies a component-owned default size to descendant Icon instances
- * @position Internal Icon sizing context; consumed by Icon and icon-slot owners
+ * @input Uses React context, an optional Icon size prop, and theme or slot defaults
+ * @output Resolves explicit size, nearest slot or theme default, then Core md
+ * @position Internal Icon sizing context; consumed by Icon, Theme, and slot owners
  */
 
 import {createContext, use} from 'react';

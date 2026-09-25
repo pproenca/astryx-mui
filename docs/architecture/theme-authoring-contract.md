@@ -82,7 +82,7 @@ source configuration independently.
 - explicit semantic token overrides;
 - optional theme-family-local token declarations;
 - component target/style-key overrides;
-- icon and indicator registries;
+- icon and indicator registries, plus an optional Icon default size;
 - syntax tokens;
 - `onDark` / `onLight` surface overrides; and
 - ordered environmental `adaptations` with a fixed named width map.
@@ -100,7 +100,9 @@ Normalization follows one precedence order:
 5. inherited and explicit media-surface overrides;
 6. inherited and explicit theme-local declarations, validated against the
    resolved token, component, and media surfaces; and
-7. inherited and explicit icon/indicator registry entries.
+7. inherited and explicit icon/indicator registry entries; and
+8. an inherited or explicit Icon default size, with an omitted value retaining
+   Icon's own fallback.
 
 Explicit values win within their surface. Component maps merge by component,
 style key, and CSS property rather than replacing the entire inherited target.
@@ -150,6 +152,10 @@ style key, and CSS property rather than replacing the entire inherited target.
   derive, or normalize input into a durable typed theme value used by a current
   supported consumer; validating and returning the exact input unchanged is
   insufficient.
+- **INV13 — Icon defaults are flattened theme values.** An optional
+  `iconDefaultSize` is one of Icon's existing `xsm | sm | md | lg` values. A child
+  theme inherits or overrides it. Runtime and built theme objects preserve it;
+  Icon applies it after explicit and nearer component-owned slot defaults.
 
 This record does not own:
 

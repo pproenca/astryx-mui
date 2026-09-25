@@ -427,6 +427,9 @@ importers:
       '@astryxdesign/theme-matcha':
         specifier: '*'
         version: link:../../packages/themes/matcha
+      '@astryxdesign/theme-material3':
+        specifier: '*'
+        version: link:../../packages/themes/material3
       '@astryxdesign/theme-neutral':
         specifier: '*'
         version: link:../../packages/themes/neutral
