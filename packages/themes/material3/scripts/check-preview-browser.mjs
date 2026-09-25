@@ -2,8 +2,8 @@
 
 /**
  * @file check-preview-browser.mjs
- * @input Exact-revision foundation preview and pinned color schemes
- * @output Chrome checks for contrast, mode, RTL, responsive, focus, and motion
+ * @input Exact-revision comparison preview and pinned foundation sources
+ * @output Chrome checks for source comparisons, mode, RTL, responsive, focus, and motion
  * @position Automated gate before human Material 3 foundation QA
  */
 
@@ -19,6 +19,12 @@ const root = path.resolve(directory, '..');
 const html = fs.readFileSync(path.join(root, 'dist/preview.html'), 'utf8');
 const colors = JSON.parse(
   fs.readFileSync(path.join(root, 'src/material3ColorSource.json'), 'utf8'),
+);
+const elevation = JSON.parse(
+  fs.readFileSync(path.join(root, 'src/material3ElevationSource.json'), 'utf8'),
+);
+const shapes = JSON.parse(
+  fs.readFileSync(path.join(root, 'src/material3ShapeSource.json'), 'utf8'),
 );
 const revision = spawnSync('git', ['rev-parse', 'HEAD'], {
   cwd: root,
@@ -81,13 +87,107 @@ try {
   assert.equal(await page.locator('body').getAttribute('data-revision'), sha);
   for (const [selector, count] of [
     ['.swatch', 49],
+    ['.color-pair', 5],
     ['.type-sample', 15],
     ['.shape-sample', 7],
-    ['.elevation-card', 6],
+    ['.elevation-row', 6],
+    ['.elevation-card', 12],
     ['.icon-sample', 28],
   ]) {
     assert.equal(await page.locator(selector).count(), count, selector);
   }
+  assert.equal(
+    await page
+      .locator('a[href="https://m3.material.io/styles/elevation/overview"]')
+      .count(),
+    1,
+  );
+  const compareElevation = async () => {
+    for (const [level, dp] of Object.entries(elevation.generatedDp)) {
+      const row = page.locator(`.elevation-row[data-level="${level}"]`);
+      assert.ok((await row.innerText()).includes(`${dp} dp`));
+      for (const layer of ['key', 'ambient']) {
+        const reference = await row
+          .locator(`.reference-elevation .${layer}`)
+          .evaluate(node => ({
+            shadow: getComputedStyle(node).boxShadow,
+            opacity: getComputedStyle(node).opacity,
+          }));
+        const actual = await row
+          .locator(`.actual-elevation .${layer}`)
+          .evaluate(node => ({
+            shadow: getComputedStyle(node).boxShadow,
+            opacity: getComputedStyle(node).opacity,
+          }));
+        assert.deepEqual(actual, reference, `${level} ${layer} projection`);
+        assert.equal(
+          Number(actual.opacity),
+          elevation.layers[level][layer].opacity,
+        );
+      }
+    }
+    for (const token of ['--shadow-low', '--shadow-med', '--shadow-high']) {
+      const value = await page
+        .locator('.theme')
+        .evaluate(
+          (node, name) => getComputedStyle(node).getPropertyValue(name),
+          token,
+        );
+      assert.ok(value.trim(), `Core ${token} must be present`);
+    }
+  };
+  const compareColors = async mode => {
+    for (const swatch of await page.locator('.swatch').all()) {
+      const role = await swatch.getAttribute('data-role');
+      const expected = colors[`${mode}Resolved`][role];
+      const reference = await swatch
+        .locator('.reference-paint')
+        .evaluate(node => getComputedStyle(node).backgroundColor);
+      const actual = await swatch
+        .locator('.actual-paint')
+        .evaluate(node => getComputedStyle(node).backgroundColor);
+      assert.equal(reference, actual, `${mode} ${role}`);
+      assert.ok(
+        (await swatch.locator('.color-reading').innerText()).includes('match'),
+        `${mode} ${role}: ${expected}`,
+      );
+    }
+    for (const pair of await page.locator('.color-pair').all()) {
+      const [reference, actual] = await Promise.all(
+        ['.reference-paint', '.actual-paint'].map(selector =>
+          pair.locator(selector).evaluate(node => ({
+            background: getComputedStyle(node).backgroundColor,
+            foreground: getComputedStyle(node).color,
+          })),
+        ),
+      );
+      assert.deepEqual(actual, reference, `${mode} color pair`);
+    }
+  };
+  await compareElevation();
+  await compareColors('light');
+  for (const [role, expected] of Object.entries(shapes.cssCorners)) {
+    const sample = page
+      .locator('.shape-sample')
+      .filter({has: page.locator('code', {hasText: role})});
+    assert.equal(
+      await sample.locator('.shape-reading').innerText(),
+      expected,
+      `Shape ${role}`,
+    );
+  }
+  await page.keyboard.press('Tab');
+  const sourceLinkFocus = await page
+    .locator('a[href="https://m3.material.io/styles/elevation/overview"]')
+    .evaluate(node => ({
+      active: document.activeElement === node,
+      outline: getComputedStyle(node).outlineWidth,
+    }));
+  assert.ok(
+    sourceLinkFocus.active && sourceLinkFocus.outline === '3px',
+    'Source guidance link must show keyboard focus.',
+  );
+  await page.keyboard.press('Tab');
   await page.keyboard.press('Tab');
   const focus = await page.locator('#mode').evaluate(node => ({
     active: document.activeElement === node,
@@ -146,6 +246,8 @@ try {
     .locator('.theme')
     .evaluate(node => getComputedStyle(node).backgroundColor);
   assert.equal(dark, cssRgb(colors.darkResolved.background));
+  await compareElevation();
+  await compareColors('dark');
   await page.locator('#direction').click();
   assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
   const positions = await page
@@ -180,7 +282,7 @@ try {
     '2px',
   );
   console.log(
-    `Chrome ${browser.version()}: 24 contrast pairs, 105 preview samples, light/dark, control states, keyboard, RTL, 375px, reduced motion, and forced colors passed at ${sha.slice(0, 12)}.`,
+    `Chrome ${browser.version()}: 24 contrast pairs, 49 color roles and 5 paired source comparisons per mode, 6 two-layer elevation comparisons per mode, 7 shape readings, controls, keyboard, RTL, 375px, reduced motion, and forced colors passed at ${sha.slice(0, 12)}.`,
   );
 } finally {
   await browser.close();
