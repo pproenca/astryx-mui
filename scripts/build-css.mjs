@@ -78,6 +78,13 @@ const TARGETS = {
       '@astryxdesign/core': [path.join(ROOT, 'packages/core/src')],
     },
   },
+  'theme-material3': {
+    src: path.resolve(ROOT, 'packages/themes/material3/src'),
+    dist: path.resolve(ROOT, 'packages/themes/material3/dist'),
+    outFile: 'material-symbol.css',
+    banner: 'Astryx Material 3 MaterialSymbol CSS',
+    aliases: {},
+  },
 };
 
 function parseTarget() {

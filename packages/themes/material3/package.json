@@ -22,7 +22,9 @@
     "material-3",
     "design-tokens"
   ],
-  "sideEffects": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
   "main": "./dist/source.js",
   "types": "./dist/source.d.ts",
   "module": "./dist/source.mjs",
@@ -40,6 +42,16 @@
     "./theme.css": {
       "types": "./theme.css.d.ts",
       "default": "./dist/theme.css"
+    },
+    "./MaterialSymbol": {
+      "source": "./src/MaterialSymbol.tsx",
+      "types": "./dist/MaterialSymbol.d.ts",
+      "import": "./dist/MaterialSymbol.mjs",
+      "require": "./dist/MaterialSymbol.cjs"
+    },
+    "./material-symbol.css": {
+      "types": "./material-symbol.css.d.ts",
+      "default": "./dist/material-symbol.css"
     }
   },
   "files": [
@@ -49,13 +61,21 @@
     "LICENSE-APACHE-2.0"
   ],
   "scripts": {
-    "build": "node ../../../scripts/clean-dist.mjs && astryx theme build src/material3Theme.ts -o dist/theme.css --icons-specifier ./icons.mjs && tsup && tsc --project tsconfig.build.json && node ../../../scripts/check-fully-specified.mjs"
+    "build": "node ../../../scripts/clean-dist.mjs && astryx theme build src/material3Theme.ts -o dist/theme.css --icons-specifier ./icons.mjs && tsup && node scripts/build-material-symbol.mjs && tsc --project tsconfig.build.json && node ../../../scripts/build-css.mjs --package theme-material3 && node ../../../scripts/check-fully-specified.mjs"
   },
   "peerDependencies": {
     "@astryxdesign/core": "0.6.3",
+    "@stylexjs/stylex": "^0.19.0",
     "react": ">=19"
   },
   "devDependencies": {
-    "@astryxdesign/cli": "0.6.3"
+    "@astryxdesign/cli": "0.6.3",
+    "@babel/core": "catalog:",
+    "@babel/plugin-transform-modules-commonjs": "7.29.7",
+    "@babel/preset-react": "catalog:",
+    "@babel/preset-typescript": "catalog:",
+    "@stylexjs/babel-plugin": "catalog:",
+    "@stylexjs/stylex": "catalog:",
+    "@testing-library/react": "catalog:"
   }
 }

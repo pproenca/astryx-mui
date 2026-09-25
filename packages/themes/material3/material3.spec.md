@@ -17,6 +17,7 @@ verified_by:
     packages/themes/material3/scripts/check-spatial-browser.mjs,
     packages/themes/material3/src/material3Elevation.test.ts,
     packages/themes/material3/src/material3Icons.test.tsx,
+    packages/themes/material3/src/MaterialSymbol.test.tsx,
     packages/themes/material3/scripts/check-theme-parity.mjs,
   ]
 package: '@astryxdesign/theme-material3'
@@ -179,6 +180,20 @@ component-specific slot sizes and operable targets are owned by their
 component migrations; this theme does not change Core Icon size values or
 semantic icon names. A Chrome contact sheet verifies visible glyph geometry,
 and component QA must review meaning, size, direction, contrast, and targets.
+
+For the separate font channel, `MaterialSymbol` is an opt-in export from
+`@astryxdesign/theme-material3/MaterialSymbol` with a matching
+`material-symbol.css` export. It accepts one ligature or Unicode codepoint,
+Outlined/Rounded/Sharp families, an exact pixel size, and Material Symbols
+FILL, wght, GRAD, and opsz axes. The default size resolves
+`--md-icon-size` then 24px; `--md-icon-font` can override the font family.
+Its consumer loads the selected font family and glyph coverage. Astryx does
+not redistribute a Material Symbols font binary. A standalone meaningful
+symbol uses `label` for an accessible image name; decoration is hidden from
+assistive technology. This channel does not add arbitrary font glyph names
+to Core `Icon` or change its semantic SVG resolution or size scale. The
+source is the pinned Material Web [icon documentation](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md)
+and [implementation](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/icon/internal/_icon.scss).
 
 ## Tonal palette definitions
 

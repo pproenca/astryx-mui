@@ -116,6 +116,14 @@ const stylexAliases: Record<string, string[]> = {};
 const viteAliases: Record<string, string> = {};
 for (const {pkg, src, stylex, vite} of workspaceAliases) {
   const source = path.resolve(rootDir, src);
+  // Theme root imports point at source.ts. Resolve this public component
+  // subpath first so it is not appended to that file path.
+  if (pkg === '@astryxdesign/theme-material3') {
+    viteAliases[`${pkg}/MaterialSymbol`] = path.join(
+      source,
+      'MaterialSymbol.tsx',
+    );
+  }
   viteAliases[pkg] = vite ? path.resolve(rootDir, vite) : source;
   if (stylex !== 'none') {
     stylexAliases[`${pkg}/*`] = [path.join(source, '*')];

@@ -41,7 +41,26 @@ import {material3Theme} from '@astryxdesign/theme-material3';
 Load Roboto weights 400, 500, and 700 in your app for the source typography
 appearance. The theme falls back to Arial and sans-serif when Roboto is absent;
 the comparison gallery's licensed font is not included in the runtime package.
-Icons use bundled Material Symbols SVG paths, so no icon font is required.
+Core `Icon` uses bundled Material Symbols SVG paths, so it needs no icon font.
+For an arbitrary Material Symbols ligature or codepoint, use the opt-in
+`MaterialSymbol` component. Import its stylesheet and load the chosen font
+family in your app; the package does not ship a font binary.
+
+```tsx
+import {MaterialSymbol} from '@astryxdesign/theme-material3/MaterialSymbol';
+import '@astryxdesign/theme-material3/material-symbol.css';
+
+// Load Material Symbols Outlined in your app's font setup.
+<MaterialSymbol name="settings" label="Settings" />;
+<MaterialSymbol name="home" variant="rounded" fill={1} weight={500} />;
+```
+
+The default square is `--md-icon-size` or 24px. Set `size` for an exact
+pixel size. `variant` chooses Outlined, Rounded, or Sharp; load each family
+you use. `fill` (0–1), `weight` (100–700), `grade` (−50–200), and
+`opticalSize` (20–48) set the corresponding variable-font axes. A labelled
+standalone symbol has `role="img"` and an accessible name; an unlabelled one
+is decorative. The font must include the requested glyph and axis values.
 
 Use Core's semantic tokens in app styles so other Astryx themes keep working.
 The Material 3 theme-local roles are intended for Material-specific component
