@@ -3,7 +3,7 @@
 /**
  * @file material3Theme.ts
  * @input Pinned Material 3 foundation sources and Astryx defineTheme contract
- * @output Standalone maintained Material 3 theme with portable and local roles
+ * @output Standalone Material 3 theme with portable roles and 24px Icon default
  * @position Material 3 theme definition for runtime and static compilation
  *
  * Core token names remain portable. Material CSS-backed roles are theme-local;
