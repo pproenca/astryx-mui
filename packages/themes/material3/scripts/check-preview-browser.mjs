@@ -8,6 +8,7 @@
  */
 
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
@@ -25,6 +26,14 @@ const elevation = JSON.parse(
 );
 const shapes = JSON.parse(
   fs.readFileSync(path.join(root, 'src/material3ShapeSource.json'), 'utf8'),
+);
+const roboto = fs.readFileSync(
+  path.join(root, 'scripts/fonts/Roboto-wdth-wght.ttf'),
+);
+assert.equal(
+  createHash('sha256').update(roboto).digest('hex'),
+  'd7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134',
+  'Roboto QA font must match the pinned Google Fonts asset.',
 );
 const revision = spawnSync('git', ['rev-parse', 'HEAD'], {
   cwd: root,
@@ -84,6 +93,28 @@ const browser = await chromium.launch({channel: 'chrome', headless: true});
 try {
   const page = await browser.newPage({viewport: {width: 1280, height: 800}});
   await page.setContent(html);
+  const fontEvidence = await page.evaluate(async () => {
+    for (const weight of [400, 500, 700]) {
+      await document.fonts.load(`${weight} 16px Roboto`);
+    }
+    const face = [...document.fonts].find(
+      item => item.family === 'Roboto' && item.status === 'loaded',
+    );
+    const context = document.createElement('canvas').getContext('2d');
+    context.font = '400 40px Roboto';
+    const robotoWidth = context.measureText('Material typography sample').width;
+    context.font = '400 40px Arial';
+    const fallbackWidth = context.measureText(
+      'Material typography sample',
+    ).width;
+    return {loaded: Boolean(face), robotoWidth, fallbackWidth};
+  });
+  assert.ok(fontEvidence.loaded, 'Roboto QA font must be loaded.');
+  assert.notEqual(
+    fontEvidence.robotoWidth,
+    fontEvidence.fallbackWidth,
+    'Roboto sample must render with distinct glyph metrics from Arial fallback.',
+  );
   assert.equal(await page.locator('body').getAttribute('data-revision'), sha);
   for (const [selector, count] of [
     ['.swatch', 49],
@@ -166,6 +197,30 @@ try {
   };
   await compareElevation();
   await compareColors('light');
+  for (const sample of await page.locator('.type-sample').all()) {
+    const [reference, actual] = await Promise.all(
+      ['.type-reference', '.type-actual'].map(selector =>
+        sample.locator(selector).evaluate(node => {
+          const style = getComputedStyle(node);
+          const box = node.getBoundingClientRect();
+          return {
+            fontFamily: style.fontFamily,
+            fontSize: style.fontSize,
+            lineHeight: style.lineHeight,
+            fontWeight: style.fontWeight,
+            letterSpacing: style.letterSpacing,
+            width: box.width,
+            height: box.height,
+          };
+        }),
+      ),
+    );
+    assert.deepEqual(
+      actual,
+      reference,
+      `Typography ${await sample.getAttribute('data-role')}`,
+    );
+  }
   for (const [role, expected] of Object.entries(shapes.cssCorners)) {
     const sample = page
       .locator('.shape-sample')
@@ -282,7 +337,7 @@ try {
     '2px',
   );
   console.log(
-    `Chrome ${browser.version()}: 24 contrast pairs, 49 color roles and 5 paired source comparisons per mode, 6 two-layer elevation comparisons per mode, 7 shape readings, controls, keyboard, RTL, 375px, reduced motion, and forced colors passed at ${sha.slice(0, 12)}.`,
+    `Chrome ${browser.version()}: pinned Roboto loaded; 15 rendered typography comparisons, 24 contrast pairs, 49 color roles and 5 paired source comparisons per mode, 6 two-layer elevation comparisons per mode, 7 shape readings, controls, keyboard, RTL, 375px, reduced motion, and forced colors passed at ${sha.slice(0, 12)}.`,
   );
 } finally {
   await browser.close();

@@ -55,3 +55,13 @@ the 24px outlined and selected filled SVGs under
 path and SHA-256. Copyright Google LLC. The repository publishes these icons
 under Apache-2.0; the included license text applies. The theme renders the
 paths as SVGs and does not redistribute the Material Symbols font binary.
+
+The foundation QA gallery embeds the variable Roboto font at
+`scripts/fonts/Roboto-wdth-wght.ttf`, copied from the official
+[Google Fonts Roboto source](https://github.com/google/fonts/tree/23e54b51ddffbc7713c583748e3bd86f62b1fa4a/ofl/roboto)
+at commit `23e54b51ddffbc7713c583748e3bd86f62b1fa4a` (SHA-256
+`d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134`).
+Copyright 2011 The Roboto Project Authors. Licensed under the SIL Open Font
+License, Version 1.1; the full notice and license are in
+[`scripts/fonts/OFL.txt`](scripts/fonts/OFL.txt). The font is a QA fixture,
+not a runtime dependency of the published Material 3 theme.

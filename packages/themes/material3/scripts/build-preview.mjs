@@ -2,7 +2,7 @@
 
 /**
  * @file build-preview.mjs
- * @input Built Material 3 CSS and module, pinned foundation artifacts, and Git revision
+ * @input Built Material 3 CSS and module, pinned foundation artifacts, Roboto QA font, and Git revision
  * @output Source-comparison dist/preview.html for exact-revision foundation QA
  * @position Material 3 visual foundation preview generator
  */
@@ -23,6 +23,10 @@ const shapes = read('material3ShapeSource');
 const elevation = read('material3ElevationSource');
 const motion = read('material3MotionSource');
 const icons = read('material3IconSource');
+const fontSourceCommit = '23e54b51ddffbc7713c583748e3bd86f62b1fa4a';
+const roboto = fs
+  .readFileSync(path.join(root, 'scripts/fonts/Roboto-wdth-wght.ttf'))
+  .toString('base64');
 const {material3ElevationLayers} = await import(
   pathToFileURL(path.join(root, 'dist/source.mjs')).href
 );
@@ -72,9 +76,13 @@ const typeRoles = Object.keys(typography.typescale)
 const typeSamples = typeRoles
   .map(
     role => `
-  <article class="type-sample"><code>${escape(role)}</code><small>Material Web: ${escape(typography.typescale[`${role}-size`])} / ${escape(typography.typescale[`${role}-line-height`])} · weight ${escape(typography.typescale[`${role}-weight`])}</small><div style="font-family:var(--md-sys-typescale-${role}-font),Arial,sans-serif;
+  <article class="type-sample" data-role="${escape(role)}"><code>${escape(role)}</code><small>Material Web: ${escape(typography.typescale[`${role}-size`])} / ${escape(typography.typescale[`${role}-line-height`])} · weight ${escape(typography.typescale[`${role}-weight`])}; generated tracking: ${escape(typography.sourceOnlyTracking[`${role}-tracking`])}</small>
+    <div class="type-comparison"><div><small>Pinned metrics</small><div class="type-reference" style="font-family:Roboto,Arial,sans-serif;
+    font-size:${escape(typography.typescale[`${role}-size`])};line-height:${escape(typography.typescale[`${role}-line-height`])};
+    font-weight:${escape(typography.typescale[`${role}-weight`])};letter-spacing:${escape(typography.sourceOnlyTracking[`${role}-tracking`])}">Astryx Material 3</div></div>
+    <div><small>Astryx CSS</small><div class="type-actual" style="font-family:var(--md-sys-typescale-${role}-font),Arial,sans-serif;
     font-size:var(--md-sys-typescale-${role}-size);line-height:var(--md-sys-typescale-${role}-line-height);
-    font-weight:var(--md-sys-typescale-${role}-weight);letter-spacing:var(--astryx-theme-material3-typescale-${role}-tracking)">Astryx Material 3</div></article>`,
+    font-weight:var(--md-sys-typescale-${role}-weight);letter-spacing:var(--astryx-theme-material3-typescale-${role}-tracking)">Astryx Material 3</div></div></div></article>`,
   )
   .join('');
 const shapeSamples = Object.keys(shapes.cssCorners)
@@ -121,6 +129,7 @@ const iconSamples = Object.entries(icons.artwork)
 const html = `<!doctype html>
 <html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Material 3 foundation QA · ${sha.slice(0, 12)}</title><style>${css}</style><style>
+  @font-face{font-family:Roboto;src:url(data:font/ttf;base64,${roboto}) format('truetype');font-style:normal;font-weight:100 900;font-stretch:75% 100%;font-display:block}
   *{box-sizing:border-box}html{font-family:Roboto,Arial,sans-serif}body{margin:0;background:var(--md-sys-color-background);color:var(--md-sys-color-on-background)}
   .theme{min-height:100vh;padding:24px;max-width:1500px;margin:auto;background:var(--md-sys-color-background);color:var(--md-sys-color-on-background)}.toolbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 24px}
   button{font:inherit;cursor:pointer;padding:10px 16px;border:1px solid var(--md-sys-color-outline);border-radius:var(--md-sys-shape-full);background:var(--md-sys-color-surface-container);color:var(--md-sys-color-on-surface)}
@@ -133,7 +142,7 @@ const html = `<!doctype html>
   .swatch,.color-pair,.shape-sample,.icon-sample,.type-sample{background:var(--md-sys-color-surface-container-low);border:1px solid var(--md-sys-color-outline-variant);border-radius:12px;padding:12px;min-width:0}
   code{font:12px ui-monospace,monospace;overflow-wrap:anywhere}small{display:block;color:var(--md-sys-color-on-surface-variant);line-height:1.4}
   .comparison-paints{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.comparison-paints span{font-size:11px}.swatch-paint,.pair-paint{height:60px;border-radius:8px;border:1px solid var(--md-sys-color-outline-variant);margin-top:4px}.pair-paint{display:grid;place-items:center;text-align:center;padding:4px}
-  .type-list{display:grid;gap:10px}.type-sample{overflow:hidden}.type-sample code{display:block;margin-bottom:8px}.type-sample div{overflow-wrap:anywhere;margin-top:8px}
+  .type-list{display:grid;gap:10px;max-width:950px}.type-sample{overflow:hidden}.type-sample code{display:block;margin-bottom:8px}.type-comparison{display:grid;grid-template-columns:1fr 1fr;gap:20px}.type-comparison>div{min-width:0}.type-reference,.type-actual{overflow-wrap:anywhere;margin-top:8px}
   .shape-sample div{height:70px;background:var(--md-sys-color-primary-container);margin-bottom:8px}.icon-sample{display:flex;align-items:center;flex-direction:column;gap:10px}
   .icon-sample svg{width:32px;height:32px}.elevation-grid{display:grid;gap:28px;max-width:950px;margin:22px 0}
   .elevation-row{display:grid;grid-template-columns:minmax(175px,1fr) repeat(2,minmax(150px,1fr));align-items:center;gap:24px;padding:12px 20px;background:var(--md-sys-color-surface-container);border-radius:var(--md-sys-shape-large)}
@@ -147,11 +156,11 @@ const html = `<!doctype html>
   .reduce-motion .motion-dot{transition-duration:0ms}
   .outline-aid .swatch,.outline-aid .color-pair,.outline-aid .shape-sample,.outline-aid .icon-sample,.outline-aid .type-sample,.outline-aid .elevation-card{outline:2px solid var(--md-sys-color-on-surface)}
   @media(forced-colors:active){.swatch,.color-pair,.shape-sample,.icon-sample,.type-sample,.elevation-card{border:2px solid CanvasText}.elevation-layer{box-shadow:none!important}}
-  @media(max-width:600px){.theme{padding:16px}.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.elevation-row{grid-template-columns:1fr 1fr;gap:14px;padding:16px}.elevation-label{grid-column:1/-1}}
+  @media(max-width:600px){.theme{padding:16px}.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.elevation-row{grid-template-columns:1fr 1fr;gap:14px;padding:16px}.elevation-label{grid-column:1/-1}.type-comparison{grid-template-columns:1fr}}
 </style></head>
 <body data-revision="${sha}"><main class="theme" data-astryx-theme="material3">
   <h1>Material 3 foundation comparison</h1><p class="intro">Compare Astryx's rendered foundation with the pinned Material Web web implementation. The Material 3 guidance explains which roles mean what; the pinned values give us an exact web reference.</p>
-  <p class="meta">Astryx ${sha.slice(0, 12)} · Material Web ${colors.sourceCommit.slice(0, 12)} · Material Symbols ${icons.sourceCommit.slice(0, 12)}</p>
+  <p class="meta">Astryx ${sha.slice(0, 12)} · Material Web ${colors.sourceCommit.slice(0, 12)} · Material Symbols ${icons.sourceCommit.slice(0, 12)} · Roboto QA font ${fontSourceCommit.slice(0, 12)}</p>
   <div class="guide"><strong>How to review</strong><p>Start with elevation below. Compare each left reference to Astryx on the right in light and dark mode. The level number and dp distance come from Material 3; the shadows come from pinned Material Web. Then inspect color pairs, text, shape, motion, and icons. Try RTL and a narrow window. Component behavior will be reviewed in later stories.</p><p>Use <a href="https://m3.material.io/styles/elevation/overview">Material 3 elevation overview</a> for the design intent and <a href="https://github.com/material-components/material-web/blob/${elevation.sourceCommit}/elevation/internal/_elevation.scss">pinned Material Web elevation</a> for the web shadow geometry.</p></div>
   <div class="toolbar" aria-label="Preview controls"><button id="mode" type="button">Switch to dark</button><button id="direction" type="button">Switch to RTL</button>
     <button id="contrast" type="button" aria-pressed="false">Outline aid</button><button id="motion" type="button" aria-pressed="false">Reduced motion preview</button></div>
@@ -159,7 +168,7 @@ const html = `<!doctype html>
     <p>Surface colors are a separate way to show hierarchy. <a href="https://m3.material.io/styles/elevation/applying-elevation">Material 3 applying elevation</a> does not assign these color roles one-to-one to shadow levels.</p>
     <div class="surface-grid">${['surface', 'surface-container-lowest', 'surface-container-low', 'surface-container', 'surface-container-high', 'surface-container-highest'].map(role => `<div class="surface-sample" style="--sample-color:var(--md-sys-color-${role})"><code>${role}</code></div>`).join('')}</div></section>
   <section aria-labelledby="colors"><h2 id="colors">Color · 49 system roles</h2><p>Each role shows the pinned Material Web color beside the computed Astryx CSS color. Check light and dark mode; inspect these foreground and background pairs using the <a href="https://m3.material.io/styles/color/roles">Material 3 color roles</a> guidance.</p><div class="grid">${colorPairs}</div><h3>All 49 roles</h3><div class="grid">${swatches}</div></section>
-  <section aria-labelledby="type"><h2 id="type">Typography · 15 roles</h2><p>Compare the pinned size, line height, and weight to the Astryx sample. Inspect readability and wrapping at narrow widths.</p><div class="type-list">${typeSamples}</div></section>
+  <section aria-labelledby="type"><h2 id="type">Typography · 15 roles</h2><p>The gallery embeds <a href="https://github.com/google/fonts/tree/${fontSourceCommit}/ofl/roboto">pinned Roboto</a> for this review. Compare source metrics on the left with Astryx CSS on the right, then inspect readability and wrapping at narrow widths. Consumers still load Roboto in their app.</p><div class="type-list">${typeSamples}</div></section>
   <section aria-labelledby="shapes"><h2 id="shapes">Shape · 7 corner roles</h2><p>Compare each Material Web corner value with Astryx's computed border radius.</p><div class="grid">${shapeSamples}</div></section>
   <section aria-labelledby="motion-title"><h2 id="motion-title">Motion and state</h2><p>Standard easing: ${escape(motion.easings['easing-standard'])}; medium 2 duration: ${escape(motion.durations['duration-medium2'])}. Astryx's dot uses those tokens. Press the button to animate; press and hold a control to inspect active feedback. Reduced motion removes the transition.</p>
     <button id="animate" type="button">Move dot</button><div class="motion-stage"><div class="motion-dot"></div></div></section>
