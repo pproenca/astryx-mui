@@ -1,0 +1,408 @@
+{
+  "sourceCommit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+  "systemSpacingRoles": 0,
+  "systemSizeRoles": 0,
+  "systemDensityRoles": 0,
+  "components": {
+    "filled-button": {
+      "container-height": {
+        "value": "40px",
+        "cssExposed": true
+      },
+      "icon-size": {
+        "value": "18px",
+        "cssExposed": true
+      },
+      "leading-space": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "trailing-space": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "with-leading-icon-leading-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "with-leading-icon-trailing-space": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "with-trailing-icon-leading-space": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "with-trailing-icon-trailing-space": {
+        "value": "16px",
+        "cssExposed": true
+      }
+    },
+    "outlined-button": {
+      "container-height": {
+        "value": "40px",
+        "cssExposed": true
+      },
+      "outline-width": {
+        "value": "1px",
+        "cssExposed": true
+      },
+      "icon-size": {
+        "value": "18px",
+        "cssExposed": true
+      },
+      "leading-space": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "trailing-space": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "with-leading-icon-leading-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "with-leading-icon-trailing-space": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "with-trailing-icon-leading-space": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "with-trailing-icon-trailing-space": {
+        "value": "16px",
+        "cssExposed": true
+      }
+    },
+    "text-button": {
+      "container-height": {
+        "value": "40px",
+        "cssExposed": true
+      },
+      "icon-size": {
+        "value": "18px",
+        "cssExposed": true
+      },
+      "leading-space": {
+        "value": "12px",
+        "cssExposed": true
+      },
+      "trailing-space": {
+        "value": "12px",
+        "cssExposed": true
+      },
+      "with-leading-icon-leading-space": {
+        "value": "12px",
+        "cssExposed": true
+      },
+      "with-leading-icon-trailing-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "with-trailing-icon-leading-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "with-trailing-icon-trailing-space": {
+        "value": "12px",
+        "cssExposed": true
+      }
+    },
+    "icon-button": {
+      "icon-size": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "state-layer-height": {
+        "value": "40px",
+        "cssExposed": true
+      },
+      "state-layer-width": {
+        "value": "40px",
+        "cssExposed": true
+      }
+    },
+    "list-item": {
+      "leading-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "one-line-container-height": {
+        "value": "56px",
+        "cssExposed": true
+      },
+      "trailing-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "two-line-container-height": {
+        "value": "72px",
+        "cssExposed": true
+      },
+      "top-space": {
+        "value": "12px",
+        "cssExposed": true
+      },
+      "bottom-space": {
+        "value": "12px",
+        "cssExposed": true
+      }
+    },
+    "menu-item": {
+      "leading-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "one-line-container-height": {
+        "value": "56px",
+        "cssExposed": true
+      },
+      "trailing-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "two-line-container-height": {
+        "value": "72px",
+        "cssExposed": true
+      },
+      "top-space": {
+        "value": "12px",
+        "cssExposed": true
+      },
+      "bottom-space": {
+        "value": "12px",
+        "cssExposed": true
+      }
+    },
+    "checkbox": {
+      "container-size": {
+        "value": "18px",
+        "cssExposed": true
+      },
+      "icon-size": {
+        "value": "18px",
+        "cssExposed": true
+      },
+      "state-layer-size": {
+        "value": "40px",
+        "cssExposed": true
+      },
+      "disabled-outline-width": {
+        "value": "2px",
+        "cssExposed": true
+      },
+      "focus-outline-width": {
+        "value": "2px",
+        "cssExposed": true
+      },
+      "hover-outline-width": {
+        "value": "2px",
+        "cssExposed": true
+      },
+      "outline-width": {
+        "value": "2px",
+        "cssExposed": true
+      },
+      "pressed-outline-width": {
+        "value": "2px",
+        "cssExposed": true
+      }
+    },
+    "switch": {
+      "pressed-handle-height": {
+        "value": "28px",
+        "cssExposed": true
+      },
+      "pressed-handle-width": {
+        "value": "28px",
+        "cssExposed": true
+      },
+      "selected-handle-height": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "selected-handle-width": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "selected-icon-size": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "state-layer-size": {
+        "value": "40px",
+        "cssExposed": true
+      },
+      "track-height": {
+        "value": "32px",
+        "cssExposed": true
+      },
+      "track-outline-width": {
+        "value": "2px",
+        "cssExposed": true
+      },
+      "track-width": {
+        "value": "52px",
+        "cssExposed": true
+      },
+      "with-icon-handle-height": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "with-icon-handle-width": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "handle-height": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "handle-width": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "icon-size": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "touch-target-size": {
+        "value": "48px",
+        "cssExposed": true
+      }
+    },
+    "filled-text-field": {
+      "active-indicator-height": {
+        "value": "1px",
+        "cssExposed": true
+      },
+      "disabled-active-indicator-height": {
+        "value": "1px",
+        "cssExposed": true
+      },
+      "focus-active-indicator-height": {
+        "value": "3px",
+        "cssExposed": true
+      },
+      "hover-active-indicator-height": {
+        "value": "1px",
+        "cssExposed": true
+      },
+      "leading-icon-size": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "trailing-icon-size": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "icon-input-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "leading-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "trailing-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "top-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "bottom-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "input-text-prefix-trailing-space": {
+        "value": "2px",
+        "cssExposed": true
+      },
+      "input-text-suffix-leading-space": {
+        "value": "2px",
+        "cssExposed": true
+      },
+      "with-label-top-space": {
+        "value": "8px",
+        "cssExposed": true
+      },
+      "with-label-bottom-space": {
+        "value": "8px",
+        "cssExposed": true
+      },
+      "with-leading-icon-leading-space": {
+        "value": "12px",
+        "cssExposed": true
+      },
+      "with-trailing-icon-trailing-space": {
+        "value": "12px",
+        "cssExposed": true
+      }
+    },
+    "outlined-text-field": {
+      "disabled-outline-width": {
+        "value": "1px",
+        "cssExposed": true
+      },
+      "focus-outline-width": {
+        "value": "3px",
+        "cssExposed": true
+      },
+      "hover-outline-width": {
+        "value": "1px",
+        "cssExposed": true
+      },
+      "leading-icon-size": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "outline-width": {
+        "value": "1px",
+        "cssExposed": true
+      },
+      "trailing-icon-size": {
+        "value": "24px",
+        "cssExposed": true
+      },
+      "icon-input-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "leading-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "trailing-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "top-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "bottom-space": {
+        "value": "16px",
+        "cssExposed": true
+      },
+      "input-text-prefix-trailing-space": {
+        "value": "2px",
+        "cssExposed": true
+      },
+      "input-text-suffix-leading-space": {
+        "value": "2px",
+        "cssExposed": true
+      },
+      "with-leading-icon-leading-space": {
+        "value": "12px",
+        "cssExposed": true
+      },
+      "with-trailing-icon-trailing-space": {
+        "value": "12px",
+        "cssExposed": true
+      }
+    }
+  }
+}

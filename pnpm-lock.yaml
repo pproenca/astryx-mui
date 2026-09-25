@@ -1072,6 +1072,19 @@ importers:
         specifier: 0.6.3
         version: link:../../cli
 
+  packages/themes/material3:
+    dependencies:
+      '@astryxdesign/core':
+        specifier: 0.6.3
+        version: link:../../core
+      react:
+        specifier: '>=19'
+        version: 19.2.7
+    devDependencies:
+      '@astryxdesign/cli':
+        specifier: 0.6.3
+        version: link:../../cli
+
   packages/themes/neutral:
     dependencies:
       '@astryxdesign/core':

@@ -1,0 +1,265 @@
+---
+schema_version: 2
+template_version: 1
+kind: theme
+id: theme:material3
+authority: current
+approved_by: pproenca
+approved_at: 2026-09-25
+review_triggers:
+  [tokens, palette-values, component-mappings, contrast, artifacts]
+verified_by:
+  [
+    packages/themes/material3/src/material3Colors.test.ts,
+    packages/themes/material3/src/material3Typography.test.ts,
+    packages/themes/material3/src/material3Shape.test.ts,
+    packages/themes/material3/src/material3Motion.test.ts,
+    packages/themes/material3/scripts/check-spatial-browser.mjs,
+    packages/themes/material3/src/material3Elevation.test.ts,
+    packages/themes/material3/src/material3Icons.test.tsx,
+    packages/themes/material3/scripts/check-theme-parity.mjs,
+  ]
+package: '@astryxdesign/theme-material3'
+source_theme: packages/themes/material3/src/material3Theme.ts
+references:
+  [
+    architecture:theme-authoring-contract,
+    architecture:theme-tokens,
+    architecture:theme-compilation,
+    architecture:component-theming-surface,
+    spec:AST-006,
+  ]
+---
+
+# Material 3 theme specification
+
+This record owns the maintained Material 3 theme family. Existing current token,
+theme-authoring, compiler, and component contracts continue to govern their
+respective boundaries. This theme does not change Core token names, default
+values, or the behavior of existing themes.
+
+## Intent and audience
+
+The Material 3 theme gives Astryx builders a coherent light and dark Material 3
+foundation. Its roles are traced to the pinned Material Web source and checked
+against rendered components. The source snapshot is
+[`cbd34a8921915af94d5ef65c2a69eece41d5b4f3`](https://github.com/material-components/material-web/tree/cbd34a8921915af94d5ef65c2a69eece41d5b4f3),
+whose active Sass wrappers use the `v0_192` token source. The community Figma
+kit is supporting design evidence, not an implementation oracle.
+
+## Inheritance and base
+
+The package defines a standalone `material3Theme` from Astryx Core defaults.
+It will not extend Neutral: Neutral's palette, type, motion, and mappings are a
+different theme-family decision. `defineTheme` remains the authoring API. The
+same normalized theme must drive runtime injection and the built CSS/JS pair.
+
+The source package now builds through `astryx theme build` and `tsup`. It emits
+`source`, `built`, and `theme.css` entry points with 97 portable overrides and
+168 theme-local roles. A parity check compares source and built token maps,
+checks each emitted local declaration, and resolves all 49 system colors in
+light and dark Chrome contexts. Component overrides still follow their own
+migration stories.
+
+## Portable token overrides
+
+Existing `tokens` names remain the portable Core contract. The Material 3 theme
+may override a portable token only where its role has a defensible semantic
+match. A mapping receipt records the Material role, Astryx role, source value,
+light and dark modes, and rendered consumer. Similar spelling is insufficient.
+Several Material roles can contribute to one portable role only when the
+resulting use has the same meaning across every Core consumer. Other Material
+roles stay in the theme family and are used through component overrides.
+
+No Material role is added to `TokenName`, `tokenVar`, generated portable token
+docs, or Core defaults merely to make this theme work. Spacing and control size
+retain Astryx's portable vocabulary; Material-specific geometry belongs in the
+theme's component mappings until a separate shared Core decision is approved.
+
+The pinned Material Web checkout has no system spacing, size, or density Sass
+wrapper. `material3SpatialSource.json` instead captures 95 geometry values
+from 10 active component wrappers, with their supported CSS property status.
+Examples include a 40px filled-button container, a 40px icon-button state
+layer, 56px and 72px list rows, and a 52px by 32px switch track with a 48px
+touch target. The extractor checks the pinned Sass values and a Chrome
+reference fixture checks representative dimensions and logical padding in LTR
+and RTL. These source values are component-mapping inputs, not a new universal
+spacing or density scale. Astryx's `--spacing-*`, `--size-element-*`, and
+existing density props remain portable. Each component migration must decide
+how its sizes, content, focus and touch target map to the relevant Material
+component geometry and prove the actual rendered result.
+
+## Theme-local role definitions
+
+The theme enrolls CSS-backed Material roles through `localTokens`. For roles
+that Material Web's active wrapper exposes as CSS custom properties, the exact
+`--md-ref-typeface-*`, `--md-sys-color-*`, `--md-sys-typescale-*`, and supported
+`--md-sys-shape-*` spellings provide traceable Material names. These names are
+public only within the Material 3 theme family under AST-006; Core components
+continue to use portable tokens, while this theme's component rules may refer
+to its enrolled names. Each enrolled role needs an exact source row and a
+light/dark value or a source-backed mode-independent value.
+
+Material Web's pinned [theming guide](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/theming/README.md)
+explicitly excludes `--md-ref-palette-*` and `--md-sys-motion-*` as CSS token
+APIs. `md-item` likewise has no `--md-item-*` CSS properties in its
+[wrapper source](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/tokens/_md-comp-item.scss).
+Palette stops and elevation levels remain source-backed implementation values.
+Motion values, state opacities, and generated typography tracking are emitted
+only under `--astryx-theme-material3-*` names, so component rules can consume
+them without implying a Material Web CSS property. They are not advertised as
+Material Web CSS parity.
+
+The workbook's `Material access` and `Token mapping` sheets classify the pinned
+Sass list, evaluated `values()` keys, generated-only roles, and public CSS
+exposure separately. A `Confirmed` mapping requires source, implementation,
+focused verification, and review evidence; an inventoried name alone is not
+parity.
+
+The pinned typography source supplies five reference typeface values and 62
+active size-specific typescale values. Its generated source also contains 15
+tracking values that the active Material Web typescale wrapper excludes. The
+theme may use those tracking values in Astryx's own component typography, but
+must not label them as Material Web CSS custom properties. Roboto at weights
+400, 500, and 700 is the source typeface; the theme supplies an Arial/system
+fallback and consumer docs must state that loading Roboto is needed for exact
+glyph metrics. A focused Chrome check covers computed size, line height,
+weight, spacing, family fallback, and line box for all 15 size-specific roles.
+Rendered glyph comparison with Roboto loaded remains part of foundation QA.
+
+The pinned shape wrapper exposes seven single-corner CSS roles. Five additional
+multi-corner names are Sass-only lists, not settable `--md-sys-shape-*` custom
+properties. `material3Shape.ts` keeps those lists separate and mirrors the
+directional start/end forms in RTL. A Chrome check covers computed geometry for
+all seven CSS roles and both directions of the five Sass lists. Component
+shapes remain the responsibility of their component mappings.
+
+The pinned motion and state wrappers supply 16 duration values, 10 easing
+curves, and four state-layer opacities through Sass `values()` only. The
+generated motion `path` value is null and remains unsupported. The theme keeps
+these values as implementation data, and its state-layer helper composes the
+state opacity with the foreground color over the current surface. A focused
+Chrome check covers every value and a CSS reduced-motion override that stops
+transition travel while retaining state-layer feedback. Component-specific
+motion and the current pressed-overlay behavior remain with their owners;
+individual component migration receipts must prove their reduced-motion states.
+
+The active Material Web elevation wrapper normalizes six levels to web values
+0–5; its generated source still carries dp values 0, 1, 3, 6, 8, and 12.
+`material3ElevationSource.json` records both series and extracts the rendered
+key and ambient shadows separately from pinned Sass in Chrome. Their opacities
+are 0.3 and 0.15. `material3ElevationLayers` substitutes the theme's shadow
+color while retaining both layers; it must not be flattened into one opaque
+`box-shadow`. The `--md-elevation-level` and `--md-elevation-shadow-color`
+properties belong to Material Web's elevation component, not system CSS roles.
+Tonal surface-container colors are separate from the shadow level; each
+component mapping must choose its surface, layer order, overflow behavior, and
+high-contrast boundary. A Chrome check covers all six levels over both pinned
+light and dark surface-container-low colors.
+
+The portable `--shadow-low`/`med`/`high` bridge combines key and ambient
+shadows in one CSS `box-shadow` value for current Core consumers. That bridge
+does not exactly reproduce Material Web's two translucent pseudo-elements
+where the shadows overlap. Source-faithful components must use the separate
+`material3ElevationLayers` values during their own migration.
+
+The icon source is Google's official Material Symbols SVG repository at commit
+`bd8cb85bd4bad964fe6918f79665bb40c3a8efef`, licensed Apache-2.0.
+`material3IconSource.json` pins one 24px Outlined SVG per released Astryx shared
+icon meaning, with filled artwork for success, error, warning, and info.
+`material3IconRegistry` supplies all 28 through the existing theme-scoped
+`icons` resolver. Artwork scales to the existing Icon `xsm`/`sm`/`md`/`lg`
+sizes (12/16/20/24px equivalents at a 16px root) and inherits current color;
+it requires no icon font request. Material Web's icon default is 24px, while
+its filled Button uses an 18px icon and its icon button uses 24px. Those
+component-specific slot sizes and operable targets are owned by their
+component migrations; the foundation does not change Core Icon sizes or
+semantic icon names. A Chrome contact sheet verifies visible glyph geometry,
+and component QA must review meaning, size, direction, contrast, and targets.
+
+## Tonal palette definitions
+
+The pinned `v0_192` baseline contains 91 named reference palette values and
+49 system color roles in each of light and dark. The baseline primary tone 40
+is `#6750a4`. `src/material3ColorSource.json` records those values, each role's
+palette key, and the independently compiled Sass result for both modes.
+`scripts/generate-color-source.mjs --check` reproduces the artifact from the
+pinned checkout; the focused color test checks every resolved role and
+representative text contrast pairings. The source and attribution are listed in
+`THIRD_PARTY_NOTICES.md`.
+
+This is the pinned baseline palette, not a claim that an arbitrary seed can
+generate an equivalent dynamic scheme. Any generated scheme must be
+deterministic and recorded with its input and source revision. Palette data is
+an implementation input, not a public CSS API claim. The 49 roles include
+fixed, surface-container, inverse, outline, error, and scrim roles.
+
+## Component and state mappings
+
+Foundation stories close before the first component story. Component overrides
+will map supported Material variants and their hover, focus, pressed, selected,
+disabled, loading, and error states to the theme roles. The component owner
+retains semantic, keyboard, and accessibility behavior. For each migrated
+component, the workbook must link the exact Material variant and source,
+implementation, tests, and an interactive preview at the verified code revision.
+Material Web Labs elements and Figma-only patterns remain explicitly labeled;
+they do not silently become stable component parity claims.
+
+## Compatibility and migration
+
+This theme is additive. Existing released Core token names, defaults, helpers,
+other theme packages, and consumer imports remain valid. The new package follows
+the established source, built, and stylesheet entry points. A later decision to
+make any Material role portable or change a Core default must go through its
+current architecture and compatibility owners with representative browser
+evidence.
+
+## Accessibility and contrast evidence
+
+The color story must measure representative content, icon, control, and state
+pairings in light, dark, and high-contrast contexts. Foundation QA must inspect
+reduced motion and responsive layout as well as contrast. The current design
+and component records set shared requirements; the foundation QA receipt records
+measured pairings, and each component story records its own exceptions and gaps.
+
+## Build and artifact contract
+
+The package exports a source theme, a complete built theme, and matching
+CSS using the same pattern as maintained Astryx themes. Runtime and static
+outputs must resolve the same values for each mode. Source revision and build
+receipts must identify the pinned Material Web input and Astryx code revision.
+
+## Verification map
+
+| Theme contract          | Evidence                                                  | Representative states                      | Failure signal                                                 |
+| ----------------------- | --------------------------------------------------------- | ------------------------------------------ | -------------------------------------------------------------- |
+| Source-role inventory   | Pinned workbook mapping and Sass wrapper audit            | CSS-backed, Sass-only, generated-only      | A role is called public CSS from a Sass list alone             |
+| Additive token boundary | Core token and theme tests; package type check            | Existing themes and Material 3             | Core vocabulary or defaults change without a separate decision |
+| Light/dark foundations  | Color, type, shape, motion, state, and elevation receipts | Light, dark, high contrast, reduced motion | Source or resolved role drift                                  |
+| Runtime/build parity    | Theme compiler test and browser inspection                | Source and built imports                   | Different resolved tokens or CSS                               |
+| Component migration     | Focused tests and interactive QA receipt per component    | Variants, states, sizes, responsive modes  | A component closes without review at the verified revision     |
+
+## Decision log
+
+- 2026-09-25: The project owner chose a maintained Material 3 theme while
+  preserving the released Core token vocabulary. This record fixes that
+  additive theme boundary; component parity remains a separate decision.
+
+## Open questions
+
+No open question blocks this foundation contract. The following decisions belong
+to later, separately reviewed work:
+
+- Arbitrary-seed dynamic color generation is outside this baseline theme. A
+  separate decision and source-backed algorithm are required to add it.
+- Each component story must review its own use of source-only motion, state,
+  geometry, and elevation values, plus its rendered mapping, before claiming
+  Material 3 component parity. Generated Sass does not imply CSS exposure.
+
+## Content boundary
+
+This record owns the Material 3 theme's intent, source snapshot, selected
+palette and token mappings, required states and pairings, compatibility,
+artifacts, and evidence. Current architecture records own cross-theme APIs and
+portable token names. Component and family records own observable component
+behavior. Consumer docs own usage syntax and examples.
