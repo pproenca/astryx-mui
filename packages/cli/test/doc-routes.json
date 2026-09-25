@@ -3039,11 +3039,12 @@
       "kind": "theme",
       "id": "@astryxdesign/cli/theme",
       "provider": "@astryxdesign/cli",
-      "count": 7,
+      "count": 8,
       "oldCliRoute": "astryx theme add <id>",
       "oldDocsiteUrl": "/themes?theme=<id>",
       "docsiteExceptions": {
-        "chocolate": "Not a docsite dependency: /themes?theme=chocolate shows Neutral without a message."
+        "chocolate": "Not a docsite dependency: /themes?theme=chocolate shows Neutral without a message.",
+        "material3": "Not a docsite dependency: /themes?theme=material3 shows Neutral without a message."
       },
       "placement": "generated:@astryxdesign/cli/theme",
       "aliasNeeded": false,

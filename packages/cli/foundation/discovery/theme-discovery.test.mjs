@@ -71,7 +71,7 @@ describe('theme descriptor discovery', () => {
     expect(themes.every(theme => theme.bundled)).toBe(true);
     expect(
       themes.filter(theme => theme.maintained).map(theme => theme.slug),
-    ).toEqual(['neutral']);
+    ).toEqual(['material3', 'neutral']);
     expect(themes.every(theme => theme.docPath.endsWith('.doc.mjs'))).toBe(
       true,
     );
@@ -717,7 +717,7 @@ describe('folders under a theme root that are not themes', () => {
 });
 
 describe('bundled theme files', () => {
-  it('copies what the bundle has always copied, entry first, without its descriptor', () => {
+  it('copies source and license, entry first, without its descriptor', () => {
     const themes = discoverBundledThemes();
     expect(themes.find(theme => theme.slug === 'neutral')?.files).toEqual([
       'neutralTheme.ts',
@@ -727,6 +727,7 @@ describe('bundled theme files', () => {
       'neutralPaletteRefs.generated.ts',
       'neutralPalettes.generated.receipt.json',
       'palette.config.json',
+      'LICENSE',
     ]);
     for (const theme of themes) {
       expect(theme.files[0]).toBe(theme.entry);
