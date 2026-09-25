@@ -8,7 +8,11 @@ approved_by: null
 approved_at: null
 review_triggers:
   [tokens, palette-values, component-mappings, contrast, artifacts]
-verified_by: [packages/themes/material3/src/material3Theme.test.ts]
+verified_by:
+  [
+    packages/themes/material3/src/material3Colors.test.ts,
+    packages/themes/material3/src/material3Theme.test.ts,
+  ]
 package: '@astryxdesign/theme-material3'
 source_theme: packages/themes/material3/src/material3Theme.ts
 references:
@@ -88,12 +92,20 @@ parity.
 
 ## Tonal palette definitions
 
-The light and dark reference palettes, seed, tone stops, and their derivation
-remain open until the color story verifies the pinned source. Any generated
-scheme must be deterministic and recorded with its input and source revision.
-The package must supply all Material system color roles used by its component
-recipes, including fixed, surface-container, inverse, outline, error, and scrim
-roles. Palette data is an implementation input, not a public CSS API claim.
+The pinned `v0_192` baseline contains 91 named reference palette values and
+49 system color roles in each of light and dark. The baseline primary tone 40
+is `#6750a4`. `src/material3ColorSource.json` records those values, each role's
+palette key, and the independently compiled Sass result for both modes.
+`scripts/generate-color-source.mjs --check` reproduces the artifact from the
+pinned checkout; the focused color test checks every resolved role and
+representative text contrast pairings. The source and attribution are listed in
+`THIRD_PARTY_NOTICES.md`.
+
+This is the pinned baseline palette, not a claim that an arbitrary seed can
+generate an equivalent dynamic scheme. Any generated scheme must be
+deterministic and recorded with its input and source revision. Palette data is
+an implementation input, not a public CSS API claim. The 49 roles include
+fixed, surface-container, inverse, outline, error, and scrim roles.
 
 ## Component and state mappings
 
@@ -148,8 +160,8 @@ receipts must identify the pinned Material Web input and Astryx code revision.
 
 ## Open questions
 
-- Confirm the color seed, tonal palette data, and exact light/dark role values
-  in the color story.
+- Decide whether this theme supports arbitrary-seed dynamic color generation;
+  the pinned baseline alone does not establish that algorithm's parity.
 - Resolve each source-only motion, state, elevation, and tracking role when its
   foundation story lands; do not infer CSS exposure from generated Sass.
 - Review exact component mappings and rendered evidence before promoting this
