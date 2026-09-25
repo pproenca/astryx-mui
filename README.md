@@ -3,10 +3,12 @@
 # Astryx
 
 An independent adaptation of [Meta's Astryx](https://github.com/facebook/astryx),
-with a planned move to Material 3.
+with a Material 3 foundation theme and an ongoing component migration.
 
-**Current status:** The code still implements the inherited Astryx design system.
-It does not yet claim Material 3 conformance. It is built on
+**Current status:** Core components still implement the inherited Astryx design
+system. The [Material 3 foundation theme](packages/themes/material3/README.md)
+is available in this source checkout, but component parity is still under
+review. The system does not yet claim Material 3 conformance. It is built on
 [React 19+](https://react.dev) and [StyleX](https://stylexjs.com).
 
 ## Origin and attribution
@@ -73,12 +75,13 @@ Then use it as `npm run astryx -- component --list`. This avoids path errors whe
 
 ## Workspace packages
 
-| Package                                    | Description                                                                                          | README                             |
-| ------------------------------------------ | ---------------------------------------------------------------------------------------------------- | ---------------------------------- |
-| [`@astryxdesign/core`](packages/core)      | Components, theme system, and utilities                                                              | [README](packages/core/README.md)  |
-| [`@astryxdesign/cli`](packages/cli)        | CLI tooling: component docs, templates, scaffolding, themes, and codemods                            | [README](packages/cli/README.md)   |
-| [`@astryxdesign/build`](packages/build)    | Build plugins for StyleX source builds                                                               | [README](packages/build/README.md) |
-| [`@astryxdesign/theme-*`](packages/themes) | Seven ready-made, fully customizable themes (neutral, butter, chocolate, matcha, stone, gothic, y2k) | [README](packages/themes)          |
+| Package                                                      | Description                                                                                          | README                                        |
+| ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| [`@astryxdesign/core`](packages/core)                        | Components, theme system, and utilities                                                              | [README](packages/core/README.md)             |
+| [`@astryxdesign/cli`](packages/cli)                          | CLI tooling: component docs, templates, scaffolding, themes, and codemods                            | [README](packages/cli/README.md)              |
+| [`@astryxdesign/build`](packages/build)                      | Build plugins for StyleX source builds                                                               | [README](packages/build/README.md)            |
+| [`@astryxdesign/theme-*`](packages/themes)                   | Seven ready-made, fully customizable themes (neutral, butter, chocolate, matcha, stone, gothic, y2k) | [README](packages/themes)                     |
+| [`@astryxdesign/theme-material3`](packages/themes/material3) | Material 3 foundation theme in source; component migration in progress                               | [README](packages/themes/material3/README.md) |
 
 > `@astryxdesign/lab` (experimental components) is used internally for Storybook and the sandbox and is not published to npm. `@astryxdesign/vega` (Vega/Vega-Lite chart wrapper) and `@astryxdesign/charts` (chart components) are published to npm only under the `@canary` dist-tag — there is no stable release yet.
 
