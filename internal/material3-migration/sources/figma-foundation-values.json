@@ -1,0 +1,868 @@
+{
+  "schemaVersion": 1,
+  "sourceExportSha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+  "typographyStyles": [
+    {
+      "nodeId": "53699:36026",
+      "name": "M3/body/large",
+      "font": {
+        "family": "Roboto",
+        "style": "Regular",
+        "postscript": "RobotoRoman-Regular"
+      },
+      "sizePx": 16,
+      "lineHeight": {
+        "value": 24,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.5,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "58156:19239",
+      "name": "M3/body/large-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "Roboto-Medium"
+      },
+      "sizePx": 16,
+      "lineHeight": {
+        "value": 24,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.5,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36027",
+      "name": "M3/body/medium",
+      "font": {
+        "family": "Roboto",
+        "style": "Regular",
+        "postscript": "RobotoRoman-Regular"
+      },
+      "sizePx": 14,
+      "lineHeight": {
+        "value": 20,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.25,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "58156:19240",
+      "name": "M3/body/medium-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "Roboto-Medium"
+      },
+      "sizePx": 14,
+      "lineHeight": {
+        "value": 20,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.25,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36028",
+      "name": "M3/body/small",
+      "font": {
+        "family": "Roboto",
+        "style": "Regular",
+        "postscript": "RobotoRoman-Regular"
+      },
+      "sizePx": 12,
+      "lineHeight": {
+        "value": 16,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.4000000059604645,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "58156:19241",
+      "name": "M3/body/small-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "Roboto-Medium"
+      },
+      "sizePx": 12,
+      "lineHeight": {
+        "value": 16,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.4000000059604645,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36017",
+      "name": "M3/display/large",
+      "font": {
+        "family": "Roboto",
+        "style": "Regular",
+        "postscript": "RobotoRoman-Regular"
+      },
+      "sizePx": 57,
+      "lineHeight": {
+        "value": 64,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": -0.25,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "58156:19230",
+      "name": "M3/display/large-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "Roboto-Medium"
+      },
+      "sizePx": 57,
+      "lineHeight": {
+        "value": 64,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": -0.25,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36018",
+      "name": "M3/display/medium",
+      "font": {
+        "family": "Roboto",
+        "style": "Regular",
+        "postscript": "Roboto-Regular"
+      },
+      "sizePx": 45,
+      "lineHeight": {
+        "value": 52,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "58156:19231",
+      "name": "M3/display/medium-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "Roboto-Medium"
+      },
+      "sizePx": 45,
+      "lineHeight": {
+        "value": 52,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36019",
+      "name": "M3/display/small",
+      "font": {
+        "family": "Roboto",
+        "style": "Regular",
+        "postscript": "RobotoRoman-Regular"
+      },
+      "sizePx": 36,
+      "lineHeight": {
+        "value": 44,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "58156:19232",
+      "name": "M3/display/small-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "Roboto-Medium"
+      },
+      "sizePx": 36,
+      "lineHeight": {
+        "value": 44,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36020",
+      "name": "M3/headline/large",
+      "font": {
+        "family": "Roboto",
+        "style": "Regular",
+        "postscript": "RobotoRoman-Regular"
+      },
+      "sizePx": 32,
+      "lineHeight": {
+        "value": 40,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "58156:19233",
+      "name": "M3/headline/large-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "Roboto-Medium"
+      },
+      "sizePx": 32,
+      "lineHeight": {
+        "value": 40,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36021",
+      "name": "M3/headline/medium",
+      "font": {
+        "family": "Roboto",
+        "style": "Regular",
+        "postscript": "RobotoRoman-Regular"
+      },
+      "sizePx": 28,
+      "lineHeight": {
+        "value": 36,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "58156:19234",
+      "name": "M3/headline/medium-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "Roboto-Medium"
+      },
+      "sizePx": 28,
+      "lineHeight": {
+        "value": 36,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36022",
+      "name": "M3/headline/small",
+      "font": {
+        "family": "Roboto",
+        "style": "Regular",
+        "postscript": "RobotoRoman-Regular"
+      },
+      "sizePx": 24,
+      "lineHeight": {
+        "value": 32,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "58156:19235",
+      "name": "M3/headline/small-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "Roboto-Medium"
+      },
+      "sizePx": 24,
+      "lineHeight": {
+        "value": 32,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36029",
+      "name": "M3/label/large",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "RobotoRoman-Medium"
+      },
+      "sizePx": 14,
+      "lineHeight": {
+        "value": 20,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.10000000149011612,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "54148:34799",
+      "name": "M3/label/large-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "postscript": "RobotoRoman-SemiBold"
+      },
+      "sizePx": 14,
+      "lineHeight": {
+        "value": 20,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.10000000149011612,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36030",
+      "name": "M3/label/medium",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "RobotoRoman-Medium"
+      },
+      "sizePx": 12,
+      "lineHeight": {
+        "value": 16,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.5,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "54148:34798",
+      "name": "M3/label/medium-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "postscript": "RobotoRoman-SemiBold"
+      },
+      "sizePx": 12,
+      "lineHeight": {
+        "value": 16,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.5,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36031",
+      "name": "M3/label/small",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "RobotoRoman-Medium"
+      },
+      "sizePx": 11,
+      "lineHeight": {
+        "value": 16,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.5,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "58156:19244",
+      "name": "M3/label/small-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "postscript": "Roboto-SemiBold"
+      },
+      "sizePx": 11,
+      "lineHeight": {
+        "value": 16,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.5,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36023",
+      "name": "M3/title/large",
+      "font": {
+        "family": "Roboto",
+        "style": "Regular",
+        "postscript": "RobotoRoman-Regular"
+      },
+      "sizePx": 22,
+      "lineHeight": {
+        "value": 28,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "58156:19236",
+      "name": "M3/title/large-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "Roboto-Medium"
+      },
+      "sizePx": 22,
+      "lineHeight": {
+        "value": 28,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36024",
+      "name": "M3/title/medium",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "Roboto-Medium"
+      },
+      "sizePx": 16,
+      "lineHeight": {
+        "value": 24,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.15000000596046448,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "58156:19237",
+      "name": "M3/title/medium-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "postscript": "Roboto-SemiBold"
+      },
+      "sizePx": 16,
+      "lineHeight": {
+        "value": 24,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.15000000596046448,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "53699:36025",
+      "name": "M3/title/small",
+      "font": {
+        "family": "Roboto",
+        "style": "Medium",
+        "postscript": "Roboto-Medium"
+      },
+      "sizePx": 14,
+      "lineHeight": {
+        "value": 20,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.10000000149011612,
+        "units": "PIXELS"
+      }
+    },
+    {
+      "nodeId": "58156:19238",
+      "name": "M3/title/small-emphasized",
+      "font": {
+        "family": "Roboto",
+        "style": "SemiBold",
+        "postscript": "Roboto-SemiBold"
+      },
+      "sizePx": 14,
+      "lineHeight": {
+        "value": 20,
+        "units": "PIXELS"
+      },
+      "tracking": {
+        "value": 0.10000000149011612,
+        "units": "PIXELS"
+      }
+    }
+  ],
+  "elevationStyles": [
+    {
+      "nodeId": "50732:11954",
+      "name": "M3/Elevation Dark/1",
+      "shadows": [
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 1,
+          "radius": 2,
+          "spread": 0,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          }
+        },
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 1,
+          "radius": 3,
+          "spread": 1,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "50732:11528",
+      "name": "M3/Elevation Dark/2",
+      "shadows": [
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 1,
+          "radius": 2,
+          "spread": 0,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          }
+        },
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 2,
+          "radius": 6,
+          "spread": 2,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "50732:11527",
+      "name": "M3/Elevation Dark/3",
+      "shadows": [
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 1,
+          "radius": 3,
+          "spread": 0,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          }
+        },
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 4,
+          "radius": 8,
+          "spread": 3,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "50732:11526",
+      "name": "M3/Elevation Dark/4",
+      "shadows": [
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 2,
+          "radius": 3,
+          "spread": 0,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          }
+        },
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 6,
+          "radius": 10,
+          "spread": 4,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "50732:11525",
+      "name": "M3/Elevation Dark/5",
+      "shadows": [
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 4,
+          "radius": 4,
+          "spread": 0,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          }
+        },
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 8,
+          "radius": 12,
+          "spread": 6,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "50732:11524",
+      "name": "M3/Elevation Light/1",
+      "shadows": [
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 1,
+          "radius": 3,
+          "spread": 1,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          }
+        },
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 1,
+          "radius": 2,
+          "spread": 0,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "50732:11523",
+      "name": "M3/Elevation Light/2",
+      "shadows": [
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 2,
+          "radius": 6,
+          "spread": 2,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          }
+        },
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 1,
+          "radius": 2,
+          "spread": 0,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "50732:11522",
+      "name": "M3/Elevation Light/3",
+      "shadows": [
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 1,
+          "radius": 3,
+          "spread": 0,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          }
+        },
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 4,
+          "radius": 8,
+          "spread": 3,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "50732:11521",
+      "name": "M3/Elevation Light/4",
+      "shadows": [
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 2,
+          "radius": 3,
+          "spread": 0,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          }
+        },
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 6,
+          "radius": 10,
+          "spread": 4,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          }
+        }
+      ]
+    },
+    {
+      "nodeId": "50732:11520",
+      "name": "M3/Elevation Light/5",
+      "shadows": [
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 4,
+          "radius": 4,
+          "spread": 0,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.30000001192092896
+          }
+        },
+        {
+          "type": "DROP_SHADOW",
+          "x": 0,
+          "y": 8,
+          "radius": 12,
+          "spread": 6,
+          "color": {
+            "r": 0,
+            "g": 0,
+            "b": 0,
+            "a": 0.15000000596046448
+          }
+        }
+      ]
+    }
+  ]
+}
