@@ -71,6 +71,29 @@ export function coveragePlan(wb, policy, index) {
         blockers.push(`${name} ${id}: missing required native mapping.`);
       if (row.Disposition === 'Helper' && !row.Reason)
         blockers.push(`${name} ${id}: helper needs explicit parent ownership.`);
+      if (name === 'Design kit sets' && row.Disposition !== 'Excluded') {
+        if (
+          !row['Variant axes'] ||
+          !row['Variant values'] ||
+          !Number(row.Variants) ||
+          !row.Properties
+        )
+          blockers.push(
+            `${name} ${id}: frozen variant inventory is incomplete.`,
+          );
+        for (const mapId of mapIds) {
+          const mapping = mappings.find(m => m['Map ID'] === mapId);
+          if (
+            mapping &&
+            !String(mapping['Figma nodes'] || '')
+              .split(/[,;]\s*/)
+              .includes(id)
+          )
+            blockers.push(
+              `${name} ${id}: ${mapId} lacks the reverse Figma link.`,
+            );
+        }
+      }
     }
   return blockers;
 }

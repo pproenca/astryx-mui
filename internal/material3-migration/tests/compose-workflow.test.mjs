@@ -323,3 +323,45 @@ test('coverage fails on an unmapped reference, unapproved exclusion or deleted i
     /membership changed/,
   );
 });
+test('coverage retains exact Figma variants and reverse native owner links', () => {
+  const data = {
+    Tasks: [],
+    'Component mapping': [
+      {'Map ID': 'CM-0001', Disposition: 'Required', 'Figma nodes': '7:9'},
+    ],
+    'Compose sources': [],
+    'Design kit sets': [
+      {
+        'Figma node ID': '7:9',
+        'Variant axes': 'State',
+        'Variant values': 'State: Enabled, Pressed',
+        Variants: 2,
+        Properties: 'State',
+        'Mapping IDs': 'CM-0001',
+        Disposition: 'Required',
+      },
+    ],
+    'Material components': [],
+    Overview: [],
+  };
+  const policy = {strategyId: 'v3'},
+    index = {families: []};
+  data.Overview = [
+    {
+      Key: 'Scope inventory SHA256',
+      Value: digest(JSON.stringify(scopeMembers(workbook(data)))),
+    },
+  ];
+  assert.deepEqual(coveragePlan(workbook(data), policy, index), []);
+  data['Component mapping'][0]['Figma nodes'] = '';
+  assert.match(
+    coveragePlan(workbook(data), policy, index).join(' '),
+    /reverse Figma link/,
+  );
+  data['Component mapping'][0]['Figma nodes'] = '7:9';
+  data['Design kit sets'][0]['Variant values'] = '';
+  assert.match(
+    coveragePlan(workbook(data), policy, index).join(' '),
+    /variant inventory is incomplete/,
+  );
+});

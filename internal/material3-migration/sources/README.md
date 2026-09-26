@@ -41,10 +41,11 @@ JSON hash. Every indexed family, token file, test and sample links to that commi
 The index includes candidate source families, not a claim of exhaustive API parsing
 or parity. Source resolution must inspect variants, helpers and missed references.
 Public API snapshots for every published module under `compose/material3`, including
-adaptive layouts/navigation, ripple, window sizing and A2UI, are separately retained
-as unresolved scope rows. `M3-SRC-002` must reconcile each API surface with mapped
-design-system ownership or an approved platform/integration exclusion. This avoids
-silently treating the main component artifact as the entire Compose codebase.
+adaptive layouts/navigation, ripple, window sizing and A2UI, are separately retained.
+The [full source coverage reconciliation](source-coverage-reconciliation.md)
+records the native owners, public API helpers and two approved platform/integration
+exclusions. This avoids silently treating the main component artifact as the
+entire Compose codebase.
 
 The derived index includes token expressions from **The Android Open Source
 Project**, under [Apache License 2.0](LICENSE.androidx). Kotlin source remains in
@@ -153,7 +154,6 @@ tonal formula, separate shadow behavior, and the guidance conflict.
 
 These findings support the active Compose-first routes in
 [reconciliation](reconciliation.md); they do not certify individual component
-decisions. The next evidence pass must resolve external aliases and remaining
-component geometry, then choose matched light/dark and responsive scenarios.
-`task verify M3-SRC-001` must remain blocked until its
-source decision and baseline fixtures exist.
+decisions. The source-only M3-SRC-001 baseline is merged; native family decisions,
+external aliases, component geometry and matched light/dark responsive scenarios
+remain implementation prerequisites.
