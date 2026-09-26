@@ -119,6 +119,9 @@ verification limit. They supplement the pinned kit rather than overriding it.
 | State layers        | [Interaction states](guidance/state-layers.md) |
 | Motion              | [Motion physics](guidance/motion.md)           |
 
+The [Compose elevation decision](compose-elevation.md) records its selected
+tonal formula, separate shadow behavior, and the guidance conflict.
+
 ## Established coverage and differences
 
 | Dimension           | Kit evidence                                                                                                                                                                                           | Difference or gap to resolve                                                                                                                                                                                                                                                                                                                                                                                                                                |
