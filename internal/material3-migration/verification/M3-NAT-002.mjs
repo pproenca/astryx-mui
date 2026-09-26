@@ -46,7 +46,12 @@ assert.equal(tokenCoverage.tokens.length, 123);
 assert.deepEqual(tokenCoverage.tokens.map(item => item.name),
   Object.keys((await import('../../../packages/material3/dist/index.js')).material3TokenValues('light')).filter(name =>
     ['--md-ref-typeface-', '--md-sys-color-', '--md-sys-typescale-', '--md-sys-shape-'].some(prefix => name.startsWith(prefix))));
-execFileSync('git', ['merge-base', '--is-ancestor', tokenCoverage.evidenceRevision, revision], {cwd: repo});
+// The approved foundation PR was squash merged. Require its evidence-driving
+// source and reference files to be byte-identical instead of requiring ancestry.
+assert.equal(run('git', 'diff', '--name-only', tokenCoverage.evidenceRevision, revision, '--',
+  'packages/material3/src', 'packages/material3/fixtures/references', sourceDecision,
+  'internal/material3-migration/sources/motion'), '',
+  'Foundation inputs changed since token coverage was captured');
 const pass = (reason, ...evidence) => ({result: 'Pass', reason, evidence});
 const motionPass = (reason, evidence) => ({result: 'Pass', reason, evidence});
 const checks = {
