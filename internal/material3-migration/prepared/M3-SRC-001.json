@@ -11,7 +11,7 @@
   "files": {
     "internal/material3-migration/sources/compose-inventory.json": "0e637563f2cb1a140e04c939379fc6a90474697e272e6594146ce5cb2cbb0d0a",
     "AGENTS.md": "ec1dab9cfad80cf4e32815ad820e8caad44dffe08ef0883f95769eca09d5c760",
-    "packages/themes/material3/material3.spec.md": "768f1f327a71ff9a6e2e5e0408e5c72df6b5c8c4337b1190aa78076249be81d8",
+    "packages/themes/material3/material3.spec.md": "22f61940d00cf73ba257a46f610c5ea289e289f16c23d61cd520a52b4be827e1",
     "docs/contributing/material3-migration.md": "fab928b10412b5e5c72c007315a425ee554d7e091ac1f5768e2616e7c2000e7f",
     "internal/material3-migration/routing.mjs": "c498d4ef6b02164d4787b57ffb8470702ada22e47b27f2d5f3fb138cf7b1f391"
   },
