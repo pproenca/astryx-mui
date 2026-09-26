@@ -72,7 +72,7 @@
     "LICENSE-APACHE-2.0"
   ],
   "scripts": {
-    "build": "node ../../../scripts/clean-dist.mjs && astryx theme build src/material3Theme.ts -o dist/theme.css --icons-specifier ./icons.mjs && tsup && node scripts/build-material-symbol.mjs && node scripts/build-material-badge.mjs && tsc --project tsconfig.build.json && node ../../../scripts/build-css.mjs --package theme-material3 && node ../../../scripts/build-css.mjs --package theme-material3-badge && node ../../../scripts/check-fully-specified.mjs"
+    "build": "pnpm -F @astryxdesign/material3 build && node ../../../scripts/clean-dist.mjs && astryx theme build src/material3Theme.ts -o dist/theme.css --icons-specifier ./icons.mjs && tsup && node scripts/build-material-symbol.mjs && node scripts/build-material-badge.mjs && tsc --project tsconfig.build.json && node ../../../scripts/build-css.mjs --package theme-material3 && node ../../../scripts/build-css.mjs --package theme-material3-badge && node ../../../scripts/check-fully-specified.mjs"
   },
   "peerDependencies": {
     "@astryxdesign/core": "0.6.3",
