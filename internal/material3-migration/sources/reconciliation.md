@@ -91,10 +91,13 @@ regular hexagon. The [1× PNG export](figma-exports/shape-hexagon.png), SHA256
 is a source rendering fixture with transparency. Neither export is evidence
 that the native implementation has equal pixels.
 Pinned Compose
-[`MaterialShapes.kt`](https://android.googlesource.com/platform/frameworks/support/+/b97c4470f19d8ae9bb9f96be24376fdf37ad056f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt)
+[`MaterialShapes.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt)
 exports `ClamShell` but no `Hexagon`. Its `clamShell()` constructs a rounded,
 six-vertex wide outline from three points repeated around the center, making it
-a candidate for this variant. Render the pinned Compose geometry and compare
+a candidate for this variant. This file is byte-identical at the previous and
+refreshed Compose pins (SHA256
+`08c29828003344914ee0d6783f213b37caae650175cd004ba321eaf3a7d6e434`).
+Render the pinned Compose geometry and compare
 it with the SVG before equating the names; matching the count of 35 does not
 prove shape parity.
 
