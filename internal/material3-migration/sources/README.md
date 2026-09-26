@@ -69,6 +69,22 @@ The current Community working copy may differ from the frozen supplied `.fig`
 export despite matching node IDs and dimensions; reconcile rendered values
 before using a PNG as an exact expected image.
 
+## Rendered Material guidance captures
+
+The following focused notes were taken from rendered Material pages on
+2026-09-26. Each records its exact URL, observed rule, scope, and remaining
+verification limit. They supplement the pinned kit rather than overriding it.
+
+| Dimension           | Guidance capture                               |
+| ------------------- | ---------------------------------------------- |
+| Color               | [Role use](guidance/color-roles.md)            |
+| Typography          | [Fonts](guidance/typography-fonts.md)          |
+| Shape               | [Shape system](guidance/shape.md)              |
+| Spacing and density | [Spacing](guidance/spacing.md)                 |
+| Elevation           | [Elevation](guidance/elevation.md)             |
+| Icons               | [Material Symbols](guidance/icons.md)          |
+| State layers        | [Interaction states](guidance/state-layers.md) |
+| Motion              | [Motion physics](guidance/motion.md)           |
 
 ## Established coverage and differences
 
