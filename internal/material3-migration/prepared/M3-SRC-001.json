@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "scopeSha256": "c984333e4f494d04aa9918df4e5fc45f5b129fa07c4b0f12c7df6fec583752a2",
+  "sources": {
+    "compose": "b97c4470f19d8ae9bb9f96be24376fdf37ad056f",
+    "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+    "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468"
+  },
+  "baseline": null,
+  "routing": [],
+  "files": {
+    "internal/material3-migration/sources/compose-inventory.json": "6c1682d1ced18644bcc14ffa20453ae5b3dd77e9beee554a383e465b8fe8c650",
+    "AGENTS.md": "b2a2863659f41d54145e5af4846a511431fc4fe431c5c0e20d73b8a152e4bc53",
+    "packages/themes/material3/material3.spec.md": "853e5eb5d2a4dd7913cbc0283d477910c297b548e27bbd0bde5d7747bba86e6b",
+    "docs/contributing/material3-migration.md": "d6a31848eebc70e165d8ef4cfe9884da7ba2626079ed04976c1d5b61af28102c",
+    "internal/material3-migration/routing.mjs": "dbbe1656f96d848bf8a6311565b50b1ca0bbc746f95174ebc217e6b13549fdee"
+  },
+  "compose": [],
+  "criteria": [],
+  "decisions": "Source/planning work resolves the baseline; this preparation does not certify design readiness."
+}

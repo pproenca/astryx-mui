@@ -42,7 +42,10 @@ is evaluated at 16px. Tracking is not a public Web typescale CSS role. The kit a
 baseline partners. Their weights are Medium (500), except labels and
 medium/small titles, which are SemiBold (600). Web's prominent label weight
 700 is a different role and is not a substitute for the kit's emphasized
-styles. All 30 active kit styles name Roboto. Use the pinned
+styles. All 30 active kit styles name Roboto. Pinned Compose supplies
+[30 typography roles and override behavior](compose-typography.md) but names
+platform SansSerif as its default family; the kit's explicit Roboto choice
+governs the browser baseline. Use the pinned
 [font fixtures](fonts/README.md) and [typescale export](figma-exports/typescale.png)
 for a matched rendering scenario; matching numeric metrics does not prove
 matching glyph pixels.
@@ -72,12 +75,12 @@ surfaces and dimensions before choosing the rendering method.
 
 ## Other foundation routes
 
-| Dimension           | Chosen design source for the next baseline                                                                                         | Remaining evidence                                                                                                             |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| Icons               | Kit nodes where specified; official Material Symbols source for glyphs and axes absent from the kit                                | Pair exact glyphs, optical sizes, and states with kit nodes.                                                                   |
-| State layers        | Kit variables and applied component styles                                                                                         | Trace each state binding and rendered compositing.                                                                             |
-| Spacing and density | Kit component geometry where specified; [Material spacing guidance](https://m3.material.io/styles/spacing/overview) for gaps       | Measure representative nodes and responsive cases.                                                                             |
-| Motion              | [Material motion guidance](https://m3.material.io/styles/motion/overview/specs); the extracted kit has no motion/spring collection | Choose component-specific clips, interruption, reversal, and reduced-motion cases from the [observed media](motion/README.md). |
+| Dimension           | Chosen design source for the next baseline                                                                                   | Remaining evidence                                                                                                                                                                                                                                 |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Icons               | Kit nodes where specified; official Material Symbols source for glyphs and axes absent from the kit                          | Pair exact glyphs, optical sizes, and states with kit nodes.                                                                                                                                                                                       |
+| State layers        | Kit variables and applied component styles                                                                                   | Trace each state binding and rendered compositing.                                                                                                                                                                                                 |
+| Spacing and density | Kit component geometry where specified; [Material spacing guidance](https://m3.material.io/styles/spacing/overview) for gaps | Measure representative nodes and responsive cases.                                                                                                                                                                                                 |
+| Motion              | [Pinned Compose motion schemes](compose-motion.md); the extracted kit has no motion/spring collection                        | Select scheme, speed, spatial/effects kind and matched upstream traces. Use [observed media](motion/README.md) and [rendered guidance](guidance/motion.md) for visual intent; verify interruption, reversal and reduced motion in native behavior. |
 
 The source task remains open. Exact per-dimension source decisions, captured
 guidance, and light/dark scenario fixtures still need to be assembled for the
