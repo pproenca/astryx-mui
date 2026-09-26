@@ -191,9 +191,6 @@ importers:
       '@astryxdesign/lab':
         specifier: '*'
         version: link:../../packages/lab
-      '@astryxdesign/material3':
-        specifier: '*'
-        version: link:../../packages/material3
       '@astryxdesign/richtext':
         specifier: '*'
         version: link:../../packages/richtext
@@ -206,9 +203,6 @@ importers:
       '@astryxdesign/theme-matcha':
         specifier: '*'
         version: link:../../packages/themes/matcha
-      '@astryxdesign/theme-material3':
-        specifier: '*'
-        version: link:../../packages/themes/material3
       '@astryxdesign/theme-neutral':
         specifier: '*'
         version: link:../../packages/themes/neutral
@@ -418,9 +412,6 @@ importers:
       '@astryxdesign/lab':
         specifier: '*'
         version: link:../../packages/lab
-      '@astryxdesign/material3':
-        specifier: '*'
-        version: link:../../packages/material3
       '@astryxdesign/richtext':
         specifier: '*'
         version: link:../../packages/richtext
