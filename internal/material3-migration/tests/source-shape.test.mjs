@@ -1,15 +1,19 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Pinned Compose, Figma and Material Web shape inventories. @output Nine matching corners and the Full geometry disagreement. @position Migration-only source decision regression. */
+/** @input Pinned Compose, Figma and Material Web shape inventories plus the ClamShell/Hexagon source captures. @output Corner values, Full geometry disagreement and measured candidate overlap. @position Migration-only source decision regression. */
 import {test} from 'vitest';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {PNG} from 'pngjs';
 
 const read = relative =>
   JSON.parse(readFileSync(new URL(relative, import.meta.url), 'utf8'));
 const compose = read('../sources/compose-inventory.json');
 const figma = read('../sources/figma-kit-inventory.json');
-const web = read('../../../packages/themes/material3/src/material3ShapeSource.json');
+const web = read(
+  '../../../packages/themes/material3/src/material3ShapeSource.json',
+);
 const policy = read('../policy.json');
 const shape = new Map(
   compose.tokens
@@ -40,8 +44,48 @@ test('Compose corners agree numerically with the kit except Full geometry', () =
     const selected =
       expression === 'RectangleShape'
         ? 0
-        : Number(expression.match(/^RoundedCornerShape\((\d+(?:\.\d+)?)\.dp\)$/)?.[1]);
+        : Number(
+            expression.match(
+              /^RoundedCornerShape\((\d+(?:\.\d+)?)\.dp\)$/,
+            )?.[1],
+          );
     assert.ok(Number.isFinite(selected), `Unresolved Compose corner: ${role}`);
     assert.equal(selected, Number(item.baseline), role);
   }
+});
+
+test('compiled Compose ClamShell closely corresponds to kit Hexagon without exact pixel identity', () => {
+  const file = relative => readFileSync(new URL(relative, import.meta.url));
+  const sha256 = data => createHash('sha256').update(data).digest('hex');
+  const source = file('../sources/shape-reference/compose-clam-shell.png');
+  const kit = file('../sources/figma-exports/shape-hexagon.png');
+  assert.equal(
+    sha256(file('../sources/shape-reference/compose-clam-shell.svg')),
+    '2d9cb6b870de366234f7f52f7499e50ae14f62797e203120193256817d322b72',
+  );
+  assert.equal(
+    sha256(source),
+    '06bbe34d310d57d5809273270cb0ce9d34bb13251e9ffb0a4395d29862eeb35a',
+  );
+  assert.equal(
+    sha256(kit),
+    'f90fcee6bf1c275ea913985d352d7c106d0590297ce55157691cdfbec20af852',
+  );
+  const [a, b] = [source, kit].map(data => PNG.sync.read(data));
+  assert.deepEqual(
+    [a.width, a.height, b.width, b.height],
+    [380, 380, 380, 380],
+  );
+  let intersection = 0;
+  let union = 0;
+  let changedAlpha = 0;
+  for (let pixel = 0; pixel < 380 * 380; pixel++) {
+    const sourceAlpha = a.data[pixel * 4 + 3];
+    const kitAlpha = b.data[pixel * 4 + 3];
+    if (sourceAlpha > 127 && kitAlpha > 127) intersection++;
+    if (sourceAlpha > 127 || kitAlpha > 127) union++;
+    if (sourceAlpha !== kitAlpha) changedAlpha++;
+  }
+  assert.ok(intersection / union > 0.98);
+  assert.equal(changedAlpha, 2282);
 });

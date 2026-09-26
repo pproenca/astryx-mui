@@ -152,14 +152,16 @@ is a source rendering fixture with transparency. Neither export is evidence
 that the native implementation has equal pixels.
 Pinned Compose
 [`MaterialShapes.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt)
-exports `ClamShell` but no `Hexagon`. Its `clamShell()` constructs a rounded,
-six-vertex wide outline from three points repeated around the center, making it
-a candidate for this variant. This file is byte-identical at the previous and
-refreshed Compose pins (SHA256
+exports `ClamShell` but no `Hexagon`. This file is byte-identical at the
+previous and refreshed Compose pins (SHA256
 `08c29828003344914ee0d6783f213b37caae650175cd004ba321eaf3a7d6e434`).
-Render the pinned Compose geometry and compare
-it with the SVG before equating the names; matching the count of 35 does not
-prove shape parity.
+The [compiled Compose geometry capture](shape-reference/README.md) now shows
+the broad flat outline corresponding closely to the kit `Hexagon` export:
+their 380 × 380 alpha masks overlap by 98.23%, with different bounds and
+2,282 unequal alpha pixels. Select Compose `ClamShell` geometry for this
+overlap, while retaining the kit naming mismatch and measured visual
+difference. The other 34 shape comparisons and any native public alias remain
+open; matching the count of 35 does not prove family parity.
 
 The [Compose elevation decision](compose-elevation.md) selects its tonal
 overlay formula despite the rendered guide's surface-tint deprecation note,
