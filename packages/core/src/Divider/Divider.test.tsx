@@ -20,6 +20,7 @@ describe('Divider', () => {
     expect(element).toBeInTheDocument();
     expect(element).toHaveAttribute('role', 'separator');
     expect(element).toHaveAttribute('aria-orientation', 'horizontal');
+    expect(element).toHaveAttribute('data-inset', 'none');
     // Without label, should have 1 child (single line)
     const children = Array.from(element.children);
     expect(children.length).toBe(1);
@@ -35,6 +36,37 @@ describe('Divider', () => {
     render(<Divider label="Section" />);
     expect(screen.getByText('Section')).toBeInTheDocument();
   });
+
+  it('supports decorative rules without hiding visible label text', () => {
+    render(<Divider isDecorative label="Section" data-testid="divider" />);
+    const divider = screen.getByTestId('divider');
+    expect(divider).toHaveAttribute('role', 'presentation');
+    expect(divider).not.toHaveAttribute('aria-orientation');
+    expect(divider).not.toHaveAttribute('aria-labelledby');
+    expect(screen.queryByRole('separator')).not.toBeInTheDocument();
+    expect(screen.getByText('Section')).toBeInTheDocument();
+  });
+
+  it('suppresses a separator name when the rule is decorative', () => {
+    render(
+      <Divider
+        isDecorative
+        aria-label="Hidden separator"
+        data-testid="divider"
+      />,
+    );
+    expect(screen.getByTestId('divider')).not.toHaveAttribute('aria-label');
+  });
+
+  it.each(['both', 'start', 'end'] as const)(
+    'exposes the %s inset choice without leaking it as an HTML attribute',
+    inset => {
+      render(<Divider inset={inset} data-testid="divider" />);
+      const divider = screen.getByTestId('divider');
+      expect(divider).toHaveAttribute('data-inset', inset);
+      expect(divider).not.toHaveAttribute('inset');
+    },
+  );
 
   it('renders label centered with lines on both sides', () => {
     render(<Divider label="Center" data-testid="divider" />);

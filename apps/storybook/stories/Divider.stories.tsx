@@ -39,6 +39,15 @@ const meta: Meta<typeof Divider> = {
       control: 'boolean',
       description: 'Escape parent container padding',
     },
+    inset: {
+      control: 'select',
+      options: [undefined, 'both', 'start', 'end'],
+      description: 'Indent the rule on logical edges',
+    },
+    isDecorative: {
+      control: 'boolean',
+      description: 'Visual rule without separator semantics',
+    },
     label: {
       control: 'text',
       description: 'Optional label text (rendered small and secondary)',
@@ -109,9 +118,7 @@ export const FullBleed: Story = {
         <Card>
           <VStack gap={3}>
             <Text type="label">Normal divider</Text>
-            <Text type="body">
-              The divider respects container padding.
-            </Text>
+            <Text type="body">The divider respects container padding.</Text>
             <Divider />
             <Text type="body">Content below the divider.</Text>
           </VStack>
@@ -119,9 +126,7 @@ export const FullBleed: Story = {
         <Card>
           <VStack gap={3}>
             <Text type="label">Full bleed divider</Text>
-            <Text type="body">
-              The divider extends to container edges.
-            </Text>
+            <Text type="body">The divider extends to container edges.</Text>
             <Divider isFullBleed />
             <Text type="body">Content below the divider.</Text>
           </VStack>

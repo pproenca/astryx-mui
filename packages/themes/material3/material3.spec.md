@@ -57,7 +57,7 @@ same normalized theme must drive runtime injection and the built CSS/JS pair.
 
 The source package now builds through `astryx theme build` and `tsup`. It emits
 `source`, `built`, and `theme.css` entry points with 97 portable overrides and
-168 theme-local roles. A parity check compares source and built token maps,
+170 theme-local roles. A parity check compares source and built token maps,
 checks each emitted local declaration, and resolves all 49 system colors in
 light and dark Chrome contexts. Component overrides still follow their own
 migration stories.
@@ -222,6 +222,14 @@ component, the workbook must link the exact Material variant and source,
 implementation, tests, and an interactive preview at the verified code revision.
 Material Web Labs elements and Figma-only patterns remain explicitly labeled;
 they do not silently become stable component parity claims.
+
+The Divider mapping uses the pinned Material Web `--md-divider-color` role
+(outline-variant), `--md-divider-thickness` (1px), and 16px logical insets.
+Core `Divider` accepts optional `inset` and `isDecorative` props. The Material 3
+theme supplies the component values; Core keeps its existing semantic default,
+strong variant, labels, vertical orientation, and full-bleed behavior. The
+source is the pinned [divider guide](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/divider.md)
+and [Sass implementation](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/divider/internal/_divider.scss).
 
 ## Compatibility and migration
 

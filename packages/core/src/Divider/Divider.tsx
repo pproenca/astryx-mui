@@ -4,7 +4,7 @@
 
 /**
  * @file Divider.tsx
- * @input Uses React, stylex, spacing and color tokens
+ * @input Uses React, StyleX, portable tokens, and optional Material divider geometry
  * @output Exports Divider component and DividerProps
  * @position Divider component; provides visual separation with optional label
  *
@@ -19,12 +19,7 @@ import {useId, type ReactNode} from 'react';
 import type {BaseProps} from '../BaseProps';
 import * as stylex from '@stylexjs/stylex';
 
-import {
-  colorVars,
-  spacingVars,
-  typeScaleVars,
-  borderVars,
-} from '../theme/tokens.stylex';
+import {colorVars, spacingVars, typeScaleVars} from '../theme/tokens.stylex';
 import {mergeProps} from '../utils';
 import {themeProps} from '../utils/themeProps';
 import type {DividerVariantMap} from './index';
@@ -63,15 +58,23 @@ export interface DividerProps extends BaseProps<HTMLDivElement> {
    * @default false
    */
   isFullBleed?: boolean;
+
+  /** Indent the rule by one component inset on both, start, or end edges. */
+  inset?: 'both' | 'start' | 'end';
+
+  /** Remove separator semantics for a purely visual rule. @default false */
+  isDecorative?: boolean;
 }
 
 const baseStyles = stylex.create({
   horizontal: {
+    boxSizing: 'border-box',
     display: 'flex',
     alignItems: 'center',
     width: '100%',
   },
   vertical: {
+    boxSizing: 'border-box',
     display: 'inline-flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -81,26 +84,51 @@ const baseStyles = stylex.create({
 
 const lineStyles = stylex.create({
   horizontalLine: {
-    height: borderVars['--border-width'],
+    height: 'var(--astryx-divider-thickness, var(--border-width))',
     flexGrow: 1,
     flexShrink: 1,
   },
   verticalLine: {
-    width: borderVars['--border-width'],
+    width: 'var(--astryx-divider-thickness, var(--border-width))',
     flexGrow: 1,
     flexShrink: 1,
   },
   subtle: {
-    backgroundColor: colorVars['--color-border'],
+    backgroundColor: 'var(--astryx-divider-color, var(--color-border))',
+    '@media (forced-colors: active)': {
+      backgroundColor: 'CanvasText',
+    },
   },
   strong: {
-    backgroundColor: colorVars['--color-border-emphasized'],
+    backgroundColor:
+      'var(--astryx-divider-color, var(--color-border-emphasized))',
+    '@media (forced-colors: active)': {
+      backgroundColor: 'CanvasText',
+    },
+  },
+});
+
+const insetStyles = stylex.create({
+  horizontalStart: {
+    paddingInlineStart: 'var(--astryx-divider-inset, var(--spacing-4))',
+  },
+  horizontalEnd: {
+    paddingInlineEnd: 'var(--astryx-divider-inset, var(--spacing-4))',
+  },
+  verticalStart: {
+    paddingBlockStart: 'var(--astryx-divider-inset, var(--spacing-4))',
+  },
+  verticalEnd: {
+    paddingBlockEnd: 'var(--astryx-divider-inset, var(--spacing-4))',
   },
 });
 
 const labelStyles = stylex.create({
   label: {
-    flexShrink: 0,
+    flexShrink: 1,
+    minWidth: 0,
+    overflowWrap: 'anywhere',
+    textAlign: 'center',
     paddingInline: spacingVars['--spacing-3'],
     // Small secondary text styling
     fontSize: typeScaleVars['--text-supporting-size'],
@@ -144,6 +172,8 @@ export function Divider({
   label,
   variant = 'subtle',
   isFullBleed = false,
+  inset,
+  isDecorative = false,
   xstyle,
   className,
   style,
@@ -166,14 +196,22 @@ export function Divider({
     <div
       ref={ref}
       {...props}
-      role="separator"
-      aria-orientation={orientation}
-      aria-label={ariaLabel}
-      aria-labelledby={resolvedLabelledBy}
+      role={isDecorative ? 'presentation' : 'separator'}
+      aria-orientation={isDecorative ? undefined : orientation}
+      aria-label={isDecorative ? undefined : ariaLabel}
+      aria-labelledby={isDecorative ? undefined : resolvedLabelledBy}
       {...mergeProps(
-        themeProps('divider', {variant, orientation}),
+        themeProps('divider', {variant, orientation, inset: inset ?? 'none'}),
         stylex.props(
           isHorizontal ? baseStyles.horizontal : baseStyles.vertical,
+          (inset === 'both' || inset === 'start') &&
+            (isHorizontal
+              ? insetStyles.horizontalStart
+              : insetStyles.verticalStart),
+          (inset === 'both' || inset === 'end') &&
+            (isHorizontal
+              ? insetStyles.horizontalEnd
+              : insetStyles.verticalEnd),
           isFullBleed &&
             (isHorizontal
               ? fullBleedStyles.horizontal
