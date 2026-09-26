@@ -1,9 +1,11 @@
 # Font fixtures for source comparisons
 
-The [Material typography guidance](https://m3.material.io/styles/typography/fonts)
-uses Roboto by default for Material 3 components. It describes Roboto Flex as
-an expressive variable typeface, but says it is not yet part of the M3 type
-scale. The supplied kit's 30 active `M3/` text styles also name Roboto.
+The rendered [Material typography guidance](https://m3.material.io/styles/typography/fonts),
+observed 2026-09-26, uses Roboto by default for Material 3 components. It
+describes Roboto Flex as an expressive variable typeface, but says it is not
+yet part of the M3 type scale. For a product that chooses Roboto Flex, its
+fallback order is Roboto Flex, Roboto, then Noto Sans. The supplied kit's 30
+active `M3/` text styles also name Roboto.
 Emphasized styles change weight; they do not require switching font family.
 
 The existing foundation QA fixture at
@@ -21,6 +23,20 @@ The accompanying `OFL.txt` is its SIL Open Font License notice. Use this font
 only for a scenario whose chosen source explicitly calls for Roboto Flex, and
 record the axes and fallback chain. Its presence is not evidence that the
 kit's 30 type styles use it.
+
+Google's [Google Sans Flex](https://github.com/googlefonts/googlesans-flex)
+is also open under the SIL Open Font License. Its official
+[v4.007 release](https://github.com/googlefonts/googlesans-flex/releases/tag/v4.007)
+was downloaded for optional local Expressive QA. The release ZIP has SHA256
+`b7375131bffc5eaaebeb65c69529ba10e7f7a9962b913488f6ef35c432ce19c9`;
+the extracted six-axis variable TTF has SHA256
+`7551c307350329c6cf05de9cda1add37277b31e130d46c3532fd4914955df3bf`.
+The axes are weight, width, slant, optical size, grade, and roundness. This
+font is not checked into Astryx and is not an automatic replacement for
+Roboto, Roboto Flex, or the kit's active text styles. Select it only when an
+Expressive source scenario calls for it, then pin its axes and loaded state.
+The kit's separate decorative use of Google Sans Regular does not change the
+active Material 3 typescale.
 
 The three Material Symbols WOFF2 families were downloaded for local QA from
 [Google's pinned icon source](https://github.com/google/material-design-icons/tree/bd8cb85bd4bad964fe6918f79665bb40c3a8efef/variablefont)
