@@ -77,13 +77,24 @@ display example are identical CSS values. The separate
 [35-shape set](figma-exports/expressive-shapes.png) is additional Expressive
 geometry beyond the ten corner variables and needs its own native coverage.
 The frozen kit inventory's `Shape Set` variants (`58548:7248`) include
-`Hexagon` but no `Clamshell`; the rendered working-copy export labels the
-rounded six-sided example `Clamshell`. Pinned Compose
+`Hexagon` but no `Clamshell`. Inspecting the same component set in the Figma
+working copy on 2026-09-26 confirms that its six-sided variant
+(`58548:7271`) has the property value `Hexagon`, while the text directly below
+that variant labels it `Clamshell` in the rendered guide. The naming mismatch
+is therefore present within the working copy, not solely between revisions.
+The variant's [380×380 SVG export](figma-exports/shape-hexagon.svg), SHA256
+`4395ebac155f2e28c98b01747ba5c7c8056bc29049f25dee925212fee1a837b4`,
+preserves the six-sided rounded outline at this node. Its filled path spans
+approximately x=4–376 and y=63–317: a wide, flat-topped shape rather than a
+regular hexagon. This is a geometry reference for later rendering comparisons,
+not evidence that the implementations have equal pixels.
+Pinned Compose
 [`MaterialShapes.kt`](https://android.googlesource.com/platform/frameworks/support/+/b97c4470f19d8ae9bb9f96be24376fdf37ad056f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt)
-exports `ClamShell` but no `Hexagon`. This could reflect a naming or revision
-difference between the frozen kit and its working copy. Resolve the exact
-variant node and geometry before mapping either name; matching the count of 35
-does not prove shape parity.
+exports `ClamShell` but no `Hexagon`. Its `clamShell()` constructs a rounded,
+six-vertex wide outline from three points repeated around the center, making it
+a candidate for this variant. Render the pinned Compose geometry and compare
+it with the SVG before equating the names; matching the count of 35 does not
+prove shape parity.
 
 The kit has five light and five dark elevation effect styles. Each style's two
 shadow geometries and alpha values agree with the corresponding Web level 1–5
