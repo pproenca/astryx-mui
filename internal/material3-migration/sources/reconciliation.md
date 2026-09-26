@@ -81,8 +81,10 @@ The variant's [380×380 SVG export](figma-exports/shape-hexagon.svg), SHA256
 `4395ebac155f2e28c98b01747ba5c7c8056bc29049f25dee925212fee1a837b4`,
 preserves the six-sided rounded outline at this node. Its filled path spans
 approximately x=4–376 and y=63–317: a wide, flat-topped shape rather than a
-regular hexagon. This is a geometry reference for later rendering comparisons,
-not evidence that the implementations have equal pixels.
+regular hexagon. The [1× PNG export](figma-exports/shape-hexagon.png), SHA256
+`f90fcee6bf1c275ea913985d352d7c106d0590297ce55157691cdfbec20af852`,
+is a source rendering fixture with transparency. Neither export is evidence
+that the native implementation has equal pixels.
 Pinned Compose
 [`MaterialShapes.kt`](https://android.googlesource.com/platform/frameworks/support/+/b97c4470f19d8ae9bb9f96be24376fdf37ad056f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt)
 exports `ClamShell` but no `Hexagon`. Its `clamShell()` constructs a rounded,
