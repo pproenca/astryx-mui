@@ -20,6 +20,8 @@ variables, and style summaries. It does not include the `.fig` file or artwork.
 styles and ten elevation effect styles. Forty-two soft-deleted typography style
 nodes were excluded.
 The workbook also retains these source inventories for task lookup.
+[Foundation source reconciliation](reconciliation.md) records the measured
+kit/Web differences and the resulting source route for the native graph.
 
 ## Rendered kit references
 
@@ -28,16 +30,22 @@ supplied kit. The selected node IDs, names, and dimensions match the supplied
 `.fig` export. Material Design's kit is [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/);
 the images are reproduced here with attribution for source comparison.
 
-| Reference                                | Kit node                           | PNG size    | SHA256                                                             | Interpretation                                                                                                       |
-| ---------------------------------------- | ---------------------------------- | ----------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| [Typescale](figma-exports/typescale.png) | `58186:19244` (`typescale`)        | 1580 × 1440 | `4a2317c4fc44735c14377ad9f31e22039910ca95ed43aa2d630ab06bbdf89104` | Transparent group containing baseline and emphasized examples; compare over a specified surface, with Roboto loaded. |
-| [Elevation](figma-exports/elevation.png) | `55343:13518` (`Untitled` section) | 1484 × 1243 | `31de0a4ffff8b5aeaff45b75c04276b47c4cb26f0ca6420de0f055d3079f53b6` | Light and dark five-level examples on their kit surfaces; compare at native scale and with the same backing surface. |
+| Reference                                                   | Kit node                           | PNG size    | SHA256                                                             | Interpretation                                                                                                       |
+| ----------------------------------------------------------- | ---------------------------------- | ----------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| [Color guidance](figma-exports/color-guidance.png)          | `55343:13516` (section)            | 2999 × 1546 | `e97017f32fd34bb0b4950f30a7284ce882e661465e3e0fdf629d1c84aec52766` | Complete tonal palettes and light/dark scheme diagrams; compare role bindings on the same surface and mode.          |
+| [Typescale](figma-exports/typescale.png)                    | `58186:19244` (`typescale`)        | 1580 × 1440 | `4a2317c4fc44735c14377ad9f31e22039910ca95ed43aa2d630ab06bbdf89104` | Transparent group containing baseline and emphasized examples; compare over a specified surface, with Roboto loaded. |
+| [Elevation](figma-exports/elevation.png)                    | `55343:13518` (`Untitled` section) | 1484 × 1243 | `31de0a4ffff8b5aeaff45b75c04276b47c4cb26f0ca6420de0f055d3079f53b6` | Light and dark five-level examples on their kit surfaces; compare at native scale and with the same backing surface. |
+| [Corner radius scale](figma-exports/corner-radius.png)      | `58548:7181` (section)             | 1260 × 936  | `80dad82b71edd4adb1ff7434db19cda78be3af3a35fc75a58b29d577bceb7ac9` | Ten source examples, including increased sizes and a visibly full treatment.                                         |
+| [Expressive shape set](figma-exports/expressive-shapes.png) | `58548:7234` (section)             | 3341 × 2929 | `3030eb51023a5c73d4664b3a55d5bd9bdadf4a54239ca883c667f66fa6f92a15` | The kit's 35 named shapes; source coverage does not imply a native shape implementation.                             |
 
 The `material-theme` color group (`49823:12154`) exported with its light and
 dark scheme diagrams absent, despite those diagrams appearing on the Figma
-canvas. That PNG is **not** a color baseline. Use the source variables and a
-complete rendered reference before deciding color parity. These exports are
+canvas. That PNG was discarded; the parent Color Guidance section above
+contains the complete diagrams. These exports are
 source observations, not matched Astryx scenario fixtures or migration proof.
+The current Community working copy may differ from the frozen supplied `.fig`
+export despite matching node IDs and dimensions; reconcile rendered values
+before using a PNG as an exact expected image.
 
 ## Established coverage and differences
 
