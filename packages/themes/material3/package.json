@@ -89,6 +89,7 @@
     "@babel/preset-typescript": "catalog:",
     "@stylexjs/babel-plugin": "catalog:",
     "@stylexjs/stylex": "catalog:",
-    "@testing-library/react": "catalog:"
+    "@testing-library/react": "catalog:",
+    "prettier": "catalog:"
   }
 }

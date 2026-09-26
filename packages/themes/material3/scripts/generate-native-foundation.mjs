@@ -12,12 +12,13 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {material3TokenValues} from '@astryxdesign/material3';
+import {format, resolveConfig} from 'prettier';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const output = path.join(root, 'src/material3Foundation.generated.ts');
 const light = material3TokenValues('light', 'web-compat');
 const dark = material3TokenValues('dark', 'web-compat');
-const content = [
+const rawContent = [
   '// Copyright (c) Meta Platforms, Inc. and affiliates.',
   '// Material values: Copyright The Android Open Source Project and Google LLC, Apache-2.0.',
   '',
@@ -36,6 +37,10 @@ const content = [
   `export const material3WebCompatDark = ${JSON.stringify(dark, null, 2)} as const;`,
   '',
 ].join('\n');
+const content = await format(rawContent, {
+  ...(await resolveConfig(output)),
+  filepath: output,
+});
 
 if (process.argv.includes('--write')) {
   fs.writeFileSync(output, content);
