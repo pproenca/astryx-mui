@@ -45,6 +45,13 @@ any applicable notices for code translated into permanent product implementation
 The index and this migration-only license copy can be deleted with the harness;
 permanent derived code must carry its own required attribution.
 
+The [pinned Compose typography reference](compose-typography.md) records the
+baseline and emphasized styles, family override behavior and the difference
+between platform SansSerif and the kit's Roboto. The
+[pinned Compose motion reference](compose-motion.md) records standard and
+expressive spring schemes and upstream assertions. Matched glyph scenarios,
+motion traces and native browser behavior remain to be verified.
+
 ## Rendered kit references
 
 These 1× PNGs were exported on 2026-09-26 from a Figma working copy of the
