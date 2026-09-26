@@ -18,7 +18,7 @@ defaults, behavior and motion. The website fills documented gaps.
 
 | Foundation concern | Selected route | Evidence and boundary |
 | --- | --- | --- |
-| Color | Compose light/dark role-to-palette bindings | `ColorLightTokens.kt`, `ColorDarkTokens.kt`, and `PaletteTokens.kt`; kit contrast and named modes remain separately inventoried until their Compose membership is resolved. |
+| Color | Compose light/dark role-to-palette bindings | `ColorLightTokens.kt`, `ColorDarkTokens.kt`, and `PaletteTokens.kt` define 48 scheme roles per mode. The kit/Web `Shadow` role fills the one missing system-color gap. Kit contrast and named modes remain separately inventoried until their Compose membership is resolved. |
 | Typography | Compose's 30 role metrics and override behavior | [`compose-typography.md`](compose-typography.md); kit Roboto is the browser comparison fixture because Compose names only platform SansSerif. |
 | Shape | Compose corner shapes and `MaterialShapes.kt` | The kit's 35-shape set supplies comparison nodes; name similarity alone does not establish matching geometry. |
 | Spacing and density | Compose component geometry | There is no resolved universal spacing scale in these sources. The kit and captured guidance fill documented component or responsive gaps. |
@@ -61,6 +61,14 @@ evidence, not the native source decision. This comparison does not resolve
 Compose membership or role maps for the 30 kit contrast and named-scheme modes;
 retain their kit values as source observations without inferring them from
 Light/Dark. Derived state-layer colors follow the selected scheme roles.
+Both Compose light and dark token files have 48 bindings. Of the kit's 49
+`Schemes/` roles, only `Shadow` lacks a corresponding Compose color token.
+The kit specifies `#000000` for `Shadow` in all its modes and pinned Material
+Web resolves `shadow` to black in light and dark. Use that kit value for the
+missing native system-color role; this is a documented gap fill, not an
+exception to a specified Compose value. The focused
+[`source-color.test.mjs`](../tests/source-color.test.mjs) recomputes all 48
+light and dark comparisons from the pinned inventories.
 The complete
 [kit color guidance export](figma-exports/color-guidance.png) supplies light and
 dark diagrams. It is a source image, not yet a matched native scenario; rendered
