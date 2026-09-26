@@ -80,6 +80,19 @@ The current Community working copy may differ from the frozen supplied `.fig`
 export despite matching node IDs and dimensions; reconcile rendered values
 before using a PNG as an exact expected image.
 
+The [Hexagon variant SVG](figma-exports/shape-hexagon.svg) and
+[PNG](figma-exports/shape-hexagon.png) were exported at 1× from `Shape Set`
+node `58548:7271` in the same working copy on 2026-09-26. Both are 380 × 380;
+the PNG has an alpha channel and SHA256
+`f90fcee6bf1c275ea913985d352d7c106d0590297ce55157691cdfbec20af852`.
+The SVG has SHA256
+`4395ebac155f2e28c98b01747ba5c7c8056bc29049f25dee925212fee1a837b4`.
+The component property says `Hexagon`, while its displayed caption says
+`Clamshell`; [reconciliation](reconciliation.md) keeps the Compose geometry
+mapping open. Material Design's CC BY 4.0 attribution above also applies to
+these exports. The PNG is a source fixture, not yet a matched native
+light/dark scenario.
+
 ## Rendered Material guidance captures
 
 The following focused notes were taken from rendered Material pages on
