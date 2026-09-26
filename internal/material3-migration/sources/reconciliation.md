@@ -24,7 +24,7 @@ defaults, behavior and motion. The website fills documented gaps.
 | Spacing and density | Compose component geometry                                         | There is no resolved universal spacing scale in these sources. The kit and captured guidance fill documented component or responsive gaps.                                                                                                                                                                                                    |
 | Elevation           | Compose level and component surface/elevation selection            | [`compose-elevation.md`](compose-elevation.md) resolves the tonal formula, independent shadow, nested-surface rule, and guidance conflict. Kit/Web shadow geometry fills a browser rendering gap.                                                                                                                                             |
 | Icons               | Compose `Icon` sizing/tint behavior where applicable               | The kit supplies specified glyphs; pinned Material Symbols artwork fills glyph gaps. Browser semantics and meaningful names remain component decisions.                                                                                                                                                                                       |
-| State layers        | Compose component interaction and ripple behavior                  | Kit state styles and rendered guidance help with unspecified presentation; a global opacity list cannot replace per-component behavior.                                                                                                                                                                                                       |
+| State layers        | Compose component interaction and ripple behavior                  | [`compose-state.md`](compose-state.md) resolves the default layer opacities and a concrete filled Button binding. Kit styles agree; Web focus/press values differ. Browser focus, ripple motion and mixed states remain family decisions.                                                                                                     |
 | Motion              | Compose standard/expressive spatial and effects spring schemes     | [`compose-motion.md`](compose-motion.md) records spring inputs. [Watched media](motion/README.md) shows visual intent; Web curves are limited non-interruptible fallbacks.                                                                                                                                                                    |
 
 This routing selects authority, not a fabricated implementation value. A family
@@ -195,9 +195,12 @@ defines default dragged, focus, hover and pressed layer opacities of 0.16,
 specifies 0.12 for focus and pressed, while dragged and hover agree. Select
 Compose's values for the native default; the
 [`source-state.test.mjs`](../tests/source-state.test.mjs) preserves the exact
-four-value comparison. This does not select a component's layer color, bounds,
-focus indicator, ripple, disabled appearance or mixed-state behavior. Resolve
-those from each Compose family and browser interaction semantics before
+four-value comparison. The [Compose state decision](compose-state.md) now
+traces the default ripple and a filled Button's layer color and disabled
+binding. [Light/dark source captures](state-reference/README.md) render their
+static endpoint colors. These do not settle another component's layer color,
+bounds, focus indicator, ripple motion or mixed-state behavior. Resolve those
+from each Compose family and browser interaction semantics before
 implementation. The [captured guidance](guidance/state-layers.md) agrees with
 the Compose default values but does not supersede them.
 
