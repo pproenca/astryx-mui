@@ -43,6 +43,10 @@ source at commit
 - `tokens/_md-sys-elevation.scss`
 - `tokens/_md-comp-elevation.scss`
 - `elevation/internal/_elevation.scss`
+- `tokens/_md-comp-badge.scss`
+- `tokens/versions/v0_192/_md-comp-badge.scss`
+- `labs/badge/internal/_badge.scss`
+- `labs/gb/components/badge/badge.scss`
 
 Copyright 2023 Google LLC. Licensed under the Apache License, Version 2.0.
 The license text is included in [LICENSE-APACHE-2.0](LICENSE-APACHE-2.0).

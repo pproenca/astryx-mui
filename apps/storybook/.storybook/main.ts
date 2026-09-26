@@ -123,6 +123,10 @@ for (const {pkg, src, stylex, vite} of workspaceAliases) {
       source,
       'MaterialSymbol.tsx',
     );
+    viteAliases[`${pkg}/MaterialBadge`] = path.join(
+      source,
+      'MaterialBadge.tsx',
+    );
   }
   viteAliases[pkg] = vite ? path.resolve(rootDir, vite) : source;
   if (stylex !== 'none') {

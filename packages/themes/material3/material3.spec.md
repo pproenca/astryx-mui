@@ -18,6 +18,7 @@ verified_by:
     packages/themes/material3/src/material3Elevation.test.ts,
     packages/themes/material3/src/material3Icons.test.tsx,
     packages/themes/material3/src/MaterialSymbol.test.tsx,
+    packages/themes/material3/src/MaterialBadge.test.tsx,
     packages/themes/material3/scripts/check-theme-parity.mjs,
   ]
 package: '@astryxdesign/theme-material3'
@@ -57,7 +58,7 @@ same normalized theme must drive runtime injection and the built CSS/JS pair.
 
 The source package now builds through `astryx theme build` and `tsup`. It emits
 `source`, `built`, and `theme.css` entry points with 97 portable overrides and
-170 theme-local roles. A parity check compares source and built token maps,
+181 theme-local roles. A parity check compares source and built token maps,
 checks each emitted local declaration, and resolves all 49 system colors in
 light and dark Chrome contexts. Component overrides still follow their own
 migration stories.
@@ -230,6 +231,22 @@ theme supplies the component values; Core keeps its existing semantic default,
 strong variant, labels, vertical orientation, and full-bleed behavior. The
 source is the pinned [divider guide](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/divider.md)
 and [Sass implementation](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/divider/internal/_divider.scss).
+
+The pinned Material Web badge is a Labs component, not a stable component.
+Its 6px small badge is a visual dot; a value uses a 16px minimum pill with
+label-small type. The `--md-badge-*` roles use error/on-error colors, full
+corners, and the pinned generated size and type values. The newer Labs utility
+classes keep the same surface geometry and leave anchoring to the caller.
+`MaterialBadge` is a separate opt-in export with an accompanying stylesheet;
+Core `Badge` keeps its standalone status and category label semantics. The
+new component renders a presentational badge surface and the consumer owns its
+placement over an icon, button, or other target. An unnamed badge is hidden
+from assistive technology; an optional label names a meaningful standalone
+badge. When the badge augments a control, that control's accessible name must
+include the notification state. The source is the pinned
+[Labs implementation](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/labs/badge/internal/_badge.scss),
+[generated token values](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/tokens/versions/v0_192/_md-comp-badge.scss),
+and [Labs utility classes](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/labs/gb/components/badge/badge.scss).
 
 ## Compatibility and migration
 

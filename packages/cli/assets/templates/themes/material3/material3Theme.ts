@@ -53,6 +53,21 @@ const material3LocalTokens: Record<string, TokenValue> = {
   ...entries('--md-ref-typeface-', material3Typeface),
   '--md-divider-color': 'var(--md-sys-color-outline-variant)',
   '--md-divider-thickness': '1px',
+  '--md-badge-color': 'var(--md-sys-color-error)',
+  '--md-badge-large-color': 'var(--md-sys-color-error)',
+  '--md-badge-large-label-text-color': 'var(--md-sys-color-on-error)',
+  '--md-badge-large-label-text-font':
+    'var(--md-sys-typescale-label-small-font)',
+  '--md-badge-large-label-text-line-height':
+    'var(--md-sys-typescale-label-small-line-height)',
+  '--md-badge-large-label-text-size':
+    'var(--md-sys-typescale-label-small-size)',
+  '--md-badge-large-label-text-weight':
+    'var(--md-sys-typescale-label-small-weight)',
+  '--md-badge-large-shape': 'var(--md-sys-shape-corner-full)',
+  '--md-badge-large-size': '16px',
+  '--md-badge-shape': 'var(--md-sys-shape-corner-full)',
+  '--md-badge-size': '6px',
   ...entries('--md-sys-typescale-', material3Typescale),
   ...entries('--md-sys-shape-', material3CssCorners),
   ...entries(
