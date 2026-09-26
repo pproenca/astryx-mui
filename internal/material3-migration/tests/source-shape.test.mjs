@@ -123,4 +123,9 @@ test('compiled Compose source fixture covers all 35 frozen kit shape variants', 
     file('../sources/shape-reference/compose-expressive-shapes.png'),
   );
   assert.deepEqual([png.width, png.height], [1540, 1100]);
+  assert.equal(shapeManifest.darkFill, '#d0bcff');
+  const dark = PNG.sync.read(
+    file('../sources/shape-reference/compose-expressive-shapes-dark.png'),
+  );
+  assert.deepEqual([dark.width, dark.height], [1540, 1100]);
 });

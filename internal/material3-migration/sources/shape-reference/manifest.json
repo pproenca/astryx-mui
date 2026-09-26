@@ -9,6 +9,7 @@
   "browser": "Chrome 153.0.8010.53",
   "dpr": 1,
   "fill": "#6750a4",
+  "darkFill": "#d0bcff",
   "labels": "Arial index aids only; not part of geometry comparison",
   "mappings": [
     {
@@ -155,6 +156,8 @@
   "files": {
     "compose-expressive-shapes.svg": "f3c64f9ee8171869509ee5275265a722a4545bdb2afd7f769abc1ca3f43d3c81",
     "compose-expressive-shapes.png": "db0f8615a1f635bd3fc629a0a8ce0d1091bf7fcc1f44f9128bf8cf51d1187e73",
+    "compose-expressive-shapes-dark.svg": "d4a6a47c7f9f41ad920deea96cb26c1c2a08bcdec406477a709ad3f6deb2ae35",
+    "compose-expressive-shapes-dark.png": "0ff6812d5dba50d5997d3510d5fb14cfc3fdc1ad9753653ded0ee0b83a7d0c76",
     "compose-clam-shell.svg": "2d9cb6b870de366234f7f52f7499e50ae14f62797e203120193256817d322b72",
     "compose-clam-shell.png": "06bbe34d310d57d5809273270cb0ce9d34bb13251e9ffb0a4395d29862eeb35a"
   }

@@ -1,0 +1,1453 @@
+{
+  "schemaVersion": 1,
+  "authority": "compose-first",
+  "baselineId": "material3-expressive-compose-first-2026-09-26",
+  "web": {
+    "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+  },
+  "compose": {
+    "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "inventory": "internal/material3-migration/sources/compose-inventory.json",
+    "tests": [],
+    "reason": "This source task precedes native implementation; upstream test translation is selected per implementation family.",
+    "evidence": "internal/material3-migration/sources/compose-inventory.json"
+  },
+  "figma": {
+    "sha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+    "inventory": "internal/material3-migration/sources/figma-kit-inventory.json"
+  },
+  "guidance": [
+    {
+      "url": "https://m3.material.io/styles/color/roles",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/color.md"
+    },
+    {
+      "url": "https://m3.material.io/styles/typography/fonts",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/typography-fonts.md"
+    },
+    {
+      "url": "https://m3.material.io/styles/shape/overview-principles",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/shape.md"
+    },
+    {
+      "url": "https://m3.material.io/styles/spacing/overview",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/spacing.md"
+    },
+    {
+      "url": "https://m3.material.io/styles/elevation/overview",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/elevation.md"
+    },
+    {
+      "url": "https://m3.material.io/styles/icons/overview",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/icons.md"
+    },
+    {
+      "url": "https://m3.material.io/foundations/interaction/states/state-layers",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/state-layers.md"
+    },
+    {
+      "url": "https://m3.material.io/styles/motion/overview/how-it-works",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/motion.md"
+    }
+  ],
+  "decisions": [
+    {
+      "dimension": "color",
+      "concern": "design",
+      "figmaSpecified": true,
+      "chosen": "compose",
+      "reason": "Compose selects baseline and Expressive roles; kit fixed contrast and named modes fill Compose gaps.",
+      "evidence": "internal/material3-migration/sources/reconciliation.md"
+    },
+    {
+      "dimension": "typography",
+      "concern": "design",
+      "figmaSpecified": true,
+      "chosen": "compose",
+      "reason": "Compose selects 30 default and emphasized roles; pinned Roboto is the documented browser comparison font.",
+      "evidence": "internal/material3-migration/sources/compose-typography.md"
+    },
+    {
+      "dimension": "shape",
+      "concern": "design",
+      "figmaSpecified": true,
+      "chosen": "compose",
+      "reason": "Compose selects corner values and 35 Expressive paths; kit names map variants without replacing geometry.",
+      "evidence": "internal/material3-migration/sources/shape-reference/README.md"
+    },
+    {
+      "dimension": "spacing-density",
+      "concern": "design",
+      "figmaSpecified": false,
+      "chosen": "compose",
+      "reason": "Compose component defaults select Button and TextField geometry; no universal spacing scale is inferred.",
+      "evidence": "internal/material3-migration/sources/compose-spacing-density.md"
+    },
+    {
+      "dimension": "elevation",
+      "concern": "design",
+      "figmaSpecified": true,
+      "chosen": "compose",
+      "reason": "Compose selects tonal elevation and nested surface behavior; Web/kit shadow layers fill browser geometry.",
+      "evidence": "internal/material3-migration/sources/compose-elevation.md"
+    },
+    {
+      "dimension": "icons",
+      "concern": "design",
+      "figmaSpecified": true,
+      "chosen": "compose",
+      "reason": "Compose selects Icon tint, semantics and unsized fallback; pinned Google artwork fills the generic Icon glyph gap.",
+      "evidence": "internal/material3-migration/sources/compose-icons.md"
+    },
+    {
+      "dimension": "state-layers",
+      "concern": "design",
+      "figmaSpecified": true,
+      "chosen": "compose",
+      "reason": "Compose selects default layer opacity and Ripple/filled Button bindings; browser focus semantics remain native.",
+      "evidence": "internal/material3-migration/sources/compose-state.md"
+    },
+    {
+      "dimension": "motion",
+      "concern": "motion",
+      "figmaSpecified": false,
+      "chosen": "compose",
+      "reason": "Compose selects spring scheme and token inputs; watched official clips show intent and Kotlin traces supply interruption/reversal source motion.",
+      "evidence": "internal/material3-migration/sources/compose-motion.md"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "color-light",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Pinned Compose ColorScheme and palette tokens",
+      "baseline": "internal/material3-migration/sources/color-reference/color-light.png",
+      "baselineSha256": "4497067f81ff0bcb21bb655e63fff6256903c65fee2ada30cd5364883fff6239",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; light",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-dark",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Pinned Compose ColorScheme and palette tokens",
+      "baseline": "internal/material3-migration/sources/color-reference/color-dark.png",
+      "baselineSha256": "ed9774fee9a1e934a3d3266be5f8c66d76f14100af7c760d541e0e0f1652e6eb",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; dark",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-expressiveLight",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Pinned Compose ColorScheme and palette tokens",
+      "baseline": "internal/material3-migration/sources/color-reference/color-expressive-light.png",
+      "baselineSha256": "6dc578c9fe58046d7cfc0150b53242b990b20b146d2e1e377f6b0bd49ce04af2",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; expressiveLight",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-light",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-light.png",
+      "baselineSha256": "c97464595e176019503c471fb69dd6ae2f17c6c54ce9d2f0c928fd3e31771d39",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-light",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-light-high-contrast",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-light-high-contrast.png",
+      "baselineSha256": "c360426ab2e87115e586ec87194ea8c942271a123bdbdcceb34642621043a2a0",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-light-high-contrast",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-light-medium-contrast",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-light-medium-contrast.png",
+      "baselineSha256": "5aa433ecfb0ca3348d078767cf69caa635f9bda65f4e72b5cbf689d9b9056486",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-light-medium-contrast",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-dark",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-dark.png",
+      "baselineSha256": "ed9774fee9a1e934a3d3266be5f8c66d76f14100af7c760d541e0e0f1652e6eb",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-dark",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-dark-high-contrast",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-dark-high-contrast.png",
+      "baselineSha256": "b4c448550c51db33dd1789f391e047e3e98b1e9d37a1c676a78c363774f56208",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-dark-high-contrast",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-dark-medium-contrast",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-dark-medium-contrast.png",
+      "baselineSha256": "42c73f334a4c44cadc35526773d575cd687c53dd4c36dc8785fc6a591e75b099",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-dark-medium-contrast",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-monochrome-lt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-monochrome-lt.png",
+      "baselineSha256": "2104c54ffc3021e772742cec384982acb91ae3f420a2d54a4547de961dcfb9dc",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-monochrome-lt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-monochrome-dt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-monochrome-dt.png",
+      "baselineSha256": "5e65d200ea9350445c42d1772f31616ade7fd442356f3f8c718054fdfdf3fe48",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-monochrome-dt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-pink-lt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-pink-lt.png",
+      "baselineSha256": "eed9c7486793e295b99a637c957111d42cd173abedd49665e7457948eadd7a72",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-pink-lt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-pink-dt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-pink-dt.png",
+      "baselineSha256": "badc76b6565ad02c79bca34f32226672e9393da8edba144de2e1a58ecf7f5a33",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-pink-dt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-rose-lt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-rose-lt.png",
+      "baselineSha256": "1bf7b5a45e19f58b9a81d8f18a6414b41b8fd5e23013fd436f647c02f1d45df6",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-rose-lt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-rose-dt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-rose-dt.png",
+      "baselineSha256": "6aaaec392d73f1f68b7174cc0db34baf58a3c51d468ea59a959646e3636af91c",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-rose-dt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-red-lt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-red-lt.png",
+      "baselineSha256": "6c04ca150c800aacc8a726aa356fea963369c458bb1930a0133c7b3beda53da2",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-red-lt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-red-dt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-red-dt.png",
+      "baselineSha256": "f36352c6b719dd2fe44e81caf5ac753a7c2a309ae1acbf07224b870dc920418c",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-red-dt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-orange-lt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-orange-lt.png",
+      "baselineSha256": "c44c2d3c46a221133d92211305eda2912585e4eed5df5cd09b031223e05ac4da",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-orange-lt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-orange-dt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-orange-dt.png",
+      "baselineSha256": "88a5b7ad025d72e9340dd60cf754a0d3e22c0c045c88d30b9afef4eff660085b",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-orange-dt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-yellow-lt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-yellow-lt.png",
+      "baselineSha256": "45f583206cc8e75b4ffd7e70044b9cf7b633fe7f544aa4ed4197c5aea8ecce72",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-yellow-lt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-yellow-dt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-yellow-dt.png",
+      "baselineSha256": "82350e7f2112398a9c043ec405ac7fd2a6e7de0111783b1a6ab552d5c599ff75",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-yellow-dt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-chartreuse-lt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-chartreuse-lt.png",
+      "baselineSha256": "af2991ef85376ba437f9c8e329879967f84d53db816be7e400b4a62b56661fb8",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-chartreuse-lt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-chartreuse-dt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-chartreuse-dt.png",
+      "baselineSha256": "08bf0996ab36e299597d28bfeeda8c5c1304a92031bdce6958acf6e54a3fb6f5",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-chartreuse-dt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-green-lt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-green-lt.png",
+      "baselineSha256": "b72729cf93f689289c40356cc30b164c96522360af46bfb54fe602f70bc5461d",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-green-lt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-green-dt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-green-dt.png",
+      "baselineSha256": "8b434b54e245410340d6dc333c1910cb940050490fca4bc453b2c4aa1dce4f9e",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-green-dt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-teal-lt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-teal-lt.png",
+      "baselineSha256": "b48035516978a0fa5121ad0cef99d348cf0a855e82fd492cee3eef15cb18f597",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-teal-lt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-teal-dt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-teal-dt.png",
+      "baselineSha256": "803a289c2d5b0b77412cb1c85500a9bd1abecd5e7afc32741fbaf757fbe5d74f",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-teal-dt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-cyan-lt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-cyan-lt.png",
+      "baselineSha256": "7209c5ae69e9ccdf67fdbbdeed93df3559ff7667499692b65991084f32dc1d71",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-cyan-lt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-cyan-dt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-cyan-dt.png",
+      "baselineSha256": "8061c62eec7d2c8424736167e813be6d60a066010a9a0fb651c22c20818d2b5a",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-cyan-dt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-blue-lt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-blue-lt.png",
+      "baselineSha256": "7c3e2e4263c898a501232334881edf92fff730c515212d55acad035568761f9b",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-blue-lt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-blue-dt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-blue-dt.png",
+      "baselineSha256": "61cb2e4bdbb508297d6312397026366e4bc9f6d6aeedeb23458bcab15ffa4ec2",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-blue-dt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-indigo-lt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-indigo-lt.png",
+      "baselineSha256": "fd70188d68c4cb1d0ef5db3b2c8fd7ef67d196519f6909a2bf983603d0f2516d",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-indigo-lt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-indigo-dt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-indigo-dt.png",
+      "baselineSha256": "e8baaa5ee69deb7cb548dd32cd283d8fadffc9a17773ed41855c559b15201a4f",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-indigo-dt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-purple-lt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-purple-lt.png",
+      "baselineSha256": "e0e78cd49fe66d1d43179b96dc90f3c1998726395677db61946e3181143c6fe2",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-purple-lt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "color-kit-purple-dt",
+      "dimensions": [
+        "color"
+      ],
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "baseline": "internal/material3-migration/sources/color-reference/color-kit-purple-dt.png",
+      "baselineSha256": "ac473c0c4801e76d9c0b761436fbe882407fa821e9e5798f83ea6e2dae0778c5",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; kit-purple-dt",
+        "state": "static-role-map"
+      }
+    },
+    {
+      "id": "typography-light",
+      "dimensions": [
+        "typography"
+      ],
+      "sourceReference": "Pinned Compose baseline and emphasized TypographyTokens; licensed Roboto browser fixture",
+      "baseline": "internal/material3-migration/sources/typography-reference/typography-light.png",
+      "baselineSha256": "08601c2de84fd787e7e7d86dd380781b4c90dcf2b94a62924c4107152ad3252e",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1280,
+          "height": 1744
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "All 30 Compose type roles, Aa 0123456789",
+        "state": "static"
+      }
+    },
+    {
+      "id": "typography-dark",
+      "dimensions": [
+        "typography"
+      ],
+      "sourceReference": "Pinned Compose baseline and emphasized TypographyTokens; licensed Roboto browser fixture",
+      "baseline": "internal/material3-migration/sources/typography-reference/typography-dark.png",
+      "baselineSha256": "aea5fa7e4de4b0e02800c19734e36912cc34001ac6b2204869c6d1f313a6dfd3",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1280,
+          "height": 1744
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "All 30 Compose type roles, Aa 0123456789",
+        "state": "static"
+      }
+    },
+    {
+      "id": "shape-light",
+      "dimensions": [
+        "shape"
+      ],
+      "sourceReference": "Pinned Compose ShapeTokens and frozen kit corner mappings",
+      "baseline": "internal/material3-migration/sources/corner-reference/corners-light.png",
+      "baselineSha256": "0ecee32b27b06f385c03ba1b72cc111ad57951429296800202ac6869e0e3db1c",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1200,
+          "height": 480
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "Ten Compose corner roles",
+        "state": "static"
+      }
+    },
+    {
+      "id": "shape-dark",
+      "dimensions": [
+        "shape"
+      ],
+      "sourceReference": "Pinned Compose ShapeTokens and frozen kit corner mappings",
+      "baseline": "internal/material3-migration/sources/corner-reference/corners-dark.png",
+      "baselineSha256": "3273c301a0abb805846c416c54a5ce4c568ebb74c6a46d2ed4093f7241c1432f",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1200,
+          "height": 480
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "Ten Compose corner roles",
+        "state": "static"
+      }
+    },
+    {
+      "id": "shape-expressive-light",
+      "dimensions": [
+        "shape"
+      ],
+      "sourceReference": "Pinned Compose MaterialShapes compiled cubics; kit 35-variant mapping",
+      "baseline": "internal/material3-migration/sources/shape-reference/compose-expressive-shapes.png",
+      "baselineSha256": "db0f8615a1f635bd3fc629a0a8ce0d1091bf7fcc1f44f9128bf8cf51d1187e73",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1540,
+          "height": 1100
+        },
+        "fonts": [
+          {
+            "family": "Arial",
+            "purpose": "index labels only"
+          }
+        ],
+        "theme": "light",
+        "content": "All 35 compiled Compose MaterialShapes cubics",
+        "state": "static-expressive-shapes"
+      }
+    },
+    {
+      "id": "shape-expressive-dark",
+      "dimensions": [
+        "shape"
+      ],
+      "sourceReference": "Pinned Compose MaterialShapes compiled cubics; kit 35-variant mapping",
+      "baseline": "internal/material3-migration/sources/shape-reference/compose-expressive-shapes-dark.png",
+      "baselineSha256": "0ff6812d5dba50d5997d3510d5fb14cfc3fdc1ad9753653ded0ee0b83a7d0c76",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1540,
+          "height": 1100
+        },
+        "fonts": [
+          {
+            "family": "Arial",
+            "purpose": "index labels only"
+          }
+        ],
+        "theme": "dark",
+        "content": "All 35 compiled Compose MaterialShapes cubics",
+        "state": "static-expressive-shapes"
+      }
+    },
+    {
+      "id": "elevation-light",
+      "dimensions": [
+        "elevation"
+      ],
+      "sourceReference": "Pinned Compose tonal elevation formula and independent browser shadow geometry",
+      "baseline": "internal/material3-migration/sources/elevation-reference/elevation-light.png",
+      "baselineSha256": "abc594faeade33f7ab69b0ff53e6201dfb86c1001f042c3418fe4e41b28569a6",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1280,
+          "height": 760
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Levels 0–5, nested tonal surface, browser shadow",
+        "state": "static"
+      }
+    },
+    {
+      "id": "elevation-dark",
+      "dimensions": [
+        "elevation"
+      ],
+      "sourceReference": "Pinned Compose tonal elevation formula and independent browser shadow geometry",
+      "baseline": "internal/material3-migration/sources/elevation-reference/elevation-dark.png",
+      "baselineSha256": "0055ac6dfe15f85718699ed047e9509947ba9db84ca8c1605546fa02be5bd3d3",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1280,
+          "height": 760
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Levels 0–5, nested tonal surface, browser shadow",
+        "state": "static"
+      }
+    },
+    {
+      "id": "state-layers-light",
+      "dimensions": [
+        "state-layers"
+      ],
+      "sourceReference": "Pinned Compose StateTokens, Ripple and filled Button binding; kit state styles",
+      "baseline": "internal/material3-migration/sources/state-reference/state-light.png",
+      "baselineSha256": "ea98b4913beb1ffc8672fb85c726b55d0324f1fe84b1066a7d01059c4f5d6fd3",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 560
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Generic OnSurface states and filled Button states",
+        "state": "rest-hover-focus-pressed-dragged-disabled"
+      }
+    },
+    {
+      "id": "state-layers-dark",
+      "dimensions": [
+        "state-layers"
+      ],
+      "sourceReference": "Pinned Compose StateTokens, Ripple and filled Button binding; kit state styles",
+      "baseline": "internal/material3-migration/sources/state-reference/state-dark.png",
+      "baselineSha256": "92e11378ae6350c4acf705d22fc35f330ba34b5429cee62c0a8d0d759864fe46",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 560
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Generic OnSurface states and filled Button states",
+        "state": "rest-hover-focus-pressed-dragged-disabled"
+      }
+    },
+    {
+      "id": "spacing-density-light",
+      "dimensions": [
+        "spacing-density"
+      ],
+      "sourceReference": "Pinned Compose baseline/expressive Button and TextField defaults",
+      "baseline": "internal/material3-migration/sources/spacing-reference/spacing-light.png",
+      "baselineSha256": "b1c884485e2026701ee13b758a17a77e24cb031625d4264b7ba2f99d6e9d3170",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 640
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Button and TextField default geometry diagrams",
+        "state": "static"
+      }
+    },
+    {
+      "id": "spacing-density-dark",
+      "dimensions": [
+        "spacing-density"
+      ],
+      "sourceReference": "Pinned Compose baseline/expressive Button and TextField defaults",
+      "baseline": "internal/material3-migration/sources/spacing-reference/spacing-dark.png",
+      "baselineSha256": "8806585c80a2c0b7e894040578a0832dd555fb6392053d91ddba4bd87dc0eb41",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 640
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Button and TextField default geometry diagrams",
+        "state": "static"
+      }
+    },
+    {
+      "id": "spacing-density-narrowLight",
+      "dimensions": [
+        "spacing-density"
+      ],
+      "sourceReference": "Pinned Compose baseline/expressive Button and TextField defaults",
+      "baseline": "internal/material3-migration/sources/spacing-reference/spacing-narrow-light.png",
+      "baselineSha256": "4e40042d0407723d65e34adf7c360f6fd1b58d47b28918d452f647be5b15715f",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 390,
+          "height": 1100
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Button and TextField default geometry diagrams",
+        "state": "static-narrow",
+        "direction": "ltr"
+      }
+    },
+    {
+      "id": "spacing-density-rtlDark",
+      "dimensions": [
+        "spacing-density"
+      ],
+      "sourceReference": "Pinned Compose baseline/expressive Button and TextField defaults",
+      "baseline": "internal/material3-migration/sources/spacing-reference/spacing-rtl-dark.png",
+      "baselineSha256": "f4f818a5545135bac002c9f9fe4d410583d7e2af4c567712f3603e6f3837da73",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 640
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Button and TextField default geometry diagrams",
+        "state": "static-rtl",
+        "direction": "rtl"
+      }
+    },
+    {
+      "id": "icons-light",
+      "dimensions": [
+        "icons"
+      ],
+      "sourceReference": "Pinned Compose Icon fallback/tint; Google Material Symbols artwork gap fill",
+      "baseline": "internal/material3-migration/sources/icon-reference/icons-light.png",
+      "baselineSha256": "676e66b5834757533369cbd22d1b3d71f424a9aa7f04e48a9b13ae7f2224c9bf",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 640
+        },
+        "fonts": [
+          {
+            "family": "Material Symbols Outlined",
+            "sha256": "c5c96fcb27145d17a04cb2fa68d33921ca4258c6bb2cf6fac8b1bce401595e57",
+            "loaded": true
+          },
+          {
+            "family": "Material Symbols Rounded",
+            "sha256": "0865c62d7fda358cd4cdb77792b758afa66fae2c4159fa3fb04a2c1d05700e9e",
+            "loaded": true
+          },
+          {
+            "family": "Material Symbols Sharp",
+            "sha256": "2349783253d47d2d1b92ab63dd4284988f05e73459aa9c8f6e9a78ed360101c9",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "close, check and search in three font families plus pinned SVG paths",
+        "state": "static-glyph-samples"
+      }
+    },
+    {
+      "id": "icons-dark",
+      "dimensions": [
+        "icons"
+      ],
+      "sourceReference": "Pinned Compose Icon fallback/tint; Google Material Symbols artwork gap fill",
+      "baseline": "internal/material3-migration/sources/icon-reference/icons-dark.png",
+      "baselineSha256": "6f62cbf88cfdf4d902f126e8add4ed3010e7af14c0ca16aa1154b3d8ac34cc17",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 640
+        },
+        "fonts": [
+          {
+            "family": "Material Symbols Outlined",
+            "sha256": "c5c96fcb27145d17a04cb2fa68d33921ca4258c6bb2cf6fac8b1bce401595e57",
+            "loaded": true
+          },
+          {
+            "family": "Material Symbols Rounded",
+            "sha256": "0865c62d7fda358cd4cdb77792b758afa66fae2c4159fa3fb04a2c1d05700e9e",
+            "loaded": true
+          },
+          {
+            "family": "Material Symbols Sharp",
+            "sha256": "2349783253d47d2d1b92ab63dd4284988f05e73459aa9c8f6e9a78ed360101c9",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "close, check and search in three font families plus pinned SVG paths",
+        "state": "static-glyph-samples"
+      }
+    },
+    {
+      "id": "motion-light",
+      "dimensions": [
+        "motion"
+      ],
+      "sourceReference": "Pinned Kotlin SpringSimulation traces and watched Material guidance clips",
+      "baseline": "internal/material3-migration/sources/motion/source-reference/motion-light.png",
+      "baselineSha256": "bce2b1a730268c2376635b074dd5b78c4ff7df41ae974e9db3e0c3d4ffcd833c",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 520
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Standard and Expressive default spatial positions at 0, 120, 260, 600, 900 and 1380 ms",
+        "state": "retargeted-reversed-upstream-trace"
+      }
+    },
+    {
+      "id": "motion-dark",
+      "dimensions": [
+        "motion"
+      ],
+      "sourceReference": "Pinned Kotlin SpringSimulation traces and watched Material guidance clips",
+      "baseline": "internal/material3-migration/sources/motion/source-reference/motion-dark.png",
+      "baselineSha256": "01e0b6a80febb4997e107fcab88f12f832ca20f7b8f1de594cb9d185ad53f6e0",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 520
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Standard and Expressive default spatial positions at 0, 120, 260, 600, 900 and 1380 ms",
+        "state": "retargeted-reversed-upstream-trace"
+      }
+    }
+  ],
+  "motion": {
+    "applicable": true,
+    "reference": "internal/material3-migration/sources/motion/source-reference/compose-default-spatial.mp4",
+    "sha256": "21fc9c41fe818d9be0d61c5e54635b1292d16b2cd69a1162357c7a2074a2fd03",
+    "evidence": "internal/material3-migration/sources/motion/README.md",
+    "numeric": {
+      "applicable": true,
+      "traces": [
+        {
+          "id": "standard-default-spatial",
+          "reference": "internal/material3-migration/sources/motion/upstream/traces/standard-default-spatial.json",
+          "unit": "px",
+          "approvalReference": null
+        },
+        {
+          "id": "expressive-default-spatial",
+          "reference": "internal/material3-migration/sources/motion/upstream/traces/expressive-default-spatial.json",
+          "unit": "px",
+          "approvalReference": null
+        }
+      ],
+      "status": "pending native measurement and human tolerance approval"
+    }
+  },
+  "performance": [
+    {
+      "id": "desktop-chrome-macos-reference",
+      "approvalReference": null,
+      "status": "proposed for source-task QA; native measurement pending",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "device": "macOS desktop reference",
+        "refreshRateHz": 60
+      },
+      "maxInputLatencyMs": 100,
+      "frameBudgetMs": 16.67,
+      "maxLongFrameRatio": 0.05,
+      "minInputSamples": 30,
+      "minFrameSamples": 300
+    }
+  ]
+}

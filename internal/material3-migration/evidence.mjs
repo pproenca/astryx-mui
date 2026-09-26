@@ -166,8 +166,13 @@ export function validateReceipt(receipt, policy, task, revision) {
   );
   for (const key of policy.evidenceRequirements) {
     const check = receipt.checks?.[key];
+    const sourceOnlyNA =
+      task.Layer === 'Source' &&
+      receipt.reviewKind === 'document' &&
+      check?.result === 'N/A' &&
+      check.reason;
     required(
-      check?.result === 'Pass' &&
+      (check?.result === 'Pass' || sourceOnlyNA) &&
         Array.isArray(check.evidence) &&
         check.evidence.length,
       `Missing evidence: ${key}`,

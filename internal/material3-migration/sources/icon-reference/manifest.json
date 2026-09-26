@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "figmaSha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+  "composeIcon": {
+    "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Icon.kt",
+    "sha256": "6cd5f934957681e845282976b07fc418453ed20e50ee09dd7e0b19b7d09d40fb"
+  },
+  "composeFallbackSize": 24,
+  "googleIconCommit": "bd8cb85bd4bad964fe6918f79665bb40c3a8efef",
+  "fontPins": {
+    "Outlined": "c5c96fcb27145d17a04cb2fa68d33921ca4258c6bb2cf6fac8b1bce401595e57",
+    "Rounded": "0865c62d7fda358cd4cdb77792b758afa66fae2c4159fa3fb04a2c1d05700e9e",
+    "Sharp": "2349783253d47d2d1b92ab63dd4284988f05e73459aa9c8f6e9a78ed360101c9"
+  },
+  "artwork": {
+    "close": {
+      "sourcePath": "symbols/web/close/materialsymbolsoutlined/close_24px.svg",
+      "sha256": "a82592b0faa0b104a4d4b0530bb05c6a4bfed5728f5aad03ae8e7a19f32b5511"
+    },
+    "check": {
+      "sourcePath": "symbols/web/check/materialsymbolsoutlined/check_24px.svg",
+      "sha256": "01edd53418816632be08e9565b8ca40d9028c230a8a67baaf4b8a1de20db00e6"
+    },
+    "search": {
+      "sourcePath": "symbols/web/search/materialsymbolsoutlined/search_24px.svg",
+      "sha256": "46d4ab85eba6eb4fe7c9a9a4c4db2fdf8fa9cc74c1f398ac72e7d872d490dd4c"
+    }
+  },
+  "kitIconSetCount": 21,
+  "cases": {
+    "light": {
+      "theme": {
+        "surface": "#fef7ff",
+        "surfaceContainerLow": "#f7f2fa",
+        "primary": "#6750a4",
+        "onPrimary": "#ffffff",
+        "onSurface": "#1d1b20"
+      },
+      "glyphs": [
+        "close",
+        "check",
+        "search"
+      ],
+      "axes": {
+        "fill": 0,
+        "weight": 400,
+        "grade": 0,
+        "opticalSize": 24
+      }
+    },
+    "dark": {
+      "theme": {
+        "surface": "#141218",
+        "surfaceContainerLow": "#1d1b20",
+        "primary": "#d0bcff",
+        "onPrimary": "#381e72",
+        "onSurface": "#e6e0e9"
+      },
+      "glyphs": [
+        "close",
+        "check",
+        "search"
+      ],
+      "axes": {
+        "fill": 0,
+        "weight": 400,
+        "grade": 0,
+        "opticalSize": 24
+      }
+    }
+  },
+  "browser": "Chrome 153.0.8010.53",
+  "os": "darwin 27.0.0",
+  "dpr": 1,
+  "viewport": {
+    "width": 1180,
+    "height": 640
+  },
+  "files": {
+    "icons-light.png": "676e66b5834757533369cbd22d1b3d71f424a9aa7f04e48a9b13ae7f2224c9bf",
+    "icons-dark.png": "6f62cbf88cfdf4d902f126e8add4ed3010e7af14c0ca16aa1154b3d8ac34cc17"
+  }
+}

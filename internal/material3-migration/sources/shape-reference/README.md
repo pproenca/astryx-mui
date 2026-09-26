@@ -3,7 +3,10 @@
 This reference supports `M3-SRC-001`. The
 [`35-shape contact sheet`](compose-expressive-shapes.png) follows the kit's
 seven-column display order and uses all 35 normalized `MaterialShapes` cubic
-paths. Its [SVG](compose-expressive-shapes.svg) retains vector geometry, and
+paths. Its [SVG](compose-expressive-shapes.svg) retains vector geometry. The
+[Dark contact sheet](compose-expressive-shapes-dark.png) uses the same paths
+with pinned Compose Dark Primary over Dark Surface; its
+[SVG](compose-expressive-shapes-dark.svg) retains that source color binding.
 [`manifest.json`](manifest.json) maps every Compose name to the frozen kit's
 property value. The only nontrivial naming collision is Compose `ClamShell`
 versus the kit property `Hexagon`, whose rendered caption says `Clamshell`.
@@ -19,7 +22,7 @@ to compile the exact pinned `MaterialShapes.kt` and `graphics-shapes` source,
 render both fixtures, and compare their bytes. The compile-only shims in
 [`probe`](probe/) supply unavailable Compose and collection types; no polygon
 curve is redrawn by hand. The generator checks the AndroidX revision, source
-hashes, all 35 kit mappings, and the Compose light-primary fill. Chrome and
+hashes, all 35 kit mappings, and the Compose light/dark Primary fills. Chrome and
 Kotlin compiler versions are recorded in the manifest. `--check` requires a
 matching Chrome rendering environment for the PNG hashes. The shims implement
 the rotation and scale operations used by these getters; this probe reads

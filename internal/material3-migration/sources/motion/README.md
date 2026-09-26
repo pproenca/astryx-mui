@@ -54,3 +54,8 @@ The [pinned Compose trajectory probes](upstream/README.md) supply independent
 position/velocity references for an interrupted and reversed input sequence.
 They execute upstream Kotlin and are separate from these watched visual clips;
 neither source by itself verifies native browser motion.
+The [Compose source replay](source-reference/README.md) renders two default
+spatial traces as a local MP4 and aligned light/dark timed-frame sheets. It is
+derived from Kotlin positions and frame-checked; the official clips above are
+the separately watched normal-speed references. Native playback and reduced
+motion remain open.

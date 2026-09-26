@@ -181,20 +181,25 @@ if (
 
 const token = name =>
   compose.tokens.find(item => item.name === name)?.values || [];
-const primary = token('ColorLightTokens').find(item => item.name === 'Primary');
-const palette = token('PaletteTokens').find(
-  item => item.name === primary?.expression.slice('PaletteTokens.'.length),
-);
-const rgb = palette?.expression.match(
-  /^Color\(red = (\d+), green = (\d+), blue = (\d+)\)$/,
-);
-const fill = rgb
-  ? `#${rgb
-      .slice(1)
-      .map(n => Number(n).toString(16).padStart(2, '0'))
-      .join('')}`
-  : null;
-if (fill !== '#6750a4') throw new Error('Pinned shape sample fill changed');
+const roleColor = (mode, role) => {
+  const selected = token(`Color${mode}Tokens`).find(item => item.name === role);
+  const palette = token('PaletteTokens').find(
+    item => item.name === selected?.expression.slice('PaletteTokens.'.length),
+  );
+  const rgb = palette?.expression.match(
+    /^Color\(red = (\d+), green = (\d+), blue = (\d+)\)$/,
+  );
+  return rgb
+    ? `#${rgb
+        .slice(1)
+        .map(n => Number(n).toString(16).padStart(2, '0'))
+        .join('')}`
+    : null;
+};
+const fill = roleColor('Light', 'Primary');
+const darkFill = roleColor('Dark', 'Primary');
+if (fill !== '#6750a4' || darkFill !== '#d0bcff')
+  throw new Error('Pinned shape sample fill changed');
 const pathData = cubics => {
   const parts = ['M', cubics[0][0], cubics[0][1]];
   for (const cubic of cubics) parts.push('C', ...cubic.slice(2));
@@ -203,14 +208,22 @@ const pathData = cubics => {
 };
 const size = 170;
 const cell = 220;
-const tiles = shapes.map((shape, index) => {
-  const x = (index % 7) * cell + (cell - size) / 2;
-  const y = Math.floor(index / 7) * cell + 15;
-  return `<path d="${pathData(shape.cubics)}" transform="translate(${x} ${y}) scale(${size})" fill="${fill.toUpperCase()}"/><text x="${x + size / 2}" y="${y + size + 24}" text-anchor="middle" font-family="Arial" font-size="14" fill="#202124">${shape.compose}</text>`;
-});
 const attribution =
   '<!-- Derived from pinned MaterialShapes, Copyright 2024 The Android Open Source Project; Apache-2.0, see ../LICENSE.androidx. -->';
-const montage = `<svg width="1540" height="1100" viewBox="0 0 1540 1100" xmlns="http://www.w3.org/2000/svg">${attribution}<rect width="1540" height="1100" fill="#fff"/>${tiles.join('')}</svg>`;
+const montageFor = (shapeFill, background, labelColor) => {
+  const tiles = shapes.map((shape, index) => {
+    const x = (index % 7) * cell + (cell - size) / 2;
+    const y = Math.floor(index / 7) * cell + 15;
+    return `<path d="${pathData(shape.cubics)}" transform="translate(${x} ${y}) scale(${size})" fill="${shapeFill.toUpperCase()}"/><text x="${x + size / 2}" y="${y + size + 24}" text-anchor="middle" font-family="Arial" font-size="14" fill="${labelColor}">${shape.compose}</text>`;
+  });
+  return `<svg width="1540" height="1100" viewBox="0 0 1540 1100" xmlns="http://www.w3.org/2000/svg">${attribution}<rect width="1540" height="1100" fill="${background}"/>${tiles.join('')}</svg>`;
+};
+const montage = montageFor(fill, '#fff', '#202124');
+const darkMontage = montageFor(
+  darkFill,
+  roleColor('Dark', 'Surface'),
+  '#e6e0e9',
+);
 const clam = shapes.find(item => item.compose === 'ClamShell');
 const px = value => +(value * 380).toFixed(5);
 const clamParts = ['M', px(clam.cubics[0][0]), px(clam.cubics[0][1])];
@@ -223,6 +236,7 @@ const files = {};
 try {
   for (const [name, svg, width, height, transparent] of [
     ['compose-expressive-shapes', montage, 1540, 1100, false],
+    ['compose-expressive-shapes-dark', darkMontage, 1540, 1100, false],
     ['compose-clam-shell', clamSvg, 380, 380, true],
   ]) {
     const page = await browser.newPage({
@@ -248,6 +262,7 @@ try {
     browser: `Chrome ${browser.version()}`,
     dpr: 1,
     fill,
+    darkFill,
     labels: 'Arial index aids only; not part of geometry comparison',
     mappings,
     files: Object.fromEntries(
