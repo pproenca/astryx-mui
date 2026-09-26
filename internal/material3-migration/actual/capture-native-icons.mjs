@@ -14,6 +14,7 @@ import {material3ColorValues, material3FoundationGeometry, material3IconDefaults
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const sourceRoot = path.join(repo, 'internal/material3-migration/sources/icon-reference');
 const output = path.join(repo, 'internal/material3-migration/actual/M3-NAT-002');
+const check = process.argv.includes('--check');
 const manifest = JSON.parse(await fs.readFile(path.join(sourceRoot, 'manifest.json')));
 const artwork = JSON.parse(await fs.readFile(path.join(repo, 'packages/themes/material3/src/material3IconSource.json')));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -39,7 +40,7 @@ const svg = name => {
 const browser = await chromium.launch({channel: 'chrome', headless: true});
 try {
   assert.equal(`Chrome ${browser.version()}`, manifest.browser);
-  await fs.mkdir(output, {recursive: true});
+  if (!check) await fs.mkdir(output, {recursive: true});
   for (const mode of ['light', 'dark']) {
     const values = material3ColorValues(mode);
     const theme = {
@@ -68,7 +69,10 @@ try {
     const actual = PNG.sync.read(bytes);
     const expected = PNG.sync.read(await fs.readFile(path.join(sourceRoot, `icons-${mode}.png`)));
     assert.equal(pixelmatch(actual.data, expected.data, null, expected.width, expected.height, {threshold: 0, includeAA: true}), 0, `${mode} icon pixels`);
-    await fs.writeFile(path.join(output, `icons-${mode}.png`), bytes);
+    const actualFile = path.join(output, `icons-${mode}.png`);
+    if (check)
+      assert.ok((await fs.readFile(actualFile)).equals(bytes), `${mode} committed native icon capture`);
+    else await fs.writeFile(actualFile, bytes);
     await page.close();
   }
   console.log(`Chrome ${browser.version()}: native icon size/tint graph matches pinned font and artwork source pixels.`);

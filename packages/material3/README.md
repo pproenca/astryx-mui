@@ -58,7 +58,7 @@ compatibility and native regression evidence, deprecation notice, and an
 explicitly approved major-release decision. The migration workbook owns task
 order and acceptance; this section records the public compatibility boundary.
 
-## Boundary fixture
+## Foundation fixtures
 
 Open `fixtures/native-token.html` to exercise scoped Material variable
 overrides. Its deliberately distinct probe colors are structural test inputs,
@@ -67,6 +67,9 @@ package, role-name inventory, Chrome computed styles, and exact light/dark
 reference comparisons for color, typography, corners, Expressive shapes,
 spacing/density, tonal elevation, static state layers, and interrupted spring
 frames. The spring sampler is checked against all 12 independent pinned Kotlin
-traces, including velocity and settling. Browser input response, frame pacing,
-reduced-motion interaction, and the complete human QA receipt remain pending
-for this foundation slice.
+traces, including velocity and settling. Open `fixtures/foundation.html` through
+a local server to interact with native color scopes, Expressive shape and spring
+entry, exit, interruption, reversal and reduced motion. The browser checks
+measure input response and frame pacing against the approved foundation
+profile. Human QA remains required at the verified revision before this slice
+can be accepted.

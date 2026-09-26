@@ -20,6 +20,12 @@ verified_by:
     packages/themes/material3/src/MaterialSymbol.test.tsx,
     packages/themes/material3/src/MaterialBadge.test.tsx,
     packages/themes/material3/scripts/check-theme-parity.mjs,
+    packages/material3/src/foundation.test.ts,
+    packages/material3/src/motion.test.ts,
+    packages/material3/scripts/check-foundation-browser.mjs,
+    packages/material3/scripts/check-layer-browser.mjs,
+    packages/material3/scripts/check-spacing-browser.mjs,
+    packages/material3/scripts/check-foundation-interaction.mjs,
   ]
 package: '@astryxdesign/theme-material3'
 source_theme: packages/themes/material3/src/material3Theme.ts
@@ -85,8 +91,10 @@ may depend on the temporary harness or its caches. Final acceptance requires the
 complete native inventory and an isolated build/test run with that harness absent.
 
 The family target is a native Material 3 component system under
-`@astryxdesign/material3` (`packages/material3`). That package is planned work;
-the presently shipped workspace implementation remains the additive
+`@astryxdesign/material3` (`packages/material3`). Its private package boundary
+and canonical foundation graph are implemented. Native Button, TextInput and
+the remaining component inventory still require their own acceptance. The
+presently shipped workspace implementation remains the additive
 `@astryxdesign/theme-material3` bridge and its initial component integrations.
 This record owns the family token and compatibility direction. Each native
 component's direct record owns its anatomy, defaults, states and public API.
@@ -105,6 +113,13 @@ reference the canonical roles and must respond to scoped system/component
 overrides; independent copies of resolved values are transitional debt. Native
 typed helpers resolve the same graph as runtime and compiled CSS. This does not
 add Material names to Core's portable TokenName or change its token helpers.
+
+The compatibility bridge emits portable aliases as CSS references to Material
+roles on its theme scope. A role override on that same scope recomputes the
+alias. CSS computes an inherited alias at its declaration scope, so an override
+placed only on a deeper descendant needs a portable alias declaration at that
+descendant to affect a Core consumer. Native components read the Material role
+at their own element and do not inherit this compatibility constraint.
 
 Existing source fixtures and human QA remain evidence of the implementation and
 contract they tested. Native conformance requires a new verification revision,

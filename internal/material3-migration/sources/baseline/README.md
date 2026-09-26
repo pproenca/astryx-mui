@@ -13,8 +13,10 @@ The selected motion reference is a clip derived from the pinned Kotlin trace;
 the official guidance clips were separately watched and are retained by hash
 in [motion observations](../motion/README.md) rather than redistributed.
 
-Performance budgets and numeric browser trajectory tolerances require native
-measurements and a human approval reference before implementation verification.
-The baseline marks its initial browser profile as proposed and leaves the
-trajectory tolerances unapproved. Source-task review can decide this proposed
-profile; it cannot stand in for later native input and frame measurements.
+The foundation baseline includes owner-approved motion tolerances and a
+Chrome/macOS performance profile from native browser measurements on 2026-09-26.
+It includes separate start, intermediate and settled light/dark motion panels,
+cropped from the pinned source contact sheets. The native browser captures and
+their exact RGBA diffs are under `internal/material3-migration/actual/M3-NAT-002`.
+This approval is for the foundation measurement profile; component-specific
+motion and browser behavior still need their own acceptance.
