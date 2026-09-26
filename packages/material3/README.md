@@ -41,8 +41,9 @@ Material component roles. Native components consume those Material roles
 directly. The existing `@astryxdesign/theme-material3` package remains a
 separate Core compatibility entry point: its portable `--color-*`, `--text-*`,
 `--radius-*`, and other aliases reference canonical Material roles in one
-direction. Native code must not import that package or depend on its aliases.
-The bridge migration and full foundation QA remain part of the current slice.
+direction. Native code does not import that package or depend on its aliases.
+The published Core bridge bundles the native graph at build time, so its
+released entry point does not require this private package at runtime.
 
 Replacement imports will be published per component only after native
 verification. A themed `@astryxdesign/core/Button` consumer, for example, will
@@ -62,7 +63,10 @@ order and acceptance; this section records the public compatibility boundary.
 Open `fixtures/native-token.html` to exercise scoped Material variable
 overrides. Its deliberately distinct probe colors are structural test inputs,
 not a Material visual baseline. `pnpm build` and `pnpm test` check the emitted
-package, role-name inventory, Chrome computed styles, and exact color and
-typography comparisons against pinned reference captures. Foundation motion,
-geometry, elevation, and state comparisons still require acceptance before
-this slice closes.
+package, role-name inventory, Chrome computed styles, and exact light/dark
+reference comparisons for color, typography, corners, Expressive shapes,
+spacing/density, tonal elevation, static state layers, and interrupted spring
+frames. The spring sampler is checked against all 12 independent pinned Kotlin
+traces, including velocity and settling. Browser input response, frame pacing,
+reduced-motion interaction, and the complete human QA receipt remain pending
+for this foundation slice.

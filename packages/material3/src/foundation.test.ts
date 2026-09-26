@@ -1,30 +1,44 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
 import {describe, expect, it} from 'vitest';
+import {readFileSync} from 'node:fs';
 import {
   material3ColorValues,
   material3CornerShapes,
   material3ElevationLevels,
+  material3ElevationShadowLayers,
   material3ExpressiveShapes,
   material3FoundationGeometry,
+  material3FilledButtonStateColors,
   material3IconDefaults,
   material3KitModeNames,
+  material3LayerColor,
   material3SpringSpecs,
   material3StateOpacity,
   material3TokenCss,
   material3TokenValues,
+  material3TonalElevation,
   material3TypeStyles,
   resolveMaterial3Token,
 } from './foundation';
 import {material3SystemColorRoles} from './tokens';
+
+const reference = (name: string) =>
+  JSON.parse(
+    readFileSync(
+      new URL(`../fixtures/references/${name}/manifest.json`, import.meta.url),
+      'utf8',
+    ),
+  );
 
 describe('pinned Compose-first native foundation', () => {
   it('resolves all 49 system roles in standard light/dark and Expressive light', () => {
     for (const scheme of ['light', 'dark', 'expressive-light'] as const) {
       const colors = material3ColorValues(scheme);
       expect(Object.keys(colors)).toHaveLength(49);
-      for (const role of material3SystemColorRoles)
-        {expect(colors[role]).toMatch(/^#[a-f0-9]{3,8}$/i);}
+      for (const role of material3SystemColorRoles) {
+        expect(colors[role]).toMatch(/^#[a-f0-9]{3,8}$/i);
+      }
     }
     expect(material3ColorValues('light')['on-primary-container']).toBe(
       '#21005d',
@@ -36,8 +50,9 @@ describe('pinned Compose-first native foundation', () => {
       '#eaddff',
     );
     expect(material3KitModeNames).toHaveLength(32);
-    for (const mode of material3KitModeNames)
-      {expect(Object.keys(material3ColorValues(mode))).toHaveLength(49);}
+    for (const mode of material3KitModeNames) {
+      expect(Object.keys(material3ColorValues(mode))).toHaveLength(49);
+    }
   });
 
   it('keeps Compose-only values outside public Material CSS names', () => {
@@ -66,6 +81,59 @@ describe('pinned Compose-first native foundation', () => {
     expect(Object.keys(graph).some(name => name.includes('emphasized'))).toBe(
       false,
     );
+  });
+
+  it('matches all pinned tonal, shadow and state reference values', () => {
+    const elevation = reference('elevation');
+    const state = reference('state');
+    expect(material3ElevationLevels).toEqual(elevation.levels);
+    expect(material3StateOpacity).toEqual(state.stateOpacity);
+    for (const scheme of ['light', 'dark'] as const) {
+      const caseValues = elevation.cases[scheme];
+      elevation.levels.forEach(
+        (item: {level: number; dp: number}, index: number) => {
+          expect(
+            material3TonalElevation(scheme, item.dp),
+            `${scheme} level ${item.level}`,
+          ).toBe(caseValues.tonalColors[index]);
+          const shadows = material3ElevationShadowLayers(
+            scheme,
+            item.level as 0 | 1 | 2 | 3 | 4 | 5,
+          );
+          if (item.level === 0) {expect(shadows.key.opacity).toBe(0.3);}
+          expect(shadows.ambient.opacity).toBe(0.15);
+        },
+      );
+      expect(
+        material3TonalElevation(scheme, caseValues.nested.absoluteDp),
+      ).toBe(caseValues.nested.color);
+      const stateCase = state.cases[scheme];
+      for (const item of stateCase.generic) {
+        if (item.name === 'Rest') {continue;}
+        expect(
+          material3LayerColor(
+            stateCase.theme.surface,
+            stateCase.theme.onSurface,
+            item.alpha,
+          ),
+          `${scheme} ${item.name}`,
+        ).toBe(item.fill);
+      }
+      for (const item of stateCase.button) {
+        const actual = material3FilledButtonStateColors(
+          scheme,
+          item.name.toLowerCase(),
+        );
+        expect(actual.container, `${scheme} ${item.name} container`).toBe(
+          item.fill,
+        );
+        expect(
+          material3LayerColor(actual.label, actual.label, 0),
+          `${scheme} ${item.name} label`,
+        ).toBe(item.label);
+      }
+    }
+    expect(() => material3LayerColor('#fff', '#000', -0.1)).toThrow(RangeError);
   });
 
   it('resolves component defaults through scoped system overrides', () => {
@@ -98,8 +166,12 @@ describe('pinned Compose-first native foundation', () => {
       for (const [name, value] of Object.entries(
         material3TokenValues(scheme),
       )) {
-        if (name.startsWith('--md-badge-') || name.startsWith('--md-divider-'))
-          {continue;}
+        if (
+          name.startsWith('--md-badge-') ||
+          name.startsWith('--md-divider-')
+        ) {
+          continue;
+        }
         expect(css).toContain(`${name}: ${value};`);
       }
     }

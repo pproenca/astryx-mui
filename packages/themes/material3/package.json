@@ -81,6 +81,7 @@
   },
   "devDependencies": {
     "@astryxdesign/cli": "0.6.3",
+    "@astryxdesign/material3": "workspace:*",
     "@babel/core": "catalog:",
     "@babel/plugin-transform-modules-commonjs": "7.29.7",
     "@babel/preset-react": "catalog:",

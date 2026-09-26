@@ -3,7 +3,7 @@
 /**
  * @file check-theme-parity.mjs
  * @input Built Material 3 package, static CSS, pinned color source, and Chrome
- * @output Runtime/built object parity and browser-resolved light/dark roles
+ * @output Runtime/built graph parity and browser-resolved light/dark aliases
  * @position Material 3 theme build verification
  */
 
@@ -44,11 +44,19 @@ assert.deepEqual(
 assert.equal(Object.keys(source.material3Theme.localTokens).length, 181);
 assert.equal(Object.keys(source.material3Theme.tokens).length, 97);
 assert.equal(Object.keys(source.material3Theme.icons).length, 28);
+assert.equal(
+  source.material3Theme.tokens['--color-accent'],
+  'var(--md-sys-color-primary)',
+);
+assert.equal(
+  source.material3Theme.tokens['--radius-full'],
+  'var(--md-sys-shape-corner-full)',
+);
 assert.ok(
-  Object.values(source.material3Theme.tokens).every(
-    value => !String(value).includes('var(--md-'),
-  ),
-  'Portable overrides must resolve without theme-local CSS variables',
+  !fs
+    .readFileSync(path.join(packageRoot, 'dist/source.mjs'), 'utf8')
+    .includes('from "@astryxdesign/material3"'),
+  'Public theme bundle must contain its build-time native input',
 );
 for (const name of Object.keys(source.material3Theme.localTokens)) {
   assert.ok(css.includes(`${name}:`), `Missing static CSS role ${name}`);
@@ -120,9 +128,24 @@ try {
     );
     assert.equal(observed.portable.bodySize, '14px');
     assert.match(observed.portable.bodyFamily, /Roboto/);
+    const overridden = await page.locator('#theme').evaluate(host => {
+      host.style.setProperty('--md-sys-color-primary', '#123456');
+      const probe = document.createElement('span');
+      probe.style.color = 'var(--color-accent)';
+      host.append(probe);
+      const result = getComputedStyle(probe).color;
+      probe.remove();
+      host.style.removeProperty('--md-sys-color-primary');
+      return result;
+    });
+    assert.equal(
+      overridden,
+      'rgb(18, 52, 86)',
+      `${mode} scoped bridge override`,
+    );
   }
   console.log(
-    `Chrome ${browser.version()}: 49 color roles in both modes, portable accent/type, 181 static local roles, and runtime/built values agree.`,
+    `Chrome ${browser.version()}: 49 color roles in both modes, portable aliases and same-host scoped overrides, 181 static local roles, and runtime/built values agree.`,
   );
 } finally {
   await browser.close();

@@ -22,8 +22,9 @@ The frozen Material Design kit supplies 32 named and contrast color modes as
 Figma-only scope. Material Design Kit by Google, licensed CC BY 4.0. Its
 recorded source hash is
 `64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468`.
-Reference captures under `fixtures/references/` retain the selected source
-provenance in their manifests. No font binary is duplicated here: typography
+Reference captures and the independent Kotlin spring traces under
+`fixtures/references/` retain the selected source provenance in their
+manifests. No font binary is duplicated here: typography
 tests reuse the pinned Roboto fixture and OFL license in
 `packages/themes/material3/scripts/fonts/`. Existing Meta and Google notices
 in `@astryxdesign/theme-material3` remain with that compatibility package.

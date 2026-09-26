@@ -40,7 +40,9 @@ function resolveColors(keys: Record<ColorRole, string>): ColorValues {
   return Object.fromEntries(
     material3SystemColorRoles.map(role => {
       const value = palette[keys[role]];
-      if (!value) {throw new Error(`Missing pinned Material color ${role}`);}
+      if (!value) {
+        throw new Error(`Missing pinned Material color ${role}`);
+      }
       return [role, value];
     }),
   ) as ColorValues;
@@ -116,6 +118,109 @@ export const material3StateOpacity = source.state.opacity;
 export const material3FoundationGeometry = source.spacing;
 export const material3IconDefaults = source.icons;
 
+function colorChannels(color: string): number[] {
+  if (!/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(color))
+    {throw new RangeError(`Expected a hexadecimal Material color: ${color}`);}
+  const digits =
+    color.length === 4
+      ? [...color.slice(1)].map(digit => digit + digit).join('')
+      : color.slice(1);
+  return [0, 2, 4].map(index =>
+    Number.parseInt(digits.slice(index, index + 2), 16),
+  );
+}
+
+/** Composite an alpha layer in sRGB, matching pinned source browser sheets. */
+export function material3LayerColor(
+  base: string,
+  layer: string,
+  opacity: number,
+): string {
+  if (!Number.isFinite(opacity) || opacity < 0 || opacity > 1)
+    {throw new RangeError('Material layer opacity must be within 0–1');}
+  const a = colorChannels(base);
+  const b = colorChannels(layer);
+  return `#${a
+    .map((channel, index) =>
+      Math.round(channel * (1 - opacity) + b[index] * opacity)
+        .toString(16)
+        .padStart(2, '0'),
+    )
+    .join('')}`;
+}
+
+/** Compose tonal elevation uses absolute dp, including nested surfaces. */
+export function material3TonalElevation(
+  scheme: Material3Scheme,
+  absoluteDp: number,
+): string {
+  if (!Number.isFinite(absoluteDp) || absoluteDp < 0)
+    {throw new RangeError('Material elevation must be non-negative');}
+  const colors = material3ColorValues(scheme);
+  const alpha =
+    absoluteDp === 0 ? 0 : (4.5 * Math.log(absoluteDp + 1) + 2) / 100;
+  return material3LayerColor(colors.surface, colors['surface-tint'], alpha);
+}
+
+/** Separate key and ambient Web shadow geometry; tonal elevation is independent. */
+export function material3ElevationShadowLayers(
+  scheme: Material3Scheme,
+  level: 0 | 1 | 2 | 3 | 4 | 5,
+) {
+  const geometry = source.elevation.shadowLayers[`level${level}`];
+  const shadow = material3ColorValues(scheme).shadow;
+  return {
+    key: {
+      ...geometry.key,
+      boxShadow: geometry.key.boxShadow.replace(
+        source.elevation.shadowSampleColor,
+        shadow,
+      ),
+    },
+    ambient: {
+      ...geometry.ambient,
+      boxShadow: geometry.ambient.boxShadow.replace(
+        source.elevation.shadowSampleColor,
+        shadow,
+      ),
+    },
+  };
+}
+
+/** Compose-filled Button static state colors; focus ring and ripple stay component-owned. */
+export function material3FilledButtonStateColors(
+  scheme: Material3Scheme,
+  state: 'rest' | 'hover' | 'focus' | 'pressed' | 'disabled',
+) {
+  const colors = material3ColorValues(scheme);
+  if (state === 'disabled') {
+    const container = material3LayerColor(
+      colors.surface,
+      colors['on-surface'],
+      source.state.disabled.containerOpacity,
+    );
+    return {
+      container,
+      label: material3LayerColor(
+        container,
+        colors['on-surface-variant'],
+        source.state.disabled.labelOpacity,
+      ),
+    };
+  }
+  return {
+    container:
+      state === 'rest'
+        ? colors.primary
+        : material3LayerColor(
+            colors.primary,
+            colors['on-primary'],
+            source.state.opacity[state],
+          ),
+    label: colors['on-primary'],
+  };
+}
+
 const rem = (px: number) => `${Number((px / 16).toFixed(6))}rem`;
 
 /** Public CSS-backed roles for one scheme. Source-only values stay above. */
@@ -125,16 +230,20 @@ export function material3TokenValues(
 ): Record<Material3TokenName, string> {
   const colors = material3ColorValues(scheme);
   const values: Record<string, string> = {};
-  for (const role of material3SystemColorRoles)
-    {values[`--md-sys-color-${role}`] = colors[role];}
-  for (const role of material3TypefaceRoles)
-    {values[`--md-ref-typeface-${role}`] =
+  for (const role of material3SystemColorRoles) {
+    values[`--md-sys-color-${role}`] = colors[role];
+  }
+  for (const role of material3TypefaceRoles) {
+    values[`--md-ref-typeface-${role}`] =
       source.typography.typeface[
         role as keyof typeof source.typography.typeface
-      ];}
+      ];
+  }
   for (const role of material3TypeRoles) {
     const style = material3TypeStyles[role];
-    if (!style) {throw new Error(`Missing pinned Material type style ${role}`);}
+    if (!style) {
+      throw new Error(`Missing pinned Material type style ${role}`);
+    }
     const prefix = `--md-sys-typescale-${role}`;
     values[`${prefix}-font`] = 'var(--md-ref-typeface-plain)';
     values[`${prefix}-line-height`] = rem(style.lineHeightPx);
@@ -152,8 +261,9 @@ export function material3TokenValues(
       source.shapes.corners[
         role.replace('corner-', '') as keyof typeof source.shapes.corners
       ];
-    if (value === undefined)
-      {throw new Error(`Missing pinned Material shape ${role}`);}
+    if (value === undefined) {
+      throw new Error(`Missing pinned Material shape ${role}`);
+    }
     values[`--md-sys-shape-${role}`] =
       value === 'full'
         ? profile === 'native'
@@ -180,11 +290,15 @@ export function resolveMaterial3Token(
   );
   const seen = new Set<string>();
   const resolve = (token: string): string => {
-    if (seen.has(token)) {throw new Error(`Material token cycle at ${token}`);}
+    if (seen.has(token)) {
+      throw new Error(`Material token cycle at ${token}`);
+    }
     const value =
       options.overrides?.[token as Material3TokenName] ??
       values[token as Material3TokenName];
-    if (value === undefined) {throw new Error(`Unknown Material token ${token}`);}
+    if (value === undefined) {
+      throw new Error(`Unknown Material token ${token}`);
+    }
     seen.add(token);
     const result = value.replace(/var\((--[a-z0-9-]+)\)/g, (_, next: string) =>
       resolve(next),

@@ -28,17 +28,21 @@ export {
   material3ComponentDefaults,
   material3CornerShapes,
   material3ElevationLevels,
+  material3ElevationShadowLayers,
   material3ExpressiveLightColors,
   material3ExpressiveShapes,
   material3FoundationGeometry,
+  material3FilledButtonStateColors,
   material3IconDefaults,
   material3KitModeNames,
+  material3LayerColor,
   material3SpringSpecs,
   material3StandardDarkColors,
   material3StandardLightColors,
   material3StateOpacity,
   material3TokenCss,
   material3TokenValues,
+  material3TonalElevation,
   material3TypeStyles,
   resolveMaterial3Token,
 } from './foundation.js';
@@ -47,3 +51,9 @@ export type {
   Material3Scheme,
   Material3TokenProfile,
 } from './foundation.js';
+export {sampleMaterial3Spring} from './motion.js';
+export type {
+  Material3SpringFrame,
+  Material3SpringSpec,
+  Material3SpringTarget,
+} from './motion.js';

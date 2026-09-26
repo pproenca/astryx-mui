@@ -2,26 +2,17 @@
 
 /**
  * @file material3Theme.ts
- * @input Pinned Material 3 foundation sources and Astryx defineTheme contract
- * @output Standalone Material 3 theme with portable roles and 24px Icon default
+ * @input Canonical native Material 3 graph and Astryx defineTheme contract
+ * @output Core compatibility aliases and 24px Icon default
  * @position Material 3 theme definition for runtime and static compilation
  *
  * Core token names remain portable. Material CSS-backed roles are theme-local;
- * Sass-only foundation values use Astryx-owned theme-local names. Component
- * mappings supply source-backed rules without changing Core defaults.
+ * aliases flow toward them. Source-only values retain Astryx-owned local names.
  */
 
 import {defineTheme, type TokenValue} from '@astryxdesign/core/theme';
-import {
-  material3LightColorScheme,
-  material3DarkColorScheme,
-} from './material3Colors';
-import {
-  material3Typeface,
-  material3Typescale,
-  material3SourceOnlyTracking,
-} from './material3Typography';
-import {material3CssCorners} from './material3Shape';
+import {material3TokenValues} from '@astryxdesign/material3';
+import {material3SourceOnlyTracking} from './material3Typography';
 import {
   material3Durations,
   material3Easings,
@@ -38,38 +29,20 @@ const entries = (
     Object.entries(values).map(([name, value]) => [`${prefix}${name}`, value]),
   );
 
+const nativeLight = material3TokenValues('light', 'web-compat');
+const nativeDark = material3TokenValues('dark', 'web-compat');
+const materialValue = (name: keyof typeof nativeLight) => nativeLight[name];
+const materialVar = (name: keyof typeof nativeLight) => `var(${name})`;
+
 const material3LocalTokens: Record<string, TokenValue> = {
   ...Object.fromEntries(
-    Object.keys(material3LightColorScheme).map(role => [
-      `--md-sys-color-${role}`,
-      [
-        material3LightColorScheme[
-          role as keyof typeof material3LightColorScheme
-        ],
-        material3DarkColorScheme[role as keyof typeof material3DarkColorScheme],
-      ] as [string, string],
+    Object.entries(nativeLight).map(([name, value]) => [
+      name,
+      value === nativeDark[name as keyof typeof nativeDark]
+        ? value
+        : [value, nativeDark[name as keyof typeof nativeDark]],
     ]),
   ),
-  ...entries('--md-ref-typeface-', material3Typeface),
-  '--md-divider-color': 'var(--md-sys-color-outline-variant)',
-  '--md-divider-thickness': '1px',
-  '--md-badge-color': 'var(--md-sys-color-error)',
-  '--md-badge-large-color': 'var(--md-sys-color-error)',
-  '--md-badge-large-label-text-color': 'var(--md-sys-color-on-error)',
-  '--md-badge-large-label-text-font':
-    'var(--md-sys-typescale-label-small-font)',
-  '--md-badge-large-label-text-line-height':
-    'var(--md-sys-typescale-label-small-line-height)',
-  '--md-badge-large-label-text-size':
-    'var(--md-sys-typescale-label-small-size)',
-  '--md-badge-large-label-text-weight':
-    'var(--md-sys-typescale-label-small-weight)',
-  '--md-badge-large-shape': 'var(--md-sys-shape-corner-full)',
-  '--md-badge-large-size': '16px',
-  '--md-badge-shape': 'var(--md-sys-shape-corner-full)',
-  '--md-badge-size': '6px',
-  ...entries('--md-sys-typescale-', material3Typescale),
-  ...entries('--md-sys-shape-', material3CssCorners),
   ...entries(
     '--astryx-theme-material3-typescale-',
     material3SourceOnlyTracking,
@@ -89,26 +62,26 @@ const material3LocalTokens: Record<string, TokenValue> = {
   ),
 };
 
-const modeColor = (role: string, mode: 'light' | 'dark') =>
-  (mode === 'light' ? material3LightColorScheme : material3DarkColorScheme)[
-    role as keyof typeof material3LightColorScheme
-  ];
-const color = (role: string): [string, string] => [
-  modeColor(role, 'light'),
-  modeColor(role, 'dark'),
-];
-const colored = (
-  render: (mode: 'light' | 'dark') => string,
-): [string, string] => [render('light'), render('dark')];
+const color = (role: string) =>
+  materialVar(`--md-sys-color-${role}` as keyof typeof nativeLight);
 const type = (role: string, property: string) =>
-  (material3Typescale as Record<string, string>)[`${role}-${property}`];
+  materialVar(
+    `--md-sys-typescale-${role}-${property}` as keyof typeof nativeLight,
+  );
 const ratio = (role: string) => {
-  const values = material3Typescale as Record<string, string>;
   return String(
     Number(
       (
-        Number.parseFloat(values[`${role}-line-height`]) /
-        Number.parseFloat(values[`${role}-size`])
+        Number.parseFloat(
+          materialValue(
+            `--md-sys-typescale-${role}-line-height` as keyof typeof nativeLight,
+          ),
+        ) /
+        Number.parseFloat(
+          materialValue(
+            `--md-sys-typescale-${role}-size` as keyof typeof nativeLight,
+          ),
+        )
       ).toFixed(6),
     ),
   );
@@ -118,20 +91,19 @@ const semanticType = (astryx: string, material: string) => ({
   [`--text-${astryx}-weight`]: type(material, 'weight'),
   [`--text-${astryx}-leading`]: ratio(material),
 });
-const shadowLayer = (level: 'level1' | 'level2' | 'level3') =>
-  colored(mode => {
-    const shadow = modeColor('shadow', mode);
-    const layers = material3ElevationLayers(level, shadow);
-    const key = layers.key.boxShadow.replace(
-      shadow,
-      `color-mix(in srgb, ${shadow} 30%, transparent)`,
-    );
-    const ambient = layers.ambient.boxShadow.replace(
-      shadow,
-      `color-mix(in srgb, ${shadow} 15%, transparent)`,
-    );
-    return `${key}, ${ambient}`;
-  });
+const shadowLayer = (level: 'level1' | 'level2' | 'level3') => {
+  const shadow = color('shadow');
+  const layers = material3ElevationLayers(level, shadow);
+  const key = layers.key.boxShadow.replace(
+    shadow,
+    `color-mix(in srgb, ${shadow} 30%, transparent)`,
+  );
+  const ambient = layers.ambient.boxShadow.replace(
+    shadow,
+    `color-mix(in srgb, ${shadow} 15%, transparent)`,
+  );
+  return `${key}, ${ambient}`;
+};
 
 export const material3Theme = defineTheme({
   name: 'material3',
@@ -152,42 +124,27 @@ export const material3Theme = defineTheme({
     '--color-text-primary': color('on-surface'),
     '--color-text-secondary': color('on-surface-variant'),
     '--color-text-accent': color('primary'),
-    '--color-text-disabled': colored(
-      mode =>
-        `color-mix(in srgb, ${modeColor('on-surface', mode)} 38%, ${modeColor('surface', mode)})`,
-    ),
+    '--color-text-disabled': `color-mix(in srgb, ${color('on-surface')} 38%, ${color('surface')})`,
     '--color-icon-primary': color('on-surface'),
     '--color-icon-secondary': color('on-surface-variant'),
     '--color-icon-accent': color('primary'),
-    '--color-icon-disabled': colored(
-      mode =>
-        `color-mix(in srgb, ${modeColor('on-surface', mode)} 38%, ${modeColor('surface', mode)})`,
-    ),
+    '--color-icon-disabled': `color-mix(in srgb, ${color('on-surface')} 38%, ${color('surface')})`,
     '--color-error': color('error'),
     '--color-error-muted': color('error-container'),
     '--color-on-error': color('on-error'),
     '--color-border': color('outline-variant'),
     '--color-border-emphasized': color('outline'),
-    '--color-overlay': colored(
-      mode =>
-        `color-mix(in srgb, ${modeColor('scrim', mode)} 32%, transparent)`,
-    ),
-    '--color-overlay-hover': colored(
-      mode =>
-        `color-mix(in srgb, ${modeColor('on-surface', mode)} 8%, transparent)`,
-    ),
-    '--color-overlay-pressed': colored(
-      mode =>
-        `color-mix(in srgb, ${modeColor('on-surface', mode)} 12%, transparent)`,
-    ),
+    '--color-overlay': `color-mix(in srgb, ${color('scrim')} 32%, transparent)`,
+    '--color-overlay-hover': `color-mix(in srgb, ${color('on-surface')} 8%, transparent)`,
+    '--color-overlay-pressed': `color-mix(in srgb, ${color('on-surface')} 12%, transparent)`,
     '--color-shadow': color('shadow'),
-    '--radius-none': '0px',
-    '--radius-inner': material3CssCorners['corner-extra-small'],
-    '--radius-element': material3CssCorners['corner-small'],
-    '--radius-container': material3CssCorners['corner-medium'],
-    '--radius-page': material3CssCorners['corner-extra-large'],
-    '--radius-chat': material3CssCorners['corner-extra-large'],
-    '--radius-full': material3CssCorners['corner-full'],
+    '--radius-none': materialVar('--md-sys-shape-corner-none'),
+    '--radius-inner': materialVar('--md-sys-shape-corner-extra-small'),
+    '--radius-element': materialVar('--md-sys-shape-corner-small'),
+    '--radius-container': materialVar('--md-sys-shape-corner-medium'),
+    '--radius-page': materialVar('--md-sys-shape-corner-extra-large'),
+    '--radius-chat': materialVar('--md-sys-shape-corner-extra-large'),
+    '--radius-full': materialVar('--md-sys-shape-corner-full'),
     '--duration-fast-min': material3Durations['duration-short1'],
     '--duration-fast': material3Durations['duration-short2'],
     '--duration-fast-max': material3Durations['duration-short4'],
@@ -201,8 +158,8 @@ export const material3Theme = defineTheme({
     '--shadow-low': shadowLayer('level1'),
     '--shadow-med': shadowLayer('level2'),
     '--shadow-high': shadowLayer('level3'),
-    '--font-family-body': 'Roboto, Arial, sans-serif',
-    '--font-family-heading': 'Roboto, Arial, sans-serif',
+    '--font-family-body': `${materialVar('--md-ref-typeface-plain')}, Arial, sans-serif`,
+    '--font-family-heading': `${materialVar('--md-ref-typeface-plain')}, Arial, sans-serif`,
     '--font-size-xs': type('label-small', 'size'),
     '--font-size-sm': type('body-small', 'size'),
     '--font-size-base': type('body-medium', 'size'),

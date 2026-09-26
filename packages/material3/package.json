@@ -47,7 +47,7 @@
   "scripts": {
     "build": "node ../../scripts/clean-dist.mjs && tsc --project tsconfig.build.json && node scripts/build-token-css.mjs",
     "typecheck": "tsc --project tsconfig.json --noEmit",
-    "test": "pnpm run build && vitest run --root ../.. packages/material3/src/tokens.test.ts packages/material3/src/foundation.test.ts && node scripts/check-native-fixture.mjs && node scripts/check-discovery.mjs && node scripts/check-foundation-browser.mjs"
+    "test": "pnpm run build && vitest run --root ../.. packages/material3/src/tokens.test.ts packages/material3/src/foundation.test.ts packages/material3/src/motion.test.ts && node scripts/check-native-fixture.mjs && node scripts/check-discovery.mjs && node scripts/check-foundation-browser.mjs && node scripts/check-layer-browser.mjs && node scripts/check-spacing-browser.mjs"
   },
   "devDependencies": {
     "@astryxdesign/cli": "workspace:*",

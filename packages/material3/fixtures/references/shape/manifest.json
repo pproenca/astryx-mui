@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "figmaSha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+  "kitShapeSetNodeId": "58548:7248",
+  "materialShapesSha256": "08c29828003344914ee0d6783f213b37caae650175cd004ba321eaf3a7d6e434",
+  "roundedPolygonSha256": "15be176fde87c926d259be8eb22aa80209430fa373fabc510fef33185203f48f",
+  "compiler": "Kotlin 2.4.20",
+  "browser": "Chrome 153.0.8010.53",
+  "dpr": 1,
+  "fill": "#6750a4",
+  "darkFill": "#d0bcff",
+  "labels": "Arial index aids only; not part of geometry comparison",
+  "mappings": [
+    {
+      "compose": "Circle",
+      "kitVariant": "Circle"
+    },
+    {
+      "compose": "Square",
+      "kitVariant": "Square"
+    },
+    {
+      "compose": "Slanted",
+      "kitVariant": "Slanted"
+    },
+    {
+      "compose": "Arch",
+      "kitVariant": "Arch"
+    },
+    {
+      "compose": "Fan",
+      "kitVariant": "Fan"
+    },
+    {
+      "compose": "Arrow",
+      "kitVariant": "Arrow"
+    },
+    {
+      "compose": "SemiCircle",
+      "kitVariant": "Semicircle"
+    },
+    {
+      "compose": "Oval",
+      "kitVariant": "Oval"
+    },
+    {
+      "compose": "Pill",
+      "kitVariant": "Pill"
+    },
+    {
+      "compose": "Triangle",
+      "kitVariant": "Triangle"
+    },
+    {
+      "compose": "Diamond",
+      "kitVariant": "Diamond"
+    },
+    {
+      "compose": "ClamShell",
+      "kitVariant": "Hexagon"
+    },
+    {
+      "compose": "Pentagon",
+      "kitVariant": "Pentagon"
+    },
+    {
+      "compose": "Gem",
+      "kitVariant": "Gem"
+    },
+    {
+      "compose": "VerySunny",
+      "kitVariant": "Very sunny"
+    },
+    {
+      "compose": "Sunny",
+      "kitVariant": "Sunny"
+    },
+    {
+      "compose": "Cookie4Sided",
+      "kitVariant": "4-sided cookie"
+    },
+    {
+      "compose": "Cookie6Sided",
+      "kitVariant": "6-sided cookie"
+    },
+    {
+      "compose": "Cookie7Sided",
+      "kitVariant": "7-sided cookie"
+    },
+    {
+      "compose": "Cookie9Sided",
+      "kitVariant": "9-sided cookie"
+    },
+    {
+      "compose": "Cookie12Sided",
+      "kitVariant": "12-sided cookie"
+    },
+    {
+      "compose": "Ghostish",
+      "kitVariant": "Ghost-ish"
+    },
+    {
+      "compose": "Clover4Leaf",
+      "kitVariant": "4-leaf clover"
+    },
+    {
+      "compose": "Clover8Leaf",
+      "kitVariant": "8-leaf clover"
+    },
+    {
+      "compose": "Burst",
+      "kitVariant": "Burst"
+    },
+    {
+      "compose": "SoftBurst",
+      "kitVariant": "Soft burst"
+    },
+    {
+      "compose": "Boom",
+      "kitVariant": "Boom"
+    },
+    {
+      "compose": "SoftBoom",
+      "kitVariant": "Soft boom"
+    },
+    {
+      "compose": "Flower",
+      "kitVariant": "Flower"
+    },
+    {
+      "compose": "Puffy",
+      "kitVariant": "Puffy"
+    },
+    {
+      "compose": "PuffyDiamond",
+      "kitVariant": "Puffy diamond"
+    },
+    {
+      "compose": "PixelCircle",
+      "kitVariant": "Pixel Circle"
+    },
+    {
+      "compose": "PixelTriangle",
+      "kitVariant": "Pixel triangle"
+    },
+    {
+      "compose": "Bun",
+      "kitVariant": "Bun"
+    },
+    {
+      "compose": "Heart",
+      "kitVariant": "Heart"
+    }
+  ],
+  "files": {
+    "compose-expressive-shapes.svg": "f3c64f9ee8171869509ee5275265a722a4545bdb2afd7f769abc1ca3f43d3c81",
+    "compose-expressive-shapes.png": "db0f8615a1f635bd3fc629a0a8ce0d1091bf7fcc1f44f9128bf8cf51d1187e73",
+    "compose-expressive-shapes-dark.svg": "d4a6a47c7f9f41ad920deea96cb26c1c2a08bcdec406477a709ad3f6deb2ae35",
+    "compose-expressive-shapes-dark.png": "0ff6812d5dba50d5997d3510d5fb14cfc3fdc1ad9753653ded0ee0b83a7d0c76",
+    "compose-clam-shell.svg": "2d9cb6b870de366234f7f52f7499e50ae14f62797e203120193256817d322b72",
+    "compose-clam-shell.png": "06bbe34d310d57d5809273270cb0ce9d34bb13251e9ffb0a4395d29862eeb35a"
+  }
+}
