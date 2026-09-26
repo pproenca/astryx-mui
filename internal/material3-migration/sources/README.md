@@ -55,6 +55,9 @@ between platform SansSerif and the kit's Roboto. The
 [pinned Compose motion reference](compose-motion.md) records standard and
 expressive spring schemes and upstream assertions. Matched glyph scenarios,
 motion traces and native browser behavior remain to be verified.
+The [typography reference](typography-reference/README.md) renders all 30
+Compose type roles in light and dark at a pinned Chrome/Roboto environment;
+it is source evidence, not a native component or Figma pixel match.
 The [source color swatches](color-reference/README.md) are deterministic
 fixtures for Compose baseline Light/Dark, Compose Expressive Light, and all 32
 published kit modes. They do not substitute for a rendered native gallery.

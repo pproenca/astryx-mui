@@ -23,18 +23,18 @@ line-height number agrees. Five tracking values and five emphasized weights
 disagree. Compose selects the left value in each row; the kit values remain
 source observations, not native defaults.
 
-| Role | Metric | Compose | Kit |
-| --- | --- | ---: | ---: |
-| Body Large Emphasized | tracking | 0.15 sp | 0.5 px |
-| Body Medium | tracking | 0.2 sp | 0.25 px |
-| Display Large | tracking | -0.2 sp | -0.25 px |
-| Display Large Emphasized | tracking | 0 sp | -0.25 px |
-| Title Medium | tracking | 0.2 sp | 0.15 px |
-| Label Large Emphasized | weight | 700 Bold | 600 SemiBold |
-| Label Medium Emphasized | weight | 700 Bold | 600 SemiBold |
-| Label Small Emphasized | weight | 700 Bold | 600 SemiBold |
-| Title Medium Emphasized | weight | 700 Bold | 600 SemiBold |
-| Title Small Emphasized | weight | 700 Bold | 600 SemiBold |
+| Role                     | Metric   |  Compose |          Kit |
+| ------------------------ | -------- | -------: | -----------: |
+| Body Large Emphasized    | tracking |  0.15 sp |       0.5 px |
+| Body Medium              | tracking |   0.2 sp |      0.25 px |
+| Display Large            | tracking |  -0.2 sp |     -0.25 px |
+| Display Large Emphasized | tracking |     0 sp |     -0.25 px |
+| Title Medium             | tracking |   0.2 sp |      0.15 px |
+| Label Large Emphasized   | weight   | 700 Bold | 600 SemiBold |
+| Label Medium Emphasized  | weight   | 700 Bold | 600 SemiBold |
+| Label Small Emphasized   | weight   | 700 Bold | 600 SemiBold |
+| Title Medium Emphasized  | weight   | 700 Bold | 600 SemiBold |
+| Title Small Emphasized   | weight   | 700 Bold | 600 SemiBold |
 
 [`source-typography.test.mjs`](../tests/source-typography.test.mjs) recomputes
 the differences from the pinned inventories, allowing for float storage noise
@@ -63,3 +63,8 @@ test file does not cover.
 Exact Figma-to-native glyph comparison still needs matched viewport, DPR,
 content, surface, font file hash, weight, line height, tracking and fallback.
 Numeric token agreement alone does not establish visual parity.
+The [light/dark source typography samples](typography-reference/README.md)
+capture all 30 selected Compose metric sets in a recorded Chrome environment
+with the pinned Roboto fixture. They provide a repeatable native-gallery target
+for those metrics, not proof that the kit or Compose Android renders the same
+glyph pixels.
