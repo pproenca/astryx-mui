@@ -25,6 +25,10 @@ const styles = stylex.create({
   vertical: {
     height: '96px',
   },
+  narrow: {
+    width: '220px',
+    maxWidth: '100%',
+  },
 });
 
 const meta: Meta<typeof Divider> = {
@@ -87,6 +91,10 @@ export const Material3Review: Story = {
         </Text>
         <Divider variant="strong" />
         <Divider label="Section" />
+        <VStack gap={1} xstyle={styles.narrow}>
+          <Text type="supporting">Narrow labelled divider</Text>
+          <Divider label="A long localized section label that may wrap" />
+        </VStack>
         <HStack gap={3} vAlign="center" xstyle={styles.vertical}>
           <Text type="body">Start</Text>
           <Divider orientation="vertical" />

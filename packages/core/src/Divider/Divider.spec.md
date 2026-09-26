@@ -77,6 +77,8 @@ Consumer syntax remains in `Divider.doc.mjs`.
 
 - Orientation, visual weight, full-bleed layout, inset, and label content may vary
   without changing the three-part anatomy recorded here.
+- A long label may wrap within the available width; it must not widen the
+  divider beyond its container.
 
 ### Representative states
 

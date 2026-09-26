@@ -125,7 +125,10 @@ const insetStyles = stylex.create({
 
 const labelStyles = stylex.create({
   label: {
-    flexShrink: 0,
+    flexShrink: 1,
+    minWidth: 0,
+    overflowWrap: 'anywhere',
+    textAlign: 'center',
     paddingInline: spacingVars['--spacing-3'],
     // Small secondary text styling
     fontSize: typeScaleVars['--text-supporting-size'],
