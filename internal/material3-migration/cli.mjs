@@ -1,17 +1,45 @@
 #!/usr/bin/env node
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Migration commands and configured workbook. @output One versioned result, text or JSON. @position Disposable CLI entry point. */
+/** @input Migration commands, pinned AndroidX and configured workbook. @output One versioned source/workflow/audit result. @position Disposable CLI entry point. */
+import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {workbook} from './workbook.mjs';
-import {dispatch} from './workflow.mjs';
+import {dispatch, policy} from './workflow.mjs';
 import {compare} from './compare.mjs';
 import {inspectMotion} from './motion.mjs';
+import {indexCompose, digest} from './compose.mjs';
 export const commands = [
   {
+    name: 'source prepare',
+    summary:
+      'Index the clean pinned AndroidX checkout; reuse unchanged source output',
+    writesWorkbook: false,
+    args: '--androidx <checkout>',
+  },
+  {
+    name: 'workbook upgrade',
+    summary: 'Upgrade the existing v2 workbook in place, preserving history',
+    writesWorkbook: true,
+  },
+  {
+    name: 'task prepare',
+    summary:
+      'Prepare a hashed source brief; implementation requires a resolved --baseline',
+    writesWorkbook: true,
+    args: '<id> [--baseline <source-decision.json>]',
+  },
+  {
+    name: 'audit',
+    summary:
+      'Check complete baseline coverage; --retire-check proves build/tests without the harness in an isolated copy',
+    writesWorkbook: false,
+  },
+  {
     name: 'source',
-    summary: 'Search the retained Figma, Web and source-access inventories',
+    summary:
+      'Search the retained Figma, Compose, Web and source-access inventories',
     writesWorkbook: false,
     args: '<query> --limit <count>',
   },
@@ -88,7 +116,8 @@ export function parse(args) {
     const arg = args[i];
     if (arg.startsWith('--')) {
       const key = arg.slice(2);
-      if (['json', 'full', 'dense', 'help'].includes(key)) flags[key] = true;
+      if (['json', 'full', 'dense', 'help', 'retire-check'].includes(key))
+        flags[key] = true;
       else if (
         [
           'repo',
@@ -100,6 +129,8 @@ export function parse(args) {
           'times',
           'out',
           'limit',
+          'androidx',
+          'baseline',
         ].includes(key)
       ) {
         if (!args[i + 1] || args[i + 1].startsWith('--'))
@@ -108,9 +139,11 @@ export function parse(args) {
       } else throw new Error(`Unknown option ${arg}`);
     } else words.push(arg);
   }
-  const command = ['task', 'motion'].includes(words[0])
-    ? words.slice(0, 2).join(' ')
-    : words[0] || 'help';
+  const command =
+    ['task', 'motion', 'workbook'].includes(words[0]) ||
+    (words[0] === 'source' && words[1] === 'prepare')
+      ? words.slice(0, 2).join(' ')
+      : words[0] || 'help';
   return {
     command,
     flags,
@@ -138,8 +171,8 @@ export async function main(args = process.argv.slice(2)) {
           '--workbook <file>',
         ],
         workflow:
-          'Sources → foundations → native primitives → shared Web/Figma components → remaining coverage. Verify → human QA → merge/cleanup → finish.',
-        configuration: ['M3_WORKBOOK', 'M3_DEPS', 'ASTRYX_REPO'],
+          'Pinned scope → prepared sources → foundations → pilots → dependency-ready Material 3 + Expressive coverage. Verify → human QA → merge → audit without harness.',
+        configuration: ['M3_WORKBOOK', 'M3_DEPS', 'M3_ANDROIDX', 'ASTRYX_REPO'],
         next: ['status', 'task pop'],
       };
       const out = {apiVersion: 1, type: 'manifest', data};
@@ -151,7 +184,34 @@ export async function main(args = process.argv.slice(2)) {
     const definition = commands.find(c => c.name === command);
     if (!definition) throw new Error(`Unknown command: ${command}. Run help.`);
     let result;
-    if (command === 'motion inspect')
+    if (command === 'source prepare') {
+      const p = await policy(),
+        repo =
+          flags.repo ||
+          process.env.ASTRYX_REPO ||
+          path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
+      const index = await indexCompose(
+          flags.androidx || process.env.M3_ANDROIDX,
+          p.value,
+        ),
+        bytes = JSON.stringify(index, null, 2) + '\n',
+        target = path.join(repo, p.value.composeInventory);
+      let reused = false;
+      try {
+        reused = (await fs.readFile(target, 'utf8')) === bytes;
+      } catch {}
+      if (!reused) await fs.writeFile(target, bytes);
+      result = {
+        type: 'source.prepared',
+        data: {
+          commit: index.commit,
+          families: index.families.length,
+          tokenFiles: index.tokens.length,
+          sha256: digest(bytes),
+          reused,
+        },
+      };
+    } else if (command === 'motion inspect')
       result = {
         type: 'motion.inspection',
         data: await inspectMotion(
@@ -195,6 +255,7 @@ export async function main(args = process.argv.slice(2)) {
       );
     }
     const out = {apiVersion: 1, type: result.type, data: result.data};
+    if (command === 'audit' && !result.data.complete) process.exitCode = 1;
     console.log(flags.json || flags.dense ? JSON.stringify(out) : render(out));
   } catch (error) {
     const out = {

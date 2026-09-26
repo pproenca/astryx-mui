@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Existing XLSX. @output Locked, atomic workbook transactions. @position Migration-only persistence. */
+/** @input Existing XLSX and workflow/upgrade mutation. @output Locked atomic transactions preserving source and review history. @position Migration-only persistence. */
 import fs from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {dependency} from './runtime.mjs';
@@ -20,7 +20,7 @@ export async function workbook(file, mutating, action) {
   try {
     if (mutating) {
       lock = await fs.open(`${file}.lock`, 'wx');
-      await lock.writeFile(`${process.pid} material3-native-v2\n`);
+      await lock.writeFile(`${process.pid} material3-migration\n`);
     }
     const before = await fs.readFile(file);
     const {SpreadsheetFile, FileBlob} = await dependency('@oai/artifact-tool');

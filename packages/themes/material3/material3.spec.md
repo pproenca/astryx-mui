@@ -43,11 +43,47 @@ values, or the behavior of existing themes.
 ## Native direction and implementation status
 
 Figma is the selected design authority wherever the supplied kit specifies the
-design. Captured Material guidance and observed GIF/video motion fill Figma gaps;
-pinned Material Web supplies implementation evidence. Record divergences rather
+design. Pinned AndroidX Compose Material 3 supplies component defaults, Expressive
+variants, state transitions, shape behavior and upstream test cases. Captured
+Material guidance and observed GIF/video motion resolve intent and gaps; pinned
+Material Web supplies browser implementation evidence. Record divergences rather
 than adapting Figma to the limitations of that Web revision. Native acceptance uses
 selected source baselines, pixel comparisons and timed motion evidence. Foundations
 require their own approved gallery before component implementation expands.
+
+Source research is shared by component family, with variants and subcomponents below
+it. Design precedence is Figma, Compose, captured Material guidance, then Web. Behavior
+and motion start with Compose, then guidance/media and Web; any Figma-specified detail
+still wins. Browser semantics use Web or native web standards. Select one source per
+concern, record specific gaps and dimension overrides, and reuse that decision across
+implementation tasks. Presence on multiple platforms does not create multiple migration
+owners. Presence on one platform remains required scope until explicitly classified.
+
+The migration targets the complete, dated Material 3 and Material 3 Expressive
+baseline: the union of the selected Figma kit, Material guidance and pinned Compose
+APIs, with explicit ownership for helpers and source-backed, human-approved platform
+exclusions. Missing Web coverage is required migration work. A source match is a
+candidate, not proof of equivalent variants or behavior. Source revisions are fixed
+for a migration baseline; new upstream releases require an explicit scope update.
+
+The initial Compose reference is AndroidX
+`b97c4470f19d8ae9bb9f96be24376fdf37ad056f`. Experimental APIs and incomplete defaults
+remain identified in source decisions. Compose expressions do not establish public
+Material Web CSS properties. Native typed roles and supported customization are
+owned here; source-only values retain explicit private names and attribution.
+
+Native response means correct browser semantics, immediate input handling and
+continuous motion under interruption/reversal, with reduced-motion alternatives.
+Foundation QA establishes browser/device profiles and numeric response/frame-pacing
+budgets. Applicable spring trajectories use independent upstream recordings with
+matched inputs, units, velocity and settling criteria. Numeric checks complement
+watched media and visual comparisons; Android rasterization is not an exact browser
+pixel baseline. Nonzero visual tolerances still need explicit human approval.
+
+Public contracts, component docs, necessary assets, attribution and regression
+fixtures/tests survive the migration. No product runtime, build or permanent test
+may depend on the temporary harness or its caches. Final acceptance requires the
+complete native inventory and an isolated build/test run with that harness absent.
 
 The family target is a native Material 3 component system under
 `@astryxdesign/material3` (`packages/material3`). That package is planned work;

@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Workbook, repository and task verifiers. @output Reviewable task transitions. @position Disposable migration workflow. */
+/** @input Workbook, shared family decisions and task verifiers. @output Measured transitions and focused source reading at verified revisions. @position Disposable migration workflow. */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {execFileSync} from 'node:child_process';
@@ -17,6 +17,11 @@ import {
 } from './model.mjs';
 import {hash} from './workbook.mjs';
 import {fileAt, validateEvidence} from './evidence.mjs';
+import {prepareTask, preparationStatus} from './preparation.mjs';
+import {transition, flowMetrics, excelTime} from './flow.mjs';
+import {loadCompose, composeBrief} from './compose.mjs';
+import {upgradeWorkbook} from './upgrade.mjs';
+import {auditCoverage, retireCheck, coveragePlan} from './audit.mjs';
 const home = path.dirname(fileURLToPath(import.meta.url));
 export const policyFile = 'internal/material3-migration/policy.json';
 export async function policy() {
@@ -106,9 +111,32 @@ export function validateMerge(pr, task, worktrees, containsMerge) {
 export async function dispatch(wb, command, opts) {
   const p = await policy(),
     repo = opts.repo;
+  if (command === 'workbook upgrade')
+    return upgradeWorkbook(wb, p, await loadCompose(repo, p.value));
   checkPolicy(wb, p);
   const tasks = table(wb, sheets.tasks),
     edges = table(wb, sheets.edges);
+  if (command === 'audit') {
+    const audit = await auditCoverage(wb, p.value, repo);
+    if (!audit.complete)
+      return result('audit', {
+        ...audit,
+        blockerCount: audit.blockers.length,
+        blockers: opts.full ? audit.blockers : audit.blockers.slice(0, 12),
+      });
+    if (opts['retire-check'])
+      return result('audit', {
+        ...audit,
+        retirement: await retireCheck(repo, p.value, p.hash, opts.stateDir),
+      });
+    return result('audit', {
+      ...audit,
+      complete: false,
+      blockers: [
+        'Coverage is complete. Run audit --retire-check to prove the build and permanent tests work without the harness.',
+      ],
+    });
+  }
   if (command === 'source') {
     if (
       !opts.query ||
@@ -126,6 +154,7 @@ export async function dispatch(wb, command, opts) {
       'Material components',
       'Material tokens',
       'Material access',
+      'Compose sources',
     ])
       for (const row of table(wb, name)) {
         const values = Object.fromEntries(
@@ -146,36 +175,105 @@ export async function dispatch(wb, command, opts) {
       next: ['task show <id> --full'],
     });
   }
-  if (command === 'status')
-    return result('status', {
-      strategy: p.value.strategyId,
-      ready: ready(tasks, edges).map(t => ({
+  if (command === 'status') {
+    const candidates = await Promise.all(
+      ready(tasks, edges).map(async t => ({
         id: t['Task ID'],
         title: t.Title,
         phase: t.Phase,
+        preparation: await preparationStatus(wb, t, p.value, repo),
       })),
+    );
+    for (const c of candidates) delete c.preparation.packet;
+    return result('status', {
+      strategy: p.value.strategyId,
+      ready: candidates.filter(c => c.preparation.ready),
+      prepareNext: candidates
+        .filter(c => !c.preparation.ready)
+        .slice(0, p.value.workInProgress.preparedBuffer),
+      flow: flowMetrics(tasks, Date.now(), edges),
       active: tasks
         .filter(t =>
           ['Claimed', 'Awaiting QA', 'Approved', 'Blocked'].includes(t.Status),
         )
         .map(t => ({id: t['Task ID'], status: t.Status})),
-      next: ['task pop'],
+      next: tasks.some(t => t.Status === 'Claimed')
+        ? tasks
+            .filter(t => t.Status === 'Claimed')
+            .map(t => `task show ${t['Task ID']}`)
+        : ['task pop'],
     });
-  if (command === 'task show')
-    return result('task.brief', brief(wb, opts.id, opts.full));
+  }
+  if (command === 'task show') {
+    const t = getTask(wb, opts.id),
+      prepared = await preparationStatus(wb, t, p.value, repo);
+    return result('task.brief', {
+      ...brief(wb, opts.id, opts.full),
+      prepared: prepared.ready
+        ? {
+            ready: true,
+            routing: prepared.packet.routing.map(r => ({
+              familyId: r.familyId,
+              routes: r.routes,
+              overrides: r.overrides || [],
+            })),
+            ...(opts.full
+              ? {
+                  compose: composeBrief(
+                    await loadCompose(repo, p.value),
+                    prepared.packet.compose.map(f => f.id),
+                    opts.full,
+                  ),
+                }
+              : {}),
+            baseline: prepared.packet.baseline,
+          }
+        : prepared,
+    });
+  }
+  if (command === 'task prepare') {
+    const t = getTask(wb, opts.id);
+    if (['Awaiting QA', 'Approved', 'Closed', 'Superseded'].includes(t.Status))
+      throw new Error(
+        'Only pending source preparation may change; retain reviewed packets.',
+      );
+    const prepared = await prepareTask(
+      wb,
+      t,
+      p.value,
+      repo,
+      opts.baseline || t['Source decision'],
+    );
+    write(wb, sheets.tasks, t._row, {
+      Preparation: prepared.relative,
+      'Preparation SHA256': prepared.sha256,
+      ...(opts.baseline ? {'Source decision': opts.baseline} : {}),
+    });
+    return result('task.prepared', {taskId: opts.id, ...prepared}, true);
+  }
   if (command === 'task pop') {
-    if (tasks.some(t => ['Claimed', 'Awaiting QA'].includes(t.Status)))
+    if (
+      tasks.filter(t => t.Status === 'Claimed').length >=
+        p.value.workInProgress.implementation ||
+      tasks.filter(t => t.Status === 'Awaiting QA').length >=
+        p.value.workInProgress.awaitingQA
+    )
       throw new Error(
         'An active task is awaiting implementation or QA; finish or block it before claiming another',
       );
-    const task = ready(tasks, edges)[0];
+    let task;
+    for (const candidate of ready(tasks, edges))
+      if ((await preparationStatus(wb, candidate, p.value, repo)).ready) {
+        task = candidate;
+        break;
+      }
     if (!task)
       return result('task.empty', {
-        message: 'No dependency-ready task',
+        message:
+          'No task has both closed prerequisites and valid source preparation. Use status to see the next source buffer.',
         next: ['status'],
       });
-    write(wb, sheets.tasks, task._row, {
-      Status: 'Claimed',
+    transition(wb, task, 'Claimed', {
       Owner: process.env.USER || 'local',
       'Claimed at': new Date().toISOString(),
     });
@@ -185,15 +283,14 @@ export async function dispatch(wb, command, opts) {
   if (command === 'task block') {
     if (!['Claimed', 'Awaiting QA'].includes(task.Status) || !opts.reason)
       throw new Error('Blocking requires an active task and --reason');
-    write(wb, sheets.tasks, task._row, {
-      Status: 'Blocked',
+    transition(wb, task, 'Blocked', {
       'Hold reason': opts.reason,
     });
     return result('task.blocked', {taskId: opts.id, reason: opts.reason}, true);
   }
   if (command === 'task unblock') {
     if (!task['Hold reason']) throw new Error('Task has no manual hold');
-    write(wb, sheets.tasks, task._row, {'Hold reason': ''});
+    transition(wb, task, 'Backlog', {'Hold reason': ''});
     return result('task.unblocked', {taskId: opts.id, next: ['status']}, true);
   }
   if (command === 'task finish') {
@@ -257,10 +354,10 @@ export async function dispatch(wb, command, opts) {
           throw new Error('Native QA changed after approval');
         write(wb, name, row._row, {Merged: 'Yes'});
       }
-    write(wb, sheets.tasks, task._row, {
-      Status: 'Closed',
+    transition(wb, task, 'Closed', {
       PR: pr.url,
       'Merge SHA': pr.mergeCommit.oid,
+      'Closed at': excelTime(Date.now()),
     });
     return result(
       'task.closed',
@@ -300,6 +397,19 @@ export async function dispatch(wb, command, opts) {
   const revision = exec(repo, 'git', ['rev-parse', 'HEAD']);
   let receipt;
   if (command === 'task verify') {
+    const prepared = await preparationStatus(wb, task, p.value, repo);
+    if (!prepared.ready) throw new Error(prepared.reason);
+    if (task['Task ID'] === 'M3-SRC-002') {
+      const blockers = coveragePlan(
+        wb,
+        p.value,
+        await loadCompose(repo, p.value),
+      );
+      if (blockers.length)
+        throw new Error(
+          `Source coverage remains unresolved: ${blockers.slice(0, 6).join(' ')}`,
+        );
+    }
     const recipe = path.join(p.value.recipeDirectory, `${opts.id}.mjs`);
     try {
       await fileAt(repo, recipe);
@@ -309,6 +419,13 @@ export async function dispatch(wb, command, opts) {
       );
     }
     receipt = JSON.parse(exec(repo, process.execPath, [recipe, '--json']));
+    if (
+      receipt.reviewKind === 'visual' &&
+      receipt.sourceDecision !== prepared.packet.baseline
+    )
+      throw new Error(
+        'Verifier selected a different baseline from the prepared source packet.',
+      );
   } else {
     if (!['approve', 'reject'].includes(opts.decision) || !opts.reference)
       throw new Error(
@@ -335,7 +452,10 @@ export async function dispatch(wb, command, opts) {
       Notes: opts.reference,
       'Reviewed at': new Date().toISOString(),
     });
-    write(wb, sheets.tasks, task._row, {Status: 'Claimed', QA: 'Rejected'});
+    transition(wb, task, 'Claimed', {
+      QA: 'Rejected',
+      'Rework count': Number(task['Rework count'] || 0) + 1,
+    });
     return result(
       'task.rejected',
       {taskId: opts.id, next: [`task verify ${opts.id}`]},
@@ -361,6 +481,17 @@ export async function dispatch(wb, command, opts) {
     if (!response.ok) throw new Error('Preview is unavailable');
   }
   const coverage = requireMappings(wb, task, p.value, receipt);
+  {
+    const prepared = await preparationStatus(wb, task, p.value, repo);
+    if (!prepared.ready) throw new Error(prepared.reason);
+    Object.assign(fingerprints, prepared.packet.files);
+  }
+  for (const mapping of table(wb, sheets.components).filter(
+    m => coverage.mapIds.includes(m['Map ID']) && m['Native source'],
+  ))
+    fingerprints[mapping['Native source']] = hash(
+      await fs.readFile(await fileAt(repo, mapping['Native source'])),
+    );
   if (command === 'task qa' && task['Scope SHA256'] !== scope(wb, task))
     throw new Error('Task references or acceptance changed after verification');
   if (exec(repo, 'git', ['rev-parse', 'HEAD']) !== revision)
@@ -414,7 +545,7 @@ export async function dispatch(wb, command, opts) {
     };
     if (receipt.sourceDecision)
       updates['Source decision'] = receipt.sourceDecision;
-    write(wb, sheets.tasks, task._row, updates);
+    transition(wb, task, 'Awaiting QA', updates);
     write(wb, sheets.tasks, task._row, {
       'Scope SHA256': scope(wb, getTask(wb, opts.id)),
     });
@@ -461,7 +592,7 @@ export async function dispatch(wb, command, opts) {
     Notes: `${review.Notes}\nHuman decision: ${opts.reference}`,
     'Reviewed at': new Date().toISOString(),
   });
-  write(wb, sheets.tasks, task._row, {Status: 'Approved', QA: 'Approved'});
+  transition(wb, task, 'Approved', {QA: 'Approved'});
   markQA(wb, coverage, 'Approved');
   for (const name of [sheets.components, sheets.tokens])
     for (const row of table(wb, name).filter(r =>

@@ -21,6 +21,28 @@ styles and ten elevation effect styles. Forty-two soft-deleted typography style
 nodes were excluded.
 The workbook also retains these source inventories for task lookup.
 
+### Compose reference
+
+The frozen baseline also uses AndroidX commit
+`b97c4470f19d8ae9bb9f96be24376fdf37ad056f`. The external shallow/sparse checkout is
+read-only; `M3_ANDROIDX` locates it. `source prepare` validates the commit and clean
+source paths, then reproduces `compose-inventory.json`. Policy pins its semantic
+JSON hash. Every indexed family, token file, test and sample links to that commit.
+The index includes candidate source families, not a claim of exhaustive API parsing
+or parity. Source resolution must inspect variants, helpers and missed references.
+Public API snapshots for every published module under `compose/material3`, including
+adaptive layouts/navigation, ripple, window sizing and A2UI, are separately retained
+as unresolved scope rows. `M3-SRC-002` must reconcile each API surface with mapped
+design-system ownership or an approved platform/integration exclusion. This avoids
+silently treating the main component artifact as the entire Compose codebase.
+
+The derived index includes token expressions from **The Android Open Source
+Project**, under [Apache License 2.0](LICENSE.androidx). Kotlin source remains in
+the external reference checkout. Preserve upstream copyright/license headers and
+any applicable notices for code translated into permanent product implementation.
+The index and this migration-only license copy can be deleted with the harness;
+permanent derived code must carry its own required attribution.
+
 ## Rendered kit references
 
 These 1× PNGs were exported on 2026-09-26 from a Figma working copy of the
@@ -38,6 +60,7 @@ dark scheme diagrams absent, despite those diagrams appearing on the Figma
 canvas. That PNG is **not** a color baseline. Use the source variables and a
 complete rendered reference before deciding color parity. These exports are
 source observations, not matched Astryx scenario fixtures or migration proof.
+
 
 ## Established coverage and differences
 

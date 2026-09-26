@@ -1,8 +1,8 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
 /**
- * @input Revision-bound receipts, resolved source baselines and captured media.
- * @output Evidence validation; exact pixel metrics are recomputed from PNGs.
+ * @input Revision-bound receipts, pinned Compose/Figma/Web baselines and independent recordings.
+ * @output Recomputed pixel, trajectory and browser performance evidence with explicit browser source routing.
  * @position Migration-only verification. Product regression tests outlive this tool.
  */
 import fs from 'node:fs/promises';
@@ -10,6 +10,7 @@ import path from 'node:path';
 import {isDeepStrictEqual} from 'node:util';
 import {hash} from './workbook.mjs';
 import {compare} from './compare.mjs';
+import {compareTrace, measurePerformance} from './measurements.mjs';
 const required = (condition, message) => {
   if (!condition) throw new Error(message);
 };
@@ -38,6 +39,35 @@ export function validateSource(source, policy) {
     source.web?.commit === policy.materialWebCommit,
     'Source baseline must pin Material Web',
   );
+  if (policy.schemaVersion >= 3) {
+    required(
+      source.compose?.commit === policy.androidxCommit &&
+        source.compose.inventory === policy.composeInventory,
+      'Source baseline must pin Compose and its source inventory.',
+    );
+    required(
+      source.figma?.sha256 === policy.figmaSha256 &&
+        source.baselineId === policy.baselineId,
+      'Source baseline differs from the frozen Material 3 + Expressive scope.',
+    );
+    required(
+      Array.isArray(source.performance) &&
+        source.performance.length &&
+        source.performance.every(p => p.id) &&
+        new Set(source.performance.map(p => p.id)).size ===
+          source.performance.length,
+      'Declare approved browser/device performance profiles.',
+    );
+    required(
+      Array.isArray(source.compose.tests) &&
+        source.compose.tests.every(t => t.id && t.source) &&
+        new Set(source.compose.tests.map(t => t.id)).size ===
+          source.compose.tests.length &&
+        (source.compose.tests.length ||
+          (source.compose.reason && source.compose.evidence)),
+      'Map upstream test cases or document missing Compose coverage.',
+    );
+  }
   required(
     /^[a-f0-9]{64}$/.test(source.figma?.sha256 || '') && source.figma.inventory,
     'Source baseline must identify the Figma export and inventory',
@@ -60,7 +90,10 @@ export function validateSource(source, policy) {
   for (const decision of source.decisions) {
     required(
       decision.dimension &&
-        ['figma', 'website', 'web'].includes(decision.chosen) &&
+        (decision.concern === 'browser'
+          ? ['web', 'web-platform']
+          : policy.sourceAuthority || ['figma', 'website', 'web']
+        ).includes(decision.chosen) &&
         typeof decision.figmaSpecified === 'boolean' &&
         decision.reason &&
         decision.evidence,
@@ -115,6 +148,12 @@ export function validateSource(source, policy) {
   }
 }
 export function validateReceipt(receipt, policy, task, revision) {
+  if (policy.schemaVersion >= 3)
+    required(
+      receipt.androidxCommit === policy.androidxCommit &&
+        receipt.baselineId === policy.baselineId,
+      'Receipt has stale Compose revision or scope baseline.',
+    );
   required(
     receipt.strategyId === policy.strategyId &&
       receipt.taskId === task['Task ID'] &&
@@ -250,6 +289,88 @@ export async function validateEvidence(repo, receipt, policy, task, revision) {
     );
     const source = JSON.parse(await fs.readFile(sourceFile, 'utf8'));
     validateSource(source, policy);
+    if (policy.schemaVersion >= 3) {
+      await fingerprint(source.compose.inventory);
+      if (source.compose.evidence) await fingerprint(source.compose.evidence);
+      const upstream = receipt.upstreamTests || [];
+      required(
+        new Set(upstream.map(t => t.id)).size === upstream.length &&
+          upstream.length === source.compose.tests.length,
+        'Upstream test coverage differs from the selected cases.',
+      );
+      for (const expected of source.compose.tests) {
+        const actual = upstream.find(t => t.id === expected.id);
+        required(
+          expected.id &&
+            expected.source &&
+            actual &&
+            ['Pass', 'N/A'].includes(actual.result) &&
+            actual.reason &&
+            actual.evidence &&
+            (actual.result === 'N/A' || actual.nativeTest),
+          'Missing translated upstream test or explicit platform difference.',
+        );
+        await fingerprint(actual.evidence);
+        if (actual.nativeTest) await fingerprint(actual.nativeTest);
+      }
+      const performance = receipt.performance || [];
+      required(
+        performance.length === source.performance.length &&
+          new Set(performance.map(p => p.id)).size === performance.length,
+        'Browser/device performance coverage differs.',
+      );
+      for (const profile of source.performance) {
+        const run = performance.find(p => p.id === profile.id);
+        required(run?.actual, 'Missing performance recording.');
+        measurePerformance(
+          JSON.parse(await fs.readFile(await fingerprint(run.actual), 'utf8')),
+          profile,
+        );
+      }
+      if (source.motion?.applicable) {
+        const numeric = source.motion.numeric;
+        required(
+          typeof numeric?.applicable === 'boolean',
+          'Declare numeric motion applicability.',
+        );
+        if (!numeric.applicable) {
+          required(
+            numeric.reason && numeric.evidence,
+            'Numeric motion N/A requires source evidence.',
+          );
+          await fingerprint(numeric.evidence);
+        } else {
+          const runs = receipt.motion?.traces || [];
+          required(
+            Array.isArray(numeric.traces) &&
+              numeric.traces.length &&
+              numeric.traces.every(t => t.id) &&
+              new Set(numeric.traces.map(t => t.id)).size ===
+                numeric.traces.length &&
+              runs.length === numeric.traces.length &&
+              new Set(runs.map(t => t.id)).size === runs.length,
+            'Missing independent motion trajectories.',
+          );
+          for (const spec of numeric.traces) {
+            const run = runs.find(t => t.id === spec.id);
+            required(
+              run?.actual && run.actual !== spec.reference,
+              'Trace reference and browser capture must be independent.',
+            );
+            compareTrace(
+              JSON.parse(
+                await fs.readFile(await fingerprint(spec.reference), 'utf8'),
+              ),
+              JSON.parse(
+                await fs.readFile(await fingerprint(run.actual), 'utf8'),
+              ),
+              spec,
+              policy.androidxCommit,
+            );
+          }
+        }
+      }
+    }
     for (const g of source.guidance) await fingerprint(g.capture);
     await fingerprint(source.figma.inventory);
     for (const decision of source.decisions)
