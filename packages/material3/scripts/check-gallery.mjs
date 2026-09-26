@@ -100,7 +100,7 @@ try {
   await page.waitForFunction(
     () =>
       document.querySelector('#native-frame')?.contentDocument?.documentElement
-        .dir === 'rtl',
+        ?.dir === 'rtl',
   );
   assert.equal(
     await fixture.locator('#direction').getAttribute('aria-pressed'),
@@ -109,7 +109,7 @@ try {
   await page.locator('#scheme').selectOption('expressive-light');
   await page.waitForFunction(
     () =>
-      document.querySelector('#native-frame')?.contentDocument?.body.dataset
+      document.querySelector('#native-frame')?.contentDocument?.body?.dataset
         .mdScheme === 'expressive-light',
   );
   assert.equal(
