@@ -119,8 +119,10 @@ The Material 3 theme gives Astryx builders a coherent light and dark Material 3
 foundation. Its roles are traced to the pinned Material Web source and checked
 against rendered components. The source snapshot is
 [`cbd34a8921915af94d5ef65c2a69eece41d5b4f3`](https://github.com/material-components/material-web/tree/cbd34a8921915af94d5ef65c2a69eece41d5b4f3),
-whose active Sass wrappers use the `v0_192` token source. The community Figma
-kit governs specified design dimensions; Material Web supplies implementation evidence.
+whose active Sass wrappers use the `v0_192` token source. That Web/Figma
+comparison describes the existing Core compatibility theme. Native Material 3
+source decisions use the Compose-first rule above; Figma fills evidenced design
+gaps and retains Figma-only scope.
 
 ## Inheritance and base
 
