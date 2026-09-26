@@ -15,6 +15,33 @@ separate styles, not an automatic switch to an expressive font family. The
 [`TypeScaleTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/TypeScaleTokens.kt)
 values supply their sizes, line heights, tracking and weights.
 
+## Measured kit disagreements
+
+The 30 kit text styles in `figma-foundation-values.json` were compared with all
+30 pinned `TypeScaleTokens.kt` roles at nominal 1× font scale. Every size and
+line-height number agrees. Five tracking values and five emphasized weights
+disagree. Compose selects the left value in each row; the kit values remain
+source observations, not native defaults.
+
+| Role | Metric | Compose | Kit |
+| --- | --- | ---: | ---: |
+| Body Large Emphasized | tracking | 0.15 sp | 0.5 px |
+| Body Medium | tracking | 0.2 sp | 0.25 px |
+| Display Large | tracking | -0.2 sp | -0.25 px |
+| Display Large Emphasized | tracking | 0 sp | -0.25 px |
+| Title Medium | tracking | 0.2 sp | 0.15 px |
+| Label Large Emphasized | weight | 700 Bold | 600 SemiBold |
+| Label Medium Emphasized | weight | 700 Bold | 600 SemiBold |
+| Label Small Emphasized | weight | 700 Bold | 600 SemiBold |
+| Title Medium Emphasized | weight | 700 Bold | 600 SemiBold |
+| Title Small Emphasized | weight | 700 Bold | 600 SemiBold |
+
+[`source-typography.test.mjs`](../tests/source-typography.test.mjs) recomputes
+the differences from the pinned inventories, allowing for float storage noise
+in the Figma export. Numeric agreement is not glyph or line-box parity, and
+`sp` responds to Android font scaling. Browser comparisons must record the
+selected font, font scale and rendered metrics.
+
 Compose's pinned
 [`TypefaceTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/TypefaceTokens.kt)
 maps both `Brand` and `Plain` to platform `FontFamily.SansSerif`; it does not

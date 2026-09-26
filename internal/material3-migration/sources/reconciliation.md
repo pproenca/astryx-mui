@@ -86,6 +86,9 @@ medium/small titles, which are SemiBold (600). Web's prominent label weight
 styles. All 30 active kit styles name Roboto. Pinned Compose supplies
 [30 typography roles and override behavior](compose-typography.md), including
 the emphasized styles, and names platform SansSerif as its default family.
+Five tracking values and five emphasized weights differ from the kit's 30
+styles. The native baseline selects Compose for those metrics; the earlier
+kit/Web match does not establish a Compose match.
 The kit's explicit Roboto choice fills the reproducible browser-font gap for
 matched comparison; it does not override Compose's metrics or force a different
 native default. Use the pinned
