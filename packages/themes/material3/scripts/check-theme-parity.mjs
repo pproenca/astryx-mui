@@ -34,10 +34,14 @@ assert.deepEqual(
   built.material3Theme.localTokens,
 );
 assert.deepEqual(
+  source.material3Theme.components,
+  built.material3Theme.components,
+);
+assert.deepEqual(
   Object.keys(source.material3Theme.icons).sort(),
   Object.keys(built.material3Theme.icons).sort(),
 );
-assert.equal(Object.keys(source.material3Theme.localTokens).length, 168);
+assert.equal(Object.keys(source.material3Theme.localTokens).length, 170);
 assert.equal(Object.keys(source.material3Theme.tokens).length, 97);
 assert.equal(Object.keys(source.material3Theme.icons).length, 28);
 assert.ok(
@@ -118,7 +122,7 @@ try {
     assert.match(observed.portable.bodyFamily, /Roboto/);
   }
   console.log(
-    `Chrome ${browser.version()}: 49 color roles in both modes, portable accent/type, 168 static local roles, and runtime/built values agree.`,
+    `Chrome ${browser.version()}: 49 color roles in both modes, portable accent/type, 170 static local roles, and runtime/built values agree.`,
   );
 } finally {
   await browser.close();

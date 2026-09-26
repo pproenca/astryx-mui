@@ -62,6 +62,27 @@ you use. `fill` (0–1), `weight` (100–700), `grade` (−50–200), and
 standalone symbol has `role="img"` and an accessible name; an unlabelled one
 is decorative. The font must include the requested glyph and axis values.
 
+## Divider
+
+Core `Divider` uses the Material 3 theme's outline-variant color and 1px
+thickness. Its default separator semantics stay intact. For Material Web's
+decorative `md-divider` behavior, set `isDecorative`; add `inset="both"`,
+`inset="start"`, or `inset="end"` for the source's 16px logical inset.
+The inset follows text direction in RTL layouts. Omit `inset` for a full-width
+rule. Use the existing `label`, `variant="strong"`, or vertical orientation
+when an Astryx-specific extension is needed.
+
+```tsx
+import {Divider} from '@astryxdesign/core/Divider';
+
+<Divider isDecorative inset="start" />;
+<Divider aria-label="Results" />;
+```
+
+The component mapping exposes `--md-divider-color` and
+`--md-divider-thickness` as theme-local roles. A theme override can also set
+`--astryx-divider-inset` for the inset distance.
+
 Use Core's semantic tokens in app styles so other Astryx themes keep working.
 The Material 3 theme-local roles are intended for Material-specific component
 overrides. The source [theme contract](material3.spec.md) describes that

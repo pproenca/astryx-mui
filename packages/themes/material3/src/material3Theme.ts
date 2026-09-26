@@ -8,7 +8,7 @@
  *
  * Core token names remain portable. Material CSS-backed roles are theme-local;
  * Sass-only foundation values use Astryx-owned theme-local names. Component
- * parity is tracked by separate migrations and is not implied by this theme.
+ * mappings supply source-backed rules without changing Core defaults.
  */
 
 import {defineTheme, type TokenValue} from '@astryxdesign/core/theme';
@@ -51,6 +51,8 @@ const material3LocalTokens: Record<string, TokenValue> = {
     ]),
   ),
   ...entries('--md-ref-typeface-', material3Typeface),
+  '--md-divider-color': 'var(--md-sys-color-outline-variant)',
+  '--md-divider-thickness': '1px',
   ...entries('--md-sys-typescale-', material3Typescale),
   ...entries('--md-sys-shape-', material3CssCorners),
   ...entries(
@@ -208,5 +210,17 @@ export const material3Theme = defineTheme({
     ...semanticType('large', 'body-large'),
     ...semanticType('label', 'label-large'),
     ...semanticType('supporting', 'body-small'),
+  },
+  components: {
+    divider: {
+      base: {
+        '--astryx-divider-color': 'var(--md-divider-color)',
+        '--astryx-divider-thickness': 'var(--md-divider-thickness)',
+        '--astryx-divider-inset': '16px',
+      },
+      'variant:strong': {
+        '--astryx-divider-color': 'var(--md-sys-color-outline)',
+      },
+    },
   },
 });
