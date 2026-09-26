@@ -40,11 +40,18 @@ run('node', 'internal/material3-migration/actual/capture-native-icons.mjs', '--c
 
 const actualRoot = 'internal/material3-migration/actual/M3-NAT-002';
 const actual = name => `${actualRoot}/${name}`;
+const tokenCoverage = JSON.parse(await fs.readFile(path.join(repo, actual('token-coverage.json'))));
+assert.equal(tokenCoverage.taskId, 'M3-NAT-002');
+assert.equal(tokenCoverage.tokens.length, 123);
+assert.deepEqual(tokenCoverage.tokens.map(item => item.name),
+  Object.keys((await import('../../../packages/material3/dist/index.js')).material3TokenValues('light')).filter(name =>
+    ['--md-ref-typeface-', '--md-sys-color-', '--md-sys-typescale-', '--md-sys-shape-'].some(prefix => name.startsWith(prefix))));
+execFileSync('git', ['merge-base', '--is-ancestor', tokenCoverage.evidenceRevision, revision], {cwd: repo});
 const pass = (reason, ...evidence) => ({result: 'Pass', reason, evidence});
 const motionPass = (reason, evidence) => ({result: 'Pass', reason, evidence});
 const checks = {
   source: pass('Compose-first baseline and pinned media supply the selected foundation values.', sourceDecision, 'internal/material3-migration/sources/reconciliation.md', 'internal/material3-migration/sources/motion/README.md'),
-  'token-contract': pass('One typed native graph emits public Material roles and keeps source-only values explicit.', 'packages/material3/src/foundation.ts', 'packages/material3/src/foundationSource.json', 'packages/material3/src/foundation.test.ts'),
+  'token-contract': pass('One typed native graph emits public Material roles and keeps source-only values explicit.', 'packages/material3/src/foundation.ts', 'packages/material3/src/foundationSource.json', 'packages/material3/src/foundation.test.ts', actual('token-coverage.json')),
   'native-boundary': pass('Native CSS, resolver and browser fixture build without the Core compatibility theme.', 'packages/material3/package.json', 'packages/material3/src/index.ts', 'packages/material3/fixtures/foundation.html', 'packages/material3/scripts/check-native-fixture.mjs'),
   compatibility: pass('The Core bridge reads native canonical values at build time and emits portable references to Material roles.', 'packages/themes/material3/src/material3Theme.ts', 'packages/core/src/theme/tokens.ts', 'packages/themes/material3/scripts/check-theme-parity.mjs', 'packages/themes/material3/material3.spec.md'),
   'automated-checks': pass('Native package, Core token resolver and Material compatibility build/browser checks pass at this revision.', 'packages/material3/src/motion.test.ts', 'packages/material3/scripts/check-foundation-browser.mjs', 'packages/material3/scripts/check-layer-browser.mjs', 'packages/material3/scripts/check-spacing-browser.mjs'),
@@ -108,6 +115,7 @@ const receipt = {
   sourceDecisionSha256: hash(sourceBytes),
   checks,
   qaChecks,
+  tokenIds: tokenCoverage.tokens.map(item => item.id),
   upstreamTests: [],
   performance: source.performance.map(item => ({id: item.id, actual: actual('performance.json')})),
   visualComparisons,
