@@ -24,6 +24,15 @@ export default {
       ],
     },
     {
+      title: 'Foundation gallery',
+      content: [
+        {
+          type: 'prose',
+          text: 'The Astryx docsite provides an interactive native foundation gallery at /material3/foundations. It shows the native package independently of the Core theme compatibility preview, with pinned source comparisons, light and dark modes, and motion playback.',
+        },
+      ],
+    },
+    {
       title: 'Component imports',
       content: [
         {

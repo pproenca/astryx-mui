@@ -63,6 +63,7 @@ const THEME_ORDER: ReadonlyArray<string> = [
   '@astryxdesign/theme-stone',
   '@astryxdesign/theme-gothic',
   '@astryxdesign/theme-matcha',
+  '@astryxdesign/theme-material3',
   '@astryxdesign/theme-y2k',
   '@astryxdesign/theme-butter',
 ];
@@ -432,6 +433,15 @@ function ThemeActions({selectedPkgName, customizeHref}: ThemeActionsProps) {
           });
         }}
       />
+      {selectedPkgName === '@astryxdesign/theme-material3' && (
+        <Button
+          variant="secondary"
+          size="lg"
+          label="Open native foundation gallery"
+          href="/material3/foundations"
+          xstyle={styles.actionButton}
+        />
+      )}
     </ThemeExplorerActions>
   );
 }

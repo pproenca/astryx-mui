@@ -1,0 +1,24 @@
+/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+
+.intro {
+  display: grid;
+  justify-items: start;
+  gap: 14px;
+  max-width: 70ch;
+  margin-bottom: 24px;
+}
+
+.gallery {
+  display: block;
+  width: 100%;
+  min-height: 960px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-container);
+  background: var(--color-background-surface);
+}
+
+@media (max-width: 600px) {
+  .gallery {
+    min-height: 780px;
+  }
+}
