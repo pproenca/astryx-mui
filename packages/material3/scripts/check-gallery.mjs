@@ -87,6 +87,11 @@ try {
   const fixture = page.frameLocator('#native-frame');
   await fixture.locator('#flower').waitFor();
   await page.locator('#scheme').selectOption('dark');
+  await page.waitForFunction(
+    () =>
+      document.querySelector('#native-frame')?.contentDocument?.body?.dataset
+        .mdScheme === 'dark',
+  );
   await fixture.locator('#primary-swatch').waitFor();
   assert.equal(await fixture.locator('#scheme').inputValue(), 'dark');
   assert.equal(
