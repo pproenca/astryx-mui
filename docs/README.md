@@ -4,6 +4,11 @@ This directory holds maintainer knowledge that must be reviewable with the code
 it governs. Consumer documentation remains in component `.doc.mjs` files and
 `packages/cli/assets/docs/`.
 
+Material 3 contributors start with the [native migration workflow](contributing/material3-migration.md)
+and [family contract](../packages/themes/material3/material3.spec.md). The
+migration workbook is the sole task database. The verification policy versions
+the native token and component boundary, without duplicating the task backlog.
+
 ## Placement
 
 - `architecture/`: the shipped system, its boundaries, and invariants.

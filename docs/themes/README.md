@@ -16,7 +16,8 @@ Current records:
 - [Neutral](../../packages/themes/neutral/neutral.spec.md)
 - [Material 3](../../packages/themes/material3/material3.spec.md)
 
-For the component-by-component implementation and review loop, see
+For the native component implementation, completed-slice revalidation, workbook
+dependency graph and review loop, see
 [Material 3 component migration](../contributing/material3-migration.md).
 
 A theme record sits between system theming architecture and consumer/component

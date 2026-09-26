@@ -5,9 +5,11 @@ roles for Astryx. Its colors, typography, shapes, motion, elevation, and icons
 come from pinned Material Web and Material Symbols sources. The package is in
 this repository's workspace; it has not yet been released to npm.
 
-The theme is additive: it preserves Astryx Core token names and component APIs.
-Component appearances are being migrated and reviewed individually, so using
-this theme does not by itself make Core components Material 3 components.
+This package currently provides a compatibility theme for Astryx Core tokens
+and components. The migration destination is native Material 3 components with
+direct Material token consumption. That native package is planned and is not
+available through these imports yet. Using this compatibility theme does not
+by itself make Core components native or fully verified Material 3 components.
 
 ## Use the built theme
 
@@ -108,8 +110,10 @@ accessible name. Use `label` for a meaningful standalone badge. The local
 `--md-badge-*` roles allow Material-specific color, size, shape, and type
 overrides.
 
-Use Core's semantic tokens in app styles so other Astryx themes keep working.
-The Material 3 theme-local roles are intended for Material-specific component
-overrides. The source [theme contract](material3.spec.md) describes that
-boundary, and the [third-party notices](THIRD_PARTY_NOTICES.md) identify the
-Google sources and licenses.
+For existing Core applications that support several Astryx themes, continue
+using Core semantic tokens. Material-specific styling can use the supported
+Material roles exposed by this family. Native components will consume those
+roles directly; Core aliases are a compatibility surface. The source
+[theme contract](material3.spec.md) describes that boundary, and the
+[third-party notices](THIRD_PARTY_NOTICES.md) identify the Google sources and
+licenses.
