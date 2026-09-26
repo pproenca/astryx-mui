@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- Copyright (c) Meta Platforms, Inc. and affiliates. -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -11,13 +12,15 @@
         --md-sys-shape-corner-medium: 12px;
         font-family: system-ui, sans-serif;
       }
-      body { margin: 2rem; }
+      body {
+        margin: 2rem;
+      }
       .scope {
         display: inline-block;
         padding: 1.5rem;
         border: 1px solid currentColor;
       }
-      .scope[data-override="true"] {
+      .scope[data-override='true'] {
         --md-sys-color-primary: rgb(15, 101, 139);
         --md-sys-shape-corner-medium: 28px;
       }
@@ -32,7 +35,10 @@
   </head>
   <body>
     <h1>Native Material token boundary</h1>
-    <p>Probe colors test scoped CSS roles. This is not a Material visual baseline.</p>
+    <p>
+      Probe colors test scoped CSS roles. This is not a Material visual
+      baseline.
+    </p>
     <button id="toggle" type="button">Toggle scoped override</button>
     <div class="scope" id="scope" data-override="false">
       <span class="sample" id="sample">Material CSS variables</span>
