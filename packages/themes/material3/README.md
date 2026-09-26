@@ -83,6 +83,31 @@ The component mapping exposes `--md-divider-color` and
 `--md-divider-thickness` as theme-local roles. A theme override can also set
 `--astryx-divider-inset` for the inset distance.
 
+## Material Badge
+
+`MaterialBadge` is an opt-in Material 3 notification surface. It is a 6px dot
+without a value and a 16px minimum pill when given a short value such as `3`
+or `99+`. It follows the Material Web Labs badge source, so this is Labs
+parity, not a stable Material Web component. Core `Badge` remains the Astryx
+status and category label.
+
+```tsx
+import {MaterialBadge} from '@astryxdesign/theme-material3/MaterialBadge';
+import '@astryxdesign/theme-material3/material-badge.css';
+
+<MaterialBadge />;
+<MaterialBadge value={3} />;
+<MaterialBadge value="99+" label="More than 99 notifications" />;
+```
+
+Place the badge over its owner with CSS using a positioned parent and logical
+inset properties so it follows RTL. The badge has no click target and does not
+intercept pointer input. By default it is hidden from assistive technology;
+when it augments a button, include the notification state in the button's
+accessible name. Use `label` for a meaningful standalone badge. The local
+`--md-badge-*` roles allow Material-specific color, size, shape, and type
+overrides.
+
 Use Core's semantic tokens in app styles so other Astryx themes keep working.
 The Material 3 theme-local roles are intended for Material-specific component
 overrides. The source [theme contract](material3.spec.md) describes that

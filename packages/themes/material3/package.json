@@ -49,19 +49,30 @@
       "import": "./dist/MaterialSymbol.mjs",
       "require": "./dist/MaterialSymbol.cjs"
     },
+    "./MaterialBadge": {
+      "source": "./src/MaterialBadge.tsx",
+      "types": "./dist/MaterialBadge.d.ts",
+      "import": "./dist/MaterialBadge.mjs",
+      "require": "./dist/MaterialBadge.cjs"
+    },
     "./material-symbol.css": {
       "types": "./material-symbol.css.d.ts",
       "default": "./dist/material-symbol.css"
+    },
+    "./material-badge.css": {
+      "types": "./material-badge.css.d.ts",
+      "default": "./dist/material-badge.css"
     }
   },
   "files": [
     "dist",
     "src",
+    "*.css.d.ts",
     "THIRD_PARTY_NOTICES.md",
     "LICENSE-APACHE-2.0"
   ],
   "scripts": {
-    "build": "node ../../../scripts/clean-dist.mjs && astryx theme build src/material3Theme.ts -o dist/theme.css --icons-specifier ./icons.mjs && tsup && node scripts/build-material-symbol.mjs && tsc --project tsconfig.build.json && node ../../../scripts/build-css.mjs --package theme-material3 && node ../../../scripts/check-fully-specified.mjs"
+    "build": "node ../../../scripts/clean-dist.mjs && astryx theme build src/material3Theme.ts -o dist/theme.css --icons-specifier ./icons.mjs && tsup && node scripts/build-material-symbol.mjs && node scripts/build-material-badge.mjs && tsc --project tsconfig.build.json && node ../../../scripts/build-css.mjs --package theme-material3 && node ../../../scripts/build-css.mjs --package theme-material3-badge && node ../../../scripts/check-fully-specified.mjs"
   },
   "peerDependencies": {
     "@astryxdesign/core": "0.6.3",

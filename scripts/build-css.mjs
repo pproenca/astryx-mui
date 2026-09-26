@@ -83,6 +83,15 @@ const TARGETS = {
     dist: path.resolve(ROOT, 'packages/themes/material3/dist'),
     outFile: 'material-symbol.css',
     banner: 'Astryx Material 3 MaterialSymbol CSS',
+    files: ['MaterialSymbol.tsx'],
+    aliases: {},
+  },
+  'theme-material3-badge': {
+    src: path.resolve(ROOT, 'packages/themes/material3/src'),
+    dist: path.resolve(ROOT, 'packages/themes/material3/dist'),
+    outFile: 'material-badge.css',
+    banner: 'Astryx Material 3 MaterialBadge CSS',
+    files: ['MaterialBadge.tsx'],
     aliases: {},
   },
 };
@@ -101,7 +110,7 @@ function parseTarget() {
 }
 
 async function collectStyleXCSS(target) {
-  const files = await glob('**/*.{ts,tsx}', {
+  const files = await glob(target.files ?? '**/*.{ts,tsx}', {
     cwd: target.src,
     absolute: true,
     ignore: ['**/*.test.*', '**/*.d.ts', '**/node_modules/**'],
@@ -178,7 +187,9 @@ async function main() {
     .map(line => '  ' + line)
     .join('\n')}\n}\n`;
   await fs.writeFile(outPath, combinedFileContents, 'utf8');
-  console.log(`${target.outFile}: ${(combinedCSS.length / 1024).toFixed(1)} KB`);
+  console.log(
+    `${target.outFile}: ${(combinedCSS.length / 1024).toFixed(1)} KB`,
+  );
 }
 
 main().catch(err => {
