@@ -18,7 +18,7 @@ defaults, behavior and motion. The website fills documented gaps.
 
 | Foundation concern | Selected route | Evidence and boundary |
 | --- | --- | --- |
-| Color | Compose light/dark role-to-palette bindings | `ColorLightTokens.kt`, `ColorDarkTokens.kt`, and `PaletteTokens.kt`; kit contrast and named modes are Figma-only gaps, not inferred Compose modes. |
+| Color | Compose light/dark role-to-palette bindings | `ColorLightTokens.kt`, `ColorDarkTokens.kt`, and `PaletteTokens.kt`; kit contrast and named modes remain separately inventoried until their Compose membership is resolved. |
 | Typography | Compose's 30 role metrics and override behavior | [`compose-typography.md`](compose-typography.md); kit Roboto is the browser comparison fixture because Compose names only platform SansSerif. |
 | Shape | Compose corner shapes and `MaterialShapes.kt` | The kit's 35-shape set supplies comparison nodes; name similarity alone does not establish matching geometry. |
 | Spacing and density | Compose component geometry | There is no resolved universal spacing scale in these sources. The kit and captured guidance fill documented component or responsive gaps. |
@@ -57,10 +57,10 @@ one in place of Compose requires a color-specific approved exception. The
 [`ColorDarkTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ColorDarkTokens.kt)
 bindings agree with the kit's measured default Dark scheme. The current
 Material Web-derived compatibility theme remains historical implementation
-evidence, not the native source decision. The 30 kit contrast and named-scheme
-modes have no corresponding resolved Compose role map in this comparison;
-keep those kit values as Figma-only source scope rather than inferring them
-from Light/Dark. Derived state-layer colors follow the selected scheme roles.
+evidence, not the native source decision. This comparison does not resolve
+Compose membership or role maps for the 30 kit contrast and named-scheme modes;
+retain their kit values as source observations without inferring them from
+Light/Dark. Derived state-layer colors follow the selected scheme roles.
 The complete
 [kit color guidance export](figma-exports/color-guidance.png) supplies light and
 dark diagrams. It is a source image, not yet a matched native scenario; rendered
