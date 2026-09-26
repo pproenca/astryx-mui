@@ -61,6 +61,9 @@ it is source evidence, not a native component or Figma pixel match.
 The [source color swatches](color-reference/README.md) are deterministic
 fixtures for Compose baseline Light/Dark, Compose Expressive Light, and all 32
 published kit modes. They do not substitute for a rendered native gallery.
+The [corner reference](corner-reference/README.md) renders the ten kit-mapped
+Compose corner roles in light and dark under recorded Chrome conditions. It
+does not resolve the separate 35 Expressive polygon geometries.
 
 ## Rendered kit references
 

@@ -133,6 +133,9 @@ record that usage distinction instead of assuming the numeric variable and
 display example are identical CSS values. The separate
 [35-shape set](figma-exports/expressive-shapes.png) is additional Expressive
 geometry beyond the ten corner variables and needs its own native coverage.
+The [corner source captures](corner-reference/README.md) render the ten
+kit-mapped Compose roles in light and dark with recorded browser dimensions;
+they are not component pixels or a geometry comparison for the 35 polygons.
 The frozen kit inventory's `Shape Set` variants (`58548:7248`) include
 `Hexagon` but no `Clamshell`. Inspecting the same component set in the Figma
 working copy on 2026-09-26 confirms that its six-sided variant
