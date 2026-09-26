@@ -55,6 +55,9 @@ between platform SansSerif and the kit's Roboto. The
 [pinned Compose motion reference](compose-motion.md) records standard and
 expressive spring schemes and upstream assertions. Matched glyph scenarios,
 motion traces and native browser behavior remain to be verified.
+The [source color swatches](color-reference/README.md) are deterministic
+light/dark token fixtures derived from the selected Compose bindings and the
+kit's `Shadow` gap. They do not substitute for a rendered native gallery.
 
 ## Rendered kit references
 

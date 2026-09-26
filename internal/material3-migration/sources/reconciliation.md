@@ -68,7 +68,10 @@ Web resolves `shadow` to black in light and dark. Use that kit value for the
 missing native system-color role; this is a documented gap fill, not an
 exception to a specified Compose value. The focused
 [`source-color.test.mjs`](../tests/source-color.test.mjs) recomputes all 48
-light and dark comparisons from the pinned inventories.
+light and dark comparisons from the pinned inventories. The
+[`color-reference`](color-reference/README.md) fixtures render the selected
+49 solid role values in each mode without borrowing values from the native
+implementation; component color and state-layer comparisons remain separate.
 The complete
 [kit color guidance export](figma-exports/color-guidance.png) supplies light and
 dark diagrams. It is a source image, not yet a matched native scenario; rendered
