@@ -168,7 +168,9 @@ family parity.
 
 The [Compose elevation decision](compose-elevation.md) selects its tonal
 overlay formula despite the rendered guide's surface-tint deprecation note,
-and keeps tonal and shadow elevation independent. The kit has five light and
+and keeps tonal and shadow elevation independent. The
+[light/dark source captures](elevation-reference/README.md) render these as
+separate browser scenarios. The kit has five light and
 five dark elevation effect styles. Each style's two
 shadow geometries and alpha values agree with the corresponding Web level 1–5
 layers after ignoring list order. The light level 1 and 2 effect lists reverse

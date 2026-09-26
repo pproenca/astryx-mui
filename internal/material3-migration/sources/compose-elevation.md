@@ -55,3 +55,7 @@ Compose's platform shadow renderer does not prescribe those CSS pixels. A
 native comparison must capture the selected level and state on equal surfaces
 in both modes, including a nested tonal surface and independently changed
 shadow, before accepting its visual rendering.
+The [light/dark source-value captures](elevation-reference/README.md) provide
+repeatable browser scenarios for the six levels and nested tonal color while
+showing the browser shadow geometry as a separate reference. They are not
+Android renderer or native-product pixels.

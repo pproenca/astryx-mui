@@ -1,9 +1,11 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Pinned Compose elevation tokens and Figma/Web shadow inventories. @output Level and browser-shadow gap decisions. @position Migration-only source decision regression. */
+/** @input Pinned Compose elevation/color tokens, Figma/Web shadow inventories and light/dark reference captures. @output Level, tonal and browser-shadow source decisions. @position Migration-only source decision regression. */
 import {test} from 'vitest';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {PNG} from 'pngjs';
 
 const read = relative =>
   JSON.parse(readFileSync(new URL(relative, import.meta.url), 'utf8'));
@@ -14,6 +16,7 @@ const web = read(
   '../../../packages/themes/material3/src/material3ElevationSource.json',
 );
 const policy = read('../policy.json');
+const reference = read('../sources/elevation-reference/manifest.json');
 
 test('Compose owns six dp levels; kit/Web shadows only fill a browser rendering gap', () => {
   assert.equal(compose.commit, policy.androidxCommit);
@@ -67,4 +70,43 @@ test('Compose owns six dp levels; kit/Web shadows only fill a browser rendering 
       assert.deepEqual(sorted(style.shadows.map(parseKit)), sorted(webLayers));
     }
   }
+});
+
+test('light/dark elevation captures preserve the Compose tonal formula and licensed font', () => {
+  assert.equal(reference.composeCommit, policy.androidxCommit);
+  assert.equal(reference.figmaSha256, policy.figmaSha256);
+  assert.equal(reference.webCommit, policy.materialWebCommit);
+  assert.equal(
+    reference.colorSchemeSha256,
+    compose.families.find(item => item.name === 'ColorScheme')?.sha256,
+  );
+  assert.deepEqual(
+    reference.levels.map(item => item.dp),
+    [0, 1, 3, 6, 8, 12],
+  );
+  for (const item of reference.levels)
+    assert.equal(
+      item.alpha,
+      item.dp === 0 ? 0 : (4.5 * Math.log(item.dp + 1) + 2) / 100,
+    );
+  assert.equal(
+    reference.font.sha256,
+    'd7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134',
+  );
+  assert.deepEqual(Object.keys(reference.files), [
+    'elevation-light.png',
+    'elevation-dark.png',
+  ]);
+  for (const [name, expected] of Object.entries(reference.files)) {
+    const bytes = readFileSync(
+      new URL(`../sources/elevation-reference/${name}`, import.meta.url),
+    );
+    assert.equal(createHash('sha256').update(bytes).digest('hex'), expected);
+    const png = PNG.sync.read(bytes);
+    assert.deepEqual([png.width, png.height], [1280, 760]);
+  }
+  assert.equal(reference.cases.light.surface, '#fef7ff');
+  assert.equal(reference.cases.dark.surface, '#141218');
+  assert.equal(reference.cases.light.nested.absoluteDp, 4);
+  assert.equal(reference.cases.dark.nested.absoluteDp, 4);
 });
