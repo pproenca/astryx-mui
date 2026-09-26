@@ -19,6 +19,9 @@
  * The spawned-process block at the bottom pins what only real processes can
  * prove: the emitted module actually loads under Node ESM, and the watch
  * loop's child re-invocations carry the flag to every rebuild.
+ * Its retry interval must exceed the watcher's debounce so re-touches cannot
+ * postpone a rebuild indefinitely. A rebuild is ready only when both the new
+ * token and generated icon import are present in the same file snapshot.
  */
 
 import {describe, it, expect, beforeAll, beforeEach, afterEach} from 'vitest';
@@ -320,21 +323,28 @@ describe('theme build --icons-specifier (spawned processes)', () => {
         `  tokens: {'--color-bg': '#0a0b0c'},\n` +
         `};\n`;
       fs.writeFileSync(themeFile, touched);
-      const rebuilt = await waitFor(() => {
-        try {
-          if (fs.readFileSync(builtFile, 'utf-8').includes('#0a0b0c'))
-            return true;
-        } catch {
-          // JavaScript module mid-write; fall through to re-touch.
-        }
-        try {
-          fs.writeFileSync(themeFile, touched);
-        } catch {
-          // Retried on the next poll.
-        }
-        return false;
-      });
-      expect(rebuilt).toBe(true);
+      const rebuilt = await waitFor(
+        () => {
+          try {
+            const generated = fs.readFileSync(builtFile, 'utf-8');
+            if (
+              generated.includes('#0a0b0c') &&
+              iconImportLine(generated) === declaredImport
+            )
+              return true;
+          } catch {
+            // JavaScript module mid-write; fall through to re-touch.
+          }
+          try {
+            fs.writeFileSync(themeFile, touched);
+          } catch {
+            // Retried on the next poll.
+          }
+          return false;
+        },
+        {interval: 500},
+      );
+      expect(rebuilt, output).toBe(true);
 
       // The regenerated module still carries the declared specifier — the
       // forwarding is what this test pins. A watch loop that dropped the flag
