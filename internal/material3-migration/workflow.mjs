@@ -420,10 +420,14 @@ export async function dispatch(wb, command, opts) {
   getTask(
     wb,
     opts.id,
-    command === 'task verify' ? ['Claimed'] : ['Awaiting QA'],
+    command === 'task verify' ? ['Claimed', 'Awaiting QA'] : ['Awaiting QA'],
   );
   clean(repo);
   const revision = exec(repo, 'git', ['rev-parse', 'HEAD']);
+  const replacesPendingReview =
+    command === 'task verify' && task.Status === 'Awaiting QA';
+  if (replacesPendingReview && task['Verified SHA'] === revision)
+    throw new Error('This revision already awaits QA; run task review');
   let receipt;
   if (command === 'task verify') {
     const prepared = await preparationStatus(wb, task, p.value, repo);
@@ -574,6 +578,20 @@ export async function dispatch(wb, command, opts) {
     };
     if (receipt.sourceDecision)
       updates['Source decision'] = receipt.sourceDecision;
+    if (replacesPendingReview) {
+      const previous = table(wb, sheets.reviews).findLast(
+        r =>
+          r['Task ID'] === opts.id &&
+          r['Verified SHA'] === task['Verified SHA'] &&
+          r.Decision === 'Pending',
+      );
+      if (!previous)
+        throw new Error('No pending review for the previous verified revision');
+      write(wb, sheets.reviews, previous._row, {
+        Decision: 'Superseded',
+        Notes: `${previous.Notes}\nSuperseded by verified revision ${revision}`,
+      });
+    }
     transition(wb, task, 'Awaiting QA', updates);
     write(wb, sheets.tasks, task._row, {
       'Scope SHA256': scope(wb, getTask(wb, opts.id)),

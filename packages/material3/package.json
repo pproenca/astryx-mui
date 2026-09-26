@@ -1,0 +1,53 @@
+{
+  "name": "@astryxdesign/material3",
+  "version": "0.1.9",
+  "private": true,
+  "description": "Native Material 3 component and token package for Astryx.",
+  "author": "Meta Open Source",
+  "license": "MIT",
+  "homepage": "https://github.com/facebook/astryx#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facebook/astryx.git",
+    "directory": "packages/material3"
+  },
+  "bugs": {
+    "url": "https://github.com/facebook/astryx/issues"
+  },
+  "keywords": [
+    "astryx",
+    "material-3",
+    "design-system",
+    "components"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "astryx.integration.mjs",
+    "dist",
+    "docs",
+    "README.md",
+    "THIRD_PARTY_NOTICES.md",
+    "LICENSE-APACHE-2.0"
+  ],
+  "scripts": {
+    "build": "node ../../scripts/clean-dist.mjs && tsc --project tsconfig.build.json",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
+    "test": "vitest run --root ../.. packages/material3/src/tokens.test.ts && node scripts/check-native-fixture.mjs && node scripts/check-discovery.mjs"
+  },
+  "devDependencies": {
+    "@astryxdesign/cli": "workspace:*",
+    "playwright": "^1.61.1",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.9"
+  }
+}

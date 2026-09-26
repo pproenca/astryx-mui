@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- Copyright (c) Meta Platforms, Inc. and affiliates. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Native Material token boundary fixture</title>
+    <style>
+      :root {
+        --md-sys-color-primary: rgb(81, 47, 120);
+        --md-sys-color-on-primary: rgb(255, 255, 255);
+        --md-sys-shape-corner-medium: 12px;
+        font-family: system-ui, sans-serif;
+      }
+      body {
+        margin: 2rem;
+      }
+      .scope {
+        display: inline-block;
+        padding: 1.5rem;
+        border: 1px solid currentColor;
+      }
+      .scope[data-override='true'] {
+        --md-sys-color-primary: rgb(15, 101, 139);
+        --md-sys-shape-corner-medium: 28px;
+      }
+      .sample {
+        display: inline-block;
+        padding: 1rem 1.5rem;
+        color: var(--md-sys-color-on-primary);
+        background: var(--md-sys-color-primary);
+        border-radius: var(--md-sys-shape-corner-medium);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Native Material token boundary</h1>
+    <p>
+      Probe colors test scoped CSS roles. This is not a Material visual
+      baseline.
+    </p>
+    <button id="toggle" type="button">Toggle scoped override</button>
+    <div class="scope" id="scope" data-override="false">
+      <span class="sample" id="sample">Material CSS variables</span>
+    </div>
+    <script>
+      document.querySelector('#toggle').addEventListener('click', () => {
+        const scope = document.querySelector('#scope');
+        scope.dataset.override = String(scope.dataset.override !== 'true');
+      });
+    </script>
+  </body>
+</html>
