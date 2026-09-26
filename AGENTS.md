@@ -46,6 +46,23 @@ nested `AGENTS.md`.
   locate directories and never catalog their items. No catalog file (like
   `themes/manifest.json`) and no per-item map in the manifest, ever.
 
+## Material 3 migration
+
+Material 3 work follows the native component direction in
+[`docs/contributing/material3-migration.md`](docs/contributing/material3-migration.md)
+and its versioned [verification policy](docs/contributing/material3-migration-policy.json).
+Read both before claiming, implementing, or verifying a migration task.
+The current [Material 3 family contract](packages/themes/material3/material3.spec.md)
+owns its token and compatibility boundary. Native Material components consume
+supported Material tokens directly. Reuse Core behavior only where its semantics
+match; do not add Core adapters or props solely to avoid a native implementation.
+Existing Core theme support is a compatibility surface, not the target component
+architecture. Preserve attribution and licensing while changing implementation.
+The migration workbook is the task database; do not create a second backlog in
+repository documents. Revalidate completed slices under the native contract and follow its hard
+dependencies before expanding the migration. A themed preview alone is not a
+migrated component. Human QA remains required at the verified code revision.
+
 ## Authority
 
 Knowledge records declare `authority`:

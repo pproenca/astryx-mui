@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "strategyId": "material3-native-v1",
+  "contract": "packages/themes/material3/material3.spec.md",
+  "nativePackage": "@astryxdesign/material3",
+  "nativeRoot": "packages/material3",
+  "compatibilityPackage": "@astryxdesign/theme-material3",
+  "materialWebCommit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+  "taskDatabase": "astryx-material3-migration-inventory.xlsx",
+  "recipeDirectory": "scripts/material3/verify",
+  "evidenceRequirements": [
+    "source",
+    "token-contract",
+    "native-boundary",
+    "compatibility",
+    "automated-checks",
+    "browser-behavior",
+    "consumer-docs"
+  ],
+  "nativeAcceptance": [
+    [
+      "Material token contract",
+      "Native implementation consumes supported Material component and system roles directly; scoped overrides reach the rendered element."
+    ],
+    [
+      "Native dependency boundary",
+      "Native CSS and behavior work without the Core theme bridge or legacy token declarations; shared Core utilities have an evidenced semantic match."
+    ],
+    [
+      "Material API and defaults",
+      "Anatomy, defaults, variants, sizes and states follow the pinned Material source; Core compatibility lives in a separate entry point."
+    ],
+    [
+      "Compatibility direction",
+      "Legacy exports and aliases delegate toward the native implementation without cycles or a second independently maintained value map."
+    ],
+    [
+      "Native consumer preview",
+      "The published native entry point renders in docsite and Storybook with source, status and exact revision visible for human QA."
+    ]
+  ]
+}

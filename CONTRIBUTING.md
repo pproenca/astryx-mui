@@ -12,6 +12,12 @@ the [pull request guide](docs/contributing/pull-requests.md) and
 public component APIs. Meta's upstream wiki is historical context for this
 repository, not its contribution policy.
 
+For Material 3 work, read the [native migration workflow](docs/contributing/material3-migration.md)
+before choosing an implementation owner. The existing migration workbook is the
+task database. Native components use Material token and behavior contracts;
+themed Core components are compatibility consumers. The workflow includes
+revalidation of completed slices and the dependency gate for new components.
+
 ---
 
 ## Prerequisites

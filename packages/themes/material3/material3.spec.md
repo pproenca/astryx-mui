@@ -5,7 +5,7 @@ kind: theme
 id: theme:material3
 authority: current
 approved_by: pproenca
-approved_at: 2026-09-25
+approved_at: 2026-09-26
 review_triggers:
   [tokens, palette-values, component-mappings, contrast, artifacts]
 verified_by:
@@ -40,6 +40,37 @@ theme-authoring, compiler, and component contracts continue to govern their
 respective boundaries. This theme does not change Core token names, default
 values, or the behavior of existing themes.
 
+## Native direction and implementation status
+
+The family target is a native Material 3 component system under
+`@astryxdesign/material3` (`packages/material3`). That package is planned work;
+the presently shipped workspace implementation remains the additive
+`@astryxdesign/theme-material3` bridge and its initial component integrations.
+This record owns the family token and compatibility direction. Each native
+component's direct record owns its anatomy, defaults, states and public API.
+
+Native styling consumes supported Material component and system token names
+directly. Core portable tokens remain the compatibility contract for Core
+consumers; they are not an intermediate vocabulary required by native Material
+components. Reuse existing low-level behavior only when its semantics match the
+Material component. A conflicting Core component is a candidate for a separate
+native implementation, not a reason to compromise the Material contract.
+
+The target dependency direction is canonical Material values and roles, native
+component recipes, then optional legacy adapters. Native implementations must
+work without the Core theme bridge and its token declarations. Legacy aliases
+reference the canonical roles and must respond to scoped system/component
+overrides; independent copies of resolved values are transitional debt. Native
+typed helpers resolve the same graph as runtime and compiled CSS. This does not
+add Material names to Core's portable TokenName or change its token helpers.
+
+Existing source fixtures and human QA remain evidence of the implementation and
+contract they tested. Native conformance requires a new verification revision,
+native entry-point preview, and human QA after any behavior or appearance change.
+The [migration guide](../../../docs/contributing/material3-migration.md) and
+[verification policy](../../../docs/contributing/material3-migration-policy.json)
+project this boundary; the migration workbook alone owns tasks and dependencies.
+
 ## Intent and audience
 
 The Material 3 theme gives Astryx builders a coherent light and dark Material 3
@@ -51,7 +82,7 @@ kit is supporting design evidence, not an implementation oracle.
 
 ## Inheritance and base
 
-The package defines a standalone `material3Theme` from Astryx Core defaults.
+The current compatibility package defines a standalone `material3Theme` from Astryx Core defaults.
 It will not extend Neutral: Neutral's palette, type, motion, and mappings are a
 different theme-family decision. `defineTheme` remains the authoring API. The
 same normalized theme must drive runtime injection and the built CSS/JS pair.
@@ -71,12 +102,14 @@ match. A mapping receipt records the Material role, Astryx role, source value,
 light and dark modes, and rendered consumer. Similar spelling is insufficient.
 Several Material roles can contribute to one portable role only when the
 resulting use has the same meaning across every Core consumer. Other Material
-roles stay in the theme family and are used through component overrides.
+roles stay in the theme family. The compatibility package uses them through
+component overrides; native implementations consume them directly.
 
 No Material role is added to `TokenName`, `tokenVar`, generated portable token
 docs, or Core defaults merely to make this theme work. Spacing and control size
-retain Astryx's portable vocabulary; Material-specific geometry belongs in the
-theme's component mappings until a separate shared Core decision is approved.
+retain Astryx's portable vocabulary for Core consumers. Native component geometry
+follows the pinned Material component recipe without translation through a Core
+size or spacing scale.
 
 The pinned Material Web checkout has no system spacing, size, or density Sass
 wrapper. `material3SpatialSource.json` instead captures 95 geometry values
@@ -97,9 +130,10 @@ The theme enrolls CSS-backed Material roles through `localTokens`. For roles
 that Material Web's active wrapper exposes as CSS custom properties, the exact
 `--md-ref-typeface-*`, `--md-sys-color-*`, `--md-sys-typescale-*`, and supported
 `--md-sys-shape-*` spellings provide traceable Material names. These names are
-public only within the Material 3 theme family under AST-006; Core components
-continue to use portable tokens, while this theme's component rules may refer
-to its enrolled names. Each enrolled role needs an exact source row and a
+public within the Material 3 family under AST-006. Core components continue to
+use portable tokens; the compatibility theme's rules may reference enrolled
+names, and native Material components consume those roles directly.
+Each enrolled role needs an exact source row and a
 light/dark value or a source-backed mode-independent value.
 
 Material Web's pinned [theming guide](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/theming/README.md)
@@ -250,12 +284,18 @@ and [Labs utility classes](https://github.com/material-components/material-web/b
 
 ## Compatibility and migration
 
-This theme is additive. Existing released Core token names, defaults, helpers,
+The Core compatibility theme is additive. Existing released Core token names, defaults, helpers,
 other theme packages, and consumer imports remain valid. The new package follows
 the established source, built, and stylesheet entry points. A later decision to
 make any Material role portable or change a Core default must go through its
 current architecture and compatibility owners with representative browser
 evidence.
+
+The native package uses Material names and defaults without a permanent Core
+token bridge. Remove compatibility exports only after an inventory of affected
+consumers, replacement imports/codemods, deprecation criteria and an explicit
+major-release decision. Preserve the separate supported Core surface until that
+decision. Retain Meta and Google attribution and all applicable license notices.
 
 ## Accessibility and contrast evidence
 
@@ -287,6 +327,12 @@ receipts must identify the pinned Material Web input and Astryx code revision.
 - 2026-09-25: The project owner chose a maintained Material 3 theme while
   preserving the released Core token vocabulary. This record fixes that
   additive theme boundary; component parity remains a separate decision.
+- 2026-09-26: The project owner selected native Material token and component
+  contracts as the migration destination. The earlier additive decision remains
+  the compatibility boundary for released Core consumers. Native implementations
+  use the family roles directly; foundation and completed component evidence
+  require native revalidation before wider migration continues. The existing
+  migration workbook remains the sole execution database.
 
 ## Open questions
 
