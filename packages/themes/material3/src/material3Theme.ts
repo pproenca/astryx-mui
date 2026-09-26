@@ -2,7 +2,7 @@
 
 /**
  * @file material3Theme.ts
- * @input Canonical native Material 3 graph and Astryx defineTheme contract
+ * @input Generated canonical Material 3 compatibility roles and Astryx defineTheme contract
  * @output Core compatibility aliases and 24px Icon default
  * @position Material 3 theme definition for runtime and static compilation
  *
@@ -11,7 +11,10 @@
  */
 
 import {defineTheme, type TokenValue} from '@astryxdesign/core/theme';
-import {material3TokenValues} from '@astryxdesign/material3';
+import {
+  material3WebCompatLight,
+  material3WebCompatDark,
+} from './material3Foundation.generated';
 import {material3SourceOnlyTracking} from './material3Typography';
 import {
   material3Durations,
@@ -29,8 +32,8 @@ const entries = (
     Object.entries(values).map(([name, value]) => [`${prefix}${name}`, value]),
   );
 
-const nativeLight = material3TokenValues('light', 'web-compat');
-const nativeDark = material3TokenValues('dark', 'web-compat');
+const nativeLight = material3WebCompatLight;
+const nativeDark = material3WebCompatDark;
 const materialValue = (name: keyof typeof nativeLight) => nativeLight[name];
 const materialVar = (name: keyof typeof nativeLight) => `var(${name})`;
 
