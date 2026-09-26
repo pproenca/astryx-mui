@@ -196,7 +196,11 @@ the current frame inspection decoded 0, 100, 200, 300, 500, 700, 900 and
 1200 ms at those exact timestamps. These clips demonstrate entry and later
 reversal, but they do not show interactive interruption or reduced motion.
 Those behaviors require independent upstream trajectories and native browser
-recordings for each selected motion scenario.
+recordings for each selected motion scenario. The
+[upstream spring probes](motion/upstream/README.md) now supply independent
+trajectories for all twelve pinned token combinations under one retargeting
+sequence; the native recordings, uninterrupted entry/exit and reduced-motion
+comparisons remain open.
 
 `M3-SRC-001` remains open. A source decision JSON with eight dimensions and
 matched light/dark scenario fixtures must be assembled under the verification
