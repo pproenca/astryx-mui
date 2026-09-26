@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Pinned Compose, Figma and Material Web shape inventories plus the ClamShell/Hexagon source captures. @output Corner values, Full geometry disagreement and measured candidate overlap. @position Migration-only source decision regression. */
+/** @input Pinned Compose, Figma and Material Web shape inventories plus 35 compiled source shapes. @output Corner values, shape-set mapping and measured ClamShell/Hexagon overlap. @position Migration-only source decision regression. */
 import {test} from 'vitest';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -15,6 +15,7 @@ const web = read(
   '../../../packages/themes/material3/src/material3ShapeSource.json',
 );
 const policy = read('../policy.json');
+const shapeManifest = read('../sources/shape-reference/manifest.json');
 const shape = new Map(
   compose.tokens
     .find(file => file.name === 'ShapeTokens')
@@ -88,4 +89,38 @@ test('compiled Compose ClamShell closely corresponds to kit Hexagon without exac
   }
   assert.ok(intersection / union > 0.98);
   assert.equal(changedAlpha, 2282);
+});
+
+test('compiled Compose source fixture covers all 35 frozen kit shape variants', () => {
+  assert.equal(shapeManifest.composeCommit, policy.androidxCommit);
+  assert.equal(shapeManifest.figmaSha256, policy.figmaSha256);
+  assert.equal(
+    shapeManifest.materialShapesSha256,
+    compose.families.find(item => item.name === 'MaterialShapes')?.sha256,
+  );
+  const kitSet = figma.componentSets.find(item => item.name === 'Shape Set');
+  assert.equal(shapeManifest.kitShapeSetNodeId, kitSet.node_id);
+  assert.equal(shapeManifest.mappings.length, 35);
+  assert.deepEqual(
+    new Set(shapeManifest.mappings.map(item => item.kitVariant)),
+    new Set(kitSet.values.slice('Shape: '.length).split(', ')),
+  );
+  assert.deepEqual(
+    shapeManifest.mappings.find(item => item.compose === 'ClamShell'),
+    {compose: 'ClamShell', kitVariant: 'Hexagon'},
+  );
+  const file = relative => readFileSync(new URL(relative, import.meta.url));
+  const sha256 = data => createHash('sha256').update(data).digest('hex');
+  for (const [name, expected] of Object.entries(shapeManifest.files))
+    assert.equal(
+      sha256(file(`../sources/shape-reference/${name}`)),
+      expected,
+      name,
+    );
+  const svg = file('../sources/shape-reference/compose-expressive-shapes.svg');
+  assert.equal((svg.toString().match(/<path /g) || []).length, 35);
+  const png = PNG.sync.read(
+    file('../sources/shape-reference/compose-expressive-shapes.png'),
+  );
+  assert.deepEqual([png.width, png.height], [1540, 1100]);
 });

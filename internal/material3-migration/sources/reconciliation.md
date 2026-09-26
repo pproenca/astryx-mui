@@ -155,13 +155,16 @@ Pinned Compose
 exports `ClamShell` but no `Hexagon`. This file is byte-identical at the
 previous and refreshed Compose pins (SHA256
 `08c29828003344914ee0d6783f213b37caae650175cd004ba321eaf3a7d6e434`).
-The [compiled Compose geometry capture](shape-reference/README.md) now shows
+The [compiled Compose geometry capture](shape-reference/README.md) covers all
+35 normalized outlines in the kit's display order. Visual inspection finds
+the same silhouette families. The focused ClamShell capture shows
 the broad flat outline corresponding closely to the kit `Hexagon` export:
 their 380 × 380 alpha masks overlap by 98.23%, with different bounds and
 2,282 unequal alpha pixels. Select Compose `ClamShell` geometry for this
 overlap, while retaining the kit naming mismatch and measured visual
-difference. The other 34 shape comparisons and any native public alias remain
-open; matching the count of 35 does not prove family parity.
+difference. Individual pixel comparisons for the other 34 shapes and any
+native public alias remain open; matching the count of 35 does not prove
+family parity.
 
 The [Compose elevation decision](compose-elevation.md) selects its tonal
 overlay formula despite the rendered guide's surface-tint deprecation note,
