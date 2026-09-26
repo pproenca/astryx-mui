@@ -24,7 +24,7 @@
  * How `latest` sources are materialized: the version is read live from npm
  * (`npm view @astryxdesign/core version`) so it always tracks the current
  * published release with nothing to hand-maintain. Each docsite @astryxdesign/*
- * dependency's published tarball is downloaded and unpacked into a cache dir
+ * dependency available at that version is downloaded and unpacked into a cache dir
  * laid out like the monorepo, so generate-data.mjs's workspace discovery works
  * unchanged. The published tarballs ship `src/` (see each package's
  * package.json "files"), so the .doc.mjs docs the pipeline reads are present.
@@ -80,12 +80,13 @@ export function getTarget() {
  * Packages that never reach the stable tag are EXCLUDED from `latest`:
  *   - `private` packages, and
  *   - `astryx.canaryOnly` packages (e.g. @astryxdesign/charts, @astryxdesign/lab)
- *     — these publish only as canaries, so no stable version exists to document.
- * This mirrors the publishable predicate in .github/workflows/release.yml's
- * stable-publish step, so production documents exactly the stable release set.
+ *     — these publish only as canaries, so no stable version exists to document;
+ *   - packages without a tarball at the pinned published version.
+ * The manifest check mirrors .github/workflows/release.yml's stable-publish
+ * predicate; the registry check accounts for packages not released yet.
  * (On canary these still appear, sourced from the workspace like everything else.)
  */
-function latestPublishablePackages() {
+function latestPublishablePackages(version) {
   const pkg = JSON.parse(
     fs.readFileSync(path.join(DOCSITE_ROOT, 'package.json'), 'utf-8'),
   );
@@ -108,6 +109,24 @@ function latestPublishablePackages() {
       }
       const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf-8'));
       return manifest.private !== true && manifest.astryx?.canaryOnly !== true;
+    })
+    .filter(({name}) => {
+      try {
+        return (
+          JSON.parse(
+            run('npm', ['view', `${name}@${version}`, 'version', '--json'], {
+              stdio: ['ignore', 'pipe', 'pipe'],
+            }).trim(),
+          ) === version
+        );
+      } catch (error) {
+        if (
+          String(error.stdout || '').includes('E404') ||
+          String(error.stderr || '').includes('E404')
+        )
+          return false;
+        throw error;
+      }
     });
 }
 
@@ -237,7 +256,7 @@ export function resolveContentRoot() {
 
   // latest
   const version = latestPublishedVersion();
-  const packages = latestPublishablePackages();
+  const packages = latestPublishablePackages(version);
   const contentRoot = materializeFromNpm(version, packages);
   return {
     target,

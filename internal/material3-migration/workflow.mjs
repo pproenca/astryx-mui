@@ -29,12 +29,12 @@ export async function policy() {
   const text = await fs.readFile(path.join(home, 'policy.json'), 'utf8');
   return {value: JSON.parse(text), hash: hash(text)};
 }
-export function exec(repo, command, args) {
+export function exec(repo, command, args, timeout = 120000) {
   const output = spawnSync(command, args, {
     cwd: repo,
     encoding: 'utf8',
     stdio: ['ignore', 'pipe', 'pipe'],
-    timeout: 120000,
+    timeout,
   });
   commandEvidence(command, args, output);
   if (output.error) throw output.error;
@@ -477,7 +477,9 @@ export async function dispatch(wb, command, opts) {
         `Missing verification recipe: ${recipe}. Implement focused checks and emit the evidence receipt before verification.`,
       );
     }
-    receipt = JSON.parse(exec(repo, process.execPath, [recipe, '--json']));
+    receipt = JSON.parse(
+      exec(repo, process.execPath, [recipe, '--json'], 600000),
+    );
     if (
       receipt.reviewKind === 'visual' &&
       receipt.sourceDecision !== prepared.packet.baseline

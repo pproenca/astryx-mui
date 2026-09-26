@@ -8,8 +8,9 @@
     <title>Native Material 3 foundations</title>
     <link rel="stylesheet" href="../dist/tokens.css" />
     <style>
+      @font-face { font-family: 'Roboto'; src: url('./fonts/Roboto-wdth-wght.ttf') format('truetype'); font-style: normal; font-weight: 100 900; font-display: swap; }
       * { box-sizing: border-box; }
-      html { font-family: Arial, sans-serif; }
+      html { font-family: 'Roboto', Arial, sans-serif; }
       body { margin: 0; background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); }
       main { width: min(100%, 1120px); margin: auto; padding: 32px clamp(16px, 4vw, 48px) 64px; }
       header { display: flex; justify-content: space-between; gap: 24px; align-items: start; flex-wrap: wrap; }
@@ -30,7 +31,7 @@
       .swatch.secondary { background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); }
       .swatch.tertiary { background: var(--md-sys-color-tertiary-container); color: var(--md-sys-color-on-tertiary-container); }
       .swatch.error { background: var(--md-sys-color-error-container); color: var(--md-sys-color-on-error-container); }
-      .type-sample { font-family: var(--md-ref-typeface-plain), Arial, sans-serif; font-size: var(--md-sys-typescale-headline-medium-size); line-height: var(--md-sys-typescale-headline-medium-line-height); font-weight: var(--md-sys-typescale-headline-medium-weight); }
+      .type-sample { font-family: var(--md-ref-typeface-plain), 'Roboto', Arial, sans-serif; font-size: var(--md-sys-typescale-headline-medium-size); line-height: var(--md-sys-typescale-headline-medium-line-height); font-weight: var(--md-sys-typescale-headline-medium-weight); }
       .shape { width: 100px; height: 100px; color: var(--md-sys-color-primary); }
       .shape path { fill: currentColor; }
       .shape-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
@@ -66,6 +67,15 @@
       document.querySelector('#revision').textContent = `Revision: ${query.get('revision') || 'local'}`;
       document.querySelector('#flower').setAttribute('d', material3ExpressiveShapes.Flower.path);
       const scheme = document.querySelector('#scheme');
+      const selectedScheme = query.get('scheme');
+      if ([...scheme.options].some(option => option.value === selectedScheme)) {
+        scheme.value = selectedScheme;
+        document.body.dataset.mdScheme = selectedScheme;
+      }
+      if (query.get('direction') === 'rtl') {
+        document.documentElement.dir = 'rtl';
+        document.querySelector('#direction').setAttribute('aria-pressed', 'true');
+      }
       scheme.addEventListener('change', () => { document.body.dataset.mdScheme = scheme.value; });
       const scope = document.querySelector('#color-scope');
       document.querySelector('#override').addEventListener('click', event => {

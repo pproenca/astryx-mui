@@ -2,7 +2,7 @@
 
 /**
  * @input Workspace source entries including Material 3, Storybook's Vite config, Astryx StyleX plugin.
- * @output Storybook config with Vite and StyleX aliases from one package table.
+ * @output Storybook config with Vite and StyleX aliases and the built native Material 3 gallery.
  * @position Storybook configuration; keeps workspace packages usable unbuilt.
  */
 
@@ -146,6 +146,12 @@ const lightningcssTargets = {
 const viteBuildTargets = ['chrome123', 'firefox120', 'safari17.5'];
 
 const config: StorybookConfig = {
+  staticDirs: [
+    {
+      from: path.join(rootDir, 'packages/material3/dist/gallery'),
+      to: '/material3-gallery',
+    },
+  ],
   stories: [
     '../stories/**/*.mdx',
     '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
