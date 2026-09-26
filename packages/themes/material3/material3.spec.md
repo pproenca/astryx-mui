@@ -153,12 +153,6 @@ checks each emitted local declaration, and resolves all 49 system colors in
 light and dark Chrome contexts. Component overrides still follow their own
 migration stories.
 
-The public theme source and its CLI scaffold carry a generated light/dark
-compatibility snapshot from the canonical native graph. The theme build first
-builds that graph and rejects a stale snapshot; the CLI scaffold copies the
-checked source so it stays self-contained while the native package is private.
-This generated projection is not a separately maintained value authority.
-
 ## Portable token overrides
 
 Existing `tokens` names remain the portable Core contract. The Material 3 theme
