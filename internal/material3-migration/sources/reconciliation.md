@@ -146,9 +146,30 @@ shadow geometries and alpha values agree with the corresponding Web level 1–5
 layers after ignoring list order. The light level 1 and 2 effect lists reverse
 the Web key/ambient order. Material Web paints separate translucent layers,
 while the kit effect is a two-shadow Figma style. The same numbers therefore do
-not prove the same pixels. Compare actual native shadows against the
+not prove the same pixels. Pinned Compose
+[`Surface.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Surface.kt)
+separates `tonalElevation` from `shadowElevation`: tonal elevation affects a
+surface-color overlay and accumulates through parent surfaces, while shadow
+elevation controls a shadow independently. A Web shadow level alone cannot
+stand in for both values or their component-specific defaults. Compare actual
+native shadows against the
 [kit's exported light/dark example](figma-exports/elevation.png) on matched
 surfaces and dimensions before choosing the rendering method.
+
+## State layers
+
+Pinned Compose
+[`StateTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/StateTokens.kt)
+defines default dragged, focus, hover and pressed layer opacities of 0.16,
+0.10, 0.08 and 0.10. The pinned Web-derived compatibility source instead
+specifies 0.12 for focus and pressed, while dragged and hover agree. Select
+Compose's values for the native default; the
+[`source-state.test.mjs`](../tests/source-state.test.mjs) preserves the exact
+four-value comparison. This does not select a component's layer color, bounds,
+focus indicator, ripple, disabled appearance or mixed-state behavior. Resolve
+those from each Compose family and browser interaction semantics before
+implementation. The [captured guidance](guidance/state-layers.md) agrees with
+the Compose default values but does not supersede them.
 
 ## Remaining source evidence
 
