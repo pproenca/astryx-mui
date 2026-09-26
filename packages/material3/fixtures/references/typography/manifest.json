@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "browser": "Chrome 153.0.8010.53",
+  "os": "darwin 27.0.0",
+  "dpr": 1,
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "font": {
+    "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+    "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+    "loaded": true
+  },
+  "content": "Aa 0123456789",
+  "fontScale": 1,
+  "layout": "Two columns of 15 labeled role samples, sorted by Compose token name.",
+  "styles": [
+    {
+      "role": "BodyLarge",
+      "fontSizePx": 16,
+      "lineHeightPx": 24,
+      "letterSpacingPx": 0.5,
+      "fontWeight": 400
+    },
+    {
+      "role": "BodyLargeEmphasized",
+      "fontSizePx": 16,
+      "lineHeightPx": 24,
+      "letterSpacingPx": 0.15,
+      "fontWeight": 500
+    },
+    {
+      "role": "BodyMedium",
+      "fontSizePx": 14,
+      "lineHeightPx": 20,
+      "letterSpacingPx": 0.2,
+      "fontWeight": 400
+    },
+    {
+      "role": "BodyMediumEmphasized",
+      "fontSizePx": 14,
+      "lineHeightPx": 20,
+      "letterSpacingPx": 0.25,
+      "fontWeight": 500
+    },
+    {
+      "role": "BodySmall",
+      "fontSizePx": 12,
+      "lineHeightPx": 16,
+      "letterSpacingPx": 0.4,
+      "fontWeight": 400
+    },
+    {
+      "role": "BodySmallEmphasized",
+      "fontSizePx": 12,
+      "lineHeightPx": 16,
+      "letterSpacingPx": 0.4,
+      "fontWeight": 500
+    },
+    {
+      "role": "DisplayLarge",
+      "fontSizePx": 57,
+      "lineHeightPx": 64,
+      "letterSpacingPx": -0.2,
+      "fontWeight": 400
+    },
+    {
+      "role": "DisplayLargeEmphasized",
+      "fontSizePx": 57,
+      "lineHeightPx": 64,
+      "letterSpacingPx": 0,
+      "fontWeight": 500
+    },
+    {
+      "role": "DisplayMedium",
+      "fontSizePx": 45,
+      "lineHeightPx": 52,
+      "letterSpacingPx": 0,
+      "fontWeight": 400
+    },
+    {
+      "role": "DisplayMediumEmphasized",
+      "fontSizePx": 45,
+      "lineHeightPx": 52,
+      "letterSpacingPx": 0,
+      "fontWeight": 500
+    },
+    {
+      "role": "DisplaySmall",
+      "fontSizePx": 36,
+      "lineHeightPx": 44,
+      "letterSpacingPx": 0,
+      "fontWeight": 400
+    },
+    {
+      "role": "DisplaySmallEmphasized",
+      "fontSizePx": 36,
+      "lineHeightPx": 44,
+      "letterSpacingPx": 0,
+      "fontWeight": 500
+    },
+    {
+      "role": "HeadlineLarge",
+      "fontSizePx": 32,
+      "lineHeightPx": 40,
+      "letterSpacingPx": 0,
+      "fontWeight": 400
+    },
+    {
+      "role": "HeadlineLargeEmphasized",
+      "fontSizePx": 32,
+      "lineHeightPx": 40,
+      "letterSpacingPx": 0,
+      "fontWeight": 500
+    },
+    {
+      "role": "HeadlineMedium",
+      "fontSizePx": 28,
+      "lineHeightPx": 36,
+      "letterSpacingPx": 0,
+      "fontWeight": 400
+    },
+    {
+      "role": "HeadlineMediumEmphasized",
+      "fontSizePx": 28,
+      "lineHeightPx": 36,
+      "letterSpacingPx": 0,
+      "fontWeight": 500
+    },
+    {
+      "role": "HeadlineSmall",
+      "fontSizePx": 24,
+      "lineHeightPx": 32,
+      "letterSpacingPx": 0,
+      "fontWeight": 400
+    },
+    {
+      "role": "HeadlineSmallEmphasized",
+      "fontSizePx": 24,
+      "lineHeightPx": 32,
+      "letterSpacingPx": 0,
+      "fontWeight": 500
+    },
+    {
+      "role": "LabelLarge",
+      "fontSizePx": 14,
+      "lineHeightPx": 20,
+      "letterSpacingPx": 0.1,
+      "fontWeight": 500
+    },
+    {
+      "role": "LabelLargeEmphasized",
+      "fontSizePx": 14,
+      "lineHeightPx": 20,
+      "letterSpacingPx": 0.1,
+      "fontWeight": 700
+    },
+    {
+      "role": "LabelMedium",
+      "fontSizePx": 12,
+      "lineHeightPx": 16,
+      "letterSpacingPx": 0.5,
+      "fontWeight": 500
+    },
+    {
+      "role": "LabelMediumEmphasized",
+      "fontSizePx": 12,
+      "lineHeightPx": 16,
+      "letterSpacingPx": 0.5,
+      "fontWeight": 700
+    },
+    {
+      "role": "LabelSmall",
+      "fontSizePx": 11,
+      "lineHeightPx": 16,
+      "letterSpacingPx": 0.5,
+      "fontWeight": 500
+    },
+    {
+      "role": "LabelSmallEmphasized",
+      "fontSizePx": 11,
+      "lineHeightPx": 16,
+      "letterSpacingPx": 0.5,
+      "fontWeight": 700
+    },
+    {
+      "role": "TitleLarge",
+      "fontSizePx": 22,
+      "lineHeightPx": 28,
+      "letterSpacingPx": 0,
+      "fontWeight": 400
+    },
+    {
+      "role": "TitleLargeEmphasized",
+      "fontSizePx": 22,
+      "lineHeightPx": 28,
+      "letterSpacingPx": 0,
+      "fontWeight": 500
+    },
+    {
+      "role": "TitleMedium",
+      "fontSizePx": 16,
+      "lineHeightPx": 24,
+      "letterSpacingPx": 0.2,
+      "fontWeight": 500
+    },
+    {
+      "role": "TitleMediumEmphasized",
+      "fontSizePx": 16,
+      "lineHeightPx": 24,
+      "letterSpacingPx": 0.15,
+      "fontWeight": 700
+    },
+    {
+      "role": "TitleSmall",
+      "fontSizePx": 14,
+      "lineHeightPx": 20,
+      "letterSpacingPx": 0.1,
+      "fontWeight": 500
+    },
+    {
+      "role": "TitleSmallEmphasized",
+      "fontSizePx": 14,
+      "lineHeightPx": 20,
+      "letterSpacingPx": 0.1,
+      "fontWeight": 700
+    }
+  ],
+  "files": {
+    "light": {
+      "file": "typography-light.png",
+      "sha256": "08601c2de84fd787e7e7d86dd380781b4c90dcf2b94a62924c4107152ad3252e",
+      "width": 1280,
+      "height": 1744,
+      "background": "rgb(254 247 255)",
+      "foreground": "rgb(29 27 32)"
+    },
+    "dark": {
+      "file": "typography-dark.png",
+      "sha256": "aea5fa7e4de4b0e02800c19734e36912cc34001ac6b2204869c6d1f313a6dfd3",
+      "width": 1280,
+      "height": 1744,
+      "background": "rgb(20 18 24)",
+      "foreground": "rgb(230 224 233)"
+    }
+  }
+}
