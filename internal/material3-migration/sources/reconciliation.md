@@ -16,16 +16,16 @@ represented by the checked-in `material3*Source.json` files in
 `a095da93f8e98dea8748ceed79ea8427aade245f` is the first source for design,
 defaults, behavior and motion. The website fills documented gaps.
 
-| Foundation concern | Selected route | Evidence and boundary |
-| --- | --- | --- |
-| Color | Compose light/dark role-to-palette bindings | `ColorLightTokens.kt`, `ColorDarkTokens.kt`, and `PaletteTokens.kt` define 48 scheme roles per mode. The kit/Web `Shadow` role fills the one missing system-color gap. Kit contrast and named modes remain separately inventoried until their Compose membership is resolved. |
-| Typography | Compose's 30 role metrics and override behavior | [`compose-typography.md`](compose-typography.md); kit Roboto is the browser comparison fixture because Compose names only platform SansSerif. |
-| Shape | Compose corner shapes and `MaterialShapes.kt` | The kit's 35-shape set supplies comparison nodes; name similarity alone does not establish matching geometry. |
-| Spacing and density | Compose component geometry | There is no resolved universal spacing scale in these sources. The kit and captured guidance fill documented component or responsive gaps. |
-| Elevation | Compose level and component surface/elevation selection | `ElevationTokens.kt` gives levels 0–5 at 0, 1, 3, 6, 8, 12 dp. Web shadow CSS and kit effects are browser rendering references. |
-| Icons | Compose `Icon` sizing/tint behavior where applicable | The kit supplies specified glyphs; pinned Material Symbols artwork fills glyph gaps. Browser semantics and meaningful names remain component decisions. |
-| State layers | Compose component interaction and ripple behavior | Kit state styles and rendered guidance help with unspecified presentation; a global opacity list cannot replace per-component behavior. |
-| Motion | Compose standard/expressive spatial and effects spring schemes | [`compose-motion.md`](compose-motion.md) records spring inputs. [Watched media](motion/README.md) shows visual intent; Web curves are limited non-interruptible fallbacks. |
+| Foundation concern  | Selected route                                                     | Evidence and boundary                                                                                                                                                                                                                                                                                                                                                                   |
+| ------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Color               | Compose baseline light/dark bindings and Expressive light override | `ColorLightTokens.kt`, `ColorDarkTokens.kt`, `PaletteTokens.kt`, and `ColorScheme.kt` define 48 scheme roles per mode. Expressive Light changes the same four roles as the kit, but three values still differ. The kit/Web `Shadow` role fills the one missing system-color gap. Kit contrast and named modes use their own fixed Figma maps. |
+| Typography          | Compose's 30 role metrics and override behavior                    | [`compose-typography.md`](compose-typography.md); kit Roboto is the browser comparison fixture because Compose names only platform SansSerif.                                                                                                                                                                                                                                           |
+| Shape               | Compose corner shapes and `MaterialShapes.kt`                      | The kit's 35-shape set supplies comparison nodes; name similarity alone does not establish matching geometry.                                                                                                                                                                                                                                                                           |
+| Spacing and density | Compose component geometry                                         | There is no resolved universal spacing scale in these sources. The kit and captured guidance fill documented component or responsive gaps.                                                                                                                                                                                                                                              |
+| Elevation           | Compose level and component surface/elevation selection            | `ElevationTokens.kt` gives levels 0–5 at 0, 1, 3, 6, 8, 12 dp. Web shadow CSS and kit effects are browser rendering references.                                                                                                                                                                                                                                                         |
+| Icons               | Compose `Icon` sizing/tint behavior where applicable               | The kit supplies specified glyphs; pinned Material Symbols artwork fills glyph gaps. Browser semantics and meaningful names remain component decisions.                                                                                                                                                                                                                                 |
+| State layers        | Compose component interaction and ripple behavior                  | Kit state styles and rendered guidance help with unspecified presentation; a global opacity list cannot replace per-component behavior.                                                                                                                                                                                                                                                 |
+| Motion              | Compose standard/expressive spatial and effects spring schemes     | [`compose-motion.md`](compose-motion.md) records spring inputs. [Watched media](motion/README.md) shows visual intent; Web curves are limited non-interruptible fallbacks.                                                                                                                                                                                                              |
 
 This routing selects authority, not a fabricated implementation value. A family
 decision must resolve any component-specific gap and its sibling variants before
@@ -37,40 +37,54 @@ reference captures, fonts, environments, and motion traces.
 The kit's published `M3` collection (`54778:406`) provides 49 `Schemes/`
 roles in each of 32 modes. Comparing its default Light and Dark values with
 Material Web's 49 resolved roles per mode, after normalizing hex case and
-three-digit hex notation, gives four Light differences and no Dark differences:
+three-digit hex notation, gives four Light differences and no Dark differences.
+Pinned Compose has two distinct light defaults: baseline `lightColorScheme()`
+uses the Web values below, while `expressiveLightColorScheme()` overrides
+exactly those four roles. It agrees with the kit for one of them; the other
+three remain measured differences. The dark default agrees across all three
+sources.
 
-| Role                     | Kit Light | Web Light |
-| ------------------------ | --------- | --------- |
-| `on-error-container`     | `#852221` | `#410E0B` |
-| `on-primary-container`   | `#4F378A` | `#21005D` |
-| `on-secondary-container` | `#4A4459` | `#1D192B` |
-| `on-tertiary-container`  | `#633B48` | `#31111D` |
+| Role                     | Compose baseline / Web Light | Compose Expressive Light | Kit Light |
+| ------------------------ | ---------------------------- | ------------------------ | --------- |
+| `on-error-container`     | `#410E0B`                    | `#8C1D18`                | `#852221` |
+| `on-primary-container`   | `#21005D`                    | `#4F378B`                | `#4F378A` |
+| `on-secondary-container` | `#1D192B`                    | `#4A4458`                | `#4A4459` |
+| `on-tertiary-container`  | `#31111D`                    | `#633B48`                | `#633B48` |
 
 The refreshed pinned Compose
 [`ColorLightTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ColorLightTokens.kt)
-binds all four roles to palette tone 10. Its
+binds all four baseline roles to palette tone 10. Its
 [`PaletteTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/PaletteTokens.kt)
-resolves them to the Web Light column above. Compose therefore selects
-`#410E0B`, `#21005D`, `#1D192B`, and `#31111D` for the corresponding native
-light roles. The kit's four published values remain recorded disagreements; using
-one in place of Compose requires a color-specific approved exception. The
+resolves them to the baseline column above. The same pinned
+[`ColorScheme.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/ColorScheme.kt)
+defines `expressiveLightColorScheme()` by overriding those four roles with
+palette tone 30. `MaterialExpressiveTheme` uses that scheme when no color
+scheme is supplied. Native baseline and Expressive variants must therefore
+retain separate light values. The remaining three kit differences do not
+override Compose's explicit Expressive values without a color-specific
+approved exception. The
 [`ColorDarkTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ColorDarkTokens.kt)
 bindings agree with the kit's measured default Dark scheme. The current
 Material Web-derived compatibility theme remains historical implementation
-evidence, not the native source decision. This comparison does not resolve
-Compose membership or role maps for the 30 kit contrast and named-scheme modes;
-retain their kit values as source observations without inferring them from
-Light/Dark. Derived state-layer colors follow the selected scheme roles.
+evidence, not the native source decision. For the kit's 30 contrast and named
+color modes, the pinned `ColorScheme.kt` exposes customizable schemes but does not pin
+those 30 named or contrast role maps. Its Android dynamic schemes read platform
+colors, not these fixed kit maps. Select the kit's 30 complete, 49-role mode
+maps for their own Figma-specified scenarios; do not substitute them for the
+baseline or Expressive defaults. The focused source check confirms that every
+kit role has all 32 mode values. Derived state-layer colors follow the selected
+scheme roles.
 Both Compose light and dark token files have 48 bindings. Of the kit's 49
 `Schemes/` roles, only `Shadow` lacks a corresponding Compose color token.
 The kit specifies `#000000` for `Shadow` in all its modes and pinned Material
 Web resolves `shadow` to black in light and dark. Use that kit value for the
 missing native system-color role; this is a documented gap fill, not an
 exception to a specified Compose value. The focused
-[`source-color.test.mjs`](../tests/source-color.test.mjs) recomputes all 48
-light and dark comparisons from the pinned inventories. The
+[`source-color.test.mjs`](../tests/source-color.test.mjs) recomputes the
+baseline Light, Expressive Light and Dark comparisons from the pinned
+inventories and [derived override map](compose-expressive-color.json). The
 [`color-reference`](color-reference/README.md) fixtures render the selected
-49 solid role values in each mode without borrowing values from the native
+49 solid role values in each variant without borrowing values from the native
 implementation; component color and state-layer comparisons remain separate.
 The complete
 [kit color guidance export](figma-exports/color-guidance.png) supplies light and
