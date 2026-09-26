@@ -2,13 +2,15 @@
 
 /**
  * @input Product-owned native Material 3 gallery and Storybook mode/direction globals.
- * @output Interactive native foundation story with source comparisons and motion playback.
+ * @output Interactive native foundation story with source comparisons and motion playback, outside the Core visual baseline.
  * @position Storybook entry for native Material 3 foundations; components are separately gated.
  */
 import type {Meta, StoryObj} from '@storybook/react';
 
 const meta: Meta = {
   title: 'Material 3/Native foundations',
+  // Native source/difference captures belong to the gallery evidence, not the stable Core gate.
+  tags: ['no-visual'],
   globals: {astryxTheme: 'none'},
   parameters: {
     layout: 'fullscreen',
