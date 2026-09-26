@@ -9,6 +9,7 @@ import {fileURLToPath} from 'node:url';
 import pixelmatch from 'pixelmatch';
 import {PNG} from 'pngjs';
 import {chromium} from 'playwright';
+import {captureFoundation} from './capture-foundation.mjs';
 import {
   material3ColorValues,
   material3CornerShapes,
@@ -106,6 +107,7 @@ try {
       {threshold: 0, includeAA: true},
     );
     assert.equal(changed, 0, `${scheme} differs from pinned source pixels`);
+    await captureFoundation(`color-${referenceName}`, actual);
   }
   await page.locator('#swatches').evaluate(element => {
     element.setAttribute('data-md-scheme', 'dark');
@@ -248,6 +250,7 @@ try {
       0,
       `${mode} typography differs from pinned source pixels`,
     );
+    await captureFoundation(`typography-${mode}`, actual);
   }
   const motionRoot = path.join(
     packageRoot,
@@ -304,6 +307,7 @@ try {
       0,
       `${mode} motion frames differ from pinned Kotlin source sheet`,
     );
+    await captureFoundation(`motion-${mode}`, actual);
   }
   const shapeRoot = path.join(packageRoot, 'fixtures/references/shape');
   const shapeManifest = JSON.parse(
@@ -351,6 +355,7 @@ try {
       0,
       `${mode} Expressive shapes differ from pinned Compose pixels`,
     );
+    await captureFoundation(`shape-expressive-${mode}`, actual);
   }
   const cornerRoot = path.join(packageRoot, 'fixtures/references/corners');
   const cornerManifest = JSON.parse(
@@ -419,6 +424,7 @@ try {
       0,
       `${mode} corners differ from pinned Compose pixels`,
     );
+    await captureFoundation(`shape-${mode}`, actual);
   }
   console.log(
     `Chrome ${browser.version()}: 35 schemes × 49 roles, 30 type styles, 10 corners, 35 Expressive shapes and interrupted spring frames match pinned source pixels; scoped override passes.`,

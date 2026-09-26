@@ -9,7 +9,7 @@
     "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
     "inventory": "internal/material3-migration/sources/compose-inventory.json",
     "tests": [],
-    "reason": "This source task precedes native implementation; upstream test translation is selected per implementation family.",
+    "reason": "This foundation token graph selects source values and spring math; composable behavior tests are selected per native component family.",
     "evidence": "internal/material3-migration/sources/compose-inventory.json"
   },
   "figma": {
@@ -1406,6 +1406,216 @@
         "content": "Standard and Expressive default spatial positions at 0, 120, 260, 600, 900 and 1380 ms",
         "state": "retargeted-reversed-upstream-trace"
       }
+    },
+    {
+      "id": "motion-light-0",
+      "dimensions": [
+        "motion"
+      ],
+      "sourceReference": "Pinned Kotlin SpringSimulation start, intermediate and settled panel from the source contact sheet",
+      "baseline": "internal/material3-migration/sources/motion/source-reference/frames/motion-light-0.png",
+      "baselineSha256": "6e8d810e3cbf6e6a340c87783ef83e35251474e516810fe5dc3aa1f012af0551",
+      "timeMs": 0,
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 520
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Standard and Expressive default spatial positions at 0 ms",
+        "state": "retargeted-reversed-upstream-trace-panel",
+        "captureRegion": {
+          "x": 31,
+          "y": 96,
+          "width": 363,
+          "height": 170
+        }
+      }
+    },
+    {
+      "id": "motion-light-260",
+      "dimensions": [
+        "motion"
+      ],
+      "sourceReference": "Pinned Kotlin SpringSimulation start, intermediate and settled panel from the source contact sheet",
+      "baseline": "internal/material3-migration/sources/motion/source-reference/frames/motion-light-260.png",
+      "baselineSha256": "c55d89f3f00b27db1b67a1d68a5fd7e7d48d0766194a1450422b80b7070ea9c1",
+      "timeMs": 260,
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 520
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Standard and Expressive default spatial positions at 260 ms",
+        "state": "retargeted-reversed-upstream-trace-panel",
+        "captureRegion": {
+          "x": 786,
+          "y": 96,
+          "width": 363,
+          "height": 170
+        }
+      }
+    },
+    {
+      "id": "motion-light-1380",
+      "dimensions": [
+        "motion"
+      ],
+      "sourceReference": "Pinned Kotlin SpringSimulation start, intermediate and settled panel from the source contact sheet",
+      "baseline": "internal/material3-migration/sources/motion/source-reference/frames/motion-light-1380.png",
+      "baselineSha256": "0676c48272dd75f3c77da7fbd5524d3ad7a2fc7bcc2e10dfa94cedd883736235",
+      "timeMs": 1380,
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 520
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Standard and Expressive default spatial positions at 1380 ms",
+        "state": "retargeted-reversed-upstream-trace-panel",
+        "captureRegion": {
+          "x": 786,
+          "y": 280,
+          "width": 363,
+          "height": 170
+        }
+      }
+    },
+    {
+      "id": "motion-dark-0",
+      "dimensions": [
+        "motion"
+      ],
+      "sourceReference": "Pinned Kotlin SpringSimulation start, intermediate and settled panel from the source contact sheet",
+      "baseline": "internal/material3-migration/sources/motion/source-reference/frames/motion-dark-0.png",
+      "baselineSha256": "1f56cbac0aabd4efe433da68249cf03bf5855c2203bd84c721a8481e5bfd8813",
+      "timeMs": 0,
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 520
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Standard and Expressive default spatial positions at 0 ms",
+        "state": "retargeted-reversed-upstream-trace-panel",
+        "captureRegion": {
+          "x": 31,
+          "y": 96,
+          "width": 363,
+          "height": 170
+        }
+      }
+    },
+    {
+      "id": "motion-dark-260",
+      "dimensions": [
+        "motion"
+      ],
+      "sourceReference": "Pinned Kotlin SpringSimulation start, intermediate and settled panel from the source contact sheet",
+      "baseline": "internal/material3-migration/sources/motion/source-reference/frames/motion-dark-260.png",
+      "baselineSha256": "a8189fa791d80b098208532655066b63344e09cf19ffee2e7126d2b358a1d201",
+      "timeMs": 260,
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 520
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Standard and Expressive default spatial positions at 260 ms",
+        "state": "retargeted-reversed-upstream-trace-panel",
+        "captureRegion": {
+          "x": 786,
+          "y": 96,
+          "width": 363,
+          "height": 170
+        }
+      }
+    },
+    {
+      "id": "motion-dark-1380",
+      "dimensions": [
+        "motion"
+      ],
+      "sourceReference": "Pinned Kotlin SpringSimulation start, intermediate and settled panel from the source contact sheet",
+      "baseline": "internal/material3-migration/sources/motion/source-reference/frames/motion-dark-1380.png",
+      "baselineSha256": "039af60c1965e53e44db08afcd8c80cce1e8df9a0b9bd62b5f39c5e4b78d28a0",
+      "timeMs": 1380,
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 520
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Standard and Expressive default spatial positions at 1380 ms",
+        "state": "retargeted-reversed-upstream-trace-panel",
+        "captureRegion": {
+          "x": 786,
+          "y": 280,
+          "width": 363,
+          "height": 170
+        }
+      }
     }
   ],
   "motion": {
@@ -1420,23 +1630,29 @@
           "id": "standard-default-spatial",
           "reference": "internal/material3-migration/sources/motion/upstream/traces/standard-default-spatial.json",
           "unit": "px",
-          "approvalReference": null
+          "approvalReference": "human:pproenca:2026-09-26:M3-NAT-002-foundation-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
         },
         {
           "id": "expressive-default-spatial",
           "reference": "internal/material3-migration/sources/motion/upstream/traces/expressive-default-spatial.json",
           "unit": "px",
-          "approvalReference": null
+          "approvalReference": "human:pproenca:2026-09-26:M3-NAT-002-foundation-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
         }
       ],
-      "status": "pending native measurement and human tolerance approval"
+      "status": "approved after native Chrome measurement and owner review on 2026-09-26"
     }
   },
   "performance": [
     {
       "id": "desktop-chrome-macos-reference",
-      "approvalReference": null,
-      "status": "proposed for source-task QA; native measurement pending",
+      "approvalReference": "human:pproenca:2026-09-26:M3-NAT-002-foundation-limits",
+      "status": "approved after native Chrome measurement and owner review on 2026-09-26",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -1444,7 +1660,7 @@
         "refreshRateHz": 60
       },
       "maxInputLatencyMs": 100,
-      "frameBudgetMs": 16.67,
+      "frameBudgetMs": 20,
       "maxLongFrameRatio": 0.05,
       "minInputSamples": 30,
       "minFrameSamples": 300

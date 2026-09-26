@@ -9,6 +9,7 @@ import {fileURLToPath} from 'node:url';
 import pixelmatch from 'pixelmatch';
 import {PNG} from 'pngjs';
 import {chromium} from 'playwright';
+import {captureFoundation} from './capture-foundation.mjs';
 import {
   material3ColorValues,
   material3FoundationGeometry,
@@ -69,7 +70,7 @@ try {
     assert.ok(
       await page.evaluate(() => document.fonts.check('15px SourceRoboto')),
     );
-    const check = async file => {
+    const check = async (file, id) => {
       const actual = PNG.sync.read(await page.screenshot());
       const expected = PNG.sync.read(
         await fs.readFile(path.join(referenceRoot, file)),
@@ -88,16 +89,17 @@ try {
         0,
         file,
       );
+      await captureFoundation(id, actual);
     };
-    await check(`spacing-${mode}.png`);
+    await check(`spacing-${mode}.png`, `spacing-density-${mode}`);
     if (mode === 'light') {
       await page.setViewportSize(manifest.variantCaptures.narrowLight.viewport);
-      await check(manifest.variantCaptures.narrowLight.file);
+      await check(manifest.variantCaptures.narrowLight.file, 'spacing-density-narrowLight');
     } else {
       await page.evaluate(() => {
         document.documentElement.dir = 'rtl';
       });
-      await check(manifest.variantCaptures.rtlDark.file);
+      await check(manifest.variantCaptures.rtlDark.file, 'spacing-density-rtlDark');
     }
     await page.close();
   }

@@ -9,6 +9,7 @@ import {fileURLToPath} from 'node:url';
 import pixelmatch from 'pixelmatch';
 import {PNG} from 'pngjs';
 import {chromium} from 'playwright';
+import {captureFoundation} from './capture-foundation.mjs';
 import {
   material3ColorValues,
   material3ElevationLevels,
@@ -107,6 +108,7 @@ try {
       0,
       `${mode} elevation pixels`,
     );
+    await captureFoundation(`elevation-${mode}`, actual);
     await page.close();
 
     const state = manifests.state;
@@ -178,6 +180,7 @@ try {
       0,
       `${mode} state pixels`,
     );
+    await captureFoundation(`state-layers-${mode}`, actual);
     await statePage.close();
   }
   console.log(
