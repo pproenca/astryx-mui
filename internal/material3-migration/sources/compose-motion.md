@@ -2,7 +2,7 @@
 
 This source note supports `M3-SRC-001`. It records the motion facts available in
 the pinned AndroidX checkout at
-[`b97c4470f19d8ae9bb9f96be24376fdf37ad056f`](https://android.googlesource.com/platform/frameworks/support/+/b97c4470f19d8ae9bb9f96be24376fdf37ad056f/).
+[`a095da93f8e98dea8748ceed79ea8427aade245f`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/).
 The [source index](compose-inventory.json) identifies candidate files and tests;
 the Kotlin sources below resolve the actual behavior. The extracted token values
 are from **The Android Open Source Project**, under
@@ -10,7 +10,7 @@ are from **The Android Open Source Project**, under
 
 ## Scheme and default
 
-[`MotionScheme.kt`](https://android.googlesource.com/platform/frameworks/support/+/b97c4470f19d8ae9bb9f96be24376fdf37ad056f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MotionScheme.kt)
+[`MotionScheme.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MotionScheme.kt)
 exposes standard and expressive schemes. Each provides fast, default, and slow
 specifications for spatial motion and effects motion. Spatial specs cover
 position, rotation, and size; effects specs cover color and alpha. The source
@@ -18,7 +18,7 @@ constructs all twelve as springs from the generated token files, so a fixed
 duration/curve is not an equivalent implementation when an animation can be
 interrupted or retargeted.
 
-The pinned [`MotionSchemeTest.kt`](https://android.googlesource.com/platform/frameworks/support/+/b97c4470f19d8ae9bb9f96be24376fdf37ad056f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/MotionSchemeTest.kt)
+The pinned [`MotionSchemeTest.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/MotionSchemeTest.kt)
 checks that six token keys resolve to the active scheme and that `MaterialTheme`
 uses standard by default while a nested expressive theme overrides it. Those
 are upstream assertions to translate for the native theme; they do not specify
@@ -27,9 +27,9 @@ browser focus, reduced-motion handling, or a rendered trajectory.
 ## Spring token values
 
 The values below come from pinned
-[`StandardMotionTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/b97c4470f19d8ae9bb9f96be24376fdf37ad056f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/StandardMotionTokens.kt)
+[`StandardMotionTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/StandardMotionTokens.kt)
 and
-[`ExpressiveMotionTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/b97c4470f19d8ae9bb9f96be24376fdf37ad056f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ExpressiveMotionTokens.kt).
+[`ExpressiveMotionTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ExpressiveMotionTokens.kt).
 The columns are Compose `dampingRatio` and `stiffness` inputs, not CSS
 durations or bezier parameters.
 
