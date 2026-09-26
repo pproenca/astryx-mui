@@ -71,6 +71,14 @@ record that usage distinction instead of assuming the numeric variable and
 display example are identical CSS values. The separate
 [35-shape set](figma-exports/expressive-shapes.png) is additional Expressive
 geometry beyond the ten corner variables and needs its own native coverage.
+The frozen kit inventory's `Shape Set` variants (`58548:7248`) include
+`Hexagon` but no `Clamshell`; the rendered working-copy export labels the
+rounded six-sided example `Clamshell`. Pinned Compose
+[`MaterialShapes.kt`](https://android.googlesource.com/platform/frameworks/support/+/b97c4470f19d8ae9bb9f96be24376fdf37ad056f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt)
+exports `ClamShell` but no `Hexagon`. This could reflect a naming or revision
+difference between the frozen kit and its working copy. Resolve the exact
+variant node and geometry before mapping either name; matching the count of 35
+does not prove shape parity.
 
 The kit has five light and five dark elevation effect styles. Each style's two
 shadow geometries and alpha values agree with the corresponding Web level 1–5
