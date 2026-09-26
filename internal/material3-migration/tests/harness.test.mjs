@@ -180,6 +180,55 @@ test('stale receipts and implementation without visual review are rejected', () 
   r.revision = 'old';
   assert.throws(() => validateReceipt(r, p, t, 'head'), /stale/);
 });
+test('source documents can evidence native-only N/A checks without weakening component gates', () => {
+  const p = {
+    strategyId: 'v2',
+    materialWebCommit: 'web',
+    evidenceRequirements: ['source', 'native-boundary'],
+  };
+  const receipt = {
+    strategyId: 'v2',
+    materialWebCommit: 'web',
+    taskId: 'source',
+    revision: 'head',
+    checks: {
+      source: {result: 'Pass', evidence: ['source.json']},
+      'native-boundary': {
+        result: 'N/A',
+        reason: 'No native implementation in a source decision task',
+        evidence: ['contract.md'],
+      },
+    },
+    qaChecks: Object.fromEntries(
+      [
+        'states',
+        'keyboard',
+        'theme',
+        'responsive',
+        'motion',
+        'accessibility',
+      ].map(key => [key, {result: 'N/A', reason: 'Source task only'}]),
+    ),
+    reviewKind: 'document',
+  };
+  validateReceipt(receipt, p, {...task('source'), Layer: 'Source'}, 'head');
+  assert.throws(
+    () =>
+      validateReceipt(
+        {...receipt, taskId: 'component', reviewKind: 'visual'},
+        p,
+        {...task('component'), Layer: 'Component'},
+        'head',
+      ),
+    /Missing evidence: native-boundary/,
+  );
+  receipt.checks['native-boundary'].reason = '';
+  assert.throws(
+    () =>
+      validateReceipt(receipt, p, {...task('source'), Layer: 'Source'}, 'head'),
+    /Missing evidence: native-boundary/,
+  );
+});
 test('approval never substitutes for merge, CI and worktree cleanup', () => {
   const pr = {
     state: 'OPEN',

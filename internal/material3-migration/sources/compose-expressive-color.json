@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "source": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/ColorScheme.kt",
+  "sourceSha256": "2cae5584a44f5b6ffd15203f75b67138d386642589359a047bccdc31b046fd91",
+  "function": "expressiveLightColorScheme",
+  "base": "lightColorScheme",
+  "overrides": {
+    "OnPrimaryContainer": "PaletteTokens.Primary30",
+    "OnSecondaryContainer": "PaletteTokens.Secondary30",
+    "OnTertiaryContainer": "PaletteTokens.Tertiary30",
+    "OnErrorContainer": "PaletteTokens.Error30"
+  },
+  "attribution": {
+    "copyright": "The Android Open Source Project",
+    "license": "Apache-2.0",
+    "licenseFile": "internal/material3-migration/sources/LICENSE.androidx",
+    "modification": "Derived mapping of four explicit color arguments; Kotlin implementation is not redistributed."
+  }
+}

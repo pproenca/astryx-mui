@@ -58,3 +58,9 @@ independent upstream trace with matched input, units, velocity, target change,
 and settle time; a native browser trace; normal-speed review; aligned
 intermediate frames; interruption, reversal, and reduced-motion evidence.
 The pinned source code and token table alone do not close that scenario.
+The [independent upstream trajectories](motion/upstream/README.md) now execute
+the pinned Kotlin `SpringSimulation.kt` for all twelve standard and Expressive
+token combinations with one interrupted/retargeted input sequence. They
+provide source-side positions, velocities and settling for future browser
+comparison; uninterrupted entry/exit, reduced motion and a native capture
+remain open.

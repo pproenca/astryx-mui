@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "colorSchemeSha256": "2cae5584a44f5b6ffd15203f75b67138d386642589359a047bccdc31b046fd91",
+  "figmaSha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+  "webCommit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+  "formula": "elevation === 0 ? 0 : (4.5 * ln(elevation + 1) + 2) / 100",
+  "levels": [
+    {
+      "level": 0,
+      "dp": 0,
+      "alpha": 0
+    },
+    {
+      "level": 1,
+      "dp": 1,
+      "alpha": 0.05119162312519753
+    },
+    {
+      "level": 2,
+      "dp": 3,
+      "alpha": 0.08238324625039507
+    },
+    {
+      "level": 3,
+      "dp": 6,
+      "alpha": 0.1075659567074891
+    },
+    {
+      "level": 4,
+      "dp": 8,
+      "alpha": 0.11887510598012987
+    },
+    {
+      "level": 5,
+      "dp": 12,
+      "alpha": 0.13542272108576914
+    }
+  ],
+  "cases": {
+    "light": {
+      "surface": "#fef7ff",
+      "surfaceTint": "#6750a4",
+      "backdrop": "#ffffff",
+      "tonalColors": [
+        "#fef7ff",
+        "#f6eefa",
+        "#f2e9f8",
+        "#eee5f5",
+        "#ece3f4",
+        "#eae0f3"
+      ],
+      "nested": {
+        "parentDp": 3,
+        "childDp": 1,
+        "absoluteDp": 4,
+        "color": "#f0e8f7"
+      }
+    },
+    "dark": {
+      "surface": "#141218",
+      "surfaceTint": "#d0bcff",
+      "backdrop": "#0f0d13",
+      "tonalColors": [
+        "#141218",
+        "#1e1b24",
+        "#23202b",
+        "#282431",
+        "#2a2633",
+        "#2d2937"
+      ],
+      "nested": {
+        "parentDp": 3,
+        "childDp": 1,
+        "absoluteDp": 4,
+        "color": "#25222d"
+      }
+    }
+  },
+  "browser": "Chrome 153.0.8010.53",
+  "os": "darwin 27.0.0",
+  "dpr": 1,
+  "viewport": {
+    "width": 1280,
+    "height": 760
+  },
+  "font": {
+    "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+    "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134"
+  },
+  "files": {
+    "elevation-light.png": "abc594faeade33f7ab69b0ff53e6201dfb86c1001f042c3418fe4e41b28569a6",
+    "elevation-dark.png": "0055ac6dfe15f85718699ed047e9509947ba9db84ca8c1605546fa02be5bd3d3"
+  }
+}

@@ -1,9 +1,10 @@
 # Foundation source reconciliation
 
-**Historical Figma-first comparison.** The numeric observations below remain source
-evidence. Its source-selection instructions were superseded by the owner-approved
-Compose-first v4 contract. Reconcile the selected dimensions against the active
-Compose pin before using these observations in a prepared baseline.
+**Compose-first v4 source comparison.** The measured kit/Web values below remain
+source evidence. The selected native route follows the pinned Compose source for
+overlapping values. Figma supplies evidenced design gaps and Figma-only scope;
+Material Web supplies browser implementation details. None of these observations
+alone establishes a matched visual baseline or completed migration.
 
 This is evidence for workbook task `M3-SRC-001`, not a migration status. The
 [supplied kit inventory](figma-kit-inventory.json) and
@@ -11,37 +12,81 @@ This is evidence for workbook task `M3-SRC-001`, not a migration status. The
 export. The comparison implementation is the pinned
 [Material Web commit](https://github.com/material-components/material-web/tree/cbd34a8921915af94d5ef65c2a69eece41d5b4f3),
 represented by the checked-in `material3*Source.json` files in
-`packages/themes/material3/src/`. The kit governs design values where it
-specifies them. The website fills gaps; Material Web informs web behavior.
+`packages/themes/material3/src/`. The pinned AndroidX source at
+`a095da93f8e98dea8748ceed79ea8427aade245f` is the first source for design,
+defaults, behavior and motion. The website fills documented gaps.
+
+| Foundation concern  | Selected route                                                     | Evidence and boundary                                                                                                                                                                                                                                                                                                                         |
+| ------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Color               | Compose baseline light/dark bindings and Expressive light override | `ColorLightTokens.kt`, `ColorDarkTokens.kt`, `PaletteTokens.kt`, and `ColorScheme.kt` define 48 scheme roles per mode. Expressive Light changes the same four roles as the kit, but three values still differ. The kit/Web `Shadow` role fills the one missing system-color gap. Kit contrast and named modes use their own fixed Figma maps. |
+| Typography          | Compose's 30 role metrics and override behavior                    | [`compose-typography.md`](compose-typography.md); kit Roboto is the browser comparison fixture because Compose names only platform SansSerif.                                                                                                                                                                                                 |
+| Shape               | Compose corner shapes and `MaterialShapes.kt`                      | The kit's 35-shape set supplies comparison nodes; name similarity alone does not establish matching geometry.                                                                                                                                                                                                                                 |
+| Spacing and density | Compose component geometry                                         | [`compose-spacing-density.md`](compose-spacing-density.md) resolves Button small/default and TextField default geometry, including the opt-in precision-pointer branch. No universal spacing scale is inferred. The kit and captured guidance fill documented component or responsive gaps.                                                   |
+| Elevation           | Compose level and component surface/elevation selection            | [`compose-elevation.md`](compose-elevation.md) resolves the tonal formula, independent shadow, nested-surface rule, and guidance conflict. Kit/Web shadow geometry fills a browser rendering gap.                                                                                                                                             |
+| Icons               | Compose `Icon` sizing/tint behavior where applicable               | [`compose-icons.md`](compose-icons.md) resolves tint, unsized 24 dp fallback and decorative/meaningful semantics. The kit supplies specified glyphs; pinned Material Symbols artwork fills glyph gaps. Browser control semantics remain component decisions.                                                                                  |
+| State layers        | Compose component interaction and ripple behavior                  | [`compose-state.md`](compose-state.md) resolves the default layer opacities and a concrete filled Button binding. Kit styles agree; Web focus/press values differ. Browser focus, ripple motion and mixed states remain family decisions.                                                                                                     |
+| Motion              | Compose standard/expressive spatial and effects spring schemes     | [`compose-motion.md`](compose-motion.md) records spring inputs. [Watched media](motion/README.md) shows visual intent; Web curves are limited non-interruptible fallbacks.                                                                                                                                                                    |
+
+This routing selects authority, not a fabricated implementation value. A family
+decision must resolve any component-specific gap and its sibling variants before
+that family is implemented. Native foundation QA still needs matched light/dark
+reference captures, fonts, environments, and motion traces.
 
 ## Color
 
 The kit's published `M3` collection (`54778:406`) provides 49 `Schemes/`
 roles in each of 32 modes. Comparing its default Light and Dark values with
 Material Web's 49 resolved roles per mode, after normalizing hex case and
-three-digit hex notation, gives four Light differences and no Dark differences:
+three-digit hex notation, gives four Light differences and no Dark differences.
+Pinned Compose has two distinct light defaults: baseline `lightColorScheme()`
+uses the Web values below, while `expressiveLightColorScheme()` overrides
+exactly those four roles. It agrees with the kit for one of them; the other
+three remain measured differences. The dark default agrees across all three
+sources.
 
-| Role                     | Kit Light | Web Light |
-| ------------------------ | --------- | --------- |
-| `on-error-container`     | `#852221` | `#410E0B` |
-| `on-primary-container`   | `#4F378A` | `#21005D` |
-| `on-secondary-container` | `#4A4459` | `#1D192B` |
-| `on-tertiary-container`  | `#633B48` | `#31111D` |
+| Role                     | Compose baseline / Web Light | Compose Expressive Light | Kit Light |
+| ------------------------ | ---------------------------- | ------------------------ | --------- |
+| `on-error-container`     | `#410E0B`                    | `#8C1D18`                | `#852221` |
+| `on-primary-container`   | `#21005D`                    | `#4F378B`                | `#4F378A` |
+| `on-secondary-container` | `#1D192B`                    | `#4A4458`                | `#4A4459` |
+| `on-tertiary-container`  | `#31111D`                    | `#633B48`                | `#633B48` |
 
-Pinned Compose
-[`ColorLightTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/b97c4470f19d8ae9bb9f96be24376fdf37ad056f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ColorLightTokens.kt)
-also selects the corresponding palette tone 10 for all four roles. Its
-[`PaletteTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/b97c4470f19d8ae9bb9f96be24376fdf37ad056f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/PaletteTokens.kt)
-resolves those four values to the Web Light column above. The Figma export
-therefore disagrees with both pinned implementations for these exact bindings;
-do not substitute a nearby palette tone for the kit's published role value.
-
-The native graph must use the kit's values for these roles. The current
+The refreshed pinned Compose
+[`ColorLightTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ColorLightTokens.kt)
+binds all four baseline roles to palette tone 10. Its
+[`PaletteTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/PaletteTokens.kt)
+resolves them to the baseline column above. The same pinned
+[`ColorScheme.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/ColorScheme.kt)
+defines `expressiveLightColorScheme()` by overriding those four roles with
+palette tone 30. `MaterialExpressiveTheme` uses that scheme when no color
+scheme is supplied. Native baseline and Expressive variants must therefore
+retain separate light values. The remaining three kit differences do not
+override Compose's explicit Expressive values without a color-specific
+approved exception. The
+[`ColorDarkTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ColorDarkTokens.kt)
+bindings agree with the kit's measured default Dark scheme. The current
 Material Web-derived compatibility theme remains historical implementation
-evidence, not the native source decision. The 30 kit contrast and named-scheme
-modes have no matching resolved mode map in that Web fixture; retain their kit
-values rather than inferring them from Light/Dark. Derived state-layer colors
-must follow their chosen scheme roles. The complete
+evidence, not the native source decision. For the kit's 30 contrast and named
+color modes, the pinned `ColorScheme.kt` exposes customizable schemes but does not pin
+those 30 named or contrast role maps. Its Android dynamic schemes read platform
+colors, not these fixed kit maps. Select the kit's 30 complete, 49-role mode
+maps for their own Figma-specified scenarios; do not substitute them for the
+baseline or Expressive defaults. The focused source check confirms that every
+kit role has all 32 mode values. Derived state-layer colors follow the selected
+scheme roles.
+Both Compose light and dark token files have 48 bindings. Of the kit's 49
+`Schemes/` roles, only `Shadow` lacks a corresponding Compose color token.
+The kit specifies `#000000` for `Shadow` in all its modes and pinned Material
+Web resolves `shadow` to black in light and dark. Use that kit value for the
+missing native system-color role; this is a documented gap fill, not an
+exception to a specified Compose value. The focused
+[`source-color.test.mjs`](../tests/source-color.test.mjs) recomputes the
+baseline Light, Expressive Light and Dark comparisons from the pinned
+inventories and [derived override map](compose-expressive-color.json). The
+[`color-reference`](color-reference/README.md) fixtures render the selected
+49 solid role values in each variant without borrowing values from the native
+implementation; component color and state-layer comparisons remain separate.
+The complete
 [kit color guidance export](figma-exports/color-guidance.png) supplies light and
 dark diagrams. It is a source image, not yet a matched native scenario; rendered
 parity still needs comparison at the same size, surface, mode, and font.
@@ -56,26 +101,41 @@ baseline partners. Their weights are Medium (500), except labels and
 medium/small titles, which are SemiBold (600). Web's prominent label weight
 700 is a different role and is not a substitute for the kit's emphasized
 styles. All 30 active kit styles name Roboto. Pinned Compose supplies
-[30 typography roles and override behavior](compose-typography.md) but names
-platform SansSerif as its default family; the kit's explicit Roboto choice
-governs the browser baseline. Use the pinned
+[30 typography roles and override behavior](compose-typography.md), including
+the emphasized styles, and names platform SansSerif as its default family.
+Five tracking values and five emphasized weights differ from the kit's 30
+styles. The native baseline selects Compose for those metrics; the earlier
+kit/Web match does not establish a Compose match.
+The kit's explicit Roboto choice fills the reproducible browser-font gap for
+matched comparison; it does not override Compose's metrics or force a different
+native default. Use the pinned
 [font fixtures](fonts/README.md) and [typescale export](figma-exports/typescale.png)
 for a matched rendering scenario; matching numeric metrics does not prove
-matching glyph pixels.
+matching glyph pixels. The
+[source typography captures](typography-reference/README.md) render the 30
+Compose metric sets in recorded light/dark Chrome conditions with pinned
+Roboto; they remain separate from Figma and native-product comparisons.
 
 ## Shape and elevation
 
 Six shared corner values match exactly: none 0, extra-small 4, small 8,
 medium 12, large 16, and extra-large 28px. The kit additionally specifies
 large-increased 20px, extra-large-increased 32px, and extra-extra-large 48px.
-Its Full value is 1000px, whereas Web's `corner-full` is 9999px. Keep the kit
-value in the native graph; ordinary small components can look identical under
-either radius, but the public token values differ. The kit's
+Its Full value is 1000px, whereas Web's `corner-full` is 9999px. Compose
+[`ShapeTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ShapeTokens.kt)
+uses `CircleShape` for `CornerFull`; native behavior must preserve that
+geometric intent rather than promote either finite radius as its source
+value. The other nine kit corner values agree numerically with Compose;
+[`source-shape.test.mjs`](../tests/source-shape.test.mjs) checks all ten
+against the pinned inventories. The kit's
 [rendered corner scale](figma-exports/corner-radius.png) labels Full as `50%`;
 record that usage distinction instead of assuming the numeric variable and
 display example are identical CSS values. The separate
 [35-shape set](figma-exports/expressive-shapes.png) is additional Expressive
 geometry beyond the ten corner variables and needs its own native coverage.
+The [corner source captures](corner-reference/README.md) render the ten
+kit-mapped Compose roles in light and dark with recorded browser dimensions;
+they are not component pixels or a geometry comparison for the 35 polygons.
 The frozen kit inventory's `Shape Set` variants (`58548:7248`) include
 `Hexagon` but no `Clamshell`. Inspecting the same component set in the Figma
 working copy on 2026-09-26 confirms that its six-sided variant
@@ -92,33 +152,73 @@ is a source rendering fixture with transparency. Neither export is evidence
 that the native implementation has equal pixels.
 Pinned Compose
 [`MaterialShapes.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt)
-exports `ClamShell` but no `Hexagon`. Its `clamShell()` constructs a rounded,
-six-vertex wide outline from three points repeated around the center, making it
-a candidate for this variant. This file is byte-identical at the previous and
-refreshed Compose pins (SHA256
+exports `ClamShell` but no `Hexagon`. This file is byte-identical at the
+previous and refreshed Compose pins (SHA256
 `08c29828003344914ee0d6783f213b37caae650175cd004ba321eaf3a7d6e434`).
-Render the pinned Compose geometry and compare
-it with the SVG before equating the names; matching the count of 35 does not
-prove shape parity.
+The [compiled Compose geometry capture](shape-reference/README.md) covers all
+35 normalized outlines in the kit's display order. Visual inspection finds
+the same silhouette families. The focused ClamShell capture shows
+the broad flat outline corresponding closely to the kit `Hexagon` export:
+their 380 × 380 alpha masks overlap by 98.23%, with different bounds and
+2,282 unequal alpha pixels. Select Compose `ClamShell` geometry for this
+overlap, while retaining the kit naming mismatch and measured visual
+difference. Individual pixel comparisons for the other 34 shapes and any
+native public alias remain open; matching the count of 35 does not prove
+family parity.
 
-The kit has five light and five dark elevation effect styles. Each style's two
+The [Compose elevation decision](compose-elevation.md) selects its tonal
+overlay formula despite the rendered guide's surface-tint deprecation note,
+and keeps tonal and shadow elevation independent. The
+[light/dark source captures](elevation-reference/README.md) render these as
+separate browser scenarios. The kit has five light and
+five dark elevation effect styles. Each style's two
 shadow geometries and alpha values agree with the corresponding Web level 1–5
 layers after ignoring list order. The light level 1 and 2 effect lists reverse
 the Web key/ambient order. Material Web paints separate translucent layers,
 while the kit effect is a two-shadow Figma style. The same numbers therefore do
-not prove the same pixels. Compare actual native shadows against the
+not prove the same pixels. Pinned Compose
+[`Surface.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Surface.kt)
+separates `tonalElevation` from `shadowElevation`: tonal elevation affects a
+surface-color overlay and accumulates through parent surfaces, while shadow
+elevation controls a shadow independently. A Web shadow level alone cannot
+stand in for both values or their component-specific defaults. Compare actual
+native shadows against the
 [kit's exported light/dark example](figma-exports/elevation.png) on matched
 surfaces and dimensions before choosing the rendering method.
 
-## Other foundation routes
+## State layers
 
-| Dimension           | Chosen design source for the next baseline                                                                                   | Remaining evidence                                                                                                                                                                                                                                 |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Icons               | Kit nodes where specified; official Material Symbols source for glyphs and axes absent from the kit                          | Pair exact glyphs, optical sizes, and states with kit nodes.                                                                                                                                                                                       |
-| State layers        | Kit variables and applied component styles                                                                                   | Trace each state binding and rendered compositing.                                                                                                                                                                                                 |
-| Spacing and density | Kit component geometry where specified; [Material spacing guidance](https://m3.material.io/styles/spacing/overview) for gaps | Measure representative nodes and responsive cases.                                                                                                                                                                                                 |
-| Motion              | [Pinned Compose motion schemes](compose-motion.md); the extracted kit has no motion/spring collection                        | Select scheme, speed, spatial/effects kind and matched upstream traces. Use [observed media](motion/README.md) and [rendered guidance](guidance/motion.md) for visual intent; verify interruption, reversal and reduced motion in native behavior. |
+Pinned Compose
+[`StateTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/StateTokens.kt)
+defines default dragged, focus, hover and pressed layer opacities of 0.16,
+0.10, 0.08 and 0.10. The pinned Web-derived compatibility source instead
+specifies 0.12 for focus and pressed, while dragged and hover agree. Select
+Compose's values for the native default; the
+[`source-state.test.mjs`](../tests/source-state.test.mjs) preserves the exact
+four-value comparison. The [Compose state decision](compose-state.md) now
+traces the default ripple and a filled Button's layer color and disabled
+binding. [Light/dark source captures](state-reference/README.md) render their
+static endpoint colors. These do not settle another component's layer color,
+bounds, focus indicator, ripple motion or mixed-state behavior. Resolve those
+from each Compose family and browser interaction semantics before
+implementation. The [captured guidance](guidance/state-layers.md) agrees with
+the Compose default values but does not supersede them.
 
-The source task remains open. Exact per-dimension source decisions, captured
-guidance, and light/dark scenario fixtures still need to be assembled for the
-verification contract in `internal/material3-migration/README.md`.
+## Remaining source evidence
+
+The four [motion clips](motion/README.md) were observed at normal speed in the
+earlier source pass. Their retained files still match the recorded hashes, and
+the current frame inspection decoded 0, 100, 200, 300, 500, 700, 900 and
+1200 ms at those exact timestamps. These clips demonstrate entry and later
+reversal, but they do not show interactive interruption or reduced motion.
+Those behaviors require independent upstream trajectories and native browser
+recordings for each selected motion scenario. The
+[upstream spring probes](motion/upstream/README.md) now supply independent
+trajectories for all twelve pinned token combinations under one retargeting
+sequence; the native recordings, uninterrupted entry/exit and reduced-motion
+comparisons remain open.
+
+`M3-SRC-001` remains open. A source decision JSON with eight dimensions and
+matched light/dark scenario fixtures must be assembled under the verification
+contract in `internal/material3-migration/README.md`. This source comparison
+does not mark the workbook task verified or approve a pixel tolerance.

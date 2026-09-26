@@ -50,3 +50,12 @@ and duration values; do not equate those with the current spring system.
 The published loops do not demonstrate interruption, gesture response,
 focus behavior or reduced motion. Native implementations must test those
 behaviors separately; a prerecorded clip cannot certify them.
+The [pinned Compose trajectory probes](upstream/README.md) supply independent
+position/velocity references for an interrupted and reversed input sequence.
+They execute upstream Kotlin and are separate from these watched visual clips;
+neither source by itself verifies native browser motion.
+The [Compose source replay](source-reference/README.md) renders two default
+spatial traces as a local MP4 and aligned light/dark timed-frame sheets. It is
+derived from Kotlin positions and frame-checked; the official clips above are
+the separately watched normal-speed references. Native playback and reduced
+motion remain open.
