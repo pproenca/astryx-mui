@@ -50,8 +50,14 @@ nested `AGENTS.md`.
 
 Material 3 work follows the native component direction in
 [`docs/contributing/material3-migration.md`](docs/contributing/material3-migration.md)
-and its versioned [verification policy](docs/contributing/material3-migration-policy.json).
+and its versioned [verification policy](internal/material3-migration/policy.json).
 Read both before claiming, implementing, or verifying a migration task.
+Use the encapsulated CLI at `internal/material3-migration/cli.mjs`. Figma wins
+wherever it specifies the design; captured Material guidance and watched animation
+media fill gaps, and pinned Material Web supplies implementation evidence.
+Complete and approve foundations before components; prioritize dependency-ready
+components represented in both Web and Figma. Motion requires watched references,
+intermediate frames, interruption/reversal and reduced-motion evidence.
 The current [Material 3 family contract](packages/themes/material3/material3.spec.md)
 owns its token and compatibility boundary. Native Material components consume
 supported Material tokens directly. Reuse Core behavior only where its semantics

@@ -42,6 +42,13 @@ values, or the behavior of existing themes.
 
 ## Native direction and implementation status
 
+Figma is the selected design authority wherever the supplied kit specifies the
+design. Captured Material guidance and observed GIF/video motion fill Figma gaps;
+pinned Material Web supplies implementation evidence. Record divergences rather
+than adapting Figma to the limitations of that Web revision. Native acceptance uses
+selected source baselines, pixel comparisons and timed motion evidence. Foundations
+require their own approved gallery before component implementation expands.
+
 The family target is a native Material 3 component system under
 `@astryxdesign/material3` (`packages/material3`). That package is planned work;
 the presently shipped workspace implementation remains the additive
@@ -68,7 +75,7 @@ Existing source fixtures and human QA remain evidence of the implementation and
 contract they tested. Native conformance requires a new verification revision,
 native entry-point preview, and human QA after any behavior or appearance change.
 The [migration guide](../../../docs/contributing/material3-migration.md) and
-[verification policy](../../../docs/contributing/material3-migration-policy.json)
+[verification policy](../../../internal/material3-migration/policy.json)
 project this boundary; the migration workbook alone owns tasks and dependencies.
 
 ## Intent and audience
@@ -78,7 +85,7 @@ foundation. Its roles are traced to the pinned Material Web source and checked
 against rendered components. The source snapshot is
 [`cbd34a8921915af94d5ef65c2a69eece41d5b4f3`](https://github.com/material-components/material-web/tree/cbd34a8921915af94d5ef65c2a69eece41d5b4f3),
 whose active Sass wrappers use the `v0_192` token source. The community Figma
-kit is supporting design evidence, not an implementation oracle.
+kit governs specified design dimensions; Material Web supplies implementation evidence.
 
 ## Inheritance and base
 
@@ -108,7 +115,7 @@ component overrides; native implementations consume them directly.
 No Material role is added to `TokenName`, `tokenVar`, generated portable token
 docs, or Core defaults merely to make this theme work. Spacing and control size
 retain Astryx's portable vocabulary for Core consumers. Native component geometry
-follows the pinned Material component recipe without translation through a Core
+follows the resolved Figma-first component design without translation through a Core
 size or spacing scale.
 
 The pinned Material Web checkout has no system spacing, size, or density Sass
@@ -333,6 +340,10 @@ receipts must identify the pinned Material Web input and Astryx code revision.
   use the family roles directly; foundation and completed component evidence
   require native revalidation before wider migration continues. The existing
   migration workbook remains the sole execution database.
+
+- 2026-09-26: The project owner specified that Figma wins source disagreements.
+  Website guidance and observed animation media fill gaps; Web source is implementation
+  evidence. Foundation approval precedes shared Web/Figma component migration.
 
 ## Open questions
 

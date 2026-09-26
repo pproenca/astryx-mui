@@ -14,25 +14,36 @@ Tasks, Dependencies, Component mapping, Token mapping, Acceptance checks and
 QA reviews sheets own execution state. Update that existing workbook in place.
 Do not create a second backlog in an issue list, JSON file or document.
 
-The [verification policy](material3-migration-policy.json) versions the shared
-rules as `material3-native-v1`; it contains no task statuses or dependency graph.
-The workbook records the policy ID and file hash. Its adjacent `task.mjs` reads
-the policy from `ASTRYX_REPO` and checks both before a claim or completion.
-Use a checkout containing the policy revision recorded in the workbook.
+The temporary [migration harness](../../internal/material3-migration/README.md)
+encapsulates its CLI, workbook adapter, policy, evidence checks and tests. It has no
+product dependents and is deleted after the migration. The workbook stores the
+policy version/hash. Six working tabs are visible; source inventories and dependency
+detail remain hidden and intact. No competing backlog is created.
 
 ```sh
-ASTRYX_REPO=/path/to/checkout node /path/to/tracker/task.mjs status
-ASTRYX_REPO=/path/to/checkout node /path/to/tracker/task.mjs plan
-ASTRYX_REPO=/path/to/checkout node /path/to/tracker/task.mjs pop
-ASTRYX_REPO=/path/to/checkout node /path/to/tracker/task.mjs verify TASK_ID
-ASTRYX_REPO=/path/to/checkout node /path/to/tracker/task.mjs qa TASK_ID approve --approval-reference 'Human decision for this revision'
+M3_WORKBOOK=/path/to/existing.xlsx node internal/material3-migration/cli.mjs status
+M3_WORKBOOK=/path/to/existing.xlsx node internal/material3-migration/cli.mjs task pop
 ```
 
-`plan` reads the workbook without claiming. `pop` claims only dependency-ready
-work. `verify` rejects an old contract, an unmet predecessor, a missing native
-verification recipe, a dirty checkout or evidence for another revision.
-`qa` records a real human decision; an agent must never manufacture that input.
-All workbook writes use the existing exclusive lock and atomic replacement.
+Set `M3_DEPS` to the external migration tooling dependencies. Read the harness guide
+for configuration, joined task briefs, verification, interactive review and finish.
+Approval records the human decision; Closed additionally requires the reviewed PR
+merged, CI passing and safe worktree cleanup. Only Closed unlocks successors.
+
+## Figma-first source resolution
+
+The project owner explicitly selected Figma as the design authority. Where the kit
+specifies a dimension or behavior, implement it even if Material Web differs.
+Captured Material website guidance and watched GIFs/videos fill gaps, including
+motion. Pinned Material Web provides web implementation evidence. Record source
+versions, node IDs and divergences. A source-name match is only candidate coverage.
+Missing references block verification; never average incompatible source values.
+
+Pixel-perfect means comparison to the selected Figma-first baseline under matched
+viewport, DPR, fonts, theme, content and state. Recompute image differences. Nonzero
+rasterization tolerance needs a specific human-approved exception. Motion requires
+normal-speed observation, timestamped intermediate frames, interruption/reversal
+and reduced-motion evidence. A text extraction or endpoint screenshot is insufficient.
 
 ## Target implementation and compatibility
 
@@ -79,11 +90,13 @@ license notices, or package provenance.
 The workbook contains the actual stories and hard edges. Apply these ordering
 rules when maintaining it:
 
-1. Establish the native package boundary, token API and compatibility plan.
+1. Resolve the foundation source baselines and watch motion references. Establish
+   the native package boundary, token API and compatibility plan.
 2. Refactor the existing foundation into the canonical native token graph.
    Reuse pinned source values and fixtures; revalidate emission, overrides and
    runtime/build equivalence under the new boundary.
-3. Review Icon/MaterialSymbol and Divider again through native entry points.
+3. Approve the complete native foundation gallery before component work.
+   Review Icon/MaterialSymbol and Divider again through native entry points.
    Keep prior tasks and QA decisions as historical evidence. Reuse evidence
    only when the implementation, source and relevant observable behavior are
    unchanged, and record the new verification revision.
@@ -94,7 +107,8 @@ rules when maintaining it:
    interactive QA. TextInput includes the source filled/outlined field behavior
    through its existing field gap tasks.
 6. Review both pilots, native dependency evidence and compatibility cost before
-   resuming the wider component backlog. Claimed work whose new prerequisites
+   resuming the wider component backlog. Among ready tasks, prioritize shared
+   Web/Figma coverage; then explicitly cover remaining Figma/website families. Claimed work whose new prerequisites
    are open becomes blocked with its branch and prior claim retained.
 
 The workflow pilot that only exercised the old Core Button is superseded for
@@ -124,28 +138,13 @@ matrix. Passing earlier appearance checks cannot substitute for direct token
 consumption, native defaults, compatibility direction or native consumer QA.
 Do not blanket-set the acceptance matrix to Pass from a unit-test result.
 
-Each task authors a focused verifier at `scripts/material3/verify/TASK_ID.mjs`.
-It runs the actual tests and emits JSON with `strategyId`, `taskId`, `revision`,
-`materialWebCommit`, `checks`, and `preview` when visual review applies. Each
-policy requirement in `checks` has `result: "Pass"` and a nonempty `evidence`
-array of repository-relative files. Tests and browser receipts must identify
-the same revision. The task runner rejects missing requirements and missing
-files. Task-specific verifiers own substantive assertions; the runner validates
-the receipt and workflow, and is not itself a parity oracle.
-
-Foundation receipts list the exact covered `tokenIds`. Component token scopes
-contain comma-separated CSS prefixes (for example `--md-divider-`), without
-prose. Native QA is recorded separately from historical approvals; verification
-sets it to Pending, and only a new human decision can approve it.
-
-Verification also requires the mapping's current Contract value and its complete
-acceptance/token evidence. A task whose target is a component cannot close while
-its mapping is missing native evidence. Human review follows automated evidence,
-using the installed/built native entry point. Record the exact SHA, source pin,
-preview URL and approval reference. Changed implementation requires affected
-checks and human review again. Current-record PRs still require the repository's
-exact-commit owner gate. Merge approved passing PRs and remove their worktrees
-through the main migration task's established workflow.
+Task verifiers and evidence schemas live in the
+[temporary harness](../../internal/material3-migration/README.md#verification-recipes-and-evidence).
+The CLI joins the workbook's task, mappings, Figma nodes, checks and source links.
+Native checks include Figma precedence, measured pixel comparison and motion media
+review. Permanent regression tests remain beside their product owner; disposable
+recipes orchestrate them. Human QA occurs at the verified revision. Current-record
+PRs retain the exact-commit owner gate.
 
 ## Preview and progress meaning
 
@@ -156,8 +155,8 @@ component. The docsite currently needs native package discovery and a selectable
 preview theme; its existing neutral wrapper is not evidence of Material parity.
 
 Closed legacy tasks remain historical accomplishments. Component and token
-`Fully migrated?` formulas require the active native contract, complete evidence
-and human approval. The summary may consequently show fewer fully migrated rows
+`Fully migrated?` formulas require the active native contract, complete evidence,
+human approval and merge. The summary may consequently show fewer fully migrated rows
 after the pivot even though the historical work is preserved. Never reset the
 source inventories, old QA records or source-linked test receipts to hide that
 distinction.
