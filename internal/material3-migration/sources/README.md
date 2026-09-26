@@ -5,9 +5,9 @@ task database and does not itself mark any foundation or component as migrated.
 The [migration guide](../../../docs/contributing/material3-migration.md)
 remains the task authority.
 The [versioned Compose-first source decision](baseline/README.md) selects the
-eight foundation routes and 51 pinned light/dark source scenarios. Browser
-performance and trajectory tolerances still require native measurement and
-human approval.
+eight foundation routes and 53 pinned source scenarios, including narrow and
+RTL captures. Browser performance and trajectory tolerances still require
+native measurement and human approval.
 
 ## Pinned sources
 
