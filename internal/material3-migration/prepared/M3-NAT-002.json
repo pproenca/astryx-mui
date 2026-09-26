@@ -1,0 +1,2892 @@
+{
+  "schemaVersion": 1,
+  "scopeSha256": "48afda1468b81a7efeb4a6fa8e4f83ef7c48ef7f6e415d4aa57b97ab06982b17",
+  "sources": {
+    "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+    "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468"
+  },
+  "baseline": "internal/material3-migration/sources/baseline/compose-first.json",
+  "routing": [],
+  "files": {
+    "internal/material3-migration/sources/compose-inventory.json": "0e637563f2cb1a140e04c939379fc6a90474697e272e6594146ce5cb2cbb0d0a",
+    "AGENTS.md": "ec1dab9cfad80cf4e32815ad820e8caad44dffe08ef0883f95769eca09d5c760",
+    "packages/themes/material3/material3.spec.md": "22f61940d00cf73ba257a46f610c5ea289e289f16c23d61cd520a52b4be827e1",
+    "docs/contributing/material3-migration.md": "fab928b10412b5e5c72c007315a425ee554d7e091ac1f5768e2616e7c2000e7f",
+    "internal/material3-migration/routing.mjs": "c498d4ef6b02164d4787b57ffb8470702ada22e47b27f2d5f3fb138cf7b1f391",
+    "internal/material3-migration/sources/baseline/compose-first.json": "3d4fb8e75603228a25ea40d30ed877ed143ae3cf6a8978af71b0e909be1e5b12",
+    "internal/material3-migration/sources/figma-kit-inventory.json": "15ffc3bf66c2666dca228847b3bbeffc1d718beaa323967d2c118e0b3170ae6f",
+    "internal/material3-migration/sources/guidance/color-roles.md": "0dcb37c3dadb900213e8347cfd995890779ba94bd168ccebe1b84a32ca90bca9",
+    "internal/material3-migration/sources/guidance/typography-fonts.md": "2d61b0718510bae46f41dd3e65d496c237e2a3b7d2635f88561433bd9c9e5bf5",
+    "internal/material3-migration/sources/guidance/shape.md": "89f72e48e6415dd283be782477e2a65045cac806d444bf78f9981eae6d4010b9",
+    "internal/material3-migration/sources/guidance/spacing.md": "603794a72ec54f4f88ecc94eec0726a4cc714de138338b9716b14ee5f50ceaed",
+    "internal/material3-migration/sources/guidance/elevation.md": "266794a957a96a7ad278681c020c1b3f40dbbb17a73a75a01ec7aff6794d19b6",
+    "internal/material3-migration/sources/guidance/icons.md": "5c5f418fe140c1b578e02295ee8c269371bdb974c195329bf5690415a5dc1d9d",
+    "internal/material3-migration/sources/guidance/state-layers.md": "8e5286c9279d751750c887abc29d3d8984810448747206a2af324e6df24c5659",
+    "internal/material3-migration/sources/guidance/motion.md": "80f8c9961a724b60f29c3a7a6b591372d608382b8aa918faabc4cfdc93bb4720",
+    "internal/material3-migration/sources/reconciliation.md": "6bf3ef8b4e976c173e742303cf59bd49b1a45200518544ff1947747c8906d814",
+    "internal/material3-migration/sources/compose-typography.md": "a4b51f241d153d7d71b4caebd1ca75c82d9df8ad3ea78591ab2c134f86aa2e29",
+    "internal/material3-migration/sources/shape-reference/README.md": "49c804866a9f929026be99b76c8b4ff9fa0beeb83c8226fd92cacd4fbedc7e92",
+    "internal/material3-migration/sources/compose-spacing-density.md": "ff908a172dc515114ef80b6c1dc3eaae1e1c16cd467c90af83c338f523e04a12",
+    "internal/material3-migration/sources/compose-elevation.md": "33c9f27575f31e75e19ac57aeb1cc43d771ca152230ea9cb5574bab8051d2655",
+    "internal/material3-migration/sources/compose-icons.md": "b30b19517b58185725b4d2389ee659738e6d6667a9a99eb68439ffe776a5e97c",
+    "internal/material3-migration/sources/compose-state.md": "356394c0295a3d3ce4b5f8a83e38f1b50f488cec82e03b7fe90587e999936890",
+    "internal/material3-migration/sources/compose-motion.md": "82758cccd3ad6bdb41ee2bb2afc5d7da705abfa0a8668cec48e52620f72efeee",
+    "internal/material3-migration/sources/color-reference/color-light.png": "4497067f81ff0bcb21bb655e63fff6256903c65fee2ada30cd5364883fff6239",
+    "internal/material3-migration/sources/color-reference/color-dark.png": "ed9774fee9a1e934a3d3266be5f8c66d76f14100af7c760d541e0e0f1652e6eb",
+    "internal/material3-migration/sources/color-reference/color-expressive-light.png": "6dc578c9fe58046d7cfc0150b53242b990b20b146d2e1e377f6b0bd49ce04af2",
+    "internal/material3-migration/sources/color-reference/color-kit-light.png": "c97464595e176019503c471fb69dd6ae2f17c6c54ce9d2f0c928fd3e31771d39",
+    "internal/material3-migration/sources/color-reference/color-kit-light-high-contrast.png": "c360426ab2e87115e586ec87194ea8c942271a123bdbdcceb34642621043a2a0",
+    "internal/material3-migration/sources/color-reference/color-kit-light-medium-contrast.png": "5aa433ecfb0ca3348d078767cf69caa635f9bda65f4e72b5cbf689d9b9056486",
+    "internal/material3-migration/sources/color-reference/color-kit-dark.png": "ed9774fee9a1e934a3d3266be5f8c66d76f14100af7c760d541e0e0f1652e6eb",
+    "internal/material3-migration/sources/color-reference/color-kit-dark-high-contrast.png": "b4c448550c51db33dd1789f391e047e3e98b1e9d37a1c676a78c363774f56208",
+    "internal/material3-migration/sources/color-reference/color-kit-dark-medium-contrast.png": "42c73f334a4c44cadc35526773d575cd687c53dd4c36dc8785fc6a591e75b099",
+    "internal/material3-migration/sources/color-reference/color-kit-monochrome-lt.png": "2104c54ffc3021e772742cec384982acb91ae3f420a2d54a4547de961dcfb9dc",
+    "internal/material3-migration/sources/color-reference/color-kit-monochrome-dt.png": "5e65d200ea9350445c42d1772f31616ade7fd442356f3f8c718054fdfdf3fe48",
+    "internal/material3-migration/sources/color-reference/color-kit-pink-lt.png": "eed9c7486793e295b99a637c957111d42cd173abedd49665e7457948eadd7a72",
+    "internal/material3-migration/sources/color-reference/color-kit-pink-dt.png": "badc76b6565ad02c79bca34f32226672e9393da8edba144de2e1a58ecf7f5a33",
+    "internal/material3-migration/sources/color-reference/color-kit-rose-lt.png": "1bf7b5a45e19f58b9a81d8f18a6414b41b8fd5e23013fd436f647c02f1d45df6",
+    "internal/material3-migration/sources/color-reference/color-kit-rose-dt.png": "6aaaec392d73f1f68b7174cc0db34baf58a3c51d468ea59a959646e3636af91c",
+    "internal/material3-migration/sources/color-reference/color-kit-red-lt.png": "6c04ca150c800aacc8a726aa356fea963369c458bb1930a0133c7b3beda53da2",
+    "internal/material3-migration/sources/color-reference/color-kit-red-dt.png": "f36352c6b719dd2fe44e81caf5ac753a7c2a309ae1acbf07224b870dc920418c",
+    "internal/material3-migration/sources/color-reference/color-kit-orange-lt.png": "c44c2d3c46a221133d92211305eda2912585e4eed5df5cd09b031223e05ac4da",
+    "internal/material3-migration/sources/color-reference/color-kit-orange-dt.png": "88a5b7ad025d72e9340dd60cf754a0d3e22c0c045c88d30b9afef4eff660085b",
+    "internal/material3-migration/sources/color-reference/color-kit-yellow-lt.png": "45f583206cc8e75b4ffd7e70044b9cf7b633fe7f544aa4ed4197c5aea8ecce72",
+    "internal/material3-migration/sources/color-reference/color-kit-yellow-dt.png": "82350e7f2112398a9c043ec405ac7fd2a6e7de0111783b1a6ab552d5c599ff75",
+    "internal/material3-migration/sources/color-reference/color-kit-chartreuse-lt.png": "af2991ef85376ba437f9c8e329879967f84d53db816be7e400b4a62b56661fb8",
+    "internal/material3-migration/sources/color-reference/color-kit-chartreuse-dt.png": "08bf0996ab36e299597d28bfeeda8c5c1304a92031bdce6958acf6e54a3fb6f5",
+    "internal/material3-migration/sources/color-reference/color-kit-green-lt.png": "b72729cf93f689289c40356cc30b164c96522360af46bfb54fe602f70bc5461d",
+    "internal/material3-migration/sources/color-reference/color-kit-green-dt.png": "8b434b54e245410340d6dc333c1910cb940050490fca4bc453b2c4aa1dce4f9e",
+    "internal/material3-migration/sources/color-reference/color-kit-teal-lt.png": "b48035516978a0fa5121ad0cef99d348cf0a855e82fd492cee3eef15cb18f597",
+    "internal/material3-migration/sources/color-reference/color-kit-teal-dt.png": "803a289c2d5b0b77412cb1c85500a9bd1abecd5e7afc32741fbaf757fbe5d74f",
+    "internal/material3-migration/sources/color-reference/color-kit-cyan-lt.png": "7209c5ae69e9ccdf67fdbbdeed93df3559ff7667499692b65991084f32dc1d71",
+    "internal/material3-migration/sources/color-reference/color-kit-cyan-dt.png": "8061c62eec7d2c8424736167e813be6d60a066010a9a0fb651c22c20818d2b5a",
+    "internal/material3-migration/sources/color-reference/color-kit-blue-lt.png": "7c3e2e4263c898a501232334881edf92fff730c515212d55acad035568761f9b",
+    "internal/material3-migration/sources/color-reference/color-kit-blue-dt.png": "61cb2e4bdbb508297d6312397026366e4bc9f6d6aeedeb23458bcab15ffa4ec2",
+    "internal/material3-migration/sources/color-reference/color-kit-indigo-lt.png": "fd70188d68c4cb1d0ef5db3b2c8fd7ef67d196519f6909a2bf983603d0f2516d",
+    "internal/material3-migration/sources/color-reference/color-kit-indigo-dt.png": "e8baaa5ee69deb7cb548dd32cd283d8fadffc9a17773ed41855c559b15201a4f",
+    "internal/material3-migration/sources/color-reference/color-kit-purple-lt.png": "e0e78cd49fe66d1d43179b96dc90f3c1998726395677db61946e3181143c6fe2",
+    "internal/material3-migration/sources/color-reference/color-kit-purple-dt.png": "ac473c0c4801e76d9c0b761436fbe882407fa821e9e5798f83ea6e2dae0778c5",
+    "internal/material3-migration/sources/typography-reference/typography-light.png": "08601c2de84fd787e7e7d86dd380781b4c90dcf2b94a62924c4107152ad3252e",
+    "internal/material3-migration/sources/typography-reference/typography-dark.png": "aea5fa7e4de4b0e02800c19734e36912cc34001ac6b2204869c6d1f313a6dfd3",
+    "internal/material3-migration/sources/corner-reference/corners-light.png": "0ecee32b27b06f385c03ba1b72cc111ad57951429296800202ac6869e0e3db1c",
+    "internal/material3-migration/sources/corner-reference/corners-dark.png": "3273c301a0abb805846c416c54a5ce4c568ebb74c6a46d2ed4093f7241c1432f",
+    "internal/material3-migration/sources/shape-reference/compose-expressive-shapes.png": "db0f8615a1f635bd3fc629a0a8ce0d1091bf7fcc1f44f9128bf8cf51d1187e73",
+    "internal/material3-migration/sources/shape-reference/compose-expressive-shapes-dark.png": "0ff6812d5dba50d5997d3510d5fb14cfc3fdc1ad9753653ded0ee0b83a7d0c76",
+    "internal/material3-migration/sources/elevation-reference/elevation-light.png": "abc594faeade33f7ab69b0ff53e6201dfb86c1001f042c3418fe4e41b28569a6",
+    "internal/material3-migration/sources/elevation-reference/elevation-dark.png": "0055ac6dfe15f85718699ed047e9509947ba9db84ca8c1605546fa02be5bd3d3",
+    "internal/material3-migration/sources/state-reference/state-light.png": "ea98b4913beb1ffc8672fb85c726b55d0324f1fe84b1066a7d01059c4f5d6fd3",
+    "internal/material3-migration/sources/state-reference/state-dark.png": "92e11378ae6350c4acf705d22fc35f330ba34b5429cee62c0a8d0d759864fe46",
+    "internal/material3-migration/sources/spacing-reference/spacing-light.png": "b1c884485e2026701ee13b758a17a77e24cb031625d4264b7ba2f99d6e9d3170",
+    "internal/material3-migration/sources/spacing-reference/spacing-dark.png": "8806585c80a2c0b7e894040578a0832dd555fb6392053d91ddba4bd87dc0eb41",
+    "internal/material3-migration/sources/spacing-reference/spacing-narrow-light.png": "4e40042d0407723d65e34adf7c360f6fd1b58d47b28918d452f647be5b15715f",
+    "internal/material3-migration/sources/spacing-reference/spacing-rtl-dark.png": "f4f818a5545135bac002c9f9fe4d410583d7e2af4c567712f3603e6f3837da73",
+    "internal/material3-migration/sources/icon-reference/icons-light.png": "676e66b5834757533369cbd22d1b3d71f424a9aa7f04e48a9b13ae7f2224c9bf",
+    "internal/material3-migration/sources/icon-reference/icons-dark.png": "6f62cbf88cfdf4d902f126e8add4ed3010e7af14c0ca16aa1154b3d8ac34cc17",
+    "internal/material3-migration/sources/motion/source-reference/motion-light.png": "bce2b1a730268c2376635b074dd5b78c4ff7df41ae974e9db3e0c3d4ffcd833c",
+    "internal/material3-migration/sources/motion/source-reference/motion-dark.png": "01e0b6a80febb4997e107fcab88f12f832ca20f7b8f1de594cb9d185ad53f6e0",
+    "internal/material3-migration/sources/motion/source-reference/compose-default-spatial.mp4": "21fc9c41fe818d9be0d61c5e54635b1292d16b2cd69a1162357c7a2074a2fd03",
+    "internal/material3-migration/sources/motion/README.md": "c0c07b863bbfb6b764efda0525ec8b69510b62cc9e63137e327221e222974196",
+    "internal/material3-migration/sources/motion/upstream/traces/standard-default-spatial.json": "41f063d7baa7402846b0405766dea5929130d7bc3607759a1d8d48ced183a358",
+    "internal/material3-migration/sources/motion/upstream/traces/expressive-default-spatial.json": "408bcef9903dd655f95d5b91f949bdd6094bca7a9faaf1d51a773cf7549cbce1"
+  },
+  "compose": [
+    {
+      "id": "compose:ColorScheme",
+      "name": "ColorScheme",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/ColorScheme.kt",
+      "sha256": "2cae5584a44f5b6ffd15203f75b67138d386642589359a047bccdc31b046fd91",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/ColorScheme.kt",
+      "symbols": [
+        "copy",
+        "lightColorScheme",
+        "darkColorScheme",
+        "contentColorFor",
+        "expressiveLightColorScheme"
+      ],
+      "expressive": true,
+      "tokens": [
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ColorDarkTokens.kt",
+          "sha256": "2da1ca902e19448f2c6a9807b859984bd70c5ed563e4f4ccaf3606ce0c6e1668",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ColorDarkTokens.kt",
+          "name": "ColorDarkTokens",
+          "version": "v0_210",
+          "values": [
+            {
+              "name": "Background",
+              "expression": "PaletteTokens.Neutral6",
+              "line": 22
+            },
+            {
+              "name": "Error",
+              "expression": "PaletteTokens.Error80",
+              "line": 25
+            },
+            {
+              "name": "ErrorContainer",
+              "expression": "PaletteTokens.Error30",
+              "line": 28
+            },
+            {
+              "name": "InverseOnSurface",
+              "expression": "PaletteTokens.Neutral20",
+              "line": 31
+            },
+            {
+              "name": "InversePrimary",
+              "expression": "PaletteTokens.Primary40",
+              "line": 34
+            },
+            {
+              "name": "InverseSurface",
+              "expression": "PaletteTokens.Neutral90",
+              "line": 37
+            },
+            {
+              "name": "OnBackground",
+              "expression": "PaletteTokens.Neutral90",
+              "line": 40
+            },
+            {
+              "name": "OnError",
+              "expression": "PaletteTokens.Error20",
+              "line": 43
+            },
+            {
+              "name": "OnErrorContainer",
+              "expression": "PaletteTokens.Error90",
+              "line": 46
+            },
+            {
+              "name": "OnPrimary",
+              "expression": "PaletteTokens.Primary20",
+              "line": 49
+            },
+            {
+              "name": "OnPrimaryContainer",
+              "expression": "PaletteTokens.Primary90",
+              "line": 52
+            },
+            {
+              "name": "OnPrimaryFixed",
+              "expression": "PaletteTokens.Primary10",
+              "line": 55
+            },
+            {
+              "name": "OnPrimaryFixedVariant",
+              "expression": "PaletteTokens.Primary30",
+              "line": 58
+            },
+            {
+              "name": "OnSecondary",
+              "expression": "PaletteTokens.Secondary20",
+              "line": 61
+            },
+            {
+              "name": "OnSecondaryContainer",
+              "expression": "PaletteTokens.Secondary90",
+              "line": 64
+            },
+            {
+              "name": "OnSecondaryFixed",
+              "expression": "PaletteTokens.Secondary10",
+              "line": 67
+            },
+            {
+              "name": "OnSecondaryFixedVariant",
+              "expression": "PaletteTokens.Secondary30",
+              "line": 70
+            },
+            {
+              "name": "OnSurface",
+              "expression": "PaletteTokens.Neutral90",
+              "line": 73
+            },
+            {
+              "name": "OnSurfaceVariant",
+              "expression": "PaletteTokens.NeutralVariant80",
+              "line": 76
+            },
+            {
+              "name": "OnTertiary",
+              "expression": "PaletteTokens.Tertiary20",
+              "line": 79
+            },
+            {
+              "name": "OnTertiaryContainer",
+              "expression": "PaletteTokens.Tertiary90",
+              "line": 82
+            },
+            {
+              "name": "OnTertiaryFixed",
+              "expression": "PaletteTokens.Tertiary10",
+              "line": 85
+            },
+            {
+              "name": "OnTertiaryFixedVariant",
+              "expression": "PaletteTokens.Tertiary30",
+              "line": 88
+            },
+            {
+              "name": "Outline",
+              "expression": "PaletteTokens.NeutralVariant60",
+              "line": 91
+            },
+            {
+              "name": "OutlineVariant",
+              "expression": "PaletteTokens.NeutralVariant30",
+              "line": 94
+            },
+            {
+              "name": "Primary",
+              "expression": "PaletteTokens.Primary80",
+              "line": 97
+            },
+            {
+              "name": "PrimaryContainer",
+              "expression": "PaletteTokens.Primary30",
+              "line": 100
+            },
+            {
+              "name": "PrimaryFixed",
+              "expression": "PaletteTokens.Primary90",
+              "line": 103
+            },
+            {
+              "name": "PrimaryFixedDim",
+              "expression": "PaletteTokens.Primary80",
+              "line": 106
+            },
+            {
+              "name": "Scrim",
+              "expression": "PaletteTokens.Neutral0",
+              "line": 109
+            },
+            {
+              "name": "Secondary",
+              "expression": "PaletteTokens.Secondary80",
+              "line": 112
+            },
+            {
+              "name": "SecondaryContainer",
+              "expression": "PaletteTokens.Secondary30",
+              "line": 115
+            },
+            {
+              "name": "SecondaryFixed",
+              "expression": "PaletteTokens.Secondary90",
+              "line": 118
+            },
+            {
+              "name": "SecondaryFixedDim",
+              "expression": "PaletteTokens.Secondary80",
+              "line": 121
+            },
+            {
+              "name": "Surface",
+              "expression": "PaletteTokens.Neutral6",
+              "line": 124
+            },
+            {
+              "name": "SurfaceBright",
+              "expression": "PaletteTokens.Neutral24",
+              "line": 127
+            },
+            {
+              "name": "SurfaceContainer",
+              "expression": "PaletteTokens.Neutral12",
+              "line": 130
+            },
+            {
+              "name": "SurfaceContainerHigh",
+              "expression": "PaletteTokens.Neutral17",
+              "line": 133
+            },
+            {
+              "name": "SurfaceContainerHighest",
+              "expression": "PaletteTokens.Neutral22",
+              "line": 136
+            },
+            {
+              "name": "SurfaceContainerLow",
+              "expression": "PaletteTokens.Neutral10",
+              "line": 139
+            },
+            {
+              "name": "SurfaceContainerLowest",
+              "expression": "PaletteTokens.Neutral4",
+              "line": 142
+            },
+            {
+              "name": "SurfaceDim",
+              "expression": "PaletteTokens.Neutral6",
+              "line": 145
+            },
+            {
+              "name": "SurfaceTint",
+              "expression": "Primary",
+              "line": 148
+            },
+            {
+              "name": "SurfaceVariant",
+              "expression": "PaletteTokens.NeutralVariant30",
+              "line": 151
+            },
+            {
+              "name": "Tertiary",
+              "expression": "PaletteTokens.Tertiary80",
+              "line": 154
+            },
+            {
+              "name": "TertiaryContainer",
+              "expression": "PaletteTokens.Tertiary30",
+              "line": 157
+            },
+            {
+              "name": "TertiaryFixed",
+              "expression": "PaletteTokens.Tertiary90",
+              "line": 160
+            },
+            {
+              "name": "TertiaryFixedDim",
+              "expression": "PaletteTokens.Tertiary80",
+              "line": 163
+            }
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ColorLightTokens.kt",
+          "sha256": "28903596b271fa6822ffc6d14edd24554befd7cd1227261e72d0643fad808007",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ColorLightTokens.kt",
+          "name": "ColorLightTokens",
+          "version": "v0_210",
+          "values": [
+            {
+              "name": "Background",
+              "expression": "PaletteTokens.Neutral98",
+              "line": 22
+            },
+            {
+              "name": "Error",
+              "expression": "PaletteTokens.Error40",
+              "line": 25
+            },
+            {
+              "name": "ErrorContainer",
+              "expression": "PaletteTokens.Error90",
+              "line": 28
+            },
+            {
+              "name": "InverseOnSurface",
+              "expression": "PaletteTokens.Neutral95",
+              "line": 31
+            },
+            {
+              "name": "InversePrimary",
+              "expression": "PaletteTokens.Primary80",
+              "line": 34
+            },
+            {
+              "name": "InverseSurface",
+              "expression": "PaletteTokens.Neutral20",
+              "line": 37
+            },
+            {
+              "name": "OnBackground",
+              "expression": "PaletteTokens.Neutral10",
+              "line": 40
+            },
+            {
+              "name": "OnError",
+              "expression": "PaletteTokens.Error100",
+              "line": 43
+            },
+            {
+              "name": "OnErrorContainer",
+              "expression": "PaletteTokens.Error10",
+              "line": 46
+            },
+            {
+              "name": "OnPrimary",
+              "expression": "PaletteTokens.Primary100",
+              "line": 49
+            },
+            {
+              "name": "OnPrimaryContainer",
+              "expression": "PaletteTokens.Primary10",
+              "line": 52
+            },
+            {
+              "name": "OnPrimaryFixed",
+              "expression": "PaletteTokens.Primary10",
+              "line": 55
+            },
+            {
+              "name": "OnPrimaryFixedVariant",
+              "expression": "PaletteTokens.Primary30",
+              "line": 58
+            },
+            {
+              "name": "OnSecondary",
+              "expression": "PaletteTokens.Secondary100",
+              "line": 61
+            },
+            {
+              "name": "OnSecondaryContainer",
+              "expression": "PaletteTokens.Secondary10",
+              "line": 64
+            },
+            {
+              "name": "OnSecondaryFixed",
+              "expression": "PaletteTokens.Secondary10",
+              "line": 67
+            },
+            {
+              "name": "OnSecondaryFixedVariant",
+              "expression": "PaletteTokens.Secondary30",
+              "line": 70
+            },
+            {
+              "name": "OnSurface",
+              "expression": "PaletteTokens.Neutral10",
+              "line": 73
+            },
+            {
+              "name": "OnSurfaceVariant",
+              "expression": "PaletteTokens.NeutralVariant30",
+              "line": 76
+            },
+            {
+              "name": "OnTertiary",
+              "expression": "PaletteTokens.Tertiary100",
+              "line": 79
+            },
+            {
+              "name": "OnTertiaryContainer",
+              "expression": "PaletteTokens.Tertiary10",
+              "line": 82
+            },
+            {
+              "name": "OnTertiaryFixed",
+              "expression": "PaletteTokens.Tertiary10",
+              "line": 85
+            },
+            {
+              "name": "OnTertiaryFixedVariant",
+              "expression": "PaletteTokens.Tertiary30",
+              "line": 88
+            },
+            {
+              "name": "Outline",
+              "expression": "PaletteTokens.NeutralVariant50",
+              "line": 91
+            },
+            {
+              "name": "OutlineVariant",
+              "expression": "PaletteTokens.NeutralVariant80",
+              "line": 94
+            },
+            {
+              "name": "Primary",
+              "expression": "PaletteTokens.Primary40",
+              "line": 97
+            },
+            {
+              "name": "PrimaryContainer",
+              "expression": "PaletteTokens.Primary90",
+              "line": 100
+            },
+            {
+              "name": "PrimaryFixed",
+              "expression": "PaletteTokens.Primary90",
+              "line": 103
+            },
+            {
+              "name": "PrimaryFixedDim",
+              "expression": "PaletteTokens.Primary80",
+              "line": 106
+            },
+            {
+              "name": "Scrim",
+              "expression": "PaletteTokens.Neutral0",
+              "line": 109
+            },
+            {
+              "name": "Secondary",
+              "expression": "PaletteTokens.Secondary40",
+              "line": 112
+            },
+            {
+              "name": "SecondaryContainer",
+              "expression": "PaletteTokens.Secondary90",
+              "line": 115
+            },
+            {
+              "name": "SecondaryFixed",
+              "expression": "PaletteTokens.Secondary90",
+              "line": 118
+            },
+            {
+              "name": "SecondaryFixedDim",
+              "expression": "PaletteTokens.Secondary80",
+              "line": 121
+            },
+            {
+              "name": "Surface",
+              "expression": "PaletteTokens.Neutral98",
+              "line": 124
+            },
+            {
+              "name": "SurfaceBright",
+              "expression": "PaletteTokens.Neutral98",
+              "line": 127
+            },
+            {
+              "name": "SurfaceContainer",
+              "expression": "PaletteTokens.Neutral94",
+              "line": 130
+            },
+            {
+              "name": "SurfaceContainerHigh",
+              "expression": "PaletteTokens.Neutral92",
+              "line": 133
+            },
+            {
+              "name": "SurfaceContainerHighest",
+              "expression": "PaletteTokens.Neutral90",
+              "line": 136
+            },
+            {
+              "name": "SurfaceContainerLow",
+              "expression": "PaletteTokens.Neutral96",
+              "line": 139
+            },
+            {
+              "name": "SurfaceContainerLowest",
+              "expression": "PaletteTokens.Neutral100",
+              "line": 142
+            },
+            {
+              "name": "SurfaceDim",
+              "expression": "PaletteTokens.Neutral87",
+              "line": 145
+            },
+            {
+              "name": "SurfaceTint",
+              "expression": "Primary",
+              "line": 148
+            },
+            {
+              "name": "SurfaceVariant",
+              "expression": "PaletteTokens.NeutralVariant90",
+              "line": 151
+            },
+            {
+              "name": "Tertiary",
+              "expression": "PaletteTokens.Tertiary40",
+              "line": 154
+            },
+            {
+              "name": "TertiaryContainer",
+              "expression": "PaletteTokens.Tertiary90",
+              "line": 157
+            },
+            {
+              "name": "TertiaryFixed",
+              "expression": "PaletteTokens.Tertiary90",
+              "line": 160
+            },
+            {
+              "name": "TertiaryFixedDim",
+              "expression": "PaletteTokens.Tertiary80",
+              "line": 163
+            }
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ColorSchemeKeyTokens.kt",
+          "sha256": "3b28b50df102ebd8382c7e6b55e43ac5ee2ab29b3958fc7e73561763a7fd71f4",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ColorSchemeKeyTokens.kt",
+          "name": "ColorSchemeKeyTokens",
+          "version": "v0_162",
+          "values": [
+            {
+              "name": "Background",
+              "expression": "ColorToken(0)",
+              "line": 26
+            },
+            {
+              "name": "Error",
+              "expression": "ColorToken(1)",
+              "line": 27
+            },
+            {
+              "name": "ErrorContainer",
+              "expression": "ColorToken(2)",
+              "line": 28
+            },
+            {
+              "name": "InverseOnSurface",
+              "expression": "ColorToken(3)",
+              "line": 29
+            },
+            {
+              "name": "InversePrimary",
+              "expression": "ColorToken(4)",
+              "line": 30
+            },
+            {
+              "name": "InverseSurface",
+              "expression": "ColorToken(5)",
+              "line": 31
+            },
+            {
+              "name": "OnBackground",
+              "expression": "ColorToken(6)",
+              "line": 32
+            },
+            {
+              "name": "OnError",
+              "expression": "ColorToken(7)",
+              "line": 33
+            },
+            {
+              "name": "OnErrorContainer",
+              "expression": "ColorToken(8)",
+              "line": 34
+            },
+            {
+              "name": "OnPrimary",
+              "expression": "ColorToken(9)",
+              "line": 35
+            },
+            {
+              "name": "OnPrimaryContainer",
+              "expression": "ColorToken(10)",
+              "line": 36
+            },
+            {
+              "name": "OnPrimaryFixed",
+              "expression": "ColorToken(11)",
+              "line": 37
+            },
+            {
+              "name": "OnPrimaryFixedVariant",
+              "expression": "ColorToken(12)",
+              "line": 38
+            },
+            {
+              "name": "OnSecondary",
+              "expression": "ColorToken(13)",
+              "line": 39
+            },
+            {
+              "name": "OnSecondaryContainer",
+              "expression": "ColorToken(14)",
+              "line": 40
+            },
+            {
+              "name": "OnSecondaryFixed",
+              "expression": "ColorToken(15)",
+              "line": 41
+            },
+            {
+              "name": "OnSecondaryFixedVariant",
+              "expression": "ColorToken(16)",
+              "line": 42
+            },
+            {
+              "name": "OnSurface",
+              "expression": "ColorToken(17)",
+              "line": 43
+            },
+            {
+              "name": "OnSurfaceVariant",
+              "expression": "ColorToken(18)",
+              "line": 44
+            },
+            {
+              "name": "OnTertiary",
+              "expression": "ColorToken(19)",
+              "line": 45
+            },
+            {
+              "name": "OnTertiaryContainer",
+              "expression": "ColorToken(20)",
+              "line": 46
+            },
+            {
+              "name": "OnTertiaryFixed",
+              "expression": "ColorToken(21)",
+              "line": 47
+            },
+            {
+              "name": "OnTertiaryFixedVariant",
+              "expression": "ColorToken(22)",
+              "line": 48
+            },
+            {
+              "name": "Outline",
+              "expression": "ColorToken(23)",
+              "line": 49
+            },
+            {
+              "name": "OutlineVariant",
+              "expression": "ColorToken(24)",
+              "line": 50
+            },
+            {
+              "name": "Primary",
+              "expression": "ColorToken(25)",
+              "line": 51
+            },
+            {
+              "name": "PrimaryContainer",
+              "expression": "ColorToken(26)",
+              "line": 52
+            },
+            {
+              "name": "PrimaryFixed",
+              "expression": "ColorToken(27)",
+              "line": 53
+            },
+            {
+              "name": "PrimaryFixedDim",
+              "expression": "ColorToken(28)",
+              "line": 54
+            },
+            {
+              "name": "Scrim",
+              "expression": "ColorToken(29)",
+              "line": 55
+            },
+            {
+              "name": "Secondary",
+              "expression": "ColorToken(30)",
+              "line": 56
+            },
+            {
+              "name": "SecondaryContainer",
+              "expression": "ColorToken(31)",
+              "line": 57
+            },
+            {
+              "name": "SecondaryFixed",
+              "expression": "ColorToken(32)",
+              "line": 58
+            },
+            {
+              "name": "SecondaryFixedDim",
+              "expression": "ColorToken(33)",
+              "line": 59
+            },
+            {
+              "name": "Surface",
+              "expression": "ColorToken(34)",
+              "line": 60
+            },
+            {
+              "name": "SurfaceBright",
+              "expression": "ColorToken(35)",
+              "line": 61
+            },
+            {
+              "name": "SurfaceContainer",
+              "expression": "ColorToken(36)",
+              "line": 62
+            },
+            {
+              "name": "SurfaceContainerHigh",
+              "expression": "ColorToken(37)",
+              "line": 63
+            },
+            {
+              "name": "SurfaceContainerHighest",
+              "expression": "ColorToken(38)",
+              "line": 64
+            },
+            {
+              "name": "SurfaceContainerLow",
+              "expression": "ColorToken(39)",
+              "line": 65
+            },
+            {
+              "name": "SurfaceContainerLowest",
+              "expression": "ColorToken(40)",
+              "line": 66
+            },
+            {
+              "name": "SurfaceDim",
+              "expression": "ColorToken(41)",
+              "line": 67
+            },
+            {
+              "name": "SurfaceTint",
+              "expression": "ColorToken(42)",
+              "line": 68
+            },
+            {
+              "name": "SurfaceVariant",
+              "expression": "ColorToken(43)",
+              "line": 69
+            },
+            {
+              "name": "Tertiary",
+              "expression": "ColorToken(44)",
+              "line": 70
+            },
+            {
+              "name": "TertiaryContainer",
+              "expression": "ColorToken(45)",
+              "line": 71
+            },
+            {
+              "name": "TertiaryFixed",
+              "expression": "ColorToken(46)",
+              "line": 72
+            },
+            {
+              "name": "TertiaryFixedDim",
+              "expression": "ColorToken(47)",
+              "line": 73
+            }
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/PaletteTokens.kt",
+          "sha256": "e0ddff484f0fd99e7d522afcfc7cd0eb0b38e35afac49711bda5f66ae1ef8bc2",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/PaletteTokens.kt",
+          "name": "PaletteTokens",
+          "version": "v0_210",
+          "values": [
+            {
+              "name": "Black",
+              "expression": "Color(red = 0, green = 0, blue = 0)",
+              "line": 24
+            },
+            {
+              "name": "Error0",
+              "expression": "Color(red = 0, green = 0, blue = 0)",
+              "line": 27
+            },
+            {
+              "name": "Error10",
+              "expression": "Color(red = 65, green = 14, blue = 11)",
+              "line": 30
+            },
+            {
+              "name": "Error100",
+              "expression": "Color(red = 255, green = 255, blue = 255)",
+              "line": 33
+            },
+            {
+              "name": "Error20",
+              "expression": "Color(red = 96, green = 20, blue = 16)",
+              "line": 36
+            },
+            {
+              "name": "Error30",
+              "expression": "Color(red = 140, green = 29, blue = 24)",
+              "line": 39
+            },
+            {
+              "name": "Error40",
+              "expression": "Color(red = 179, green = 38, blue = 30)",
+              "line": 42
+            },
+            {
+              "name": "Error50",
+              "expression": "Color(red = 220, green = 54, blue = 46)",
+              "line": 45
+            },
+            {
+              "name": "Error60",
+              "expression": "Color(red = 228, green = 105, blue = 98)",
+              "line": 48
+            },
+            {
+              "name": "Error70",
+              "expression": "Color(red = 236, green = 146, blue = 142)",
+              "line": 51
+            },
+            {
+              "name": "Error80",
+              "expression": "Color(red = 242, green = 184, blue = 181)",
+              "line": 54
+            },
+            {
+              "name": "Error90",
+              "expression": "Color(red = 249, green = 222, blue = 220)",
+              "line": 57
+            },
+            {
+              "name": "Error95",
+              "expression": "Color(red = 252, green = 238, blue = 238)",
+              "line": 60
+            },
+            {
+              "name": "Error99",
+              "expression": "Color(red = 255, green = 251, blue = 249)",
+              "line": 63
+            },
+            {
+              "name": "Neutral0",
+              "expression": "Color(red = 0, green = 0, blue = 0)",
+              "line": 66
+            },
+            {
+              "name": "Neutral10",
+              "expression": "Color(red = 29, green = 27, blue = 32)",
+              "line": 69
+            },
+            {
+              "name": "Neutral100",
+              "expression": "Color(red = 255, green = 255, blue = 255)",
+              "line": 72
+            },
+            {
+              "name": "Neutral12",
+              "expression": "Color(red = 33, green = 31, blue = 38)",
+              "line": 75
+            },
+            {
+              "name": "Neutral17",
+              "expression": "Color(red = 43, green = 41, blue = 48)",
+              "line": 78
+            },
+            {
+              "name": "Neutral20",
+              "expression": "Color(red = 50, green = 47, blue = 53)",
+              "line": 81
+            },
+            {
+              "name": "Neutral22",
+              "expression": "Color(red = 54, green = 52, blue = 59)",
+              "line": 84
+            },
+            {
+              "name": "Neutral24",
+              "expression": "Color(red = 59, green = 56, blue = 62)",
+              "line": 87
+            },
+            {
+              "name": "Neutral30",
+              "expression": "Color(red = 72, green = 70, blue = 76)",
+              "line": 90
+            },
+            {
+              "name": "Neutral4",
+              "expression": "Color(red = 15, green = 13, blue = 19)",
+              "line": 93
+            },
+            {
+              "name": "Neutral40",
+              "expression": "Color(red = 96, green = 93, blue = 100)",
+              "line": 96
+            },
+            {
+              "name": "Neutral50",
+              "expression": "Color(red = 121, green = 118, blue = 125)",
+              "line": 99
+            },
+            {
+              "name": "Neutral6",
+              "expression": "Color(red = 20, green = 18, blue = 24)",
+              "line": 102
+            },
+            {
+              "name": "Neutral60",
+              "expression": "Color(red = 147, green = 143, blue = 150)",
+              "line": 105
+            },
+            {
+              "name": "Neutral70",
+              "expression": "Color(red = 174, green = 169, blue = 177)",
+              "line": 108
+            },
+            {
+              "name": "Neutral80",
+              "expression": "Color(red = 202, green = 197, blue = 205)",
+              "line": 111
+            },
+            {
+              "name": "Neutral87",
+              "expression": "Color(red = 222, green = 216, blue = 225)",
+              "line": 114
+            },
+            {
+              "name": "Neutral90",
+              "expression": "Color(red = 230, green = 224, blue = 233)",
+              "line": 117
+            },
+            {
+              "name": "Neutral92",
+              "expression": "Color(red = 236, green = 230, blue = 240)",
+              "line": 120
+            },
+            {
+              "name": "Neutral94",
+              "expression": "Color(red = 243, green = 237, blue = 247)",
+              "line": 123
+            },
+            {
+              "name": "Neutral95",
+              "expression": "Color(red = 245, green = 239, blue = 247)",
+              "line": 126
+            },
+            {
+              "name": "Neutral96",
+              "expression": "Color(red = 247, green = 242, blue = 250)",
+              "line": 129
+            },
+            {
+              "name": "Neutral98",
+              "expression": "Color(red = 254, green = 247, blue = 255)",
+              "line": 132
+            },
+            {
+              "name": "Neutral99",
+              "expression": "Color(red = 255, green = 251, blue = 255)",
+              "line": 135
+            },
+            {
+              "name": "NeutralVariant0",
+              "expression": "Color(red = 0, green = 0, blue = 0)",
+              "line": 138
+            },
+            {
+              "name": "NeutralVariant10",
+              "expression": "Color(red = 29, green = 26, blue = 34)",
+              "line": 141
+            },
+            {
+              "name": "NeutralVariant100",
+              "expression": "Color(red = 255, green = 255, blue = 255)",
+              "line": 144
+            },
+            {
+              "name": "NeutralVariant20",
+              "expression": "Color(red = 50, green = 47, blue = 55)",
+              "line": 147
+            },
+            {
+              "name": "NeutralVariant30",
+              "expression": "Color(red = 73, green = 69, blue = 79)",
+              "line": 150
+            },
+            {
+              "name": "NeutralVariant40",
+              "expression": "Color(red = 96, green = 93, blue = 102)",
+              "line": 153
+            },
+            {
+              "name": "NeutralVariant50",
+              "expression": "Color(red = 121, green = 116, blue = 126)",
+              "line": 156
+            },
+            {
+              "name": "NeutralVariant60",
+              "expression": "Color(red = 147, green = 143, blue = 153)",
+              "line": 159
+            },
+            {
+              "name": "NeutralVariant70",
+              "expression": "Color(red = 174, green = 169, blue = 180)",
+              "line": 162
+            },
+            {
+              "name": "NeutralVariant80",
+              "expression": "Color(red = 202, green = 196, blue = 208)",
+              "line": 165
+            },
+            {
+              "name": "NeutralVariant90",
+              "expression": "Color(red = 231, green = 224, blue = 236)",
+              "line": 168
+            },
+            {
+              "name": "NeutralVariant95",
+              "expression": "Color(red = 245, green = 238, blue = 250)",
+              "line": 171
+            },
+            {
+              "name": "NeutralVariant99",
+              "expression": "Color(red = 255, green = 251, blue = 254)",
+              "line": 174
+            },
+            {
+              "name": "Primary0",
+              "expression": "Color(red = 0, green = 0, blue = 0)",
+              "line": 177
+            },
+            {
+              "name": "Primary10",
+              "expression": "Color(red = 33, green = 0, blue = 93)",
+              "line": 180
+            },
+            {
+              "name": "Primary100",
+              "expression": "Color(red = 255, green = 255, blue = 255)",
+              "line": 183
+            },
+            {
+              "name": "Primary20",
+              "expression": "Color(red = 56, green = 30, blue = 114)",
+              "line": 186
+            },
+            {
+              "name": "Primary30",
+              "expression": "Color(red = 79, green = 55, blue = 139)",
+              "line": 189
+            },
+            {
+              "name": "Primary40",
+              "expression": "Color(red = 103, green = 80, blue = 164)",
+              "line": 192
+            },
+            {
+              "name": "Primary50",
+              "expression": "Color(red = 127, green = 103, blue = 190)",
+              "line": 195
+            },
+            {
+              "name": "Primary60",
+              "expression": "Color(red = 154, green = 130, blue = 219)",
+              "line": 198
+            },
+            {
+              "name": "Primary70",
+              "expression": "Color(red = 182, green = 157, blue = 248)",
+              "line": 201
+            },
+            {
+              "name": "Primary80",
+              "expression": "Color(red = 208, green = 188, blue = 255)",
+              "line": 204
+            },
+            {
+              "name": "Primary90",
+              "expression": "Color(red = 234, green = 221, blue = 255)",
+              "line": 207
+            },
+            {
+              "name": "Primary95",
+              "expression": "Color(red = 246, green = 237, blue = 255)",
+              "line": 210
+            },
+            {
+              "name": "Primary99",
+              "expression": "Color(red = 255, green = 251, blue = 254)",
+              "line": 213
+            },
+            {
+              "name": "Secondary0",
+              "expression": "Color(red = 0, green = 0, blue = 0)",
+              "line": 216
+            },
+            {
+              "name": "Secondary10",
+              "expression": "Color(red = 29, green = 25, blue = 43)",
+              "line": 219
+            },
+            {
+              "name": "Secondary100",
+              "expression": "Color(red = 255, green = 255, blue = 255)",
+              "line": 222
+            },
+            {
+              "name": "Secondary20",
+              "expression": "Color(red = 51, green = 45, blue = 65)",
+              "line": 225
+            },
+            {
+              "name": "Secondary30",
+              "expression": "Color(red = 74, green = 68, blue = 88)",
+              "line": 228
+            },
+            {
+              "name": "Secondary40",
+              "expression": "Color(red = 98, green = 91, blue = 113)",
+              "line": 231
+            },
+            {
+              "name": "Secondary50",
+              "expression": "Color(red = 122, green = 114, blue = 137)",
+              "line": 234
+            },
+            {
+              "name": "Secondary60",
+              "expression": "Color(red = 149, green = 141, blue = 165)",
+              "line": 237
+            },
+            {
+              "name": "Secondary70",
+              "expression": "Color(red = 176, green = 167, blue = 192)",
+              "line": 240
+            },
+            {
+              "name": "Secondary80",
+              "expression": "Color(red = 204, green = 194, blue = 220)",
+              "line": 243
+            },
+            {
+              "name": "Secondary90",
+              "expression": "Color(red = 232, green = 222, blue = 248)",
+              "line": 246
+            },
+            {
+              "name": "Secondary95",
+              "expression": "Color(red = 246, green = 237, blue = 255)",
+              "line": 249
+            },
+            {
+              "name": "Secondary99",
+              "expression": "Color(red = 255, green = 251, blue = 254)",
+              "line": 252
+            },
+            {
+              "name": "Tertiary0",
+              "expression": "Color(red = 0, green = 0, blue = 0)",
+              "line": 255
+            },
+            {
+              "name": "Tertiary10",
+              "expression": "Color(red = 49, green = 17, blue = 29)",
+              "line": 258
+            },
+            {
+              "name": "Tertiary100",
+              "expression": "Color(red = 255, green = 255, blue = 255)",
+              "line": 261
+            },
+            {
+              "name": "Tertiary20",
+              "expression": "Color(red = 73, green = 37, blue = 50)",
+              "line": 264
+            },
+            {
+              "name": "Tertiary30",
+              "expression": "Color(red = 99, green = 59, blue = 72)",
+              "line": 267
+            },
+            {
+              "name": "Tertiary40",
+              "expression": "Color(red = 125, green = 82, blue = 96)",
+              "line": 270
+            },
+            {
+              "name": "Tertiary50",
+              "expression": "Color(red = 152, green = 105, blue = 119)",
+              "line": 273
+            },
+            {
+              "name": "Tertiary60",
+              "expression": "Color(red = 181, green = 131, blue = 146)",
+              "line": 276
+            },
+            {
+              "name": "Tertiary70",
+              "expression": "Color(red = 210, green = 157, blue = 172)",
+              "line": 279
+            },
+            {
+              "name": "Tertiary80",
+              "expression": "Color(red = 239, green = 184, blue = 200)",
+              "line": 282
+            },
+            {
+              "name": "Tertiary90",
+              "expression": "Color(red = 255, green = 216, blue = 228)",
+              "line": 285
+            },
+            {
+              "name": "Tertiary95",
+              "expression": "Color(red = 255, green = 236, blue = 241)",
+              "line": 288
+            },
+            {
+              "name": "Tertiary99",
+              "expression": "Color(red = 255, green = 251, blue = 250)",
+              "line": 291
+            },
+            {
+              "name": "White",
+              "expression": "Color(red = 255, green = 255, blue = 255)",
+              "line": 294
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ColorSchemeScreenshotTest.kt",
+          "sha256": "c2252ccaaabb1dd47d0951724a6422c8c3c96d1011eee75536caba11a67200da",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ColorSchemeScreenshotTest.kt",
+          "cases": [
+            "surfaceColors",
+            "primaryColors",
+            "secondaryColors",
+            "tertiaryColors",
+            "errorColors",
+            "miscColors",
+            "fixedColors",
+            "assertAgainstGolden",
+            "parameters",
+            "toString",
+            "ColorItem"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ColorSchemeTest.kt",
+          "sha256": "67b751f732508479ef8097802beaafddd11043e86356caeb665ca44602a2bce6",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ColorSchemeTest.kt",
+          "cases": [
+            "switchingBetweenColors",
+            "baselineContentContrast",
+            "dynamicColorSchemes_resolveCorrectly",
+            "dynamicColorSchemes_unthemedContext_resolveCorrectly",
+            "getTheme",
+            "Button"
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "path": "compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/ColorSchemeSamples.kt",
+          "sha256": "18e42eb3a2c9f66ad5016156d7e892b9072790385ab434a077d0152b087e5cbe",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/ColorSchemeSamples.kt"
+        }
+      ]
+    },
+    {
+      "id": "compose:ContentColor",
+      "name": "ContentColor",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/ContentColor.kt",
+      "sha256": "e7006b4a15be1a9789de431fe88f5d1f931e06a485a072f315072fc2f5b702ff",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/ContentColor.kt",
+      "symbols": [],
+      "expressive": false,
+      "tokens": [],
+      "tests": [],
+      "samples": []
+    },
+    {
+      "id": "compose:InteractiveComponentSize",
+      "name": "InteractiveComponentSize",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/InteractiveComponentSize.kt",
+      "sha256": "fb19262a174f765f71ac43a7a44c3398d40b8b550043c034bcd0700b5799245a",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/InteractiveComponentSize.kt",
+      "symbols": [],
+      "expressive": false,
+      "tokens": [],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/InteractiveComponentSizeTest.kt",
+          "sha256": "11cc3b89a5730df9a57d7eacf49dec94327f40bae7185cc2fb7cf797e9835c71",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/InteractiveComponentSizeTest.kt",
+          "cases": [
+            "minimumInteractiveComponentSize_applyWhenSmallerThanMinSize",
+            "minimumInteractiveComponentSize_sizeRemainsWhenLargerThanMinSize",
+            "minimumInteractiveComponentSize_alignmentLines_whenContentIsSmaller",
+            "minimumInteractiveComponentSize_alignmentLines_whenContentIsLarger",
+            "minimumInteractiveComponentSize_alignmentLines_whenOnlyHeightIsSmaller",
+            "minimumInteractiveComponentSize_alignmentLines_whenOnlyWidthIsSmaller"
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "path": "compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/InteractiveComponentSizeSamples.kt",
+          "sha256": "e13cb48c05bc6a9b69f8101a93ddb32de0e4cac95f24c8c5dcb35a1a6bc6382a",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/InteractiveComponentSizeSamples.kt"
+        }
+      ]
+    },
+    {
+      "id": "compose:MaterialShapes",
+      "name": "MaterialShapes",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt",
+      "sha256": "08c29828003344914ee0d6783f213b37caae650175cd004ba321eaf3a7d6e434",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialShapes.kt",
+      "symbols": [],
+      "expressive": true,
+      "tokens": [],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/MaterialShapesScreenshotTest.kt",
+          "sha256": "31263bef163ec9161de935b8db059b7b092a66c1dae245f89fe0f6c0f69d60bb",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/MaterialShapesScreenshotTest.kt",
+          "cases": [
+            "morphShape_start",
+            "morphShape_mid",
+            "morphShape_end",
+            "materialShapes_allShapes",
+            "allShapes",
+            "morphShape",
+            "createOutline",
+            "assertIndicatorAgainstGolden"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/MaterialShapesTest.kt",
+          "sha256": "21d1242f827bbb340bd8f291c627c074c01fdf64ec7018b7ce61f1425171f4ac",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/MaterialShapesTest.kt",
+          "cases": [
+            "roundedPolygon_outlineSize",
+            "roundedPolygon_multipleCreateOutlineCalls"
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "path": "compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/MaterialShapesSamples.kt",
+          "sha256": "39161e1014855aa1739f886d53db5d29001138000b619c1fee4f12ae7f3d076c",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/MaterialShapesSamples.kt"
+        }
+      ]
+    },
+    {
+      "id": "compose:MaterialTheme",
+      "name": "MaterialTheme",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialTheme.kt",
+      "sha256": "9dcf759d23217000822595f76021235c236a08ce4c8a71c3be38b69e3db628bb",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MaterialTheme.kt",
+      "symbols": [
+        "MaterialTheme",
+        "MaterialExpressiveTheme"
+      ],
+      "expressive": true,
+      "tokens": [],
+      "tests": [],
+      "samples": []
+    },
+    {
+      "id": "compose:MotionScheme",
+      "name": "MotionScheme",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MotionScheme.kt",
+      "sha256": "95fcf8d94c5885a16d82eab986ce4c1b02a8f09f59784d03a9fab168529ff270",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/MotionScheme.kt",
+      "symbols": [
+        "defaultSpatialSpec",
+        "fastSpatialSpec",
+        "slowSpatialSpec",
+        "defaultEffectsSpec",
+        "fastEffectsSpec",
+        "slowEffectsSpec",
+        "standard",
+        "expressive"
+      ],
+      "expressive": true,
+      "tokens": [
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ExpressiveMotionTokens.kt",
+          "sha256": "deefcefc93405c69445071b40e4d9894458bb20cff18b805192c90aea5ba6c73",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ExpressiveMotionTokens.kt",
+          "name": "ExpressiveMotionTokens",
+          "version": "v0_14_0",
+          "values": [
+            {
+              "name": "SpringDefaultSpatialDamping",
+              "expression": "0.8f",
+              "line": 22
+            },
+            {
+              "name": "SpringDefaultSpatialStiffness",
+              "expression": "380.0f",
+              "line": 23
+            },
+            {
+              "name": "SpringDefaultEffectsDamping",
+              "expression": "1.0f",
+              "line": 24
+            },
+            {
+              "name": "SpringDefaultEffectsStiffness",
+              "expression": "1600.0f",
+              "line": 25
+            },
+            {
+              "name": "SpringFastSpatialDamping",
+              "expression": "0.6f",
+              "line": 26
+            },
+            {
+              "name": "SpringFastSpatialStiffness",
+              "expression": "800.0f",
+              "line": 27
+            },
+            {
+              "name": "SpringFastEffectsDamping",
+              "expression": "1.0f",
+              "line": 28
+            },
+            {
+              "name": "SpringFastEffectsStiffness",
+              "expression": "3800.0f",
+              "line": 29
+            },
+            {
+              "name": "SpringSlowSpatialDamping",
+              "expression": "0.8f",
+              "line": 30
+            },
+            {
+              "name": "SpringSlowSpatialStiffness",
+              "expression": "200.0f",
+              "line": 31
+            },
+            {
+              "name": "SpringSlowEffectsDamping",
+              "expression": "1.0f",
+              "line": 32
+            },
+            {
+              "name": "SpringSlowEffectsStiffness",
+              "expression": "800.0f",
+              "line": 33
+            }
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/MotionSchemeKeyTokens.kt",
+          "sha256": "66a63f46bde19c92e671d2edc107e74abc7268abffc6037d4f51f03a4fe1ee9e",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/MotionSchemeKeyTokens.kt",
+          "name": "MotionSchemeKeyTokens",
+          "version": "",
+          "values": [
+            {
+              "name": "DefaultSpatial",
+              "expression": "MotionSchemeToken(0)",
+              "line": 24
+            },
+            {
+              "name": "FastSpatial",
+              "expression": "MotionSchemeToken(1)",
+              "line": 25
+            },
+            {
+              "name": "SlowSpatial",
+              "expression": "MotionSchemeToken(2)",
+              "line": 26
+            },
+            {
+              "name": "DefaultEffects",
+              "expression": "MotionSchemeToken(3)",
+              "line": 27
+            },
+            {
+              "name": "FastEffects",
+              "expression": "MotionSchemeToken(4)",
+              "line": 28
+            },
+            {
+              "name": "SlowEffects",
+              "expression": "MotionSchemeToken(5)",
+              "line": 29
+            }
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/MotionTokens.kt",
+          "sha256": "58bf152e5f81d8bcb80f1475a2e3c54535873245f41d005ab5c797cdd5dc6ebc",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/MotionTokens.kt",
+          "name": "MotionTokens",
+          "version": "v0_103",
+          "values": [
+            {
+              "name": "DurationExtraLong1",
+              "expression": "700.0",
+              "line": 24
+            },
+            {
+              "name": "DurationExtraLong2",
+              "expression": "800.0",
+              "line": 25
+            },
+            {
+              "name": "DurationExtraLong3",
+              "expression": "900.0",
+              "line": 26
+            },
+            {
+              "name": "DurationExtraLong4",
+              "expression": "1000.0",
+              "line": 27
+            },
+            {
+              "name": "DurationLong1",
+              "expression": "450.0",
+              "line": 28
+            },
+            {
+              "name": "DurationLong2",
+              "expression": "500.0",
+              "line": 29
+            },
+            {
+              "name": "DurationLong3",
+              "expression": "550.0",
+              "line": 30
+            },
+            {
+              "name": "DurationLong4",
+              "expression": "600.0",
+              "line": 31
+            },
+            {
+              "name": "DurationMedium1",
+              "expression": "250.0",
+              "line": 32
+            },
+            {
+              "name": "DurationMedium2",
+              "expression": "300.0",
+              "line": 33
+            },
+            {
+              "name": "DurationMedium3",
+              "expression": "350.0",
+              "line": 34
+            },
+            {
+              "name": "DurationMedium4",
+              "expression": "400.0",
+              "line": 35
+            },
+            {
+              "name": "DurationShort1",
+              "expression": "50.0",
+              "line": 36
+            },
+            {
+              "name": "DurationShort2",
+              "expression": "100.0",
+              "line": 37
+            },
+            {
+              "name": "DurationShort3",
+              "expression": "150.0",
+              "line": 38
+            },
+            {
+              "name": "DurationShort4",
+              "expression": "200.0",
+              "line": 39
+            },
+            {
+              "name": "EasingEmphasizedCubicBezier",
+              "expression": "CubicBezierEasing(0.2f, 0.0f, 0.0f, 1.0f)",
+              "line": 40
+            },
+            {
+              "name": "EasingEmphasizedAccelerateCubicBezier",
+              "expression": "CubicBezierEasing(0.3f, 0.0f, 0.8f, 0.15f)",
+              "line": 43
+            },
+            {
+              "name": "EasingEmphasizedDecelerateCubicBezier",
+              "expression": "CubicBezierEasing(0.05f, 0.7f, 0.1f, 1.0f)",
+              "line": 46
+            },
+            {
+              "name": "EasingLegacyCubicBezier",
+              "expression": "CubicBezierEasing(0.4f, 0.0f, 0.2f, 1.0f)",
+              "line": 49
+            },
+            {
+              "name": "EasingLegacyAccelerateCubicBezier",
+              "expression": "CubicBezierEasing(0.4f, 0.0f, 1.0f, 1.0f)",
+              "line": 52
+            },
+            {
+              "name": "EasingLegacyDecelerateCubicBezier",
+              "expression": "CubicBezierEasing(0.0f, 0.0f, 0.2f, 1.0f)",
+              "line": 55
+            },
+            {
+              "name": "EasingLinearCubicBezier",
+              "expression": "CubicBezierEasing(0.0f, 0.0f, 1.0f, 1.0f)",
+              "line": 58
+            },
+            {
+              "name": "EasingStandardCubicBezier",
+              "expression": "CubicBezierEasing(0.2f, 0.0f, 0.0f, 1.0f)",
+              "line": 61
+            },
+            {
+              "name": "EasingStandardAccelerateCubicBezier",
+              "expression": "CubicBezierEasing(0.3f, 0.0f, 1.0f, 1.0f)",
+              "line": 64
+            },
+            {
+              "name": "EasingStandardDecelerateCubicBezier",
+              "expression": "CubicBezierEasing(0.0f, 0.0f, 0.0f, 1.0f)",
+              "line": 67
+            }
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/StandardMotionTokens.kt",
+          "sha256": "4b36c30679dcc0b1ec6010e4e40c070901151b59252d9a21d0e4348511370592",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/StandardMotionTokens.kt",
+          "name": "StandardMotionTokens",
+          "version": "v0_14_0",
+          "values": [
+            {
+              "name": "SpringDefaultSpatialDamping",
+              "expression": "0.9f",
+              "line": 20
+            },
+            {
+              "name": "SpringDefaultSpatialStiffness",
+              "expression": "700.0f",
+              "line": 21
+            },
+            {
+              "name": "SpringDefaultEffectsDamping",
+              "expression": "1.0f",
+              "line": 22
+            },
+            {
+              "name": "SpringDefaultEffectsStiffness",
+              "expression": "1600.0f",
+              "line": 23
+            },
+            {
+              "name": "SpringFastSpatialDamping",
+              "expression": "0.9f",
+              "line": 24
+            },
+            {
+              "name": "SpringFastSpatialStiffness",
+              "expression": "1400.0f",
+              "line": 25
+            },
+            {
+              "name": "SpringFastEffectsDamping",
+              "expression": "1.0f",
+              "line": 26
+            },
+            {
+              "name": "SpringFastEffectsStiffness",
+              "expression": "3800.0f",
+              "line": 27
+            },
+            {
+              "name": "SpringSlowSpatialDamping",
+              "expression": "0.9f",
+              "line": 28
+            },
+            {
+              "name": "SpringSlowSpatialStiffness",
+              "expression": "300.0f",
+              "line": 29
+            },
+            {
+              "name": "SpringSlowEffectsDamping",
+              "expression": "1.0f",
+              "line": 30
+            },
+            {
+              "name": "SpringSlowEffectsStiffness",
+              "expression": "800.0f",
+              "line": 31
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/MotionSchemeTest.kt",
+          "sha256": "9666043c4f74479865e92eb3eb6aa3f5f5b5ae29d87be1e23cf02885de175861",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/MotionSchemeTest.kt",
+          "cases": [
+            "tokenValue",
+            "readMotionScheme"
+          ]
+        }
+      ],
+      "samples": []
+    },
+    {
+      "id": "compose:Ripple",
+      "name": "Ripple",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Ripple.kt",
+      "sha256": "4b53b7ffb01ff48014cdc2f6af216c97f6463d5e25343d9db699ea4abb90bc00",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Ripple.kt",
+      "symbols": [
+        "ripple"
+      ],
+      "expressive": true,
+      "tokens": [
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/StateTokens.kt",
+          "sha256": "f9bddb282a3ca50e0c05bda6b5aa713441f885e3fe16866bfb44cee42059552f",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/StateTokens.kt",
+          "name": "StateTokens",
+          "version": "v0_210",
+          "values": [
+            {
+              "name": "DraggedStateLayerOpacity",
+              "expression": "0.16f",
+              "line": 22
+            },
+            {
+              "name": "FocusStateLayerOpacity",
+              "expression": "0.1f",
+              "line": 23
+            },
+            {
+              "name": "HoverStateLayerOpacity",
+              "expression": "0.08f",
+              "line": 24
+            },
+            {
+              "name": "PressedStateLayerOpacity",
+              "expression": "0.1f",
+              "line": 25
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/RippleTest.kt",
+          "sha256": "fc8756f79afbdb1ef61931c1b716d02a36a3fbf1737fdb30480c820dfe0980c1",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/RippleTest.kt",
+          "cases": [
+            "bounded_lightTheme_pressed",
+            "bounded_lightTheme_hovered",
+            "bounded_lightTheme_focused",
+            "bounded_lightTheme_dragged",
+            "unbounded_lightTheme_pressed",
+            "unbounded_lightTheme_hovered",
+            "unbounded_lightTheme_focused",
+            "unbounded_lightTheme_dragged",
+            "contentColorChangeDuringRipple_dragged",
+            "rippleConfiguration_color_dragged",
+            "rippleConfiguration_color_explicitColorSet_dragged",
+            "rippleConfiguration_alpha_dragged",
+            "rippleConfiguration_disabled_dragged",
+            "insetFocusRing_focused",
+            "insetFocusRing_focused_defaultColors",
+            "rippleConfiguration_insetFocusRing_focused",
+            "rippleConfigurationChangeDuringRipple_dragged",
+            "rippleConfigurationToggleBetweenEnabledAndDisabled",
+            "assertRippleMatches",
+            "RippleBoxWithBackground",
+            "calculateResultingRippleColor"
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "path": "compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/RippleSamples.kt",
+          "sha256": "879daba4eb82bf40291bf11102b34a69a0dbef1405dd45b8e1af94279e00fa08",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/RippleSamples.kt"
+        }
+      ]
+    },
+    {
+      "id": "compose:Shapes",
+      "name": "Shapes",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Shapes.kt",
+      "sha256": "a2e3730b1b09ffc682be9016f1770c414b517e9e0997359cc5098caedfd88753",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Shapes.kt",
+      "symbols": [
+        "copy"
+      ],
+      "expressive": true,
+      "tokens": [
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ShapeKeyTokens.kt",
+          "sha256": "161fcd13e9ca20dc802ce492ff4a3373fb9c69ef61b09e1a45a41732510e4b28",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ShapeKeyTokens.kt",
+          "name": "ShapeKeyTokens",
+          "version": "14_1_0",
+          "values": [
+            {
+              "name": "CornerExtraExtraLarge",
+              "expression": "ShapeToken(0)",
+              "line": 26
+            },
+            {
+              "name": "CornerExtraLarge",
+              "expression": "ShapeToken(1)",
+              "line": 27
+            },
+            {
+              "name": "CornerExtraLargeIncreased",
+              "expression": "ShapeToken(2)",
+              "line": 28
+            },
+            {
+              "name": "CornerExtraLargeTop",
+              "expression": "ShapeToken(3)",
+              "line": 29
+            },
+            {
+              "name": "CornerExtraSmall",
+              "expression": "ShapeToken(4)",
+              "line": 30
+            },
+            {
+              "name": "CornerExtraSmallTop",
+              "expression": "ShapeToken(5)",
+              "line": 31
+            },
+            {
+              "name": "CornerFull",
+              "expression": "ShapeToken(6)",
+              "line": 32
+            },
+            {
+              "name": "CornerLarge",
+              "expression": "ShapeToken(7)",
+              "line": 33
+            },
+            {
+              "name": "CornerLargeEnd",
+              "expression": "ShapeToken(8)",
+              "line": 34
+            },
+            {
+              "name": "CornerLargeIncreased",
+              "expression": "ShapeToken(9)",
+              "line": 35
+            },
+            {
+              "name": "CornerLargeStart",
+              "expression": "ShapeToken(10)",
+              "line": 36
+            },
+            {
+              "name": "CornerLargeTop",
+              "expression": "ShapeToken(11)",
+              "line": 37
+            },
+            {
+              "name": "CornerMedium",
+              "expression": "ShapeToken(12)",
+              "line": 38
+            },
+            {
+              "name": "CornerNone",
+              "expression": "ShapeToken(13)",
+              "line": 39
+            },
+            {
+              "name": "CornerSmall",
+              "expression": "ShapeToken(14)",
+              "line": 40
+            }
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ShapeTokens.kt",
+          "sha256": "02178111f81c7f03135cc7157040fa903180e212fd52b8f686b4304080efb5a3",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ShapeTokens.kt",
+          "name": "ShapeTokens",
+          "version": "14_1_0",
+          "values": [
+            {
+              "name": "CornerExtraExtraLarge",
+              "expression": "RoundedCornerShape(48.0.dp)",
+              "line": 28
+            },
+            {
+              "name": "CornerExtraLarge",
+              "expression": "RoundedCornerShape(28.0.dp)",
+              "line": 29
+            },
+            {
+              "name": "CornerExtraLargeIncreased",
+              "expression": "RoundedCornerShape(32.0.dp)",
+              "line": 30
+            },
+            {
+              "name": "CornerExtraLargeTop",
+              "expression": "RoundedCornerShape(\n            topStart = 28.0.dp,\n            topEnd = 28.0.dp,\n            bottomEnd = 0.0.dp,\n            bottomStart = 0.0.dp,\n        )",
+              "line": 31
+            },
+            {
+              "name": "CornerExtraSmall",
+              "expression": "RoundedCornerShape(4.0.dp)",
+              "line": 38
+            },
+            {
+              "name": "CornerExtraSmallTop",
+              "expression": "RoundedCornerShape(\n            topStart = 4.0.dp,\n            topEnd = 4.0.dp,\n            bottomEnd = 0.0.dp,\n            bottomStart = 0.0.dp,\n        )",
+              "line": 39
+            },
+            {
+              "name": "CornerFull",
+              "expression": "CircleShape",
+              "line": 46
+            },
+            {
+              "name": "CornerLarge",
+              "expression": "RoundedCornerShape(16.0.dp)",
+              "line": 47
+            },
+            {
+              "name": "CornerLargeEnd",
+              "expression": "RoundedCornerShape(\n            topStart = 0.0.dp,\n            topEnd = 16.0.dp,\n            bottomEnd = 16.0.dp,\n            bottomStart = 0.0.dp,\n        )",
+              "line": 48
+            },
+            {
+              "name": "CornerLargeIncreased",
+              "expression": "RoundedCornerShape(20.0.dp)",
+              "line": 55
+            },
+            {
+              "name": "CornerLargeStart",
+              "expression": "RoundedCornerShape(\n            topStart = 16.0.dp,\n            topEnd = 0.0.dp,\n            bottomEnd = 0.0.dp,\n            bottomStart = 16.0.dp,\n        )",
+              "line": 56
+            },
+            {
+              "name": "CornerLargeTop",
+              "expression": "RoundedCornerShape(\n            topStart = 16.0.dp,\n            topEnd = 16.0.dp,\n            bottomEnd = 0.0.dp,\n            bottomStart = 0.0.dp,\n        )",
+              "line": 63
+            },
+            {
+              "name": "CornerMedium",
+              "expression": "RoundedCornerShape(12.0.dp)",
+              "line": 70
+            },
+            {
+              "name": "CornerNone",
+              "expression": "RectangleShape",
+              "line": 71
+            },
+            {
+              "name": "CornerSmall",
+              "expression": "RoundedCornerShape(8.0.dp)",
+              "line": 72
+            },
+            {
+              "name": "CornerValueExtraExtraLarge",
+              "expression": "CornerSize(48.0.dp)",
+              "line": 73
+            },
+            {
+              "name": "CornerValueExtraLarge",
+              "expression": "CornerSize(28.0.dp)",
+              "line": 74
+            },
+            {
+              "name": "CornerValueExtraLargeIncreased",
+              "expression": "CornerSize(32.0.dp)",
+              "line": 75
+            },
+            {
+              "name": "CornerValueExtraSmall",
+              "expression": "CornerSize(4.0.dp)",
+              "line": 76
+            },
+            {
+              "name": "CornerValueLarge",
+              "expression": "CornerSize(16.0.dp)",
+              "line": 77
+            },
+            {
+              "name": "CornerValueLargeIncreased",
+              "expression": "CornerSize(20.0.dp)",
+              "line": 78
+            },
+            {
+              "name": "CornerValueMedium",
+              "expression": "CornerSize(12.0.dp)",
+              "line": 79
+            },
+            {
+              "name": "CornerValueNone",
+              "expression": "CornerSize(0.0.dp)",
+              "line": 80
+            },
+            {
+              "name": "CornerValueSmall",
+              "expression": "CornerSize(8.0.dp)",
+              "line": 81
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ShapesScreenshotTest.kt",
+          "sha256": "4c35596e43eafdff18da727cc9eae48d3768eac899c1a640cf69c7ce3bc93a1d",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ShapesScreenshotTest.kt",
+          "cases": [
+            "extraSmallShape",
+            "smallShape",
+            "mediumShape",
+            "largeShape",
+            "largeIncreasedShape",
+            "extraLargeShape",
+            "extraLargeIncreasedShape",
+            "extraExtraLargeShape",
+            "assertAgainstGolden",
+            "TestCard"
+          ]
+        }
+      ],
+      "samples": []
+    },
+    {
+      "id": "compose:Surface",
+      "name": "Surface",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Surface.kt",
+      "sha256": "b82221978167354d62462943bade5838beb4724a71155209d75debc6003bd9e2",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Surface.kt",
+      "symbols": [
+        "Surface"
+      ],
+      "expressive": false,
+      "tokens": [],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceContentColorTest.kt",
+          "sha256": "55d8d3d352904dcafc42218444fb2c14c299abc7c6a3259e4300104126b57ff2",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceContentColorTest.kt",
+          "cases": [
+            "surfaceSetsCorrectContentColors_primary",
+            "surfaceSetsCorrectContentColors_primaryContainer",
+            "surfaceSetsCorrectContentColors_secondary",
+            "surfaceSetsCorrectContentColors_secondaryContainer",
+            "surfaceSetsCorrectContentColors_tertiary",
+            "surfaceSetsCorrectContentColors_tertiaryContainer",
+            "surfaceSetsCorrectContentColors_error",
+            "surfaceSetsCorrectContentColors_errorContainer",
+            "surfaceSetsCorrectContentColors_background",
+            "surfaceSetsCorrectContentColors_surface",
+            "surfaceSetsCorrectContentColors_surfaceVariant",
+            "surfaceDoesNotSetContentColor_withCustomColor",
+            "surfaceInheritsParent_withCustomColor"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceTest.kt",
+          "sha256": "93bcaa1ce5cadfa07211acb5a55652205484854a2c35740400239da353c475aa",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceTest.kt",
+          "cases": [
+            "noTonalElevationColorIsSetOnNonElevatedSurfaceColor",
+            "tonalElevationColorIsSetOnElevatedSurfaceColor",
+            "noTonalElevationColorIsSetOnElevatedSurfaceColor_tonalElevationDisabled",
+            "tonalElevationColorIsNotSetOnNonSurfaceColor",
+            "absoluteElevationCompositionLocalIsSet",
+            "absoluteElevationIsNotUsedForShadows",
+            "contentColorSetBeforeModifier",
+            "clickable_semantics",
+            "clickable_withCustomSemantics",
+            "clickable_clickAction",
+            "clickable_clickOutsideShapeBounds",
+            "clickable_smallTouchTarget_clickOutsideShapeBounds",
+            "clickable_enabled_disabled",
+            "clickable_interactionSource",
+            "surface_blockClicksBehind",
+            "selectable_semantics",
+            "selectable_customSemantics",
+            "selectable_clickAction",
+            "selectable_clickOutsideShapeBounds",
+            "selectable_smallTouchTarget_clickOutsideShapeBounds",
+            "toggleable_semantics",
+            "toggleable_customSemantics",
+            "toggleable_toggleAction",
+            "toggleable_clickOutsideShapeBounds",
+            "toggleable_smallTouchTarget_clickOutsideShapeBounds",
+            "surface_allowsFinalPassChildren"
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "path": "compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/SurfaceSamples.kt",
+          "sha256": "453969b7a1c2dde13627666d285b376e5b1f40f9f78e816f76b620f7b0bce166",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/SurfaceSamples.kt"
+        }
+      ]
+    },
+    {
+      "id": "compose:Text",
+      "name": "Text",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Text.kt",
+      "sha256": "3e2c3ae356a09cc3c2b90fac415866bef1be5be45edebb997dad192996f77bd5",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Text.kt",
+      "symbols": [
+        "Text",
+        "ProvideTextStyle"
+      ],
+      "expressive": false,
+      "tokens": [],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldDecoratorTest.kt",
+          "sha256": "ec21efd1513ef6cce10229ff27c30dd785920a07326ec5fde214bf191aa61219",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldDecoratorTest.kt",
+          "cases": [
+            "outlinedTextFieldBox_overrideTopPadding_multiLine",
+            "outlinedTextFieldBox_overrideTopPadding_singleLine",
+            "outlinedTextFieldBox_overrideBottomPadding_multiLine",
+            "outlinedTextFieldBox_overrideBottomPadding_singleLine",
+            "outlinedTextFieldBox_overrideStartPadding",
+            "outlinedTextFieldBox_overrideStartPadding_rtl",
+            "outlinedTextFieldBox_overrideEndPadding",
+            "outlinedTextFieldBox_overrideEndPadding_rtl",
+            "outlinedTextFieldBox_overrideTopPadding_multiLine_withLabel",
+            "outlinedTextFieldBox_overrideTopPadding_singleLine_withLabel",
+            "outlinedTextFieldBox_overrideBottomPadding_multiLine_withLabel",
+            "outlinedTextFieldBox_overrideBottomPadding_singleLine_withLabel",
+            "outlinedTextFieldBox_overrideStartPadding_withLabel",
+            "outlinedTextFieldBox_overrideEndPadding_withLabel",
+            "textFieldBox_overrideTopPadding_singleLine_withoutLabel",
+            "textFieldBox_overrideTopPadding_singleLine_withLabel",
+            "textFieldBox_overrideBottomPadding_singleLine_withoutLabel",
+            "textFieldBox_overrideBottomPadding_singleLine_withLabel",
+            "textFieldBox_overrideTopPadding_multiLine_withoutLabel",
+            "textFieldBox_overrideTopPadding_multiLine_withLabel",
+            "textFieldBox_overrideBottomPadding_multiLine_withoutLabel",
+            "textFieldBox_overrideBottomPadding_multiLine_withLabel",
+            "textFieldBox_overrideStartPadding_withLabel",
+            "textFieldBox_overrideStartPadding_withLabel_rtl",
+            "textFieldBox_overrideStartPadding_withoutLabel",
+            "textFieldBox_overrideStartPadding_withoutLabel_rtl",
+            "textFieldBox_overrideEndPadding_withLabel",
+            "textFieldBox_overrideEndPadding_withLabel_rtl",
+            "textFieldBox_overrideEndPadding_withoutLabel",
+            "textFieldBox_overrideEndPadding_withoutLabel_rtl",
+            "outlinedTextFieldBox_defaultBorderColor_comesFromColors",
+            "textFieldBox_defaultIndicatorLineColor_comesFromColors",
+            "textFieldBox_overridePadding_unfocusedState_withoutLabel_withPlaceholder",
+            "outlinedTextFieldBox_innerTextLocation_withMultilineLabel",
+            "outlinedTextFieldBox_singleLine_innerTextLocation_withMultilineLabel",
+            "textFieldBox_aboveLabel_measurement",
+            "outlinedTextFieldBox_aboveLabel_measurement",
+            "normalize_textFieldDefaults_attached",
+            "normalize_textFieldDefaults_inside",
+            "normalize_textFieldDefaults_cutout",
+            "normalize_textFieldDefaults_above",
+            "normalize_outlinedTextFieldDefaults_attached",
+            "normalize_outlinedTextFieldDefaults_inside",
+            "normalize_outlinedTextFieldDefaults_cutout",
+            "normalize_outlinedTextFieldDefaults_above",
+            "defaultContentPadding_textFieldDefaults",
+            "defaultContentPadding_outlinedTextFieldDefaults",
+            "assertVerticalSizeAndPosition_textField_aboveLabel",
+            "assertVerticalSizeAndPosition_outlinedTextField_aboveLabel",
+            "assertVerticalSizeAndPosition_outlinedTextField",
+            "assertHorizontalSizeAndPosition_outlinedTextField",
+            "assertVerticalSizeAndPosition_textField",
+            "assertHorizontalSizeAndPosition_textField",
+            "assertSizeAndPosition",
+            "testTextFields_TextDecoration_noCrashConstraintsInfinity"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldLabelPositionTest.kt",
+          "sha256": "0cef4543a36f1ea84ff14635ef21134a98dd09cfbc99ffb05da6a535916e37c7",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldLabelPositionTest.kt",
+          "cases": [
+            "attached_equality",
+            "attached_toString",
+            "inside_equality",
+            "inside_toString",
+            "cutout_equality",
+            "cutout_toString",
+            "above_equality",
+            "above_toString",
+            "defaultValues"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldScreenshotTest.kt",
+          "sha256": "105fd63e8b18991c64f051343691cf488ed96e6b67e61cd5934e3f1d9e27e556",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldScreenshotTest.kt",
+          "cases": [
+            "textField_withInput",
+            "textField_withInput_roundedAndTonal",
+            "textField_withInput_roundedAndTonal_darkTheme",
+            "textField_withInput_cutout",
+            "textField_withInput_cutout_roundedAndTonal",
+            "textField_withInput_cutout_roundedAndTonal_darkTheme",
+            "textField_notFocused",
+            "textField_notFocused_roundedAndTonal",
+            "textField_notFocused_roundedAndTonal_darkTheme",
+            "textField_notFocused_cutout",
+            "textField_focused",
+            "textField_focused_roundedAndTonal",
+            "textField_focused_roundedAndTonal_darkTheme",
+            "textField_focused_cutout",
+            "textField_focused_rtl",
+            "textField_error_focused",
+            "textField_error_focused_roundedAndTonal",
+            "textField_error_focused_roundedAndTonal_darkTheme",
+            "textField_error_notFocused",
+            "textField_textColor_customTextColor",
+            "textField_textSelectionColor_customColors",
+            "textField_multiLine_withLabel_textAlignedToTop",
+            "textField_multiLine_withoutLabel_textAlignedToTop",
+            "textField_multiLine_withLabel_placeholderAlignedToTop",
+            "textField_multiLine_withoutLabel_placeholderAlignedToTop",
+            "textField_multiLine_labelAlignedToTop",
+            "textField_singleLine_withLabel_textAlignedToTop",
+            "textField_singleLine_withoutLabel_textCenteredVertically",
+            "textField_singleLine_withLabel_placeholderAlignedToTop",
+            "textField_singleLine_withoutLabel_placeholderCenteredVertically",
+            "textField_singleLine_labelCenteredVertically",
+            "textField_indicatorLine_clippedToShape",
+            "textField_disabled",
+            "textField_disabled_roundedAndTonal",
+            "textField_disabled_roundedAndTonal_darkTheme",
+            "textField_disabled_notFocusable",
+            "textField_disabled_notScrolled",
+            "textField_readOnly",
+            "textField_readOnly_focused",
+            "textField_readOnly_scrolled",
+            "textField_textCenterAligned",
+            "textField_textAlignedToEnd",
+            "textField_supportingText",
+            "textField_supportingText_roundedAndTonal",
+            "textField_supportingText_roundedAndTonal_darkTheme",
+            "textField_errorSupportingText",
+            "textField_leadingTrailingIcons",
+            "textField_leadingTrailingIcons_error",
+            "textField_labelPositionAbove_withIcons_andPlaceholder_andSupporting",
+            "textField_labelPositionAbove_withIcons_andPlaceholder_andSupporting_roundedAndTonal",
+            "textField_labelPositionAbove_withIcons_andPlaceholder_andSupporting_roundedAndTonal_darkTheme",
+            "textField_labelAlignment_centerHorizontally",
+            "textField_labelAlignment_centerHorizontally_cutout",
+            "textField_alwaysMinimizeLabel_noPlaceholder",
+            "textField_alwaysMinimizeLabel_noPlaceholder_cutout",
+            "textField_alwaysMinimizeLabel_withPlaceholder",
+            "textField_alwaysMinimizeLabel_withPlaceholder_cutout",
+            "textField_prefixSuffix_withLabelAndInput",
+            "textField_prefixSuffix_withLabelAndInput_darkTheme",
+            "textField_prefixSuffix_withLabelAndInput_focused",
+            "textField_prefixSuffix_withPlaceholder",
+            "textField_prefixSuffix_withLeadingTrailingIcons",
+            "textField_withInput_darkTheme",
+            "textField_focused_darkTheme",
+            "textField_error_focused_darkTheme",
+            "textField_disabled_darkTheme",
+            "textField_leadingTrailingIcons_darkTheme",
+            "assertAgainstGolden"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldTest.kt",
+          "sha256": "1ca7f017b0160e5269d6c9a10054f4f992332475048b4ae4600befe44d89f1e6",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldTest.kt",
+          "cases": [
+            "testTextField_setSmallHeight",
+            "testTextField_setSmallWidth",
+            "testTextField_defaultHeight",
+            "testTextField_defaultWidth",
+            "testTextField_heightDoesNotChange_duringFocusAnimation",
+            "testTextField_heightDoesNotChange_duringFocusAnimation_withLargeLabelText",
+            "testTextField_withSupportingText_heightDoesNotChange_duringFocusAnimation",
+            "testTextFields_singleFocus",
+            "testTextField_getFocus_whenClickedOnSurfaceArea",
+            "testTextField_showHideKeyboardBasedOnFocus",
+            "testTextField_clickingOnTextAfterDismissingKeyboard_showsKeyboard",
+            "testTextField_labelPosition_initial_singleLine",
+            "testTextField_labelPosition_initial_singleLine_cutout",
+            "testTextField_labelPosition_initial_withDefaultHeight",
+            "testTextField_labelPosition_initial_withDefaultHeight_cutout",
+            "testTextField_labelPosition_initial_withCustomHeight",
+            "testTextField_labelPosition_initial_withCustomHeight_cutout",
+            "testTextField_labelPosition_whenFocused",
+            "testTextField_labelPosition_whenFocused_cutout",
+            "testTextField_labelPosition_whenInput",
+            "testTextField_labelPosition_whenInput_cutout",
+            "testTextField_labelPosition_whenPositionedAbove",
+            "testTextField_labelPosition_customAlignment",
+            "testTextField_labelPosition_customAlignment_cutout",
+            "testTextField_labelScope_progressAndRecomposition",
+            "testTextField_placeholderPosition_withLabel",
+            "testTextField_placeholderPosition_withLabel_cutout",
+            "testTextField_placeholderPosition_whenNoLabel",
+            "testTextField_noPlaceholder_whenInputNotEmpty",
+            "testTextField_placeholderColorAndTextStyle",
+            "testTextField_placeholderColor_whenInputEmptyAndFocused",
+            "testTextField_labelAndPlaceholderPosition_whenSmallerThanMinimumHeight",
+            "testTextField_trailingAndLeading_sizeAndPosition_defaultIcon",
+            "testTextField_trailingAndLeading_sizeAndPosition_iconButton",
+            "testTextField_trailingAndLeading_sizeAndPosition_nonDefaultSizeIcon",
+            "testTextField_prefixAndSuffixAndPlaceholder_areNotDisplayed_withLabel_ifLabelCanExpand",
+            "testTextField_prefixAndSuffixAndPlaceholder_areDisplayed_withLabel_ifLabelCannotExpand",
+            "testTextField_prefixAndSuffixAndPlaceholder_areDisplayed_withLabel_ifLabelIsAbove",
+            "testTextField_prefixAndSuffixPosition_withLabel",
+            "testTextField_prefixAndSuffixPosition_whenNoLabel",
+            "testTextField_prefixAndSuffixPosition_withIcons",
+            "testTextField_labelPositionX_initial_withTrailingAndLeading",
+            "testTextField_labelPositionX_initial_withNullTrailingAndLeading",
+            "testTextField_colorInLeadingTrailing_whenValidInput",
+            "testTextField_colorInLeadingTrailing_whenInvalidInput",
+            "testTextField_supportingTextPosition_withDefaultHeight",
+            "testTextField_supportingText_widthIsNotWiderThanTextField",
+            "testTextField_supportingText_contributesToTextFieldMeasurements",
+            "testTextField_supportingText_remainsVisibleWithTallInput",
+            "testTextField_supportingText_clickFocusesTextField",
+            "testTextField_supportingText_colorAndStyle",
+            "testTextField_supportingText_error_colorAndStyle",
+            "testTextField_imeActionAndKeyboardTypePropagatedDownstream",
+            "testTextField_outputTransformationPropagated",
+            "testTextField_alphaNotApplied_toCustomContainerColorAndTransparentColors",
+            "testTextField_transformedTextIsUsed_toDefineLabelPosition",
+            "testTextField_transformedTextIsUsed_toDefineIfPlaceholderNeeded",
+            "testTextField_errorSemantics_defaultMessage",
+            "testTextField_errorSemantics_messageOverridable",
+            "testTextField_withLabel_doesNotCrash_rowHeightWithMinIntrinsics",
+            "testTextField_withLabel_doesNotCrash_columnWidthWithMinIntrinsics",
+            "testTextField_labelStyle",
+            "testTextField_labelStyle_whenBodySmallStyleColorProvided",
+            "testTextField_labelStyle_middle_whenBodySmallStyleColorProvided",
+            "testTextField_labelStyle_whenBothTypographiesColorProvided",
+            "testTextField_selectionColors_areCustomizable",
+            "testTextField_intrinsicHeight_withOnlyEmptyInput",
+            "testTextField_intrinsicHeight_withEmptyInput_andDecorations",
+            "testTextField_intrinsicHeight_withLongInput_andDecorations",
+            "textField_withTrailingIcon_inIntrinsicHeight_andTooShortWidth_doesNotCrash",
+            "textField_stringOverload_doesNotCallOnValueChange_whenCompositionUpdatesOnly",
+            "testTextField_noCrashConstraintsInfinity",
+            "testTextField_noCrash_whenOutputTransformationCallsAddStyle",
+            "testTextField_prefixAndSuffix_semantics"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextLinkStylesScreenshotTest.kt",
+          "sha256": "e93ba4a81522563cfda9d3640d22d0f77fbe67662030231050817de6c6ee83e0",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextLinkStylesScreenshotTest.kt",
+          "cases": [
+            "urlLink",
+            "clickableLink"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextSelectionColorsScreenshotTest.kt",
+          "sha256": "30bc2a3835105f5b2e4527288c0b953a0238492206e67843f4af923ba5197972",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextSelectionColorsScreenshotTest.kt",
+          "cases": [
+            "rememberTextSelectionColors",
+            "text_lightThemeSelectionColors",
+            "text_darkThemeSelectionColors",
+            "filledTextField_lightThemeSelectionColors",
+            "filledTextField_darkThemeSelectionColors",
+            "outlinedTextField_lightThemeSelectionColors",
+            "outlinedTextField_darkThemeSelectionColors",
+            "TextTestContent",
+            "FilledTextFieldTestContent",
+            "OutlinedTextFieldTestContent"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextTest.kt",
+          "sha256": "f2e3ae10cb532b51f6be687a85b45e7930ffd1ed783dd54906090f83771be549",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextTest.kt",
+          "cases": [
+            "testDefaultIncludeFontPadding",
+            "inheritsThemeTextStyle",
+            "settingCustomTextStyle",
+            "settingParametersExplicitly",
+            "settingColorAndTextStyle",
+            "testSemantics",
+            "testContentColorChangeVisibleInSemantics",
+            "testContentColorChangeVisibleInSemantics_annotatedString",
+            "getTextLayoutResults",
+            "semantics_hasColor_providedByParameter",
+            "testAutoSize_changesTextSize"
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "path": "compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/TextFieldSamples.kt",
+          "sha256": "2b56aae3059158661e806d00d82f868a6f83178c32579b7459ad7bd330cbc7a0",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/TextFieldSamples.kt"
+        },
+        {
+          "path": "compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/TextSamples.kt",
+          "sha256": "40bff007afbd97fbea1a829cef1e90c274db49d74639b95bde31daa15d55b0fb",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/TextSamples.kt"
+        }
+      ]
+    },
+    {
+      "id": "compose:Typography",
+      "name": "Typography",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Typography.kt",
+      "sha256": "e175d32bbe0f8fdf3534cef2cb703531e11eb8d105d167e2a248d3e34cb6a55d",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Typography.kt",
+      "symbols": [
+        "copy"
+      ],
+      "expressive": false,
+      "tokens": [
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/TypographyKeyTokens.kt",
+          "sha256": "4e8ab038fbee1ea2f8227f319fdb5165b727be55bb86e81b780c55eceb7baf10",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/TypographyKeyTokens.kt",
+          "name": "TypographyKeyTokens",
+          "version": "v0_103",
+          "values": [
+            {
+              "name": "BodyLarge",
+              "expression": "TypographyToken(0)",
+              "line": 26
+            },
+            {
+              "name": "BodyMedium",
+              "expression": "TypographyToken(1)",
+              "line": 27
+            },
+            {
+              "name": "BodySmall",
+              "expression": "TypographyToken(2)",
+              "line": 28
+            },
+            {
+              "name": "DisplayLarge",
+              "expression": "TypographyToken(3)",
+              "line": 29
+            },
+            {
+              "name": "DisplayMedium",
+              "expression": "TypographyToken(4)",
+              "line": 30
+            },
+            {
+              "name": "DisplaySmall",
+              "expression": "TypographyToken(5)",
+              "line": 31
+            },
+            {
+              "name": "HeadlineLarge",
+              "expression": "TypographyToken(6)",
+              "line": 32
+            },
+            {
+              "name": "HeadlineMedium",
+              "expression": "TypographyToken(7)",
+              "line": 33
+            },
+            {
+              "name": "HeadlineSmall",
+              "expression": "TypographyToken(8)",
+              "line": 34
+            },
+            {
+              "name": "LabelLarge",
+              "expression": "TypographyToken(9)",
+              "line": 35
+            },
+            {
+              "name": "LabelMedium",
+              "expression": "TypographyToken(10)",
+              "line": 36
+            },
+            {
+              "name": "LabelSmall",
+              "expression": "TypographyToken(11)",
+              "line": 37
+            },
+            {
+              "name": "TitleLarge",
+              "expression": "TypographyToken(12)",
+              "line": 38
+            },
+            {
+              "name": "TitleMedium",
+              "expression": "TypographyToken(13)",
+              "line": 39
+            },
+            {
+              "name": "TitleSmall",
+              "expression": "TypographyToken(14)",
+              "line": 40
+            },
+            {
+              "name": "BodyLargeEmphasized",
+              "expression": "TypographyToken(15)",
+              "line": 41
+            },
+            {
+              "name": "BodyMediumEmphasized",
+              "expression": "TypographyToken(16)",
+              "line": 42
+            },
+            {
+              "name": "BodySmallEmphasized",
+              "expression": "TypographyToken(17)",
+              "line": 43
+            },
+            {
+              "name": "DisplayLargeEmphasized",
+              "expression": "TypographyToken(18)",
+              "line": 44
+            },
+            {
+              "name": "DisplayMediumEmphasized",
+              "expression": "TypographyToken(19)",
+              "line": 45
+            },
+            {
+              "name": "DisplaySmallEmphasized",
+              "expression": "TypographyToken(20)",
+              "line": 46
+            },
+            {
+              "name": "HeadlineLargeEmphasized",
+              "expression": "TypographyToken(21)",
+              "line": 47
+            },
+            {
+              "name": "HeadlineMediumEmphasized",
+              "expression": "TypographyToken(22)",
+              "line": 48
+            },
+            {
+              "name": "HeadlineSmallEmphasized",
+              "expression": "TypographyToken(23)",
+              "line": 49
+            },
+            {
+              "name": "LabelLargeEmphasized",
+              "expression": "TypographyToken(24)",
+              "line": 50
+            },
+            {
+              "name": "LabelMediumEmphasized",
+              "expression": "TypographyToken(25)",
+              "line": 51
+            },
+            {
+              "name": "LabelSmallEmphasized",
+              "expression": "TypographyToken(26)",
+              "line": 52
+            },
+            {
+              "name": "TitleLargeEmphasized",
+              "expression": "TypographyToken(27)",
+              "line": 53
+            },
+            {
+              "name": "TitleMediumEmphasized",
+              "expression": "TypographyToken(28)",
+              "line": 54
+            },
+            {
+              "name": "TitleSmallEmphasized",
+              "expression": "TypographyToken(29)",
+              "line": 55
+            }
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/TypographyTokens.kt",
+          "sha256": "b536f8f056cc768ecbff9bf44b0223cacdb2be209e774e0b0819526cf311ef48",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/TypographyTokens.kt",
+          "name": "TypographyTokens",
+          "version": "31.0.11",
+          "values": [
+            {
+              "name": "BodyLarge",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.BodyLargeFont,\n                fontWeight = TypeScaleTokens.BodyLargeWeight,\n                fontSize = TypeScaleTokens.BodyLargeSize,\n                lineHeight = TypeScaleTokens.BodyLargeLineHeight,\n                letterSpacing = TypeScaleTokens.BodyLargeTracking,\n            )",
+              "line": 27
+            },
+            {
+              "name": "BodyMedium",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.BodyMediumFont,\n                fontWeight = TypeScaleTokens.BodyMediumWeight,\n                fontSize = TypeScaleTokens.BodyMediumSize,\n                lineHeight = TypeScaleTokens.BodyMediumLineHeight,\n                letterSpacing = TypeScaleTokens.BodyMediumTracking,\n            )",
+              "line": 37
+            },
+            {
+              "name": "BodySmall",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.BodySmallFont,\n                fontWeight = TypeScaleTokens.BodySmallWeight,\n                fontSize = TypeScaleTokens.BodySmallSize,\n                lineHeight = TypeScaleTokens.BodySmallLineHeight,\n                letterSpacing = TypeScaleTokens.BodySmallTracking,\n            )",
+              "line": 47
+            },
+            {
+              "name": "DisplayLarge",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.DisplayLargeFont,\n                fontWeight = TypeScaleTokens.DisplayLargeWeight,\n                fontSize = TypeScaleTokens.DisplayLargeSize,\n                lineHeight = TypeScaleTokens.DisplayLargeLineHeight,\n                letterSpacing = TypeScaleTokens.DisplayLargeTracking,\n            )",
+              "line": 57
+            },
+            {
+              "name": "DisplayMedium",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.DisplayMediumFont,\n                fontWeight = TypeScaleTokens.DisplayMediumWeight,\n                fontSize = TypeScaleTokens.DisplayMediumSize,\n                lineHeight = TypeScaleTokens.DisplayMediumLineHeight,\n                letterSpacing = TypeScaleTokens.DisplayMediumTracking,\n            )",
+              "line": 67
+            },
+            {
+              "name": "DisplaySmall",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.DisplaySmallFont,\n                fontWeight = TypeScaleTokens.DisplaySmallWeight,\n                fontSize = TypeScaleTokens.DisplaySmallSize,\n                lineHeight = TypeScaleTokens.DisplaySmallLineHeight,\n                letterSpacing = TypeScaleTokens.DisplaySmallTracking,\n            )",
+              "line": 77
+            },
+            {
+              "name": "HeadlineLarge",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.HeadlineLargeFont,\n                fontWeight = TypeScaleTokens.HeadlineLargeWeight,\n                fontSize = TypeScaleTokens.HeadlineLargeSize,\n                lineHeight = TypeScaleTokens.HeadlineLargeLineHeight,\n                letterSpacing = TypeScaleTokens.HeadlineLargeTracking,\n            )",
+              "line": 87
+            },
+            {
+              "name": "HeadlineMedium",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.HeadlineMediumFont,\n                fontWeight = TypeScaleTokens.HeadlineMediumWeight,\n                fontSize = TypeScaleTokens.HeadlineMediumSize,\n                lineHeight = TypeScaleTokens.HeadlineMediumLineHeight,\n                letterSpacing = TypeScaleTokens.HeadlineMediumTracking,\n            )",
+              "line": 97
+            },
+            {
+              "name": "HeadlineSmall",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.HeadlineSmallFont,\n                fontWeight = TypeScaleTokens.HeadlineSmallWeight,\n                fontSize = TypeScaleTokens.HeadlineSmallSize,\n                lineHeight = TypeScaleTokens.HeadlineSmallLineHeight,\n                letterSpacing = TypeScaleTokens.HeadlineSmallTracking,\n            )",
+              "line": 107
+            },
+            {
+              "name": "LabelLarge",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.LabelLargeFont,\n                fontWeight = TypeScaleTokens.LabelLargeWeight,\n                fontSize = TypeScaleTokens.LabelLargeSize,\n                lineHeight = TypeScaleTokens.LabelLargeLineHeight,\n                letterSpacing = TypeScaleTokens.LabelLargeTracking,\n            )",
+              "line": 117
+            },
+            {
+              "name": "LabelMedium",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.LabelMediumFont,\n                fontWeight = TypeScaleTokens.LabelMediumWeight,\n                fontSize = TypeScaleTokens.LabelMediumSize,\n                lineHeight = TypeScaleTokens.LabelMediumLineHeight,\n                letterSpacing = TypeScaleTokens.LabelMediumTracking,\n            )",
+              "line": 127
+            },
+            {
+              "name": "LabelSmall",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.LabelSmallFont,\n                fontWeight = TypeScaleTokens.LabelSmallWeight,\n                fontSize = TypeScaleTokens.LabelSmallSize,\n                lineHeight = TypeScaleTokens.LabelSmallLineHeight,\n                letterSpacing = TypeScaleTokens.LabelSmallTracking,\n            )",
+              "line": 137
+            },
+            {
+              "name": "TitleLarge",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.TitleLargeFont,\n                fontWeight = TypeScaleTokens.TitleLargeWeight,\n                fontSize = TypeScaleTokens.TitleLargeSize,\n                lineHeight = TypeScaleTokens.TitleLargeLineHeight,\n                letterSpacing = TypeScaleTokens.TitleLargeTracking,\n            )",
+              "line": 147
+            },
+            {
+              "name": "TitleMedium",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.TitleMediumFont,\n                fontWeight = TypeScaleTokens.TitleMediumWeight,\n                fontSize = TypeScaleTokens.TitleMediumSize,\n                lineHeight = TypeScaleTokens.TitleMediumLineHeight,\n                letterSpacing = TypeScaleTokens.TitleMediumTracking,\n            )",
+              "line": 157
+            },
+            {
+              "name": "TitleSmall",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.TitleSmallFont,\n                fontWeight = TypeScaleTokens.TitleSmallWeight,\n                fontSize = TypeScaleTokens.TitleSmallSize,\n                lineHeight = TypeScaleTokens.TitleSmallLineHeight,\n                letterSpacing = TypeScaleTokens.TitleSmallTracking,\n            )",
+              "line": 167
+            },
+            {
+              "name": "BodyLargeEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.BodyLargeEmphasizedFont,\n                fontWeight = TypeScaleTokens.BodyLargeEmphasizedWeight,\n                fontSize = TypeScaleTokens.BodyLargeEmphasizedSize,\n                lineHeight = TypeScaleTokens.BodyLargeEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.BodyLargeEmphasizedTracking,\n            )",
+              "line": 178
+            },
+            {
+              "name": "BodyMediumEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.BodyMediumEmphasizedFont,\n                fontWeight = TypeScaleTokens.BodyMediumEmphasizedWeight,\n                fontSize = TypeScaleTokens.BodyMediumEmphasizedSize,\n                lineHeight = TypeScaleTokens.BodyMediumEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.BodyMediumEmphasizedTracking,\n            )",
+              "line": 188
+            },
+            {
+              "name": "BodySmallEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.BodySmallEmphasizedFont,\n                fontWeight = TypeScaleTokens.BodySmallEmphasizedWeight,\n                fontSize = TypeScaleTokens.BodySmallEmphasizedSize,\n                lineHeight = TypeScaleTokens.BodySmallEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.BodySmallEmphasizedTracking,\n            )",
+              "line": 198
+            },
+            {
+              "name": "DisplayLargeEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.DisplayLargeEmphasizedFont,\n                fontWeight = TypeScaleTokens.DisplayLargeEmphasizedWeight,\n                fontSize = TypeScaleTokens.DisplayLargeEmphasizedSize,\n                lineHeight = TypeScaleTokens.DisplayLargeEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.DisplayLargeEmphasizedTracking,\n            )",
+              "line": 208
+            },
+            {
+              "name": "DisplayMediumEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.DisplayMediumEmphasizedFont,\n                fontWeight = TypeScaleTokens.DisplayMediumEmphasizedWeight,\n                fontSize = TypeScaleTokens.DisplayMediumEmphasizedSize,\n                lineHeight = TypeScaleTokens.DisplayMediumEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.DisplayMediumEmphasizedTracking,\n            )",
+              "line": 218
+            },
+            {
+              "name": "DisplaySmallEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.DisplaySmallEmphasizedFont,\n                fontWeight = TypeScaleTokens.DisplaySmallEmphasizedWeight,\n                fontSize = TypeScaleTokens.DisplaySmallEmphasizedSize,\n                lineHeight = TypeScaleTokens.DisplaySmallEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.DisplaySmallEmphasizedTracking,\n            )",
+              "line": 228
+            },
+            {
+              "name": "HeadlineLargeEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.HeadlineLargeEmphasizedFont,\n                fontWeight = TypeScaleTokens.HeadlineLargeEmphasizedWeight,\n                fontSize = TypeScaleTokens.HeadlineLargeEmphasizedSize,\n                lineHeight = TypeScaleTokens.HeadlineLargeEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.HeadlineLargeEmphasizedTracking,\n            )",
+              "line": 238
+            },
+            {
+              "name": "HeadlineMediumEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.HeadlineMediumEmphasizedFont,\n                fontWeight = TypeScaleTokens.HeadlineMediumEmphasizedWeight,\n                fontSize = TypeScaleTokens.HeadlineMediumEmphasizedSize,\n                lineHeight = TypeScaleTokens.HeadlineMediumEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.HeadlineMediumEmphasizedTracking,\n            )",
+              "line": 248
+            },
+            {
+              "name": "HeadlineSmallEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.HeadlineSmallEmphasizedFont,\n                fontWeight = TypeScaleTokens.HeadlineSmallEmphasizedWeight,\n                fontSize = TypeScaleTokens.HeadlineSmallEmphasizedSize,\n                lineHeight = TypeScaleTokens.HeadlineSmallEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.HeadlineSmallEmphasizedTracking,\n            )",
+              "line": 258
+            },
+            {
+              "name": "LabelLargeEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.LabelLargeEmphasizedFont,\n                fontWeight = TypeScaleTokens.LabelLargeEmphasizedWeight,\n                fontSize = TypeScaleTokens.LabelLargeEmphasizedSize,\n                lineHeight = TypeScaleTokens.LabelLargeEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.LabelLargeEmphasizedTracking,\n            )",
+              "line": 268
+            },
+            {
+              "name": "LabelMediumEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.LabelMediumEmphasizedFont,\n                fontWeight = TypeScaleTokens.LabelMediumEmphasizedWeight,\n                fontSize = TypeScaleTokens.LabelMediumEmphasizedSize,\n                lineHeight = TypeScaleTokens.LabelMediumEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.LabelMediumEmphasizedTracking,\n            )",
+              "line": 278
+            },
+            {
+              "name": "LabelSmallEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.LabelSmallEmphasizedFont,\n                fontWeight = TypeScaleTokens.LabelSmallEmphasizedWeight,\n                fontSize = TypeScaleTokens.LabelSmallEmphasizedSize,\n                lineHeight = TypeScaleTokens.LabelSmallEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.LabelSmallEmphasizedTracking,\n            )",
+              "line": 288
+            },
+            {
+              "name": "TitleLargeEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.TitleLargeEmphasizedFont,\n                fontWeight = TypeScaleTokens.TitleLargeEmphasizedWeight,\n                fontSize = TypeScaleTokens.TitleLargeEmphasizedSize,\n                lineHeight = TypeScaleTokens.TitleLargeEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.TitleLargeEmphasizedTracking,\n            )",
+              "line": 298
+            },
+            {
+              "name": "TitleMediumEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.TitleMediumEmphasizedFont,\n                fontWeight = TypeScaleTokens.TitleMediumEmphasizedWeight,\n                fontSize = TypeScaleTokens.TitleMediumEmphasizedSize,\n                lineHeight = TypeScaleTokens.TitleMediumEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.TitleMediumEmphasizedTracking,\n            )",
+              "line": 308
+            },
+            {
+              "name": "TitleSmallEmphasized",
+              "expression": "DefaultTextStyle.copy(\n                fontFamily = fontFamily ?: TypeScaleTokens.TitleSmallEmphasizedFont,\n                fontWeight = TypeScaleTokens.TitleSmallEmphasizedWeight,\n                fontSize = TypeScaleTokens.TitleSmallEmphasizedSize,\n                lineHeight = TypeScaleTokens.TitleSmallEmphasizedLineHeight,\n                letterSpacing = TypeScaleTokens.TitleSmallEmphasizedTracking,\n            )",
+              "line": 318
+            },
+            {
+              "name": "DefaultLineHeightStyle",
+              "expression": "LineHeightStyle(alignment = LineHeightStyle.Alignment.Center, trim = LineHeightStyle.Trim.None)",
+              "line": 329
+            },
+            {
+              "name": "DefaultTextStyle",
+              "expression": "TextStyle.Default.copy(\n        platformStyle = defaultPlatformTextStyle(),\n        lineHeightStyle = DefaultLineHeightStyle,\n    )",
+              "line": 332
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TypographyTest.kt",
+          "sha256": "18a957f06e7ee8622a59df3a756c8f63c7cd9e4fd51bd007073fad37ef3aa5b9",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TypographyTest.kt",
+          "cases": [
+            "typography_defaultFontFamily",
+            "typography_customFontFamily",
+            "typography_customFontFamily_overrideDefault",
+            "typography_nullValuesWithCustomFont_fallbackToCustomFontTokens",
+            "typography_customFontFamily_mergesWithNullFontFamilyStyles"
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "path": "compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/TypographySamples.kt",
+          "sha256": "1a66460edc4523de96476f215213d6c6c29d5728bcf67d2aeb55abba97aa32e4",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/TypographySamples.kt"
+        }
+      ]
+    }
+  ],
+  "criteria": [],
+  "decisions": "Resolved baseline required; code and interactive QA remain pending."
+}
