@@ -105,7 +105,9 @@ Its Full value is 1000px, whereas Web's `corner-full` is 9999px. Compose
 [`ShapeTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ShapeTokens.kt)
 uses `CircleShape` for `CornerFull`; native behavior must preserve that
 geometric intent rather than promote either finite radius as its source
-value. The kit's
+value. The other nine kit corner values agree numerically with Compose;
+[`source-shape.test.mjs`](../tests/source-shape.test.mjs) checks all ten
+against the pinned inventories. The kit's
 [rendered corner scale](figma-exports/corner-radius.png) labels Full as `50%`;
 record that usage distinction instead of assuming the numeric variable and
 display example are identical CSS values. The separate
