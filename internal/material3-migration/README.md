@@ -208,7 +208,7 @@ folder. No task execution state is required by a published component or theme.
 ## Focused harness checks
 
 ```sh
-node --test internal/material3-migration/tests/*.test.mjs
+pnpm vitest run --project node internal/material3-migration/tests/harness.test.mjs
 ```
 
 Use adversarial fixtures for missing source evidence, Figma precedence violations,

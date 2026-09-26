@@ -6,6 +6,6 @@ export default {
   name: 'material3',
   displayName: 'Material 3',
   description:
-    'Material 3 color, type, shape, motion, and icon foundations for Astryx.',
+    'Material 3 foundations and a compatibility theme for Core components. Applying this theme does not establish native Material 3 component parity.',
   maintained: true,
 };
