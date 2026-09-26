@@ -13,7 +13,8 @@
  * Derived tokens can reference other tokens (`var(--color-accent)`) and use CSS
  * color functions (`color-mix`). The resolver follows those references through
  * the theme iteratively and evaluates the supported color functions so callers
- * receive concrete raw values, not CSS expressions.
+ * receive concrete raw values, not CSS expressions. Enrolled theme-local names
+ * may resolve references but stay outside the portable result.
  *
  * SYNC: When modified, update:
  * - /packages/core/src/theme/useTheme.ts
@@ -417,7 +418,13 @@ export function resolveThemeTokens(
     }
   }
 
-  return resolveReferences(resolved);
+  const portableNames = Object.keys(resolved);
+  const graph = {...resolved};
+  for (const [key, value] of Object.entries(theme.localTokens ?? {})) {
+    graph[key] = resolveXDSTokenValue(value, mode);
+  }
+  const all = resolveReferences(graph);
+  return Object.fromEntries(portableNames.map(name => [name, all[name]]));
 }
 
 /** Resolve one Astryx token value for a theme and effective color mode. */

@@ -1,0 +1,128 @@
+<!doctype html>
+<!-- Copyright (c) Meta Platforms, Inc. and affiliates. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
+    <title>Native Material 3 foundations</title>
+    <link rel="stylesheet" href="../dist/tokens.css" />
+    <style>
+      * { box-sizing: border-box; }
+      html { font-family: Arial, sans-serif; }
+      body { margin: 0; background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); }
+      main { width: min(100%, 1120px); margin: auto; padding: 32px clamp(16px, 4vw, 48px) 64px; }
+      header { display: flex; justify-content: space-between; gap: 24px; align-items: start; flex-wrap: wrap; }
+      h1 { font-size: 32px; line-height: 40px; margin: 0 0 8px; }
+      h2 { font-size: 20px; line-height: 28px; margin: 0 0 16px; }
+      p { margin: 0; line-height: 1.5; color: var(--md-sys-color-on-surface-variant); }
+      .revision { font: 12px/18px ui-monospace, monospace; padding: 8px 12px; border-radius: 8px; background: var(--md-sys-color-surface-container); }
+      .controls { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 24px 0 32px; }
+      label { font-size: 14px; font-weight: 600; }
+      select, button { font: inherit; min-height: 40px; border-radius: var(--md-sys-shape-corner-small); border: 1px solid var(--md-sys-color-outline); padding: 8px 14px; background: var(--md-sys-color-surface-container-lowest); color: var(--md-sys-color-on-surface); }
+      button { cursor: pointer; }
+      button:hover { background: var(--md-sys-color-surface-container-high); }
+      button:focus-visible, select:focus-visible, input:focus-visible { outline: 3px solid var(--md-sys-color-primary); outline-offset: 3px; }
+      .panel { padding: 24px; margin-top: 20px; border-radius: var(--md-sys-shape-corner-large); background: var(--md-sys-color-surface-container-low); }
+      .samples { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+      .swatch { min-height: 90px; border-radius: var(--md-sys-shape-corner-medium); display: flex; align-items: end; padding: 12px; font-size: 13px; font-weight: 600; }
+      .swatch.primary { background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); }
+      .swatch.secondary { background: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); }
+      .swatch.tertiary { background: var(--md-sys-color-tertiary-container); color: var(--md-sys-color-on-tertiary-container); }
+      .swatch.error { background: var(--md-sys-color-error-container); color: var(--md-sys-color-on-error-container); }
+      .type-sample { font-family: var(--md-ref-typeface-plain), Arial, sans-serif; font-size: var(--md-sys-typescale-headline-medium-size); line-height: var(--md-sys-typescale-headline-medium-line-height); font-weight: var(--md-sys-typescale-headline-medium-weight); }
+      .shape { width: 100px; height: 100px; color: var(--md-sys-color-primary); }
+      .shape path { fill: currentColor; }
+      .shape-row { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+      .motion-stage { position: relative; height: 112px; margin: 16px 0; border-radius: var(--md-sys-shape-corner-large); background: var(--md-sys-color-surface-container); overflow: hidden; }
+      .motion-axis { position: absolute; top: 55px; left: calc(50% - 100px); width: 200px; height: 2px; background: var(--md-sys-color-outline); }
+      .motion-dot { position: absolute; top: 35px; left: calc(50% - 20px); width: 40px; height: 40px; border-radius: 50%; background: var(--md-sys-color-primary); transform: translateX(var(--position, 0px)); }
+      .motion-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+      .motion-controls button { background: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); border-color: transparent; }
+      .measure { font: 12px/20px ui-monospace, monospace; margin-top: 12px; color: var(--md-sys-color-on-surface-variant); }
+      [dir='rtl'] .motion-stage { direction: ltr; }
+      @media (max-width: 600px) { h1 { font-size: 25px; line-height: 32px; } .panel { padding: 16px; } .motion-controls button { flex: 1; } }
+    </style>
+  </head>
+  <body data-md-scheme="light">
+    <main>
+      <header>
+        <div><h1>Native Material 3 foundations</h1><p>Compose-first values, CSS roles, Expressive geometry and interrupted springs.</p></div>
+        <span class="revision" id="revision">Revision: local</span>
+      </header>
+      <div class="controls">
+        <label for="scheme">Scheme</label>
+        <select id="scheme"><option value="light">Light</option><option value="dark">Dark</option><option value="expressive-light">Expressive light</option></select>
+        <button id="override" type="button" aria-pressed="false">Toggle scoped primary override</button>
+        <button id="direction" type="button" aria-pressed="false">Toggle RTL</button>
+      </div>
+      <section class="panel" id="color-scope"><h2>System colors</h2><div class="samples"><div class="swatch primary" id="primary-swatch">Primary</div><div class="swatch secondary">Secondary container</div><div class="swatch tertiary">Tertiary container</div><div class="swatch error">Error container</div></div></section>
+      <section class="panel"><h2>Typography and shape</h2><div class="shape-row"><svg class="shape" viewBox="0 0 1 1" aria-label="Expressive flower shape" role="img"><path id="flower" /></svg><div class="type-sample">Material 3 Expressive</div></div></section>
+      <section class="panel"><h2>Spring motion</h2><p>Target changes keep the current position and velocity. Reduced motion jumps to the target.</p><div class="motion-stage"><div class="motion-axis"></div><div class="motion-dot" id="motion-dot"></div></div><div class="motion-controls"><button id="enter" type="button">Enter</button><button id="exit" type="button">Exit</button><button id="interrupt" type="button">Interrupt</button><button id="reverse" type="button">Reverse</button><label><input id="reduced" type="checkbox" /> Reduced motion</label></div><div class="measure" id="motion-measure">Position 0.00px · velocity 0.00px/s</div></section>
+    </main>
+    <script type="module">
+      import {material3ExpressiveShapes, material3SpringSpecs, sampleMaterial3Spring} from '../dist/index.js';
+      const query = new URLSearchParams(location.search);
+      document.querySelector('#revision').textContent = `Revision: ${query.get('revision') || 'local'}`;
+      document.querySelector('#flower').setAttribute('d', material3ExpressiveShapes.Flower.path);
+      const scheme = document.querySelector('#scheme');
+      scheme.addEventListener('change', () => { document.body.dataset.mdScheme = scheme.value; });
+      const scope = document.querySelector('#color-scope');
+      document.querySelector('#override').addEventListener('click', event => {
+        const active = event.currentTarget.getAttribute('aria-pressed') !== 'true';
+        event.currentTarget.setAttribute('aria-pressed', String(active));
+        scope.style.setProperty('--md-sys-color-primary', active ? '#123456' : '');
+      });
+      document.querySelector('#direction').addEventListener('click', event => {
+        const active = event.currentTarget.getAttribute('aria-pressed') !== 'true';
+        event.currentTarget.setAttribute('aria-pressed', String(active));
+        document.documentElement.dir = active ? 'rtl' : 'ltr';
+      });
+      const dot = document.querySelector('#motion-dot');
+      const measure = document.querySelector('#motion-measure');
+      const reduced = document.querySelector('#reduced');
+      const spec = material3SpringSpecs.expressive.default.spatial;
+      let frame = {position: 0, velocity: 0};
+      let initial = frame;
+      let target = 0;
+      let start = performance.now();
+      let raf = 0;
+      let lastRetarget = null;
+      function update(now) {
+        frame = sampleMaterial3Spring(spec, [{timeMs: 0, target}], now - start, initial);
+        dot.style.setProperty('--position', `${frame.position}px`);
+        measure.textContent = `Position ${frame.position.toFixed(2)}px · velocity ${frame.velocity.toFixed(2)}px/s`;
+        if (Math.abs(frame.position - target) > 0.01 || Math.abs(frame.velocity) > 0.01)
+          raf = requestAnimationFrame(update);
+        else raf = 0;
+      }
+      function setTarget(next) {
+        const now = performance.now();
+        if (raf) cancelAnimationFrame(raf);
+        if (reduced.checked || matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          frame = {position: next, velocity: 0};
+          initial = frame;
+          start = now;
+          dot.style.setProperty('--position', `${next}px`);
+          measure.textContent = `Position ${next.toFixed(2)}px · velocity 0.00px/s`;
+          target = next;
+          raf = 0;
+          lastRetarget = null;
+          return;
+        }
+        frame = sampleMaterial3Spring(spec, [{timeMs: 0, target}], now - start, initial);
+        initial = frame;
+        target = next;
+        start = now;
+        lastRetarget = {before: frame, after: sampleMaterial3Spring(spec, [{timeMs: 0, target}], 0, initial)};
+        raf = requestAnimationFrame(update);
+      }
+      document.querySelector('#enter').addEventListener('click', () => setTarget(100));
+      document.querySelector('#exit').addEventListener('click', () => setTarget(0));
+      document.querySelector('#interrupt').addEventListener('click', () => setTarget(40));
+      document.querySelector('#reverse').addEventListener('click', () => setTarget(-100));
+      reduced.addEventListener('change', () => { if (reduced.checked) setTarget(target); });
+      window.__foundationQA = {get frame() { return frame; }, get target() { return target; }, get running() { return Boolean(raf); }, get lastRetarget() { return lastRetarget; }};
+    </script>
+  </body>
+</html>

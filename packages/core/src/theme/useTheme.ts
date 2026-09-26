@@ -15,7 +15,8 @@
  * MutationObservers before assuming OS preference/default tokens. Provider-path
  * consumers subscribe to no-op stores instead, so mounting under a Theme never
  * creates an observer. Token resolution is shared with the server-safe helpers
- * in ./tokens.ts.
+ * in ./tokens.ts. Enrolled local declarations may resolve portable aliases
+ * without becoming entries in this hook's portable token map.
  *
  * SYNC: When modified, update:
  * - /packages/core/src/theme/index.ts

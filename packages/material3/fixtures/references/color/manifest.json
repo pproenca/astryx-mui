@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 3,
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "expressiveSource": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/ColorScheme.kt",
+  "expressiveSourceSha256": "2cae5584a44f5b6ffd15203f75b67138d386642589359a047bccdc31b046fd91",
+  "figmaSha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+  "shadowNode": "54778:432",
+  "kitModes": [
+    "Light",
+    "Light High Contrast",
+    "Light Medium Contrast",
+    "Dark",
+    "Dark High Contrast",
+    "Dark Medium Contrast",
+    "Monochrome LT",
+    "Monochrome DT",
+    "Pink LT",
+    "Pink DT",
+    "Rose LT",
+    "Rose DT",
+    "Red LT",
+    "Red DT",
+    "Orange LT",
+    "Orange DT",
+    "Yellow LT",
+    "Yellow DT",
+    "Chartreuse LT",
+    "Chartreuse DT",
+    "Green LT",
+    "Green DT",
+    "Teal LT",
+    "Teal DT",
+    "Cyan LT",
+    "Cyan DT",
+    "Blue LT",
+    "Blue DT",
+    "Indigo LT",
+    "Indigo DT",
+    "Purple LT",
+    "Purple DT"
+  ],
+  "tilePx": 32,
+  "columns": 7,
+  "width": 224,
+  "height": 224,
+  "roles": [
+    "background",
+    "error",
+    "error-container",
+    "inverse-on-surface",
+    "inverse-primary",
+    "inverse-surface",
+    "on-background",
+    "on-error",
+    "on-error-container",
+    "on-primary",
+    "on-primary-container",
+    "on-primary-fixed",
+    "on-primary-fixed-variant",
+    "on-secondary",
+    "on-secondary-container",
+    "on-secondary-fixed",
+    "on-secondary-fixed-variant",
+    "on-surface",
+    "on-surface-variant",
+    "on-tertiary",
+    "on-tertiary-container",
+    "on-tertiary-fixed",
+    "on-tertiary-fixed-variant",
+    "outline",
+    "outline-variant",
+    "primary",
+    "primary-container",
+    "primary-fixed",
+    "primary-fixed-dim",
+    "scrim",
+    "secondary",
+    "secondary-container",
+    "secondary-fixed",
+    "secondary-fixed-dim",
+    "shadow",
+    "surface",
+    "surface-bright",
+    "surface-container",
+    "surface-container-high",
+    "surface-container-highest",
+    "surface-container-low",
+    "surface-container-lowest",
+    "surface-dim",
+    "surface-tint",
+    "surface-variant",
+    "tertiary",
+    "tertiary-container",
+    "tertiary-fixed",
+    "tertiary-fixed-dim"
+  ],
+  "files": {
+    "light": {
+      "file": "color-light.png",
+      "sha256": "4497067f81ff0bcb21bb655e63fff6256903c65fee2ada30cd5364883fff6239"
+    },
+    "dark": {
+      "file": "color-dark.png",
+      "sha256": "ed9774fee9a1e934a3d3266be5f8c66d76f14100af7c760d541e0e0f1652e6eb"
+    },
+    "expressiveLight": {
+      "file": "color-expressive-light.png",
+      "sha256": "6dc578c9fe58046d7cfc0150b53242b990b20b146d2e1e377f6b0bd49ce04af2"
+    },
+    "kit-light": {
+      "file": "color-kit-light.png",
+      "sha256": "c97464595e176019503c471fb69dd6ae2f17c6c54ce9d2f0c928fd3e31771d39"
+    },
+    "kit-light-high-contrast": {
+      "file": "color-kit-light-high-contrast.png",
+      "sha256": "c360426ab2e87115e586ec87194ea8c942271a123bdbdcceb34642621043a2a0"
+    },
+    "kit-light-medium-contrast": {
+      "file": "color-kit-light-medium-contrast.png",
+      "sha256": "5aa433ecfb0ca3348d078767cf69caa635f9bda65f4e72b5cbf689d9b9056486"
+    },
+    "kit-dark": {
+      "file": "color-kit-dark.png",
+      "sha256": "ed9774fee9a1e934a3d3266be5f8c66d76f14100af7c760d541e0e0f1652e6eb"
+    },
+    "kit-dark-high-contrast": {
+      "file": "color-kit-dark-high-contrast.png",
+      "sha256": "b4c448550c51db33dd1789f391e047e3e98b1e9d37a1c676a78c363774f56208"
+    },
+    "kit-dark-medium-contrast": {
+      "file": "color-kit-dark-medium-contrast.png",
+      "sha256": "42c73f334a4c44cadc35526773d575cd687c53dd4c36dc8785fc6a591e75b099"
+    },
+    "kit-monochrome-lt": {
+      "file": "color-kit-monochrome-lt.png",
+      "sha256": "2104c54ffc3021e772742cec384982acb91ae3f420a2d54a4547de961dcfb9dc"
+    },
+    "kit-monochrome-dt": {
+      "file": "color-kit-monochrome-dt.png",
+      "sha256": "5e65d200ea9350445c42d1772f31616ade7fd442356f3f8c718054fdfdf3fe48"
+    },
+    "kit-pink-lt": {
+      "file": "color-kit-pink-lt.png",
+      "sha256": "eed9c7486793e295b99a637c957111d42cd173abedd49665e7457948eadd7a72"
+    },
+    "kit-pink-dt": {
+      "file": "color-kit-pink-dt.png",
+      "sha256": "badc76b6565ad02c79bca34f32226672e9393da8edba144de2e1a58ecf7f5a33"
+    },
+    "kit-rose-lt": {
+      "file": "color-kit-rose-lt.png",
+      "sha256": "1bf7b5a45e19f58b9a81d8f18a6414b41b8fd5e23013fd436f647c02f1d45df6"
+    },
+    "kit-rose-dt": {
+      "file": "color-kit-rose-dt.png",
+      "sha256": "6aaaec392d73f1f68b7174cc0db34baf58a3c51d468ea59a959646e3636af91c"
+    },
+    "kit-red-lt": {
+      "file": "color-kit-red-lt.png",
+      "sha256": "6c04ca150c800aacc8a726aa356fea963369c458bb1930a0133c7b3beda53da2"
+    },
+    "kit-red-dt": {
+      "file": "color-kit-red-dt.png",
+      "sha256": "f36352c6b719dd2fe44e81caf5ac753a7c2a309ae1acbf07224b870dc920418c"
+    },
+    "kit-orange-lt": {
+      "file": "color-kit-orange-lt.png",
+      "sha256": "c44c2d3c46a221133d92211305eda2912585e4eed5df5cd09b031223e05ac4da"
+    },
+    "kit-orange-dt": {
+      "file": "color-kit-orange-dt.png",
+      "sha256": "88a5b7ad025d72e9340dd60cf754a0d3e22c0c045c88d30b9afef4eff660085b"
+    },
+    "kit-yellow-lt": {
+      "file": "color-kit-yellow-lt.png",
+      "sha256": "45f583206cc8e75b4ffd7e70044b9cf7b633fe7f544aa4ed4197c5aea8ecce72"
+    },
+    "kit-yellow-dt": {
+      "file": "color-kit-yellow-dt.png",
+      "sha256": "82350e7f2112398a9c043ec405ac7fd2a6e7de0111783b1a6ab552d5c599ff75"
+    },
+    "kit-chartreuse-lt": {
+      "file": "color-kit-chartreuse-lt.png",
+      "sha256": "af2991ef85376ba437f9c8e329879967f84d53db816be7e400b4a62b56661fb8"
+    },
+    "kit-chartreuse-dt": {
+      "file": "color-kit-chartreuse-dt.png",
+      "sha256": "08bf0996ab36e299597d28bfeeda8c5c1304a92031bdce6958acf6e54a3fb6f5"
+    },
+    "kit-green-lt": {
+      "file": "color-kit-green-lt.png",
+      "sha256": "b72729cf93f689289c40356cc30b164c96522360af46bfb54fe602f70bc5461d"
+    },
+    "kit-green-dt": {
+      "file": "color-kit-green-dt.png",
+      "sha256": "8b434b54e245410340d6dc333c1910cb940050490fca4bc453b2c4aa1dce4f9e"
+    },
+    "kit-teal-lt": {
+      "file": "color-kit-teal-lt.png",
+      "sha256": "b48035516978a0fa5121ad0cef99d348cf0a855e82fd492cee3eef15cb18f597"
+    },
+    "kit-teal-dt": {
+      "file": "color-kit-teal-dt.png",
+      "sha256": "803a289c2d5b0b77412cb1c85500a9bd1abecd5e7afc32741fbaf757fbe5d74f"
+    },
+    "kit-cyan-lt": {
+      "file": "color-kit-cyan-lt.png",
+      "sha256": "7209c5ae69e9ccdf67fdbbdeed93df3559ff7667499692b65991084f32dc1d71"
+    },
+    "kit-cyan-dt": {
+      "file": "color-kit-cyan-dt.png",
+      "sha256": "8061c62eec7d2c8424736167e813be6d60a066010a9a0fb651c22c20818d2b5a"
+    },
+    "kit-blue-lt": {
+      "file": "color-kit-blue-lt.png",
+      "sha256": "7c3e2e4263c898a501232334881edf92fff730c515212d55acad035568761f9b"
+    },
+    "kit-blue-dt": {
+      "file": "color-kit-blue-dt.png",
+      "sha256": "61cb2e4bdbb508297d6312397026366e4bc9f6d6aeedeb23458bcab15ffa4ec2"
+    },
+    "kit-indigo-lt": {
+      "file": "color-kit-indigo-lt.png",
+      "sha256": "fd70188d68c4cb1d0ef5db3b2c8fd7ef67d196519f6909a2bf983603d0f2516d"
+    },
+    "kit-indigo-dt": {
+      "file": "color-kit-indigo-dt.png",
+      "sha256": "e8baaa5ee69deb7cb548dd32cd283d8fadffc9a17773ed41855c559b15201a4f"
+    },
+    "kit-purple-lt": {
+      "file": "color-kit-purple-lt.png",
+      "sha256": "e0e78cd49fe66d1d43179b96dc90f3c1998726395677db61946e3181143c6fe2"
+    },
+    "kit-purple-dt": {
+      "file": "color-kit-purple-dt.png",
+      "sha256": "ac473c0c4801e76d9c0b761436fbe882407fa821e9e5798f83ea6e2dae0778c5"
+    }
+  }
+}

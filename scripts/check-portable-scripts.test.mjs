@@ -144,7 +144,17 @@ describe('the repo itself (#3637)', () => {
       ? '../../../scripts/clean-dist.mjs'
       : '../../scripts/clean-dist.mjs';
 
-    expect(scripts.build.startsWith(`node ${helper} && `)).toBe(true);
+    if (dir === 'packages/themes/material3') {
+      expect(
+        scripts.build.startsWith(
+          'pnpm -F @astryxdesign/material3 build && ' +
+            'node scripts/generate-native-foundation.mjs --check && ' +
+            `node ${helper} && `,
+        ),
+      ).toBe(true);
+    } else {
+      expect(scripts.build.startsWith(`node ${helper} && `)).toBe(true);
+    }
     expect(devDependencies.rimraf).toBeUndefined();
   });
 

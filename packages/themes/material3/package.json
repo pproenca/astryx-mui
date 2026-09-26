@@ -72,7 +72,8 @@
     "LICENSE-APACHE-2.0"
   ],
   "scripts": {
-    "build": "node ../../../scripts/clean-dist.mjs && astryx theme build src/material3Theme.ts -o dist/theme.css --icons-specifier ./icons.mjs && tsup && node scripts/build-material-symbol.mjs && node scripts/build-material-badge.mjs && tsc --project tsconfig.build.json && node ../../../scripts/build-css.mjs --package theme-material3 && node ../../../scripts/build-css.mjs --package theme-material3-badge && node ../../../scripts/check-fully-specified.mjs"
+    "generate:foundation": "pnpm -F @astryxdesign/material3 build && node scripts/generate-native-foundation.mjs --write",
+    "build": "pnpm -F @astryxdesign/material3 build && node scripts/generate-native-foundation.mjs --check && node ../../../scripts/clean-dist.mjs && astryx theme build src/material3Theme.ts -o dist/theme.css --icons-specifier ./icons.mjs && tsup && node scripts/build-material-symbol.mjs && node scripts/build-material-badge.mjs && tsc --project tsconfig.build.json && node ../../../scripts/build-css.mjs --package theme-material3 && node ../../../scripts/build-css.mjs --package theme-material3-badge && node ../../../scripts/check-fully-specified.mjs"
   },
   "peerDependencies": {
     "@astryxdesign/core": "0.6.3",
@@ -81,12 +82,14 @@
   },
   "devDependencies": {
     "@astryxdesign/cli": "0.6.3",
+    "@astryxdesign/material3": "workspace:*",
     "@babel/core": "catalog:",
     "@babel/plugin-transform-modules-commonjs": "7.29.7",
     "@babel/preset-react": "catalog:",
     "@babel/preset-typescript": "catalog:",
     "@stylexjs/babel-plugin": "catalog:",
     "@stylexjs/stylex": "catalog:",
-    "@testing-library/react": "catalog:"
+    "@testing-library/react": "catalog:",
+    "prettier": "catalog:"
   }
 }

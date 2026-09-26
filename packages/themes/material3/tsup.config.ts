@@ -18,6 +18,7 @@ export default defineConfig([
     dts: false,
     clean: false,
     external,
+    noExternal: ['@astryxdesign/material3'],
   },
   {
     entry: {icons: 'src/material3Icons.tsx'},

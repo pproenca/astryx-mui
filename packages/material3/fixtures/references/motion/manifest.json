@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "source": "compose/animation/animation-core/src/commonMain/kotlin/androidx/compose/animation/core/SpringSimulation.kt",
+  "sourceSha256": "78ccee541bba54e71666376819ec8b5e961421f0ea21ec34965da493827bf721",
+  "constantsSource": "compose/animation/animation-core/src/commonMain/kotlin/androidx/compose/animation/core/VectorizedAnimationSpec.kt",
+  "constantsSha256": "2a3857a7620fcb108972c8886d18a1620fc54247216db6070750c2755c8c9cf9",
+  "compiler": "kotlinc-jvm 2.4.20",
+  "runtime": "kotlinc-jvm 2.4.20; openjdk version \"26.0.2.1\" 2026-08-18",
+  "files": {
+    "standard-fast-spatial": {
+      "file": "traces/standard-fast-spatial.json",
+      "sha256": "9354db205197fba8897e94022f62a4e6706f4106e3b09e5289ec78755647f400",
+      "settledAtMs": 980
+    },
+    "standard-fast-effects": {
+      "file": "traces/standard-fast-effects.json",
+      "sha256": "68d1f491f2f55dcac7422e4d28e984a5a7951b3229e1afe2bd40a95dfde0c026",
+      "settledAtMs": 880
+    },
+    "standard-default-spatial": {
+      "file": "traces/standard-default-spatial.json",
+      "sha256": "41f063d7baa7402846b0405766dea5929130d7bc3607759a1d8d48ced183a358",
+      "settledAtMs": 1120
+    },
+    "standard-default-effects": {
+      "file": "traces/standard-default-effects.json",
+      "sha256": "eec50c3ed9a37e7c237550851ac87ea40ea3342849dd2aa7427ab6871524ce7d",
+      "settledAtMs": 1000
+    },
+    "standard-slow-spatial": {
+      "file": "traces/standard-slow-spatial.json",
+      "sha256": "97f9e2af391d57d1828d1df0509e153f43f491f76bd9160de7900b54f0375d65",
+      "settledAtMs": 1380
+    },
+    "standard-slow-effects": {
+      "file": "traces/standard-slow-effects.json",
+      "sha256": "cdd73ad18cd7f526c916e93c7a0fca5fb20b4e0d7ff8ebd266fffb368406afb7",
+      "settledAtMs": 1160
+    },
+    "expressive-fast-spatial": {
+      "file": "traces/expressive-fast-spatial.json",
+      "sha256": "d049a20250c8ee8a9eaa37b90d4f15398fb6ad0036823df6f3f1c7000cc94360",
+      "settledAtMs": 1360
+    },
+    "expressive-fast-effects": {
+      "file": "traces/expressive-fast-effects.json",
+      "sha256": "68d1f491f2f55dcac7422e4d28e984a5a7951b3229e1afe2bd40a95dfde0c026",
+      "settledAtMs": 880
+    },
+    "expressive-default-spatial": {
+      "file": "traces/expressive-default-spatial.json",
+      "sha256": "408bcef9903dd655f95d5b91f949bdd6094bca7a9faaf1d51a773cf7549cbce1",
+      "settledAtMs": 1380
+    },
+    "expressive-default-effects": {
+      "file": "traces/expressive-default-effects.json",
+      "sha256": "eec50c3ed9a37e7c237550851ac87ea40ea3342849dd2aa7427ab6871524ce7d",
+      "settledAtMs": 1000
+    },
+    "expressive-slow-spatial": {
+      "file": "traces/expressive-slow-spatial.json",
+      "sha256": "bc3ec881c2dbdc66c7f0d57af763a2c398640259c889411eb13c52b364e8dd3f",
+      "settledAtMs": 1660
+    },
+    "expressive-slow-effects": {
+      "file": "traces/expressive-slow-effects.json",
+      "sha256": "cdd73ad18cd7f526c916e93c7a0fca5fb20b4e0d7ff8ebd266fffb368406afb7",
+      "settledAtMs": 1160
+    }
+  }
+}

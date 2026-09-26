@@ -1,9 +1,19 @@
 # Third-party Material data
 
 Paths below refer to this package's source tree. `astryx theme add material3`
-places the copied source files directly in the generated theme directory; the
-same filenames and notices apply there. The gallery font is a repository QA
-fixture and is not part of that scaffold.
+copies the theme's imported source files, this notice, and the Apache license
+into the generated theme directory. Source fixtures that are not imported stay
+in this package. The gallery font is a repository QA fixture and is not part of
+that scaffold.
+
+`src/material3Foundation.generated.ts` is a checked light/dark compatibility
+projection from the canonical native Material 3 graph. Its values include
+AndroidX Compose Material 3 foundation data at commit
+[`a095da93f8e98dea8748ceed79ea8427aade245f`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f),
+with the supported browser CSS role names and documented shadow gap from the
+Material Web commit below. Copyright The Android Open Source Project and Google
+LLC. Licensed under Apache-2.0; the included license text applies. The theme
+build checks this generated projection against the native graph before use.
 
 `src/material3ColorSource.json`, `src/material3TypographySource.json`, and
 `src/material3ShapeSource.json`, `src/material3MotionSource.json`, and

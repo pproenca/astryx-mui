@@ -7,7 +7,8 @@ import os from 'node:os';
 import path from 'node:path';
 import {compareTrace, measurePerformance} from '../measurements.mjs';
 import {flowMetrics, excelTime, transition} from '../flow.mjs';
-import {ready} from '../model.mjs';
+import {ready, table} from '../model.mjs';
+import {supersedeReview} from '../workflow.mjs';
 import {digest, loadCompose, declarations} from '../compose.mjs';
 import {preparationInputs, preparationStatus} from '../preparation.mjs';
 import {coveragePlan} from '../audit.mjs';
@@ -49,6 +50,27 @@ function workbook(tables) {
   );
   return {worksheets: {getItem: name => sheets[name]}};
 }
+test('a revised approved head retains the human decision as history and requires new QA', () => {
+  const wb = workbook({
+    'QA reviews': [
+      {
+        'Task ID': 'foundation',
+        'Verified SHA': 'old-head',
+        Decision: 'Approved',
+        Notes: 'Human decision: approved at old-head',
+      },
+    ],
+  });
+  supersedeReview(
+    wb,
+    {Status: 'Approved', 'Task ID': 'foundation', 'Verified SHA': 'old-head'},
+    'new-head',
+  );
+  const review = table(wb, 'QA reviews')[0];
+  assert.equal(review.Decision, 'Superseded');
+  assert.match(review.Notes, /Human decision: approved at old-head/);
+  assert.match(review.Notes, /Superseded by verified revision new-head/);
+});
 const trace = () => ({
   producer: {
     kind: 'upstream',

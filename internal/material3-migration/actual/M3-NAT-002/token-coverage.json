@@ -1,0 +1,499 @@
+{
+  "schemaVersion": 1,
+  "taskId": "M3-NAT-002",
+  "evidenceRevision": "c9d375ff2bbfd197b36ba683462e206f20ed664b",
+  "tokens": [
+    {
+      "id": "TM-01695",
+      "name": "--md-sys-color-background"
+    },
+    {
+      "id": "TM-01696",
+      "name": "--md-sys-color-error"
+    },
+    {
+      "id": "TM-01697",
+      "name": "--md-sys-color-error-container"
+    },
+    {
+      "id": "TM-01698",
+      "name": "--md-sys-color-inverse-on-surface"
+    },
+    {
+      "id": "TM-01699",
+      "name": "--md-sys-color-inverse-primary"
+    },
+    {
+      "id": "TM-01700",
+      "name": "--md-sys-color-inverse-surface"
+    },
+    {
+      "id": "TM-01701",
+      "name": "--md-sys-color-on-background"
+    },
+    {
+      "id": "TM-01702",
+      "name": "--md-sys-color-on-error"
+    },
+    {
+      "id": "TM-01703",
+      "name": "--md-sys-color-on-error-container"
+    },
+    {
+      "id": "TM-01704",
+      "name": "--md-sys-color-on-primary"
+    },
+    {
+      "id": "TM-01705",
+      "name": "--md-sys-color-on-primary-container"
+    },
+    {
+      "id": "TM-01706",
+      "name": "--md-sys-color-on-primary-fixed"
+    },
+    {
+      "id": "TM-01707",
+      "name": "--md-sys-color-on-primary-fixed-variant"
+    },
+    {
+      "id": "TM-01708",
+      "name": "--md-sys-color-on-secondary"
+    },
+    {
+      "id": "TM-01709",
+      "name": "--md-sys-color-on-secondary-container"
+    },
+    {
+      "id": "TM-01710",
+      "name": "--md-sys-color-on-secondary-fixed"
+    },
+    {
+      "id": "TM-01711",
+      "name": "--md-sys-color-on-secondary-fixed-variant"
+    },
+    {
+      "id": "TM-01712",
+      "name": "--md-sys-color-on-surface"
+    },
+    {
+      "id": "TM-01713",
+      "name": "--md-sys-color-on-surface-variant"
+    },
+    {
+      "id": "TM-01714",
+      "name": "--md-sys-color-on-tertiary"
+    },
+    {
+      "id": "TM-01715",
+      "name": "--md-sys-color-on-tertiary-container"
+    },
+    {
+      "id": "TM-01716",
+      "name": "--md-sys-color-on-tertiary-fixed"
+    },
+    {
+      "id": "TM-01717",
+      "name": "--md-sys-color-on-tertiary-fixed-variant"
+    },
+    {
+      "id": "TM-01718",
+      "name": "--md-sys-color-outline"
+    },
+    {
+      "id": "TM-01719",
+      "name": "--md-sys-color-outline-variant"
+    },
+    {
+      "id": "TM-01720",
+      "name": "--md-sys-color-primary"
+    },
+    {
+      "id": "TM-01721",
+      "name": "--md-sys-color-primary-container"
+    },
+    {
+      "id": "TM-01722",
+      "name": "--md-sys-color-primary-fixed"
+    },
+    {
+      "id": "TM-01723",
+      "name": "--md-sys-color-primary-fixed-dim"
+    },
+    {
+      "id": "TM-01724",
+      "name": "--md-sys-color-scrim"
+    },
+    {
+      "id": "TM-01725",
+      "name": "--md-sys-color-secondary"
+    },
+    {
+      "id": "TM-01726",
+      "name": "--md-sys-color-secondary-container"
+    },
+    {
+      "id": "TM-01727",
+      "name": "--md-sys-color-secondary-fixed"
+    },
+    {
+      "id": "TM-01728",
+      "name": "--md-sys-color-secondary-fixed-dim"
+    },
+    {
+      "id": "TM-01729",
+      "name": "--md-sys-color-shadow"
+    },
+    {
+      "id": "TM-01730",
+      "name": "--md-sys-color-surface"
+    },
+    {
+      "id": "TM-01731",
+      "name": "--md-sys-color-surface-bright"
+    },
+    {
+      "id": "TM-01732",
+      "name": "--md-sys-color-surface-container"
+    },
+    {
+      "id": "TM-01733",
+      "name": "--md-sys-color-surface-container-high"
+    },
+    {
+      "id": "TM-01734",
+      "name": "--md-sys-color-surface-container-highest"
+    },
+    {
+      "id": "TM-01735",
+      "name": "--md-sys-color-surface-container-low"
+    },
+    {
+      "id": "TM-01736",
+      "name": "--md-sys-color-surface-container-lowest"
+    },
+    {
+      "id": "TM-01737",
+      "name": "--md-sys-color-surface-dim"
+    },
+    {
+      "id": "TM-01738",
+      "name": "--md-sys-color-surface-tint"
+    },
+    {
+      "id": "TM-01739",
+      "name": "--md-sys-color-surface-variant"
+    },
+    {
+      "id": "TM-01740",
+      "name": "--md-sys-color-tertiary"
+    },
+    {
+      "id": "TM-01741",
+      "name": "--md-sys-color-tertiary-container"
+    },
+    {
+      "id": "TM-01742",
+      "name": "--md-sys-color-tertiary-fixed"
+    },
+    {
+      "id": "TM-01743",
+      "name": "--md-sys-color-tertiary-fixed-dim"
+    },
+    {
+      "id": "TM-01488",
+      "name": "--md-ref-typeface-brand"
+    },
+    {
+      "id": "TM-01489",
+      "name": "--md-ref-typeface-plain"
+    },
+    {
+      "id": "TM-01490",
+      "name": "--md-ref-typeface-weight-bold"
+    },
+    {
+      "id": "TM-01491",
+      "name": "--md-ref-typeface-weight-medium"
+    },
+    {
+      "id": "TM-01492",
+      "name": "--md-ref-typeface-weight-regular"
+    },
+    {
+      "id": "TM-01763",
+      "name": "--md-sys-typescale-display-large-font"
+    },
+    {
+      "id": "TM-01764",
+      "name": "--md-sys-typescale-display-large-line-height"
+    },
+    {
+      "id": "TM-01765",
+      "name": "--md-sys-typescale-display-large-size"
+    },
+    {
+      "id": "TM-01766",
+      "name": "--md-sys-typescale-display-large-weight"
+    },
+    {
+      "id": "TM-01767",
+      "name": "--md-sys-typescale-display-medium-font"
+    },
+    {
+      "id": "TM-01768",
+      "name": "--md-sys-typescale-display-medium-line-height"
+    },
+    {
+      "id": "TM-01769",
+      "name": "--md-sys-typescale-display-medium-size"
+    },
+    {
+      "id": "TM-01770",
+      "name": "--md-sys-typescale-display-medium-weight"
+    },
+    {
+      "id": "TM-01771",
+      "name": "--md-sys-typescale-display-small-font"
+    },
+    {
+      "id": "TM-01772",
+      "name": "--md-sys-typescale-display-small-line-height"
+    },
+    {
+      "id": "TM-01773",
+      "name": "--md-sys-typescale-display-small-size"
+    },
+    {
+      "id": "TM-01774",
+      "name": "--md-sys-typescale-display-small-weight"
+    },
+    {
+      "id": "TM-01775",
+      "name": "--md-sys-typescale-headline-large-font"
+    },
+    {
+      "id": "TM-01776",
+      "name": "--md-sys-typescale-headline-large-line-height"
+    },
+    {
+      "id": "TM-01777",
+      "name": "--md-sys-typescale-headline-large-size"
+    },
+    {
+      "id": "TM-01778",
+      "name": "--md-sys-typescale-headline-large-weight"
+    },
+    {
+      "id": "TM-01779",
+      "name": "--md-sys-typescale-headline-medium-font"
+    },
+    {
+      "id": "TM-01780",
+      "name": "--md-sys-typescale-headline-medium-line-height"
+    },
+    {
+      "id": "TM-01781",
+      "name": "--md-sys-typescale-headline-medium-size"
+    },
+    {
+      "id": "TM-01782",
+      "name": "--md-sys-typescale-headline-medium-weight"
+    },
+    {
+      "id": "TM-01783",
+      "name": "--md-sys-typescale-headline-small-font"
+    },
+    {
+      "id": "TM-01784",
+      "name": "--md-sys-typescale-headline-small-line-height"
+    },
+    {
+      "id": "TM-01785",
+      "name": "--md-sys-typescale-headline-small-size"
+    },
+    {
+      "id": "TM-01786",
+      "name": "--md-sys-typescale-headline-small-weight"
+    },
+    {
+      "id": "TM-01801",
+      "name": "--md-sys-typescale-title-large-font"
+    },
+    {
+      "id": "TM-01802",
+      "name": "--md-sys-typescale-title-large-line-height"
+    },
+    {
+      "id": "TM-01803",
+      "name": "--md-sys-typescale-title-large-size"
+    },
+    {
+      "id": "TM-01804",
+      "name": "--md-sys-typescale-title-large-weight"
+    },
+    {
+      "id": "TM-01805",
+      "name": "--md-sys-typescale-title-medium-font"
+    },
+    {
+      "id": "TM-01806",
+      "name": "--md-sys-typescale-title-medium-line-height"
+    },
+    {
+      "id": "TM-01807",
+      "name": "--md-sys-typescale-title-medium-size"
+    },
+    {
+      "id": "TM-01808",
+      "name": "--md-sys-typescale-title-medium-weight"
+    },
+    {
+      "id": "TM-01809",
+      "name": "--md-sys-typescale-title-small-font"
+    },
+    {
+      "id": "TM-01810",
+      "name": "--md-sys-typescale-title-small-line-height"
+    },
+    {
+      "id": "TM-01811",
+      "name": "--md-sys-typescale-title-small-size"
+    },
+    {
+      "id": "TM-01812",
+      "name": "--md-sys-typescale-title-small-weight"
+    },
+    {
+      "id": "TM-01751",
+      "name": "--md-sys-typescale-body-large-font"
+    },
+    {
+      "id": "TM-01752",
+      "name": "--md-sys-typescale-body-large-line-height"
+    },
+    {
+      "id": "TM-01753",
+      "name": "--md-sys-typescale-body-large-size"
+    },
+    {
+      "id": "TM-01754",
+      "name": "--md-sys-typescale-body-large-weight"
+    },
+    {
+      "id": "TM-01755",
+      "name": "--md-sys-typescale-body-medium-font"
+    },
+    {
+      "id": "TM-01756",
+      "name": "--md-sys-typescale-body-medium-line-height"
+    },
+    {
+      "id": "TM-01757",
+      "name": "--md-sys-typescale-body-medium-size"
+    },
+    {
+      "id": "TM-01758",
+      "name": "--md-sys-typescale-body-medium-weight"
+    },
+    {
+      "id": "TM-01759",
+      "name": "--md-sys-typescale-body-small-font"
+    },
+    {
+      "id": "TM-01760",
+      "name": "--md-sys-typescale-body-small-line-height"
+    },
+    {
+      "id": "TM-01761",
+      "name": "--md-sys-typescale-body-small-size"
+    },
+    {
+      "id": "TM-01762",
+      "name": "--md-sys-typescale-body-small-weight"
+    },
+    {
+      "id": "TM-01787",
+      "name": "--md-sys-typescale-label-large-font"
+    },
+    {
+      "id": "TM-01788",
+      "name": "--md-sys-typescale-label-large-line-height"
+    },
+    {
+      "id": "TM-01789",
+      "name": "--md-sys-typescale-label-large-size"
+    },
+    {
+      "id": "TM-01790",
+      "name": "--md-sys-typescale-label-large-weight"
+    },
+    {
+      "id": "TM-01792",
+      "name": "--md-sys-typescale-label-medium-font"
+    },
+    {
+      "id": "TM-01793",
+      "name": "--md-sys-typescale-label-medium-line-height"
+    },
+    {
+      "id": "TM-01794",
+      "name": "--md-sys-typescale-label-medium-size"
+    },
+    {
+      "id": "TM-01795",
+      "name": "--md-sys-typescale-label-medium-weight"
+    },
+    {
+      "id": "TM-01797",
+      "name": "--md-sys-typescale-label-small-font"
+    },
+    {
+      "id": "TM-01798",
+      "name": "--md-sys-typescale-label-small-line-height"
+    },
+    {
+      "id": "TM-01799",
+      "name": "--md-sys-typescale-label-small-size"
+    },
+    {
+      "id": "TM-01800",
+      "name": "--md-sys-typescale-label-small-weight"
+    },
+    {
+      "id": "TM-01791",
+      "name": "--md-sys-typescale-label-large-weight-prominent"
+    },
+    {
+      "id": "TM-01796",
+      "name": "--md-sys-typescale-label-medium-weight-prominent"
+    },
+    {
+      "id": "TM-01744",
+      "name": "--md-sys-shape-corner-extra-large"
+    },
+    {
+      "id": "TM-01745",
+      "name": "--md-sys-shape-corner-extra-small"
+    },
+    {
+      "id": "TM-01746",
+      "name": "--md-sys-shape-corner-full"
+    },
+    {
+      "id": "TM-01747",
+      "name": "--md-sys-shape-corner-large"
+    },
+    {
+      "id": "TM-01748",
+      "name": "--md-sys-shape-corner-medium"
+    },
+    {
+      "id": "TM-01749",
+      "name": "--md-sys-shape-corner-none"
+    },
+    {
+      "id": "TM-01750",
+      "name": "--md-sys-shape-corner-small"
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "figmaSha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+  "sourceFiles": {
+    "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Button.kt": "9095ad12e5b26a20bf0cdc53ba01f54b7c8ca41ba4ece933d578ef28a2d97240",
+    "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/TextFieldDefaults.kt": "862b2e5705f879402c62c6dc30844ff2e40b0dcbcf56b868c0f84bffe3d32a41",
+    "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/TextField.kt": "00ed832c27f1dd8f2f6a57b9f8ecaf13be43e08cf96c79ca5b989a5fe5855ceb",
+    "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/internal/TextFieldImpl.kt": "6490160723b2e07790cbcae86db014b494aa45b4f5f13402ebfc5597d94b2253",
+    "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/ComposeMaterial3Flags.kt": "4218cb959d0bfc617dd512ba89a223ed30546b1383011fd4dd0ba6c4adb12d40",
+    "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/PrecisionPointer.kt": "9c6d2e2327996c9e4b6bee1333a593923d2bc5856ffc48836a81ad2ca792fa19",
+    "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ButtonSmallTokens.kt": "b69bac18f0d6cb6682e8b84f551105cd0d2d485170ff7b47334c78440977976a",
+    "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/BaselineButtonTokens.kt": "d05d10a4ccde921fbec2f151c5e333d1ceb947a626dc3021ac1c302873fb447f"
+  },
+  "kitNodes": {
+    "Button": "57994:2227",
+    "Text field": "52798:24373"
+  },
+  "cases": {
+    "light": {
+      "theme": {
+        "surface": "#fef7ff",
+        "surfaceContainerLow": "#f7f2fa",
+        "primary": "#6750a4",
+        "onPrimary": "#ffffff",
+        "onSurface": "#1d1b20",
+        "onSurfaceVariant": "#49454f",
+        "outline": "#79747e"
+      },
+      "geometry": {
+        "baselineButton": {
+          "minWidth": 58,
+          "height": 40,
+          "inline": 24,
+          "block": 8,
+          "icon": 18
+        },
+        "expressiveSmallButton": {
+          "minWidth": 58,
+          "height": 40,
+          "inline": 16,
+          "block": 10,
+          "icon": 20,
+          "iconLabelGap": 8
+        },
+        "textField": {
+          "minWidth": 280,
+          "minHeight": 56,
+          "inline": 16,
+          "withLabelBlock": 8,
+          "withoutLabelBlock": 16
+        },
+        "precisionPointerOptIn": {
+          "enabledByDefault": false,
+          "smallButtonHeight": 36,
+          "block": 8,
+          "iconSide": 12
+        }
+      }
+    },
+    "dark": {
+      "theme": {
+        "surface": "#141218",
+        "surfaceContainerLow": "#1d1b20",
+        "primary": "#d0bcff",
+        "onPrimary": "#381e72",
+        "onSurface": "#e6e0e9",
+        "onSurfaceVariant": "#cac4d0",
+        "outline": "#938f99"
+      },
+      "geometry": {
+        "baselineButton": {
+          "minWidth": 58,
+          "height": 40,
+          "inline": 24,
+          "block": 8,
+          "icon": 18
+        },
+        "expressiveSmallButton": {
+          "minWidth": 58,
+          "height": 40,
+          "inline": 16,
+          "block": 10,
+          "icon": 20,
+          "iconLabelGap": 8
+        },
+        "textField": {
+          "minWidth": 280,
+          "minHeight": 56,
+          "inline": 16,
+          "withLabelBlock": 8,
+          "withoutLabelBlock": 16
+        },
+        "precisionPointerOptIn": {
+          "enabledByDefault": false,
+          "smallButtonHeight": 36,
+          "block": 8,
+          "iconSide": 12
+        }
+      }
+    }
+  },
+  "browser": "Chrome 153.0.8010.53",
+  "os": "darwin 27.0.0",
+  "dpr": 1,
+  "viewport": {
+    "width": 1180,
+    "height": 640
+  },
+  "variantCaptures": {
+    "narrowLight": {
+      "file": "spacing-narrow-light.png",
+      "viewport": {
+        "width": 390,
+        "height": 1100
+      },
+      "direction": "ltr"
+    },
+    "rtlDark": {
+      "file": "spacing-rtl-dark.png",
+      "viewport": {
+        "width": 1180,
+        "height": 640
+      },
+      "direction": "rtl"
+    }
+  },
+  "font": {
+    "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+    "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134"
+  },
+  "files": {
+    "spacing-light.png": "b1c884485e2026701ee13b758a17a77e24cb031625d4264b7ba2f99d6e9d3170",
+    "spacing-narrow-light.png": "4e40042d0407723d65e34adf7c360f6fd1b58d47b28918d452f647be5b15715f",
+    "spacing-dark.png": "8806585c80a2c0b7e894040578a0832dd555fb6392053d91ddba4bd87dc0eb41",
+    "spacing-rtl-dark.png": "f4f818a5545135bac002c9f9fe4d410583d7e2af4c567712f3603e6f3837da73"
+  }
+}

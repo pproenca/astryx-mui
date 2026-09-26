@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "upstreamSource": "compose/animation/animation-core/src/commonMain/kotlin/androidx/compose/animation/core/SpringSimulation.kt",
+  "upstreamSourceSha256": "78ccee541bba54e71666376819ec8b5e961421f0ea21ec34965da493827bf721",
+  "traceHashes": {
+    "standard-default-spatial": "41f063d7baa7402846b0405766dea5929130d7bc3607759a1d8d48ced183a358",
+    "expressive-default-spatial": "408bcef9903dd655f95d5b91f949bdd6094bca7a9faaf1d51a773cf7549cbce1"
+  },
+  "inputs": {
+    "initialPosition": 0,
+    "initialVelocity": 0,
+    "changes": [
+      {
+        "timeMs": 0,
+        "target": 100
+      },
+      {
+        "timeMs": 120,
+        "target": 40
+      },
+      {
+        "timeMs": 260,
+        "target": 0
+      },
+      {
+        "timeMs": 600,
+        "target": -100
+      }
+    ],
+    "dampingRatio": 0.9,
+    "stiffness": 700,
+    "stepMs": 20,
+    "endMs": 3000,
+    "settling": {
+      "position": 0.01,
+      "velocity": 0.01
+    }
+  },
+  "settledAtMs": {
+    "standard-default-spatial": 1120,
+    "expressive-default-spatial": 1380
+  },
+  "times": [
+    0,
+    120,
+    260,
+    600,
+    900,
+    1380
+  ],
+  "browser": "Chrome 153.0.8010.53",
+  "os": "darwin 27.0.0",
+  "ffmpeg": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+  "dpr": 1,
+  "sheetViewport": {
+    "width": 1180,
+    "height": 520
+  },
+  "videoViewport": {
+    "width": 960,
+    "height": 360
+  },
+  "fps": 50,
+  "font": {
+    "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+    "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134"
+  },
+  "files": {
+    "motion-light.png": "bce2b1a730268c2376635b074dd5b78c4ff7df41ae974e9db3e0c3d4ffcd833c",
+    "motion-dark.png": "01e0b6a80febb4997e107fcab88f12f832ca20f7b8f1de594cb9d185ad53f6e0",
+    "compose-default-spatial.mp4": "21fc9c41fe818d9be0d61c5e54635b1292d16b2cd69a1162357c7a2074a2fd03"
+  }
+}

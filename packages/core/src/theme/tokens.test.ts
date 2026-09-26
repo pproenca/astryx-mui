@@ -117,6 +117,20 @@ describe('resolveThemeToken', () => {
 });
 
 describe('resolveThemeTokens — reference resolution', () => {
+  it('follows enrolled local roles for portable aliases without exporting them', () => {
+    const theme = defineTheme({
+      name: 'local-alias',
+      localTokens: {'--family-accent': ['#112233', '#445566']},
+      tokens: {'--color-accent': 'var(--family-accent)'},
+    });
+    const light = resolveThemeTokens(theme, {mode: 'light'});
+    const dark = resolveThemeTokens(theme, {mode: 'dark'});
+    expect(light['--color-accent']).toBe('#112233');
+    expect(dark['--color-accent']).toBe('#445566');
+    expect(light).not.toHaveProperty('--family-accent');
+    expect(dark).not.toHaveProperty('--family-accent');
+  });
+
   it('resolves a token that references another token to a raw value', () => {
     const theme = defineTheme({
       name: 'ref',

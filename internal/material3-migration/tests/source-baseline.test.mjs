@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Versioned Compose-first decision, policy and 53 source scenarios. @output Source authority and foundation matrix regression. @position Migration-only source baseline test. */
+/** @input Versioned Compose-first decision, policy and 59 source scenarios. @output Source authority and foundation matrix regression. @position Migration-only source baseline test. */
 import {test} from 'vitest';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -19,8 +19,8 @@ test('versioned source decision covers the full pinned foundation matrix', () =>
   assert.equal(source.compose.commit, policy.androidxCommit);
   assert.equal(source.figma.sha256, policy.figmaSha256);
   assert.equal(source.web.commit, policy.materialWebCommit);
-  assert.equal(source.scenarios.length, 53);
-  assert.equal(new Set(source.scenarios.map(item => item.id)).size, 53);
+  assert.equal(source.scenarios.length, 59);
+  assert.equal(new Set(source.scenarios.map(item => item.id)).size, 59);
   assert.equal(
     source.scenarios.find(item => item.id === 'spacing-density-narrowLight')
       .environment.viewport.width,
@@ -54,7 +54,7 @@ test('versioned source decision covers the full pinned foundation matrix', () =>
   );
 });
 
-test('every selected source image is pinned, while native thresholds remain explicitly unapproved', () => {
+test('every selected source image and approved native limit is pinned', () => {
   for (const item of source.scenarios) {
     const image = readFileSync(
       new URL(`../../../${item.baseline}`, import.meta.url),
@@ -68,9 +68,15 @@ test('every selected source image is pinned, while native thresholds remain expl
   assert.equal(source.motion.applicable, true);
   assert.equal(source.motion.numeric.applicable, true);
   assert.equal(source.motion.numeric.traces.length, 2);
+  const approval = 'human:pproenca:2026-09-26:M3-NAT-002-foundation-limits';
   assert.ok(
-    source.motion.numeric.traces.every(item => item.approvalReference === null),
+    source.motion.numeric.traces.every(item => item.approvalReference === approval),
   );
-  assert.equal(source.performance[0].approvalReference, null);
-  assert.match(source.performance[0].status, /proposed/);
+  assert.equal(source.performance[0].approvalReference, approval);
+  assert.match(source.performance[0].status, /approved/);
+  assert.equal(source.performance[0].maxInputLatencyMs, 100);
+  assert.equal(source.performance[0].frameBudgetMs, 20);
+  assert.equal(source.performance[0].maxLongFrameRatio, 0.05);
+  assert.equal(source.performance[0].minInputSamples, 30);
+  assert.equal(source.performance[0].minFrameSamples, 300);
 });

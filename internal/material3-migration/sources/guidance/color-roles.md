@@ -29,7 +29,7 @@ especially under dynamic color and user-controlled contrast.
   between light and dark themes.
 
 These are usage rules observed in the rendered guidance. Exact role values and
-the four kit/Web light-scheme differences are recorded in
-[foundation reconciliation](../reconciliation.md); the supplied Figma kit
-governs those values. A rendered page observation does not prove native color
-contrast or pixels.
+the Compose, kit, and Web light-scheme differences are recorded in
+[foundation reconciliation](../reconciliation.md). Pinned Compose governs
+overlapping values; the kit fills documented gaps. A rendered page observation
+does not prove native color contrast or pixels.

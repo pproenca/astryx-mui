@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "figmaSha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+  "webCommit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+  "sourceFiles": {
+    "Ripple": {
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Ripple.kt",
+      "sha256": "4b53b7ffb01ff48014cdc2f6af216c97f6463d5e25343d9db699ea4abb90bc00"
+    },
+    "Surface": {
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Surface.kt",
+      "sha256": "b82221978167354d62462943bade5838beb4724a71155209d75debc6003bd9e2"
+    },
+    "Button": {
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Button.kt",
+      "sha256": "9095ad12e5b26a20bf0cdc53ba01f54b7c8ca41ba4ece933d578ef28a2d97240"
+    }
+  },
+  "stateOpacity": {
+    "hover": 0.08,
+    "focus": 0.1,
+    "pressed": 0.1,
+    "dragged": 0.16
+  },
+  "disabled": {
+    "containerOpacity": 0.1,
+    "labelOpacity": 0.38
+  },
+  "cases": {
+    "light": {
+      "theme": {
+        "surface": "#fef7ff",
+        "backdrop": "#ffffff",
+        "onSurface": "#1d1b20",
+        "onSurfaceVariant": "#49454f",
+        "primary": "#6750a4",
+        "onPrimary": "#ffffff"
+      },
+      "generic": [
+        {
+          "name": "Rest",
+          "alpha": 0,
+          "fill": "#fef7ff"
+        },
+        {
+          "name": "hover",
+          "alpha": 0.08,
+          "fill": "#ece5ed"
+        },
+        {
+          "name": "focus",
+          "alpha": 0.1,
+          "fill": "#e8e1e9"
+        },
+        {
+          "name": "pressed",
+          "alpha": 0.1,
+          "fill": "#e8e1e9"
+        },
+        {
+          "name": "dragged",
+          "alpha": 0.16,
+          "fill": "#dad4db"
+        }
+      ],
+      "button": [
+        {
+          "name": "Rest",
+          "alpha": 0,
+          "fill": "#6750a4",
+          "label": "#ffffff"
+        },
+        {
+          "name": "hover",
+          "alpha": 0.08,
+          "fill": "#735eab",
+          "label": "#ffffff"
+        },
+        {
+          "name": "focus",
+          "alpha": 0.1,
+          "fill": "#7662ad",
+          "label": "#ffffff"
+        },
+        {
+          "name": "pressed",
+          "alpha": 0.1,
+          "fill": "#7662ad",
+          "label": "#ffffff"
+        },
+        {
+          "name": "Disabled",
+          "alpha": null,
+          "fill": "#e8e1e9",
+          "label": "#aca6ae"
+        }
+      ],
+      "kitBindings": {
+        "State Layers/On Primary/Opacity-08": "55001:313",
+        "State Layers/On Primary/Opacity-10": "55001:314",
+        "State Layers/On Primary/Opacity-16": "55001:315",
+        "State Layers/On Surface/Opacity-08": "55001:406",
+        "State Layers/On Surface/Opacity-10": "55001:407",
+        "State Layers/On Surface/Opacity-16": "55001:408"
+      }
+    },
+    "dark": {
+      "theme": {
+        "surface": "#141218",
+        "backdrop": "#0f0d13",
+        "onSurface": "#e6e0e9",
+        "onSurfaceVariant": "#cac4d0",
+        "primary": "#d0bcff",
+        "onPrimary": "#381e72"
+      },
+      "generic": [
+        {
+          "name": "Rest",
+          "alpha": 0,
+          "fill": "#141218"
+        },
+        {
+          "name": "hover",
+          "alpha": 0.08,
+          "fill": "#252229"
+        },
+        {
+          "name": "focus",
+          "alpha": 0.1,
+          "fill": "#29272d"
+        },
+        {
+          "name": "pressed",
+          "alpha": 0.1,
+          "fill": "#29272d"
+        },
+        {
+          "name": "dragged",
+          "alpha": 0.16,
+          "fill": "#363339"
+        }
+      ],
+      "button": [
+        {
+          "name": "Rest",
+          "alpha": 0,
+          "fill": "#d0bcff",
+          "label": "#381e72"
+        },
+        {
+          "name": "hover",
+          "alpha": 0.08,
+          "fill": "#c4aff4",
+          "label": "#381e72"
+        },
+        {
+          "name": "focus",
+          "alpha": 0.1,
+          "fill": "#c1acf1",
+          "label": "#381e72"
+        },
+        {
+          "name": "pressed",
+          "alpha": 0.1,
+          "fill": "#c1acf1",
+          "label": "#381e72"
+        },
+        {
+          "name": "Disabled",
+          "alpha": null,
+          "fill": "#29272d",
+          "label": "#66636b"
+        }
+      ],
+      "kitBindings": {
+        "State Layers/On Primary/Opacity-08": "55001:313",
+        "State Layers/On Primary/Opacity-10": "55001:314",
+        "State Layers/On Primary/Opacity-16": "55001:315",
+        "State Layers/On Surface/Opacity-08": "55001:406",
+        "State Layers/On Surface/Opacity-10": "55001:407",
+        "State Layers/On Surface/Opacity-16": "55001:408"
+      }
+    }
+  },
+  "browser": "Chrome 153.0.8010.53",
+  "os": "darwin 27.0.0",
+  "dpr": 1,
+  "viewport": {
+    "width": 1180,
+    "height": 560
+  },
+  "font": {
+    "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+    "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134"
+  },
+  "files": {
+    "state-light.png": "ea98b4913beb1ffc8672fb85c726b55d0324f1fe84b1066a7d01059c4f5d6fd3",
+    "state-dark.png": "92e11378ae6350c4acf705d22fc35f330ba34b5429cee62c0a8d0d759864fe46"
+  }
+}

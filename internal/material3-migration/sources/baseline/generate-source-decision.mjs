@@ -262,6 +262,33 @@ for (const mode of ['light', 'dark']) {
       'Pinned Kotlin SpringSimulation traces and watched Material guidance clips',
   });
 }
+for (const mode of ['light', 'dark']) {
+  const sheet = scenarios.find(item => item.id === `motion-${mode}`);
+  for (const [timeMs, x, y] of [
+    [0, 31, 96],
+    [260, 786, 96],
+    [1380, 786, 280],
+  ]) {
+    const id = `motion-${mode}-${timeMs}`;
+    const baseline = `internal/material3-migration/sources/motion/source-reference/frames/${id}.png`;
+    const baselineSha256 = sha256(await fs.readFile(path.join(repo, baseline)));
+    scenarios.push({
+      id,
+      dimensions: ['motion'],
+      sourceReference:
+        'Pinned Kotlin SpringSimulation start, intermediate and settled panel from the source contact sheet',
+      baseline,
+      baselineSha256,
+      timeMs,
+      environment: {
+        ...sheet.environment,
+        content: `Standard and Expressive default spatial positions at ${timeMs} ms`,
+        state: 'retargeted-reversed-upstream-trace-panel',
+        captureRegion: {x, y, width: 363, height: 170},
+      },
+    });
+  }
+}
 const evidence = {
   color: 'internal/material3-migration/sources/reconciliation.md',
   typography: 'internal/material3-migration/sources/compose-typography.md',
@@ -301,7 +328,7 @@ const decision = {
     inventory: policy.composeInventory,
     tests: [],
     reason:
-      'This source task precedes native implementation; upstream test translation is selected per implementation family.',
+      'This foundation token graph selects source values and spring math; composable behavior tests are selected per native component family.',
     evidence: 'internal/material3-migration/sources/compose-inventory.json',
   },
   figma: {
@@ -309,7 +336,7 @@ const decision = {
     inventory: 'internal/material3-migration/sources/figma-kit-inventory.json',
   },
   guidance: [
-    ['color', 'https://m3.material.io/styles/color/roles'],
+    ['color-roles', 'https://m3.material.io/styles/color/roles'],
     ['typography-fonts', 'https://m3.material.io/styles/typography/fonts'],
     ['shape', 'https://m3.material.io/styles/shape/overview-principles'],
     ['spacing', 'https://m3.material.io/styles/spacing/overview'],
@@ -348,24 +375,33 @@ const decision = {
           reference:
             'internal/material3-migration/sources/motion/upstream/traces/standard-default-spatial.json',
           unit: 'px',
-          approvalReference: null,
+          approvalReference:
+            'human:pproenca:2026-09-26:M3-NAT-002-foundation-limits',
+          positionTolerance: 0.0002,
+          velocityTolerance: 0.002,
+          settlingToleranceMs: 0,
         },
         {
           id: 'expressive-default-spatial',
           reference:
             'internal/material3-migration/sources/motion/upstream/traces/expressive-default-spatial.json',
           unit: 'px',
-          approvalReference: null,
+          approvalReference:
+            'human:pproenca:2026-09-26:M3-NAT-002-foundation-limits',
+          positionTolerance: 0.0002,
+          velocityTolerance: 0.002,
+          settlingToleranceMs: 0,
         },
       ],
-      status: 'pending native measurement and human tolerance approval',
+      status: 'approved after native Chrome measurement and owner review on 2026-09-26',
     },
   },
   performance: [
     {
       id: 'desktop-chrome-macos-reference',
-      approvalReference: null,
-      status: 'proposed for source-task QA; native measurement pending',
+      approvalReference:
+        'human:pproenca:2026-09-26:M3-NAT-002-foundation-limits',
+      status: 'approved after native Chrome measurement and owner review on 2026-09-26',
       environment: {
         browser: motion.browser,
         os: motion.os,
@@ -373,15 +409,15 @@ const decision = {
         refreshRateHz: 60,
       },
       maxInputLatencyMs: 100,
-      frameBudgetMs: 16.67,
+      frameBudgetMs: 20,
       maxLongFrameRatio: 0.05,
       minInputSamples: 30,
       minFrameSamples: 300,
     },
   ],
 };
-if (scenarios.length !== 53)
-  throw new Error(`Expected 53 source scenarios, got ${scenarios.length}`);
+if (scenarios.length !== 59)
+  throw new Error(`Expected 59 source scenarios, got ${scenarios.length}`);
 for (const dimension of policy.foundationDimensions)
   for (const mode of ['light', 'dark'])
     if (
