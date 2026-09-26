@@ -1,3 +1,5 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
 /** @input Workbook, repository and task verifiers. @output Reviewable task transitions. @position Disposable migration workflow. */
 import fs from 'node:fs/promises';
 import path from 'node:path';

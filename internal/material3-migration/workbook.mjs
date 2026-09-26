@@ -1,3 +1,5 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
 /** @input Existing XLSX. @output Locked, atomic workbook transactions. @position Migration-only persistence. */
 import fs from 'node:fs/promises';
 import {createHash} from 'node:crypto';

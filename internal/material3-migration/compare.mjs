@@ -1,3 +1,5 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
 /** @input Two PNGs captured under the selected reference conditions. @output Exact RGBA pixel differences. @position Disposable comparison helper. */
 import fs from 'node:fs/promises';
 import {dependency} from './runtime.mjs';

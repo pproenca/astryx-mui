@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
 /** @input Migration commands and configured workbook. @output One versioned result, text or JSON. @position Disposable CLI entry point. */
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';

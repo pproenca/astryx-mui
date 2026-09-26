@@ -1,3 +1,5 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
 /** @input Optional external dependency directory. @output Temporary tool dependencies. @position Migration-only runtime. */
 import {createRequire} from 'node:module';
 import path from 'node:path';

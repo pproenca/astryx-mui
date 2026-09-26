@@ -1,3 +1,5 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
 /**
  * @input Revision-bound receipts, resolved source baselines and captured media.
  * @output Evidence validation; exact pixel metrics are recomputed from PNGs.

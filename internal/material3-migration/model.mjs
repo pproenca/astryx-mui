@@ -1,3 +1,5 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
 /**
  * @input Workbook tables; pinned migration policy.
  * @output Dependency-ready tasks and compact, source-linked task briefs.

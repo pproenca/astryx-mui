@@ -1,3 +1,5 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
 /**
  * @input Artifact-authored XLSX. @output Six working tabs with reference sheets retained and hidden.
  * @position OOXML presentation fallback: Artifact Tool exposes no documented sheet visibility/order setter.

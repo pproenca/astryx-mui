@@ -1,3 +1,5 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+
 /** @input Local reference/native GIF or video and sampling times. @output Playback metadata, exact decoded frames and contact sheet. @position Disposable media inspection helper. */
 import fs from 'node:fs/promises';
 import path from 'node:path';
