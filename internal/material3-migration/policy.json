@@ -1,11 +1,26 @@
 {
-  "schemaVersion": 2,
-  "strategyId": "material3-native-v2",
+  "schemaVersion": 3,
+  "strategyId": "material3-native-v3",
   "contract": "packages/themes/material3/material3.spec.md",
   "nativePackage": "@astryxdesign/material3",
   "nativeRoot": "packages/material3",
   "compatibilityPackage": "@astryxdesign/theme-material3",
   "materialWebCommit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+  "androidxCommit": "b97c4470f19d8ae9bb9f96be24376fdf37ad056f",
+  "figmaSha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+  "composeInventory": "internal/material3-migration/sources/compose-inventory.json",
+  "baselineId": "material3-expressive-2026-09-26",
+  "workInProgress": {
+    "implementation": 1,
+    "awaitingQA": 1,
+    "preparedBuffer": 2
+  },
+  "retirementCommands": [
+    ["pnpm", "install", "--frozen-lockfile"],
+    ["pnpm", "--filter", "@astryxdesign/material3", "run", "build"],
+    ["pnpm", "--filter", "@astryxdesign/material3", "run", "test"],
+    ["pnpm", "--filter", "@astryxdesign/theme-material3", "run", "build"]
+  ],
   "taskDatabase": "astryx-material3-migration-inventory.xlsx",
   "recipeDirectory": "internal/material3-migration/verification",
   "evidenceRequirements": [
@@ -18,7 +33,9 @@
     "consumer-docs",
     "source-resolution",
     "visual-comparison",
-    "motion-review"
+    "motion-review",
+    "upstream-tests",
+    "performance"
   ],
   "nativeAcceptance": [
     [
@@ -43,7 +60,7 @@
     ],
     [
       "Figma source precedence",
-      "Pinned Figma nodes govern specified design dimensions; website and Web only fill documented gaps."
+      "Pinned Figma nodes govern specified design dimensions; Compose, website and Web fill documented gaps."
     ],
     [
       "Pixel comparison",
@@ -52,9 +69,17 @@
     [
       "Motion evidence",
       "Watched reference media, timed frames, interruption, reversal and reduced motion are evidenced, or static behavior has a source-backed N/A."
+    ],
+    [
+      "Compose behavior and tests",
+      "Pinned Compose defaults, variants and relevant test cases are mapped to permanent web tests; differences and missing upstream coverage are explicit."
+    ],
+    [
+      "Native response and frame pacing",
+      "Recorded browser/device profiles meet the approved input response and frame pacing budgets, including active motion and interruption."
     ]
   ],
-  "sourcePolicy": "Figma wins wherever it specifies the design. Material website guidance and watched motion media fill Figma gaps; pinned Material Web supplies web implementation evidence. Record divergences and missing evidence instead of blending sources.",
+  "sourcePolicy": "Figma wins specified design details. Pinned Compose supplies component rules, Expressive states, motion and upstream tests. Captured Material guidance resolves intent and gaps; Material Web supplies browser implementation evidence. Record disagreements per dimension. Complete the union of pinned Material 3 and Expressive references, including families missing from Web; do not follow a moving upstream branch.",
   "foundationDimensions": [
     "color",
     "typography",
@@ -72,5 +97,6 @@
     "reversal",
     "reduced-motion"
   ],
-  "sourceAuthority": ["figma", "website", "web"]
+  "sourceAuthority": ["figma", "compose", "website", "web"],
+  "composeInventorySha256": "8e35ea5cb1d2d3235bce1b7bd8e017be9377e90748a261714704acf609f1faa2"
 }

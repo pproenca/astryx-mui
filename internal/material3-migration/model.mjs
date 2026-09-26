@@ -2,9 +2,10 @@
 
 /**
  * @input Workbook tables; pinned migration policy.
- * @output Dependency-ready tasks and compact, source-linked task briefs.
+ * @output Dependency priorities, explicit token membership and deduplicated family source briefs.
  * @position Temporary migration domain; no product package imports this module.
  */
+import {sourcePlan} from './routing.mjs';
 export const sheets = {
   tasks: 'Tasks',
   edges: 'Dependencies',
@@ -31,7 +32,7 @@ export function table(wb, name) {
 }
 export function write(wb, name, row, fields) {
   const sheet = wb.worksheets.getItem(name),
-    headers = sheet.getUsedRange().values[0];
+    headers = sheet.getUsedRange().getRow(0).values[0];
   for (const [key, value] of Object.entries(fields)) {
     const column = headers.indexOf(key);
     if (column < 0) throw new Error(`Missing ${name} column: ${key}`);
@@ -90,14 +91,21 @@ export function blocked(task, tasks, edges) {
 }
 export function ready(tasks, edges) {
   graph(tasks, edges);
-  const rank = t =>
-    ({
-      Foundation: 0,
-      'Shared Web + Figma': 1,
-      'Web only / unresolved': 2,
-      'Figma / guidance only': 3,
-      Extension: 4,
-    })[t.Phase] ?? 5;
+  const rank = t => (t.Phase === 'Foundation' ? 0 : 1);
+  const open = new Set(
+    tasks.filter(t => t.Status !== 'Closed').map(t => t['Task ID']),
+  );
+  const unlocks = t =>
+    new Set(
+      edges
+        .filter(
+          e =>
+            e.Kind === 'Hard' &&
+            e.Predecessor === t['Task ID'] &&
+            open.has(e.Successor),
+        )
+        .map(e => e.Successor),
+    ).size;
   return tasks
     .filter(
       t =>
@@ -108,6 +116,7 @@ export function ready(tasks, edges) {
     .sort(
       (a, b) =>
         rank(a) - rank(b) ||
+        unlocks(b) - unlocks(a) ||
         Number(a.Priority) - Number(b.Priority) ||
         a['Task ID'].localeCompare(b['Task ID']),
     );
@@ -154,37 +163,57 @@ export function brief(wb, id, full = false) {
     outcome: task.Notes,
     target: task.Target,
     phase: task.Phase,
+    preparation: {
+      file: task.Preparation || '',
+      sha256: task['Preparation SHA256'] || '',
+    },
     blockers: blocked(task, table(wb, sheets.tasks), table(wb, sheets.edges)),
     baseline:
       task['Source decision'] ||
       'Unresolved: reconcile sources before verification',
     sources: {
       webCommit: meta(wb)['Material Web'],
+      composeCommit: meta(wb).AndroidX,
+      baseline: meta(wb)['Baseline ID'],
       figmaSha256: meta(wb)['Figma SHA256'],
       guidance:
-        'Capture the relevant Material page and watch its animation media; text extraction alone is insufficient.',
+        'Reuse the selected family captures. Consult another source only for a named gap or changed input; motion still requires watched media.',
     },
     owners: [
       'AGENTS.md',
       'packages/themes/material3/material3.spec.md',
       'docs/README.md',
     ],
+    sourceFamilies: sourcePlan(table(wb, sheets.components), mapIds, full),
     mappings: mappings.map(m => ({
       id: m['Map ID'],
       element: m['Material element'],
-      web: m['Material source'],
-      guidance: m.Guideline,
-      figmaNodes: m['Figma nodes'],
+      ...(full
+        ? {
+            web: m['Material source'],
+            guidance: m.Guideline,
+            figmaNodes: m['Figma nodes'],
+            composeFamilies: m['Compose families'],
+          }
+        : {}),
       coverage: m['Source coverage'],
       resolution: m['Source resolution'],
       nativeExport: m['Native export'],
+      requiredVariants: m['Required variants'],
+      ...(full
+        ? {tokenIds: m['Token IDs']}
+        : {tokenCount: ids(m['Token IDs'], 'TM').length}),
     })),
-    figma: figma.map(f => ({
-      node: f['Figma node ID'],
-      set: f['Component set'],
-      axes: f['Variant axes'],
-      values: f['Variant values'],
-    })),
+    ...(full
+      ? {
+          figma: figma.map(f => ({
+            node: f['Figma node ID'],
+            set: f['Component set'],
+            axes: f['Variant axes'],
+            values: f['Variant values'],
+          })),
+        }
+      : {}),
     acceptance: {
       count: checks.length,
       open: checks.filter(c => c.Gate !== 'Ready').length,
@@ -196,7 +225,7 @@ export function brief(wb, id, full = false) {
       'Watch source GIF/video and native motion at normal speed, then inspect aligned frames.',
       'Try interruption, reversal, reduced motion, keyboard, RTL and narrow layouts.',
     ],
-    next: [`task show ${id} --full`, `task verify ${id}`],
+    next: [task.Preparation ? `task verify ${id}` : `task prepare ${id}`],
   };
 }
 export function requireMappings(wb, task, policy, receipt) {
@@ -215,6 +244,8 @@ export function requireMappings(wb, task, policy, receipt) {
     if (
       m.Contract !== policy.strategyId ||
       !String(m['Native export']).startsWith(policy.nativePackage + '/') ||
+      (policy.schemaVersion >= 3 &&
+        !String(m['Native source']).startsWith(policy.nativeRoot + '/')) ||
       m['Source resolution'] !== 'Resolved'
     )
       throw new Error(`Unresolved native/source contract: ${id}`);
@@ -235,14 +266,20 @@ export function requireMappings(wb, task, policy, receipt) {
       !m['Token evidence']
     )
       throw new Error(`Unresolved mapping/token evidence ${id}`);
-    const prefixes = String(m['Token filter'])
+    const explicit = ids(m['Token IDs'], 'TM');
+    const prefixes = String(m['Token filter'] || '')
       .split(/[,;]/)
-      .map(s => s.trim().replace(/\*$/, ''));
+      .map(s => s.trim().replace(/\*$/, ''))
+      .filter(Boolean);
     if (prefixes.some(s => !/^--md-[a-z0-9-]+$/.test(s)))
       throw new Error('Use Material CSS token prefixes without prose');
-    const matched = tokens.filter(t =>
-      prefixes.some(p => String(t['Material token']).startsWith(p)),
+    const matched = tokens.filter(
+      t =>
+        explicit.includes(t['Map ID']) ||
+        prefixes.some(p => String(t['Material token']).startsWith(p)),
     );
+    if (explicit.some(id => !tokens.some(t => t['Map ID'] === id)))
+      throw new Error(`Unknown explicit token membership: ${id}`);
     if (!matched.length) throw new Error(`No tokens match ${id}`);
     for (const t of matched) tokenIds.add(t['Map ID']);
   }

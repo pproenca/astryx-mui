@@ -54,9 +54,18 @@ and its versioned [verification policy](internal/material3-migration/policy.json
 Read both before claiming, implementing, or verifying a migration task.
 Use the encapsulated CLI at `internal/material3-migration/cli.mjs`. Figma wins
 wherever it specifies the design; captured Material guidance and watched animation
-media fill gaps, and pinned Material Web supplies implementation evidence.
-Complete and approve foundations before components; prioritize dependency-ready
-components represented in both Web and Figma. Motion requires watched references,
+media fill gaps. Pinned Compose Material 3 supplies implementation rules, Expressive
+motion and upstream tests; Material Web supplies browser implementation evidence.
+Reuse a clean pinned shallow AndroidX checkout through `M3_ANDROIDX`.
+Resolve sources once per component family. Default task briefs group variants and
+point to one shared family decision; use `--full` for raw cross-platform references.
+Design precedence is Figma → Compose → Material guidance → Web. Behavior and motion
+start with Compose, with Figma overriding any detail it specifies. Browser semantics
+start with Web, then native web standards. Consult a lower source only for a recorded
+gap; preserve missing-platform evidence and reuse the decision across child tasks.
+Complete and approve foundations before components. Prepare source briefs before
+claiming implementation; prioritize hard dependencies and work that unblocks required
+coverage, including families absent from Web. Motion requires watched references,
 intermediate frames, interruption/reversal and reduced-motion evidence.
 The current [Material 3 family contract](packages/themes/material3/material3.spec.md)
 owns its token and compatibility boundary. Native Material components consume
@@ -68,6 +77,11 @@ The migration workbook is the task database; do not create a second backlog in
 repository documents. Revalidate completed slices under the native contract and follow its hard
 dependencies before expanding the migration. A themed preview alone is not a
 migrated component. Human QA remains required at the verified code revision.
+The frozen baseline includes Material 3 and Material 3 Expressive variants, states,
+styles and motion. Measure elapsed stages and rework before expanding temporary
+tooling. Final audit requires complete coverage and build/regression tests with the
+harness removed from an isolated copy. Permanent tests, assets and attribution live
+with product owners; source caches and orchestration remain inside the disposable harness.
 
 ## Authority
 

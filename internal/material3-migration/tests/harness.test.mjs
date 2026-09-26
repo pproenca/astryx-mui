@@ -23,7 +23,7 @@ const task = (id, phase = 'Foundation', status = 'Backlog', priority = 1) => ({
   Status: status,
   Priority: priority,
 });
-test('dependencies precede coverage priority, approved work does not unlock successors', () => {
+test('dependencies precede priority, Web/Figma overlap does not outrank priority', () => {
   const tasks = [
     task('f', 'Foundation', 'Approved'),
     task('web', 'Web only / unresolved', 'Backlog', 1),
@@ -37,7 +37,7 @@ test('dependencies precede coverage priority, approved work does not unlock succ
   tasks[0].Status = 'Closed';
   assert.deepEqual(
     ready(tasks, edges).map(t => t['Task ID']),
-    ['shared', 'web'],
+    ['web', 'shared'],
   );
   tasks[2]['Hold reason'] = 'Unresolved source';
   assert.deepEqual(
@@ -217,7 +217,7 @@ test('header-addressed updates survive reordered columns', () => {
   const wb = {
     worksheets: {
       getItem: () => ({
-        getUsedRange: () => ({values}),
+        getUsedRange: () => ({values, getRow: () => ({values: [values[0]]})}),
         getRangeByIndexes: (r, c) => ({
           set values(v) {
             values[r][c] = v[0][0];

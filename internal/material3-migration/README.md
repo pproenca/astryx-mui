@@ -13,7 +13,15 @@ Read dimensions and bindings; inspect exported frames. A family-name match means
 candidate coverage, never proven equality. Do not use a reconstruction of our own
 component as its expected image.
 
-Material website guidance fills Figma gaps, including interaction and motion.
+Pinned Compose Material 3 supplies default values, state transitions, Expressive
+variants, spring behavior and upstream test cases. Reuse one clean shallow/sparse
+AndroidX checkout, pinned by policy, as a read-only reference. `source prepare`
+generates a hashed index of source paths, token expressions, samples and tests.
+The index is a navigation aid: inspect the linked Kotlin for overloads, delegated
+defaults, multiline expressions, platform implementations and tests missed by
+filename matching. It is not an exhaustive Kotlin parser or a parity certificate.
+
+Material website guidance fills gaps, including interaction and motion.
 Capture the relevant HTML-rendered guidance with URL and capture date. Watch its
 GIFs/videos at normal speed, then inspect timed frames. A text scraper, video URL,
 poster frame or easing token alone does not establish what the motion does.
@@ -27,14 +35,63 @@ reason, not a guessed value or an average of incompatible sources.
 
 ## Workflow
 
+### Shared family research
+
+The workbook's existing mappings project into **family → variants → task slices**.
+`routing.mjs` groups shared Compose references (plus filled/outlined TextField and
+Tab/TabRow research) without merging exports, acceptance rows or task history.
+Figma-only/Web-only mappings retain their own owner until source resolution links
+them or assigns a shared native export; sharing a kit node alone never merges unrelated semantics. No second backlog
+or manually synchronized family inventory is created.
+
+Default briefs show each family once. They link one canonical evidence record at
+`sources/families/family-CM-NNNN.json`, identified by the earliest mapping ID in that
+family. Use `task show ID --full` to inspect the deduplicated platform references
+during initial resolution. After preparation, default briefs show selected concern
+routes; full Kotlin/test/token inventories remain opt-in.
+
+Resolve this record just in time for the first family slice, then reuse it:
+
+- `schemaVersion: 1`, `familyId` and `scopeSha256` from the task's family brief;
+- `pins: {figma, compose, web}` containing the policy digests/commits;
+- `coverage` for each of `figma`, `compose`, `web`: `status: "present"` or `"absent"`
+  and a repository-relative `evidence` file. Absence also needs the lookup `reason`.
+  Remove rejected candidate links from the workbook before declaring absence;
+- `routes` for `design`, `behavior`, `motion`, `browser`: `primary`, boolean
+  `figmaSpecified`, and repository-relative `evidence` containing the selected facts.
+  Skipping the preferred available source requires `gapReason` and `gapEvidence`;
+- optional `overrides` for individual dimensions: `dimension`, `primary`,
+  `figmaSpecified`, `reason` and `evidence`. Keep exceptions here for every sibling
+  task to reuse, not in divergent task-specific copies.
+
+Design starts with Figma, then Compose, guidance and Web. Behavior/motion start with
+Compose, then guidance and Web; Figma wins any detail it specifies. Browser semantics
+start with Web, then `web-platform`. The latter means evidence from web standards or
+established native browser behavior/tests, not Android semantics. A present source can
+still lack a particular concern: record that specific gap rather than declaring the
+whole platform absent. A source unique to one platform does not require fabricating
+equivalents on the others. An unlinked source remains unresolved until checked once.
+
+Task baseline `decisions` match these selected routes. `concern` defaults to `design`;
+use `behavior`, `motion` or `browser` where appropriate. When a task spans families,
+each decision identifies its `familyId`. Task-specific visual scenarios and acceptance
+remain in the task baseline; resolved family facts and exceptions are shared.
+`task prepare` rejects conflicting task decisions, stale sibling scope/pins and
+unsupported precedence changes. It hashes the shared records and their evidence;
+verification/QA archive and recheck them. Implementation agents read the selected
+facts, reopen only named gaps or changed inputs, and do not repeat a three-platform
+comparison on each task.
+
 1. Resolve Figma-first references and media for foundations.
-2. Establish the native package and canonical token graph.
+2. Reconcile the complete Figma/Web/Compose union, including Expressive families
+   absent from Web, then establish the native package and canonical token graph.
 3. Build the foundation gallery: color, type, shape, spacing/density, elevation,
    icons, state layers and motion. Verify scoped overrides and built/native-only
    rendering. Human QA and merge gate component work.
 4. Implement required shared behavior, then native Button/TextInput pilots.
-5. Among dependency-ready outcomes, prioritize components represented in both
-   Web and the Figma inventory. Coverage is a scheduling aid, not approval.
+5. Prepare the next two dependency-ready outcomes. Rank foundations and shared
+   blockers by the required outcomes they unlock, then task priority. Source
+   overlap does not outrank required Expressive work.
 6. Cover remaining Web components, Figma/website-only components and patterns,
    then explicitly classified extensions. Missing from Web never means out of scope.
 
@@ -50,9 +107,13 @@ migration-only dependencies; do not add these packages to product dependencies:
 ```sh
 export M3_WORKBOOK=/path/to/astryx-material3-migration-inventory.xlsx
 export M3_DEPS=/path/to/tooling/node_modules
+export M3_ANDROIDX=/path/to/pinned/androidx
 node internal/material3-migration/cli.mjs help
+node internal/material3-migration/cli.mjs source prepare
+node internal/material3-migration/cli.mjs workbook upgrade
 node internal/material3-migration/cli.mjs status --json
 node internal/material3-migration/cli.mjs source motion --limit 12
+node internal/material3-migration/cli.mjs task prepare M3-SRC-002
 node internal/material3-migration/cli.mjs task pop
 node internal/material3-migration/cli.mjs task show M3-SRC-001 --full
 ```
@@ -60,6 +121,15 @@ node internal/material3-migration/cli.mjs task show M3-SRC-001 --full
 `M3_DEPS` contains `@oai/artifact-tool`, `pngjs` and `jszip`. In Codex, obtain the
 bundled dependency directory through its workspace-dependency tool. `--repo` or
 `ASTRYX_REPO` selects the checkout; `--workbook` overrides `M3_WORKBOOK`.
+
+`workbook upgrade` makes the additive v2→v3 change once, preserving existing task
+IDs, claims, QA and history. Repeating it under the same policy does not write.
+New source rows start unresolved, never approved. Policy and source-index hashes
+must match before work continues. No checkout is cloned, fetched or repinned by
+the harness. For a new shallow checkout, fetch the exact policy commit and use a
+sparse working tree containing `compose`, `graphics/graphics-shapes` and
+`test/screenshot`. The pinned implementation can predate some kit changes;
+resolve those differences explicitly.
 
 `--json` returns one `{apiVersion,type,data}` envelope. Errors have a stable code,
 message and next commands, with exit status 1. `--dense` emits compact JSON;
@@ -74,8 +144,14 @@ verification logic and can be deleted when callers use this entry point.
 
 `Backlog → Claimed → Awaiting QA → Approved → Closed`
 
-- `task pop`: choose a dependency-ready outcome, claim it atomically and return
+- `task prepare ID --baseline path/to/source.json`: resolve and hash the selected
+  source packet before implementation. Source/planning work can prepare without
+  a resolved visual baseline. The packet owns no execution state. Changes to source
+  decisions, mapped scope, policy or referenced files invalidate preparation.
+- `task pop`: choose a prepared, dependency-ready outcome, claim it atomically and return
   source links, Figma nodes, governing records, acceptance dimensions and next steps.
+  One active claim and a full QA queue stop new claims. WIP and the preparation
+  buffer are policy values, not a reason to increase parallelism by default.
 - `task block ID --reason ...`: hold active work. `task unblock ID` releases that
   manual hold; hard dependencies still apply. Retain the branch and existing work.
 - `task verify ID`: run its focused verifier, validate evidence and prepare QA.
@@ -95,6 +171,12 @@ Policy version/hash mismatch, graph cycles, missing references, partial checks a
 stale evidence fail closed. All XLSX mutations use one lock and atomic replacement.
 The last content hash catches writes by tools that ignored that lock.
 
+`status` reports elapsed implementation, QA wait, merge wait and blocked stages,
+queue age, rejections, observed closures in seven days and median claim-to-close
+time. Tracking starts at upgrade; it never fabricates older durations. Elapsed
+time includes idle time and is not worker effort. Inspect which queue or rework
+actually limits accepted delivery, improve that constraint, then measure again.
+
 ## Verification recipes and evidence
 
 Task-specific recipes live under `verification/TASK_ID.mjs`. They execute focused
@@ -104,7 +186,8 @@ Permanent behavior tests belong beside the product code; recipes only orchestrat
 
 A receipt includes:
 
-- `strategyId`, `taskId`, current `revision`, and `materialWebCommit`;
+- `strategyId`, `taskId`, current `revision`, `materialWebCommit`, `androidxCommit`
+  and `baselineId`;
 - `checks`: every policy requirement with `result: "Pass"` and repository-relative
   `evidence` files (a documented N/A decision can itself be evidence);
 - `qaChecks`: states, keyboard, theme, responsive, motion and accessibility, each
@@ -112,7 +195,7 @@ A receipt includes:
 - `reviewKind`: visual for implementation, document for architecture/planning;
 - `preview`, `sourceDecision`, `sourceDecisionSha256` for visual work;
 - `tokenIds` for foundation coverage;
-- `visualComparisons` and `motion` as described below.
+- `visualComparisons`, `motion`, `upstreamTests` and `performance` as described below.
 
 The verifier computes `revision` at runtime. The harness stores immutable receipts
 next to the workbook in `.m3-receipts`, with content-addressed copies of referenced
@@ -129,11 +212,15 @@ checkout, including after resolving symlinks.
 - `authority: "figma-first"`;
 - `web.commit`, `figma.sha256`, `figma.inventory` (repository-relative extracted
   inventory with node IDs and provenance);
+- `baselineId`, `compose.commit`, `compose.inventory`, `compose.tests` (unique
+  `id` and pinned `source` for each selected upstream test case). Missing upstream
+  tests require an empty list with `compose.reason` and `compose.evidence`;
 - `guidance`: official URL, `capturedAt`, and repository-relative `capture`;
-- `decisions`: dimension, boolean `figmaSpecified`, chosen source (`figma`, `website`
+- `decisions`: dimension, boolean `figmaSpecified`, chosen source (`figma`, `compose`, `website`
   or `web`), reason and evidence file. When Figma specifies it, chosen must be figma;
 - `scenarios`: unique IDs, sourceReference, expected PNG `baseline`, and environment;
 - `motion`: applicability, reference media path/hash or a source-backed N/A reason.
+- `performance`: approved browser/device profiles and measured budgets below.
 
 Foundation baselines resolve all eight dimensions from `policy.json`; each scenario
 lists its covered `dimensions`, with every foundation covered in light and dark. Capture both
@@ -186,6 +273,39 @@ source-backed reasoning. Verify focus/interaction during transitions as applicab
 Static components explicitly declare motion N/A. Never substitute a static endpoint
 screenshot or a duration value for reviewing the animation.
 
+For spring/trajectory motion, the baseline adds `motion.numeric.applicable: true`
+and `traces`: unique `id`, independent upstream `reference` JSON, `unit`,
+`positionTolerance`, `velocityTolerance`, `settlingToleranceMs`, and a real human
+`approvalReference`. Numeric N/A requires `reason` and source `evidence`.
+The receipt adds `motion.traces: [{id, actual}]` pointing to browser recordings.
+Each recording has `unit`, identical nonempty `inputs` (including interruption
+time/velocity/target changes), `settledAtMs`, and at least three aligned `samples`
+of `{timeMs, position, velocity}` through settling. The reference producer declares
+`kind: "upstream"`, pinned `commit`, executed `source`, `command` and `runtime`;
+the actual producer declares `kind: "browser"` and its capture `command`.
+The verifier recomputes errors. Self-reported provenance still requires review:
+use outputs from executing upstream Kotlin or independently captured native
+behavior, never numbers produced by the browser implementation under test.
+
+### Upstream tests and browser response
+
+For each selected Compose test, the receipt's `upstreamTests` entry supplies its
+`id`, `result` (Pass/N/A), `reason`, `evidence`, and permanent `nativeTest` path
+for Pass. Translate assertions into web semantics; do not transplant Android
+focus/accessibility behavior where it conflicts with browser requirements.
+N/A decisions remain visible to human QA.
+
+Each baseline performance profile has a unique `id`, `approvalReference`, exact
+`environment` (at least browser/version and device), `maxInputLatencyMs`,
+`frameBudgetMs`, `maxLongFrameRatio`, `minInputSamples` and `minFrameSamples`.
+The receipt supplies `performance: [{id, actual}]`; that JSON contains the same
+environment plus measured `inputLatencyMs` and `frameIntervalsMs` arrays.
+The harness checks maximum response time and the fraction of frame intervals
+over budget. Sampling method, refresh rate, warmup, interaction scenarios and
+device constraints belong in the reviewed profile/capture recipe. Budgets must
+come from the approved target profile; the harness invents no universal number.
+Verify active animation and interruption, not only an idle screenshot.
+
 ## Workbook ownership and presentation
 
 Task records own execution state; mappings own source links and scope; acceptance
@@ -195,9 +315,19 @@ are derived. Access table columns by header names, never silent numeric offsets.
 All cell authoring uses Artifact Tool. Its documented API lacks sheet visibility/
 ordering controls, so `presentation.mjs` changes only workbook XML tab presentation
 using JSZip after export. Cell data, formulas, styles and IDs are retained. Six
-visible working tabs are reapplied after every write; ten reference sheets remain.
+visible working tabs are reapplied after every write; reference sheets remain,
+including the new hidden Compose inventory.
 
 ## Delete after migration
+
+`audit` rejects unresolved required source rows, missing native owners, incomplete
+tokens/checks, unmerged tasks and unapproved exclusions. `--full` expands blockers.
+Once coverage passes, run `audit --retire-check` from a clean committed checkout.
+It archives HEAD into a fresh temporary directory, removes the harness and guide,
+checks product dependencies, then installs/builds/runs permanent tests from the
+policy commands. Command logs and a revision/policy-bound receipt accompany the
+workbook. This gate remains blocked until the native package has its permanent
+build/test scripts; the migration harness cannot supply those tests for it.
 
 Archive the final workbook/receipts/source captures with release evidence. Retain
 public contracts, source attribution, component docs and product regression tests.

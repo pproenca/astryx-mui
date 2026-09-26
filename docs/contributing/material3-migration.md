@@ -34,10 +34,57 @@ merged, CI passing and safe worktree cleanup. Only Closed unlocks successors.
 
 The project owner explicitly selected Figma as the design authority. Where the kit
 specifies a dimension or behavior, implement it even if Material Web differs.
-Captured Material website guidance and watched GIFs/videos fill gaps, including
-motion. Pinned Material Web provides web implementation evidence. Record source
+Pinned Compose Material 3 provides component rules, states, Expressive variants,
+motion selection and upstream test cases. Captured Material website guidance and
+watched GIFs/videos resolve intent and gaps. Pinned Material Web provides browser
+implementation evidence. Record source
 versions, node IDs and divergences. A source-name match is only candidate coverage.
 Missing references block verification; never average incompatible source values.
+
+### One family, one source decision
+
+The hierarchy is **component family → variants/subcomponents → implementation tasks**.
+Figma nodes, Web elements and Compose APIs attach to that family. They are references
+for one migrated outcome, not separate platform migrations. Existing mapping IDs,
+variant acceptance and task history remain distinct. Shared Compose references group
+research automatically; filled/outlined TextField and Tab/TabRow also share research.
+An explicitly assigned native export can join variants when platform references are missing.
+A reused Figma node alone never proves that unrelated components have identical semantics.
+
+| Concern                                               | First source | Consult next only for a specific gap             |
+| ----------------------------------------------------- | ------------ | ------------------------------------------------ |
+| Anatomy, dimensions, typography, colors and shape     | Figma        | Compose → captured Material guidance → Web       |
+| States, interaction rules and defaults                | Compose      | Material guidance → Web                          |
+| Springs, transitions and interruption                 | Compose      | Watched Material media → Web                     |
+| DOM, keyboard, forms and accessibility implementation | Web          | Native web standards and permanent browser tests |
+
+Figma overrides behavior or motion details it explicitly specifies. Browser semantics
+must remain valid for the web. A lower source cannot silently replace a specified
+Figma dimension or shrink Expressive coverage.
+
+`task show` exposes one family decision path and the variants it covers. Raw platform
+references are available with `--full` for the initial source resolution or an actual
+gap. `M3-SRC-002` owns source membership. Just-in-time preparation resolves the shared
+family decision before its first implementation claim; subsequent child tasks reuse
+its selected values, references, recorded absences and dimension-specific exceptions.
+Preparation checks the entire sibling scope and pins, and archives the shared evidence.
+Reopen only the affected concern when a pin, variant requirement or reference changes.
+
+A component found only in Compose uses Compose for design/behavior/motion and web
+standards for browser semantics. A Figma-only component uses Figma for design and
+captured guidance for unspecified behavior/motion; those gaps remain blocking until
+resolved. A Web-only component uses Web after the other sources' absence is established.
+Unlinked is not absent. Record the lookup once; do not repeatedly search platforms that
+the pinned family decision already ruled out. Missing shared decisions are preparation
+work, not permission for each implementation task to invent a new baseline.
+
+The baseline is the complete union of the pinned kit, Material guidance and Compose
+component families, including variants absent from Web. The workbook retains exact
+source membership, candidate mappings and unresolved rows. Source presence does not
+establish equivalence. A platform exclusion needs a source-backed reason and human
+approval. Reuse the clean shallow/sparse AndroidX checkout through `M3_ANDROIDX`;
+the harness validates its commit and generates reusable source references. It never
+updates the checkout to a moving upstream branch.
 
 Pixel-perfect means comparison to the selected Figma-first baseline under matched
 viewport, DPR, fonts, theme, content and state. Recompute image differences. Nonzero
@@ -90,7 +137,8 @@ license notices, or package provenance.
 The workbook contains the actual stories and hard edges. Apply these ordering
 rules when maintaining it:
 
-1. Resolve the foundation source baselines and watch motion references. Establish
+1. Resolve the foundation source baselines and watch motion references. Reconcile
+   the full reference inventory before native architecture work. Establish
    the native package boundary, token API and compatibility plan.
 2. Refactor the existing foundation into the canonical native token graph.
    Reuse pinned source values and fixtures; revalidate emission, overrides and
@@ -107,8 +155,9 @@ rules when maintaining it:
    interactive QA. TextInput includes the source filled/outlined field behavior
    through its existing field gap tasks.
 6. Review both pilots, native dependency evidence and compatibility cost before
-   resuming the wider component backlog. Among ready tasks, prioritize shared
-   Web/Figma coverage; then explicitly cover remaining Figma/website families. Claimed work whose new prerequisites
+   resuming the wider component backlog. Among prepared, dependency-ready tasks,
+   prioritize shared blockers and work that unlocks required outcomes. Web/Figma
+   overlap is source information, not scheduling priority. Claimed work whose new prerequisites
    are open becomes blocked with its branch and prior claim retained.
 
 The workflow pilot that only exercised the old Core Button is superseded for
@@ -160,3 +209,34 @@ human approval and merge. The summary may consequently show fewer fully migrated
 after the pivot even though the historical work is preserved. Never reset the
 source inventories, old QA records or source-linked test receipts to hide that
 distinction.
+
+## Prepare, measure and retire
+
+Use the existing loop: prepare sources, claim one outcome, implement, verify,
+human review, merge, then close. `task prepare` creates a hashed brief containing
+the exact Compose families, token expressions, test cases and selected reference
+artifacts. Implementation requires a resolved baseline; source/planning tasks may
+prepare the questions they exist to resolve. `task pop` rejects stale preparation.
+Keep the next two candidates prepared, one implementation active and at most one
+item awaiting QA. Clear the QA queue before starting another implementation.
+
+`status` reports measured elapsed stage time, queue age, blocking reasons and
+rejections. These are wall-clock stages, not estimates of active work. Earlier
+history remains unmeasured. Improve the slowest observed stage first; add automation
+only when repeated savings justify its construction. Counts of token rows are not
+delivery throughput: use merged, accepted component coverage.
+
+Reference artifacts are reusable when every declared source, scope, environment,
+font and configuration input matches. Changed inputs require preparation again.
+Implementation verifiers still run at the current revision; no generic cache skips
+tests by guessing the dependency graph. Upstream test cases become permanent native
+tests. Motion traces identify the executed upstream revision and runtime; expected
+data must be independent of the web implementation. Browser performance is checked
+against approved device/profile budgets using captured samples.
+
+Run `audit` to find incomplete scope, native/token/acceptance gaps and unclassified
+references. Once complete, `audit --retire-check` builds and tests an isolated copy
+without the harness. Archive the final workbook and receipts. Keep permanent product
+contracts, docs, assets, licenses and tests; delete the temporary harness and guide
+with their instruction links. No source cache or workbook may be required to consume
+or test the finished system.
