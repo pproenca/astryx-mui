@@ -1,16 +1,42 @@
 #!/usr/bin/env node
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Migration commands, pinned AndroidX and configured workbook. @output One versioned source/workflow/audit result. @position Disposable CLI entry point. */
+/** @input Migration commands, pinned sources and configured workbook. @output Versioned workflow results with local attempt evidence and reusable feedback. @position Disposable CLI entry point. */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {workbook} from './workbook.mjs';
-import {dispatch, policy} from './workflow.mjs';
+import {dispatch, policy, exec} from './workflow.mjs';
 import {compare} from './compare.mjs';
 import {inspectMotion} from './motion.mjs';
 import {indexCompose, digest} from './compose.mjs';
+import {
+  captureAttempt,
+  trackedCommands,
+  procedureFingerprint,
+  feedback,
+  readAttempt,
+  recordLesson,
+} from './feedback.mjs';
 export const commands = [
+  {
+    name: 'feedback',
+    summary: 'Inspect recurring failures and a bounded success/failure sample',
+    writesWorkbook: false,
+  },
+  {
+    name: 'feedback show',
+    summary: 'Read one immutable attempt and its diagnostic references',
+    writesWorkbook: false,
+    args: '<attempt-id>',
+  },
+  {
+    name: 'feedback record',
+    summary:
+      'Record an evidence-linked operational lesson; never change authority or task status',
+    writesWorkbook: false,
+    args: '--file <lesson.json>',
+  },
   {
     name: 'source prepare',
     summary:
@@ -20,7 +46,8 @@ export const commands = [
   },
   {
     name: 'workbook upgrade',
-    summary: 'Upgrade the existing v2 workbook in place, preserving history',
+    summary:
+      'Upgrade the native workbook in place, archiving its previous bytes and preserving history',
     writesWorkbook: true,
   },
   {
@@ -131,6 +158,7 @@ export function parse(args) {
           'limit',
           'androidx',
           'baseline',
+          'file',
         ].includes(key)
       ) {
         if (!args[i + 1] || args[i + 1].startsWith('--'))
@@ -141,7 +169,8 @@ export function parse(args) {
   }
   const command =
     ['task', 'motion', 'workbook'].includes(words[0]) ||
-    (words[0] === 'source' && words[1] === 'prepare')
+    (words[0] === 'source' && words[1] === 'prepare') ||
+    (words[0] === 'feedback' && words[1])
       ? words.slice(0, 2).join(' ')
       : words[0] || 'help';
   return {
@@ -242,17 +271,62 @@ export async function main(args = process.argv.slice(2)) {
         flags.repo ||
         process.env.ASTRYX_REPO ||
         path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-      result = await workbook(file, definition.writesWorkbook, wb =>
-        dispatch(wb, command, {
-          ...flags,
-          repo,
-          id,
-          decision,
-          query: words[1],
-          limit: Number(flags.limit || 12),
-          stateDir: path.join(path.dirname(file), '.m3-receipts'),
-        }),
-      );
+      if (!file)
+        throw new Error('Set M3_WORKBOOK to the existing migration workbook.');
+      const stateDir = path.join(path.dirname(file), '.m3-receipts');
+      if (command.startsWith('feedback')) {
+        const data =
+          command === 'feedback show'
+            ? await readAttempt(stateDir, words[2])
+            : command === 'feedback record'
+              ? await recordLesson(
+                  stateDir,
+                  JSON.parse(await fs.readFile(flags.file, 'utf8')),
+                )
+              : await feedback(stateDir);
+        result = {type: command.replaceAll(' ', '.'), data};
+      } else {
+        const action = () =>
+          workbook(
+            file,
+            definition.writesWorkbook,
+            wb =>
+              dispatch(wb, command, {
+                ...flags,
+                repo,
+                id,
+                decision,
+                query: words[1],
+                limit: Number(flags.limit || 12),
+                stateDir,
+              }),
+            {archiveBeforeChange: command === 'workbook upgrade'},
+          );
+        if (trackedCommands.has(command)) {
+          const p = await policy();
+          result = await captureAttempt(
+            stateDir,
+            {
+              command,
+              taskId: id,
+              revision: exec(repo, 'git', ['rev-parse', 'HEAD']),
+              procedureSha256: await procedureFingerprint(repo),
+              policySha256: p.hash,
+              sourcePins: {
+                compose: p.value.androidxCommit,
+                figma: p.value.figmaSha256,
+                web: p.value.materialWebCommit,
+              },
+              environment: {
+                platform: process.platform,
+                arch: process.arch,
+                node: process.version,
+              },
+            },
+            action,
+          );
+        } else result = await action();
+      }
     }
     const out = {apiVersion: 1, type: result.type, data: result.data};
     if (command === 'audit' && !result.data.complete) process.exitCode = 1;
@@ -264,6 +338,12 @@ export async function main(args = process.argv.slice(2)) {
       code: error.code === 'EEXIST' ? 'WORKBOOK_LOCKED' : 'MIGRATION_BLOCKED',
       error: error.message,
       next: ['help', 'status'],
+      ...(error.attemptId
+        ? {
+            attemptId: error.attemptId,
+            next: [`feedback show ${error.attemptId}`, 'status'],
+          }
+        : {}),
     };
     console.log(
       input?.flags.json || input?.flags.dense || args.includes('--json')

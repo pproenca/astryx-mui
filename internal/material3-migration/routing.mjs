@@ -1,13 +1,13 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Existing workbook mappings and shared family decisions. @output Deduplicated research ownership and concern-specific source routes. @position Disposable source projection; the workbook remains the task database. */
+/** @input Existing mappings and Compose-first shared family decisions. @output Deduplicated research ownership with evidenced gaps and approved exceptions. @position Disposable source projection; the workbook remains the task database. */
 import {isDeepStrictEqual} from 'node:util';
 import {digest} from './compose.mjs';
 
 export const precedence = {
-  design: ['figma', 'compose', 'website', 'web'],
-  behavior: ['compose', 'website', 'web'],
-  motion: ['compose', 'website', 'web'],
+  design: ['compose', 'figma', 'website', 'web'],
+  behavior: ['compose', 'website', 'figma', 'web'],
+  motion: ['compose', 'website', 'figma', 'web'],
   browser: ['web', 'web-platform'],
 };
 const split = value =>
@@ -107,9 +107,19 @@ export function sourcePlan(mappings, mapIds, full = false) {
 const requireValue = (ok, message) => {
   if (!ok) throw new Error(message);
 };
+function deviation(route, files) {
+  const exception = route.exception;
+  requireValue(
+    (route.gapReason && route.gapEvidence) ||
+      (exception?.reason && exception.evidence && exception.approvalReference),
+    'Skipping a higher source requires a specific gap with evidence or an explicitly approved exception.',
+  );
+  files.push(route.gapEvidence || exception.evidence);
+}
 export function validateFamily(record, group, policy) {
   requireValue(
-    record.schemaVersion === 1 &&
+    record.schemaVersion === 2 &&
+      record.authority === 'compose-first' &&
       record.familyId === group.id &&
       record.scopeSha256 === group.scopeSha256,
     'Shared family decision has stale ownership or variant scope.',
@@ -157,29 +167,15 @@ export function validateFamily(record, group, policy) {
       'Unsupported source for family concern.',
     );
     requireValue(
-      !route.figmaSpecified ||
-        (concern !== 'browser' && route.primary === 'figma'),
-      'Figma must win specified design/interaction details; browser semantics use web sources.',
-    );
-    requireValue(
       !record.coverage[route.primary] ||
         record.coverage[route.primary].status === 'present',
       'Selected source is absent.',
     );
-    const preferred = route.figmaSpecified
-      ? 'figma'
-      : order.find(
-          name =>
-            !record.coverage[name] ||
-            record.coverage[name].status === 'present',
-        );
-    if (route.primary !== preferred) {
-      requireValue(
-        route.gapReason && route.gapEvidence,
-        'Skipping a higher source requires a specific uncovered concern and evidence.',
-      );
-      files.push(route.gapEvidence);
-    }
+    const preferred = order.find(
+      name =>
+        !record.coverage[name] || record.coverage[name].status === 'present',
+    );
+    if (route.primary !== preferred) deviation(route, files);
     files.push(route.evidence);
   }
   const overrides = record.overrides || [];
@@ -190,13 +186,14 @@ export function validateFamily(record, group, policy) {
   for (const o of overrides) {
     requireValue(
       o.dimension &&
-        ['figma', 'compose', 'website', 'web'].includes(o.primary) &&
+        precedence[o.concern || 'design']?.includes(o.primary) &&
         o.reason &&
         o.evidence &&
-        typeof o.figmaSpecified === 'boolean' &&
-        (!o.figmaSpecified || o.primary === 'figma'),
-      'Dimension overrides need explicit evidence and must preserve Figma precedence.',
+        typeof o.figmaSpecified === 'boolean',
+      'Dimension overrides need a valid concern and explicit evidence.',
     );
+    if (o.primary !== record.routes[o.concern || 'design'].primary)
+      deviation(o, files);
     requireValue(
       !record.coverage[o.primary] ||
         record.coverage[o.primary].status === 'present',

@@ -9,7 +9,7 @@ remains the task authority.
 
 | Source                                                                                                                     | Pin                                                                                                                                           | Use                                                                    |
 | -------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| [Material 3 Design Kit](https://www.figma.com/community/file/1035203688168086460/material-3-design-kit) by Material Design | Supplied `.fig` export SHA256 `64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468`; export timestamp `2026-09-21T16:52:27.584Z` | First authority where the kit specifies design                         |
+| [Material 3 Design Kit](https://www.figma.com/community/file/1035203688168086460/material-3-design-kit) by Material Design | Supplied `.fig` export SHA256 `64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468`; export timestamp `2026-09-21T16:52:27.584Z` | Design gaps and Figma-only coverage; subject to Compose-first routing                         |
 | [Material 3 guidance](https://m3.material.io/styles)                                                                       | Rendered pages observed 2026-09-26; individual page URLs below                                                                                | Fill kit gaps, especially interaction and motion                       |
 | [Material Web](https://github.com/material-components/material-web/tree/cbd34a8921915af94d5ef65c2a69eece41d5b4f3)          | Commit `cbd34a8921915af94d5ef65c2a69eece41d5b4f3` (2026-09-24)                                                                                | Web implementation and browser behavior, subject to source differences |
 
@@ -25,8 +25,12 @@ kit/Web differences and the resulting source route for the native graph.
 
 ### Compose reference
 
+The owner approved Compose-first precedence and a source refresh on 26 September.
+[Version evidence](source-versions.md) records the pins and comparison. Earlier
+kit/Web reconciliation remains historical observation, not active precedence.
+
 The frozen baseline also uses AndroidX commit
-`b97c4470f19d8ae9bb9f96be24376fdf37ad056f`. The external shallow/sparse checkout is
+`a095da93f8e98dea8748ceed79ea8427aade245f`. The external shallow/sparse checkout is
 read-only; `M3_ANDROIDX` locates it. `source prepare` validates the commit and clean
 source paths, then reproduces `compose-inventory.json`. Policy pins its semantic
 JSON hash. Every indexed family, token file, test and sample links to that commit.

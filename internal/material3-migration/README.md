@@ -7,19 +7,19 @@ for research. There is no replicated backlog in this directory.
 
 ## Objective and source authority
 
-Figma wins wherever it specifies the design. Pin the supplied export by SHA256 and
-identify its exact component nodes, variants, variable modes and style references.
-Read dimensions and bindings; inspect exported frames. A family-name match means
-candidate coverage, never proven equality. Do not use a reconstruction of our own
-component as its expected image.
+Pinned Compose is the default authority for overlapping design, component defaults,
+Expressive variants, state transitions and motion. Figma supplies uncovered design and
+Figma-only variants. Its presence does not override Compose. Reuse a clean pinned
+shallow/sparse AndroidX checkout via `M3_ANDROIDX`. `source prepare` generates a hashed
+index of source paths, token expressions, samples and tests. The index is a navigation
+aid, not an exhaustive Kotlin parser or a parity certificate. Inspect linked overloads,
+delegated defaults and platform implementations when the selected concern needs them.
 
-Pinned Compose Material 3 supplies default values, state transitions, Expressive
-variants, spring behavior and upstream test cases. Reuse one clean shallow/sparse
-AndroidX checkout, pinned by policy, as a read-only reference. `source prepare`
-generates a hashed index of source paths, token expressions, samples and tests.
-The index is a navigation aid: inspect the linked Kotlin for overloads, delegated
-defaults, multiline expressions, platform implementations and tests missed by
-filename matching. It is not an exhaustive Kotlin parser or a parity certificate.
+Pin Figma by SHA256 and preserve exact nodes, variants and bindings for its selected
+concerns. Inspect rendered references. Never reconstruct our own component as its
+expected image. A lower source fills an evidenced gap; replacing a specified Compose
+value needs an explicit dimension-specific approved exception. Dates alone cannot
+settle disagreements. Source refreshes require deliberate repinning and revalidation.
 
 Material website guidance fills gaps, including interaction and motion.
 Capture the relevant HTML-rendered guidance with URL and capture date. Watch its
@@ -27,8 +27,8 @@ GIFs/videos at normal speed, then inspect timed frames. A text scraper, video UR
 poster frame or easing token alone does not establish what the motion does.
 
 Pinned Material Web supplies implementation and browser-behavior evidence. It may
-implement a different generation of Material. Record each difference and implement
-the Figma design where specified; never silently reduce Figma to Web's coverage.
+implement a different generation of Material. Record each difference and follow
+the selected Compose-first baseline; never silently reduce Figma to Web's coverage.
 Preserve accessibility, keyboard and form requirements while implementing the design.
 Unresolved design evidence blocks verification. A gap needs a chosen reference and
 reason, not a guessed value or an average of incompatible sources.
@@ -52,25 +52,25 @@ routes; full Kotlin/test/token inventories remain opt-in.
 
 Resolve this record just in time for the first family slice, then reuse it:
 
-- `schemaVersion: 1`, `familyId` and `scopeSha256` from the task's family brief;
+- `schemaVersion: 2`, `authority: "compose-first"`, `familyId` and `scopeSha256` from the task's family brief;
 - `pins: {figma, compose, web}` containing the policy digests/commits;
 - `coverage` for each of `figma`, `compose`, `web`: `status: "present"` or `"absent"`
   and a repository-relative `evidence` file. Absence also needs the lookup `reason`.
   Remove rejected candidate links from the workbook before declaring absence;
 - `routes` for `design`, `behavior`, `motion`, `browser`: `primary`, boolean
   `figmaSpecified`, and repository-relative `evidence` containing the selected facts.
-  Skipping the preferred available source requires `gapReason` and `gapEvidence`;
+  Skipping the preferred available source requires `gapReason` and `gapEvidence`,
+  or `exception: {reason, evidence, approvalReference}` for an intentional override;
 - optional `overrides` for individual dimensions: `dimension`, `primary`,
-  `figmaSpecified`, `reason` and `evidence`. Keep exceptions here for every sibling
+  `figmaSpecified`, `reason` and `evidence`, plus a gap or approved exception when
+  changing the chosen route. Keep exceptions here for every sibling
   task to reuse, not in divergent task-specific copies.
 
-Design starts with Figma, then Compose, guidance and Web. Behavior/motion start with
-Compose, then guidance and Web; Figma wins any detail it specifies. Browser semantics
-start with Web, then `web-platform`. The latter means evidence from web standards or
-established native browser behavior/tests, not Android semantics. A present source can
-still lack a particular concern: record that specific gap rather than declaring the
-whole platform absent. A source unique to one platform does not require fabricating
-equivalents on the others. An unlinked source remains unresolved until checked once.
+Design starts with Compose, then Figma, guidance and Web. Behavior/motion start with
+Compose, then guidance/media, Figma and Web. `figmaSpecified` is descriptive metadata;
+it does not override Compose. Browser semantics start with Web, then `web-platform`.
+Android behavior must be adapted to valid web semantics. An unlinked source remains
+unresolved until checked once. Source absence and concern-specific gaps are distinct.
 
 Task baseline `decisions` match these selected routes. `concern` defaults to `design`;
 use `behavior`, `motion` or `browser` where appropriate. When a task spans families,
@@ -82,7 +82,7 @@ verification/QA archive and recheck them. Implementation agents read the selecte
 facts, reopen only named gaps or changed inputs, and do not repeat a three-platform
 comparison on each task.
 
-1. Resolve Figma-first references and media for foundations.
+1. Resolve Compose-first references and media for foundations.
 2. Reconcile the complete Figma/Web/Compose union, including Expressive families
    absent from Web, then establish the native package and canonical token graph.
 3. Build the foundation gallery: color, type, shape, spacing/density, elevation,
@@ -122,8 +122,12 @@ node internal/material3-migration/cli.mjs task show M3-SRC-001 --full
 bundled dependency directory through its workspace-dependency tool. `--repo` or
 `ASTRYX_REPO` selects the checkout; `--workbook` overrides `M3_WORKBOOK`.
 
-`workbook upgrade` makes the additive v2→v3 change once, preserving existing task
-IDs, claims, QA and history. Repeating it under the same policy does not write.
+`workbook upgrade` supports v2 initialization and the reviewed v3→v4 authority/source
+upgrade. Before writing it archives the old workbook bytes under `.m3-receipts/upgrades/`.
+Existing IDs, claims, branches and QA history survive. V3 preparations become stale;
+reviewed/closed v3 tasks are held for revalidation. The reviewed v4 source refresh has
+the same family/token membership; unexpected membership changes block the upgrade.
+Repeating under the same policy does not write.
 New source rows start unresolved, never approved. Policy and source-index hashes
 must match before work continues. No checkout is cloned, fetched or repinned by
 the harness. For a new shallow checkout, fetch the exact policy commit and use a
@@ -179,6 +183,52 @@ actually limits accepted delivery, improve that constraint, then measure again.
 
 ## Verification recipes and evidence
 
+### Attempt evidence and operational feedback
+
+`task prepare`, `task verify` and `task qa` automatically write attempts beneath
+the workbook's adjacent `.m3-receipts/attempts/`. Each attempt has an immutable
+start record, command/output files and a finish record. Failures retain diagnostics;
+an interrupted attempt stays incomplete. Successful workbook persistence precedes
+the recorded success. A human rejection is distinct from a failed command.
+Records pin the code revision, procedure fingerprint, policy, sources, preparation
+when available and runtime environment. They capture observable actions, not private
+reasoning or environment variables. Local diagnostics may contain local paths and
+must not be committed to the public repository.
+
+```sh
+node internal/material3-migration/cli.mjs feedback
+node internal/material3-migration/cli.mjs feedback show <attempt-id>
+node internal/material3-migration/cli.mjs feedback record --file lesson.json
+```
+
+`status` shows repeated failure symptoms and a bounded sample of up to five failed
+or rejected attempts and three successes. `task show`/`task pop` filter feedback to
+that task. Inspect the diagnostic files before diagnosing the cause. Counts cover
+observed CLI attempts, not all agent activity; duration is CLI elapsed time, not
+active work or token cost. Never infer effectiveness from a single successful retry.
+
+A lesson input is `{schemaVersion: 1, id, summary, cause, action, taskIds, attemptIds}`.
+Use one stable ID per recurring cause and explicit task applicability. Updates retain
+previous immutable versions. Every note cites completed attempts; no notes or model
+generated conclusions are created automatically. An optional `intervention` records
+`changeReference`, distinct cited `before`/`after` attempt IDs, `decision` (`retained`
+or `rejected`) and `reason`. This is an audit of an evaluated change, not an automatic
+approval. It never changes procedure code, source authority, acceptance or task status.
+
+At repeated failure or QA rejection, inspect a bounded mixture of successes and
+failures, update an existing lesson when applicable, and propose at most one targeted
+procedure change. Keep source references and acceptance criteria fixed during the
+comparison. Record environment differences and test on another applicable task before
+generalizing. Retain a change through normal review only when correctness is preserved
+and measured rework/effort improves, or a demonstrated failure is prevented. Retain
+rejected outcomes so the next task does not repeat the same proposal. No change is a
+valid result. Prioritize the constraint visible in flow metrics; do not build an
+automatic optimization service for this disposable migration.
+
+These records are diagnostics and evidence, never a second backlog. At retirement,
+promote enduring fixes to product tests, fixtures or their existing contract owner;
+remove the learning machinery with the rest of the harness.
+
 Task-specific recipes live under `verification/TASK_ID.mjs`. They execute focused
 product tests/browser checks, emit a JSON receipt on stdout, and put diagnostics on
 stderr. They must not edit the workbook or set arbitrary checklist rows to Pass.
@@ -209,7 +259,7 @@ checkout, including after resolving symlinks.
 
 `sourceDecision` points to a versioned JSON file with:
 
-- `authority: "figma-first"`;
+- `authority: "compose-first"`;
 - `web.commit`, `figma.sha256`, `figma.inventory` (repository-relative extracted
   inventory with node IDs and provenance);
 - `baselineId`, `compose.commit`, `compose.inventory`, `compose.tests` (unique
@@ -217,7 +267,7 @@ checkout, including after resolving symlinks.
   tests require an empty list with `compose.reason` and `compose.evidence`;
 - `guidance`: official URL, `capturedAt`, and repository-relative `capture`;
 - `decisions`: dimension, boolean `figmaSpecified`, chosen source (`figma`, `compose`, `website`
-  or `web`), reason and evidence file. When Figma specifies it, chosen must be figma;
+  or `web`), reason and evidence file. Choices must match the validated shared family route or its approved exception;
 - `scenarios`: unique IDs, sourceReference, expected PNG `baseline`, and environment;
 - `motion`: applicability, reference media path/hash or a source-backed N/A reason.
 - `performance`: approved browser/device profiles and measured budgets below.
@@ -341,6 +391,6 @@ folder. No task execution state is required by a published component or theme.
 pnpm vitest run --project node internal/material3-migration/tests/harness.test.mjs
 ```
 
-Use adversarial fixtures for missing source evidence, Figma precedence violations,
+Use adversarial fixtures for missing source evidence, Compose precedence violations,
 partial motion, differing pixels, stale approvals, unmerged heads and retained
 worktrees. These test the guard, not the visual correctness of future components.

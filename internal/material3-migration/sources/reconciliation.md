@@ -1,5 +1,10 @@
 # Foundation source reconciliation
 
+**Historical Figma-first comparison.** The numeric observations below remain source
+evidence. Its source-selection instructions were superseded by the owner-approved
+Compose-first v4 contract. Reconcile the selected dimensions against the active
+Compose pin before using these observations in a prepared baseline.
+
 This is evidence for workbook task `M3-SRC-001`, not a migration status. The
 [supplied kit inventory](figma-kit-inventory.json) and
 [exact style values](figma-foundation-values.json) come from the pinned `.fig`

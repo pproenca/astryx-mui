@@ -52,17 +52,19 @@ Material 3 work follows the native component direction in
 [`docs/contributing/material3-migration.md`](docs/contributing/material3-migration.md)
 and its versioned [verification policy](internal/material3-migration/policy.json).
 Read both before claiming, implementing, or verifying a migration task.
-Use the encapsulated CLI at `internal/material3-migration/cli.mjs`. Figma wins
-wherever it specifies the design; captured Material guidance and watched animation
-media fill gaps. Pinned Compose Material 3 supplies implementation rules, Expressive
-motion and upstream tests; Material Web supplies browser implementation evidence.
-Reuse a clean pinned shallow AndroidX checkout through `M3_ANDROIDX`.
-Resolve sources once per component family. Default task briefs group variants and
-point to one shared family decision; use `--full` for raw cross-platform references.
-Design precedence is Figma → Compose → Material guidance → Web. Behavior and motion
-start with Compose, with Figma overriding any detail it specifies. Browser semantics
-start with Web, then native web standards. Consult a lower source only for a recorded
-gap; preserve missing-platform evidence and reuse the decision across child tasks.
+Use the encapsulated CLI at `internal/material3-migration/cli.mjs`. Pinned Compose
+is the default authority for overlapping design, defaults, behavior and motion.
+Figma fills design gaps and retains Figma-only scope; captured Material guidance
+and watched media fill remaining concerns. Material Web and native web standards
+supply browser semantics. Reuse the pinned shallow AndroidX checkout through
+`M3_ANDROIDX`; dates alone never resolve a source disagreement.
+Resolve sources once per component family. Default briefs group variants and point
+to one shared decision; use `--full` only for initial research or a specific gap.
+Design precedence is Compose → Figma → guidance → Web. Behavior/motion use Compose
+→ guidance/media → Figma → Web. A lower source needs a recorded gap; replacing a
+specified Compose value needs a dimension-specific approved exception. Reuse the
+selected decision across children. Inspect scoped feedback in task briefs; lessons
+are observations and cannot override source authority or acceptance gates.
 Complete and approve foundations before components. Prepare source briefs before
 claiming implementation; prioritize hard dependencies and work that unblocks required
 coverage, including families absent from Web. Motion requires watched references,

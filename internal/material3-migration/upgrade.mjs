@@ -1,9 +1,9 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Existing v2 workbook and pinned Compose index. @output Additive v3 migration with histories and formulas retained. @position One-time, idempotent disposable workbook upgrade. */
+/** @input Existing native workbook and pinned Compose index. @output Versioned upgrades preserving identities and historical evidence while invalidating stale authority. @position Idempotent disposable workbook upgrade. */
 import {table, write, meta, sheets, ids, graph} from './model.mjs';
 import {digest} from './compose.mjs';
-import {excelTime} from './flow.mjs';
+import {excelTime, transition} from './flow.mjs';
 
 const taskFields = [
   'Contract',
@@ -195,6 +195,11 @@ export function upgradeWorkbook(wb, p, index) {
       type: 'workbook.current',
       data: {strategy: p.value.strategyId},
     };
+  if (
+    before['Migration strategy'] === 'material3-native-v3' &&
+    p.value.schemaVersion === 4
+  )
+    return upgradeAuthority(wb, p, index);
   if (before['Migration strategy'] !== 'material3-native-v2')
     throw new Error(
       'Upgrade requires the active v2 workbook; do not upgrade the old inventory-only export.',
@@ -550,8 +555,7 @@ export function upgradeWorkbook(wb, p, index) {
     'Policy SHA256': p.hash,
     AndroidX: p.value.androidxCommit,
     'Baseline ID': p.value.baselineId,
-    'Source precedence':
-      'Figma design; Compose behavior and Expressive; Material guidance; Web browser implementation',
+    'Source precedence': p.value.sourcePolicy,
     'Scope inventory SHA256': digest(JSON.stringify(scopeMembers(wb))),
     'Flow tracking since': excelTime(now),
     'Reference tabs':
@@ -576,4 +580,197 @@ export function upgradeWorkbook(wb, p, index) {
         'Unresolved rows remain required. No component or source decision was approved by this upgrade.',
     },
   };
+}
+
+function upgradeAuthority(wb, p, index) {
+  const previous = meta(wb),
+    sourceRows = table(wb, 'Compose sources');
+  // This upgrade was checked against the exact v3 baseline. A different inventory needs explicit reconciliation.
+  if (
+    previous.AndroidX !== 'b97c4470f19d8ae9bb9f96be24376fdf37ad056f' ||
+    sourceRows.length !== index.families.length ||
+    sourceRows.some(r => !index.families.some(f => f.id === r.ID))
+  )
+    throw new Error(
+      'Compose membership differs from the reviewed v3→v4 upgrade; reconcile inventory before upgrading.',
+    );
+  const expressions = index.tokens.flatMap(f =>
+    f.values.map(v => ({name: `compose:${f.name}.${v.name}`, f, v})),
+  );
+  const tokens = table(wb, sheets.tokens);
+  const composeTokens = tokens.filter(t =>
+    String(t['Material token']).startsWith('compose:'),
+  );
+  if (
+    composeTokens.length !== expressions.length ||
+    composeTokens.some(
+      t => !expressions.some(e => e.name === t['Material token']),
+    )
+  )
+    throw new Error(
+      'Compose token membership changed; reconcile before upgrading.',
+    );
+  appendColumns(wb, sheets.tasks, ['Prior contract state']);
+  const invalidated = [];
+  const authorityText = value =>
+    String(value || '')
+      .replaceAll('Figma-first', 'Compose-first')
+      .replace(
+        'Figma governs foundation design values.',
+        'Pinned Compose governs overlapping foundation design values; Figma fills evidenced gaps.',
+      )
+      .replace(
+        'Figma wins specified design dimensions.',
+        'Pinned Compose wins overlapping design, behavior and motion; Figma fills evidenced design gaps and browser standards govern browser semantics.',
+      );
+  for (const t of table(wb, sheets.tasks).filter(
+    t => t.Contract === previous['Migration strategy'],
+  )) {
+    const fields = {
+      Contract: p.value.strategyId,
+      Title: authorityText(t.Title),
+      Notes: authorityText(t.Notes),
+      'Prior contract state': JSON.stringify({
+        contract: t.Contract,
+        status: t.Status,
+        verifiedSHA: t['Verified SHA'] || '',
+        receipt: t['Receipt path'] || '',
+      }),
+      QA: 'Pending',
+    };
+    if (['Closed', 'Approved', 'Awaiting QA'].includes(t.Status)) {
+      transition(wb, t, 'Blocked', {
+        ...fields,
+        'Hold reason':
+          'Compose-first contract/source pin changed. Reconcile sources, reprepare and obtain new verification/QA; prior evidence is historical.',
+      });
+      invalidated.push(t['Task ID']);
+    } else write(wb, sheets.tasks, t._row, fields);
+  }
+  for (const epic of table(wb, 'Epics').filter(e => e['Epic ID'] === 'M3-E08'))
+    write(wb, 'Epics', epic._row, {Outcome: authorityText(epic.Outcome)});
+  const overview = wb.worksheets.getItem('Overview').getUsedRange();
+  for (const [r, cells] of overview.values.entries())
+    for (const [c, value] of cells.entries())
+      if (
+        typeof value === 'string' &&
+        value.startsWith('Figma-first migration')
+      )
+        overview.getCell(r, c).values = [[authorityText(value)]];
+  for (const row of sourceRows) {
+    const f = index.families.find(f => f.id === row.ID);
+    write(wb, 'Compose sources', row._row, {
+      'Source path': f.path,
+      'Source SHA256': f.sha256,
+      Symbols: f.symbols.join(', '),
+      'Token files': f.tokens.join(', '),
+      Tests: f.tests.map(t => t.path).join(', '),
+      'Source link': f.url,
+    });
+  }
+  const expressionByName = new Map(expressions.map(e => [e.name, e]));
+  for (const name of [sheets.components, sheets.tokens]) {
+    // One write per changed column avoids repeatedly reading thousands of token rows.
+    updateColumns(wb, name, row => {
+      const fields =
+        row.Contract === previous['Migration strategy']
+          ? {
+              Contract: p.value.strategyId,
+              'Native QA': 'Pending',
+              Merged: 'No',
+              ...(name === sheets.components
+                ? {'Source resolution': 'Unresolved'}
+                : {}),
+            }
+          : {};
+      const expression =
+        name === sheets.tokens && expressionByName.get(row['Material token']);
+      if (expression) {
+        const {f, v} = expression;
+        fields['Material source'] = `${f.url}#${v.line}`;
+        fields.Note = `${v.expression}; source-only expression, not a Material Web CSS property.`;
+      }
+      return fields;
+    });
+    const used = wb.worksheets.getItem(name).getUsedRange();
+    const formulas = used.formulas;
+    for (let c = 0; c < formulas[0].length; c++) {
+      for (let r = 1; r < formulas.length;) {
+        if (!formulas[r][c]) {
+          r++;
+          continue;
+        }
+        const start = r,
+          run = [];
+        while (r < formulas.length && formulas[r][c])
+          run.push([formulas[r++][c]]);
+        if (run.some(([f]) => f.includes(previous['Migration strategy'])))
+          wb.worksheets
+            .getItem(name)
+            .getRangeByIndexes(start, c, run.length, 1).formulas = run.map(
+            ([f]) => [
+              f.replaceAll(previous['Migration strategy'], p.value.strategyId),
+            ],
+          );
+      }
+    }
+  }
+  const activeMappingIds = new Set(
+    table(wb, sheets.components)
+      .filter(r => r.Contract === p.value.strategyId)
+      .map(r => r['Map ID']),
+  );
+  updateColumns(wb, sheets.checks, c => {
+    const fields = {};
+    if (activeMappingIds.has(c['Map ID']) && c.Result === 'Pass')
+      fields.Result = 'Pending';
+    if (c.Scenario === 'Figma source precedence') {
+      fields.Scenario = 'Compose source precedence';
+      fields['Expected check'] = p.value.nativeAcceptance.find(
+        ([n]) => n === fields.Scenario,
+      )[1];
+    }
+    return fields;
+  });
+  for (const [key, value] of Object.entries({
+    'Migration strategy': p.value.strategyId,
+    'Policy SHA256': p.hash,
+    AndroidX: p.value.androidxCommit,
+    'Baseline ID': p.value.baselineId,
+    'Source precedence': p.value.sourcePolicy,
+    'Scope inventory SHA256': digest(JSON.stringify(scopeMembers(wb))),
+  }))
+    setMeta(wb, key, value);
+  graph(table(wb, sheets.tasks), table(wb, sheets.edges));
+  return {
+    changed: true,
+    type: 'workbook.upgraded',
+    data: {
+      strategy: p.value.strategyId,
+      previousStrategy: previous['Migration strategy'],
+      preservedTasks: table(wb, sheets.tasks).length,
+      invalidated,
+      coverage:
+        'No new coverage or approval inferred. Reprepare source packets and reconcile active baselines under Compose-first authority.',
+    },
+  };
+}
+
+function updateColumns(wb, name, update) {
+  const sheet = wb.worksheets.getItem(name);
+  const [headers, ...rows] = sheet.getUsedRange().values;
+  const changed = new Set();
+  for (const values of rows) {
+    const row = Object.fromEntries(headers.map((h, i) => [h, values[i]]));
+    for (const [key, value] of Object.entries(update(row))) {
+      const c = headers.indexOf(key);
+      if (c < 0) throw new Error(`Missing ${name} column: ${key}`);
+      values[c] = value;
+      changed.add(c);
+    }
+  }
+  for (const c of changed)
+    sheet.getRangeByIndexes(1, c, rows.length, 1).values = rows.map(r => [
+      r[c] ?? '',
+    ]);
 }

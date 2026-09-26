@@ -30,13 +30,18 @@ const coverage = (status = 'present') => ({
 });
 function record(group) {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
+    authority: 'compose-first',
     familyId: group.id,
     scopeSha256: group.scopeSha256,
     pins: {figma: 'figma', compose: 'compose', web: 'web'},
     coverage: {figma: coverage(), compose: coverage(), web: coverage()},
     routes: {
-      design: {primary: 'figma', figmaSpecified: true, evidence: 'design.json'},
+      design: {
+        primary: 'compose',
+        figmaSpecified: true,
+        evidence: 'design.json',
+      },
       behavior: {
         primary: 'compose',
         figmaSpecified: false,
@@ -125,7 +130,7 @@ test('source absence and a skipped primary require evidence; Compose-only has a 
   r.coverage.figma.reason = '';
   assert.throws(() => validateFamily(r, group, policy), /absence/);
 });
-test('linked candidates cannot silently disappear and Figma cannot be overridden', () => {
+test('linked candidates cannot disappear and Figma cannot silently override Compose', () => {
   const group = familyGroups([
       mapping('CM-0001', 'compose:Button', 'figma-node'),
     ])[0],
@@ -134,8 +139,16 @@ test('linked candidates cannot silently disappear and Figma cannot be overridden
   r.coverage.figma = coverage('absent');
   assert.throws(() => validateFamily(r, group, policy), /candidate links/);
   r.coverage.figma = coverage();
-  r.routes.design.primary = 'compose';
-  assert.throws(() => validateFamily(r, group, policy), /Figma must win/);
+  r.routes.design.primary = 'figma';
+  assert.throws(() => validateFamily(r, group, policy), /higher source/);
+  r.routes.design.exception = {
+    reason: 'Approved newer design correction',
+    evidence: 'correction.json',
+    approvalReference: 'human decision',
+  };
+  validateFamily(r, group, policy);
+  r.schemaVersion = 1;
+  assert.throws(() => validateFamily(r, group, policy), /stale/);
 });
 test('sibling scope and pinned source changes invalidate shared research', () => {
   const group = familyGroups([mapping('CM-0001', 'compose:Button')])[0],
@@ -154,6 +167,7 @@ test('sibling scope and pinned source changes invalidate shared research', () =>
 test('Figma-only and Web-only families retain explicit fallback routes', () => {
   const figma = familyGroups([mapping('CM-0001', '', 'node')])[0],
     f = record(figma);
+  f.routes.design.primary = 'figma';
   f.coverage.compose = coverage('absent');
   f.coverage.web = coverage('absent');
   f.routes.behavior.primary = 'website';
@@ -186,16 +200,18 @@ test('task-local reinterpretation fails; a shared dimension exception applies to
   const group = familyGroups([mapping('CM-0001', 'compose:Button')])[0],
     r = record(group);
   const source = {
-    decisions: [{dimension: 'shape', chosen: 'compose', figmaSpecified: false}],
+    decisions: [{dimension: 'shape', chosen: 'figma', figmaSpecified: true}],
   };
   assert.throws(() => validateFamilyUse(source, [r]), /shared family decision/);
   r.overrides = [
     {
       dimension: 'shape',
-      primary: 'compose',
-      figmaSpecified: false,
-      reason: 'Specific missing kit dimension',
+      primary: 'figma',
+      figmaSpecified: true,
+      reason: 'Specific missing Compose dimension',
       evidence: 'shape-gap.json',
+      gapReason: 'Shape is absent from the selected Compose API',
+      gapEvidence: 'shape-gap.json',
     },
   ];
   validateFamily(r, group, policy);

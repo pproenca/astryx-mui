@@ -2,7 +2,7 @@
 
 /**
  * @input Revision-bound receipts, pinned Compose/Figma/Web baselines and independent recordings.
- * @output Recomputed pixel, trajectory and browser performance evidence with explicit browser source routing.
+ * @output Recomputed pixel, trajectory and browser evidence under the pinned source authority.
  * @position Migration-only verification. Product regression tests outlive this tool.
  */
 import fs from 'node:fs/promises';
@@ -32,8 +32,9 @@ export async function fileAt(repo, relative) {
 }
 export function validateSource(source, policy) {
   required(
-    source.authority === 'figma-first',
-    'The selected source authority must be Figma first',
+    source.authority ===
+      (policy.schemaVersion >= 4 ? 'compose-first' : 'figma-first'),
+    'The selected source authority differs from policy; prepare the source decision again',
   );
   required(
     source.web?.commit === policy.materialWebCommit,
@@ -100,7 +101,9 @@ export function validateSource(source, policy) {
       'Resolve the source for each design dimension',
     );
     required(
-      !decision.figmaSpecified || decision.chosen === 'figma',
+      policy.schemaVersion >= 4 ||
+        !decision.figmaSpecified ||
+        decision.chosen === 'figma',
       'Figma must win wherever it specifies the design',
     );
   }

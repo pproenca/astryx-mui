@@ -1,9 +1,9 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Workbook, shared family decisions and task verifiers. @output Measured transitions and focused source reading at verified revisions. @position Disposable migration workflow. */
+/** @input Workbook, shared family decisions and task verifiers. @output Measured transitions, observable command evidence and scoped feedback. @position Disposable migration workflow. */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import {execFileSync} from 'node:child_process';
+import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {
   table,
@@ -22,6 +22,7 @@ import {transition, flowMetrics, excelTime} from './flow.mjs';
 import {loadCompose, composeBrief} from './compose.mjs';
 import {upgradeWorkbook} from './upgrade.mjs';
 import {auditCoverage, retireCheck, coveragePlan} from './audit.mjs';
+import {commandEvidence, attemptDetails, feedback} from './feedback.mjs';
 const home = path.dirname(fileURLToPath(import.meta.url));
 export const policyFile = 'internal/material3-migration/policy.json';
 export async function policy() {
@@ -29,12 +30,19 @@ export async function policy() {
   return {value: JSON.parse(text), hash: hash(text)};
 }
 export function exec(repo, command, args) {
-  return execFileSync(command, args, {
+  const output = spawnSync(command, args, {
     cwd: repo,
     encoding: 'utf8',
     stdio: ['ignore', 'pipe', 'pipe'],
     timeout: 120000,
-  }).trim();
+  });
+  commandEvidence(command, args, output);
+  if (output.error) throw output.error;
+  if (output.status !== 0)
+    throw new Error(
+      `Command failed (${output.status ?? output.signal}): ${command} ${args.join(' ')}\n${output.stderr || output.stdout || ''}`,
+    );
+  return output.stdout.trim();
 }
 function clean(repo) {
   if (exec(repo, 'git', ['status', '--porcelain', '--untracked-files=no']))
@@ -116,6 +124,14 @@ export async function dispatch(wb, command, opts) {
   checkPolicy(wb, p);
   const tasks = table(wb, sheets.tasks),
     edges = table(wb, sheets.edges);
+  const observedTask = tasks.find(t => t['Task ID'] === opts.id);
+  if (observedTask)
+    attemptDetails({
+      preparationSha256: observedTask['Preparation SHA256'] || null,
+      sourceDecision: observedTask['Source decision'] || null,
+      mappingIds: observedTask['Mapping IDs'] || '',
+      statusBefore: observedTask.Status,
+    });
   if (command === 'audit') {
     const audit = await auditCoverage(wb, p.value, repo);
     if (!audit.complete)
@@ -192,6 +208,7 @@ export async function dispatch(wb, command, opts) {
         .filter(c => !c.preparation.ready)
         .slice(0, p.value.workInProgress.preparedBuffer),
       flow: flowMetrics(tasks, Date.now(), edges),
+      ...(opts.stateDir ? {feedback: await feedback(opts.stateDir)} : {}),
       active: tasks
         .filter(t =>
           ['Claimed', 'Awaiting QA', 'Approved', 'Blocked'].includes(t.Status),
@@ -209,6 +226,9 @@ export async function dispatch(wb, command, opts) {
       prepared = await preparationStatus(wb, t, p.value, repo);
     return result('task.brief', {
       ...brief(wb, opts.id, opts.full),
+      ...(opts.stateDir
+        ? {feedback: await feedback(opts.stateDir, opts.id)}
+        : {}),
       prepared: prepared.ready
         ? {
             ready: true,
@@ -277,7 +297,16 @@ export async function dispatch(wb, command, opts) {
       Owner: process.env.USER || 'local',
       'Claimed at': new Date().toISOString(),
     });
-    return result('task.claimed', brief(wb, task['Task ID'], opts.full), true);
+    return result(
+      'task.claimed',
+      {
+        ...brief(wb, task['Task ID'], opts.full),
+        ...(opts.stateDir
+          ? {feedback: await feedback(opts.stateDir, task['Task ID'])}
+          : {}),
+      },
+      true,
+    );
   }
   const task = getTask(wb, opts.id);
   if (command === 'task block') {

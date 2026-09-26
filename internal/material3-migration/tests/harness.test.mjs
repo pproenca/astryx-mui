@@ -113,7 +113,13 @@ function source() {
     ],
   };
 }
-test('Figma precedence and explicit tolerance cannot be bypassed by a conflicting Web value', () => {
+test('active Compose-first policy rejects a stale Figma-first source decision', () => {
+  assert.throws(
+    () => validateSource(source(), {schemaVersion: 4}),
+    /authority differs from policy/,
+  );
+});
+test('legacy Figma precedence and explicit tolerance cannot be bypassed by a conflicting Web value', () => {
   const s = source();
   validateSource(s, {materialWebCommit: 'web'});
   s.decisions[0].chosen = 'web';

@@ -42,22 +42,20 @@ values, or the behavior of existing themes.
 
 ## Native direction and implementation status
 
-Figma is the selected design authority wherever the supplied kit specifies the
-design. Pinned AndroidX Compose Material 3 supplies component defaults, Expressive
-variants, state transitions, shape behavior and upstream test cases. Captured
-Material guidance and observed GIF/video motion resolve intent and gaps; pinned
-Material Web supplies browser implementation evidence. Record divergences rather
-than adapting Figma to the limitations of that Web revision. Native acceptance uses
-selected source baselines, pixel comparisons and timed motion evidence. Foundations
-require their own approved gallery before component implementation expands.
+Pinned AndroidX Compose Material 3 is the selected default authority for overlapping
+anatomy, tokens, defaults, variants, states and motion. Figma supplies uncovered design
+and Figma-only variants; captured Material guidance and watched media fill remaining
+concerns. Material Web and native web standards govern browser semantics. Lower sources
+fill evidenced gaps. Replacing a specified Compose value requires a dimension-specific,
+source-backed human-approved exception. Export and checkout dates alone do not establish
+freshness. Native acceptance still requires matched visual references, timed motion
+evidence and foundation approval before component implementation expands.
 
-Source research is shared by component family, with variants and subcomponents below
-it. Design precedence is Figma, Compose, captured Material guidance, then Web. Behavior
-and motion start with Compose, then guidance/media and Web; any Figma-specified detail
-still wins. Browser semantics use Web or native web standards. Select one source per
-concern, record specific gaps and dimension overrides, and reuse that decision across
-implementation tasks. Presence on multiple platforms does not create multiple migration
-owners. Presence on one platform remains required scope until explicitly classified.
+Research is shared by component family, then variants/subcomponents and task slices.
+Design precedence is Compose, Figma, captured guidance, then Web. Behavior/motion use
+Compose, captured guidance/media, Figma, then Web. Resolve each concern and exception
+once and reuse it. Source presence never creates duplicate migration owners or erases
+single-platform coverage. Operational lessons cannot change this authority.
 
 The migration targets the complete, dated Material 3 and Material 3 Expressive
 baseline: the union of the selected Figma kit, Material guidance and pinned Compose
@@ -66,8 +64,9 @@ exclusions. Missing Web coverage is required migration work. A source match is a
 candidate, not proof of equivalent variants or behavior. Source revisions are fixed
 for a migration baseline; new upstream releases require an explicit scope update.
 
-The initial Compose reference is AndroidX
-`b97c4470f19d8ae9bb9f96be24376fdf37ad056f`. Experimental APIs and incomplete defaults
+The active Compose reference is AndroidX
+`a095da93f8e98dea8748ceed79ea8427aade245f` (26 September 2026), replacing
+`b97c4470f19d8ae9bb9f96be24376fdf37ad056f` after an explicit source refresh. Experimental APIs and incomplete defaults
 remain identified in source decisions. Compose expressions do not establish public
 Material Web CSS properties. Native typed roles and supported customization are
 owned here; source-only values retain explicit private names and attribution.
@@ -151,7 +150,7 @@ component overrides; native implementations consume them directly.
 No Material role is added to `TokenName`, `tokenVar`, generated portable token
 docs, or Core defaults merely to make this theme work. Spacing and control size
 retain Astryx's portable vocabulary for Core consumers. Native component geometry
-follows the resolved Figma-first component design without translation through a Core
+follows the resolved Compose-first component design without translation through a Core
 size or spacing scale.
 
 The pinned Material Web checkout has no system spacing, size, or density Sass
@@ -377,9 +376,15 @@ receipts must identify the pinned Material Web input and Astryx code revision.
   require native revalidation before wider migration continues. The existing
   migration workbook remains the sole execution database.
 
-- 2026-09-26: The project owner specified that Figma wins source disagreements.
+- 2026-09-26 (superseded below): The project owner specified that Figma wins source disagreements.
   Website guidance and observed animation media fill gaps; Web source is implementation
   evidence. Foundation approval precedes shared Web/Figma component migration.
+
+- 2026-09-26: The project owner approved Compose-first precedence and refreshing the
+  Compose reference to the latest source. This supersedes the earlier Figma-first
+  decision. Figma-only scope, documented fallbacks, approved exceptions and native
+  browser semantics remain required. Existing source preparations and approvals
+  must be revalidated under the v4 contract.
 
 ## Open questions
 

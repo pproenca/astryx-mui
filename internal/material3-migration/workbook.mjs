@@ -1,12 +1,18 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Existing XLSX and workflow/upgrade mutation. @output Locked atomic transactions preserving source and review history. @position Migration-only persistence. */
+/** @input Existing XLSX and workflow/upgrade mutation. @output Locked atomic transactions and immutable pre-upgrade snapshots. @position Migration-only persistence. */
 import fs from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {dependency} from './runtime.mjs';
 import {present} from './presentation.mjs';
+import path from 'node:path';
 export const hash = bytes => createHash('sha256').update(bytes).digest('hex');
-export async function workbook(file, mutating, action) {
+export async function workbook(
+  file,
+  mutating,
+  action,
+  {archiveBeforeChange = false} = {},
+) {
   if (!file)
     throw new Error(
       'Set M3_WORKBOOK to the existing migration workbook. No database is created implicitly.',
@@ -27,6 +33,21 @@ export async function workbook(file, mutating, action) {
     const wb = await SpreadsheetFile.importXlsx(await FileBlob.load(file));
     const result = await action(wb);
     if (mutating && result.changed) {
+      if (archiveBeforeChange) {
+        const dir = path.join(path.dirname(file), '.m3-receipts', 'upgrades');
+        await fs.mkdir(dir, {recursive: true});
+        const snapshot = path.join(dir, `${hash(before)}.xlsx`);
+        try {
+          await fs.writeFile(snapshot, before, {flag: 'wx'});
+        } catch (e) {
+          if (
+            e.code !== 'EEXIST' ||
+            hash(await fs.readFile(snapshot)) !== hash(before)
+          )
+            throw e;
+        }
+        result.data.previousWorkbookSnapshot = snapshot;
+      }
       wb.recalculate();
       await (await SpreadsheetFile.exportXlsx(wb)).save(temporary);
       await present(temporary);

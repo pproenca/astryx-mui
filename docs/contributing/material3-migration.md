@@ -30,16 +30,16 @@ for configuration, joined task briefs, verification, interactive review and fini
 Approval records the human decision; Closed additionally requires the reviewed PR
 merged, CI passing and safe worktree cleanup. Only Closed unlocks successors.
 
-## Figma-first source resolution
+## Compose-first source resolution
 
-The project owner explicitly selected Figma as the design authority. Where the kit
-specifies a dimension or behavior, implement it even if Material Web differs.
-Pinned Compose Material 3 provides component rules, states, Expressive variants,
-motion selection and upstream test cases. Captured Material website guidance and
-watched GIFs/videos resolve intent and gaps. Pinned Material Web provides browser
-implementation evidence. Record source
-versions, node IDs and divergences. A source-name match is only candidate coverage.
-Missing references block verification; never average incompatible source values.
+The project owner selected pinned Compose as the default on 26 September 2026,
+superseding the earlier Figma-first rule. Compose governs overlapping design,
+defaults, variants, state transitions and motion. Figma supplies uncovered design
+and Figma-only scope; captured guidance and watched media resolve remaining gaps.
+Material Web and native web standards govern browser implementation. Source dates
+alone do not establish which specific design is newer. Record disagreements once
+per dimension. A gap permits a fallback; overriding a specified Compose value needs
+an explicit, source-backed human-approved exception. Never average conflicting values.
 
 ### One family, one source decision
 
@@ -53,14 +53,14 @@ A reused Figma node alone never proves that unrelated components have identical 
 
 | Concern                                               | First source | Consult next only for a specific gap             |
 | ----------------------------------------------------- | ------------ | ------------------------------------------------ |
-| Anatomy, dimensions, typography, colors and shape     | Figma        | Compose → captured Material guidance → Web       |
-| States, interaction rules and defaults                | Compose      | Material guidance → Web                          |
-| Springs, transitions and interruption                 | Compose      | Watched Material media → Web                     |
+| Anatomy, dimensions, typography, colors and shape     | Compose      | Figma → captured Material guidance → Web         |
+| States, interaction rules and defaults                | Compose      | Material guidance → Figma → Web                  |
+| Springs, transitions and interruption                 | Compose      | Watched Material media → Figma → Web             |
 | DOM, keyboard, forms and accessibility implementation | Web          | Native web standards and permanent browser tests |
 
-Figma overrides behavior or motion details it explicitly specifies. Browser semantics
-must remain valid for the web. A lower source cannot silently replace a specified
-Figma dimension or shrink Expressive coverage.
+The existence of a Figma value does not override Compose. Preserve valid browser
+semantics when translating Android behavior. An approved exception is stored in the
+shared family decision and reused by its children. Figma-only variants remain in scope.
 
 `task show` exposes one family decision path and the variants it covers. Raw platform
 references are available with `--full` for the initial source resolution or an actual
@@ -86,7 +86,7 @@ approval. Reuse the clean shallow/sparse AndroidX checkout through `M3_ANDROIDX`
 the harness validates its commit and generates reusable source references. It never
 updates the checkout to a moving upstream branch.
 
-Pixel-perfect means comparison to the selected Figma-first baseline under matched
+Pixel-perfect means comparison to the selected Compose-first baseline under matched
 viewport, DPR, fonts, theme, content and state. Recompute image differences. Nonzero
 rasterization tolerance needs a specific human-approved exception. Motion requires
 normal-speed observation, timestamped intermediate frames, interruption/reversal
@@ -190,7 +190,7 @@ Do not blanket-set the acceptance matrix to Pass from a unit-test result.
 Task verifiers and evidence schemas live in the
 [temporary harness](../../internal/material3-migration/README.md#verification-recipes-and-evidence).
 The CLI joins the workbook's task, mappings, Figma nodes, checks and source links.
-Native checks include Figma precedence, measured pixel comparison and motion media
+Native checks include Compose precedence, measured pixel comparison and motion media
 review. Permanent regression tests remain beside their product owner; disposable
 recipes orchestrate them. Human QA occurs at the verified revision. Current-record
 PRs retain the exact-commit owner gate.
