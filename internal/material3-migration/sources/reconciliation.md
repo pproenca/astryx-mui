@@ -23,6 +23,14 @@ three-digit hex notation, gives four Light differences and no Dark differences:
 | `on-secondary-container` | `#4A4459` | `#1D192B` |
 | `on-tertiary-container`  | `#633B48` | `#31111D` |
 
+Pinned Compose
+[`ColorLightTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/b97c4470f19d8ae9bb9f96be24376fdf37ad056f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ColorLightTokens.kt)
+also selects the corresponding palette tone 10 for all four roles. Its
+[`PaletteTokens.kt`](https://android.googlesource.com/platform/frameworks/support/+/b97c4470f19d8ae9bb9f96be24376fdf37ad056f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/PaletteTokens.kt)
+resolves those four values to the Web Light column above. The Figma export
+therefore disagrees with both pinned implementations for these exact bindings;
+do not substitute a nearby palette tone for the kit's published role value.
+
 The native graph must use the kit's values for these roles. The current
 Material Web-derived compatibility theme remains historical implementation
 evidence, not the native source decision. The 30 kit contrast and named-scheme
