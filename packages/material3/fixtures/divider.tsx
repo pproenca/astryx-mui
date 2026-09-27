@@ -35,6 +35,23 @@ function App() {
         selected 16px logical inset, and decorative or explicit separator
         semantics. These are native package exports.
       </p>
+      <p className="source-line">
+        <span>
+          Status: native package preview with matched source-value pixels.
+        </span>
+        <a
+          href="https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Divider.kt"
+          target="_blank"
+          rel="noreferrer">
+          Pinned Compose Divider
+        </a>
+        <a
+          href="https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/divider/divider.ts"
+          target="_blank"
+          rel="noreferrer">
+          Web inset and browser gap
+        </a>
+      </p>
       <p id="revision" className="revision" />
       <fieldset>
         <legend>Live Divider controls</legend>
@@ -152,12 +169,15 @@ function App() {
 }
 
 const root = document.getElementById('root');
-if (!root) {throw new Error('Missing Divider gallery root.');}
+if (!root) {
+  throw new Error('Missing Divider gallery root.');
+}
 createRoot(root).render(<App />);
 fetch('../revision.json')
   .then(response => response.json())
   .then(({revision, dirty}) => {
     const label = document.getElementById('revision');
-    if (label)
-      {label.textContent = `Current native build: ${revision}${dirty ? ' · local changes' : ''}`;}
+    if (label) {
+      label.textContent = `Current native build: ${revision}${dirty ? ' · local changes' : ''}`;
+    }
   });

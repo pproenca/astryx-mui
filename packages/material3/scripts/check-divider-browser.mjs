@@ -54,6 +54,40 @@ try {
   await page.close();
 
   page = await preview(
+    {orientation: 'horizontal', inset: 'start'},
+    {width: 64, direction: 'rtl', scheme: 'expressive-light'},
+  );
+  rule = page.getByTestId('rule');
+  await page.evaluate(() => {
+    document.body.style.zoom = '200%';
+  });
+  assert.equal((await rule.boundingBox()).width, 96);
+  assert.ok(
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= innerWidth,
+    ),
+    'Zoomed RTL Divider overflows the viewport',
+  );
+  await page.close();
+
+  page = await browser.newPage({viewport: {width: 320, height: 240}});
+  await page.setContent(
+    `<!doctype html><html><head><style>${css}\n*{box-sizing:border-box}html,body{margin:0}.scroll{margin:16px;width:180px;height:60px;overflow:auto}.nested{width:280px;padding:8px;background:var(--md-sys-color-surface-container-low)}</style></head><body data-md-scheme="light"><div class="scroll"><div class="nested">${renderToStaticMarkup(createElement(HorizontalDivider, {'data-testid': 'nested-rule'}))}</div></div></body></html>`,
+  );
+  const nested = page.getByTestId('nested-rule');
+  assert.equal((await nested.boundingBox()).width, 264);
+  assert.equal(
+    await nested.evaluate(node => getComputedStyle(node).pointerEvents),
+    'none',
+  );
+  assert.ok(
+    await page.evaluate(
+      () => document.querySelector('.scroll').scrollWidth > 180,
+    ),
+  );
+  await page.close();
+
+  page = await preview(
     {orientation: 'vertical', role: 'separator'},
     {
       scheme: 'dark',

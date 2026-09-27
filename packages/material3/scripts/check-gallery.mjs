@@ -110,6 +110,16 @@ try {
   await dividerFixture
     .getByTestId('horizontal-divider')
     .waitFor({state: 'attached'});
+  assert.match(
+    await dividerFixture.locator('#revision').textContent(),
+    /Current native build: [0-9a-f]{40}/,
+  );
+  assert.equal(
+    await dividerFixture
+      .getByRole('link', {name: 'Pinned Compose Divider'})
+      .count(),
+    1,
+  );
   await dividerFixture.locator('#inset').selectOption('start');
   await dividerFixture.locator('#direction').selectOption('rtl');
   assert.equal(

@@ -40,6 +40,17 @@ h2 {
   color: var(--md-sys-color-on-surface-variant);
   max-width: 70ch;
 }
+.source-line {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 12px;
+  margin-top: 8px;
+}
+.source-line a {
+  color: var(--md-sys-color-primary);
+}
 .revision {
   color: var(--md-sys-color-on-surface-variant);
   font:

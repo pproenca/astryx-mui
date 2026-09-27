@@ -46,6 +46,14 @@ for (const item of source.scenarios)
 
 run('pnpm', '-F', '@astryxdesign/material3', 'test');
 run('pnpm', '-F', '@astryxdesign/material3', 'typecheck');
+run('pnpm', '-F', '@astryxdesign/theme-material3', 'build');
+run(
+  'pnpm',
+  'exec',
+  'vitest',
+  'run',
+  'packages/core/src/Divider/Divider.test.tsx',
+);
 run('pnpm', 'check:knowledge');
 run(
   'node',
@@ -83,16 +91,18 @@ const checks = {
     'packages/material3/scripts/check-discovery.mjs',
   ),
   compatibility: pass(
-    'The separately published Core Divider keeps labels, strong treatment and semantic defaults; native entry points own Compose behavior.',
+    'The separately published Core Divider keeps labels, strong treatment and semantic defaults; its focused test and compatibility theme build pass while native entry points own Compose behavior.',
     'packages/themes/material3/material3.spec.md',
     'packages/material3/src/Divider/HorizontalDivider.spec.md',
     'packages/material3/src/Divider/VerticalDivider.spec.md',
+    'packages/core/src/Divider/Divider.test.tsx',
   ),
   'automated-checks': pass(
     'The native package suite and typecheck include exact pixel, browser semantics, density and gallery regressions.',
     'packages/material3/package.json',
     'packages/material3/scripts/check-divider-pixels.mjs',
     'packages/material3/scripts/check-divider-hairline-browser.mjs',
+    'packages/material3/src/Divider/Divider.test.tsx',
   ),
   'browser-behavior': pass(
     'Chrome verifies decorative and explicit separator semantics, forced colors, RTL, narrow layout, pointer inertness and one-device-pixel hairline at DPR 1 and 2.',

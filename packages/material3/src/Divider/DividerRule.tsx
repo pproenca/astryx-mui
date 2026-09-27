@@ -99,7 +99,9 @@ const styles = stylex.create({
 function useDevicePixelRatio(active: boolean) {
   const [ratio, setRatio] = useState(1);
   useEffect(() => {
-    if (!active) {return;}
+    if (!active) {
+      return;
+    }
     let query: MediaQueryList | undefined;
     const update = () => {
       query?.removeEventListener('change', update);
@@ -133,8 +135,9 @@ export function DividerRule({
     thickness !== undefined &&
     thickness !== 'hairline' &&
     (!Number.isFinite(thickness) || thickness <= 0)
-  )
-    {throw new RangeError('Divider thickness must be positive or hairline.');}
+  ) {
+    throw new RangeError('Divider thickness must be positive or hairline.');
+  }
   const hairline = thickness === 'hairline';
   const ratio = useDevicePixelRatio(hairline);
   const horizontal = orientation === 'horizontal';
@@ -161,7 +164,7 @@ export function DividerRule({
       {...rest}
       {...paint}
       className={[paint.className, className].filter(Boolean).join(' ')}
-      role={role}
+      role={role === 'separator' ? 'separator' : undefined}
       tabIndex={undefined}
       aria-hidden={role === 'separator' ? undefined : true}
       aria-orientation={role === 'separator' ? orientation : undefined}
