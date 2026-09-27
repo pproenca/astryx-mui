@@ -54,12 +54,39 @@ Reproduce the evidence from the repository root:
 M3_ANDROIDX=/path/to/pinned/androidx node internal/material3-migration/sources/button-reference/capture-button-shape.mjs --check
 node internal/material3-migration/sources/button-reference/capture-browser-button-shape.mjs --check
 node internal/material3-migration/sources/button-reference/render-button-shape.mjs --check
+M3_ANDROIDX=/path/to/pinned/androidx node internal/material3-migration/sources/button-reference/capture-button-elevation.mjs --check
+node internal/material3-migration/sources/button-reference/render-button-elevation.mjs --check
 ```
 
-Button interaction elevation uses a separate tween in pinned Compose
-`Elevation.kt`; its timed media remains pending. Native implementation also
-needs rendered interaction, matched pixels, keyboard, form, focus, theme,
-responsive, and performance acceptance at its own verified revision.
+[`capture-button-elevation.mjs`](capture-button-elevation.mjs) hashes and
+checks pinned `Button.kt`, `internal/Elevation.kt`, `Easing.kt`, generated
+elevation levels, and filled, elevated, and tonal Button tokens. It
+reconstructs the source-specified cubic tweens; it does **not** run an Android
+`Animatable`. The [37-sample trace](button-elevation-motion.json) covers hover
+entry at 0 ms, press interruption at 80 ms, release back to hover at 140 ms,
+hover exit at 220 ms, reentry at 240 ms, final exit at 360 ms, disable snap at
+500 ms, and enable snap at 580 ms. Elevated Button transitions between level 1
+(1 dp) and level 2 (3 dp); filled and tonal transition between level 0 (0 dp)
+and level 1 (1 dp). Outlined and text default to no elevation object (0 dp).
+The pinned 150 ms outgoing press tween is retained in the trace as a source
+specification; default Button press and rest elevations coincide, so that
+tween has no visible default-state path. Disabled and reenabled targets snap.
+
+The independent Chrome Web Animations comparison differs by at most 0.0000091
+dp for elevated and 0.00000075 dp for filled/tonal. These are source
+reconstruction discrepancies, **not** native acceptance limits. The
+[elevation render manifest](elevation-render-manifest.json) hashes 32 selected
+light/dark frames, four reduced-motion adaptation frames, and
+[light](compose-button-elevation-light.mp4) and
+[dark](compose-button-elevation-dark.mp4) normal-speed clips. I watched both
+clips and inspected the transition and snap frames. The diagrams show pinned
+source dp values, while their shadow blur and bars are browser schematics,
+**not** Compose device shadow pixels. Reduced-motion frames show immediate
+browser adaptation endpoints, not a specified Compose behavior.
+
+Native implementation still needs rendered interaction, matched pixels,
+keyboard, form, focus, theme, responsive, and performance acceptance at its
+own verified revision.
 
 The AndroidX source is © The Android Open Source Project, Apache-2.0, and
 is read from the external pinned checkout rather than redistributed. See

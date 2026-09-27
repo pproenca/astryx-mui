@@ -65,9 +65,11 @@ corner-shape families snap. Button interaction elevation uses
 [`Elevation.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/internal/Elevation.kt):
 120 ms incoming, 150 ms outgoing, and 120 ms on hover exit; disabling snaps.
 The shared [Ripple source decision](family-CM-0023.md) owns press and state-layer
-motion underneath Button. Timed Button shape/elevation frames, interruption,
-reversal, normal-speed watched media, and reduced-motion evidence are still
-required before native Button implementation.
+motion underneath Button. The [Button source reference](../button-reference/README.md)
+records timed shape and elevation frames, interruption, reversal, watched
+normal-speed media, and reduced-motion browser adaptations. The elevation
+trace reconstructs the pinned tween specification; it is not Android device
+pixel capture or native Button acceptance.
 
 **Browser semantics: Material Web and web standards.** A native React button
 can retain the HTML button's keyboard and form behavior; navigation uses a
