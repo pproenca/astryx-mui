@@ -2,7 +2,7 @@
 
 /**
  * @file check-native-fixture.mjs
- * @input Built native token entry point and standalone override fixture
+ * @input Optional M3_BROWSER_EXECUTABLE for the pinned browser; Built native token entry point and standalone override fixture
  * @output Chrome evidence that scoped Material roles reach native CSS without Core aliases
  * @position Native package boundary browser regression
  */
@@ -32,7 +32,11 @@ assert.equal(
 );
 assert.ok(!html.includes('--color-') && !html.includes('--astryx-'));
 
-const browser = await chromium.launch({channel: 'chrome', headless: true});
+const browser = await chromium.launch({
+  channel: 'chrome',
+  headless: true,
+  executablePath: process.env.M3_BROWSER_EXECUTABLE,
+});
 try {
   const page = await browser.newPage();
   await page.setContent(html);

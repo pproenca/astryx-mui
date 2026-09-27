@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Native elevation/state helpers, licensed Roboto and pinned captures. @output Exact light/dark browser pixel comparisons. @position Permanent native layer regression. */
+/** @input Optional M3_BROWSER_EXECUTABLE for the pinned browser; Native elevation/state helpers, licensed Roboto and pinned captures. @output Exact light/dark browser pixel comparisons. @position Permanent native layer regression. */
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -39,7 +39,11 @@ const manifests = Object.fromEntries(
 for (const manifest of Object.values(manifests))
   assert.equal(hash(font), manifest.font.sha256);
 
-const browser = await chromium.launch({channel: 'chrome', headless: true});
+const browser = await chromium.launch({
+  channel: 'chrome',
+  headless: true,
+  executablePath: process.env.M3_BROWSER_EXECUTABLE,
+});
 try {
   for (const mode of ['light', 'dark']) {
     const colors = material3ColorValues(mode);

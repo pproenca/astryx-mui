@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Native Compose geometry, licensed Roboto and pinned default/narrow/RTL captures. @output Exact browser geometry comparisons. @position Permanent native spacing regression. */
+/** @input Optional M3_BROWSER_EXECUTABLE for the pinned browser; Native Compose geometry, licensed Roboto and pinned default/narrow/RTL captures. @output Exact browser geometry comparisons. @position Permanent native spacing regression. */
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -37,7 +37,11 @@ assert.equal(pointer.minHeightPx, 36);
 assert.equal(pointer.paddingBlockPx, 8);
 assert.equal(pointer.iconAdjacentPaddingInlinePx, 12);
 
-const browser = await chromium.launch({channel: 'chrome', headless: true});
+const browser = await chromium.launch({
+  channel: 'chrome',
+  headless: true,
+  executablePath: process.env.M3_BROWSER_EXECUTABLE,
+});
 try {
   for (const mode of ['light', 'dark']) {
     const colors = material3ColorValues(mode);
@@ -94,12 +98,18 @@ try {
     await check(`spacing-${mode}.png`, `spacing-density-${mode}`);
     if (mode === 'light') {
       await page.setViewportSize(manifest.variantCaptures.narrowLight.viewport);
-      await check(manifest.variantCaptures.narrowLight.file, 'spacing-density-narrowLight');
+      await check(
+        manifest.variantCaptures.narrowLight.file,
+        'spacing-density-narrowLight',
+      );
     } else {
       await page.evaluate(() => {
         document.documentElement.dir = 'rtl';
       });
-      await check(manifest.variantCaptures.rtlDark.file, 'spacing-density-rtlDark');
+      await check(
+        manifest.variantCaptures.rtlDark.file,
+        'spacing-density-rtlDark',
+      );
     }
     await page.close();
   }

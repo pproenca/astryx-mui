@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Built native CSS, pinned color captures and Chrome. @output 35 matched 49-role pixel comparisons and scoped override checks. @position Permanent native foundation browser regression. */
+/** @input Optional M3_BROWSER_EXECUTABLE for the pinned browser; Built native CSS, pinned color captures and Chrome. @output 35 matched 49-role pixel comparisons and scoped override checks. @position Permanent native foundation browser regression. */
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -59,7 +59,11 @@ html, body { margin: 0; width: ${manifest.width}px; height: ${manifest.height}px
   )
   .join('')}</div></body></html>`;
 
-const browser = await chromium.launch({channel: 'chrome', headless: true});
+const browser = await chromium.launch({
+  channel: 'chrome',
+  headless: true,
+  executablePath: process.env.M3_BROWSER_EXECUTABLE,
+});
 try {
   const page = await browser.newPage({
     viewport: {width: manifest.width, height: manifest.height},

@@ -18,7 +18,7 @@ on:
       operation:
         description: 'Check exact main for release, capture candidates, or promote a reviewed capture'
         type: choice
-        options: [capture, promote, release-check]
+        options: [capture, promote, release-check, native-check]
         default: capture
         required: true
       run_id:
@@ -47,7 +47,7 @@ concurrency:
 
 jobs:
   maintenance-request:
-    if: github.event_name == 'workflow_dispatch' && inputs.operation != 'release-check'
+    if: github.event_name == 'workflow_dispatch' && (inputs.operation == 'capture' || inputs.operation == 'promote')
     runs-on: ubuntu-slim
     steps:
       - name: Require explicit main-branch maintenance
@@ -76,7 +76,7 @@ jobs:
 
   # Detect lightweight changes. Missing merge-base data fails closed.
   check-scope:
-    if: github.event_name != 'workflow_dispatch' || inputs.operation == 'release-check'
+    if: github.event_name != 'workflow_dispatch' || inputs.operation == 'release-check' || inputs.operation == 'native-check'
     runs-on: ubuntu-slim
     permissions:
       contents: read
@@ -529,7 +529,7 @@ jobs:
   # Permanent native browser checks must survive the disposable migration harness.
   material3-native:
     needs: [check-scope]
-    if: ${{ (github.event_name != 'workflow_dispatch' || inputs.operation == 'release-check') && always() && !cancelled() && needs.check-scope.outputs.spec_only != 'true' }}
+    if: ${{ (github.event_name != 'workflow_dispatch' || inputs.operation == 'release-check' || inputs.operation == 'native-check') && always() && !cancelled() && needs.check-scope.outputs.spec_only != 'true' }}
     runs-on: macos-15
     permissions:
       contents: read
@@ -541,8 +541,21 @@ jobs:
         with:
           ref: ${{ github.sha }}
       - uses: ./.github/actions/setup
-      - name: Install Chrome for the native browser contract
-        run: pnpm exec playwright install chrome
+      - name: Install the reference Chrome build for the native browser contract
+        run: |
+          set -eu
+          test "$(uname -m)" = arm64
+          VERSION=$(node -p "require('./packages/material3/fixtures/references/typography/manifest.json').browser.replace('Chrome ', '')")
+          ARCHIVE="$RUNNER_TEMP/material3-chrome.zip"
+          curl --fail --silent --show-error --location --retry 3 \
+            "https://storage.googleapis.com/chrome-for-testing-public/$VERSION/mac-arm64/chrome-mac-arm64.zip" \
+            --output "$ARCHIVE"
+          # A changed source browser requires an intentional archive-pin update.
+          printf '%s  %s\n' '9655c15107b36ce11c66b9de9f2a1734c2268213f93f279f3d8a0df152a1044d' "$ARCHIVE" | shasum -a 256 --check
+          unzip -q "$ARCHIVE" -d "$RUNNER_TEMP/material3-chrome"
+          CHROME="$RUNNER_TEMP/material3-chrome/chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing"
+          "$CHROME" --version
+          printf 'M3_BROWSER_EXECUTABLE=%s\n' "$CHROME" >> "$GITHUB_ENV"
       - name: Build and test the native package without migration tooling
         run: pnpm -F @astryxdesign/material3 test
 

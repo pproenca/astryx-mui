@@ -142,6 +142,15 @@ function assertReleaseRouting(candidate) {
 }
 
 describe('explicit release routing', () => {
+  it('runs only scope validation and the same native gate for an explicit native check', () => {
+    expect(workflow.on.workflow_dispatch.inputs.operation.options).toContain(
+      'native-check',
+    );
+    for (const [name, job] of Object.entries(jobs))
+      expect(runs(job, {operation: 'native-check'}), name).toBe(
+        ['check-scope', 'material3-native'].includes(name),
+      );
+  });
   it('uses only the existing workflow and canonical owners, never a push or schedule', () => {
     expect(workflow.on.workflow_dispatch.inputs.operation.options).toContain(
       'release-check',

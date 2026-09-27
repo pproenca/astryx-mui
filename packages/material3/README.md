@@ -103,3 +103,8 @@ frame; `pnpm build:gallery` builds it without Material Symbols fonts. For a
 local licensed-font comparison, set `M3_ICON_FONT_CACHE` to the pinned cache
 directory before building. That optional build copies fonts only into ignored
 `dist/`; the public package remains font independent.
+
+Pixel regression checks use the Chrome version recorded in
+`fixtures/references/typography/manifest.json`. Set `M3_BROWSER_EXECUTABLE` to
+that Chrome for Testing executable when the system Chrome version differs.
+CI downloads that version and verifies the archive checksum before testing.

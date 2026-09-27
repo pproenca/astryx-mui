@@ -48,6 +48,14 @@ describe('pull-request test join', () => {
     );
     const native = workflow.jobs['material3-native'];
     expect(native['continue-on-error']).not.toBe(true);
+    const install = native.steps.find(step =>
+      step.name?.startsWith('Install the reference Chrome'),
+    );
+    expect(install.run).toContain(
+      'fixtures/references/typography/manifest.json',
+    );
+    expect(install.run).toContain('shasum -a 256 --check');
+    expect(install.run).toContain('M3_BROWSER_EXECUTABLE=');
     expect(
       native.steps.some(
         step =>

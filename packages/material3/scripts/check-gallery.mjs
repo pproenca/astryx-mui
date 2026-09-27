@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Built native gallery, product-owned pinned comparisons, and Chrome. @output Provenance, asset, responsive and interactive gallery regression. @position Permanent native foundation gallery check. */
+/** @input Optional M3_BROWSER_EXECUTABLE for the pinned browser; Built native gallery, product-owned pinned comparisons, and Chrome. @output Provenance, asset, responsive and interactive gallery regression. @position Permanent native foundation gallery check. */
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import http from 'node:http';
@@ -63,7 +63,11 @@ const server = http.createServer(async (request, response) => {
   }
 });
 await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-const browser = await chromium.launch({channel: 'chrome', headless: true});
+const browser = await chromium.launch({
+  channel: 'chrome',
+  headless: true,
+  executablePath: process.env.M3_BROWSER_EXECUTABLE,
+});
 try {
   const page = await browser.newPage({viewport: {width: 1180, height: 800}});
   const errors = [];
