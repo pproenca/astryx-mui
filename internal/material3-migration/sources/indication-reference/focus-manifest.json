@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "sourceFiles": {
+    "spring": {
+      "path": "compose/animation/animation-core/src/commonMain/kotlin/androidx/compose/animation/core/SpringSimulation.kt",
+      "sha256": "78ccee541bba54e71666376819ec8b5e961421f0ea21ec34965da493827bf721"
+    },
+    "constants": {
+      "path": "compose/animation/animation-core/src/commonMain/kotlin/androidx/compose/animation/core/VectorizedAnimationSpec.kt",
+      "sha256": "2a3857a7620fcb108972c8886d18a1620fc54247216db6070750c2755c8c9cf9"
+    },
+    "materialRipple": {
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Ripple.kt",
+      "sha256": "4b53b7ffb01ff48014cdc2f6af216c97f6463d5e25343d9db699ea4abb90bc00"
+    },
+    "rippleNode": {
+      "path": "compose/material3/material3-ripple/src/commonMain/kotlin/androidx/compose/material3/ripple/Ripple.kt",
+      "sha256": "f0ba3e8b3d5b40d3977f7e4dcbf2c93dec02e19705a1141f8efe6dc81c2f0aa7"
+    }
+  },
+  "runtime": "kotlinc-jvm 2.4.20; openjdk version \"26.0.2.1\" 2026-08-18",
+  "traces": {
+    "standard": {
+      "file": "internal/material3-migration/sources/indication-reference/standard-focus.json",
+      "sha256": "d76d2c26dd57955ca10dfd7599cf5ab826972991b15d86bbf5b473a7414e89c1",
+      "settledAtMs": 880
+    },
+    "expressive": {
+      "file": "internal/material3-migration/sources/indication-reference/expressive-focus.json",
+      "sha256": "968d19f5b02e19bc66c520040be61e904c926ef2772bfd9e611461231c58e00c",
+      "settledAtMs": 880
+    }
+  }
+}
