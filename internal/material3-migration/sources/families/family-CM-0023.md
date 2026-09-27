@@ -5,9 +5,10 @@ and `CM-0042` (`md-ripple`). Both use the pinned Compose `Ripple` indication;
 the workbook links that one source family while retaining two native outcomes
 and distinct acceptance checks. It separates the focus indication used by
 native Material controls from the pinned Web-only attached ring presentation.
-The project owner selected an opt-in public `FocusRing` for custom controls on
-2026-09-27. Its exact React API still needs public API owner review; this source
-record does not authorize a `Ripple` export.
+The project owner selected opt-in public `FocusRing` and `Ripple` visual
+primitives for custom controls on 2026-09-27. Native Material controls still
+own their default indications. Each public React API needs its component
+contract; the source decision alone does not settle its props.
 
 ## Pinned coverage
 

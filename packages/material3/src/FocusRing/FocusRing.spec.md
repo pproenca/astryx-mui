@@ -63,7 +63,7 @@ Custom focusable controls need an opt-in Material 3 visual focus primitive. A cu
 
 - Focusability, keyboard activation, disabled state, accessible name, or hit target: the parent control owns them.
 - The default 10% Compose focus opacity in native controls: each native control owns its default indication.
-- A public `Ripple` export, generic DOM attachment service, arbitrary target search, or several competing attachment modes: the shared source decision does not authorize these APIs.
+- Generic DOM attachment service, arbitrary target search, or several competing attachment modes: the ring remains one direct-child visual primitive. `component:Ripple` owns the separately approved opt-in press and state indication.
 - Existing Core focus outline behavior or Core theme compatibility.
 
 ## Public concepts
