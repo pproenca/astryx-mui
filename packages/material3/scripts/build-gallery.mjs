@@ -44,11 +44,21 @@ for (const name of [
   'ripple-compare.css',
   'ripple-state-compare.html',
   'ripple-state-compare.css',
+  'divider.html',
+  'divider.css',
 ])
   await fs.copyFile(
     path.join(packageRoot, 'fixtures', name),
     path.join(gallery, 'fixtures', name),
   );
+await build({
+  entryPoints: [path.join(packageRoot, 'fixtures/divider.tsx')],
+  outfile: path.join(gallery, 'fixtures/divider.js'),
+  bundle: true,
+  format: 'esm',
+  platform: 'browser',
+  target: ['chrome123', 'firefox120', 'safari17.5'],
+});
 await build({
   entryPoints: [path.join(packageRoot, 'fixtures/icons.tsx')],
   outfile: path.join(gallery, 'fixtures/icons.js'),

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "scopeSha256": "f6ba560614ac3e7f487c33fc975b0b201e4fbe99a633acd2c6c2859b3568e4b3",
+  "scopeSha256": "133eb56e7bc5c6fb61af8c552c5cd3c54b055e7a30cc251c49ca36823d00edec",
   "sources": {
     "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
     "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
@@ -12,7 +12,7 @@
       "schemaVersion": 2,
       "authority": "compose-first",
       "familyId": "family-CM-0017",
-      "scopeSha256": "15199f0ed70e74f220b3df7deac0aeb216060f0f386cde1187216b910761d750",
+      "scopeSha256": "43de6b9e787c8ea4ab045c721301374e68edcf57c1cf569914c29d28f0d92150",
       "pins": {
         "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
         "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
@@ -75,7 +75,7 @@
     "docs/contributing/material3-migration.md": "fab928b10412b5e5c72c007315a425ee554d7e091ac1f5768e2616e7c2000e7f",
     "internal/material3-migration/routing.mjs": "c498d4ef6b02164d4787b57ffb8470702ada22e47b27f2d5f3fb138cf7b1f391",
     "internal/material3-migration/sources/baseline/divider-compose-first.json": "53871f037f7c8edba02a54e176dadc6985a137ef19c2d7653344416b074b5a50",
-    "internal/material3-migration/sources/families/family-CM-0017.json": "3981f323b3e305dafedc18f5e142da47e86ae022e9dd7009d025cb251bdf118a",
+    "internal/material3-migration/sources/families/family-CM-0017.json": "628ee53c16d86ec7cf43cc5eefe92daeb5f0a505a59706669b0f1f55d198973c",
     "internal/material3-migration/sources/families/family-CM-0017.md": "cca6976f192be0469dfd6367a1a02874f795509302fb3b710af6f063c895a488",
     "internal/material3-migration/sources/figma-kit-inventory.json": "15ffc3bf66c2666dca228847b3bbeffc1d718beaa323967d2c118e0b3170ae6f",
     "internal/material3-migration/sources/guidance/color-roles.md": "0dcb37c3dadb900213e8347cfd995890779ba94bd168ccebe1b84a32ca90bca9",
@@ -159,7 +159,7 @@
       "Expected check": "Identify the corresponding Material 3 type and supported variants.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Native Compose-named horizontal and vertical rules; optional Web inset remains explicit. Core extensions remain separate."
     },
     {
       "Map ID": "CM-0017",
@@ -168,7 +168,7 @@
       "Expected check": "Compare public configuration, content slots, and composition.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Positive CSS-pixel or hairline thickness, CSS color, horizontal-only logical inset; no content slot."
     },
     {
       "Map ID": "CM-0017",
@@ -177,7 +177,7 @@
       "Expected check": "Compare parts, dimensions, alignment, spacing, and icon placement.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Seven matched source-value projections and native frames have zero changed pixels; DPR 1/2 hairline occupies zero extent."
     },
     {
       "Map ID": "CM-0017",
@@ -195,7 +195,7 @@
       "Expected check": "Verify semantic container, content, border, and state colors in light mode.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Native Compose-first static Divider; Core extensions remain separate. Exact revision and human QA are tracked on the task."
     },
     {
       "Map ID": "CM-0017",
@@ -204,7 +204,7 @@
       "Expected check": "Verify semantic container, content, border, and state colors in dark mode.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Native Compose-first static Divider; Core extensions remain separate. Exact revision and human QA are tracked on the task."
     },
     {
       "Map ID": "CM-0017",
@@ -222,7 +222,7 @@
       "Expected check": "Verify corners, padding, gaps, borders, tonal and shadow elevation.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Standalone line has no shape or elevation; optional 16px logical gap and custom thickness are checked."
     },
     {
       "Map ID": "CM-0017",
@@ -231,7 +231,7 @@
       "Expected check": "Verify resting visual and behavior.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Native Compose-first static Divider; Core extensions remain separate. Exact revision and human QA are tracked on the task."
     },
     {
       "Map ID": "CM-0017",
@@ -339,7 +339,7 @@
       "Expected check": "Verify name, role, state, focus order, and screen reader output.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Native Compose-first static Divider; Core extensions remain separate. Exact revision and human QA are tracked on the task."
     },
     {
       "Map ID": "CM-0017",
@@ -348,7 +348,7 @@
       "Expected check": "Verify contextual contrast and non-color cues.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Decorative boundaries have no text contrast claim; forced colors use system CanvasText paint."
     },
     {
       "Map ID": "CM-0017",
@@ -384,7 +384,7 @@
       "Expected check": "Verify compact, medium, expanded, and boundary conditions as applicable.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Native Compose-first static Divider; Core extensions remain separate. Exact revision and human QA are tracked on the task."
     },
     {
       "Map ID": "CM-0017",
@@ -393,7 +393,7 @@
       "Expected check": "Verify zoom, long content, overflow, and RTL layout.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Chrome checks 200% zoom, RTL logical start and narrow width without viewport overflow."
     },
     {
       "Map ID": "CM-0017",
@@ -402,16 +402,16 @@
       "Expected check": "Verify light/dark, dynamic color, custom theme, and scoped overrides.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Native Compose-first static Divider; Core extensions remain separate. Exact revision and human QA are tracked on the task."
     },
     {
       "Map ID": "CM-0017",
       "Dimension": "Content",
       "Scenario": "Extremes and locale",
       "Expected check": "Verify empty/long content, icon-only content, and localization.",
-      "Applicable?": "Required",
+      "Applicable?": "N/A",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Pinned standalone Compose Divider has no text, icon or content slot. Core labeled Divider remains a separate compatibility extension; localization extremes do not apply to the native rule."
     },
     {
       "Map ID": "CM-0017",
@@ -420,7 +420,7 @@
       "Expected check": "Verify overlays, stacking, scrolling, and nested use where applicable.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Chrome checks nested rule inside a scroll container and pointer-inert paint."
     },
     {
       "Map ID": "CM-0017",
@@ -429,7 +429,7 @@
       "Expected check": "Verify supported browsers, SSR/hydration, layout stability, and performance as applicable.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Server markup hydrates with stable structure; 30 input and 360 active style-change frame samples meet approved budgets."
     },
     {
       "Map ID": "CM-0017",
@@ -438,7 +438,7 @@
       "Expected check": "Link updated docs, source, unit/browser tests, and visual evidence.",
       "Applicable?": "Required",
       "Requirement source": "https://m3.material.io/components/divider",
-      "Notes / N/A reason": "Source-backed decorative/inset variant; legacy Astryx extensions retained."
+      "Notes / N/A reason": "Native Compose-first static Divider; Core extensions remain separate. Exact revision and human QA are tracked on the task."
     },
     {
       "Map ID": "CM-0017",
@@ -447,7 +447,7 @@
       "Expected check": "Native implementation consumes supported Material component and system roles directly; scoped overrides reach the rendered element.",
       "Applicable?": "Required",
       "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Compose-first static Divider; Core extensions remain separate. Exact revision and human QA are tracked on the task."
     },
     {
       "Map ID": "CM-0017",
@@ -456,7 +456,7 @@
       "Expected check": "Native CSS and behavior work without the Core theme bridge or legacy token declarations; shared Core utilities have an evidenced semantic match.",
       "Applicable?": "Required",
       "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Compose-first static Divider; Core extensions remain separate. Exact revision and human QA are tracked on the task."
     },
     {
       "Map ID": "CM-0017",
@@ -465,7 +465,7 @@
       "Expected check": "Anatomy, defaults, variants, sizes and states follow the pinned Material source; Core compatibility lives in a separate entry point.",
       "Applicable?": "Required",
       "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Compose-first static Divider; Core extensions remain separate. Exact revision and human QA are tracked on the task."
     },
     {
       "Map ID": "CM-0017",
@@ -474,7 +474,7 @@
       "Expected check": "Legacy exports and aliases delegate toward the native implementation without cycles or a second independently maintained value map.",
       "Applicable?": "Required",
       "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Compose-first static Divider; Core extensions remain separate. Exact revision and human QA are tracked on the task."
     },
     {
       "Map ID": "CM-0017",
@@ -483,7 +483,7 @@
       "Expected check": "The published native entry point renders in docsite and Storybook with source, status and exact revision visible for human QA.",
       "Applicable?": "Required",
       "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "The published native fixture exposes pinned source links, native status, and exact build revision in docsite and Storybook."
     },
     {
       "Map ID": "CM-0017",
@@ -492,7 +492,7 @@
       "Expected check": "Pinned Compose governs overlapping design, behavior and motion; missing concerns and approved exceptions are recorded once per family. Figma-only coverage and native web semantics remain required.",
       "Applicable?": "Required",
       "Requirement source": "internal/material3-migration/policy.json",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Compose-first static Divider; Core extensions remain separate. Exact revision and human QA are tracked on the task."
     },
     {
       "Map ID": "CM-0017",
@@ -501,7 +501,7 @@
       "Expected check": "Reference and native captures use matched conditions; exact pixel diff passes or a reviewed tolerance exception is recorded.",
       "Applicable?": "Required",
       "Requirement source": "internal/material3-migration/policy.json",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Compose-first static Divider; Core extensions remain separate. Exact revision and human QA are tracked on the task."
     },
     {
       "Map ID": "CM-0017",
@@ -510,7 +510,7 @@
       "Expected check": "Watched reference media, timed frames, interruption, reversal and reduced motion are evidenced, or static behavior has a source-backed N/A.",
       "Applicable?": "Required",
       "Requirement source": "internal/material3-migration/policy.json",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Pinned standalone Compose Divider is static; transition, interruption, reversal and reduced-motion timing are source-backed N/A."
     },
     {
       "Map ID": "CM-0017",
@@ -519,7 +519,7 @@
       "Expected check": "Pinned Compose defaults, variants and relevant test cases are mapped to permanent web tests; differences and missing upstream coverage are explicit.",
       "Applicable?": "Required",
       "Requirement source": "packages/themes/material3/material3.spec.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Six pinned default/custom size, indent and hairline Compose cases map to permanent browser geometry, pixel and density checks."
     },
     {
       "Map ID": "CM-0017",
@@ -528,7 +528,7 @@
       "Expected check": "Recorded browser/device profiles meet the approved input response and frame pacing budgets, including active motion and interruption.",
       "Applicable?": "Required",
       "Requirement source": "packages/themes/material3/material3.spec.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Chrome 153/macOS: 30 input responses and 360 active style-change frames within owner-approved foundation profile."
     }
   ],
   "decisions": "Resolved baseline required; code and interactive QA remain pending."

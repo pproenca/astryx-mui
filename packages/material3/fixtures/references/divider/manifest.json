@@ -1,0 +1,16 @@
+{
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "materialWebCommit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+  "browser": "Chrome 153.0.8010.53",
+  "viewport": {"width": 480, "height": 240},
+  "dpr": 1,
+  "files": {
+    "horizontal-light.png": "2cc82dc802e9b496a15524466b5afd51b69932400a6decc3915861cbe3c05639",
+    "horizontal-dark.png": "51d2100e34b7550d8307e0007c25faa0a891c8f41bf362b3e196ea1e3936b36c",
+    "vertical-light.png": "9e45f93032cde807536fdfcac8cfd134aa6e6c00452fcd15bb7536aa3cc479f0",
+    "custom-20-light.png": "6fdf72e8f643be7f97d443339feba1887d03cf0043ea3829dfa8db92e0636798",
+    "hairline-light.png": "2cc82dc802e9b496a15524466b5afd51b69932400a6decc3915861cbe3c05639",
+    "inset-start-ltr.png": "f7b4cbc61d306c5bdb610e5554419e8ae452eacdd77209054332cae9db8100a3",
+    "inset-start-rtl.png": "6e866ce5226d3150fdcc20e44e9f17fe806e2f2a9594952d6838a7197d2bcf23"
+  }
+}
