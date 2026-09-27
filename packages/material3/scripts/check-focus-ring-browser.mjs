@@ -206,7 +206,11 @@ try {
     await page.keyboard.press('Tab');
   }
   assert.equal(await page.locator('#proxy-input').evaluate(node => document.activeElement === node), true, 'Restored semantic input joins focus order');
-  await page.waitForTimeout(100);
+  await page.waitForFunction(() => {
+    const ring = document.querySelector('[data-testid="proxy-ring"]');
+    return ring?.getAttribute('data-md-focus-progress') === '1' &&
+      ring.getAttribute('data-md-focus-velocity') === '0';
+  });
   assert.equal(await proxy.evaluate(node => getComputedStyle(node, '::before').borderTopWidth), '2px', 'Reattached explicit ref paints the proxy owner');
   await page.locator('#proxy-input').evaluate(node => {node.blur(); node.focus();});
   assert.equal(await proxy.evaluate(node => getComputedStyle(node, '::before').borderTopWidth), '2px', 'Programmatic focus keeps keyboard modality');

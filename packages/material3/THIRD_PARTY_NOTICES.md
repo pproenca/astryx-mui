@@ -48,3 +48,12 @@ at the Web commit above. The retained light/dark focus frames and Kotlin motion
 traces under `fixtures/references/focus/` carry their source revisions and
 Apache-2.0 attribution in that directory's README. The local comparison uses
 the licensed Roboto fixture and its SIL Open Font License.
+
+`src/Ripple/Ripple.tsx` derives press geometry, state opacities and animation
+timings from the pinned AndroidX Compose `Ripple.kt`, `CommonRipple.kt`,
+`RippleAnimation.kt` and `RippleAnimationTest.kt` sources above. Copyright The
+Android Open Source Project and Google LLC, licensed Apache-2.0. The retained
+source frames, traces and watched media under
+`internal/material3-migration/sources/ripple-reference/` record the pinned
+revision and capture method. The native implementation and browser integration
+are Copyright Meta Platforms, Inc. and affiliates.

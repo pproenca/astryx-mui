@@ -1,0 +1,46 @@
+{
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "browser": "Chrome 153.0.8010.53",
+  "viewport": {
+    "width": 960,
+    "height": 360,
+    "dpr": 1
+  },
+  "fontSha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+  "maxChangedPixels": 5,
+  "frames": {
+    "ripple-light-0000.png": "bee5c6a127fe9b01799b22a15ada7f58ad1ee10ec0ee105b4b24ecda5fa2860f",
+    "ripple-light-0020.png": "2325f1dddabe24523836024bcee1cbef46d6497e5c86c417ce34f1cace6764b7",
+    "ripple-light-0075.png": "5470c87f3c8c29a65e758eeb74c4c86f90a50eda230a99a7276a1cb42179de2e",
+    "ripple-light-0120.png": "456f2b00925835617bb473048102ea562b35c37f832b46d904e2b12eed43cb09",
+    "ripple-dark-0000.png": "cfc01b4a721b35b219d8455fd18e6a241fd2d474ea3b2dec2fe459d4d4913305",
+    "ripple-dark-0020.png": "3d7e28e1d952564fe90a9a78f3dff8b0e022e12fb54606f953c0b652b4cc28ab",
+    "ripple-dark-0075.png": "8265e0e017a66fbd427de2e38daf99868639891d863923a1ca7bc495e3261a92",
+    "ripple-dark-0120.png": "b3cba3c2ec92fcf69a441f04d3b8d1f4a3be245d9b39ddd9c0013dd98777c41f"
+  },
+  "stateLayer": {
+    "genericMaxChannelDifference": 1,
+    "buttonMaxChannelDifference": 5,
+    "buttonMaxChangedPixels": 600,
+    "outsideChangedPixels": 0,
+    "approvalReference": "human:pproenca:2026-09-27:M3-GAP-013-state-pixel-limits",
+    "frames": {
+      "state-motion-dark-0100.png": "749005d45a21d26ec781c5a78d071b73bbfdf99ae00471f0bb019f56918e755d",
+      "state-motion-dark-0187.png": "4aa16af656d014aee4a51291ef29f277d95209fa9de4d3fe3ea7fbd6e93675b2",
+      "state-motion-dark-0320.png": "ef51d39b42f684c7d0872e61b54ad65c8efddbc9413619b98ecec00e2c5151ca",
+      "state-motion-dark-0520.png": "535ae72a358942a05c4ec60ac025d68afe30e754145f20ada7aa8a048bd74fba",
+      "state-motion-dark-0580.png": "60e91bae8b7b7e4a2e8719f691ab6a89db4a9d8833060a5200cc90f6354bc494",
+      "state-motion-dark-0870.png": "760164057bb478c4e23b2f15168b53a10c0344678f4cb1611431cb0fb7a2ab72",
+      "state-motion-dark-reduced-500.png": "50f77d0f4d45a345b6515f4f1478db323c4bb6e05900f868e602f73f34ec936e",
+      "state-motion-dark-reduced-530.png": "57b81088c8d5a2766881ac751f5eeb5de0ace38e07cf91111b38236048900566",
+      "state-motion-light-0100.png": "a84aa5332f1ecde46d842d479ee494248741ed0ac0e52c3385530231477ef7e7",
+      "state-motion-light-0187.png": "b40bafffe283eef50a27ec7bcba0ad5098c3e7d0971c67df8280fe6c9f4c870f",
+      "state-motion-light-0320.png": "e5d5e3914df89aa9a34e478cd9cca19703d4d03c2be47bb1eace5e4cb552d189",
+      "state-motion-light-0520.png": "98415ea8b428e98bcd54952469a9ceea00b9dbbc11d444fec1395e35e621f291",
+      "state-motion-light-0580.png": "380d4d25042822daabb58c6e977ac0aedab63de46c5e049601ed231105907ffe",
+      "state-motion-light-0870.png": "3690a44a0178960eb044cfe2f380adbbf0fd6692b01dd42c3a3bf205a9c10a1f",
+      "state-motion-light-reduced-500.png": "8846e841845ab91ea0d798d85f4c9503cea88d3d546b637ffd93d49ea851571e",
+      "state-motion-light-reduced-530.png": "f3ce74b9d543b04efacb9dc7815bdcb32d0121ed26ba8f8cf8a19e848574ea53"
+    }
+  }
+}

@@ -29,6 +29,8 @@ for (const scenario of manifest.scenarios) {
 }
 for (const name of [
   'compose-default-spatial.mp4',
+  'ripple-compose-press.mp4',
+  'ripple-compose-state.mp4',
   'native-motion.webm',
   'Roboto-wdth-wght.ttf',
   'OFL.txt',
@@ -94,6 +96,12 @@ try {
   );
   const focusRingFixture = page.frameLocator('#focus-ring-frame');
   await focusRingFixture.getByTestId('inset-ring').waitFor();
+  assert.equal(
+    await page.locator('iframe#ripple-frame').getAttribute('title'),
+    'Interactive native Material 3 Ripple preview',
+  );
+  const rippleFixture = page.frameLocator('#ripple-frame');
+  await rippleFixture.getByTestId('bounded-ripple').waitFor();
   const fixture = page.frameLocator('#native-frame');
   await fixture.locator('#flower').waitFor();
   await page.locator('#scheme').selectOption('dark');

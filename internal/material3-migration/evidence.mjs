@@ -12,10 +12,62 @@ import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {hash} from './workbook.mjs';
 import {compare} from './compare.mjs';
-import {compareTrace, measurePerformance} from './measurements.mjs';
+import {compareTrace, compareSourceValueTrace, measurePerformance} from './measurements.mjs';
+import {dependency} from './runtime.mjs';
+import pixelmatch from 'pixelmatch';
 const required = (condition, message) => {
   if (!condition) throw new Error(message);
 };
+export function assessVisualTolerance(reference, actual, tolerance) {
+  required(reference.width === actual.width && reference.height === actual.height, 'Visual dimensions differ');
+  const width = reference.width, height = reference.height;
+  let changedPixels = 0, maxChannelDelta = 0;
+  if (tolerance.metric === 'regions') {
+    const ownership = new Int16Array(width * height);
+    const regions = tolerance.regions.map(region => ({
+      id: region.id, changedPixels: 0, maxChannelDelta: 0,
+      limit: region,
+    }));
+    tolerance.regions.forEach((region, index) => {
+      required(region.x + region.width <= width && region.y + region.height <= height, 'Tolerance region exceeds the image');
+      for (let y = region.y; y < region.y + region.height; y++)
+        for (let x = region.x; x < region.x + region.width; x++) {
+          const pixel = y * width + x;
+          required(ownership[pixel] === 0, 'Tolerance regions overlap');
+          ownership[pixel] = index + 1;
+        }
+    });
+    const outside = {changedPixels: 0, maxChannelDelta: 0};
+    for (let pixel = 0; pixel < width * height; pixel++) {
+      let delta = 0;
+      for (let channel = 0; channel < 4; channel++)
+        delta = Math.max(delta, Math.abs(reference.data[pixel * 4 + channel] - actual.data[pixel * 4 + channel]));
+      if (!delta) continue;
+      changedPixels++;
+      maxChannelDelta = Math.max(maxChannelDelta, delta);
+      const group = ownership[pixel] ? regions[ownership[pixel] - 1] : outside;
+      group.changedPixels++;
+      group.maxChannelDelta = Math.max(group.maxChannelDelta, delta);
+    }
+    const accepted = regions.every(region =>
+      region.changedPixels <= region.limit.maxChangedPixels &&
+      region.maxChannelDelta <= region.limit.maxChannelDelta,
+    ) && outside.changedPixels <= tolerance.outside.maxChangedPixels &&
+      outside.maxChannelDelta <= tolerance.outside.maxChannelDelta;
+    return {accepted, changedPixels, maxChannelDelta, regions: regions.map(({limit, ...region}) => region), outside};
+  }
+  for (let pixel = 0; pixel < width * height; pixel++) {
+    let delta = 0;
+    for (let channel = 0; channel < 4; channel++)
+      delta = Math.max(delta, Math.abs(reference.data[pixel * 4 + channel] - actual.data[pixel * 4 + channel]));
+    if (delta) {changedPixels++; maxChannelDelta = Math.max(maxChannelDelta, delta);}
+  }
+  const count = tolerance.metric === 'pixelmatch'
+    ? pixelmatch(reference.data, actual.data, null, width, height, {threshold: 0})
+    : changedPixels;
+  return {accepted: count <= tolerance.changedPixels && maxChannelDelta <= tolerance.maxChannelDelta,
+    changedPixels, countedPixels: count, maxChannelDelta};
+}
 export async function assertCommittedEvidence(repo, revision, fingerprints) {
   const tree = execFileSync(
     'git',
@@ -180,19 +232,22 @@ export function validateSource(source, policy) {
         `Missing rendering condition: ${key}`,
       );
     const t = s.tolerance || {changedPixels: 0, maxChannelDelta: 0};
-    required(
-      Number.isInteger(t.changedPixels) &&
-        t.changedPixels >= 0 &&
-        Number.isInteger(t.maxChannelDelta) &&
-        t.maxChannelDelta >= 0 &&
-        t.maxChannelDelta <= 255,
-      'Invalid pixel tolerance',
-    );
-    if (t.changedPixels || t.maxChannelDelta)
-      required(
-        t.approvalReference && t.reason,
-        'Any pixel tolerance requires an explicit reviewed exception',
-      );
+    const validLimit = limit => Number.isInteger(limit?.maxChangedPixels) && limit.maxChangedPixels >= 0 &&
+      Number.isInteger(limit?.maxChannelDelta) && limit.maxChannelDelta >= 0 && limit.maxChannelDelta <= 255;
+    if (t.metric === 'regions') {
+      required(Array.isArray(t.regions) && t.regions.length &&
+        new Set(t.regions.map(region => region.id)).size === t.regions.length &&
+        t.regions.every(region => region.id && [region.x, region.y, region.width, region.height].every(Number.isInteger) &&
+          region.x >= 0 && region.y >= 0 && region.width > 0 && region.height > 0 && validLimit(region)) &&
+        validLimit(t.outside), 'Invalid regional pixel tolerance');
+    } else {
+      required((!t.metric || t.metric === 'pixelmatch') &&
+        Number.isInteger(t.changedPixels) && t.changedPixels >= 0 &&
+        Number.isInteger(t.maxChannelDelta) && t.maxChannelDelta >= 0 && t.maxChannelDelta <= 255,
+      'Invalid pixel tolerance');
+    }
+    if (t.metric || t.changedPixels || t.maxChannelDelta)
+      required(t.approvalReference && t.reason, 'Any pixel tolerance requires an explicit reviewed exception');
   }
 }
 export function validateReceipt(receipt, policy, task, revision) {
@@ -410,7 +465,7 @@ export async function validateEvidence(repo, receipt, policy, task, revision) {
               run?.actual && run.actual !== spec.reference,
               'Trace reference and browser capture must be independent.',
             );
-            compareTrace(
+            (spec.format === 'source-values-v1' ? compareSourceValueTrace : compareTrace)(
               JSON.parse(
                 await fs.readFile(await fingerprint(spec.reference), 'utf8'),
               ),
@@ -453,7 +508,7 @@ export async function validateEvidence(repo, receipt, policy, task, revision) {
         scenario.baseline !== actual.actual,
         'Reference and actual must be independently captured files',
       );
-      const measured = await compare(
+      await compare(
         await fingerprint(scenario.baseline),
         await fingerprint(actual.actual),
         await fingerprint(actual.diff),
@@ -463,10 +518,16 @@ export async function validateEvidence(repo, receipt, policy, task, revision) {
         changedPixels: 0,
         maxChannelDelta: 0,
       };
+      const pngjs = await dependency('pngjs');
+      const PNG = pngjs.PNG || pngjs.default.PNG;
+      const measured = assessVisualTolerance(
+        PNG.sync.read(await fs.readFile(await fileAt(repo, scenario.baseline))),
+        PNG.sync.read(await fs.readFile(await fileAt(repo, actual.actual))),
+        tolerance,
+      );
       required(
-        measured.changedPixels <= tolerance.changedPixels &&
-          measured.maxChannelDelta <= tolerance.maxChannelDelta,
-        `Pixel mismatch ${scenario.id}: ${measured.changedPixels} pixels, max channel delta ${measured.maxChannelDelta}`,
+        measured.accepted,
+        `Pixel mismatch ${scenario.id}: ${JSON.stringify(measured)}`,
       );
     }
     const motion = receipt.motion;

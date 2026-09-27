@@ -83,6 +83,94 @@ export function compareTrace(reference, actual, spec, commit) {
     settlingErrorMs: Math.abs(reference.settledAtMs - actual.settledAtMs),
   };
 }
+export function compareSourceValueTrace(reference, actual, spec, commit) {
+  requireValue(spec.format === 'source-values-v1' && reference.composeCommit === commit &&
+    actual.producer?.kind === 'browser' && actual.producer.command &&
+    actual.unit === spec.unit && spec.approvalReference,
+  'Native source-value trace lacks pinned provenance or approval');
+  const value = reference.sourceValues;
+  let positionError = 0, velocityError = 0, alphaError = 0, alphaVelocityError = 0;
+  const checkSamples = (samples, expected, settledAtMs) => {
+    requireValue(samples.length >= 3 && samples[0].timeMs === 0 &&
+      samples.at(-1).timeMs === settledAtMs,
+    'Native trace omits its start, intermediates or settled frame');
+    let before;
+    for (const sample of samples) {
+      requireValue(Number.isFinite(sample.timeMs) && (!before || sample.timeMs > before.sample.timeMs),
+      'Native trace timestamps are invalid');
+      const source = expected(sample.timeMs);
+      for (const key of Object.keys(source)) {
+        requireValue(Number.isFinite(sample[key]), `Native trace ${key} is invalid`);
+        const error = Math.abs(sample[key] - source[key]);
+        if (key === 'alpha') alphaError = Math.max(alphaError, error);
+        else positionError = Math.max(positionError, error);
+        if (before) {
+          const seconds = (sample.timeMs - before.sample.timeMs) / 1000;
+          const drift = Math.abs((sample[key] - before.sample[key] - source[key] + before.source[key]) / seconds);
+          if (key === 'alpha') alphaVelocityError = Math.max(alphaVelocityError, drift);
+          else velocityError = Math.max(velocityError, drift);
+        }
+      }
+      before = {sample, source};
+    }
+  };
+  if (spec.unit === 'alpha-radius-px-center-px') {
+    requireValue(actual.traces?.length === 2 &&
+      actual.inputs?.size?.width === value.size.width &&
+      actual.inputs?.size?.height === value.size.height &&
+      actual.inputs?.origin?.x === value.presses[0].origin.x &&
+      actual.inputs?.origin?.y === value.presses[0].origin.y &&
+      actual.inputs?.startMs === value.presses[0].startMs,
+    'Native press trace inputs differ from pinned Compose source values');
+    const cubic = (first, second, t) => 3 * (1-t)**2*t*first + 3*(1-t)*t**2*second + t**3;
+    const eased = fraction => {
+      if (fraction <= 0) return 0;
+      if (fraction >= 1) return 1;
+      let low = 0, high = 1;
+      for (let i = 0; i < 48; i++) {
+        const mid = (low + high) / 2;
+        if (cubic(.4, .2, mid) < fraction) low = mid; else high = mid;
+      }
+      return cubic(0, 1, (low + high) / 2);
+    };
+    for (const bounded of [true, false]) {
+      const trace = actual.traces.find(item => item.bounded === bounded);
+      requireValue(trace && trace.settledAtMs === value.radiusAndCenterMs,
+      'Native press geometry did not settle at the pinned time');
+      const center = {x:value.size.width/2,y:value.size.height/2};
+      const origin = bounded ? value.presses[0].origin : center;
+      const endRadius = bounded ? value.boundedEndRadius : value.unboundedEndRadius;
+      checkSamples(trace.samples, timeMs => ({
+        radius:value.startRadius+(endRadius-value.startRadius)*eased(Math.min(timeMs/value.radiusAndCenterMs,1)),
+        x:origin.x+(center.x-origin.x)*Math.min(timeMs/value.radiusAndCenterMs,1),
+        y:origin.y+(center.y-origin.y)*Math.min(timeMs/value.radiusAndCenterMs,1),
+        alpha:Math.min(timeMs/value.fadeInMs,1),
+      }), value.radiusAndCenterMs);
+    }
+  } else if (spec.unit === 'alpha') {
+    requireValue(isDeepStrictEqual(actual.inputs?.events, value.events) &&
+      actual.settledAtMs === value.events.at(-1).timeMs + value.events.at(-1).durationMs &&
+      actual.samples?.length === 195,
+    'Native state trace inputs or settlement differ from pinned Compose');
+    const expected = timeMs => {
+      let from = 0, target = 0, started = 0, duration = 0;
+      for (const event of value.events) {
+        if (event.timeMs > timeMs) break;
+        from += (target-from)*Math.min((event.timeMs-started)/(duration || 1),1);
+        target = value.opacity[event.state] ?? 0;
+        started = event.timeMs;
+        duration = event.durationMs;
+      }
+      return {alpha:from+(target-from)*Math.min((timeMs-started)/(duration || 1),1)};
+    };
+    checkSamples(actual.samples, expected, actual.settledAtMs);
+  } else throw new Error('Unsupported native source-value trace unit');
+  requireValue(positionError <= spec.positionTolerance && velocityError <= spec.velocityTolerance &&
+    alphaError <= (spec.alphaTolerance ?? spec.positionTolerance) &&
+    alphaVelocityError <= (spec.alphaVelocityTolerance ?? spec.velocityTolerance),
+  'Native Ripple trajectory or velocity exceeds the approved Compose limits');
+  return {positionError, velocityError, alphaError, alphaVelocityError, settlingErrorMs:0};
+}
 export function measurePerformance(actual, spec) {
   requireValue(
     spec.approvalReference &&

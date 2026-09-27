@@ -4,7 +4,7 @@
 private while its foundation gallery and components are being migrated. The
 entry point now exposes the canonical Compose-first foundation graph, typed
 CSS-backed Material roles, source-only values, native presentational Icon and
-MaterialSymbol components, and the opt-in FocusRing primitive. Other components
+MaterialSymbol components, and the opt-in FocusRing and Ripple primitives. Other components
 remain in migration.
 
 ```ts
@@ -80,6 +80,29 @@ with a distinct hidden input passes that input's `controlRef`; the ring still
 paints on its direct visual parent. The ring itself never takes focus or
 pointer events. Native Material controls retain their Compose focus-state
 opacity by default; adding this primitive is a deliberate component choice.
+
+## Native Ripple
+
+```tsx
+import {Ripple} from '@astryxdesign/material3/Ripple';
+import '@astryxdesign/material3/tokens.css';
+import '@astryxdesign/material3/components.css';
+
+<button className="positioned-control" type="button">
+  Save
+  <Ripple />
+</button>;
+```
+
+`Ripple` is an opt-in decorative indication for a custom control. Its direct
+visual parent supplies the accessible name, focus indicator, activation,
+disabled behavior, target size and form semantics. The default press clips to
+the parent's shape and begins at the pointer position. `unbounded` starts from
+the center and needs an unclipped parent and ancestor chain. Pass `controlRef`
+for a distinct semantic input, and `dragged` for a drag state owned by the
+control. Light, dark and Expressive color follows the Material tokens and the
+parent's content color. The indication does not intercept pointer or keyboard
+events. Native Material controls will own their own indication.
 
 ## Compatibility direction
 

@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 1,
+  "browser": "Chrome 153.0.8010.53",
+  "sourceDecision": "internal/material3-migration/sources/baseline/ripple-compose-first.json",
+  "pressMaxChangedPixels": 5,
+  "stateGenericMaxChannel": 1,
+  "stateButtonMaxChannel": 5,
+  "stateButtonMaxChangedPixels": 600,
+  "stateOutsideChangedPixels": 0,
+  "results": [
+    {
+      "id": "ripple-light-0000",
+      "actualSha256": "bee5c6a127fe9b01799b22a15ada7f58ad1ee10ec0ee105b4b24ecda5fa2860f",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-0020",
+      "actualSha256": "ef77512042eefd442b2f66f746de3690aa779e8d7744f7a7abbd5d112e76d439",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-0050",
+      "actualSha256": "e57509b3d718f372b0af3cc0236a27f529682d4f7915163d3663a820a7256f15",
+      "changed": 5,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-0075",
+      "actualSha256": "5ed5f6f70e8e8b5390d9db7a44dee54b0849817992721ed3a15cbfa92928fda5",
+      "changed": 3,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-0120",
+      "actualSha256": "5527aef1d43c411b9875a31363ad10678df71f964b4248e3f21ee0fc9fa2ced5",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-0160",
+      "actualSha256": "87bb159dca756ecba9210e252cd2b90b69ff433a6b62d1f36583e82f1c8d7d85",
+      "changed": 1,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-0180",
+      "actualSha256": "136b927ef7fd393febee2c5bd37c36dafe1314f5a23a5b8dc6622b07346f8a33",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-0260",
+      "actualSha256": "2e29395a5ee14d179fc65504283fd311693553a097519972674a87adce23581d",
+      "changed": 4,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-0300",
+      "actualSha256": "26cf3684a70a7c338a3922c36961ba96a3fa147a4adcf363b703fcd3d2e8de41",
+      "changed": 1,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-0320",
+      "actualSha256": "66a6988e17d60fb952930002b1a2ea4edcd7438051ff87599549d4e2106d0319",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-0385",
+      "actualSha256": "c6135ef5f5a50317abffd56e997cd71c967c60cd24387ddc6685a1896ec96a6c",
+      "changed": 3,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-0525",
+      "actualSha256": "11647e8f1615c1db072c50848ca48167278b51586770cc7e5255b086681aae22",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-0535",
+      "actualSha256": "19ff57810e2d5353b37f1b7363b4b2958795d798aeb484b648605e67ecd12f17",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-0675",
+      "actualSha256": "9dc5bea03c22c31091cf3d92eb4158893d77c568c3eee8694071445fc496e274",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-reduced-press",
+      "actualSha256": "41b122fca9287870b7e09b254a4acca4b80c720a7076fb522590cd3906bbc05d",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-light-reduced-release",
+      "actualSha256": "b4a12f6848aa388d1c4a9d73f3a7433d77b15211ec9eae7fefe4e3d592c2fbda",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0000",
+      "actualSha256": "cfc01b4a721b35b219d8455fd18e6a241fd2d474ea3b2dec2fe459d4d4913305",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0020",
+      "actualSha256": "03e2c77327d5560c81c8407e42f1ce6426cf4ab2c209e6de83cd199c20bf470e",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0050",
+      "actualSha256": "16ebd3718123c1b78d6bf1cb9544bc1554a55bc7280d042fccf52d59619a0ecc",
+      "changed": 1,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0075",
+      "actualSha256": "ecb62687e1b8b775c8cb7356769ff9f011220ee54448f657069decf2f38adb3a",
+      "changed": 4,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0120",
+      "actualSha256": "3ab427e7ca08a59112911e2b03ee616d740947128a6a64c80a1876919e478934",
+      "changed": 2,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0160",
+      "actualSha256": "154a9b58ac1899e7ce14344db7ee46969fd811ae1e0965dd95d01be666034de5",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0180",
+      "actualSha256": "be0c95ea186831baf8740130998eff216930cfaa390c6a3ff96fc33917deaa0f",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0260",
+      "actualSha256": "dc8afdb83000f0fab8372f9f84a6872e5095b921cee9efca27b6b826d85114ca",
+      "changed": 1,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0300",
+      "actualSha256": "d8d454031aabd5d1d44bcff7ca0fed74b2a0536f491928fc6de43b7a99522c8b",
+      "changed": 2,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0320",
+      "actualSha256": "2d53d9bffbe66b0ce1f02a7f2b070d99a093c320b5f130d29d61e6f013dd22ad",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0385",
+      "actualSha256": "e6a72f65d1776784461384782f5f5da068a712ce9a8da8eeb9a1b28625261c0b",
+      "changed": 2,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0525",
+      "actualSha256": "3618039fd7ec004ecf82f0f153110b3d5b8f25205f3e38fed88ac40e9f3807bd",
+      "changed": 1,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0535",
+      "actualSha256": "f72214c403195b0d9dd8dde8da89136c3219b33e1db7a4537a7a8dba968909d2",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-0675",
+      "actualSha256": "02e11403daf0a4dbe19967c944f804dcac11c69d5a2fe06d76aab7c1ff7b2a49",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-reduced-press",
+      "actualSha256": "893ce2443a6bbd080cb318ff3179fff97a77ec6b75b7cd4cfea07d6214a4fff1",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "ripple-dark-reduced-release",
+      "actualSha256": "f2e3245e0b61a40286718d65d49f9d19f0bd0b33c618765db6196eca14fa926d",
+      "changed": 0,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-light-0100",
+      "actualSha256": "5d2041933b20b132a6b60b1803b21c1758d314ad74a326f4a63807935fcbceed",
+      "changed": 20240,
+      "stateChangedPixels": 20484,
+      "genericChanged": 20240,
+      "buttonChanged": 244,
+      "outsideChanged": 0,
+      "genericMaxChannel": 1,
+      "buttonMaxChannel": 3,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-light-0187",
+      "actualSha256": "d6b82f4fab8edc588e86f69902bee0a73fae4b0606c4cbdb3195f2f9468fc6c8",
+      "changed": 20240,
+      "stateChangedPixels": 20484,
+      "genericChanged": 20240,
+      "buttonChanged": 244,
+      "outsideChanged": 0,
+      "genericMaxChannel": 1,
+      "buttonMaxChannel": 4,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-light-0320",
+      "actualSha256": "3807f26b217f89d8b8905bab23f2af173937c40f95b76fa8705958c09ef12598",
+      "changed": 20240,
+      "stateChangedPixels": 20428,
+      "genericChanged": 20240,
+      "buttonChanged": 188,
+      "outsideChanged": 0,
+      "genericMaxChannel": 1,
+      "buttonMaxChannel": 1,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-light-0520",
+      "actualSha256": "0f4f11cfe5719c14618ad1809ae03ac735d245818f5e7307ab459febeb82d7ed",
+      "changed": 0,
+      "stateChangedPixels": 212,
+      "genericChanged": 0,
+      "buttonChanged": 212,
+      "outsideChanged": 0,
+      "genericMaxChannel": 0,
+      "buttonMaxChannel": 2,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-light-0580",
+      "actualSha256": "3631ec588267c5d3dd3230ab3a2e6f6b35846859c25564fafaeeeafb0facd1f2",
+      "changed": 0,
+      "stateChangedPixels": 212,
+      "genericChanged": 0,
+      "buttonChanged": 212,
+      "outsideChanged": 0,
+      "genericMaxChannel": 0,
+      "buttonMaxChannel": 2,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-light-0870",
+      "actualSha256": "fc5745987c3e462345d23fdc6c5179fe45e468112e5361e056ba67a2b0a92f48",
+      "changed": 0,
+      "stateChangedPixels": 244,
+      "genericChanged": 0,
+      "buttonChanged": 244,
+      "outsideChanged": 0,
+      "genericMaxChannel": 0,
+      "buttonMaxChannel": 3,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-light-reduced-500",
+      "actualSha256": "7350bc6757fd529b29022ba3c4f0a475d83374f63afe71fa8c4b17995d627544",
+      "changed": 20240,
+      "stateChangedPixels": 20492,
+      "genericChanged": 20240,
+      "buttonChanged": 252,
+      "outsideChanged": 0,
+      "genericMaxChannel": 1,
+      "buttonMaxChannel": 5,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-light-reduced-530",
+      "actualSha256": "d39613e5ea60f8545c35dac6f11c562a192e73120d47f88aba1cd770c97430a3",
+      "changed": 0,
+      "stateChangedPixels": 0,
+      "genericChanged": 0,
+      "buttonChanged": 0,
+      "outsideChanged": 0,
+      "genericMaxChannel": 0,
+      "buttonMaxChannel": 0,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-dark-0100",
+      "actualSha256": "fc729aea3af5ae369944f60f78559522bba6a7b235c62db1d54a372d71a455a3",
+      "changed": 20296,
+      "stateChangedPixels": 20783,
+      "genericChanged": 20240,
+      "buttonChanged": 543,
+      "outsideChanged": 0,
+      "genericMaxChannel": 1,
+      "buttonMaxChannel": 3,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-dark-0187",
+      "actualSha256": "f16cf2a8cd131b97e9a341bbe7936dffe9e486df8bc695ff1eb51f6766ae77fe",
+      "changed": 20295,
+      "stateChangedPixels": 20746,
+      "genericChanged": 20240,
+      "buttonChanged": 506,
+      "outsideChanged": 0,
+      "genericMaxChannel": 1,
+      "buttonMaxChannel": 3,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-dark-0320",
+      "actualSha256": "63b830a4b07ee27e708bac2c802af7512bdb987806a991c6f9ac7075df84d92c",
+      "changed": 73,
+      "stateChangedPixels": 512,
+      "genericChanged": 0,
+      "buttonChanged": 512,
+      "outsideChanged": 0,
+      "genericMaxChannel": 0,
+      "buttonMaxChannel": 1,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-dark-0520",
+      "actualSha256": "95bf3559f17e246b6be7ecb6550fa0a1a26a32ea9e342e993ba9a4491b171b93",
+      "changed": 70,
+      "stateChangedPixels": 522,
+      "genericChanged": 0,
+      "buttonChanged": 522,
+      "outsideChanged": 0,
+      "genericMaxChannel": 0,
+      "buttonMaxChannel": 2,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-dark-0580",
+      "actualSha256": "2499bc8d38f8f62a658307a2f48b9d1b349846565c5d8c75f0bece5ed63eefd1",
+      "changed": 70,
+      "stateChangedPixels": 522,
+      "genericChanged": 0,
+      "buttonChanged": 522,
+      "outsideChanged": 0,
+      "genericMaxChannel": 0,
+      "buttonMaxChannel": 2,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-dark-0870",
+      "actualSha256": "3c1092380b3999bd5ac76238279fe8c0041eb4163904aab758791dea14b753ca",
+      "changed": 67,
+      "stateChangedPixels": 502,
+      "genericChanged": 0,
+      "buttonChanged": 502,
+      "outsideChanged": 0,
+      "genericMaxChannel": 0,
+      "buttonMaxChannel": 3,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-dark-reduced-500",
+      "actualSha256": "0297f9a8d21b48b0010631155fe53bdcee620bd64ab81bdbee685978baaf9603",
+      "changed": 20310,
+      "stateChangedPixels": 20748,
+      "genericChanged": 20240,
+      "buttonChanged": 508,
+      "outsideChanged": 0,
+      "genericMaxChannel": 1,
+      "buttonMaxChannel": 4,
+      "accepted": true
+    },
+    {
+      "id": "state-motion-dark-reduced-530",
+      "actualSha256": "3ebb243e4ffbe58baebd04025479b12e54712e076c1bb4d0315de6a1bc0077d5",
+      "changed": 62,
+      "stateChangedPixels": 262,
+      "genericChanged": 0,
+      "buttonChanged": 262,
+      "outsideChanged": 0,
+      "genericMaxChannel": 0,
+      "buttonMaxChannel": 1,
+      "accepted": true
+    }
+  ]
+}

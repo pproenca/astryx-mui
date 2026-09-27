@@ -95,6 +95,7 @@ const TARGETS = {
       'Icon/Icon.tsx',
       'MaterialSymbol/MaterialSymbol.tsx',
       'FocusRing/FocusRing.tsx',
+      'Ripple/Ripple.tsx',
     ],
     aliases: {},
   },
