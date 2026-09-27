@@ -1,5 +1,11 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
+/**
+ * @input Versioned knowledge templates, records and component-package paths.
+ * @output Validation findings for current and draft knowledge records.
+ * @position Shared knowledge validator, including private native component contracts.
+ */
+
 /* global console, process */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -11,7 +17,7 @@ import {collectThemingTargets} from '../packages/cli/foundation/discovery/themin
 
 const require = createRequire(import.meta.url);
 const {
-  COMPONENT_PACKAGE_NAMES,
+  KNOWLEDGE_COMPONENT_PACKAGE_NAMES,
   packageHasPublicComponent,
 } = require('./component-packages.cjs');
 const {
@@ -578,7 +584,7 @@ export function discoverKnowledgeRecords(root = DEFAULT_ROOT) {
 
   records.push(...discoverThemeRecordCandidates(root).records);
 
-  for (const packageName of COMPONENT_PACKAGE_NAMES) {
+  for (const packageName of KNOWLEDGE_COMPONENT_PACKAGE_NAMES) {
     const sourceRoot = path.join(root, `packages/${packageName}/src`);
     records.push(
       ...matchingFilesRecursively(
@@ -1294,7 +1300,7 @@ function validateAgainstSchema(
   isTemplate,
   currentTemplateVersion,
   designApprovalOwners = [],
-  themeApprovalOwners = [],
+  engineeringApprovalOwners = [],
 ) {
   const problems = [...document.problems];
   const {frontmatter, sections} = document;
@@ -1407,11 +1413,9 @@ function validateAgainstSchema(
     const approvedBy = frontmatter.get('approved_by');
     const approvedAt = frontmatter.get('approved_at');
     const authorizedOwners =
-      kind === 'design'
-        ? [...new Set([...schema.approvalOwners, ...designApprovalOwners])]
-        : kind === 'theme'
-          ? themeApprovalOwners
-          : schema.approvalOwners;
+      kind === 'design' || kind === 'theme'
+        ? [...new Set([...engineeringApprovalOwners, ...designApprovalOwners])]
+        : engineeringApprovalOwners;
     if (!authorizedOwners.includes(approvedBy)) {
       problems.push(
         `${filePath}: current records require approved_by to name an authorized owner.`,
@@ -1591,9 +1595,6 @@ export async function validateKnowledgeRoot(root = DEFAULT_ROOT) {
   const engineeringApprovalOwners = fs.existsSync(engineeringOwnersPath)
     ? parseOwnerFile(fs.readFileSync(engineeringOwnersPath, 'utf8'))
     : [];
-  const themeApprovalOwners = [
-    ...new Set([...engineeringApprovalOwners, ...designApprovalOwners]),
-  ];
   const problems = [...discoverThemeRecordCandidates(root).problems];
   const ids = new Map();
   const records = [];
@@ -1632,7 +1633,7 @@ export async function validateKnowledgeRoot(root = DEFAULT_ROOT) {
         true,
         templateVersions[kind],
         designApprovalOwners,
-        themeApprovalOwners,
+        engineeringApprovalOwners,
       ),
     );
     if (template.frontmatter.get('kind') !== kind) {
@@ -1685,7 +1686,7 @@ export async function validateKnowledgeRoot(root = DEFAULT_ROOT) {
         false,
         templateVersions[document.frontmatter.get('kind')],
         designApprovalOwners,
-        themeApprovalOwners,
+        engineeringApprovalOwners,
       ),
     );
     const authority = document.frontmatter.get('authority');

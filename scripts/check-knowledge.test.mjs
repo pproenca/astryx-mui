@@ -2036,6 +2036,43 @@ describe('knowledge validation', () => {
     expect(await validateKnowledgeRoot(root)).toEqual([]);
   });
 
+  it('accepts a current component approved by an ENGOWNER outside the legacy schema list', async () => {
+    const root = fixtureRoot();
+    const directory = path.join(root, 'packages/core/src/Button');
+    fs.mkdirSync(directory);
+    fs.writeFileSync(
+      path.join(directory, 'Button.spec.md'),
+      componentRecord({
+        authority: 'current',
+        approved_by: 'pproenca',
+        approved_at: '2026-09-27',
+      }),
+    );
+    expect(await validateKnowledgeRoot(root)).toEqual([]);
+  });
+
+  it('rejects a legacy schema owner removed from ENGOWNERS for a current component', async () => {
+    const root = fixtureRoot();
+    const ownersPath = path.join(root, '.github/ENGOWNERS');
+    fs.writeFileSync(
+      ownersPath,
+      fs.readFileSync(ownersPath, 'utf8').replace(/@cixzhang\b/g, ''),
+    );
+    const directory = path.join(root, 'packages/core/src/Button');
+    fs.mkdirSync(directory);
+    fs.writeFileSync(
+      path.join(directory, 'Button.spec.md'),
+      componentRecord({
+        authority: 'current',
+        approved_by: 'cixzhang',
+        approved_at: '2026-09-27',
+      }),
+    );
+    expect((await validateKnowledgeRoot(root)).join('\n')).toMatch(
+      /approved_by to name an authorized owner/,
+    );
+  });
+
   it('requires a replacement for a superseded archive', async () => {
     const root = fixtureRoot();
     const directory = path.join(root, 'packages/core/src/Button');

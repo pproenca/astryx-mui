@@ -7,7 +7,7 @@
  * @file Shared registry of component-bearing Astryx packages and their layouts.
  * @input Repository package names, source roots, public barrels, component docs,
  *   and Storybook routing namespaces.
- * @output Package metadata and public component discovery helpers.
+ * @output Separate public audit and native knowledge package rosters, plus component discovery helpers.
  * @position Single registry used by audit rosters and component knowledge paths.
  */
 
@@ -64,10 +64,25 @@ const COMPONENT_PACKAGES = Object.freeze([
 const COMPONENT_PACKAGE_NAMES = Object.freeze(
   COMPONENT_PACKAGES.map(pkg => pkg.name),
 );
+
+// Native Material 3 is private while its component inventory is migrating. Its
+// direct contracts must be validated now; audit/RTL shards join the public
+// component roster when the package and its gallery become publishable.
+const KNOWLEDGE_ONLY_COMPONENT_PACKAGES = Object.freeze([
+  {name: 'material3', src: 'packages/material3/src', layout: 'nested'},
+]);
+const KNOWLEDGE_COMPONENT_PACKAGE_NAMES = Object.freeze([
+  ...COMPONENT_PACKAGE_NAMES,
+  ...KNOWLEDGE_ONLY_COMPONENT_PACKAGES.map(pkg => pkg.name),
+]);
 const COMPONENT_NAME = /^[A-Z][A-Za-z0-9]*$/;
 
 function componentPackage(name) {
-  return COMPONENT_PACKAGES.find(pkg => pkg.name === name) ?? null;
+  return (
+    COMPONENT_PACKAGES.find(pkg => pkg.name === name) ??
+    KNOWLEDGE_ONLY_COMPONENT_PACKAGES.find(pkg => pkg.name === name) ??
+    null
+  );
 }
 
 function resolveLocalModule(fromFile, specifier, sourceRoot) {
@@ -252,6 +267,7 @@ function packageHasPublicComponent(repoRoot, packageName, componentName) {
 module.exports = {
   COMPONENT_PACKAGES,
   COMPONENT_PACKAGE_NAMES,
+  KNOWLEDGE_COMPONENT_PACKAGE_NAMES,
   componentExportsFromBarrel,
   componentPackage,
   documentedComponentNames,
