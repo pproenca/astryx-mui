@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Workbook, shared family decisions and task verifiers. @output Measured transitions, state-aware task guidance and scoped command evidence. @position Disposable migration workflow. */
+/** @input Workbook, shared family decisions and task verifiers. @output Measured transitions, state-aware task and completion guidance with scoped command evidence. @position Disposable migration workflow. */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
@@ -481,7 +481,7 @@ export async function dispatch(wb, command, opts) {
     });
     return result(
       'task.closed',
-      {taskId: opts.id, merge: pr.mergeCommit.oid, next: ['task pop']},
+      {taskId: opts.id, merge: pr.mergeCommit.oid, next: ['status']},
       true,
     );
   }

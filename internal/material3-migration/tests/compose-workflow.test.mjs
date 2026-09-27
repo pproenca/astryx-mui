@@ -466,7 +466,12 @@ test('terminal task briefs preserve closure without directing agents back to pre
   }
 });
 
-async function stateWorkbook(status, extra = {}, dependencies = []) {
+async function stateWorkbook(
+  status,
+  extra = {},
+  dependencies = [],
+  extraSheets = {},
+) {
   const p = await policy();
   return workbook({
     Overview: [
@@ -500,6 +505,8 @@ async function stateWorkbook(status, extra = {}, dependencies = []) {
     'Component mapping': [],
     'Acceptance checks': [],
     'Design kit sets': [],
+    'Token mapping': [],
+    ...extraSheets,
   });
 }
 
@@ -676,6 +683,160 @@ test('reviewing an approved revision preserves its approval and directs the agen
     });
     assert.match(awaiting.data.next[0], /task qa subject approve/);
   } finally {
+    await fs.rm(tmp, {recursive: true, force: true});
+  }
+});
+
+test('normal task commands cannot mutate or reclaim Closed or Superseded tasks', async () => {
+  for (const status of ['Closed', 'Superseded']) {
+    const wb = await stateWorkbook(status, {'Hold reason': 'historical hold'});
+    const before = table(wb, 'Tasks');
+    for (const [command, options] of [
+      ['task prepare', {}],
+      ['task block', {reason: 'new hold'}],
+      ['task unblock', {}],
+      ['task verify', {}],
+      ['task review', {}],
+      ['task qa', {decision: 'approve', reference: 'new decision'}],
+      ['task qa', {decision: 'reject', reference: 'new decision'}],
+      ['task finish', {pr: 'https://example.test/pull/1'}],
+    ]) {
+      await assert.rejects(
+        dispatch(wb, command, {
+          id: 'subject',
+          repo: '/missing-checkout',
+          ...options,
+        }),
+      );
+      assert.deepEqual(table(wb, 'Tasks'), before, `${status}: ${command}`);
+    }
+    const pop = await dispatch(wb, 'task pop', {repo: '/missing-checkout'});
+    assert.equal(pop.type, 'task.empty');
+    assert.equal(pop.changed, false);
+    assert.deepEqual(table(wb, 'Tasks'), before);
+  }
+});
+
+test('finishing an approved task consults current queues rather than claiming over another task', async () => {
+  const tmp = await fs.mkdtemp(path.join(os.tmpdir(), 'm3-finish-queues-'));
+  const repo = path.join(tmp, 'repo');
+  const bin = path.join(tmp, 'bin');
+  const originalSearchPath = process.env.PATH;
+  await fs.mkdir(repo);
+  await fs.mkdir(bin);
+  const git = (...args) =>
+    execFileSync('git', args, {
+      cwd: repo,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+    }).trim();
+  try {
+    git('init', '-q');
+    git(
+      '-c',
+      'user.name=Test',
+      '-c',
+      'user.email=test@example.test',
+      '-c',
+      'commit.gpgsign=false',
+      'commit',
+      '--allow-empty',
+      '-qm',
+      'Fixture',
+    );
+    const revision = git('rev-parse', 'HEAD');
+    git('update-ref', 'refs/remotes/origin/main', revision);
+    const pr = {
+      state: 'MERGED',
+      headRefOid: revision,
+      mergeCommit: {oid: revision},
+      baseRefName: 'main',
+      url: 'https://example.test/pull/1',
+      statusCheckRollup: [{status: 'COMPLETED', conclusion: 'SUCCESS'}],
+    };
+    // Only this worker's temporary GitHub executable is stubbed; Git checks are real.
+    await fs.writeFile(
+      path.join(bin, 'gh'),
+      '#!/usr/bin/env node\nprocess.stdout.write(' +
+        JSON.stringify(JSON.stringify(pr)) +
+        ');\n',
+      {mode: 0o700},
+    );
+    process.env.PATH = `${bin}${path.delimiter}${originalSearchPath || ''}`;
+    const receipt = {tokenIds: []};
+    await fs.writeFile(path.join(tmp, 'receipt.json'), JSON.stringify(receipt));
+    for (const status of ['Claimed', 'Awaiting QA']) {
+      const wb = await stateWorkbook(
+        'Approved',
+        {
+          Layer: 'Source',
+          QA: 'Approved',
+          'Verified SHA': revision,
+          'Receipt path': 'receipt.json',
+          'Receipt SHA256': hash(JSON.stringify(receipt)),
+          PR: '',
+          'Merge SHA': '',
+          'Closed at': '',
+        },
+        [],
+        {
+          'QA reviews': [
+            {
+              'Task ID': 'subject',
+              'Verified SHA': revision,
+              Decision: 'Approved',
+              Notes: JSON.stringify({files: {}}),
+            },
+          ],
+        },
+      );
+      const values = wb.worksheets.getItem('Tasks').getUsedRange().values;
+      const sibling = {'Task ID': 'other', Status: status};
+      values.push(values[0].map(key => sibling[key] || ''));
+      const scope = brief(wb, 'subject', true);
+      delete scope.status;
+      delete scope.next;
+      write(wb, 'Tasks', 2, {'Scope SHA256': hash(JSON.stringify(scope))});
+      const beforeSibling = table(wb, 'Tasks')[1];
+      const finishOptions = {id: 'subject', repo, stateDir: tmp, pr: pr.url};
+      for (const field of ['Receipt SHA256', 'Scope SHA256']) {
+        const original = table(wb, 'Tasks')[0][field];
+        write(wb, 'Tasks', 2, {[field]: 'stale'});
+        const before = table(wb, 'Tasks');
+        await assert.rejects(
+          dispatch(wb, 'task finish', finishOptions),
+          /changed/,
+        );
+        assert.deepEqual(table(wb, 'Tasks'), before);
+        write(wb, 'Tasks', 2, {[field]: original});
+      }
+      write(wb, 'QA reviews', 2, {Decision: 'Pending'});
+      await assert.rejects(
+        dispatch(wb, 'task finish', finishOptions),
+        /Missing exact-revision human approval/,
+      );
+      assert.equal(table(wb, 'Tasks')[0].Status, 'Approved');
+      write(wb, 'QA reviews', 2, {Decision: 'Approved'});
+      const finished = await dispatch(wb, 'task finish', {
+        id: 'subject',
+        repo,
+        stateDir: tmp,
+        pr: pr.url,
+      });
+      assert.equal(finished.type, 'task.closed');
+      assert.equal(table(wb, 'Tasks')[0].Status, 'Closed');
+      assert.deepEqual(finished.data.next, ['status']);
+      assert.deepEqual(table(wb, 'Tasks')[1], beforeSibling);
+      assert.equal(table(wb, 'QA reviews')[0].Decision, 'Approved');
+      const next = await dispatch(wb, finished.data.next[0], {repo});
+      assert.deepEqual(next.data.next, [
+        status === 'Claimed' ? 'task show other' : 'task review other',
+      ]);
+      await assert.rejects(dispatch(wb, 'task pop', {repo}), /active task/);
+    }
+  } finally {
+    if (originalSearchPath === undefined) delete process.env.PATH;
+    else process.env.PATH = originalSearchPath;
     await fs.rm(tmp, {recursive: true, force: true});
   }
 });
