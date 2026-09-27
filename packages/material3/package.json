@@ -42,6 +42,11 @@
       "types": "./dist/MaterialSymbol/index.d.ts",
       "import": "./dist/MaterialSymbol/index.js"
     },
+    "./FocusRing": {
+      "source": "./src/FocusRing/index.ts",
+      "types": "./dist/FocusRing/index.d.ts",
+      "import": "./dist/FocusRing/index.js"
+    },
     "./components.css": {
       "types": "./components.css.d.ts",
       "default": "./dist/components.css"
@@ -66,7 +71,7 @@
     "build": "node ../../scripts/clean-dist.mjs && tsc --project tsconfig.build.json && node scripts/build-components.mjs && node scripts/build-token-css.mjs && node ../../scripts/build-css.mjs --package material3-components",
     "build:gallery": "pnpm run build && node scripts/build-gallery.mjs",
     "typecheck": "tsc --project tsconfig.json --noEmit",
-    "test": "pnpm run build:gallery && vitest run --root ../.. packages/material3/src/tokens.test.ts packages/material3/src/foundation.test.ts packages/material3/src/motion.test.ts packages/material3/src/Icon/Icon.test.tsx packages/material3/src/MaterialSymbol/MaterialSymbol.test.tsx && node scripts/check-native-fixture.mjs && node scripts/check-discovery.mjs && node scripts/check-foundation-browser.mjs && node scripts/check-layer-browser.mjs && node scripts/check-spacing-browser.mjs && node scripts/check-foundation-interaction.mjs && node scripts/check-gallery.mjs && node scripts/check-icons-browser.mjs"
+    "test": "pnpm run build:gallery && vitest run --root ../.. packages/material3/src/tokens.test.ts packages/material3/src/foundation.test.ts packages/material3/src/motion.test.ts packages/material3/src/Icon/Icon.test.tsx packages/material3/src/MaterialSymbol/MaterialSymbol.test.tsx packages/material3/src/FocusRing/FocusRing.test.tsx && node scripts/check-native-fixture.mjs && node scripts/check-discovery.mjs && node scripts/check-foundation-browser.mjs && node scripts/check-layer-browser.mjs && node scripts/check-spacing-browser.mjs && node scripts/check-foundation-interaction.mjs && node scripts/check-gallery.mjs && node scripts/check-icons-browser.mjs && node scripts/check-focus-ring-browser.mjs && node scripts/check-focus-ring-pixels.mjs && node scripts/check-focus-ring-motion.mjs"
   },
   "peerDependencies": {
     "@stylexjs/stylex": "^0.19.0",

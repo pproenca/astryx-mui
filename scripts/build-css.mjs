@@ -91,7 +91,11 @@ const TARGETS = {
     dist: path.resolve(ROOT, 'packages/material3/dist'),
     outFile: 'components.css',
     banner: 'Astryx native Material 3 component CSS',
-    files: ['Icon/Icon.tsx', 'MaterialSymbol/MaterialSymbol.tsx'],
+    files: [
+      'Icon/Icon.tsx',
+      'MaterialSymbol/MaterialSymbol.tsx',
+      'FocusRing/FocusRing.tsx',
+    ],
     aliases: {},
   },
   'theme-material3-badge': {
