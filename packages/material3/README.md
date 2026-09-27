@@ -3,8 +3,8 @@
 `@astryxdesign/material3` is the native Material 3 package boundary. It is
 private while its foundation gallery and components are being migrated. The
 entry point now exposes the canonical Compose-first foundation graph, typed
-CSS-backed Material roles, and source-only values. It does not yet claim a
-completed Material 3 component.
+CSS-backed Material roles, source-only values, and native presentational Icon
+and MaterialSymbol components. Other components remain in migration.
 
 ```ts
 import {material3Var, resolveMaterial3Token} from '@astryxdesign/material3';
@@ -29,10 +29,31 @@ Core bridge's full-corner CSS value while the native profile uses `50%`.
 
 ## Discovery
 
-`astryx.integration.mjs` locates `docs/`, where `material3-native.doc.mjs` is a
-strongly typed, same-stem reference descriptor. A `components` root will be
-declared when the first native component and its own same-stem `.doc.mjs` ship.
-There is no central item catalog or per-item manifest map.
+`astryx.integration.mjs` locates `docs/` and `src/`. The native reference and
+each component own strongly typed, same-stem `.doc.mjs` descriptors. There is
+no central item catalog or per-item manifest map.
+
+## Native icons
+
+```tsx
+import {Icon} from '@astryxdesign/material3/Icon';
+import {MaterialSymbol} from '@astryxdesign/material3/MaterialSymbol';
+import '@astryxdesign/material3/tokens.css';
+import '@astryxdesign/material3/components.css';
+
+<Icon icon={CheckSvg} label="Completed" />;
+<MaterialSymbol name="check" variant="rounded" fill={1} label="Completed" />;
+```
+
+`Icon` renders consumer-supplied SVG artwork, inherits text color, and uses
+`--md-icon-size` or 24px unless an explicit pixel size is supplied. The SVG
+needs a `viewBox` and should use `currentColor`. `MaterialSymbol` accepts a
+ligature or codepoint, Outlined/Rounded/Sharp family, and FILL, wght, GRAD and
+opsz axes. The app loads its selected Material Symbols font and glyph coverage;
+Astryx does not redistribute those font binaries. Both components are
+decorative by default. A meaningful standalone glyph needs `label`; an
+interactive action belongs in a labelled control that owns its focus target,
+states and motion.
 
 ## Compatibility direction
 
@@ -49,8 +70,11 @@ Replacement imports will be published per component only after native
 verification. A themed `@astryxdesign/core/Button` consumer, for example, will
 move to `@astryxdesign/material3/Button` when that native pilot is released.
 Core consumers can continue using `@astryxdesign/theme-material3`; its current
-exports remain available. The same rule applies to MaterialSymbol and the
-other current theme entry points until their native replacements pass review.
+exports remain available. The existing
+`@astryxdesign/theme-material3/MaterialSymbol` path delegates to the native
+component and retains its released source and built API. Other theme entry
+points remain compatibility surfaces until their native replacements pass
+review.
 
 No released API is removed in this package slice. Removal requires an inventory
 of affected consumer imports, published replacement paths, tested codemods,
@@ -71,5 +95,9 @@ traces, including velocity and settling. Open `fixtures/foundation.html` through
 a local server to interact with native color scopes, Expressive shape and spring
 entry, exit, interruption, reversal and reduced motion. The browser checks
 measure input response and frame pacing against the approved foundation
-profile. Human QA remains required at the verified revision before this slice
-can be accepted.
+profile. Human QA remains required at the verified revision before each slice
+can be accepted. The [gallery](gallery/index.html) includes a live native Icon
+frame; `pnpm build:gallery` builds it without Material Symbols fonts. For a
+local licensed-font comparison, set `M3_ICON_FONT_CACHE` to the pinned cache
+directory before building. That optional build copies fonts only into ignored
+`dist/`; the public package remains font independent.

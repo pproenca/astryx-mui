@@ -79,11 +79,19 @@ const TARGETS = {
     },
   },
   'theme-material3': {
-    src: path.resolve(ROOT, 'packages/themes/material3/src'),
+    src: path.resolve(ROOT, 'packages/material3/src'),
     dist: path.resolve(ROOT, 'packages/themes/material3/dist'),
     outFile: 'material-symbol.css',
     banner: 'Astryx Material 3 MaterialSymbol CSS',
-    files: ['MaterialSymbol.tsx'],
+    files: ['MaterialSymbol/MaterialSymbol.tsx'],
+    aliases: {},
+  },
+  'material3-components': {
+    src: path.resolve(ROOT, 'packages/material3/src'),
+    dist: path.resolve(ROOT, 'packages/material3/dist'),
+    outFile: 'components.css',
+    banner: 'Astryx native Material 3 component CSS',
+    files: ['Icon/Icon.tsx', 'MaterialSymbol/MaterialSymbol.tsx'],
     aliases: {},
   },
   'theme-material3-badge': {

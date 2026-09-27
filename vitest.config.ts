@@ -4,7 +4,7 @@
  * @file vitest.config.ts
  * @input Uses vitest/config, @vitejs/plugin-react
  * @output Vitest configuration with jsdom, coverage, test setup, and the two
- *   test projects (`ui`, `node`)
+ *   test projects (`ui`, `node`), including native Material 3 React tests
  * @position Root test config and the actual test entry point. The two projects
  *   under `test.projects` decide which files run where via their per-project
  *   include lists. The root-level `test` options (globals, environment,
@@ -69,6 +69,15 @@ export default defineConfig({
         find: /^@astryxdesign\/core$/,
         replacement: path.join(coreSrc, 'index.ts'),
       },
+      // Theme compatibility source delegates to the native glyph. Route the
+      // source test through the same StyleX transform as native component tests.
+      {
+        find: /^@astryxdesign\/material3\/MaterialSymbol$/,
+        replacement: path.join(
+          rootDir,
+          'packages/material3/src/MaterialSymbol/MaterialSymbol.tsx',
+        ),
+      },
     ],
   },
   test: {
@@ -89,7 +98,7 @@ export default defineConfig({
     // Test projects (migrated from vitest.workspace.ts). Partitioning rule
     // (nothing can fall through):
     //   - `ui`   = packages/core + packages/lab + packages/charts + packages/richtext
-    //              + packages/vega — need jsdom, the StyleX babel
+    //              + packages/vega + native Material 3 React suites — need jsdom, the StyleX babel
     //              transform, and the jest-dom setup; inherit all of that from
     //              the root config via `extends: true`.
     //   - `node` = everything else (CLI, build tooling, scripts, internal
@@ -123,6 +132,7 @@ export default defineConfig({
             'packages/charts/src/**/*.test.{ts,tsx,mjs}',
             'packages/richtext/src/**/*.test.{ts,tsx,mjs}',
             'packages/vega/src/**/*.test.{ts,tsx,mjs}',
+            'packages/material3/src/**/*.test.tsx',
             'packages/themes/material3/src/MaterialBadge.test.tsx',
             'packages/themes/material3/src/MaterialSymbol.test.tsx',
           ],
@@ -190,6 +200,7 @@ export default defineConfig({
             'packages/charts/**',
             'packages/richtext/**',
             'packages/vega/**',
+            'packages/material3/src/**/*.test.tsx',
             'packages/themes/material3/src/MaterialBadge.test.tsx',
             'packages/themes/material3/src/MaterialSymbol.test.tsx',
           ],

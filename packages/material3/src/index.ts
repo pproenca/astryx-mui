@@ -3,7 +3,7 @@
 /**
  * @file index.ts
  * @input Supported Material CSS names and the pinned Compose-first foundation graph
- * @output Native token names, values, typed resolver and CSS-variable entry point
+ * @output Native components, token names, values, typed resolver and CSS-variable entry point
  * @position Public native Material 3 package entry point
  */
 
@@ -57,3 +57,10 @@ export type {
   Material3SpringSpec,
   Material3SpringTarget,
 } from './motion.js';
+export {Icon} from './Icon/Icon.js';
+export type {IconProps} from './Icon/Icon.js';
+export {MaterialSymbol} from './MaterialSymbol/MaterialSymbol.js';
+export type {
+  MaterialSymbolProps,
+  MaterialSymbolVariant,
+} from './MaterialSymbol/MaterialSymbol.js';

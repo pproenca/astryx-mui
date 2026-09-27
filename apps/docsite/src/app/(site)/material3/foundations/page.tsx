@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Product-owned native gallery build and the docsite theme shell. @output Native Material 3 foundation review route. @position Docsite catalog; component previews remain separately gated. */
+/** @input Product-owned native gallery build and the docsite theme shell. @output Native Material 3 foundation and Icon review route. @position Docsite catalog for independently gated native slices. */
 import type {Metadata} from 'next';
 import {Heading} from '@astryxdesign/core/Heading';
 import {Text} from '@astryxdesign/core/Text';
@@ -22,8 +22,8 @@ export default function Material3FoundationsPage() {
       <div className={styles.intro}>
         <Heading level={1}>Native Material 3 foundations</Heading>
         <Text type="body">
-          The gallery below runs the native Material 3 package. Component
-          previews will appear as their native implementations pass review.
+          The gallery below runs the native Material 3 package, including its
+          foundation comparisons and Icon preview.
         </Text>
         <Button
           variant="secondary"

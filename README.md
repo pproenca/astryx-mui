@@ -82,6 +82,7 @@ Then use it as `npm run astryx -- component --list`. This avoids path errors whe
 | [`@astryxdesign/build`](packages/build)                      | Build plugins for StyleX source builds                                                               | [README](packages/build/README.md)            |
 | [`@astryxdesign/theme-*`](packages/themes)                   | Seven ready-made, fully customizable themes (neutral, butter, chocolate, matcha, stone, gothic, y2k) | [README](packages/themes)                     |
 | [`@astryxdesign/theme-material3`](packages/themes/material3) | Material 3 foundation theme in source; component migration in progress                               | [README](packages/themes/material3/README.md) |
+| [`@astryxdesign/material3`](packages/material3)              | Native Material 3 tokens and components under migration                                              | [README](packages/material3/README.md)        |
 
 > `@astryxdesign/lab` (experimental components) is used internally for Storybook and the sandbox and is not published to npm. `@astryxdesign/vega` (Vega/Vega-Lite chart wrapper) and `@astryxdesign/charts` (chart components) are published to npm only under the `@canary` dist-tag — there is no stable release yet.
 
@@ -122,6 +123,10 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup and
 [docs/contributing/](docs/contributing/README.md) for this repository's review
 process. The original project's wiki describes Meta's upstream process; it
 does not govern changes here.
+
+Vitest runs native Material 3 React component suites in the `ui` project so
+they receive jsdom and the StyleX transform; its token and build suites run in
+the `node` project.
 
 Quick start for contributors: this repo uses **Node 22+ on an active LTS line**
 and **pnpm 11**. Install pnpm directly, or enable

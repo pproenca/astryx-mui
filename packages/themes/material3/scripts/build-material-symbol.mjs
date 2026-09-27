@@ -2,7 +2,7 @@
 
 /**
  * @file build-material-symbol.mjs
- * @input MaterialSymbol TypeScript source and the package StyleX Babel config
+ * @input Canonical native MaterialSymbol source and the package StyleX Babel config
  * @output Parallel ESM and CommonJS component entry points
  * @position Build step for the opt-in Material 3 font component
  */
@@ -11,7 +11,7 @@ import {transformFileAsync} from '@babel/core';
 import {writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 
-const source = new URL('../src/MaterialSymbol.tsx', import.meta.url);
+const source = new URL('../../../material3/src/MaterialSymbol/MaterialSymbol.tsx', import.meta.url);
 const configFile = fileURLToPath(
   new URL('../babel.config.json', import.meta.url),
 );

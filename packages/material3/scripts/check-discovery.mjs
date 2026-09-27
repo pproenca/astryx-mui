@@ -3,7 +3,7 @@
 /**
  * @file check-discovery.mjs
  * @input Built native package and same-stem integration descriptor
- * @output Consumer-level Astryx discovery and doc-topic evidence
+ * @output Consumer-level Astryx component, doc-topic and built-subpath evidence
  * @position Native package integration regression
  */
 
@@ -47,8 +47,9 @@ try {
       }),
     );
   const discovered = run('discover');
-  assert.equal(discovered.meta?.configured, true);
-  assert.deepEqual(discovered.data, []);
+  assert.equal(discovered.data.length, 1);
+  assert.equal(discovered.data[0].name, '@astryxdesign/material3');
+  assert.deepEqual(discovered.data[0].components, ['Icon', 'MaterialSymbol']);
   const topic = run('docs', 'material3-native');
   assert.ok(
     JSON.stringify(topic).includes('Native Material 3'),
@@ -64,6 +65,17 @@ try {
     {cwd: project, encoding: 'utf8'},
   );
   assert.equal(imported, 'var(--md-sys-color-primary)');
+  const nativeComponents = execFileSync(
+    process.execPath,
+    [
+      '--input-type=module',
+      '--eval',
+      "import {Icon} from '@astryxdesign/material3/Icon'; import {MaterialSymbol} from '@astryxdesign/material3/MaterialSymbol'; process.stdout.write(typeof Icon + ',' + typeof MaterialSymbol);",
+    ],
+    {cwd: project, encoding: 'utf8'},
+  );
+  assert.equal(nativeComponents, 'function,function');
+  await fs.access(path.join(packageRoot, 'dist/components.css'));
 } finally {
   await fs.rm(project, {recursive: true, force: true});
 }

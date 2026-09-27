@@ -275,9 +275,11 @@ component migrations; this theme does not change Core Icon size values or
 semantic icon names. A Chrome contact sheet verifies visible glyph geometry,
 and component QA must review meaning, size, direction, contrast, and targets.
 
-For the separate font channel, `MaterialSymbol` is an opt-in export from
-`@astryxdesign/theme-material3/MaterialSymbol` with a matching
-`material-symbol.css` export. It accepts one ligature or Unicode codepoint,
+For the separate font channel, `MaterialSymbol` is a native opt-in export from
+`@astryxdesign/material3/MaterialSymbol` with native `components.css`. The
+released `@astryxdesign/theme-material3/MaterialSymbol` and matching
+`material-symbol.css` exports remain compatibility paths backed by the native
+implementation. It accepts one ligature or Unicode codepoint,
 Outlined/Rounded/Sharp families, an exact pixel size, and Material Symbols
 FILL, wght, GRAD, and opsz axes. The default size resolves
 `--md-icon-size` then 24px; `--md-icon-font` can override the font family.

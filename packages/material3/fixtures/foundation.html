@@ -62,7 +62,8 @@
       <section class="panel"><h2>Spring motion</h2><p>Target changes keep the current position and velocity. Reduced motion jumps to the target.</p><div class="motion-stage"><div class="motion-axis"></div><div class="motion-dot" id="motion-dot"></div></div><div class="motion-controls"><button id="enter" type="button">Enter</button><button id="exit" type="button">Exit</button><button id="interrupt" type="button">Interrupt</button><button id="reverse" type="button">Reverse</button><label><input id="reduced" type="checkbox" /> Reduced motion</label></div><div class="measure" id="motion-measure">Position 0.00px · velocity 0.00px/s</div></section>
     </main>
     <script type="module">
-      import {material3ExpressiveShapes, material3SpringSpecs, sampleMaterial3Spring} from '../dist/index.js';
+      import {material3ExpressiveShapes, material3SpringSpecs} from '../dist/foundation.js';
+      import {sampleMaterial3Spring} from '../dist/motion.js';
       const query = new URLSearchParams(location.search);
       document.querySelector('#revision').textContent = `Revision: ${query.get('revision') || 'local'}`;
       document.querySelector('#flower').setAttribute('d', material3ExpressiveShapes.Flower.path);
