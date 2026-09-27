@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Built native FocusRing gallery fixture and Chrome. @output Browser modality, geometry, proxy, theme and reduced-motion assertions after effect attachment and settled focus paint. @position Permanent native FocusRing interaction regression. */
+/** @input Built native FocusRing gallery fixture and Chrome. @output Browser modality, geometry, proxy, theme and reduced-motion assertions after effect attachment and explicit spring settling. @position Permanent native FocusRing interaction regression. */
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import http from 'node:http';
@@ -61,6 +61,18 @@ try {
   const inset = page.getByTestId('inset-ring');
   const outward = page.getByTestId('outward-ring');
   const proxy = page.getByTestId('proxy-ring');
+  const waitForSettledFocus = async ring => {
+    await page.waitForFunction(
+      testId => {
+        const node = document.querySelector(`[data-testid="${testId}"]`);
+        return (
+          node?.getAttribute('data-md-focus-progress') === '1' &&
+          node.getAttribute('data-md-focus-velocity') === '0'
+        );
+      },
+      await ring.getAttribute('data-testid'),
+    );
+  };
   for (const ring of [inset, outward, proxy]) {
     await page.waitForFunction(
       testId =>
@@ -87,7 +99,7 @@ try {
     await insetOwner.evaluate(node => document.activeElement === node),
     true,
   );
-  await page.waitForTimeout(100);
+  await waitForSettledFocus(inset);
   const focusedBorder = await inset.evaluate(
     node => getComputedStyle(node, '::before').borderTopWidth,
   );
@@ -124,21 +136,7 @@ try {
   for (const pointerType of ['touch', 'pen']) {
     await page.keyboard.press('Shift+Tab');
     await page.keyboard.press('Tab');
-    await inset.evaluate(async node => {
-      const deadline = performance.now() + 3000;
-      let steadySince = 0;
-      while (performance.now() < deadline) {
-        await new Promise(requestAnimationFrame);
-        const now = performance.now();
-        if (getComputedStyle(node, '::before').borderTopWidth === '2px') {
-          if (!steadySince) steadySince = now;
-          if (now - steadySince >= 200) return;
-        } else {
-          steadySince = 0;
-        }
-      }
-      throw new Error('Keyboard focus ring did not settle at 2px');
-    });
+    await waitForSettledFocus(inset);
     assert.equal(
       await inset.evaluate(node => getComputedStyle(node, '::before').borderTopWidth),
       '2px',
@@ -181,7 +179,7 @@ try {
   );
   await page.keyboard.press('Tab');
   await page.keyboard.press('Shift+Tab');
-  await page.waitForTimeout(100);
+  await waitForSettledFocus(proxy);
   assert.equal(
     await proxy.evaluate(
       node => getComputedStyle(node, '::before').borderTopWidth,
@@ -206,13 +204,10 @@ try {
     await page.keyboard.press('Tab');
   }
   assert.equal(await page.locator('#proxy-input').evaluate(node => document.activeElement === node), true, 'Restored semantic input joins focus order');
-  await page.waitForFunction(() => {
-    const ring = document.querySelector('[data-testid="proxy-ring"]');
-    return ring?.getAttribute('data-md-focus-progress') === '1' &&
-      ring.getAttribute('data-md-focus-velocity') === '0';
-  });
+  await waitForSettledFocus(proxy);
   assert.equal(await proxy.evaluate(node => getComputedStyle(node, '::before').borderTopWidth), '2px', 'Reattached explicit ref paints the proxy owner');
   await page.locator('#proxy-input').evaluate(node => {node.blur(); node.focus();});
+  await waitForSettledFocus(proxy);
   assert.equal(await proxy.evaluate(node => getComputedStyle(node, '::before').borderTopWidth), '2px', 'Programmatic focus keeps keyboard modality');
   await page.locator('.proxy').click();
   assert.equal(await proxy.evaluate(node => getComputedStyle(node, '::before').borderTopWidth), '0px', 'Pointer focus suppresses the ring');
