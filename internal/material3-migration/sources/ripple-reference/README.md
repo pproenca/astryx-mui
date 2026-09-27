@@ -73,11 +73,33 @@ accessibility translation, not a Compose default. These frames and clip are
 **browser projections of pinned Compose values**, not Compose device raster
 or native component acceptance.
 
+## Independent browser interpolation
+
+[`capture-browser-ripple.mjs`](capture-browser-ripple.mjs) compares the pinned
+Compose equations with Chrome's Web Animations API at 5ms intervals. Its
+[`measurement`](browser-ripple-motion.json) covers six bounded/unbounded press
+traces (456 samples) and the state layer's hover, focus, drag, reversal and
+early cancellation (195 samples). Chrome's computed transform and opacity
+values differed by at most 0.000445px for the press center, 0.000318px for
+radius, 0.00000045 alpha, 0.1244px/s geometric velocity and 0.000178/s alpha
+velocity. The final press and state layer settled at the pinned 675ms and
+970ms, respectively. The trace records intermediate early-release and
+drag-cancel values; it does not certify any native component.
+
+The owner approved limits of 0.001px for press radius and center, 0.2px/s for
+their velocity, 0.000001 for press and state-layer alpha, 0.0005/s for alpha
+velocity, and 0ms settling difference. The
+[`source baseline`](../baseline/ripple-compose-first.json) records the decision;
+the browser capture fails when any limit is exceeded. The source renderer
+remains a separate projection from Chrome's animation engine. Native Ripple
+still needs its own interactive, pixel and motion acceptance.
+
 Reproduce the reference from the repository root with:
 
 ```sh
 M3_ANDROIDX=/path/to/pinned/androidx node internal/material3-migration/sources/ripple-reference/generate-ripple-reference.mjs --check
 M3_ANDROIDX=/path/to/pinned/androidx node internal/material3-migration/sources/ripple-reference/generate-state-motion.mjs --check
+node internal/material3-migration/sources/ripple-reference/capture-browser-ripple.mjs --check
 ```
 
 Both generators check the clean AndroidX checkout, source hashes, values,

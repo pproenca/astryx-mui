@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "authority": "draft-compose-first",
-  "status": "Draft source selection. Native preparation remains blocked until source QA and Ripple-specific browser interpolation limits are approved.",
+  "authority": "compose-first",
+  "status": "Resolved Compose-first Ripple source selection and owner-approved browser interpolation limits; native acceptance pending.",
   "baselineId": "material3-expressive-compose-first-2026-09-26",
   "web": {
     "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
@@ -1385,16 +1385,29 @@
     "evidence": "internal/material3-migration/sources/ripple-reference/README.md",
     "numeric": {
       "applicable": true,
-      "status": "Pending Ripple-specific pixel and tween interpolation tolerance approval",
+      "status": "Approved Chrome-to-pinned-Compose press and state-layer interpolation limits, checked at 5ms intervals",
       "traces": [
         {
           "id": "compose-ripple-source-values",
           "reference": "internal/material3-migration/sources/ripple-reference/manifest.json",
+          "browserComparison": "internal/material3-migration/sources/ripple-reference/browser-ripple-motion.json",
           "unit": "alpha-radius-px-center-px",
-          "approvalReference": null,
-          "positionTolerance": null,
-          "velocityTolerance": null,
-          "settlingToleranceMs": null
+          "approvalReference": "human:pproenca:2026-09-27:M3-GAP-013-ripple-motion-limits",
+          "positionTolerance": 0.001,
+          "velocityTolerance": 0.2,
+          "alphaTolerance": 0.000001,
+          "alphaVelocityTolerance": 0.0005,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "compose-ripple-state-layer",
+          "reference": "internal/material3-migration/sources/ripple-reference/state-motion-manifest.json",
+          "browserComparison": "internal/material3-migration/sources/ripple-reference/browser-ripple-motion.json",
+          "unit": "alpha",
+          "approvalReference": "human:pproenca:2026-09-27:M3-GAP-013-ripple-motion-limits",
+          "positionTolerance": 0.000001,
+          "velocityTolerance": 0.0005,
+          "settlingToleranceMs": 0
         }
       ]
     },
