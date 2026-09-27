@@ -5,6 +5,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
+import {execFileSync} from 'node:child_process';
+import {hash} from '../workbook.mjs';
 import {compareTrace, measurePerformance} from '../measurements.mjs';
 import {flowMetrics, excelTime, transition} from '../flow.mjs';
 import {brief, ready, table, write} from '../model.mjs';
@@ -461,5 +463,219 @@ test('terminal task briefs preserve closure without directing agents back to pre
     });
     assert.equal(active.data.prepared.ready, false);
     assert.equal(active.data.prepared.applicable, undefined);
+  }
+});
+
+async function stateWorkbook(status, extra = {}, dependencies = []) {
+  const p = await policy();
+  return workbook({
+    Overview: [
+      {key: 'Migration strategy', value: p.value.strategyId},
+      {key: 'Policy SHA256', value: p.hash},
+    ],
+    Tasks: [
+      {
+        'Task ID': 'subject',
+        Status: status,
+        Preparation: 'missing-packet.json',
+        'Preparation SHA256': 'old-hash',
+        'Verified SHA': 'accepted-head',
+        'Receipt path': '',
+        'Receipt SHA256': '',
+        'Scope SHA256': '',
+        'Hold reason': '',
+        'Stage entered at': '',
+        'Blocked ms': 0,
+        Notes: 'Implementation pending.',
+        QA: 'Pending',
+        ...extra,
+      },
+      ...dependencies.map(id => ({'Task ID': id, Status: 'Claimed'})),
+    ],
+    Dependencies: dependencies.map(id => ({
+      Predecessor: id,
+      Successor: 'subject',
+      Kind: 'Hard',
+    })),
+    'Component mapping': [],
+    'Acceptance checks': [],
+    'Design kit sets': [],
+  });
+}
+
+test('task briefs route reviewed, unclaimed, held and blocked work to valid next stages', async () => {
+  const cases = [
+    ['Backlog', {}, [], ['task pop']],
+    ['Ready', {}, [], ['task pop']],
+    ['Backlog', {Preparation: ''}, [], ['task prepare subject']],
+    ['Claimed', {}, [], ['task verify subject']],
+    ['Claimed', {Preparation: ''}, [], ['task prepare subject']],
+    ['Awaiting QA', {}, [], ['task review subject']],
+    [
+      'Approved',
+      {},
+      [],
+      [
+        'Merge the approved PR, remove its clean worktree from another checkout, then: task finish subject --pr <url>',
+      ],
+    ],
+    [
+      'Blocked',
+      {'Hold reason': 'needs source'},
+      [],
+      ['Resolve the recorded hold, then: task unblock subject'],
+    ],
+    ['Backlog', {}, ['dependency'], ['status']],
+    [
+      'Approved',
+      {PR: 'https://example.test/prior-contract-pr'},
+      [],
+      [
+        'Merge the approved PR, remove its clean worktree from another checkout, then: task finish subject --pr <url>',
+      ],
+    ],
+    ['Blocked', {}, ['dependency'], ['status']],
+    ['Closed', {}, [], ['status']],
+    ['Superseded', {}, [], ['status']],
+  ];
+  for (const [status, extra, dependencies, expected] of cases) {
+    const wb = await stateWorkbook(status, extra, dependencies);
+    assert.deepEqual(brief(wb, 'subject').next, expected, status);
+    for (const full of [false, true]) {
+      const result = await dispatch(wb, 'task show', {
+        id: 'subject',
+        full,
+        repo: '/missing-checkout',
+      });
+      if (['Awaiting QA', 'Approved'].includes(status)) {
+        assert.deepEqual(result.data.next, expected);
+        assert.equal(result.data.verification.revision, 'accepted-head');
+        assert.equal(result.data.prepared.applicable, false);
+        assert.doesNotMatch(result.data.outcome, /Implementation pending/);
+      } else if (
+        ['Backlog', 'Ready', 'Claimed'].includes(status) &&
+        !dependencies.length
+      ) {
+        assert.deepEqual(
+          result.data.next,
+          ['task prepare subject'],
+          'stale packets must be prepared before claim or verification',
+        );
+      } else assert.deepEqual(result.data.next, expected);
+    }
+  }
+});
+
+test('status surfaces QA and merge queues rather than sending agents to an invalid new claim', async () => {
+  for (const [status, expected] of [
+    ['Claimed', ['task show subject']],
+    ['Awaiting QA', ['task review subject']],
+    [
+      'Approved',
+      [
+        'Merge the approved PR, remove its clean worktree from another checkout, then: task finish subject --pr <url>',
+      ],
+    ],
+    ['Backlog', ['task prepare subject']],
+    ['Closed', []],
+    ['Superseded', []],
+  ]) {
+    const wb = await stateWorkbook(status);
+    const result = await dispatch(wb, 'status', {repo: '/missing-checkout'});
+    assert.deepEqual(result.data.next, expected, status);
+    assert.equal(result.changed, false);
+  }
+});
+
+test('unblock cannot reopen reviewed or terminal tasks even when a historical hold remains', async () => {
+  for (const status of [
+    'Backlog',
+    'Ready',
+    'Claimed',
+    'Awaiting QA',
+    'Approved',
+    'Closed',
+    'Superseded',
+  ]) {
+    const wb = await stateWorkbook(status, {'Hold reason': 'historical hold'});
+    const before = table(wb, 'Tasks');
+    await assert.rejects(
+      dispatch(wb, 'task unblock', {id: 'subject'}),
+      /Blocked task/,
+    );
+    assert.deepEqual(table(wb, 'Tasks'), before, status);
+  }
+  const wb = await stateWorkbook('Blocked', {'Hold reason': 'resolved hold'}, [
+    'dependency',
+  ]);
+  const result = await dispatch(wb, 'task unblock', {id: 'subject'});
+  assert.equal(result.changed, true);
+  assert.equal(table(wb, 'Tasks')[0].Status, 'Backlog');
+  assert.equal(table(wb, 'Tasks')[0]['Hold reason'], '');
+  assert.deepEqual(brief(wb, 'subject').blockers, ['dependency']);
+  assert.deepEqual(brief(wb, 'subject').next, ['status']);
+});
+
+test('reviewing an approved revision preserves its approval and directs the agent to finish', async () => {
+  const tmp = await fs.mkdtemp(path.join(os.tmpdir(), 'm3-reviewed-state-'));
+  const repo = path.join(tmp, 'repo');
+  await fs.mkdir(repo);
+  const git = (...args) =>
+    execFileSync('git', args, {
+      cwd: repo,
+      encoding: 'utf8',
+      stdio: ['ignore', 'pipe', 'pipe'],
+    }).trim();
+  try {
+    git('init', '-q');
+    git(
+      '-c',
+      'user.name=Test',
+      '-c',
+      'user.email=test@example.test',
+      '-c',
+      'commit.gpgsign=false',
+      'commit',
+      '--allow-empty',
+      '-qm',
+      'Fixture',
+    );
+    const revision = git('rev-parse', 'HEAD');
+    const receipt = {
+      preview: 'https://example.test/preview',
+      sourceDecision: 'baseline.json',
+      motion: {},
+      visualComparisons: [],
+    };
+    await fs.writeFile(path.join(tmp, 'receipt.json'), JSON.stringify(receipt));
+    const wb = await stateWorkbook('Approved', {
+      'Verified SHA': revision,
+      QA: 'Approved',
+      'Receipt path': 'receipt.json',
+      'Receipt SHA256': hash(JSON.stringify(receipt)),
+    });
+    const scope = brief(wb, 'subject', true);
+    delete scope.status;
+    delete scope.next;
+    write(wb, 'Tasks', 2, {'Scope SHA256': hash(JSON.stringify(scope))});
+    const before = table(wb, 'Tasks');
+    const result = await dispatch(wb, 'task review', {
+      id: 'subject',
+      repo,
+      stateDir: tmp,
+    });
+    assert.match(result.data.next[0], /task finish subject/);
+    assert.doesNotMatch(result.data.next.join(' '), /task qa/);
+    assert.equal(result.changed, false);
+    assert.deepEqual(table(wb, 'Tasks'), before);
+    write(wb, 'Tasks', 2, {Status: 'Awaiting QA', QA: 'Pending'});
+    const awaiting = await dispatch(wb, 'task review', {
+      id: 'subject',
+      repo,
+      stateDir: tmp,
+    });
+    assert.match(awaiting.data.next[0], /task qa subject approve/);
+  } finally {
+    await fs.rm(tmp, {recursive: true, force: true});
   }
 });

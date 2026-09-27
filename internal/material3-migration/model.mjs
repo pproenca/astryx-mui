@@ -2,7 +2,7 @@
 
 /**
  * @input Workbook tables; pinned migration policy.
- * @output Dependency priorities, explicit token membership and family briefs respecting terminal task states.
+ * @output Dependency priorities, explicit token membership and family briefs with state-appropriate next steps.
  * @position Temporary migration domain; no product package imports this module.
  */
 import {sourcePlan} from './routing.mjs';
@@ -138,6 +138,37 @@ export function getTask(wb, id, expected) {
   }
   return task;
 }
+export function taskNextSteps(
+  task,
+  prepared = Boolean(task.Preparation),
+  blockers = [],
+) {
+  const id = task['Task ID'];
+  switch (task.Status) {
+    case 'Closed':
+    case 'Superseded':
+      return ['status'];
+    case 'Awaiting QA':
+      return [`task review ${id}`];
+    case 'Approved':
+      return [
+        `Merge the approved PR, remove its clean worktree from another checkout, then: task finish ${id} --pr <url>`,
+      ];
+    case 'Blocked':
+      if (task['Hold reason'])
+        return [`Resolve the recorded hold, then: task unblock ${id}`];
+      break;
+    case 'Claimed':
+      return [prepared ? `task verify ${id}` : `task prepare ${id}`];
+    case 'Backlog':
+    case 'Ready':
+      break;
+    default:
+      return ['status'];
+  }
+  if (blockers.length) return ['status'];
+  return [prepared ? 'task pop' : `task prepare ${id}`];
+}
 export function brief(wb, id, full = false) {
   const task = getTask(wb, id),
     mapIds = ids(task['Mapping IDs']);
@@ -226,9 +257,11 @@ export function brief(wb, id, full = false) {
       'Watch source GIF/video and native motion at normal speed, then inspect aligned frames.',
       'Try interruption, reversal, reduced motion, keyboard, RTL and narrow layouts.',
     ],
-    next: ['Closed', 'Superseded'].includes(task.Status)
-      ? ['status']
-      : [task.Preparation ? `task verify ${id}` : `task prepare ${id}`],
+    next: taskNextSteps(
+      task,
+      Boolean(task.Preparation),
+      blocked(task, table(wb, sheets.tasks), table(wb, sheets.edges)),
+    ),
   };
 }
 export function requireMappings(wb, task, policy, receipt) {
