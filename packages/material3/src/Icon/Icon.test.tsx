@@ -16,6 +16,14 @@ function CheckSvg(props: SVGProps<SVGSVGElement>) {
   );
 }
 
+function ColoredSvg(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" {...props}>
+      <path d="M0 0h24v24H0z" fill="#ff0000" />
+    </svg>
+  );
+}
+
 describe('native Icon', () => {
   it('renders a supplied SVG at the Material default while remaining decorative', () => {
     render(<Icon icon={CheckSvg} data-testid="icon" />);
@@ -37,6 +45,11 @@ describe('native Icon', () => {
     expect(screen.getByTestId('glyph')).toHaveAttribute('aria-hidden', 'true');
   });
 
+  it('keeps a caller-supplied localized accessible name', () => {
+    render(<Icon icon={CheckSvg} label="完成" />);
+    expect(screen.getByRole('img', {name: '完成'})).toBeInTheDocument();
+  });
+
   it('respects explicit size, CSS class and DOM attributes', () => {
     render(
       <Icon
@@ -50,6 +63,42 @@ describe('native Icon', () => {
     expect(icon).toHaveClass('custom-icon');
     expect(icon.style.getPropertyValue('--x-width')).toBe('32px');
     expect(icon.style.getPropertyValue('--x-height')).toBe('32px');
+  });
+
+  it('uses supplied intrinsic vector dimensions unless explicit size wins', () => {
+    const {rerender} = render(
+      <Icon
+        icon={CheckSvg}
+        intrinsicSize={{width: 35, height: 83}}
+        data-testid="icon"
+      />,
+    );
+    const icon = screen.getByTestId('icon');
+    expect(icon.style.getPropertyValue('--x-width')).toBe('35px');
+    expect(icon.style.getPropertyValue('--x-height')).toBe('83px');
+    rerender(
+      <Icon
+        icon={CheckSvg}
+        intrinsicSize={{width: 35, height: 83}}
+        size={50}
+        data-testid="icon"
+      />,
+    );
+    expect(icon.style.getPropertyValue('--x-width')).toBe('50px');
+    expect(icon.style.getPropertyValue('--x-height')).toBe('50px');
+  });
+
+  it('preserves source artwork color or inherits a selected currentColor tint', () => {
+    const {rerender} = render(<Icon icon={ColoredSvg} data-testid="icon" />);
+    expect(screen.getByTestId('icon').querySelector('path')).toHaveAttribute(
+      'fill',
+      '#ff0000',
+    );
+    rerender(<Icon icon={CheckSvg} data-testid="icon" />);
+    expect(screen.getByTestId('icon').querySelector('path')).toHaveAttribute(
+      'stroke',
+      'currentColor',
+    );
   });
 
   it('leaves interaction with the owning control and renders on the server', () => {
@@ -75,4 +124,10 @@ describe('native Icon', () => {
       );
     },
   );
+
+  it('rejects invalid intrinsic vector dimensions', () => {
+    expect(() =>
+      render(<Icon icon={CheckSvg} intrinsicSize={{width: 35, height: 0}} />),
+    ).toThrow(/intrinsic dimensions/);
+  });
 });

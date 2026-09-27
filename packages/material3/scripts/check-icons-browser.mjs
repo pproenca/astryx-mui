@@ -12,6 +12,28 @@ const root = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
   '../dist/gallery',
 );
+function contrast(foreground, background) {
+  const channels = value =>
+    value
+      .match(/[\d.]+/gu)
+      .slice(0, 3)
+      .map(Number)
+      .map(channel => {
+        const normalized = channel / 255;
+        return normalized <= 0.04045
+          ? normalized / 12.92
+          : ((normalized + 0.055) / 1.055) ** 2.4;
+      });
+  const luminance = value =>
+    channels(value).reduce(
+      (sum, channel, index) => sum + channel * [0.2126, 0.7152, 0.0722][index],
+      0,
+    );
+  const pair = [luminance(foreground), luminance(background)].sort(
+    (a, b) => b - a,
+  );
+  return (pair[0] + 0.05) / (pair[1] + 0.05);
+}
 const mime = {
   '.html': 'text/html',
   '.js': 'text/javascript',
@@ -52,6 +74,27 @@ try {
   await page.getByRole('heading', {name: 'Icon and Material Symbol'}).waitFor();
   const svg = page.getByTestId('svg-check');
   const font = page.getByTestId('font-check');
+  const tokenDefault = page.getByTestId('svg-default');
+  assert.equal(
+    await tokenDefault.evaluate(node => getComputedStyle(node).width),
+    '24px',
+  );
+  await page
+    .getByTestId('default-scope')
+    .evaluate(node => node.style.setProperty('--md-icon-size', '28px'));
+  assert.equal(
+    await tokenDefault.evaluate(node => getComputedStyle(node).width),
+    '28px',
+  );
+  assert.deepEqual(
+    await page
+      .getByTestId('svg-intrinsic')
+      .evaluate(node => [
+        getComputedStyle(node).width,
+        getComputedStyle(node).height,
+      ]),
+    ['35px', '83px'],
+  );
   assert.equal(await svg.getAttribute('aria-hidden'), 'true');
   assert.equal(await font.getAttribute('aria-hidden'), 'true');
   assert.deepEqual(
@@ -62,6 +105,28 @@ try {
     ['24px', '24px'],
   );
   assert.equal(await svg.locator('svg').getAttribute('focusable'), 'false');
+  assert.equal(
+    await svg.evaluate(node => getComputedStyle(node).color),
+    'rgb(29, 27, 32)',
+  );
+  assert.equal(
+    await page
+      .getByTestId('svg-primary')
+      .evaluate(node => getComputedStyle(node).color),
+    'rgb(255, 255, 255)',
+  );
+  const lightContrast = await svg.evaluate(node => [
+    getComputedStyle(node).color,
+    getComputedStyle(node.closest('.card')).backgroundColor,
+  ]);
+  assert.ok(contrast(...lightContrast) >= 4.5);
+  const primaryContrast = await page
+    .getByTestId('svg-primary')
+    .evaluate(node => [
+      getComputedStyle(node).color,
+      getComputedStyle(node.closest('.card')).backgroundColor,
+    ]);
+  assert.ok(contrast(...primaryContrast) >= 4.5);
   assert.equal(await page.getByRole('button', {name: 'Confirm'}).count(), 1);
   await page.locator('#named').check();
   assert.equal(
@@ -87,11 +152,38 @@ try {
   assert.match(style.fontVariationSettings, /"wght" 500/);
   assert.match(style.fontVariationSettings, /"GRAD" 25/);
   assert.match(style.fontVariationSettings, /"opsz" 32/);
+  await page.locator('#weight').fill('700');
+  await page.locator('#grade').fill('200');
+  await page.locator('#optical-size').fill('48');
+  const maxAxes = await font.evaluate(
+    node => getComputedStyle(node).fontVariationSettings,
+  );
+  assert.match(maxAxes, /"wght" 700/);
+  assert.match(maxAxes, /"GRAD" 200/);
+  assert.match(maxAxes, /"opsz" 48/);
+  await page.locator('#weight').fill('100');
+  await page.locator('#grade').fill('-50');
+  await page.locator('#optical-size').fill('20');
+  const minAxes = await font.evaluate(
+    node => getComputedStyle(node).fontVariationSettings,
+  );
+  assert.match(minAxes, /"wght" 100/);
+  assert.match(minAxes, /"GRAD" -50/);
+  assert.match(minAxes, /"opsz" 20/);
   await page.locator('#scheme').selectOption('dark');
   assert.equal(
     await page.locator('body').getAttribute('data-md-scheme'),
     'dark',
   );
+  assert.equal(
+    await svg.evaluate(node => getComputedStyle(node).color),
+    'rgb(230, 224, 233)',
+  );
+  const darkContrast = await svg.evaluate(node => [
+    getComputedStyle(node).color,
+    getComputedStyle(node.closest('.card')).backgroundColor,
+  ]);
+  assert.ok(contrast(...darkContrast) >= 4.5);
   await page.locator('#direction').selectOption('rtl');
   assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
   await page.setViewportSize({width: 390, height: 844});
@@ -99,6 +191,18 @@ try {
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth + 1,
     ),
+  );
+  assert.equal(
+    await page.evaluate(() => {
+      document.documentElement.style.zoom = '2';
+      scrollTo(999, 0);
+      const offset = scrollX;
+      document.documentElement.style.zoom = '';
+      scrollTo(0, 0);
+      return offset;
+    }),
+    0,
+    'Native gallery scrolls horizontally at 200% zoom',
   );
   await page.getByRole('button', {name: 'Confirm'}).focus();
   await page.keyboard.press('Enter');

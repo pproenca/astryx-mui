@@ -11,6 +11,13 @@ into the Icon family.
   bitmap, and painter overloads. The pinned file hash and a rendered source
   fixture are in [the existing icon decision](../compose-icons.md) and
   [reference manifest](../icon-reference/manifest.json).
+  Pinned `IconTest.kt` contains standalone tests. Its vector size, scaling,
+  tint, and named-image cases translate to native SVG assertions. Android
+  bitmap/painter intrinsic-size and bitmap screenshot cases do not describe
+  this web SVG or font channel; browser `<img>` remains available to consumers
+  for bitmap artwork. The selected six test cases and source lines are recorded
+  in the Icon baseline. IconButton tests stay with the interactive control
+  family.
 - **Figma standalone set absent.** The frozen
   [171-set inventory](../figma-kit-inventory.json), SHA-256
   `64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468`,

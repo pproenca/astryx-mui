@@ -48,6 +48,7 @@ p {
     12px ui-monospace,
     monospace;
   color: var(--md-sys-color-on-surface-variant);
+  overflow-wrap: anywhere;
 }
 section {
   padding: 24px;
@@ -59,6 +60,7 @@ fieldset {
   border: 0;
   margin: 0;
   padding: 0;
+  min-inline-size: 0;
 }
 .controls {
   display: flex;
@@ -76,6 +78,11 @@ fieldset {
   gap: 6px;
   font-size: 13px;
   font-weight: 600;
+  max-inline-size: 100%;
+}
+input[type='range'],
+select {
+  max-inline-size: 100%;
 }
 select,
 button {
@@ -98,7 +105,7 @@ input:focus-visible {
 }
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
   gap: 12px;
   margin-top: 20px;
 }

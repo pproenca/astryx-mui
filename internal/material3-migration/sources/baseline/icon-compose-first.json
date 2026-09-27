@@ -8,8 +8,33 @@
   "compose": {
     "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
     "inventory": "internal/material3-migration/sources/compose-inventory.json",
-    "tests": [],
-    "reason": "Pinned Icon.kt has no standalone Icon test; IconButton embedding tests are owned by the interactive IconButton family.",
+    "tests": [
+      {
+        "id": "IconTest.vector_materialIconSize_dimensions",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/IconTest.kt#L65"
+      },
+      {
+        "id": "IconTest.vector_customIconSize_dimensions",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/IconTest.kt#L76"
+      },
+      {
+        "id": "IconTest.iconScalesToFitSize",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/IconTest.kt#L160"
+      },
+      {
+        "id": "IconTest.iconUnspecifiedTintColorIgnored",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/IconTest.kt#L194"
+      },
+      {
+        "id": "IconTest.iconSpecifiedTintColorApplied",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/IconTest.kt#L213"
+      },
+      {
+        "id": "IconTest.defaultSemanticsWhenContentDescriptionProvided",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/IconTest.kt#L231"
+      }
+    ],
+    "reason": "Pinned IconTest.kt has standalone cases. The overlapping vector dimensions, sizing, tint and image semantics are translated here; Android bitmap/painter and screenshot-only cases remain platform-specific. IconButton embedding belongs to its interactive family.",
     "evidence": "internal/material3-migration/sources/families/family-CM-0024.md"
   },
   "figma": {

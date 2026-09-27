@@ -46,8 +46,10 @@ import '@astryxdesign/material3/components.css';
 ```
 
 `Icon` renders consumer-supplied SVG artwork, inherits text color, and uses
-`--md-icon-size` or 24px unless an explicit pixel size is supplied. The SVG
-needs a `viewBox` and should use `currentColor`. `MaterialSymbol` accepts a
+`--md-icon-size` or 24px when the SVG has no declared `intrinsicSize`. Pass
+intrinsic width and height for vectors with their own dimensions; an explicit
+square `size` wins. The SVG needs a `viewBox` and should use `currentColor` for
+theme tint. `MaterialSymbol` accepts a
 ligature or codepoint, Outlined/Rounded/Sharp family, and FILL, wght, GRAD and
 opsz axes. The app loads its selected Material Symbols font and glyph coverage;
 Astryx does not redistribute those font binaries. Both components are

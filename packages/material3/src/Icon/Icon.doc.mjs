@@ -12,13 +12,19 @@ export const docs = {
       type: 'ComponentType<SVGProps<SVGSVGElement>>',
       required: true,
       description:
-        'Consumer-supplied SVG component. The component receives square dimensions.',
+        'Consumer-supplied SVG component. The glyph scales inside the resolved dimensions.',
     },
     {
       name: 'size',
       type: 'number',
       description:
-        'Square size in CSS pixels. Defaults to --md-icon-size, then 24px.',
+        'Explicit square size in CSS pixels. Overrides intrinsicSize.',
+    },
+    {
+      name: 'intrinsicSize',
+      type: '{width: number; height: number}',
+      description:
+        'Supplied vector dimensions when size is absent; otherwise uses --md-icon-size, then 24px.',
     },
     {
       name: 'label',

@@ -125,6 +125,18 @@ function App() {
             <Icon icon={svg('check')} size={size} data-testid="svg-primary" />
             <span>Primary tint</span>
           </div>
+          <div className="card intrinsic">
+            <Icon
+              icon={svg('check')}
+              intrinsicSize={{width: 35, height: 83}}
+              data-testid="svg-intrinsic"
+            />
+            <span>35 × 83 intrinsic</span>
+          </div>
+          <div className="card" data-testid="default-scope">
+            <Icon icon={svg('check')} data-testid="svg-default" />
+            <span>Token default</span>
+          </div>
         </div>
       </section>
       <section aria-labelledby="font-heading">
@@ -253,7 +265,8 @@ fetch('../revision.json')
   .then(response => response.json())
   .then(({revision, dirty}) => {
     const node = document.querySelector('#revision');
-    if (node)
-      {node.textContent = `Revision ${revision}${dirty ? ' (local changes)' : ''}`;}
+    if (node) {
+      node.textContent = `Revision ${revision}${dirty ? ' (local changes)' : ''}`;
+    }
   });
 createRoot(document.getElementById('root')!).render(<App />);

@@ -9,6 +9,7 @@
 
 import {describe, expect, it} from 'vitest';
 import {render, screen} from '@testing-library/react';
+import {renderToString} from 'react-dom/server';
 import {MaterialSymbol} from './MaterialSymbol';
 
 describe('MaterialSymbol', () => {
@@ -19,6 +20,12 @@ describe('MaterialSymbol', () => {
     expect(symbol).toHaveTextContent('settings');
     expect(symbol).toHaveAttribute('aria-hidden', 'true');
     expect(symbol).not.toHaveAttribute('role');
+  });
+
+  it('renders the same accessible glyph on the server', () => {
+    expect(
+      renderToString(<MaterialSymbol name="check" label="Completed" />),
+    ).toContain('aria-label="Completed"');
   });
 
   it('exposes a meaningful codepoint with an accessible name', () => {
