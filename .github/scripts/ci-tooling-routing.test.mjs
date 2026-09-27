@@ -6,7 +6,7 @@
  *   tooling runs Node and lint owners while unrelated UI/browser/build work skips.
  * @input CI and lint workflow YAML.
  * @output Mutation-sensitive assertions for trusted classification, owned work,
- *   fail-closed fallbacks, and historical join jobs.
+ *   fail-closed fallbacks, and the current native Material join job.
  * @position Workflow contract for spec:AST-030's first implementation slice.
  */
 
@@ -162,13 +162,14 @@ describe('Node-tooling CI routing', () => {
     }
   });
 
-  it('preserves the historical joins and fails them on owned-lane failure', () => {
+  it('preserves the required joins including the native Material lane', () => {
     expect(ci.jobs.test.needs).toEqual([
       'check-scope',
       'test-ui',
       'test-node',
       'test-build',
       'registry-contract',
+      'material3-native',
     ]);
     expect(ci.jobs.build.needs).toEqual(['build-storybook', 'build-sandbox']);
     const testJoin = step(ci.jobs.test, 'Require expected test-owner outcomes');
@@ -183,6 +184,7 @@ describe('Node-tooling CI routing', () => {
       TEST_NODE_RESULT: '${{ needs.test-node.result }}',
       TEST_BUILD_RESULT: '${{ needs.test-build.result }}',
       REGISTRY_CONTRACT_RESULT: '${{ needs.registry-contract.result }}',
+      MATERIAL3_NATIVE_RESULT: '${{ needs.material3-native.result }}',
     });
     const buildJoin = step(
       ci.jobs.build,
