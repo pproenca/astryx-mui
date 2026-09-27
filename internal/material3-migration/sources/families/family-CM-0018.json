@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 2,
+  "authority": "compose-first",
+  "familyId": "family-CM-0018",
+  "scopeSha256": "b329fe6e697e13ae36ce88f217ae54f970d1d0fbc908d8476df9b93718042933",
+  "pins": {
+    "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+    "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+  },
+  "coverage": {
+    "figma": {
+      "status": "present",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+    },
+    "compose": {
+      "status": "present",
+      "evidence": "internal/material3-migration/sources/compose-elevation.md"
+    },
+    "web": {
+      "status": "present",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+    }
+  },
+  "routes": {
+    "design": {
+      "primary": "compose",
+      "figmaSpecified": true,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+    },
+    "behavior": {
+      "primary": "compose",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+    },
+    "motion": {
+      "primary": "compose",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+    },
+    "browser": {
+      "primary": "web",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+    }
+  },
+  "overrides": [
+    {
+      "dimension": "shadow-pixel-geometry",
+      "concern": "design",
+      "primary": "figma",
+      "figmaSpecified": true,
+      "reason": "Use the ten frozen light and dark effect styles for CSS shadow-layer pixels, reconciled with pinned Material Web.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0018.md",
+      "gapReason": "Compose specifies shadow elevation but delegates shadow raster geometry to its platform renderer; it has no CSS key and ambient layer coordinates.",
+      "gapEvidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+    }
+  ]
+}
