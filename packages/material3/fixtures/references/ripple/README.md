@@ -14,7 +14,7 @@ implementation Copyright Meta Platforms, Inc. and affiliates.
 
 `manifest.json` records each retained frame hash. The native pixel regressions
 use the same viewport, font, source palette, content and frame time. The owner
-approved at most five changed pixels per press frame on 2026-09-27. For state
+approved at most five Pixelmatch-detected changed pixels per press frame on 2026-09-27; exact RGBA diffs are retained separately. For state
 layers, the owner separately approved up to one RGB level in the generic flat
 fill and five at rounded button edges, with exact pixels outside both controls.
 The state comparator combines independently focused generic and filled-button

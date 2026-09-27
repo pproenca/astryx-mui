@@ -8,10 +8,7 @@ import {Ripple} from '../dist/Ripple/Ripple.js';
 function App() {
   return (
     <main>
-      <h1>
-        Compose Ripple press ·{' '}
-        {document.body.dataset.mdScheme === 'dark' ? 'Dark' : 'Light'}
-      </h1>
+      <h1>{`Compose Ripple press · ${document.body.dataset.mdScheme === 'dark' ? 'Dark' : 'Light'}`}</h1>
       <p id="stage">
         Source-value browser rendering · early release and repeated press
       </p>

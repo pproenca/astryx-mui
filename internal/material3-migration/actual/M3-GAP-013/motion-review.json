@@ -1,0 +1,15 @@
+{
+  "watchedBy": "pproenca",
+  "watchedAt": "2026-09-27T16:57:05Z",
+  "verdict": "Watched source/native press and state-layer pairs at normal speed; user reports matching native press, overlap, release, hover, drag, focus, interruption and reduced-motion finish where applicable.",
+  "referenceSha256": "80a47f9a4c08fc19d6d846f60ea8f1a7b0d2f20e9403fdd1b2f255b06252f4ef",
+  "stateReferenceSha256": "3605020e5e422a9bf37613603ee3998804914365b706d6a89cfe2317a44a03af",
+  "actualSha256": "fd23318cd929db19fa78394c6e48bd81e07f341ad3af774e72397cb7c8225961",
+  "stateActualSha256": "18051c60aabf3da315ed0c7a19c7cccfa3323ca80b7fd690ee9b35b658975724",
+  "observations": [
+    {"timeMs": 0, "note": "The native press starts from the pinned bounded and unbounded source origins; hover state begins at zero opacity."},
+    {"timeMs": 160, "note": "A second press overlaps the first release while the state layer can retarget into drag."},
+    {"timeMs": 530, "note": "The state layer interrupts an early drag and reverses toward rest; the press layer retains its separate exit."},
+    {"timeMs": 970, "note": "The state layer finishes its pinned drag exit; reduced motion paints its terminal state without interpolation."}
+  ]
+}

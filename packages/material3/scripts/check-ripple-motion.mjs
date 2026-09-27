@@ -43,6 +43,7 @@ await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
 const browser = await chromium.launch({channel:'chrome',headless:true,executablePath:process.env.M3_BROWSER_EXECUTABLE});
 try {
   let maxPosition = 0, maxVelocity = 0, maxAlpha = 0, maxAlphaVelocity = 0;
+  const traces = [];
   for (const bounded of [true, false]) {
     const page = await browser.newPage({viewport:{width:960,height:360},deviceScaleFactor:1});
     await page.goto(`http://127.0.0.1:${server.address().port}/fixtures/ripple-compare.html`);
@@ -76,6 +77,7 @@ try {
       {duration:225,easing:'cubic-bezier(0.4, 0, 0.2, 1)'},
       {duration:75,easing:'linear'},
     ]);
+    traces.push({bounded, samples: actual.samples, settledAtMs: 225});
     let previous = null;
     for (const sample of actual.samples) {
       const fraction=sample.timeMs/225;
@@ -101,6 +103,18 @@ try {
   assert.ok(maxVelocity <= .2, `velocity ${maxVelocity}px/s`);
   assert.ok(maxAlpha <= .000001, `alpha ${maxAlpha}`);
   assert.ok(maxAlphaVelocity <= .0005, `alpha velocity ${maxAlphaVelocity}/s`);
+  const recordIndex = process.argv.indexOf('--record');
+  if (recordIndex >= 0) {
+    const destination = process.argv[recordIndex + 1];
+    assert.ok(destination && !destination.startsWith('-'), 'Missing native Ripple trace destination');
+    await fs.writeFile(destination, JSON.stringify({
+      schemaVersion: 1,
+      producer: {kind: 'browser', command: 'node packages/material3/scripts/check-ripple-motion.mjs --record', browser: `Chrome ${browser.version()}`, method: 'Native Ripple Web Animations API samples'},
+      inputs: {size: {width: 220, height: 92}, origin: {x: 40, y: 30}, startMs: 0},
+      unit: 'alpha-radius-px-center-px',
+      traces,
+    }, null, 2) + '\n');
+  }
   process.stdout.write(JSON.stringify({maxPosition,maxVelocity,maxAlpha,maxAlphaVelocity,settlingDifferenceMs:0})+'\n');
 } finally {
   await browser.close();

@@ -11,12 +11,30 @@ import {
   validateReceipt,
   validateMotion,
   fileAt,
+  assessVisualTolerance,
 } from '../evidence.mjs';
 import {selectFrames} from '../motion.mjs';
 import {pixels} from '../compare.mjs';
 import {presentXML, visible} from '../presentation.mjs';
 import {validateMerge} from '../workflow.mjs';
 import {parse, commands} from '../cli.mjs';
+test('approved pixel metrics still reject out-of-region paint and excess channel drift', () => {
+  const image = () => {
+    const data = Buffer.alloc(3 * 2 * 4);
+    for (let index = 3; index < data.length; index += 4) data[index] = 255;
+    return {width: 3, height: 2, data};
+  };
+  const reference = image(), actual = image();
+  actual.data[0] = 1;
+  const regions = {metric: 'regions', regions: [{id: 'control', x: 0, y: 0, width: 2, height: 1, maxChangedPixels: 2, maxChannelDelta: 1}], outside: {maxChangedPixels: 0, maxChannelDelta: 0}};
+  assert.equal(assessVisualTolerance(reference, actual, regions).accepted, true);
+  actual.data[4] = 2;
+  assert.equal(assessVisualTolerance(reference, actual, regions).accepted, false);
+  actual.data[4] = 0;
+  actual.data[8] = 1;
+  assert.equal(assessVisualTolerance(reference, actual, regions).accepted, false);
+  assert.equal(assessVisualTolerance(reference, actual, {metric: 'pixelmatch', changedPixels: 1, maxChannelDelta: 1}).accepted, false);
+});
 const task = (id, phase = 'Foundation', status = 'Backlog', priority = 1) => ({
   'Task ID': id,
   Phase: phase,

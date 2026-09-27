@@ -10,6 +10,7 @@ import {createHash} from 'node:crypto';
 import pixelmatch from 'pixelmatch';
 import {PNG} from 'pngjs';
 import {chromium} from 'playwright';
+import {pixels} from '../compare.mjs';
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const gallery = path.join(repo, 'packages/material3/dist/gallery');
@@ -46,8 +47,8 @@ try{
     const image=PNG.sync.read(bytes);
     assert.equal(image.width,expected.width);
     assert.equal(image.height,expected.height);
-    const diff=new PNG({width:image.width,height:image.height});
-    const changed=pixelmatch(expected.data,image.data,diff.data,image.width,image.height,{threshold:0});
+    const diff=pixels(expected,image);
+    const changed=pixelmatch(expected.data,image.data,null,image.width,image.height,{threshold:0});
     if(!item.id.startsWith('state-motion'))return {changed,diff,accepted:changed<=5};
     let genericChanged=0,buttonChanged=0,outsideChanged=0,genericMaxChannel=0,buttonMaxChannel=0;
     for(let index=0;index<image.data.length;index+=4){

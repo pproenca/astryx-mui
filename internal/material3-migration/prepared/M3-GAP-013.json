@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "scopeSha256": "ab24ffdbede9a3610f18e1cb14a9c004bdbd872b0c1fe1d450cf4d7d9f04a6f0",
+  "scopeSha256": "c4b1d84e30bc3af3c568249c3dbed3ecfb0246045034d1a3c751facf5fb971e2",
   "sources": {
     "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
     "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
@@ -85,7 +85,7 @@
     "packages/themes/material3/material3.spec.md": "110b9cde4e12bd43102cd79e2a61c2c5845f29482fc303341be8875c7d98ab8e",
     "docs/contributing/material3-migration.md": "fab928b10412b5e5c72c007315a425ee554d7e091ac1f5768e2616e7c2000e7f",
     "internal/material3-migration/routing.mjs": "c498d4ef6b02164d4787b57ffb8470702ada22e47b27f2d5f3fb138cf7b1f391",
-    "internal/material3-migration/sources/baseline/ripple-compose-first.json": "aa5b02242e85b13907ed8d42e6dfc089fcb1d6f8d1fa62e40e59f617d8147812",
+    "internal/material3-migration/sources/baseline/ripple-compose-first.json": "6b415f97767bd86ff0dd91253833563200a3d039012e655244693d73673e73d2",
     "internal/material3-migration/sources/families/family-CM-0023.json": "f3cef68344ad0f0a3f276216d6468a8ad2f5aad9fc8843d8de329993b71dd2ce",
     "internal/material3-migration/sources/families/family-CM-0023.md": "83e0664592aec47c7a3721d808f4f73f1a728a8b51350fc7e389b3b3153263e8",
     "internal/material3-migration/sources/figma-kit-inventory.json": "15ffc3bf66c2666dca228847b3bbeffc1d718beaa323967d2c118e0b3170ae6f",
@@ -232,288 +232,288 @@
       "Dimension": "Coverage",
       "Scenario": "Type and variant",
       "Expected check": "Identify the corresponding Material 3 type and supported variants.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Bounded default and explicit unbounded modes match pinned Compose press geometry."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Coverage",
       "Scenario": "Properties and slots",
       "Expected check": "Compare public configuration, content slots, and composition.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies properties and slots."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Anatomy",
       "Scenario": "Parts and geometry",
       "Expected check": "Compare parts, dimensions, alignment, spacing, and icon placement.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies parts and geometry."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Anatomy",
       "Scenario": "Touch target",
       "Expected check": "Verify the applicable Material target geometry.",
-      "Applicable?": "Review",
+      "Applicable?": "N/A",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Ripple is decorative and pointer inert; its semantic owner defines target size and activation."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Visual tokens",
       "Scenario": "Color light",
       "Expected check": "Verify semantic container, content, border, and state colors in light mode.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Light OnSurface and OnPrimary state treatment matches pinned source frames."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Visual tokens",
       "Scenario": "Color dark",
       "Expected check": "Verify semantic container, content, border, and state colors in dark mode.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Dark OnSurface and OnPrimary state treatment matches pinned source frames."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Visual tokens",
       "Scenario": "Typography",
       "Expected check": "Verify family, scale role, size, line height, weight, and tracking.",
-      "Applicable?": "Review",
+      "Applicable?": "N/A",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Ripple renders no textual content; type is owned by its semantic control."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Visual tokens",
       "Scenario": "Shape spacing elevation",
       "Expected check": "Verify corners, padding, gaps, borders, tonal and shadow elevation.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies shape spacing elevation."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "States",
       "Scenario": "Enabled",
       "Expected check": "Verify resting visual and behavior.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies enabled."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "States",
       "Scenario": "Hover",
       "Expected check": "Verify hover state with hover-capable pointer.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies hover."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "States",
       "Scenario": "Focus visible",
       "Expected check": "Verify keyboard focus indicator and focus behavior.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies focus visible."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "States",
       "Scenario": "Pressed",
       "Expected check": "Verify active/pressed treatment and release behavior.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies pressed."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "States",
       "Scenario": "Selected checked",
       "Expected check": "Verify selected or checked state where applicable.",
-      "Applicable?": "Review",
+      "Applicable?": "N/A",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "The semantic control owns selection and checked state; Ripple responds to its interaction state."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "States",
       "Scenario": "Disabled",
       "Expected check": "Verify disabled visual, focus, and activation behavior.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies disabled."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "States",
       "Scenario": "Invalid error",
       "Expected check": "Verify validation and error presentation where applicable.",
-      "Applicable?": "Review",
+      "Applicable?": "N/A",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Ripple owns no value or validation state; the semantic control presents errors."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "States",
       "Scenario": "Loading",
       "Expected check": "Verify pending feedback and geometry where applicable.",
-      "Applicable?": "Review",
+      "Applicable?": "N/A",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Ripple owns no pending operation; its semantic control presents loading feedback."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "States",
       "Scenario": "Read only",
       "Expected check": "Verify read-only semantics where applicable.",
-      "Applicable?": "Review",
+      "Applicable?": "N/A",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Read-only semantics belong to the associated control; disabled suppression remains tested."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "States",
       "Scenario": "Open closed dragged",
       "Expected check": "Verify expanded, open, or dragged states where applicable.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "The custom drag input produces Compose 16% opacity and interrupted state retargeting; open/closed remains with the owner."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Interaction",
       "Scenario": "Pointer touch",
       "Expected check": "Verify pointer, touch, gesture, and cancellation behavior.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies pointer touch."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Interaction",
       "Scenario": "Keyboard form",
       "Expected check": "Verify keyboard controls and native form behavior.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "The decorative layer stays outside tab and form semantics; Enter and Space remain with the control."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Accessibility",
       "Scenario": "Semantics",
       "Expected check": "Verify name, role, state, focus order, and screen reader output.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies semantics."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Accessibility",
       "Scenario": "Contrast cues",
       "Expected check": "Verify contextual contrast and non-color cues.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies contrast cues."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Motion",
       "Scenario": "Transitions",
       "Expected check": "Verify duration, easing, direction, and animated properties.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies transitions."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Motion",
       "Scenario": "Enter exit interruption",
       "Expected check": "Verify enter/exit and interrupted transitions where applicable.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies enter exit interruption."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Motion",
       "Scenario": "Reduced motion",
       "Expected check": "Verify reduced-motion behavior.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies reduced motion."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Responsive",
       "Scenario": "Viewport and container",
       "Expected check": "Verify compact, medium, expanded, and boundary conditions as applicable.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies viewport and container."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Responsive",
       "Scenario": "Zoom RTL overflow",
       "Expected check": "Verify zoom, long content, overflow, and RTL layout.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies zoom rtl overflow."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Theming",
       "Scenario": "Color and overrides",
       "Expected check": "Verify light/dark, dynamic color, custom theme, and scoped overrides.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies color and overrides."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Content",
       "Scenario": "Extremes and locale",
       "Expected check": "Verify empty/long content, icon-only content, and localization.",
-      "Applicable?": "Review",
+      "Applicable?": "N/A",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Ripple accepts no textual child or label; its semantic control owns localization and extremes."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Composition",
       "Scenario": "Layering and nesting",
       "Expected check": "Verify overlays, stacking, scrolling, and nested use where applicable.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies layering and nesting."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Engineering",
       "Scenario": "Browser SSR performance",
       "Expected check": "Verify supported browsers, SSR/hydration, layout stability, and performance as applicable.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies browser ssr performance."
     },
     {
       "Map ID": "CM-0042",
       "Dimension": "Evidence",
       "Scenario": "Docs and regression",
       "Expected check": "Link updated docs, source, unit/browser tests, and visual evidence.",
-      "Applicable?": "Review",
+      "Applicable?": "Required",
       "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies docs and regression."
     },
     {
       "Map ID": "CM-0042",
@@ -522,7 +522,7 @@
       "Expected check": "Native implementation consumes supported Material component and system roles directly; scoped overrides reach the rendered element.",
       "Applicable?": "Required",
       "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies material token contract."
     },
     {
       "Map ID": "CM-0042",
@@ -531,7 +531,7 @@
       "Expected check": "Native CSS and behavior work without the Core theme bridge or legacy token declarations; shared Core utilities have an evidenced semantic match.",
       "Applicable?": "Required",
       "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies native dependency boundary."
     },
     {
       "Map ID": "CM-0042",
@@ -540,7 +540,7 @@
       "Expected check": "Anatomy, defaults, variants, sizes and states follow the pinned Material source; Core compatibility lives in a separate entry point.",
       "Applicable?": "Required",
       "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies material api and defaults."
     },
     {
       "Map ID": "CM-0042",
@@ -549,7 +549,7 @@
       "Expected check": "Legacy exports and aliases delegate toward the native implementation without cycles or a second independently maintained value map.",
       "Applicable?": "Required",
       "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies compatibility direction."
     },
     {
       "Map ID": "CM-0042",
@@ -558,7 +558,7 @@
       "Expected check": "The published native entry point renders in docsite and Storybook with source, status and exact revision visible for human QA.",
       "Applicable?": "Required",
       "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies native consumer preview."
     },
     {
       "Map ID": "CM-0042",
@@ -567,7 +567,7 @@
       "Expected check": "Pinned Compose governs overlapping design, behavior and motion; missing concerns and approved exceptions are recorded once per family. Figma-only coverage and native web semantics remain required.",
       "Applicable?": "Required",
       "Requirement source": "internal/material3-migration/policy.json",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies compose source precedence."
     },
     {
       "Map ID": "CM-0042",
@@ -576,7 +576,7 @@
       "Expected check": "Reference and native captures use matched conditions; exact pixel diff passes or a reviewed tolerance exception is recorded.",
       "Applicable?": "Required",
       "Requirement source": "internal/material3-migration/policy.json",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "All 32 press frames meet the approved five Pixelmatch-pixel limit; 16 state frames meet region/channel limits with zero change outside controls."
     },
     {
       "Map ID": "CM-0042",
@@ -585,7 +585,7 @@
       "Expected check": "Watched reference media, timed frames, interruption, reversal and reduced motion are evidenced, or static behavior has a source-backed N/A.",
       "Applicable?": "Required",
       "Requirement source": "internal/material3-migration/policy.json",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "The owner watched source/native clips at normal speed; independent 5 ms browser samples and contact sheets are retained."
     },
     {
       "Map ID": "CM-0042",
@@ -594,7 +594,7 @@
       "Expected check": "Pinned Compose defaults, variants and relevant test cases are mapped to permanent web tests; differences and missing upstream coverage are explicit.",
       "Applicable?": "Required",
       "Requirement source": "packages/themes/material3/material3.spec.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Native Ripple evidence directly verifies compose behavior and tests."
     },
     {
       "Map ID": "CM-0042",
@@ -603,7 +603,7 @@
       "Expected check": "Recorded browser/device profiles meet the approved input response and frame pacing budgets, including active motion and interruption.",
       "Applicable?": "Required",
       "Requirement source": "packages/themes/material3/material3.spec.md",
-      "Notes / N/A reason": ""
+      "Notes / N/A reason": "Thirty inputs and 300 active frames meet the approved Chrome/macOS response and frame profile."
     }
   ],
   "decisions": "Resolved baseline required; code and interactive QA remain pending."
