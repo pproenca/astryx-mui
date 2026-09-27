@@ -1,0 +1,513 @@
+{
+  "schemaVersion": 1,
+  "producer": {
+    "kind": "browser",
+    "command": "node internal/material3-migration/sources/ripple-reference/capture-browser-ripple.mjs",
+    "browser": "Chrome 153.0.8010.53",
+    "sampleStepMs": 5,
+    "method": "Web Animations API computed transforms and opacity versus pinned Compose equations"
+  },
+  "source": {
+    "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "pressManifest": "internal/material3-migration/sources/ripple-reference/manifest.json",
+    "stateManifest": "internal/material3-migration/sources/ripple-reference/state-motion-manifest.json"
+  },
+  "press": {
+    "traces": 6,
+    "samples": 456,
+    "settledAtMs": 675,
+    "errors": {
+      "alpha": 3.33333333379926e-7,
+      "radiusPx": 0.00031728728812652207,
+      "centerPx": 0.00044444444446867237,
+      "alphaPerSecond": 0.0001333333333519704,
+      "pxPerSecond": 0.12439902067171715
+    }
+  },
+  "state": {
+    "samples": 195,
+    "settledAtMs": 970,
+    "errors": {
+      "alpha": 4.4444444445568276e-7,
+      "alphaPerSecond": 0.00017777777777949755
+    }
+  },
+  "representative": {
+    "press": [
+      {
+        "bounded": true,
+        "press": 0,
+        "samples": [
+          {
+            "timeMs": 0,
+            "alpha": 0,
+            "radius": 66,
+            "x": 40,
+            "y": 30
+          },
+          {
+            "timeMs": 20,
+            "alpha": 0.266667,
+            "radius": 67.25862,
+            "x": 46.2222,
+            "y": 31.4222
+          },
+          {
+            "timeMs": 50,
+            "alpha": 1,
+            "radius": 77.07612,
+            "x": 55.5556,
+            "y": 33.5556
+          },
+          {
+            "timeMs": 75,
+            "alpha": 1,
+            "radius": 94.91262,
+            "x": 63.3333,
+            "y": 35.3333
+          },
+          {
+            "timeMs": 120,
+            "alpha": 1,
+            "radius": 117.49716,
+            "x": 77.3333,
+            "y": 38.5333
+          },
+          {
+            "timeMs": 160,
+            "alpha": 1,
+            "radius": 125.6541,
+            "x": 89.7778,
+            "y": 41.3778
+          },
+          {
+            "timeMs": 180,
+            "alpha": 1,
+            "radius": 127.6671,
+            "x": 96,
+            "y": 42.8
+          },
+          {
+            "timeMs": 260,
+            "alpha": 0.766667,
+            "radius": 129.23064,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 300,
+            "alpha": 0.5,
+            "radius": 129.23064,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 320,
+            "alpha": 0.366667,
+            "radius": 129.23064,
+            "x": 110,
+            "y": 46
+          }
+        ]
+      },
+      {
+        "bounded": true,
+        "press": 1,
+        "samples": [
+          {
+            "timeMs": 160,
+            "alpha": 0,
+            "radius": 66,
+            "x": 180,
+            "y": 62
+          },
+          {
+            "timeMs": 180,
+            "alpha": 0.266667,
+            "radius": 67.25862,
+            "x": 173.778,
+            "y": 60.5778
+          },
+          {
+            "timeMs": 260,
+            "alpha": 1,
+            "radius": 109.96061999999999,
+            "x": 148.889,
+            "y": 54.8889
+          },
+          {
+            "timeMs": 300,
+            "alpha": 1,
+            "radius": 122.43528,
+            "x": 136.444,
+            "y": 52.0444
+          },
+          {
+            "timeMs": 320,
+            "alpha": 1,
+            "radius": 125.6541,
+            "x": 130.222,
+            "y": 50.6222
+          },
+          {
+            "timeMs": 385,
+            "alpha": 1,
+            "radius": 129.23064,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 525,
+            "alpha": 0.0666667,
+            "radius": 129.23064,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 535,
+            "alpha": 0,
+            "radius": 129.23064,
+            "x": 110,
+            "y": 46
+          }
+        ]
+      },
+      {
+        "bounded": true,
+        "press": 2,
+        "samples": [
+          {
+            "timeMs": 300,
+            "alpha": 0,
+            "radius": 66,
+            "x": 110,
+            "y": 40
+          },
+          {
+            "timeMs": 320,
+            "alpha": 0.266667,
+            "radius": 67.25862,
+            "x": 110,
+            "y": 40.5333
+          },
+          {
+            "timeMs": 385,
+            "alpha": 1,
+            "radius": 101.78916,
+            "x": 110,
+            "y": 42.2667
+          },
+          {
+            "timeMs": 525,
+            "alpha": 1,
+            "radius": 129.23064,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 535,
+            "alpha": 0.933333,
+            "radius": 129.23064,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 675,
+            "alpha": 0,
+            "radius": 129.23064,
+            "x": 110,
+            "y": 46
+          }
+        ]
+      },
+      {
+        "bounded": false,
+        "press": 0,
+        "samples": [
+          {
+            "timeMs": 0,
+            "alpha": 0,
+            "radius": 66,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 20,
+            "alpha": 0.266667,
+            "radius": 67.0593,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 50,
+            "alpha": 1,
+            "radius": 75.32448000000001,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 75,
+            "alpha": 1,
+            "radius": 90.34013999999999,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 120,
+            "alpha": 1,
+            "radius": 109.35276,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 160,
+            "alpha": 1,
+            "radius": 116.22006,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 180,
+            "alpha": 1,
+            "radius": 117.91428,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 260,
+            "alpha": 0.766667,
+            "radius": 119.23098,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 300,
+            "alpha": 0.5,
+            "radius": 119.23098,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 320,
+            "alpha": 0.366667,
+            "radius": 119.23098,
+            "x": 110,
+            "y": 46
+          }
+        ]
+      },
+      {
+        "bounded": false,
+        "press": 1,
+        "samples": [
+          {
+            "timeMs": 160,
+            "alpha": 0,
+            "radius": 66,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 180,
+            "alpha": 0.266667,
+            "radius": 67.0593,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 260,
+            "alpha": 1,
+            "radius": 103.00818,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 300,
+            "alpha": 1,
+            "radius": 113.51010000000001,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 320,
+            "alpha": 1,
+            "radius": 116.22006,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 385,
+            "alpha": 1,
+            "radius": 119.23098,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 525,
+            "alpha": 0.0666667,
+            "radius": 119.23098,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 535,
+            "alpha": 0,
+            "radius": 119.23098,
+            "x": 110,
+            "y": 46
+          }
+        ]
+      },
+      {
+        "bounded": false,
+        "press": 2,
+        "samples": [
+          {
+            "timeMs": 300,
+            "alpha": 0,
+            "radius": 66,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 320,
+            "alpha": 0.266667,
+            "radius": 67.0593,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 385,
+            "alpha": 1,
+            "radius": 96.12899999999999,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 525,
+            "alpha": 1,
+            "radius": 119.23098,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 535,
+            "alpha": 0.933333,
+            "radius": 119.23098,
+            "x": 110,
+            "y": 46
+          },
+          {
+            "timeMs": 675,
+            "alpha": 0,
+            "radius": 119.23098,
+            "x": 110,
+            "y": 46
+          }
+        ]
+      }
+    ],
+    "state": [
+      {
+        "timeMs": 0,
+        "alpha": 0
+      },
+      {
+        "timeMs": 15,
+        "alpha": 0.08
+      },
+      {
+        "timeMs": 80,
+        "alpha": 0.08
+      },
+      {
+        "timeMs": 100,
+        "alpha": 0.115556
+      },
+      {
+        "timeMs": 125,
+        "alpha": 0.16
+      },
+      {
+        "timeMs": 180,
+        "alpha": 0.16
+      },
+      {
+        "timeMs": 195,
+        "alpha": 0.08
+      },
+      {
+        "timeMs": 220,
+        "alpha": 0.08
+      },
+      {
+        "timeMs": 235,
+        "alpha": 0
+      },
+      {
+        "timeMs": 300,
+        "alpha": 0
+      },
+      {
+        "timeMs": 320,
+        "alpha": 0.0444444
+      },
+      {
+        "timeMs": 345,
+        "alpha": 0.1
+      },
+      {
+        "timeMs": 420,
+        "alpha": 0.1
+      },
+      {
+        "timeMs": 435,
+        "alpha": 0
+      },
+      {
+        "timeMs": 500,
+        "alpha": 0
+      },
+      {
+        "timeMs": 520,
+        "alpha": 0.0711111
+      },
+      {
+        "timeMs": 530,
+        "alpha": 0.106667
+      },
+      {
+        "timeMs": 580,
+        "alpha": 0.0711113
+      },
+      {
+        "timeMs": 680,
+        "alpha": 0
+      },
+      {
+        "timeMs": 720,
+        "alpha": 0
+      },
+      {
+        "timeMs": 740,
+        "alpha": 0.0711111
+      },
+      {
+        "timeMs": 765,
+        "alpha": 0.16
+      },
+      {
+        "timeMs": 820,
+        "alpha": 0.16
+      },
+      {
+        "timeMs": 870,
+        "alpha": 0.106667
+      },
+      {
+        "timeMs": 970,
+        "alpha": 0
+      }
+    ]
+  }
+}

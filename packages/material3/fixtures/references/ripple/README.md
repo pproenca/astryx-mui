@@ -16,3 +16,10 @@ implementation Copyright Meta Platforms, Inc. and affiliates.
 uses the same viewport, font, Material color roles, content and frame time. The
 owner approved at most five changed pixels per frame on 2026-09-27 after
 eight measured captures found 0–5 changed circle-edge antialiasing pixels.
+
+`source-motion.json` retains the independently captured Chrome/Compose
+comparison: 456 press and 195 state samples, representative trace points, and
+the pinned source revision. Its SHA-256 is
+`66fa157aa2e6aaafffaf5f8f6379e2d1c46eb1fbcf6ee2d184c57e75d5d6eb73`.
+The native motion test compares browser animation progress and velocity to the
+source equations; the pixel test separately checks raster output.

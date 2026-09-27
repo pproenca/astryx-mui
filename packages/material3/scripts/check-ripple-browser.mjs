@@ -41,6 +41,11 @@ try {
   const box = await bounded.boundingBox();
   assert.ok(box);
   await page.mouse.move(box.x + 32, box.y + 26);
+  assert.equal(await ripple.getAttribute('data-md-ripple-state'), 'hover');
+  assert.equal(
+    await ripple.evaluate(node => node.children[0].getAnimations()[0].effect.getTiming().duration),
+    15,
+  );
   await page.mouse.down();
   assert.equal(await ripple.locator(':scope > span:nth-child(2) > span').count(), 1);
   const geometry = await ripple.evaluate(node => {
@@ -82,6 +87,10 @@ try {
   assert.equal(await ripple.getAttribute('data-md-ripple-state'), 'drag');
   await page.locator('#drag-toggle').uncheck();
   assert.equal(await ripple.getAttribute('data-md-ripple-state'), 'rest');
+  assert.equal(
+    await ripple.evaluate(node => node.children[0].getAnimations()[0].effect.getTiming().duration),
+    150,
+  );
 
   await bounded.dispatchEvent('pointerdown', {pointerId: 9, clientX: box.x + 40, clientY: box.y + 30});
   assert.equal(await ripple.locator(':scope > span:nth-child(2) > span').count(), 1);
@@ -116,16 +125,37 @@ try {
   const proxy = page.getByTestId('proxy-ripple');
   await page.locator('#proxy-owner').click();
   assert.equal(await page.locator('#proxy-input').isChecked(), true);
+  await proxy.locator(':scope > span:nth-child(2) > span').waitFor({
+    state: 'detached',
+    timeout: 2000,
+  });
+  const proxyBox = await page.locator('#proxy-owner').boundingBox();
+  await page.locator('#proxy-input').dispatchEvent('pointerdown', {
+    pointerId: 12,
+    clientX: proxyBox.x + 20,
+    clientY: proxyBox.y + 20,
+  });
   assert.equal(await proxy.locator(':scope > span:nth-child(2) > span').count(), 1);
   await page.locator('#proxy-toggle').uncheck();
   await page.waitForTimeout(0);
   assert.equal(await proxy.locator(':scope > span:nth-child(2) > span').count(), 0);
 
-  await bounded.focus();
+  await page.locator('#proxy-toggle').focus();
+  await page.keyboard.press('Tab');
+  assert.equal(await bounded.evaluate(node => node === document.activeElement), true);
+  assert.equal(await ripple.getAttribute('data-md-ripple-state'), 'focus');
+  assert.equal(
+    await ripple.evaluate(node => node.children[0].getAnimations()[0].effect.getTiming().duration),
+    45,
+  );
   await page.keyboard.down('Space');
   assert.equal(await ripple.locator(':scope > span:nth-child(2) > span').count(), 1);
   await page.keyboard.up('Space');
   assert.equal(await page.locator('#activation-count').textContent(), '3');
+  await ripple.locator(':scope > span:nth-child(2) > span').waitFor({
+    state: 'detached',
+    timeout: 2000,
+  });
 
   await page.locator('#direction').selectOption('rtl');
   assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
