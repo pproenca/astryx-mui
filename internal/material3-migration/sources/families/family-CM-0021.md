@@ -61,8 +61,10 @@ indicator color and thickness snap. These are state-dependent motion rules,
 not a generic CSS duration. The pinned standard scheme has fast spatial
 damping/stiffness 0.9/1400, fast effects 1/3800, and slow effects 1/800;
 Expressive changes fast spatial to 0.6/800 while retaining those effects
-values. Source playback, intermediate frames, reversal, and reduced-motion
-evidence still need to be captured and watched before native implementation.
+values. The [pinned Kotlin probe and watched browser playback](../field-reference/README.md)
+capture the four scalar paths with 20 ms intermediate samples, interruption,
+reversal, and a separate browser reduced-motion adaptation. They establish
+source motion, while native behavior and pixel QA remain pending.
 
 The pinned [`TextFieldTest.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldTest.kt)
 and [`OutlinedTextFieldTest.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/OutlinedTextFieldTest.kt)
