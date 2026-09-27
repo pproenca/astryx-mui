@@ -17,17 +17,22 @@ describe('native FocusRing', () => {
     );
     expect(markup).toContain('aria-hidden="true"');
     expect(markup).toContain('tabindex="-1"');
+    const host = document.createElement('div');
+    host.innerHTML = markup;
+    document.body.appendChild(host);
     const {container} = render(
       <button style={{position: 'relative'}}>
         Custom control
         <FocusRing placement="inset" data-testid="ring" />
       </button>,
+      {container: host, hydrate: true},
     );
     const ring = screen.getByTestId('ring');
     expect(container.querySelectorAll('span')).toHaveLength(1);
     expect(ring).toHaveAttribute('aria-hidden', 'true');
     expect(ring).toHaveAttribute('tabindex', '-1');
     expect(ring).not.toHaveAttribute('role');
+    host.remove();
   });
 
   it('targets the decorative span and protects its accessibility attributes', () => {

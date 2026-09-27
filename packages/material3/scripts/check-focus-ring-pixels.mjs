@@ -98,6 +98,7 @@ try {
       viewport: {width: 960, height: 360},
       deviceScaleFactor: 1,
     });
+    await page.clock.install({time: new Date('2026-09-27T00:00:00Z')});
     await page.goto(
       `http://127.0.0.1:${server.address().port}/fixtures/focus-ring-compare.html`,
     );
@@ -119,9 +120,15 @@ try {
         );
     }, mode);
     await page.evaluate(() => document.fonts.ready);
-    await page.waitForTimeout(50);
+    await page.clock.pauseAt(new Date('2026-09-27T00:01:00Z'));
     await page.keyboard.press('Tab');
-    await page.waitForTimeout(500);
+    for (let timeMs = 20; timeMs <= 260; timeMs += 20) {
+      await page.clock.fastForward(20);
+      if (timeMs === 120)
+        await page.locator('#driver').evaluate(node => node.blur());
+      if (timeMs === 160)
+        await page.locator('#driver').evaluate(node => node.focus());
+    }
     for (const [id, x] of [
       ['standard', 359],
       ['expressive', 657],

@@ -114,6 +114,24 @@ try {
     ),
     '0px',
   );
+  for (const pointerType of ['touch', 'pen']) {
+    await page.keyboard.press('Shift+Tab');
+    await page.keyboard.press('Tab');
+    await page.waitForTimeout(80);
+    assert.equal(
+      await inset.evaluate(node => getComputedStyle(node, '::before').borderTopWidth),
+      '2px',
+      `Keyboard return restores focus after ${pointerType}`,
+    );
+    await insetOwner.evaluate((node, type) => {
+      node.dispatchEvent(new PointerEvent('pointerdown', {bubbles: true, pointerType: type}));
+    }, pointerType);
+    assert.equal(
+      await inset.evaluate(node => getComputedStyle(node, '::before').borderTopWidth),
+      '0px',
+      `${pointerType} pointer input suppresses focus paint`,
+    );
+  }
   await page.keyboard.press('Tab');
   await page.waitForTimeout(30);
   assert.equal(
