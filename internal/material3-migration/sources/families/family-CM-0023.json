@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "authority": "compose-first",
   "familyId": "family-CM-0023",
-  "scopeSha256": "aa1da8962778276f5a3118d2c326475fc0dd09b984925a8531c678bb257f692f",
+  "scopeSha256": "e1682be68ef3bff241cd8beaada6405e0b8d09e9d2eb739a63f17578840ccc1d",
   "pins": {
     "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
     "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
@@ -12,7 +12,7 @@
     "figma": {
       "status": "absent",
       "evidence": "internal/material3-migration/sources/families/family-CM-0023.md",
-      "reason": "The frozen 171-set inventory has no standalone focus-ring set; 82 owning component sets offer a Show focus indicator property."
+      "reason": "The frozen 171-set inventory has no standalone focus-ring or ripple set; 82 owning component sets offer a Show focus indicator property."
     },
     "compose": {
       "status": "present",

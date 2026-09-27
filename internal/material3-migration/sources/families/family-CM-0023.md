@@ -1,13 +1,17 @@
-# Focus indication and `md-focus-ring` source resolution
+# Ripple and focus indication source resolution
 
-This source decision covers workbook mapping `CM-0023`. It separates the focus
-indication used by native Material controls from the pinned Web-only attached
-ring presentation. It does not authorize a new public Astryx export; the
-`M3-GAP-011` ownership decision and public API review remain open.
+This shared source decision covers workbook mappings `CM-0023` (`md-focus-ring`)
+and `CM-0042` (`md-ripple`). Both use the pinned Compose `Ripple` indication;
+the workbook links that one source family while retaining two native outcomes
+and distinct acceptance checks. It separates the focus indication used by
+native Material controls from the pinned Web-only attached ring presentation.
+The project owner selected an opt-in public `FocusRing` for custom controls on
+2026-09-27. Its exact React API still needs public API owner review; this source
+record does not authorize a `Ripple` export.
 
 ## Pinned coverage
 
-- **Compose present, though the workbook has no direct family link.** Pinned
+- **Compose present for both mappings.** Pinned
   AndroidX commit `a095da93f8e98dea8748ceed79ea8427aade245f` supplies focus
   indication through [`Ripple.kt`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Ripple.kt)
   (SHA-256 `4b53b7ffb01ff48014cdc2f6af216c97f6463d5e25343d9db699ea4abb90bc00`).
@@ -18,12 +22,16 @@ ring presentation. It does not authorize a new public Astryx export; the
   draws it. The [pinned tests](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/RippleTest.kt)
   cover focus state-layer paint, two-stroke inset geometry, theme default
   colors and custom colors. Several owning control screenshot suites cover the
-  inset option. This is a shared indication, not a standalone Compose widget.
-- **Figma standalone set absent.** The [frozen inventory](../figma-kit-inventory.json)
-  contains 171 component sets; none has `focus` or `ring` in its name. Eighty-two
+  inset option. The
+  [press animation](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3-ripple/src/commonMain/kotlin/androidx/compose/material3/ripple/RippleAnimation.kt)
+  and [bounded/unbounded node](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3-ripple/src/commonMain/kotlin/androidx/compose/material3/ripple/CommonRipple.kt)
+  provide the common press indication. These are one shared indication, not
+  standalone Compose widgets.
+- **Figma standalone sets absent.** The [frozen inventory](../figma-kit-inventory.json)
+  contains 171 component sets; none has `focus`, `ring` or `ripple` in its name. Eighty-two
   owning sets carry a `Show focus indicator` property. Their focused variants
   remain with their Button, Card, input and other component families. This
-  absence is limited to a standalone Figma set.
+  absence is limited to standalone Figma sets.
 - **Material Web present.** Pinned commit
   `cbd34a8921915af94d5ef65c2a69eece41d5b4f3` registers
   [`md-focus-ring`](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts).
@@ -35,8 +43,49 @@ ring presentation. It does not authorize a new public Astryx export; the
   provide an outward default, inward alternative, 3px resting width, 8px
   active width, secondary color, 2px outward offset, and reduced-motion rule.
   Those values are Web-only presentation values, not Compose defaults.
+  The separate pinned
+  [`md-ripple`](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/ripple/ripple.ts)
+  wrapper and [implementation](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/ripple/internal/ripple.ts)
+  attach a visual-only state layer to a parent, referenced control or
+  imperative control. Its [guide](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md)
+  shows bounded and unbounded presentations and the supported hover/pressed
+  color tokens. Web uses a 150ms touch delay to distinguish scroll from press;
+  that timing is not a Compose press default.
 
-## Selected design, state and browser behavior
+## Shared Ripple design and behavior
+
+`ripple()` is the Compose default indication in Material controls. It starts a
+new expanding ripple for each press and shows one state layer for hover,
+focus or drag, based on the most recent active interaction. The default is
+bounded to the owner's layout, starts at the press point and clips there. An
+explicit unbounded ripple starts at the owner's center. The source color
+defaults to `LocalContentColor`; optional radius and color can be supplied.
+The state layer opacities are hover 0.08, focus 0.10, press 0.10 and drag 0.16.
+Disabled or explicitly suppressed indications must not render. The
+[`RippleAnimationTest`](https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3-ripple/src/androidHostTest/kotlin/androidx/compose/material3/ripple/RippleAnimationTest.kt)
+proves the 30%-of-largest-dimension start radius and the half-diagonal end
+radius, plus 10dp for a bounded ripple. The originating control owns action,
+focus, accessible name and target size; the indication is visual-only.
+
+The Compose press animation uses a 75ms linear opacity fade in, 225ms
+FastOutSlowIn radius expansion, 225ms linear movement toward center, and
+150ms linear fade out after release. An early release waits for the full
+fade-in before exiting, while its draw path reaches final alpha immediately;
+another press finishes the prior ripple. Hover state-layer entry and exit use
+15ms linear tweens; focus and drag enter at 45ms; drag exits at 150ms. These
+are the pinned common Ripple implementation values for both standard and
+Expressive themes, rather than a new Expressive-only press duration.
+
+Material Web supplies DOM attachment, pointer event and forced-colors
+implementation details. Its 150ms touch delay and 450ms press growth are
+different interaction/motion values; they cannot silently replace Compose's
+specified press behavior. A native browser implementation must cancel on
+pointer cancellation/scroll and prevent a stale release from ending a newer
+press without adopting those conflicting values. If that browser translation
+cannot preserve usable touch scrolling with Compose timing, record and seek a
+specific exception before implementation.
+
+## Selected focus design, state and browser behavior
 
 **Compose default.** The focus state layer uses the current content/ripple
 color at `StateTokens.FocusStateLayerOpacity = 0.1`. The default ring is absent.
@@ -63,8 +112,21 @@ geometry and `--md-focus-ring-*` public CSS spellings for that presentation.
 The outward choice cannot replace native controls' Compose default. Compose's
 two-color inset geometry needs private, attributed implementation values unless
 a supported public Material token supplies a matching value; do not invent a
-public `--md-*` token. The standalone public React API, if any, requires a
-separate owner decision under `architecture:public-component-api`.
+public `--md-*` token. The selected public React `FocusRing` needs a reviewed
+exact API under `architecture:public-component-api`.
+
+## Watched Ripple media
+
+The pinned [Web usage GIF](https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/images/ripple/usage.gif)
+(SHA-256 `e19d538fb1d1f06b0ced140d83abe95632224e569429bb53a2bfb53c7fecb155`)
+was watched at normal browser playback and decoded at 0, 100, 300, 400, 500,
+600, 700, 800, 900 and 1000ms. Its circle is absent at 0–100ms, appears soft
+at 300ms, covers the bounded surface at 400ms, holds through 600ms and fades
+by 800ms. It is absent again by 900ms. This is a Web motion reference, not
+the Compose timing baseline. The Compose code above supplies the press motion
+curve and interruption rule; native verification still needs matched frames,
+rapid repeated presses, release/cancel and reduced-motion capture. Reduced
+motion must retain an immediate perceivable press state without travel.
 
 ## Watched motion and remaining implementation evidence
 
