@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Workbook, shared family decisions and task verifiers. @output Measured transitions, terminal-aware task guidance and scoped command evidence. @position Disposable migration workflow. */
+/** @input Workbook, shared family decisions and task verifiers. @output Measured transitions, state-aware task guidance and scoped command evidence. @position Disposable migration workflow. */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
@@ -13,6 +13,7 @@ import {
   ready,
   getTask,
   brief,
+  taskNextSteps,
   requireMappings,
 } from './model.mjs';
 import {hash} from './workbook.mjs';
@@ -227,6 +228,20 @@ export async function dispatch(wb, command, opts) {
       })),
     );
     for (const c of candidates) delete c.preparation.packet;
+    const active = tasks.filter(t =>
+      ['Claimed', 'Awaiting QA', 'Approved'].includes(t.Status),
+    );
+    const next = active.length
+      ? active.flatMap(t =>
+          t.Status === 'Claimed'
+            ? [`task show ${t['Task ID']}`]
+            : taskNextSteps(t),
+        )
+      : candidates.some(c => c.preparation.ready)
+        ? ['task pop']
+        : candidates
+            .slice(0, p.value.workInProgress.preparedBuffer)
+            .map(c => `task prepare ${c.id}`);
     return result('status', {
       strategy: p.value.strategyId,
       ready: candidates.filter(c => c.preparation.ready),
@@ -240,11 +255,7 @@ export async function dispatch(wb, command, opts) {
           ['Claimed', 'Awaiting QA', 'Approved', 'Blocked'].includes(t.Status),
         )
         .map(t => ({id: t['Task ID'], status: t.Status})),
-      next: tasks.some(t => t.Status === 'Claimed')
-        ? tasks
-            .filter(t => t.Status === 'Claimed')
-            .map(t => `task show ${t['Task ID']}`)
-        : ['task pop'],
+      next,
     });
   }
   if (command === 'task show') {
@@ -275,9 +286,29 @@ export async function dispatch(wb, command, opts) {
           : {}),
       });
     }
+    if (['Awaiting QA', 'Approved'].includes(t.Status)) {
+      const historical = brief(wb, opts.id, opts.full);
+      return result('task.brief', {
+        ...historical,
+        outcome:
+          t.Status === 'Approved'
+            ? 'Approved at the recorded revision. Merge and finish this task.'
+            : 'Verified at the recorded revision. Review that revision for human QA.',
+        historicalNotes: historical.outcome,
+        ...(t.Status === 'Approved' ? {review: []} : {}),
+        verification: {revision: t['Verified SHA'], qa: t.QA},
+        prepared: {
+          applicable: false,
+          reason:
+            'Preparation belongs to the verified revision. Use task review to validate its evidence; only a changed revision needs task verify.',
+        },
+      });
+    }
     const prepared = await preparationStatus(wb, t, p.value, repo);
+    const summary = brief(wb, opts.id, opts.full);
     return result('task.brief', {
-      ...brief(wb, opts.id, opts.full),
+      ...summary,
+      next: taskNextSteps(t, prepared.ready, summary.blockers),
       ...(opts.stateDir
         ? {feedback: await feedback(opts.stateDir, opts.id)}
         : {}),
@@ -370,7 +401,8 @@ export async function dispatch(wb, command, opts) {
     return result('task.blocked', {taskId: opts.id, reason: opts.reason}, true);
   }
   if (command === 'task unblock') {
-    if (!task['Hold reason']) throw new Error('Task has no manual hold');
+    if (task.Status !== 'Blocked' || !task['Hold reason'])
+      throw new Error('Unblocking requires a Blocked task with a manual hold');
     transition(wb, task, 'Backlog', {'Hold reason': ''});
     return result('task.unblocked', {taskId: opts.id, next: ['status']}, true);
   }
@@ -471,9 +503,12 @@ export async function dispatch(wb, command, opts) {
       sourceDecision: receipt.sourceDecision,
       motion: receipt.motion,
       visualComparisons: receipt.visualComparisons,
-      next: [
-        `task qa ${opts.id} approve --reference '<actual human decision>'`,
-      ],
+      next:
+        task.Status === 'Approved'
+          ? taskNextSteps(task)
+          : [
+              `task qa ${opts.id} approve --reference '<actual human decision>'`,
+            ],
     });
   }
   getTask(
@@ -715,9 +750,7 @@ export async function dispatch(wb, command, opts) {
     {
       taskId: opts.id,
       revision,
-      next: [
-        `Merge the approved PR, remove its clean worktree from another checkout, then: task finish ${opts.id} --pr <url>`,
-      ],
+      next: taskNextSteps({...task, Status: 'Approved'}),
     },
     true,
   );
