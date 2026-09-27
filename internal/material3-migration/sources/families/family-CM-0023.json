@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 2,
+  "authority": "compose-first",
+  "familyId": "family-CM-0023",
+  "scopeSha256": "aa1da8962778276f5a3118d2c326475fc0dd09b984925a8531c678bb257f692f",
+  "pins": {
+    "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+    "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+  },
+  "coverage": {
+    "figma": {
+      "status": "absent",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md",
+      "reason": "The frozen 171-set inventory has no standalone focus-ring set; 82 owning component sets offer a Show focus indicator property."
+    },
+    "compose": {
+      "status": "present",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    },
+    "web": {
+      "status": "present",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    }
+  },
+  "routes": {
+    "design": {
+      "primary": "compose",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    },
+    "behavior": {
+      "primary": "compose",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    },
+    "motion": {
+      "primary": "compose",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    },
+    "browser": {
+      "primary": "web",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    }
+  },
+  "overrides": [
+    {
+      "dimension": "optional-web-outward-ring",
+      "concern": "design",
+      "primary": "web",
+      "figmaSpecified": false,
+      "reason": "Retain the pinned outward attached ring as an explicit Web-only presentation, without changing the Compose opacity default or opt-in inset geometry.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md",
+      "gapReason": "Pinned Compose specifies an opacity default and an opt-in inset two-stroke ring, but no outward attached ring geometry.",
+      "gapEvidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    },
+    {
+      "dimension": "optional-web-outward-animation",
+      "concern": "motion",
+      "primary": "web",
+      "figmaSpecified": false,
+      "reason": "Use the pinned Web grow/shrink animation only for the explicit outward presentation.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md",
+      "gapReason": "Pinned Compose provides no outward attached ring or its entry animation.",
+      "gapEvidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    }
+  ]
+}
