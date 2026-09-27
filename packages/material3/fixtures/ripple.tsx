@@ -124,9 +124,14 @@ function App() {
 }
 
 createRoot(document.getElementById('root')!).render(<App />);
-fetch('../revision.json')
-  .then(response => response.json())
-  .then(({revision, dirty}) => {
-    document.getElementById('revision')!.textContent =
-      `Current native build: ${revision}${dirty ? ' (working tree changed)' : ''}`;
-  });
+if (new URLSearchParams(location.search).has('playback')) {
+  document.getElementById('revision')!.textContent =
+    'Native Ripple QA playback';
+} else {
+  fetch('../revision.json')
+    .then(response => response.json())
+    .then(({revision, dirty}) => {
+      document.getElementById('revision')!.textContent =
+        `Current native build: ${revision}${dirty ? ' (working tree changed)' : ''}`;
+    });
+}

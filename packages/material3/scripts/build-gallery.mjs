@@ -42,6 +42,8 @@ for (const name of [
   'ripple.css',
   'ripple-compare.html',
   'ripple-compare.css',
+  'ripple-state-compare.html',
+  'ripple-state-compare.css',
 ])
   await fs.copyFile(
     path.join(packageRoot, 'fixtures', name),
@@ -82,6 +84,14 @@ await build({
 await build({
   entryPoints: [path.join(packageRoot, 'fixtures/ripple-compare.tsx')],
   outfile: path.join(gallery, 'fixtures/ripple-compare.js'),
+  bundle: true,
+  format: 'esm',
+  platform: 'browser',
+  target: ['chrome123', 'firefox120', 'safari17.5'],
+});
+await build({
+  entryPoints: [path.join(packageRoot, 'fixtures/ripple-state-compare.tsx')],
+  outfile: path.join(gallery, 'fixtures/ripple-state-compare.js'),
   bundle: true,
   format: 'esm',
   platform: 'browser',

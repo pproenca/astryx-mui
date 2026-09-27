@@ -1,7 +1,7 @@
 # Pinned Compose Ripple comparison frames
 
-These eight 960×360, DPR 1 Chrome source-value frames preserve the selected
-visual states from the pinned AndroidX Compose Material 3 ripple implementation
+These eight press and sixteen state-layer 960×360, DPR 1 Chrome source-value
+frames preserve selected visual states from the pinned AndroidX Compose Material 3 ripple implementation
 at `a095da93f8e98dea8748ceed79ea8427aade245f`. The source frame generator
 resolved Compose `RippleAnimation.kt`, `CommonRipple.kt`, `Ripple.kt`,
 `Easing.kt`, palette and state tokens before rendering. It used the licensed
@@ -12,10 +12,14 @@ Copyright The Android Open Source Project and Google LLC. Licensed under
 Apache-2.0; see `../../../LICENSE-APACHE-2.0`. Native comparison and test
 implementation Copyright Meta Platforms, Inc. and affiliates.
 
-`manifest.json` records each retained frame hash. The native pixel regression
-uses the same viewport, font, Material color roles, content and frame time. The
-owner approved at most five changed pixels per frame on 2026-09-27 after
-eight measured captures found 0–5 changed circle-edge antialiasing pixels.
+`manifest.json` records each retained frame hash. The native pixel regressions
+use the same viewport, font, source palette, content and frame time. The owner
+approved at most five changed pixels per press frame on 2026-09-27. For state
+layers, the owner separately approved up to one RGB level in the generic flat
+fill and five at rounded button edges, with exact pixels outside both controls.
+The state comparator combines independently focused generic and filled-button
+native controls, since one browser page cannot focus both semantic targets at
+once. It verifies hover, drag, focus, interrupted drag, exit and reduced motion.
 
 `source-motion.json` retains the independently captured Chrome/Compose
 comparison: 456 press and 195 state samples, representative trace points, and
