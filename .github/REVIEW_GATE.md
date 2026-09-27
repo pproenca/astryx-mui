@@ -68,7 +68,7 @@ A PR changes only spec records when every changed path is one of:
 
 - `docs/specs/<id>/spec.md` or `plan.md`;
 - a family or design spec (excluding indexes, templates, schemas, and assets);
-- a colocated Core/Lab `<Name>.spec.md`.
+- a colocated Core/Lab or native Material 3 component/module `<Name>.spec.md`.
 
 Draft-only spec records can merge after validation without owner approval.
 Pure spec-record PRs do not add Changesets because they do not release packages;

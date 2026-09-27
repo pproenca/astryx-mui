@@ -39,6 +39,14 @@ describe('spec-only change scope', () => {
     expect(result.specOnly).toBe(false);
   });
 
+  it('owner-gates a native Material 3 component record as a spec-only change', () => {
+    const result = classifyChanges([
+      {filename: 'packages/material3/src/FocusRing/FocusRing.spec.md'},
+    ]);
+    expect(result.touchesKnowledgeRecords).toBe(true);
+    expect(result.specOnly).toBe(true);
+  });
+
   it('owner-gates normative design assets without granting the spec-only fast path', () => {
     const result = classifyChanges([
       {filename: 'docs/design/assets/selector/alignment.png'},

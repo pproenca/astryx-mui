@@ -1,5 +1,11 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
+/**
+ * @input Shared component knowledge path classifier and package registry.
+ * @output Canonical path coverage for public and private native contracts.
+ * @position Regression tests for knowledge record discovery and review routing.
+ */
+
 import {createRequire} from 'node:module';
 import {describe, expect, it} from 'vitest';
 
@@ -14,6 +20,11 @@ describe('component knowledge paths', () => {
     [
       'directory-layout Core component record',
       'packages/core/src/Button/Button.spec.md',
+      'component',
+    ],
+    [
+      'native Material 3 component record',
+      'packages/material3/src/FocusRing/FocusRing.spec.md',
       'component',
     ],
     [
