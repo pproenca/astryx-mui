@@ -1,5 +1,6 @@
 <!doctype html>
 <!-- Copyright (c) Meta Platforms, Inc. and affiliates. -->
+<!-- @input Built native Material tokens, spring sampler and browser events. @output Interactive foundation fixture with monotonic elapsed spring time. @position Native browser acceptance fixture. -->
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -100,7 +101,8 @@
       let raf = 0;
       let lastRetarget = null;
       function update(now) {
-        frame = sampleMaterial3Spring(spec, [{timeMs: 0, target}], now - start, initial);
+        // A queued frame may carry a timestamp from just before the click handler.
+        frame = sampleMaterial3Spring(spec, [{timeMs: 0, target}], Math.max(0, now - start), initial);
         dot.style.setProperty('--position', `${frame.position}px`);
         measure.textContent = `Position ${frame.position.toFixed(2)}px · velocity ${frame.velocity.toFixed(2)}px/s`;
         if (Math.abs(frame.position - target) > 0.01 || Math.abs(frame.velocity) > 0.01)
