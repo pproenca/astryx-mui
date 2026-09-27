@@ -83,11 +83,38 @@ if (
   throw new Error('Pinned SIL OFL Roboto fixture changed');
 const fontUrl = `data:font/ttf;base64,${fontBytes.toString('base64')}`;
 const selectedTimes = [0, 20, 100, 120, 160, 180, 260, 600, 880, 1000];
+const role = (tokenName, key) => {
+  const expression = token(tokenName).get(key);
+  if (!expression?.startsWith('ColorSchemeKeyTokens.'))
+    throw new Error(`Unresolved Button style token: ${tokenName}.${key}`);
+  return expression.slice('ColorSchemeKeyTokens.'.length);
+};
 const styles = [
-  ['Filled', 'Primary', 'OnPrimary', null],
-  ['Elevated', 'SurfaceContainerLow', 'Primary', null],
-  ['Tonal', 'SecondaryContainer', 'OnSecondaryContainer', null],
-  ['Outlined', 'Surface', 'Primary', 'Outline'],
+  [
+    'Filled',
+    role('FilledButtonTokens', 'ContainerColor'),
+    role('FilledButtonTokens', 'LabelTextColor'),
+    null,
+  ],
+  [
+    'Elevated',
+    role('ElevatedButtonTokens', 'ContainerColor'),
+    role('ElevatedButtonTokens', 'LabelTextColor'),
+    null,
+  ],
+  [
+    'Tonal',
+    role('FilledTonalButtonTokens', 'ContainerColor'),
+    role('FilledTonalButtonTokens', 'LabelTextColor'),
+    null,
+  ],
+  [
+    'Outlined',
+    'Surface',
+    role('OutlinedButtonTokens', 'LabelTextColor'),
+    role('OutlinedButtonTokens', 'OutlineColor'),
+  ],
+  // Button.kt uses Primary directly while TextButtonTokens.LabelColor awaits correction.
   ['Text', 'Surface', 'Primary', null],
 ];
 const save = async (name, bytes) => {
@@ -217,6 +244,7 @@ try {
     browser: `Chrome ${browser.version()}`,
     viewport: {width: 960, height: 320, dpr: 1},
     selectedTimes,
+    styles,
     images,
     clips,
   };

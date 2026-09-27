@@ -26,6 +26,7 @@ const shape = read('../sources/button-reference/button-shape-motion.json');
 const browserShape = read(
   '../sources/button-reference/browser-button-shape-motion.json',
 );
+const shapeRender = read('../sources/button-reference/render-manifest.json');
 const elevation = read(
   '../sources/button-reference/button-elevation-motion.json',
 );
@@ -85,6 +86,10 @@ test('selected source frames and all four watched clips match their pinned hashe
   );
   assert.equal(elevationRender.schemes.Light.onTonal, '#1d192b');
   assert.equal(elevationRender.schemes.Dark.elevated, '#1d1b20');
+  assert.deepEqual(
+    shapeRender.styles.find(style => style[0] === 'Outlined'),
+    ['Outlined', 'Surface', 'OnSurfaceVariant', 'OutlineVariant'],
+  );
 });
 
 test('pressed-shape reversals and elevation disable snaps retain timed source behavior', () => {
