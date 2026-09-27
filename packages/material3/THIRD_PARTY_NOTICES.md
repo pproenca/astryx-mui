@@ -39,3 +39,12 @@ Copyright Google LLC, licensed Apache-2.0. `MaterialSymbol` supports the
 corresponding font presentation channel, but no Material Symbols font binary is
 redistributed. Pinned, licensed font files are used only in the ignored local
 QA build when `M3_ICON_FONT_CACHE` is set.
+
+`src/FocusRing/FocusRing.tsx` selects optional inset focus indication and fast
+spatial/effects spring inputs from the pinned AndroidX Compose `Ripple.kt` and
+`MotionScheme.kt` sources above. Its explicit outward geometry and 600 ms
+grow/shrink presentation derive from the pinned Material Web `focus/` source
+at the Web commit above. The retained light/dark focus frames and Kotlin motion
+traces under `fixtures/references/focus/` carry their source revisions and
+Apache-2.0 attribution in that directory's README. The local comparison uses
+the licensed Roboto fixture and its SIL Open Font License.

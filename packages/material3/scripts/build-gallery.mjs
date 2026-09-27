@@ -29,7 +29,16 @@ await fs.copyFile(
   path.join(packageRoot, 'fixtures/foundation.html'),
   path.join(gallery, 'fixtures/foundation.html'),
 );
-for (const name of ['icons.html', 'icons.css'])
+for (const name of [
+  'icons.html',
+  'icons.css',
+  'focus-ring.html',
+  'focus-ring.css',
+  'focus-ring-compare.html',
+  'focus-ring-compare.css',
+  'focus-ring-outward-compare.html',
+  'focus-ring-outward-compare.css',
+])
   await fs.copyFile(
     path.join(packageRoot, 'fixtures', name),
     path.join(gallery, 'fixtures', name),
@@ -37,6 +46,22 @@ for (const name of ['icons.html', 'icons.css'])
 await build({
   entryPoints: [path.join(packageRoot, 'fixtures/icons.tsx')],
   outfile: path.join(gallery, 'fixtures/icons.js'),
+  bundle: true,
+  format: 'esm',
+  platform: 'browser',
+  target: ['chrome123', 'firefox120', 'safari17.5'],
+});
+await build({
+  entryPoints: [path.join(packageRoot, 'fixtures/focus-ring.tsx')],
+  outfile: path.join(gallery, 'fixtures/focus-ring.js'),
+  bundle: true,
+  format: 'esm',
+  platform: 'browser',
+  target: ['chrome123', 'firefox120', 'safari17.5'],
+});
+await build({
+  entryPoints: [path.join(packageRoot, 'fixtures/focus-ring-compare.tsx')],
+  outfile: path.join(gallery, 'fixtures/focus-ring-compare.js'),
   bundle: true,
   format: 'esm',
   platform: 'browser',

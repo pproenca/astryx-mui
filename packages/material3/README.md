@@ -3,8 +3,9 @@
 `@astryxdesign/material3` is the native Material 3 package boundary. It is
 private while its foundation gallery and components are being migrated. The
 entry point now exposes the canonical Compose-first foundation graph, typed
-CSS-backed Material roles, source-only values, and native presentational Icon
-and MaterialSymbol components. Other components remain in migration.
+CSS-backed Material roles, source-only values, native presentational Icon and
+MaterialSymbol components, and the opt-in FocusRing primitive. Other components
+remain in migration.
 
 ```ts
 import {material3Var, resolveMaterial3Token} from '@astryxdesign/material3';
@@ -57,6 +58,29 @@ decorative by default. A meaningful standalone glyph needs `label`; an
 interactive action belongs in a labelled control that owns its focus target,
 states and motion.
 
+## Native FocusRing
+
+```tsx
+import {FocusRing} from '@astryxdesign/material3/FocusRing';
+import '@astryxdesign/material3/tokens.css';
+import '@astryxdesign/material3/components.css';
+
+<button className="positioned-control" type="button">
+  Save
+  <FocusRing placement="inset" />
+</button>;
+```
+
+`FocusRing` is an opt-in visual indicator for custom controls. Its direct
+visual parent must be positioned and owns the accessible name, focusability,
+activation, target size, and disabled state. Choose `inset` for the pinned
+Compose two-stroke ring, or `outward` for the separately selected Material Web
+ring. Outward placement needs an unclipped parent and ancestor chain. A control
+with a distinct hidden input passes that input's `controlRef`; the ring still
+paints on its direct visual parent. The ring itself never takes focus or
+pointer events. Native Material controls retain their Compose focus-state
+opacity by default; adding this primitive is a deliberate component choice.
+
 ## Compatibility direction
 
 The canonical value graph flows from Material reference and system roles to
@@ -98,8 +122,8 @@ a local server to interact with native color scopes, Expressive shape and spring
 entry, exit, interruption, reversal and reduced motion. The browser checks
 measure input response and frame pacing against the approved foundation
 profile. Human QA remains required at the verified revision before each slice
-can be accepted. The [gallery](gallery/index.html) includes a live native Icon
-frame; `pnpm build:gallery` builds it without Material Symbols fonts. For a
+can be accepted. The [gallery](gallery/index.html) includes live native Icon
+and FocusRing frames; `pnpm build:gallery` builds them without Material Symbols fonts. For a
 local licensed-font comparison, set `M3_ICON_FONT_CACHE` to the pinned cache
 directory before building. That optional build copies fonts only into ignored
 `dist/`; the public package remains font independent.

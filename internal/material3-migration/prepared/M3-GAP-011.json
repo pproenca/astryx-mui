@@ -1,0 +1,588 @@
+{
+  "schemaVersion": 1,
+  "scopeSha256": "4c07eaf90fe7f0dffded7052c3f1c97749d6911e0413a79c99b96c1578305b72",
+  "sources": {
+    "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+    "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468"
+  },
+  "baseline": "internal/material3-migration/sources/baseline/focus-compose-first.json",
+  "routing": [
+    {
+      "schemaVersion": 2,
+      "authority": "compose-first",
+      "familyId": "family-CM-0023",
+      "scopeSha256": "e1682be68ef3bff241cd8beaada6405e0b8d09e9d2eb739a63f17578840ccc1d",
+      "pins": {
+        "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+        "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+        "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+      },
+      "coverage": {
+        "figma": {
+          "status": "absent",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md",
+          "reason": "The frozen 171-set inventory has no standalone focus-ring or ripple set; 82 owning component sets offer a Show focus indicator property."
+        },
+        "compose": {
+          "status": "present",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        },
+        "web": {
+          "status": "present",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        }
+      },
+      "routes": {
+        "design": {
+          "primary": "compose",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        },
+        "behavior": {
+          "primary": "compose",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        },
+        "motion": {
+          "primary": "compose",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        },
+        "browser": {
+          "primary": "web",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        }
+      },
+      "overrides": [
+        {
+          "dimension": "optional-web-outward-ring",
+          "concern": "design",
+          "primary": "web",
+          "figmaSpecified": false,
+          "reason": "Retain the pinned outward attached ring as an explicit Web-only presentation, without changing the Compose opacity default or opt-in inset geometry.",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md",
+          "gapReason": "Pinned Compose specifies an opacity default and an opt-in inset two-stroke ring, but no outward attached ring geometry.",
+          "gapEvidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        },
+        {
+          "dimension": "optional-web-outward-animation",
+          "concern": "motion",
+          "primary": "web",
+          "figmaSpecified": false,
+          "reason": "Use the pinned Web grow/shrink animation only for the explicit outward presentation.",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md",
+          "gapReason": "Pinned Compose provides no outward attached ring or its entry animation.",
+          "gapEvidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        }
+      ]
+    }
+  ],
+  "files": {
+    "internal/material3-migration/sources/compose-inventory.json": "0e637563f2cb1a140e04c939379fc6a90474697e272e6594146ce5cb2cbb0d0a",
+    "AGENTS.md": "ec1dab9cfad80cf4e32815ad820e8caad44dffe08ef0883f95769eca09d5c760",
+    "packages/themes/material3/material3.spec.md": "110b9cde4e12bd43102cd79e2a61c2c5845f29482fc303341be8875c7d98ab8e",
+    "docs/contributing/material3-migration.md": "fab928b10412b5e5c72c007315a425ee554d7e091ac1f5768e2616e7c2000e7f",
+    "internal/material3-migration/routing.mjs": "c498d4ef6b02164d4787b57ffb8470702ada22e47b27f2d5f3fb138cf7b1f391",
+    "internal/material3-migration/sources/baseline/focus-compose-first.json": "94f4182bd19775cb7ab02ab8a753acbe12fc0bc8e3397a21d510206cca453f3f",
+    "internal/material3-migration/sources/families/family-CM-0023.json": "bdae8e43bc004a4813268aeb42823d966e2176b23d18005aef3100385bdd7962",
+    "internal/material3-migration/sources/families/family-CM-0023.md": "f73c57ae668423db7bc331047e7c95c07c515f9ecd0bd2a91c3e8a850541fda8",
+    "internal/material3-migration/sources/figma-kit-inventory.json": "15ffc3bf66c2666dca228847b3bbeffc1d718beaa323967d2c118e0b3170ae6f",
+    "internal/material3-migration/sources/guidance/state-layers.md": "8e5286c9279d751750c887abc29d3d8984810448747206a2af324e6df24c5659",
+    "internal/material3-migration/sources/guidance/motion.md": "80f8c9961a724b60f29c3a7a6b591372d608382b8aa918faabc4cfdc93bb4720",
+    "internal/material3-migration/sources/indication-reference/README.md": "ba46e7170147e3c20ae04a5472431188bde40c7150391a686b7e17597f5191a4",
+    "internal/material3-migration/sources/indication-reference/focus-dark-0000.png": "215d0e48633d3ad72f04d9bc40e185b89351f7e11c876b8e1d171f758ca2e706",
+    "internal/material3-migration/sources/indication-reference/focus-dark-0020.png": "ea8a6379f2f4d89da0172a829b382690e17385f6d421a91808b057cce40ef284",
+    "internal/material3-migration/sources/indication-reference/focus-dark-0080.png": "b48b0655e9e37767e2d71359ab8e91b4558f3da843482ca107504e52f6f9bcca",
+    "internal/material3-migration/sources/indication-reference/focus-dark-0120.png": "e172c0c4ed3dc9372d49c97fd858a6f48a2ab3442c73fd96f16a4b2b85832868",
+    "internal/material3-migration/sources/indication-reference/focus-dark-0140.png": "f7e0cd18c19bcbabe396003a510de0f891945487b76fc520f22b1400f4a1b364",
+    "internal/material3-migration/sources/indication-reference/focus-dark-0160.png": "3e5b651a471a062f4bd5ed79e34284b38ec305087ae3d6706b9176aa37474361",
+    "internal/material3-migration/sources/indication-reference/focus-dark-0180.png": "63abcd53677474c8634184de82ef3de84eb38d3f07926bd1fc41dad187f2357f",
+    "internal/material3-migration/sources/indication-reference/focus-dark-0260.png": "11c75a7ffd0cf39ab45d43002e32059055a1d7aead65330463d17a41bc138d56",
+    "internal/material3-migration/sources/indication-reference/focus-dark-0600.png": "fc4f21d8032a70cc3642e044f0b98284ef6343e605bff4f3faf57e20d8d3db2e",
+    "internal/material3-migration/sources/indication-reference/focus-dark-0880.png": "b1330881cc736dc01daf6df76e248f181fc110c0136195a918f06f95055e720e",
+    "internal/material3-migration/sources/indication-reference/focus-dark-reduced.png": "f576b418e6cc9e153051db1c7b0c3363daa864643be1fb14c9f7285ee9aa4913",
+    "internal/material3-migration/sources/indication-reference/focus-light-0000.png": "28cac7840914201d8fded2409f77062e264bfae42c2a9b507f3da0a05a00244b",
+    "internal/material3-migration/sources/indication-reference/focus-light-0020.png": "48af0cc6c894fdb14ccd5c2489a5653108ddcf925b32577138071f92ebfa4f49",
+    "internal/material3-migration/sources/indication-reference/focus-light-0080.png": "8e1e9ae2900e68a054351f7be3a75140fb42e803943bd41c143faf5a3b2d852e",
+    "internal/material3-migration/sources/indication-reference/focus-light-0120.png": "285c7d9efd87f9c0291b1bdc2a952b0f28421f3569c3e06f5c3ba2ebb29e66be",
+    "internal/material3-migration/sources/indication-reference/focus-light-0140.png": "74c6a47e4652e6c93c1d9ccbe8a6a2322c60503f718e5446037313cba9a5a04f",
+    "internal/material3-migration/sources/indication-reference/focus-light-0160.png": "19f6cfe34f59dec7f0b87d3a99afba77f2e222760ca36fdbe072b65e935fb1c5",
+    "internal/material3-migration/sources/indication-reference/focus-light-0180.png": "88c9e6cf9bbcec35f8e64524a8ffff1d8737b7b42faf29686a5687d792391d6c",
+    "internal/material3-migration/sources/indication-reference/focus-light-0260.png": "279b82e7885885843a6649be6eb11c1d0c4874529e4fd49293a57f1e0f7f63ee",
+    "internal/material3-migration/sources/indication-reference/focus-light-0600.png": "aad35fdf2b904d08abfaa17fae0aca3e5c891891d8bd46b9af30f266c73e2b74",
+    "internal/material3-migration/sources/indication-reference/focus-light-0880.png": "acbb78be11b75605d3e8898e4d7c7cc0a76462d056ceb868c708829570bf5d39",
+    "internal/material3-migration/sources/indication-reference/focus-light-reduced.png": "4063a77fa15a67bf1a8ebb3756b7f9b0aed87cd7220499d91249dc71578f2999",
+    "internal/material3-migration/sources/indication-reference/web-outward-dark-active.png": "9e6f5e74da0653299f459805958f569d45bf12efef532539ddf3d22e01fc8834",
+    "internal/material3-migration/sources/indication-reference/web-outward-dark-rest.png": "f8b3e437533f4ca971602badbeb38b13669f2688396438f7b3f65da9131c27f6",
+    "internal/material3-migration/sources/indication-reference/web-outward-light-active.png": "cdbc9abafd841b21319b3f88c4638d0fe38cfeebaa500ad25dab19e4e8b2cf72",
+    "internal/material3-migration/sources/indication-reference/web-outward-light-rest.png": "1aeafaede50dfedfdd68761469276962493f89358bb0cd5643b94536cccb63cc",
+    "internal/material3-migration/sources/indication-reference/compose-focus.mp4": "44a557098cd9204c8ef857259e8208558a3d8945cc60687f0e41b5e390666907",
+    "internal/material3-migration/sources/indication-reference/standard-focus.json": "d76d2c26dd57955ca10dfd7599cf5ab826972991b15d86bbf5b473a7414e89c1",
+    "internal/material3-migration/sources/indication-reference/expressive-focus.json": "968d19f5b02e19bc66c520040be61e904c926ef2772bfd9e611461231c58e00c"
+  },
+  "compose": [
+    {
+      "id": "compose:Ripple",
+      "name": "Ripple",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Ripple.kt",
+      "sha256": "4b53b7ffb01ff48014cdc2f6af216c97f6463d5e25343d9db699ea4abb90bc00",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Ripple.kt",
+      "symbols": [
+        "ripple"
+      ],
+      "expressive": true,
+      "tokens": [
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/StateTokens.kt",
+          "sha256": "f9bddb282a3ca50e0c05bda6b5aa713441f885e3fe16866bfb44cee42059552f",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/StateTokens.kt",
+          "name": "StateTokens",
+          "version": "v0_210",
+          "values": [
+            {
+              "name": "DraggedStateLayerOpacity",
+              "expression": "0.16f",
+              "line": 22
+            },
+            {
+              "name": "FocusStateLayerOpacity",
+              "expression": "0.1f",
+              "line": 23
+            },
+            {
+              "name": "HoverStateLayerOpacity",
+              "expression": "0.08f",
+              "line": 24
+            },
+            {
+              "name": "PressedStateLayerOpacity",
+              "expression": "0.1f",
+              "line": 25
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/RippleTest.kt",
+          "sha256": "fc8756f79afbdb1ef61931c1b716d02a36a3fbf1737fdb30480c820dfe0980c1",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/RippleTest.kt",
+          "cases": [
+            "bounded_lightTheme_pressed",
+            "bounded_lightTheme_hovered",
+            "bounded_lightTheme_focused",
+            "bounded_lightTheme_dragged",
+            "unbounded_lightTheme_pressed",
+            "unbounded_lightTheme_hovered",
+            "unbounded_lightTheme_focused",
+            "unbounded_lightTheme_dragged",
+            "contentColorChangeDuringRipple_dragged",
+            "rippleConfiguration_color_dragged",
+            "rippleConfiguration_color_explicitColorSet_dragged",
+            "rippleConfiguration_alpha_dragged",
+            "rippleConfiguration_disabled_dragged",
+            "insetFocusRing_focused",
+            "insetFocusRing_focused_defaultColors",
+            "rippleConfiguration_insetFocusRing_focused",
+            "rippleConfigurationChangeDuringRipple_dragged",
+            "rippleConfigurationToggleBetweenEnabledAndDisabled",
+            "assertRippleMatches",
+            "RippleBoxWithBackground",
+            "calculateResultingRippleColor"
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "path": "compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/RippleSamples.kt",
+          "sha256": "879daba4eb82bf40291bf11102b34a69a0dbef1405dd45b8e1af94279e00fa08",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/RippleSamples.kt"
+        }
+      ]
+    }
+  ],
+  "criteria": [
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Coverage",
+      "Scenario": "Type and variant",
+      "Expected check": "Identify the corresponding Material 3 type and supported variants.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Required inset and explicitly selected outward placements cover standard and Expressive source states."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Coverage",
+      "Scenario": "Properties and slots",
+      "Expected check": "Compare public configuration, content slots, and composition.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Native FocusRing evidence directly verifies properties and slots."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Anatomy",
+      "Scenario": "Parts and geometry",
+      "Expected check": "Compare parts, dimensions, alignment, spacing, and icon placement.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Two inset strokes and the outward outline match pinned DPR 1 geometry."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Anatomy",
+      "Scenario": "Touch target",
+      "Expected check": "Verify the applicable Material target geometry.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "The ring is decorative and pointer-events none; the semantic control owns target size and activation."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Visual tokens",
+      "Scenario": "Color light",
+      "Expected check": "Verify semantic container, content, border, and state colors in light mode.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Native FocusRing evidence directly verifies color light."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Visual tokens",
+      "Scenario": "Color dark",
+      "Expected check": "Verify semantic container, content, border, and state colors in dark mode.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Native FocusRing evidence directly verifies color dark."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Visual tokens",
+      "Scenario": "Typography",
+      "Expected check": "Verify family, scale role, size, line height, weight, and tracking.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "The decorative ring renders no text; typography belongs to its semantic control."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Visual tokens",
+      "Scenario": "Shape spacing elevation",
+      "Expected check": "Verify corners, padding, gaps, borders, tonal and shadow elevation.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Insets, stroke widths, outward offset and full corner match; the ring has no elevation."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "States",
+      "Scenario": "Enabled",
+      "Expected check": "Verify resting visual and behavior.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Native FocusRing evidence directly verifies enabled."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "States",
+      "Scenario": "Hover",
+      "Expected check": "Verify hover state with hover-capable pointer.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "The pinned focus indication has no hover state; hover remains with the semantic control."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "States",
+      "Scenario": "Focus visible",
+      "Expected check": "Verify keyboard focus indicator and focus behavior.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Native FocusRing evidence directly verifies focus visible."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "States",
+      "Scenario": "Pressed",
+      "Expected check": "Verify active/pressed treatment and release behavior.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Native Ripple and the control own pressed treatment; FocusRing follows focus only."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "States",
+      "Scenario": "Selected checked",
+      "Expected check": "Verify selected or checked state where applicable.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "The associated semantic control owns selection and checked state; FocusRing follows focus only."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "States",
+      "Scenario": "Disabled",
+      "Expected check": "Verify disabled visual, focus, and activation behavior.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Native FocusRing evidence directly verifies disabled."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "States",
+      "Scenario": "Invalid error",
+      "Expected check": "Verify validation and error presentation where applicable.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "The primitive owns no value or validation state; its control owns error presentation."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "States",
+      "Scenario": "Loading",
+      "Expected check": "Verify pending feedback and geometry where applicable.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "The primitive owns no pending operation; its control owns loading feedback."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "States",
+      "Scenario": "Read only",
+      "Expected check": "Verify read-only semantics where applicable.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Read-only semantics belong to the associated control; FocusRing reflects eligible focus."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "States",
+      "Scenario": "Open closed dragged",
+      "Expected check": "Verify expanded, open, or dragged states where applicable.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "The primitive owns no disclosure or drag state; these remain with the associated control."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Interaction",
+      "Scenario": "Pointer touch",
+      "Expected check": "Verify pointer, touch, gesture, and cancellation behavior.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Mouse, touch and pen pointerdown suppress focus paint; keyboard return restores it."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Interaction",
+      "Scenario": "Keyboard form",
+      "Expected check": "Verify keyboard controls and native form behavior.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Native FocusRing evidence directly verifies keyboard form."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Accessibility",
+      "Scenario": "Semantics",
+      "Expected check": "Verify name, role, state, focus order, and screen reader output.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Server markup hydrates; the ring remains aria-hidden, unfocusable and role-free while its control retains semantics."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Accessibility",
+      "Scenario": "Contrast cues",
+      "Expected check": "Verify contextual contrast and non-color cues.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Material two-stroke geometry persists with supported roles and forced-colors system colors."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Motion",
+      "Scenario": "Transitions",
+      "Expected check": "Verify duration, easing, direction, and animated properties.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Compose fast spatial/effects traces and the selected Web outward pulse are checked."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Motion",
+      "Scenario": "Enter exit interruption",
+      "Expected check": "Verify enter/exit and interrupted transitions where applicable.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Timed enter, blur, interrupted refocus, reversal and settlement match source traces."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Motion",
+      "Scenario": "Reduced motion",
+      "Expected check": "Verify reduced-motion behavior.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "The browser preference paints final geometry without spring travel."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Responsive",
+      "Scenario": "Viewport and container",
+      "Expected check": "Verify compact, medium, expanded, and boundary conditions as applicable.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Desktop source and narrow 320 px checks retain owner geometry; no component breakpoint exists."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Responsive",
+      "Scenario": "Zoom RTL overflow",
+      "Expected check": "Verify zoom, long content, overflow, and RTL layout.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Inset stays aligned at 200% zoom and RTL; clipped outward owners are diagnosed and withheld."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Theming",
+      "Scenario": "Color and overrides",
+      "Expected check": "Verify light/dark, dynamic color, custom theme, and scoped overrides.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Native FocusRing evidence directly verifies color and overrides."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Content",
+      "Scenario": "Extremes and locale",
+      "Expected check": "Verify empty/long content, icon-only content, and localization.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "FocusRing accepts no textual children; its control owns long and localized labels."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Composition",
+      "Scenario": "Layering and nesting",
+      "Expected check": "Verify overlays, stacking, scrolling, and nested use where applicable.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "The direct owner paints; the ring cannot intercept input and outward clipping is rejected."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Engineering",
+      "Scenario": "Browser SSR performance",
+      "Expected check": "Verify supported browsers, SSR/hydration, layout stability, and performance as applicable.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Hydration, Chrome interaction and the approved 30-input/360-frame performance profile pass."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Evidence",
+      "Scenario": "Docs and regression",
+      "Expected check": "Link updated docs, source, unit/browser tests, and visual evidence.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/focus/md-focus-ring.ts",
+      "Notes / N/A reason": "Native FocusRing evidence directly verifies docs and regression."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Native contract",
+      "Scenario": "Material token contract",
+      "Expected check": "Native implementation consumes supported Material component and system roles directly; scoped overrides reach the rendered element.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": "Native FocusRing evidence directly verifies material token contract."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Native contract",
+      "Scenario": "Native dependency boundary",
+      "Expected check": "Native CSS and behavior work without the Core theme bridge or legacy token declarations; shared Core utilities have an evidenced semantic match.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": "Native FocusRing evidence directly verifies native dependency boundary."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Native contract",
+      "Scenario": "Material API and defaults",
+      "Expected check": "Anatomy, defaults, variants, sizes and states follow the pinned Material source; Core compatibility lives in a separate entry point.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": "Native FocusRing evidence directly verifies material api and defaults."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Native contract",
+      "Scenario": "Compatibility direction",
+      "Expected check": "Legacy exports and aliases delegate toward the native implementation without cycles or a second independently maintained value map.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": "No legacy FocusRing export exists; native ownership and the separate Core bridge remain intact."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Native contract",
+      "Scenario": "Native consumer preview",
+      "Expected check": "The published native entry point renders in docsite and Storybook with source, status and exact revision visible for human QA.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": "The gallery renders the native fixture; Storybook and docsite expose that gallery with build revision."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Native contract",
+      "Scenario": "Compose source precedence",
+      "Expected check": "Pinned Compose governs overlapping design, behavior and motion; missing concerns and approved exceptions are recorded once per family. Figma-only coverage and native web semantics remain required.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": "Compose governs default/inset design and motion; Web fills the recorded outward and browser-semantic gaps."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Native contract",
+      "Scenario": "Pixel comparison",
+      "Expected check": "Reference and native captures use matched conditions; exact pixel diff passes or a reviewed tolerance exception is recorded.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": "Twenty-six full scenarios and eight static crops have zero changed RGBA pixels with no tolerance."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Native contract",
+      "Scenario": "Motion evidence",
+      "Expected check": "Watched reference media, timed frames, interruption, reversal and reduced motion are evidenced, or static behavior has a source-backed N/A.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": "The owner watched pinned and native clips at normal speed; frames, interruption and reduced motion are retained."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Native contract",
+      "Scenario": "Compose behavior and tests",
+      "Expected check": "Pinned Compose defaults, variants and relevant test cases are mapped to permanent web tests; differences and missing upstream coverage are explicit.",
+      "Applicable?": "Required",
+      "Requirement source": "packages/themes/material3/material3.spec.md",
+      "Notes / N/A reason": "Three inset upstream cases map to permanent browser assertions; two default opacity cases remain with Ripple."
+    },
+    {
+      "Map ID": "CM-0023",
+      "Dimension": "Native contract",
+      "Scenario": "Native response and frame pacing",
+      "Expected check": "Recorded browser/device profiles meet the approved input response and frame pacing budgets, including active motion and interruption.",
+      "Applicable?": "Required",
+      "Requirement source": "packages/themes/material3/material3.spec.md",
+      "Notes / N/A reason": "The recorded Chrome/macOS profile has 30 input and 360 active-frame samples within approved limits."
+    }
+  ],
+  "decisions": "Resolved baseline required; code and interactive QA remain pending."
+}

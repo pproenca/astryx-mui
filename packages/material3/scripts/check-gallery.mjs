@@ -88,6 +88,12 @@ try {
     await page.locator('iframe#native-frame').getAttribute('title'),
     'Interactive native Material 3 foundation preview',
   );
+  assert.equal(
+    await page.locator('iframe#focus-ring-frame').getAttribute('title'),
+    'Interactive native Material 3 FocusRing preview',
+  );
+  const focusRingFixture = page.frameLocator('#focus-ring-frame');
+  await focusRingFixture.getByTestId('inset-ring').waitFor();
   const fixture = page.frameLocator('#native-frame');
   await fixture.locator('#flower').waitFor();
   await page.locator('#scheme').selectOption('dark');
@@ -127,6 +133,7 @@ try {
   );
   await page.setViewportSize({width: 390, height: 844});
   assert.ok(await page.locator('#native-frame').isVisible());
+  assert.ok(await page.locator('#focus-ring-frame').isVisible());
   assert.ok(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth + 1,

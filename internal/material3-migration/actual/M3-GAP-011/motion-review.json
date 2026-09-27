@@ -1,0 +1,34 @@
+{
+  "reviewerDecision": "Watched and matches",
+  "approvalReference": "human:pproenca:2026-09-27:M3-GAP-011-native-motion-playback",
+  "watchedBy": "Pedro Proença",
+  "watchedAt": "2026-09-27T11:54:12Z",
+  "referenceSha256": "44a557098cd9204c8ef857259e8208558a3d8945cc60687f0e41b5e390666907",
+  "actualSha256": "c5f4060e617b79c33d0703980c02d9417ae68fd039ad4e155bceccef1983c4bd",
+  "observations": [
+    {
+      "timeMs": 0,
+      "note": "The standard and Expressive inset strokes start absent as keyboard focus begins; the default state layer uses the pinned 10% opacity."
+    },
+    {
+      "timeMs": 120,
+      "note": "Blur interrupts the growing spatial spring, retaining its current ring width and velocity before the fast effects response moves toward zero."
+    },
+    {
+      "timeMs": 160,
+      "note": "Refocus reverses the in-flight spring continuously, with standard and Expressive trajectories visibly diverging before both approach their two-stroke focused geometry."
+    },
+    {
+      "timeMs": 600,
+      "note": "The second blur removes focus, reversing the ring toward zero; no detached outline remains around the owners."
+    },
+    {
+      "timeMs": 880,
+      "note": "Both inset trajectories have settled at the unfocused endpoint."
+    },
+    {
+      "timeMs": 1600,
+      "note": "The reduced-motion preference shows the final focused two-stroke geometry without the spring travel."
+    }
+  ]
+}

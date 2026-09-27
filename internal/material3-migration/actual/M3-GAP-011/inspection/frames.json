@@ -1,0 +1,65 @@
+{
+  "reference": "internal/material3-migration/actual/M3-GAP-011/native-focus.webm",
+  "referenceSha256": "c5f4060e617b79c33d0703980c02d9417ae68fd039ad4e155bceccef1983c4bd",
+  "width": 960,
+  "height": 360,
+  "fps": "25/1",
+  "contactSheet": "internal/material3-migration/actual/M3-GAP-011/inspection/contact-sheet.png",
+  "frames": [
+    {
+      "requestedTimeMs": 0,
+      "actualTimeMs": 0,
+      "frameIndex": 0,
+      "file": "internal/material3-migration/actual/M3-GAP-011/inspection/frame-00-0ms.png"
+    },
+    {
+      "requestedTimeMs": 120,
+      "actualTimeMs": 120,
+      "frameIndex": 3,
+      "file": "internal/material3-migration/actual/M3-GAP-011/inspection/frame-01-120ms.png"
+    },
+    {
+      "requestedTimeMs": 160,
+      "actualTimeMs": 160,
+      "frameIndex": 4,
+      "file": "internal/material3-migration/actual/M3-GAP-011/inspection/frame-02-160ms.png"
+    },
+    {
+      "requestedTimeMs": 260,
+      "actualTimeMs": 240,
+      "frameIndex": 6,
+      "file": "internal/material3-migration/actual/M3-GAP-011/inspection/frame-03-240ms.png"
+    },
+    {
+      "requestedTimeMs": 600,
+      "actualTimeMs": 600,
+      "frameIndex": 15,
+      "file": "internal/material3-migration/actual/M3-GAP-011/inspection/frame-04-600ms.png"
+    },
+    {
+      "requestedTimeMs": 880,
+      "actualTimeMs": 880,
+      "frameIndex": 22,
+      "file": "internal/material3-migration/actual/M3-GAP-011/inspection/frame-05-880ms.png"
+    },
+    {
+      "requestedTimeMs": 1200,
+      "actualTimeMs": 1200,
+      "frameIndex": 30,
+      "file": "internal/material3-migration/actual/M3-GAP-011/inspection/frame-06-1200ms.png"
+    },
+    {
+      "requestedTimeMs": 1600,
+      "actualTimeMs": 1600,
+      "frameIndex": 40,
+      "file": "internal/material3-migration/actual/M3-GAP-011/inspection/frame-07-1600ms.png"
+    },
+    {
+      "requestedTimeMs": 2000,
+      "actualTimeMs": 2000,
+      "frameIndex": 50,
+      "file": "internal/material3-migration/actual/M3-GAP-011/inspection/frame-08-2000ms.png"
+    }
+  ],
+  "reviewInstruction": "Play the original clip at normal speed, then inspect frames left-to-right/top-to-bottom using actualTimeMs. Extraction does not record a watched review."
+}
