@@ -1385,12 +1385,23 @@
     "evidence": "internal/material3-migration/sources/ripple-reference/README.md",
     "numeric": {
       "applicable": true,
-      "status": "Pending Ripple-specific pixel and tween interpolation tolerance approval",
+      "status": "Chrome interpolation measured; Ripple-specific position, velocity and settling limits await owner approval",
       "traces": [
         {
           "id": "compose-ripple-source-values",
           "reference": "internal/material3-migration/sources/ripple-reference/manifest.json",
+          "browserComparison": "internal/material3-migration/sources/ripple-reference/browser-ripple-motion.json",
           "unit": "alpha-radius-px-center-px",
+          "approvalReference": null,
+          "positionTolerance": null,
+          "velocityTolerance": null,
+          "settlingToleranceMs": null
+        },
+        {
+          "id": "compose-ripple-state-layer",
+          "reference": "internal/material3-migration/sources/ripple-reference/state-motion-manifest.json",
+          "browserComparison": "internal/material3-migration/sources/ripple-reference/browser-ripple-motion.json",
+          "unit": "alpha",
           "approvalReference": null,
           "positionTolerance": null,
           "velocityTolerance": null,
