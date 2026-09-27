@@ -69,7 +69,7 @@ test('selected source frames and all four watched clips match their pinned hashe
     const png = PNG.sync.read(image);
     assert.deepEqual(
       [png.width, png.height],
-      scenario.id.startsWith('button-state') ? [1180, 560] : [960, 320],
+      scenario.id.startsWith('button-state') ? [1180, 560] : [960, 360],
     );
   }
   assert.equal(
@@ -90,6 +90,10 @@ test('selected source frames and all four watched clips match their pinned hashe
     shapeRender.styles.find(style => style[0] === 'Outlined'),
     ['Outlined', 'Surface', 'OnSurfaceVariant', 'OutlineVariant'],
   );
+  assert.deepEqual(shapeRender.shapeEndpoints, {
+    round: {rest: 20, pressed: 8},
+    square: {rest: 12, pressed: 8},
+  });
 });
 
 test('pressed-shape reversals and elevation disable snaps retain timed source behavior', () => {

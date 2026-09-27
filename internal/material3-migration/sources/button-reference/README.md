@@ -16,8 +16,8 @@ pinned `SpringSimulation.kt` with a small
 through 1200 ms. Press starts at 0 ms, release interrupts at 120 ms, repress
 reverses at 160 ms, and final release starts at 600 ms. Both motion schemes
 select the same no-bounce `DefaultEffects` spring (damping 1, stiffness 1600).
-The small Button's round shape has a 20 dp half-height radius and its pressed
-shape has 8 dp corners.
+The small Button's resting round shape has a 20 dp half-height radius; its
+resting square shape has 12 dp corners. Both press to 8 dp corners.
 
 The [independent Chrome calculation](browser-button-shape-motion.json)
 evaluates the visible pressed fraction without calling the Kotlin probe or
@@ -32,19 +32,21 @@ measured source discrepancies, **not** approved native tolerances.
 The [render manifest](render-manifest.json) hashes 20 selected light/dark
 frames, four reduced-motion adaptation frames, and [light](compose-button-shape-light.mp4)
 and [dark](compose-button-shape-dark.mp4) normal-speed clips at 50 fps. Chrome
-153 on macOS renders at 960 × 320 CSS pixels and DPR 1 with the pinned SIL
-OFL Roboto fixture. The five visual rows use pinned Compose light/dark color
-roles and the same small-button shape path. This projection deliberately omits
-state layers, ripple, and interaction elevation, which have separate source
-evidence. It does not establish full visual or behavioral parity.
+153 on macOS renders at 960 × 360 CSS pixels and DPR 1 with the pinned SIL
+OFL Roboto fixture. Five style columns show both small Round and Square types,
+using pinned Compose light/dark color roles and the shared pressed-shape path.
+This projection deliberately omits state layers, ripple, and interaction
+elevation, which have separate source evidence. It does not establish full
+visual or behavioral parity.
 
 I watched both clips at normal speed and inspected the 0, 20, 100, 120, 160,
 180, 260, 600, 880, and 1000 ms frames. At the first 120 ms release, the
 pressed fraction is 0.95226747; after reversal it is 0.5126354 at 160 ms.
 The 160 ms repress reverses it again, and the path reaches 0.93248075 at
 260 ms. Final release returns the shape to the rounded resting endpoint by
-1000 ms. The reduced-motion frames show immediate pressed and resting shapes;
-this is a browser accessibility adaptation, not a specified Compose behavior.
+1000 ms. The reduced-motion frames show immediate pressed and resting shapes
+for both Round and Square types; this is a browser accessibility adaptation,
+not a specified Compose behavior.
 The clipped shape path applies only when the optional Expressive `ButtonShapes`
 overload is used; the standard overload does not morph its shape by default.
 

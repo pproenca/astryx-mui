@@ -76,7 +76,7 @@ const environment = (theme, stateName, render) => ({
   ],
   theme,
   content:
-    'Five Compose Button style color and small-shape source-value projections',
+    'Five Compose Button styles with small Round and Square shape source-value projections',
   state: stateName,
   direction: 'ltr',
 });

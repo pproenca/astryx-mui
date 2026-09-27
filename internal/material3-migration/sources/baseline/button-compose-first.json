@@ -136,14 +136,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0000.png",
-      "baselineSha256": "6ce02ce312ca8269a9a2149c1bbd133b2d19a6ba00458dc973c059db6ce17e50",
+      "baselineSha256": "05b56ee7bdd7f401399f8a225f7f0cef181c1d3ea9c8a41ec18f725d55f42653",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -153,7 +153,7 @@
           }
         ],
         "theme": "light",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -167,14 +167,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0020.png",
-      "baselineSha256": "5f848e8d47205d9c2a3dd0741e62b450368d01a564d7375607cfb7db078dd5b4",
+      "baselineSha256": "233e13db51a77efa1fa666cd169236f01ed4ea5e3107b588b72ff15ebbf40438",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -184,7 +184,7 @@
           }
         ],
         "theme": "light",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -198,14 +198,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0100.png",
-      "baselineSha256": "a1fd930bed7de4ea25a2165995991365579624889ca413953eeb52739986fbff",
+      "baselineSha256": "f084ac622a34b101d1e2b4c1b7dcd1ee1f4f4ff4dae7988018c48055cd2164d4",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -215,7 +215,7 @@
           }
         ],
         "theme": "light",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -229,14 +229,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0120.png",
-      "baselineSha256": "5397429d8414286372965252da273d3c999bf3b3e116ce6e8d8514a18f0e5c80",
+      "baselineSha256": "ddec7022deca0c3ae7ef0d8867ff8ded65de3846d459e0adbf12b8735eb13b13",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -246,7 +246,7 @@
           }
         ],
         "theme": "light",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -260,14 +260,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0160.png",
-      "baselineSha256": "a8f0d8219964b8a1c091481dcc361b8bc1a1d50a84fac7955cce7c37551459e9",
+      "baselineSha256": "6ee8f478270c4047f6e4aa434487b8e504c86c2bf67fd807f6ce79f97b409f1f",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -277,7 +277,7 @@
           }
         ],
         "theme": "light",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -291,14 +291,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0180.png",
-      "baselineSha256": "43939411f6894e95d1837566106dbbe2c664abbb95418938048361aef1a00770",
+      "baselineSha256": "83cf2c9fa3045d01cc80240dcb8071079f3abfc24602125774255f806e82e552",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -308,7 +308,7 @@
           }
         ],
         "theme": "light",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -322,14 +322,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0260.png",
-      "baselineSha256": "3876eed967cf83854ac6fefce40d1bf8b0ee757aceba9efdfea2bdf20dd64ec7",
+      "baselineSha256": "03096599bb8fde0994080670b206ebe7c322e7545c1228401b8d1605a602ccd9",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -339,7 +339,7 @@
           }
         ],
         "theme": "light",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -353,14 +353,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0600.png",
-      "baselineSha256": "966b3fb14aede005e4a6a3f75d7ab864c81fd7a674ab48820b5929c281a029ba",
+      "baselineSha256": "77a2424eb21fde937b1a8d19a0f3d20bdbfeb952199cca7c5af96db51c3415b5",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -370,7 +370,7 @@
           }
         ],
         "theme": "light",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -384,14 +384,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0880.png",
-      "baselineSha256": "3b2c4da4d9fc1aeed2587ba12e065f653e507b4da87add0f87ce6368d5bf2439",
+      "baselineSha256": "2f8c6da21bc06164f4f5520250b4f8bce2bcb408c25a1c04f0e083ca31f25b74",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -401,7 +401,7 @@
           }
         ],
         "theme": "light",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -415,14 +415,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-1000.png",
-      "baselineSha256": "b1397ac90ddde917c1df9d4eb8adb186da56e9eb76087e05d3e5b53c16d3e17e",
+      "baselineSha256": "eba66dcc670d92de21de51936708c8764102ac0412e88cdb835270687c29875d",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -432,7 +432,7 @@
           }
         ],
         "theme": "light",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -446,14 +446,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-reduced-pressed.png",
-      "baselineSha256": "cd5fdf29f28cbb2623566411c8ec1fd4e5e20058b06b66c18b2cb18d7a14d5d3",
+      "baselineSha256": "b9c204c932838216cf5833e9bb1e008526c1e35911c13c5db794cc313ae1cca7",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -463,7 +463,7 @@
           }
         ],
         "theme": "light",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "reduced-pressed",
         "direction": "ltr"
       }
@@ -476,14 +476,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-reduced-rest.png",
-      "baselineSha256": "04d33cbb7790824a56dff63905f0f1fd5489eaf255a9b321236859ee2d213068",
+      "baselineSha256": "4f22caf4f0db3e632ed3468b3168541837ea08e02d113f34c440229b6738765f",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -493,7 +493,7 @@
           }
         ],
         "theme": "light",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "reduced-rest",
         "direction": "ltr"
       }
@@ -506,14 +506,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0000.png",
-      "baselineSha256": "8f3a01b5b395e2d6a62dc34df4d077ce4e4abdd9bcee83d2bfd93506c5fee7d3",
+      "baselineSha256": "cc39a6c155482650c05207ae83f6ea8c9d395b764562eee6e08958d2a741f91b",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -523,7 +523,7 @@
           }
         ],
         "theme": "dark",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -537,14 +537,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0020.png",
-      "baselineSha256": "5fc2b58be14608783672de6b36bfe54dae2331c4d9c1cf9ee0c5d1be365566bf",
+      "baselineSha256": "5470def5f6af7acd7415aa8b780f70d9379d9c8b5646ac8ff31dc2a04a4a2fc3",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -554,7 +554,7 @@
           }
         ],
         "theme": "dark",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -568,14 +568,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0100.png",
-      "baselineSha256": "e88dc3c322fa836bb2c822e673529ba6ad64e0913bb9d50b380a79d5bef90a2b",
+      "baselineSha256": "25fb0bd412e3d529ef035ae687b324d20f81d4cab5a6d5100c146e6901b40310",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -585,7 +585,7 @@
           }
         ],
         "theme": "dark",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -599,14 +599,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0120.png",
-      "baselineSha256": "af003bb7150bb93ade53552e18b4d02cef39221b509bf20112428d5f81187bb9",
+      "baselineSha256": "2eb4177c7314615944a3ab6350cc4af56698938121dcbd6a1152f83bcd9cda98",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -616,7 +616,7 @@
           }
         ],
         "theme": "dark",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -630,14 +630,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0160.png",
-      "baselineSha256": "a24f5757bb1d63ec4d6724a7523f82944185218772dc509fb2f08ca4929a87ed",
+      "baselineSha256": "37faac85032bc8736839f2a791af3af96ea37600bf8c132c994c77e2ac003317",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -647,7 +647,7 @@
           }
         ],
         "theme": "dark",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -661,14 +661,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0180.png",
-      "baselineSha256": "d12782ad79b575197f76fff0dd462c7dbbd74070aea7e6e5951de6c23852664f",
+      "baselineSha256": "ea47c197ff384329c35bc7b2eef8093a546d18ba4482f7df5e1e48c074a9ce1e",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -678,7 +678,7 @@
           }
         ],
         "theme": "dark",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -692,14 +692,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0260.png",
-      "baselineSha256": "66628657433cd395618f4d5ca6e1463ec4dda1cabc5ef752497b30be77e44650",
+      "baselineSha256": "65a8bc9715aae13b97649fe1f287e84b1670af91c285fd6ce3d9338e67be4fd8",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -709,7 +709,7 @@
           }
         ],
         "theme": "dark",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -723,14 +723,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0600.png",
-      "baselineSha256": "ba8a29c2d5551bc180343bbf4b86d9fc7b841f920754c60e885707136dad9898",
+      "baselineSha256": "765ec4f62073c8bcdd5546f05d953632449d513ee01fc7f411534bb13f0c4b70",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -740,7 +740,7 @@
           }
         ],
         "theme": "dark",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -754,14 +754,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0880.png",
-      "baselineSha256": "1fd172058ae316945e0e6468bf23aa98d9d0d287a43e2fbb3bd7e1dcb0dcd65b",
+      "baselineSha256": "94aa44dce90eeadd5d2725d670acb436940213b019a078078b49ba5522755314",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -771,7 +771,7 @@
           }
         ],
         "theme": "dark",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -785,14 +785,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-1000.png",
-      "baselineSha256": "95516682f3733e7e0c1a55f09d68918ea395b61a565e881674acc35540767ed9",
+      "baselineSha256": "f72c8237d4b92e8842140f82c7b7fb0d550be2dae9edb98b9e0dd43f11242c7b",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -802,7 +802,7 @@
           }
         ],
         "theme": "dark",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "press-release-repress-release",
         "direction": "ltr"
       },
@@ -816,14 +816,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-reduced-pressed.png",
-      "baselineSha256": "105a818ec34ee393fed3d905a894adea562878cc523d0dd086c305fe7043ee5f",
+      "baselineSha256": "3cfae71d21e7d6d7c59cc9e4a7ddd540539d86cf9fb6cff254025a027cfa0ee1",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -833,7 +833,7 @@
           }
         ],
         "theme": "dark",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "reduced-pressed",
         "direction": "ltr"
       }
@@ -846,14 +846,14 @@
       ],
       "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-reduced-rest.png",
-      "baselineSha256": "b684ce1d411a930830d9f401721ecc92cd593214510957091f62b57f1f2c5026",
+      "baselineSha256": "53e7ffd68a237bf4c5295e7e78a6b7f671339cd790b2ab6066fb1949fbfa3fc8",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
         "dpr": 1,
         "viewport": {
           "width": 960,
-          "height": 320
+          "height": 360
         },
         "fonts": [
           {
@@ -863,7 +863,7 @@
           }
         ],
         "theme": "dark",
-        "content": "Five Compose Button style color and small-shape source-value projections",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
         "state": "reduced-rest",
         "direction": "ltr"
       }
@@ -928,11 +928,11 @@
   "motion": {
     "applicable": true,
     "reference": "internal/material3-migration/sources/button-reference/compose-button-shape-light.mp4",
-    "sha256": "07f1ad86a8e83b88989c6febc70747eb216133b9c3602f56d759edd6baf6e36a",
+    "sha256": "e47294ce7ba100ad23241373e0bfcdcdceafa6e4072f2c4ba4dffe25bb9a523a",
     "additionalReferences": [
       {
         "file": "internal/material3-migration/sources/button-reference/compose-button-shape-dark.mp4",
-        "sha256": "2d325aad5901e19f414c7e0bdd13cc65d10897113981c6ace60274e363d001d9"
+        "sha256": "0db20745709eb426b673b316a09a1908568fb89629d0e0df55d5465a0850f39c"
       },
       {
         "file": "internal/material3-migration/sources/button-reference/compose-button-elevation-light.mp4",

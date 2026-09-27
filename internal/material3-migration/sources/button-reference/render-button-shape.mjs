@@ -117,6 +117,26 @@ const styles = [
   // Button.kt uses Primary directly while TextButtonTokens.LabelColor awaits correction.
   ['Text', 'Surface', 'Primary', null],
 ];
+const small = token('ButtonSmallTokens');
+const shapeTokens = token('ShapeTokens');
+if (
+  small.get('ContainerHeight') !== '40.0.dp' ||
+  small.get('ContainerShapeRound') !== 'ShapeKeyTokens.CornerFull' ||
+  small.get('ContainerShapeSquare') !== 'ShapeKeyTokens.CornerMedium' ||
+  small.get('PressedContainerShape') !== 'ShapeKeyTokens.CornerSmall'
+)
+  throw new Error('Pinned small Button shape binding changed');
+const corner = name => {
+  const match = shapeTokens
+    .get(name)
+    ?.match(/^RoundedCornerShape\(([0-9.]+)\.dp\)$/);
+  if (!match) throw new Error(`Pinned Compose corner changed: ${name}`);
+  return Number(match[1]);
+};
+const shapeEndpoints = {
+  round: {rest: 20, pressed: corner('CornerSmall')},
+  square: {rest: corner('CornerMedium'), pressed: corner('CornerSmall')},
+};
 const save = async (name, bytes) => {
   const hash = sha256(bytes);
   const target = path.join(here, name);
@@ -127,27 +147,32 @@ const save = async (name, bytes) => {
   return hash;
 };
 function html(mode) {
-  const cards = styles
-    .map(([name, container, content, outline]) => {
-      const background = color(mode, container);
-      const text = color(mode, content);
-      const border = outline ? `1px solid ${color(mode, outline)}` : '0';
-      return `<section><div class="caption">${name}</div><button style="background:${background};color:${text};border:${border}">Action</button></section>`;
-    })
-    .join('');
+  const cards = shape =>
+    styles
+      .map(([name, container, content, outline]) => {
+        const background = color(mode, container);
+        const text = color(mode, content);
+        const border = outline ? `1px solid ${color(mode, outline)}` : '0';
+        return `<button data-shape="${shape}" style="background:${background};color:${text};border:${border}">Action</button>`;
+      })
+      .join('');
   return `<!doctype html><html><head><meta charset="utf-8"><style>
     @font-face{font-family:SourceRoboto;src:url('${fontUrl}') format('truetype');font-weight:100 900}
-    *{box-sizing:border-box}html,body{margin:0;width:960px;height:320px}
+    *{box-sizing:border-box}html,body{margin:0;width:960px;height:360px}
     body{background:${color(mode, 'Surface')};color:${color(mode, 'OnSurface')};font:14px/20px SourceRoboto,sans-serif}
-    main{padding:28px 32px}h1{font-size:22px;line-height:28px;margin:0 0 6px}
-    p{margin:0 0 35px}.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-    section{min-width:0}.caption{margin-bottom:16px}
-    button{width:148px;height:40px;border-radius:20px;font:500 14px/20px SourceRoboto,sans-serif}
-    .note{margin-top:34px;font-size:12px}
+    main{padding:24px 32px}h1{font-size:22px;line-height:28px;margin:0 0 6px}
+    p{margin:0 0 22px}.grid{display:grid;grid-template-columns:76px repeat(5,1fr);column-gap:10px;row-gap:14px;align-items:center}
+    .caption{font-size:12px}.type{font-weight:500}
+    button{width:145px;height:40px;border-radius:20px;font:500 14px/20px SourceRoboto,sans-serif}
+    .note{margin-top:26px;font-size:12px}
   </style></head><body><main>
     <h1>Compose Button pressed shape · ${mode.toLowerCase()}</h1>
     <p id="stage">Source-value browser projection · press 0ms · release 120ms · repress 160ms · release 600ms</p>
-    <div class="grid">${cards}</div>
+    <div class="grid">
+      <span></span>${styles.map(([name]) => `<span class="caption">${name}</span>`).join('')}
+      <span class="type">Round</span>${cards('round')}
+      <span class="type">Square</span>${cards('square')}
+    </div>
     <div class="note">One DefaultEffects shape path serves standard and Expressive schemes. State layer and elevation motion have separate source owners.</div>
   </main></body></html>`;
 }
@@ -161,7 +186,7 @@ const clips = {};
 try {
   for (const mode of ['Light', 'Dark']) {
     const page = await browser.newPage({
-      viewport: {width: 960, height: 320},
+      viewport: {width: 960, height: 360},
       deviceScaleFactor: 1,
     });
     await page.setContent(html(mode));
@@ -172,9 +197,10 @@ try {
       const sample = motion.samples[index];
       await page.evaluate(
         ({fraction, timeMs}) => {
-          const radius = 20 - fraction * 12;
-          for (const button of document.querySelectorAll('button'))
-            button.style.borderRadius = `${radius}px`;
+          for (const button of document.querySelectorAll('button')) {
+            const rest = button.dataset.shape === 'square' ? 12 : 20;
+            button.style.borderRadius = `${rest + (8 - rest) * fraction}px`;
+          }
           document.getElementById('stage').textContent =
             `Source-value browser projection · press 0ms · release 120ms · repress 160ms · release 600ms · ${timeMs}ms`;
         },
@@ -193,18 +219,15 @@ try {
         images[name] = await save(name, frame);
       }
     }
-    for (const [state, radius] of [
-      ['pressed', 8],
-      ['rest', 20],
-    ]) {
+    for (const state of ['pressed', 'rest']) {
       await page.evaluate(
-        ({state, radius}) => {
+        ({state, shapeEndpoints}) => {
           for (const button of document.querySelectorAll('button'))
-            button.style.borderRadius = `${radius}px`;
+            button.style.borderRadius = `${shapeEndpoints[button.dataset.shape][state]}px`;
           document.getElementById('stage').textContent =
             `Reduced motion browser adaptation · immediate ${state} shape`;
         },
-        {state, radius},
+        {state, shapeEndpoints},
       );
       const name = `button-shape-${mode.toLowerCase()}-reduced-${state}.png`;
       images[name] = await save(name, await page.screenshot());
@@ -242,9 +265,10 @@ try {
     sourceTraceSha256: sha256(motionBytes),
     fontSha256,
     browser: `Chrome ${browser.version()}`,
-    viewport: {width: 960, height: 320, dpr: 1},
+    viewport: {width: 960, height: 360, dpr: 1},
     selectedTimes,
     styles,
+    shapeEndpoints,
     images,
     clips,
   };
