@@ -152,7 +152,7 @@ export function taskNextSteps(
       return [`task review ${id}`];
     case 'Approved':
       return [
-        `Merge the approved PR, remove its clean worktree from another checkout, then: task finish ${id} --pr ${task.PR || '<url>'}`,
+        `Merge the approved PR, remove its clean worktree from another checkout, then: task finish ${id} --pr <url>`,
       ];
     case 'Blocked':
       if (task['Hold reason'])

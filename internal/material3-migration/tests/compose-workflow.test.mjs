@@ -526,6 +526,14 @@ test('task briefs route reviewed, unclaimed, held and blocked work to valid next
       ['Resolve the recorded hold, then: task unblock subject'],
     ],
     ['Backlog', {}, ['dependency'], ['status']],
+    [
+      'Approved',
+      {PR: 'https://example.test/prior-contract-pr'},
+      [],
+      [
+        'Merge the approved PR, remove its clean worktree from another checkout, then: task finish subject --pr <url>',
+      ],
+    ],
     ['Blocked', {}, ['dependency'], ['status']],
     ['Closed', {}, [], ['status']],
     ['Superseded', {}, [], ['status']],
