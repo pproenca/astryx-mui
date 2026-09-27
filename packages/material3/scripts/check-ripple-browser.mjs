@@ -77,7 +77,9 @@ try {
     return animation.effect.getTiming().duration;
   });
   assert.equal(dragLayer, 45);
-  await page.waitForTimeout(60);
+  await page.waitForFunction(() =>
+    getComputedStyle(document.querySelector('[data-testid="bounded-ripple"] > span:first-child')).opacity === '0.16',
+  );
   assert.equal(await ripple.evaluate(node => getComputedStyle(node.children[0]).opacity), '0.16');
   await page.locator('#disabled-toggle').check();
   assert.equal(await ripple.getAttribute('data-md-ripple-state'), 'rest');
