@@ -15,6 +15,15 @@
       "settledAtMs": 880
     }
   },
+  "optionalWebOutward": {
+    "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+    "styleSha256": "a787452a69bb58d6998717f67aa27e3d2d5bf317cd07553c557f8f7f9f8d3e22",
+    "tokenSha256": "2aed5b14fea6e734dd970060ef787a9f6549019237740064826f696dc6146aab",
+    "restingWidthPx": 3,
+    "activeWidthPx": 8,
+    "outwardOffsetPx": 2,
+    "shape": "corner-full"
+  },
   "renderer": "Chrome source-value browser fixture",
   "browser": "Chrome 153.0.8010.53",
   "os": "darwin 27.0.0",
@@ -67,6 +76,7 @@
     "focus-light-0260.png": "279b82e7885885843a6649be6eb11c1d0c4874529e4fd49293a57f1e0f7f63ee",
     "focus-light-0600.png": "aad35fdf2b904d08abfaa17fae0aca3e5c891891d8bd46b9af30f266c73e2b74",
     "focus-light-0880.png": "acbb78be11b75605d3e8898e4d7c7cc0a76462d056ceb868c708829570bf5d39",
+    "focus-light-reduced.png": "4063a77fa15a67bf1a8ebb3756b7f9b0aed87cd7220499d91249dc71578f2999",
     "focus-dark-0000.png": "215d0e48633d3ad72f04d9bc40e185b89351f7e11c876b8e1d171f758ca2e706",
     "focus-dark-0020.png": "ea8a6379f2f4d89da0172a829b382690e17385f6d421a91808b057cce40ef284",
     "focus-dark-0080.png": "b48b0655e9e37767e2d71359ab8e91b4558f3da843482ca107504e52f6f9bcca",
@@ -76,7 +86,12 @@
     "focus-dark-0180.png": "63abcd53677474c8634184de82ef3de84eb38d3f07926bd1fc41dad187f2357f",
     "focus-dark-0260.png": "11c75a7ffd0cf39ab45d43002e32059055a1d7aead65330463d17a41bc138d56",
     "focus-dark-0600.png": "fc4f21d8032a70cc3642e044f0b98284ef6343e605bff4f3faf57e20d8d3db2e",
-    "focus-dark-0880.png": "b1330881cc736dc01daf6df76e248f181fc110c0136195a918f06f95055e720e"
+    "focus-dark-0880.png": "b1330881cc736dc01daf6df76e248f181fc110c0136195a918f06f95055e720e",
+    "focus-dark-reduced.png": "f576b418e6cc9e153051db1c7b0c3363daa864643be1fb14c9f7285ee9aa4913",
+    "web-outward-light-rest.png": "1aeafaede50dfedfdd68761469276962493f89358bb0cd5643b94536cccb63cc",
+    "web-outward-light-active.png": "cdbc9abafd841b21319b3f88c4638d0fe38cfeebaa500ad25dab19e4e8b2cf72",
+    "web-outward-dark-rest.png": "f8b3e437533f4ca971602badbeb38b13669f2688396438f7b3f65da9131c27f6",
+    "web-outward-dark-active.png": "9e6f5e74da0653299f459805958f569d45bf12efef532539ddf3d22e01fc8834"
   },
   "clip": {
     "file": "compose-focus.mp4",

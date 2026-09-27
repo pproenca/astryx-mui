@@ -116,6 +116,28 @@ function html(mode) {
   </main></body></html>`;
 }
 
+function webOutwardHtml(mode, width) {
+  const surface = hex(color(mode, 'Surface'));
+  const container = hex(color(mode, 'SurfaceContainerLow'));
+  const onSurface = hex(color(mode, 'OnSurface'));
+  const secondary = hex(color(mode, 'Secondary'));
+  return `<!doctype html><html><head><meta charset="utf-8"><style>
+    @font-face{font-family:SourceRoboto;src:url('${fontUrl}') format('truetype');font-weight:100 900}
+    *{box-sizing:border-box}html,body{margin:0;width:960px;height:360px}
+    body{background:${surface};color:${onSurface};font:16px/24px SourceRoboto,sans-serif}
+    main{padding:26px 36px}h1{font-size:22px;line-height:30px;margin:0 0 5px}
+    p{font-size:13px;line-height:20px;margin:0 0 40px}
+    .sample{position:relative;width:220px;height:64px;margin:0 0 0 58px;border-radius:9999px;background:${container}}
+    .ring{position:absolute;inset:-2px;border-radius:9999px;outline:${width}px solid ${secondary};pointer-events:none}
+    .legend{margin-top:30px;font-size:12px;line-height:20px}
+  </style></head><body><main>
+    <h1>Material Web outward focus ring · ${mode}</h1>
+    <p>Optional browser presentation · ${width === 3 ? 'resting' : 'active'} width</p>
+    <div class="sample"><div class="ring"></div></div>
+    <div class="legend">Secondary · 2px outward offset · ${width}px outline · full corner · DPR 1</div>
+  </main></body></html>`;
+}
+
 const check = process.argv.includes('--check');
 const images = {};
 const browser = await chromium.launch({channel: 'chrome', headless: true});
@@ -161,7 +183,52 @@ try {
           throw new Error(`Focus source frame changed: ${name}`);
       } else await fs.writeFile(path.join(here, name), bytes);
     }
+    await page.evaluate(() => {
+      for (const scheme of ['standard', 'expressive']) {
+        document.getElementById(`${scheme}-inner`).style.inset = '1px';
+        document.getElementById(`${scheme}-inner`).style.borderWidth = '3px';
+        document.getElementById(`${scheme}-outer`).style.borderWidth = '2px';
+      }
+      document.getElementById('stage').textContent =
+        'Reduced motion · immediately visible focused state';
+    });
+    const reducedName = `focus-${mode.toLowerCase()}-reduced.png`;
+    const reducedBytes = await page.screenshot();
+    images[reducedName] = sha256(reducedBytes);
+    if (check) {
+      if (
+        sha256(await fs.readFile(path.join(here, reducedName))) !==
+        images[reducedName]
+      )
+        throw new Error(`Reduced-motion source frame changed: ${reducedName}`);
+    } else await fs.writeFile(path.join(here, reducedName), reducedBytes);
     await page.close();
+  }
+
+  for (const mode of ['Light', 'Dark']) {
+    for (const [stage, width] of [
+      ['rest', 3],
+      ['active', 8],
+    ]) {
+      const page = await browser.newPage({
+        viewport: {width: 960, height: 360},
+        deviceScaleFactor: 1,
+      });
+      await page.setContent(webOutwardHtml(mode, width));
+      await page.evaluate(() => document.fonts.ready);
+      if (
+        !(await page.evaluate(() => document.fonts.check('16px SourceRoboto')))
+      )
+        throw new Error('Pinned Roboto did not load');
+      const name = `web-outward-${mode.toLowerCase()}-${stage}.png`;
+      const bytes = await page.screenshot();
+      images[name] = sha256(bytes);
+      if (check) {
+        if (sha256(await fs.readFile(path.join(here, name))) !== images[name])
+          throw new Error(`Web outward source frame changed: ${name}`);
+      } else await fs.writeFile(path.join(here, name), bytes);
+      await page.close();
+    }
   }
 
   const page = await browser.newPage({
@@ -237,6 +304,17 @@ try {
     figmaSha256: policy.figmaSha256,
     webCommit: policy.materialWebCommit,
     focusTraceManifest: focus.traces,
+    optionalWebOutward: {
+      commit: policy.materialWebCommit,
+      styleSha256:
+        'a787452a69bb58d6998717f67aa27e3d2d5bf317cd07553c557f8f7f9f8d3e22',
+      tokenSha256:
+        '2aed5b14fea6e734dd970060ef787a9f6549019237740064826f696dc6146aab',
+      restingWidthPx: 3,
+      activeWidthPx: 8,
+      outwardOffsetPx: 2,
+      shape: 'corner-full',
+    },
     renderer: 'Chrome source-value browser fixture',
     browser: `Chrome ${browser.version()}`,
     os: `${os.platform()} ${os.release()}`,

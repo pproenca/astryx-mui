@@ -16,7 +16,8 @@ refocus during blur at 160ms, and blur at 600ms. Standard and Expressive
 trajectories are in [`standard-focus.json`](standard-focus.json) and
 [`expressive-focus.json`](expressive-focus.json).
 
-The [render manifest](manifest.json) records 20 light/dark PNG hashes and a
+The [render manifest](manifest.json) records 20 timed Compose light/dark frames,
+two reduced-motion browser adaptations, four optional Web outward frames, and a
 [normal-speed clip](compose-focus.mp4), sampled every 20ms at 50fps. The
 frames are a **browser rendering of pinned source values**, not a Compose
 device screenshot. The left rectangle holds the default 10% layer. The center
@@ -31,6 +32,9 @@ refocus during blur; the manifest lists every frame and environment condition.
 The renderer snaps interpolation to zero at the probe's declared settling
 threshold (880ms), so rounding does not leave a one-pixel ghost border. That
 cutoff is a fixture choice, not a claim about a Compose device frame.
+The reduced-motion frames show the final focused geometry immediately, without
+travel. This is a browser accessibility adaptation; the pinned Compose source
+does not specify a reduced-motion default for this ring.
 
 I watched the generated clip at normal browser playback and inspected 20ms,
 120ms, and 180ms light/dark frames. The ring enters visibly by 20ms. At 120ms,
@@ -42,6 +46,16 @@ At 120ms they are 0.9730014 standard and 1.0783416 Expressive; at the 160ms
 refocus they are 0.29119647 and 0.32394052. A browser implementation must
 capture its own matched frames and velocity trace; source artifacts alone do
 not verify it.
+
+The [Web outward held](web-outward-light-rest.png) and
+[active](web-outward-dark-active.png) frames project the pinned Web-only gap:
+Secondary, 2px outward host offset, 3px resting outline, 8px active outline,
+and a full corner. The manifest pins the two upstream Sass file hashes. These
+four browser frames do not change the Compose default or inset option. The
+watched pinned Web focus GIF and its timing observations remain in the
+[shared family decision](../families/family-CM-0023.md); the animated Web-only
+outward option still requires separate native interruption and reduced-motion
+verification.
 
 Run both commands from the repository root to reproduce the reference:
 
