@@ -89,5 +89,7 @@ node internal/material3-migration/sources/indication-reference/capture-browser-f
 
 This checks a browser calculation against Compose source values. It does not
 measure a native FocusRing, rendered pixels, input response or frame pacing.
-Its proposed comparison limits still require owner approval before promoting
-the component source baseline and preparing implementation.
+The [resolved source baseline](../baseline/focus-compose-first.json) records
+the owner's approved native comparison limits: 0.0002 interpolation units,
+0.002 interpolation units per second, and 0ms settling difference. Native
+acceptance still requires an independent trace at its verified revision.
