@@ -100,7 +100,11 @@ try {
     };
   });
   await page.locator('#enter').click();
-  await page.waitForTimeout(120);
+  await page.waitForFunction(
+    () => window.__foundationQA.frame.position > 0,
+    null,
+    {timeout: 3000},
+  );
   const before = await page.evaluate(() => window.__foundationQA.frame);
   assert.ok(before.position > 0 && before.position < 120);
   await page.locator('#interrupt').click();
