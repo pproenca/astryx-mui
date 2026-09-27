@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 1,
+  "authority": "compose-first",
+  "status": "Resolved static Divider source selection; native acceptance pending.",
+  "baselineId": "material3-expressive-compose-first-2026-09-26",
+  "web": {"commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"},
+  "compose": {
+    "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "inventory": "internal/material3-migration/sources/compose-inventory.json",
+    "tests": [
+      {
+        "id": "DividerTest.horizontalDivider_defaultSize",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/DividerTest.kt"
+      },
+      {
+        "id": "DividerTest.horizontalDivider_customSize",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/DividerTest.kt"
+      },
+      {
+        "id": "DividerTest.verticalDivider_defaultSize",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/DividerTest.kt"
+      },
+      {
+        "id": "DividerTest.verticalDivider_customSize",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/DividerTest.kt"
+      },
+      {
+        "id": "DividerTest.divider_withIndent_doesNotChangeSize",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/DividerTest.kt"
+      },
+      {
+        "id": "DividerTest.divider_hairlineThickness",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/DividerTest.kt"
+      }
+    ],
+    "reason": "Selected Compose size and hairline tests; Android device raster cases remain platform-specific.",
+    "evidence": "internal/material3-migration/sources/families/family-CM-0017.md"
+  },
+  "figma": {
+    "sha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+    "inventory": "internal/material3-migration/sources/figma-kit-inventory.json"
+  },
+  "guidance": [
+    {
+      "url": "https://m3.material.io/styles/color/roles",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/color-roles.md"
+    }
+  ],
+  "decisions": [
+    {
+      "dimension": "divider-geometry",
+      "concern": "design",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "Pinned Compose selects full-span horizontal/vertical 1dp OutlineVariant rules, custom thickness and zero-layout-height hairline paint.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0017.md"
+    },
+    {
+      "dimension": "divider-behavior",
+      "concern": "behavior",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "Standalone rules group content visually without interaction.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0017.md"
+    },
+    {
+      "dimension": "divider-motion",
+      "concern": "motion",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "Pinned Compose standalone Divider has no transition or animation.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0017.md"
+    },
+    {
+      "dimension": "browser-semantics",
+      "concern": "browser",
+      "chosen": "web",
+      "figmaSpecified": false,
+      "reason": "Decorative default and explicit meaningful separator role come from pinned Web and native standards.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0017.md"
+    },
+    {
+      "dimension": "optional-fixed-insets",
+      "concern": "design",
+      "chosen": "web",
+      "figmaSpecified": false,
+      "reason": "Pinned Web supplies explicit 16px logical inset choices absent from Compose.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0017.md"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "divider-horizontal-light",
+      "dimensions": ["divider-geometry"],
+      "sourceReference": "Pinned Compose Divider.kt and DividerTokens.kt, rendered as a source-value browser projection",
+      "baseline": "internal/material3-migration/sources/divider-reference/horizontal-light.png",
+      "baselineSha256": "2cc82dc802e9b496a15524466b5afd51b69932400a6decc3915861cbe3c05639",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {"width": 480, "height": 240},
+        "fonts": [],
+        "theme": "light",
+        "content": "horizontal 1dp rule on fixture background",
+        "state": "static",
+        "direction": "ltr"
+      }
+    },
+    {
+      "id": "divider-horizontal-dark",
+      "dimensions": ["divider-geometry"],
+      "sourceReference": "Pinned Compose Divider.kt and DividerTokens.kt, rendered as a source-value browser projection",
+      "baseline": "internal/material3-migration/sources/divider-reference/horizontal-dark.png",
+      "baselineSha256": "51d2100e34b7550d8307e0007c25faa0a891c8f41bf362b3e196ea1e3936b36c",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {"width": 480, "height": 240},
+        "fonts": [],
+        "theme": "dark",
+        "content": "horizontal 1dp rule on fixture background",
+        "state": "static",
+        "direction": "ltr"
+      }
+    },
+    {
+      "id": "divider-vertical-light",
+      "dimensions": ["divider-geometry"],
+      "sourceReference": "Pinned Compose Divider.kt and DividerTokens.kt, rendered as a source-value browser projection",
+      "baseline": "internal/material3-migration/sources/divider-reference/vertical-light.png",
+      "baselineSha256": "9e45f93032cde807536fdfcac8cfd134aa6e6c00452fcd15bb7536aa3cc479f0",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {"width": 480, "height": 240},
+        "fonts": [],
+        "theme": "light",
+        "content": "vertical 1dp rule on fixture background",
+        "state": "static",
+        "direction": "ltr"
+      }
+    },
+    {
+      "id": "divider-custom-20-light",
+      "dimensions": ["divider-geometry"],
+      "sourceReference": "Pinned Compose Divider.kt and DividerTokens.kt, rendered as a source-value browser projection",
+      "baseline": "internal/material3-migration/sources/divider-reference/custom-20-light.png",
+      "baselineSha256": "6fdf72e8f643be7f97d443339feba1887d03cf0043ea3829dfa8db92e0636798",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {"width": 480, "height": 240},
+        "fonts": [],
+        "theme": "light",
+        "content": "horizontal 20dp rule on fixture background",
+        "state": "static",
+        "direction": "ltr"
+      }
+    },
+    {
+      "id": "divider-hairline-light",
+      "dimensions": ["divider-geometry"],
+      "sourceReference": "Pinned Compose Divider.kt and DividerTokens.kt, rendered as a source-value browser projection",
+      "baseline": "internal/material3-migration/sources/divider-reference/hairline-light.png",
+      "baselineSha256": "2cc82dc802e9b496a15524466b5afd51b69932400a6decc3915861cbe3c05639",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {"width": 480, "height": 240},
+        "fonts": [],
+        "theme": "light",
+        "content": "horizontal hairline rule on fixture background",
+        "state": "static",
+        "direction": "ltr"
+      }
+    },
+    {
+      "id": "divider-inset-start-ltr",
+      "dimensions": ["optional-fixed-insets"],
+      "sourceReference": "Pinned Compose full-span rule with explicit pinned Web 16px logical inset gap fill",
+      "baseline": "internal/material3-migration/sources/divider-reference/inset-start-ltr.png",
+      "baselineSha256": "f7b4cbc61d306c5bdb610e5554419e8ae452eacdd77209054332cae9db8100a3",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {"width": 480, "height": 240},
+        "fonts": [],
+        "theme": "light",
+        "content": "horizontal 1dp rule on fixture background",
+        "state": "static",
+        "direction": "ltr"
+      }
+    },
+    {
+      "id": "divider-inset-start-rtl",
+      "dimensions": ["optional-fixed-insets"],
+      "sourceReference": "Pinned Compose full-span rule with explicit pinned Web 16px logical inset gap fill",
+      "baseline": "internal/material3-migration/sources/divider-reference/inset-start-rtl.png",
+      "baselineSha256": "6e866ce5226d3150fdcc20e44e9f17fe806e2f2a9594952d6838a7197d2bcf23",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {"width": 480, "height": 240},
+        "fonts": [],
+        "theme": "light",
+        "content": "horizontal 1dp rule on fixture background",
+        "state": "static",
+        "direction": "rtl"
+      }
+    }
+  ],
+  "motion": {
+    "applicable": false,
+    "reason": "Pinned standalone Compose Divider draws static geometry and color without a transition.",
+    "evidence": "internal/material3-migration/sources/families/family-CM-0017.md"
+  },
+  "performance": [
+    {
+      "id": "desktop-chrome-macos-reference",
+      "approvalReference": "human:pproenca:2026-09-26:M3-NAT-002-foundation-limits",
+      "status": "approved after native Chrome measurement and owner review on 2026-09-26",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "device": "macOS desktop reference",
+        "refreshRateHz": 60
+      },
+      "maxInputLatencyMs": 100,
+      "frameBudgetMs": 20,
+      "maxLongFrameRatio": 0.05,
+      "minInputSamples": 30,
+      "minFrameSamples": 300
+    }
+  ]
+}
