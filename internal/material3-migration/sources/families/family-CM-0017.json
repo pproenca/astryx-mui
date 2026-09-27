@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 2,
+  "authority": "compose-first",
+  "familyId": "family-CM-0017",
+  "scopeSha256": "15199f0ed70e74f220b3df7deac0aeb216060f0f386cde1187216b910761d750",
+  "pins": {
+    "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+    "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+  },
+  "coverage": {
+    "figma": {
+      "status": "absent",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0017.md",
+      "reason": "All 171 frozen component sets were checked; none is a standalone Divider set. Divider composition inside other sets remains in their scope."
+    },
+    "compose": {
+      "status": "present",
+      "evidence": "internal/material3-migration/sources/compose-inventory.json"
+    },
+    "web": {
+      "status": "present",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0017.md"
+    }
+  },
+  "routes": {
+    "design": {
+      "primary": "compose",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0017.md"
+    },
+    "behavior": {
+      "primary": "compose",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0017.md"
+    },
+    "motion": {
+      "primary": "compose",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0017.md"
+    },
+    "browser": {
+      "primary": "web",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0017.md"
+    }
+  },
+  "overrides": [
+    {
+      "dimension": "optional-fixed-insets",
+      "primary": "web",
+      "figmaSpecified": false,
+      "reason": "Offer the pinned Web equal, start and end 16px logical inset variants when selected.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0017.md",
+      "gapReason": "Pinned Compose Divider accepts caller padding but specifies no named inset variants or fixed inset value.",
+      "gapEvidence": "internal/material3-migration/sources/families/family-CM-0017.md"
+    }
+  ]
+}
