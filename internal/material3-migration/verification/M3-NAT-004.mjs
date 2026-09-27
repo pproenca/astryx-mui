@@ -44,8 +44,7 @@ assert.equal(source.motion.applicable, false);
 for (const item of source.scenarios)
   assert.equal(hash(await read(item.baseline)), item.baselineSha256);
 
-run('pnpm', '-F', '@astryxdesign/material3', 'test');
-run('pnpm', '-F', '@astryxdesign/material3', 'typecheck');
+run('pnpm', '-F', '@astryxdesign/material3', 'build');
 run('pnpm', '-F', '@astryxdesign/theme-material3', 'build');
 run(
   'pnpm',
@@ -54,6 +53,8 @@ run(
   'run',
   'packages/core/src/Divider/Divider.test.tsx',
 );
+run('pnpm', '-F', '@astryxdesign/material3', 'test');
+run('pnpm', '-F', '@astryxdesign/material3', 'typecheck');
 run('pnpm', 'check:knowledge');
 run(
   'node',
