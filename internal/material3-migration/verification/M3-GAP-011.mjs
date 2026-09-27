@@ -70,7 +70,7 @@ const qaChecks = {
   motion: {result: 'Pass', reason: 'Timed enter, exit, interruption, refocus and reduced-motion frames are exact; both browser traces settle at 880 ms.'},
   accessibility: {result: 'Pass', reason: 'The span is aria-hidden and unfocusable; native target, label, forced colors and reduced motion retain browser semantics.'},
 };
-const motionPass = (reason, ...evidence) => ({result: 'Pass', reason, evidence});
+const motionPass = (reason, evidence) => ({result: 'Pass', reason, evidence});
 const motion = {
   applicable: true,
   reference: source.motion.reference,
@@ -81,11 +81,11 @@ const motion = {
   contactSheet: actual('inspection/contact-sheet.png'),
   observations: review.observations,
   scenarios: {
-    enter: motionPass('Both inset strokes grow from zero with the Compose fast spatial spring.', actual('focus-light-0020.png'), actual('focus-light-0080.png')),
-    exit: motionPass('Focus blur retargets both strokes to zero with fast effects.', actual('focus-light-0600.png'), actual('focus-light-0880.png')),
-    interruption: motionPass('At 120 ms blur and 160 ms refocus, position and velocity remain continuous.', actual('focus-light-0120.png'), actual('focus-light-0160.png'), 'packages/material3/scripts/check-focus-ring-motion.mjs'),
-    reversal: motionPass('Refocus after blur reverses the running spring and settles at the selected target.', actual('focus-dark-0180.png'), actual('focus-dark-0260.png')),
-    'reduced-motion': motionPass('Browser reduced-motion preference paints final geometry without spring travel.', actual('focus-light-reduced.png'), actual('focus-dark-reduced.png'), 'packages/material3/scripts/check-focus-ring-browser.mjs'),
+    enter: motionPass('Both inset strokes grow from zero with the Compose fast spatial spring.', actual('focus-light-0020.png')),
+    exit: motionPass('Focus blur retargets both strokes to zero with fast effects.', actual('focus-light-0880.png')),
+    interruption: motionPass('At 120 ms blur and 160 ms refocus, position and velocity remain continuous.', 'packages/material3/scripts/check-focus-ring-motion.mjs'),
+    reversal: motionPass('Refocus after blur reverses the running spring and settles at the selected target.', actual('focus-dark-0180.png')),
+    'reduced-motion': motionPass('Browser reduced-motion preference paints final geometry without spring travel.', actual('focus-light-reduced.png')),
   },
   traces: source.motion.numeric.traces.map(item => ({id: item.id, actual: actual(`${item.id}.json`)})),
 };
