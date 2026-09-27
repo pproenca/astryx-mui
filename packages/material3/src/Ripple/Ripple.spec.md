@@ -3,11 +3,11 @@ schema_version: 3
 template_version: 6
 kind: component
 id: component:Ripple
-authority: draft
+authority: current
 archive_reason: null
 superseded_by: null
-approved_by: null
-approved_at: null
+approved_by: pproenca
+approved_at: 2026-09-27
 owners: [pproenca]
 review_triggers: [public-api, behavior, layout, theming, accessibility]
 verified_by: [scripts/check-knowledge.mjs]
@@ -28,17 +28,17 @@ system_specs: [spec:AST-002, spec:AST-013, spec:AST-020]
 
 ## Contract at a glance
 
-| Area                    | Contract                                                                                                                                                                                                                                            |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Public contract         | Proposed additive `Ripple` and `RippleProps` exports from `@astryxdesign/material3`. The decorative span is a direct child of its positioned visual owner. `unbounded?: boolean` defaults to false; `controlRef?: RefObject<HTMLElement             | null>`names a distinct semantic target;`dragged?: boolean`supplies a custom owner's semantic drag state.`ref` reaches the span. |
-| Behavior                | The parent is the default interaction target. Pointer press, hover and focus are derived from that target; `controlRef` overrides it. The visual owner supplies the bounds, shape and inherited content color. A disabled target has no indication. |
-| End-user impact         | Opted-in custom controls gain Compose-based press and state indications. Native Material controls use the same indication internally and keep their own semantics.                                                                                  |
-| Builder impact          | The caller places one Ripple inside a positioned visual owner, opts into unbounded paint only when needed, and supplies a semantic target ref only when distinct. Custom drag owners pass their drag state.                                         |
-| Compatibility/readiness | Additive, unreleased proposal. The owner approved a public opt-in Ripple boundary on 2026-09-27; exact props and native acceptance remain pending.                                                                                                  |
-| Review checks           | Reject a new action/focus target, implicit unbounded paint, exposed motion timing, duplicate public attachment modes, a stale release ending a newer press, or a Web timing substituted for Compose.                                                |
-| Governing rules         | `theme:material3`; `family-CM-0023`; `architecture:public-component-api` INV1, INV3–INV8; `spec:AST-002` FR1–FR5, FR8–FR10, FR15–FR18; `spec:AST-013` browser support; `spec:AST-020` accessibility evidence.                                       |
+| Area                    | Contract                                                                                                                                                                                                                                                                                                                                      |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Public contract         | Additive `Ripple` and `RippleProps` exports from `@astryxdesign/material3`. The decorative span is a direct child of its positioned visual owner. `unbounded?: boolean` defaults to false; optional `controlRef` names a distinct semantic target; `dragged?: boolean` supplies a custom owner's semantic drag state. `ref` reaches the span. |
+| Behavior                | The parent is the default interaction target. Pointer press, hover and focus are derived from that target; `controlRef` overrides it. The visual owner supplies the bounds, shape and inherited content color. A disabled target has no indication.                                                                                           |
+| End-user impact         | Opted-in custom controls gain Compose-based press and state indications. Native Material controls use the same indication internally and keep their own semantics.                                                                                                                                                                            |
+| Builder impact          | The caller places one Ripple inside a positioned visual owner, opts into unbounded paint only when needed, and supplies a semantic target ref only when distinct. Custom drag owners pass their drag state.                                                                                                                                   |
+| Compatibility/readiness | Additive, unreleased contract. The owner approved the public boundary and exact React API on 2026-09-27. Native implementation and acceptance remain pending.                                                                                                                                                                                 |
+| Review checks           | Reject a new action/focus target, implicit unbounded paint, exposed motion timing, duplicate public attachment modes, a stale release ending a newer press, or a Web timing substituted for Compose.                                                                                                                                          |
+| Governing rules         | `theme:material3`; `family-CM-0023`; `architecture:public-component-api` INV1, INV3–INV8; `spec:AST-002` FR1–FR5, FR8–FR10, FR15–FR18; `spec:AST-013` browser support; `spec:AST-020` accessibility evidence.                                                                                                                                 |
 
-This draft projects the proposed public boundary. It does not govern native implementation until exact-head owner approval makes it current.
+This table projects the owner-approved public boundary. Native implementation and acceptance remain separate.
 
 ## Intent
 
@@ -49,7 +49,7 @@ Material controls need one Compose-first indication implementation. Builders of 
 - Released default preserved: not yet released.
 - Compatibility class: additive native package export; Core and the theme compatibility entry point keep their existing APIs.
 - Controlled/uncontrolled behavior: hover, focus and press remain derived from the semantic target; only a custom owner's drag state is supplied.
-- Migration decision: DEC-1 proposes the public primitive and DEC-2 proposes the exact association and configuration.
+- Migration decision: DEC-1 selects the public primitive and DEC-2 selects its exact association and configuration.
 
 ## Ownership boundary
 
@@ -70,15 +70,17 @@ Material controls need one Compose-first indication implementation. Builders of 
 
 | Concept         | Closed values or states       | Meaning                                                                                                      | Availability by variant/orientation/state                                     | Default                        | Owner              | Stability               | Invalid-value behavior                                                               |
 | --------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------- | ------------------------------ | ------------------ | ----------------------- | ------------------------------------------------------------------------------------ |
-| Paint bounds    | bounded, unbounded            | The caller decides whether indication clips to the owner's shape or expands around its center.               | Both Material modes and custom control shapes.                                | Bounded (`unbounded={false}`). | `component:Ripple` | Proposed stable export. | Warn and suppress paint if the unbounded owner's ancestor clips the promised extent. |
-| Semantic target | parent, explicit `controlRef` | The target emits input and focus while the direct parent paints.                                             | Positioned owner or visual proxy with hidden input.                           | Parent.                        | `component:Ripple` | Proposed stable export. | A missing or detached explicit target stays unbound; never fall back silently.       |
-| Drag state      | inactive, active              | A custom owner reports its semantic drag interaction when browser pointer movement alone cannot identify it. | Custom draggable controls; native controls may drive the same internal state. | Inactive.                      | `component:Ripple` | Proposed stable export. | Disabled target suppresses even an active drag input.                                |
+| Paint bounds    | bounded, unbounded            | The caller decides whether indication clips to the owner's shape or expands around its center.               | Both Material modes and custom control shapes.                                | Bounded (`unbounded={false}`). | `component:Ripple` | Approved stable export. | Warn and suppress paint if the unbounded owner's ancestor clips the promised extent. |
+| Semantic target | parent, explicit `controlRef` | The target emits input and focus while the direct parent paints.                                             | Positioned owner or visual proxy with hidden input.                           | Parent.                        | `component:Ripple` | Approved stable export. | A missing or detached explicit target stays unbound; never fall back silently.       |
+| Drag state      | inactive, active              | A custom owner reports its semantic drag interaction when browser pointer movement alone cannot identify it. | Custom draggable controls; native controls may drive the same internal state. | Inactive.                      | `component:Ripple` | Approved stable export. | Disabled target suppresses even an active drag input.                                |
 
 `unbounded` is caller-owned because two identical owner boxes can require clipped or outward indication. `controlRef` is caller-owned because a visually hidden input can be the semantic target while its sibling paints. `dragged` is caller-owned because movement alone cannot distinguish a drag interaction from scrolling or a held press. Color follows the owner's inherited `color` and Material token roles; default radius follows owner size. No dedicated color or radius prop is proposed.
 
+`controlRef` uses `React.RefObject<HTMLElement | null>`; the public `ref` uses `React.Ref<HTMLSpanElement>` and reaches only the decorative element.
+
 ## Behavioral and layout contract
 
-| ID  | Candidate invariant                                                                                                                                                                                                                                                                               | Basis                                                                          | Draft review state                           |
+| ID  | Invariant                                                                                                                                                                                                                                                                                         | Basis                                                                          | Verification state                           |
 | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------- |
 | FR1 | Ripple MUST be decorative, pointer inert, absent from the accessibility tree and never an independent focus target.                                                                                                                                                                               | Pinned Compose indication and Material Web element.                            | Source-backed; native verification pending.  |
 | FR2 | Bounded paint MUST start at the press point and clip to the owner's shape. Unbounded paint MUST start at the center and may extend outside it. Start radius is 30% of the largest dimension; default end radius is the half diagonal plus 10dp when bounded and the half diagonal when unbounded. | Pinned `CommonRipple.kt` and `RippleAnimationTest.kt`.                         | Source-backed; matched pixels pending.       |
@@ -144,18 +146,18 @@ The shared `family-CM-0023` source decision supplies Compose press/state geometr
 
 The project owner selected a public, opt-in visual Ripple for custom controls, alongside internal indication in native Material controls. Bounded paint is the default and unbounded is explicit.
 
-### DEC-2 — Proposed React association and drag input
+### DEC-2 — React association and drag input
 
 **Reference:** `component:Ripple/DEC-2`
 
-**Decider:** pending exact API review
+**Decider:** `pproenca`, 2026-09-27
 
-The proposal uses a direct-child visual owner, optional `controlRef` for a distinct semantic target and optional `dragged` for caller-owned drag state. Hover, focus, press, disabled, color, radius and motion remain derived. The owner has not yet approved these exact props.
+The public API uses a direct-child visual owner, `unbounded` for explicit outward paint, optional `controlRef` for a distinct semantic target and optional `dragged` for caller-owned drag state. Hover, focus, press, disabled, color, radius and motion remain derived. The owner approved these exact props.
 
 ## Open questions
 
-- **OQ1 — Does the owner approve the proposed `unbounded`, `controlRef` and `dragged` API?** (`human-api`)
+- **OQ1 — What exact native pixel tolerance, if any, is acceptable after matched Compose-first captures?** (`human-design` after browser measurement)
 
 ## Content boundary
 
-This draft owns only the native Ripple public contract. It does not turn source capture into native acceptance or create a second migration task database.
+This record owns only the native Ripple public contract. It does not turn source capture into native acceptance or create a second migration task database.
