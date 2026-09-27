@@ -2,7 +2,7 @@
 
 /**
  * @input Workbook tables; pinned migration policy.
- * @output Dependency priorities, explicit token membership and deduplicated family source briefs.
+ * @output Dependency priorities, explicit token membership and family briefs respecting terminal task states.
  * @position Temporary migration domain; no product package imports this module.
  */
 import {sourcePlan} from './routing.mjs';
@@ -226,7 +226,9 @@ export function brief(wb, id, full = false) {
       'Watch source GIF/video and native motion at normal speed, then inspect aligned frames.',
       'Try interruption, reversal, reduced motion, keyboard, RTL and narrow layouts.',
     ],
-    next: [task.Preparation ? `task verify ${id}` : `task prepare ${id}`],
+    next: ['Closed', 'Superseded'].includes(task.Status)
+      ? ['status']
+      : [task.Preparation ? `task verify ${id}` : `task prepare ${id}`],
   };
 }
 export function requireMappings(wb, task, policy, receipt) {

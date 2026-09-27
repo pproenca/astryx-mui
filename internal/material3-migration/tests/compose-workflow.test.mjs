@@ -7,8 +7,8 @@ import os from 'node:os';
 import path from 'node:path';
 import {compareTrace, measurePerformance} from '../measurements.mjs';
 import {flowMetrics, excelTime, transition} from '../flow.mjs';
-import {ready, table} from '../model.mjs';
-import {supersedeReview} from '../workflow.mjs';
+import {brief, ready, table, write} from '../model.mjs';
+import {dispatch, policy, supersedeReview} from '../workflow.mjs';
 import {digest, loadCompose, declarations} from '../compose.mjs';
 import {preparationInputs, preparationStatus} from '../preparation.mjs';
 import {coveragePlan} from '../audit.mjs';
@@ -386,4 +386,80 @@ test('coverage retains exact Figma variants and reverse native owner links', () 
     coveragePlan(workbook(data), policy, index).join(' '),
     /variant inventory is incomplete/,
   );
+});
+
+test('terminal task briefs preserve closure without directing agents back to preparation or QA', async () => {
+  const p = await policy();
+  for (const status of ['Closed', 'Superseded']) {
+    const wb = workbook({
+      Overview: [
+        {key: 'Migration strategy', value: p.value.strategyId},
+        {key: 'Policy SHA256', value: p.hash},
+      ],
+      Tasks: [
+        {
+          'Task ID': 'finished',
+          Status: status,
+          Preparation: 'missing-historical-packet.json',
+          'Preparation SHA256': 'old-packet-hash',
+          Notes: 'Native QA and closure pending.',
+          'Verified SHA': 'accepted-head',
+          'Merge SHA': 'merged-head',
+          PR: 'https://example.test/pull/1',
+          'Closed at': 46000,
+        },
+      ],
+      Dependencies: [],
+      'Component mapping': [],
+      'Acceptance checks': [],
+      'Design kit sets': [],
+    });
+    const before = table(wb, 'Tasks');
+    for (const full of [false, true]) {
+      assert.deepEqual(brief(wb, 'finished', full).next, ['status']);
+      const result = await dispatch(wb, 'task show', {
+        id: 'finished',
+        full,
+        repo: '/missing-historical-checkout',
+      });
+      assert.equal(result.changed, false);
+      assert.equal(result.data.status, status);
+      assert.deepEqual(result.data.next, ['status']);
+      assert.deepEqual(result.data.review, []);
+      assert.equal(result.data.prepared.applicable, false);
+      assert.equal(result.data.prepared.ready, undefined);
+      assert.doesNotMatch(result.data.outcome, /pending|prepare again/);
+      assert.equal(
+        result.data.historicalNotes,
+        'Native QA and closure pending.',
+      );
+      if (status === 'Closed') {
+        assert.deepEqual(result.data.completion, {
+          verifiedRevision: 'accepted-head',
+          mergedRevision: 'merged-head',
+          pr: 'https://example.test/pull/1',
+          closedAt: 46000,
+        });
+      }
+    }
+    for (const command of ['task prepare', 'task verify']) {
+      await assert.rejects(
+        dispatch(wb, command, {
+          id: 'finished',
+          repo: '/missing-historical-checkout',
+        }),
+        /retain reviewed packets|Expected Claimed/,
+      );
+    }
+    assert.deepEqual(table(wb, 'Tasks'), before);
+    // A live claim still needs preparation; terminal handling must not hide it.
+    write(wb, 'Tasks', 2, {Status: 'Claimed'});
+    assert.deepEqual(brief(wb, 'finished').next, ['task verify finished']);
+    const active = await dispatch(wb, 'task show', {
+      id: 'finished',
+      repo: '/missing-historical-checkout',
+    });
+    assert.equal(active.data.prepared.ready, false);
+    assert.equal(active.data.prepared.applicable, undefined);
+  }
 });
