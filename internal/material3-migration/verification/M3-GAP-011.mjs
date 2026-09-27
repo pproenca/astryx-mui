@@ -119,7 +119,7 @@ const receipt = {
   androidxCommit: policy.androidxCommit,
   baselineId: policy.baselineId,
   reviewKind: 'visual',
-  preview: `http://127.0.0.1:4173/packages/material3/fixtures/focus-ring.html?revision=${revision}`,
+  preview: `http://127.0.0.1:4173/fixtures/focus-ring.html?revision=${revision}`,
   sourceDecision,
   sourceDecisionSha256: hash(sourceBytes),
   checks,
