@@ -134,7 +134,10 @@ const corner = name => {
   return Number(match[1]);
 };
 const shapeEndpoints = {
-  round: {rest: 20, pressed: corner('CornerSmall')},
+  round: {
+    rest: Number.parseFloat(small.get('ContainerHeight')) / 2,
+    pressed: corner('CornerSmall'),
+  },
   square: {rest: corner('CornerMedium'), pressed: corner('CornerSmall')},
 };
 const save = async (name, bytes) => {
@@ -196,15 +199,19 @@ try {
     for (let index = 0; index < motion.samples.length; index++) {
       const sample = motion.samples[index];
       await page.evaluate(
-        ({fraction, timeMs}) => {
+        ({fraction, timeMs, shapeEndpoints}) => {
           for (const button of document.querySelectorAll('button')) {
-            const rest = button.dataset.shape === 'square' ? 12 : 20;
-            button.style.borderRadius = `${rest + (8 - rest) * fraction}px`;
+            const {rest, pressed} = shapeEndpoints[button.dataset.shape];
+            button.style.borderRadius = `${rest + (pressed - rest) * fraction}px`;
           }
           document.getElementById('stage').textContent =
             `Source-value browser projection · press 0ms · release 120ms · repress 160ms · release 600ms · ${timeMs}ms`;
         },
-        {fraction: sample.pressedFraction, timeMs: sample.timeMs},
+        {
+          fraction: sample.pressedFraction,
+          timeMs: sample.timeMs,
+          shapeEndpoints,
+        },
       );
       const frame = await page.screenshot();
       await fs.writeFile(
