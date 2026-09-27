@@ -9,18 +9,25 @@ import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {measurePerformance} from '../measurements.mjs';
 
-const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
+const repo = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '../../..',
+);
 const read = relative => fs.readFile(path.join(repo, relative));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
-const run = (command, ...args) => execFileSync(command, args, {
-  cwd: repo,
-  encoding: 'utf8',
-  env: {...process.env, M3_CAPTURE_DIR: ''},
-  stdio: ['ignore', 'pipe', 'pipe'],
-});
+const run = (command, ...args) =>
+  execFileSync(command, args, {
+    cwd: repo,
+    encoding: 'utf8',
+    env: {...process.env, M3_CAPTURE_DIR: ''},
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
 const revision = run('git', 'rev-parse', 'HEAD').trim();
-const policy = JSON.parse(await read('internal/material3-migration/policy.json'));
-const sourceDecision = 'internal/material3-migration/sources/baseline/elevation-compose-first.json';
+const policy = JSON.parse(
+  await read('internal/material3-migration/policy.json'),
+);
+const sourceDecision =
+  'internal/material3-migration/sources/baseline/elevation-compose-first.json';
 const sourceBytes = await read(sourceDecision);
 const source = JSON.parse(sourceBytes);
 const actualRoot = 'internal/material3-migration/actual/M3-GAP-006';
@@ -40,7 +47,11 @@ for (const item of source.scenarios)
 run('pnpm', '-F', '@astryxdesign/material3', 'test');
 run('pnpm', '-F', '@astryxdesign/material3', 'typecheck');
 run('pnpm', 'check:knowledge');
-run('node', 'internal/material3-migration/actual/capture-native-elevation.mjs', '--check');
+run(
+  'node',
+  'internal/material3-migration/actual/capture-native-elevation.mjs',
+  '--check',
+);
 
 const nativePackage = JSON.parse(await read('packages/material3/package.json'));
 assert.ok(nativePackage.exports['./Elevation']);
@@ -123,17 +134,42 @@ for (const requirement of policy.evidenceRequirements)
   assert.ok(checks[requirement], `Missing ${requirement}`);
 
 const qaChecks = {
-  states: {result: 'Pass', reason: 'All six static levels render with separate key and ambient shadows; the owner controls level changes.'},
-  keyboard: {result: 'Pass', reason: 'The decorative span stays out of tab order; the button owner retains Enter activation and focus.'},
-  theme: {result: 'Pass', reason: 'Light, dark, Expressive and scoped shadow-color tokens reach both native layers.'},
-  responsive: {result: 'Pass', reason: 'Inherited shape and pointer ownership hold in RTL and narrow gallery layouts.'},
-  motion: {result: 'N/A', reason: 'Pinned standalone Elevation is static; no default enter, exit, interruption, reversal or reduced-motion sequence exists.'},
-  accessibility: {result: 'Pass', reason: 'The visual span is aria-hidden, pointer inert and nonsemantic; forced colors suppress its shadow without altering the owner.'},
+  states: {
+    result: 'Pass',
+    reason:
+      'All six static levels render with separate key and ambient shadows; the owner controls level changes.',
+  },
+  keyboard: {
+    result: 'Pass',
+    reason:
+      'The decorative span stays out of tab order; the button owner retains Enter activation and focus.',
+  },
+  theme: {
+    result: 'Pass',
+    reason:
+      'Light, dark, Expressive and scoped shadow-color tokens reach both native layers.',
+  },
+  responsive: {
+    result: 'Pass',
+    reason:
+      'Inherited shape and pointer ownership hold in RTL and narrow gallery layouts.',
+  },
+  motion: {
+    result: 'N/A',
+    reason:
+      'Pinned standalone Elevation is static; no default enter, exit, interruption, reversal or reduced-motion sequence exists.',
+  },
+  accessibility: {
+    result: 'Pass',
+    reason:
+      'The visual span is aria-hidden, pointer inert and nonsemantic; forced colors suppress its shadow without altering the owner.',
+  },
 };
 const upstreamTests = source.compose.tests.map(item => ({
   id: item.id,
   result: 'Pass',
-  reason: 'Compose Surface tonal/shadow independence and levels are mapped to canonical native foundation values and static shadow pixels.',
+  reason:
+    'Compose Surface tonal/shadow independence and levels are mapped to canonical native foundation values and static shadow pixels.',
   evidence: sourceDecision,
   nativeTest: item.id.includes('Shadows')
     ? 'packages/material3/scripts/check-elevation-native-baseline.mjs'
@@ -147,6 +183,15 @@ const receipt = {
   androidxCommit: policy.androidxCommit,
   baselineId: policy.baselineId,
   reviewKind: 'visual',
+  tokenIds: [
+    'TM-01729',
+    'TM-02878',
+    'TM-02879',
+    'TM-02880',
+    'TM-02881',
+    'TM-02882',
+    'TM-02883',
+  ],
   preview: `http://127.0.0.1:8440/fixtures/elevation.html?revision=${revision}`,
   sourceDecision,
   sourceDecisionSha256: hash(sourceBytes),
@@ -160,9 +205,11 @@ const receipt = {
   })),
   motion: {applicable: false},
   upstreamTests,
-  performance: [{
-    id: source.performance[0].id,
-    actual: actual('performance.json'),
-  }],
+  performance: [
+    {
+      id: source.performance[0].id,
+      actual: actual('performance.json'),
+    },
+  ],
 };
 process.stdout.write(`${JSON.stringify(receipt)}\n`);
