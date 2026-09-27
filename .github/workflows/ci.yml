@@ -530,7 +530,9 @@ jobs:
   material3-native:
     needs: [check-scope]
     if: ${{ (github.event_name != 'workflow_dispatch' || inputs.operation == 'release-check' || inputs.operation == 'native-check') && always() && !cancelled() && needs.check-scope.outputs.spec_only != 'true' }}
-    runs-on: macos-15
+    # The approved typography raster was captured on Darwin 27.0.0.
+    # https://github.com/actions/runner-images/issues/14404
+    runs-on: xcode-27
     permissions:
       contents: read
     steps:
@@ -545,6 +547,7 @@ jobs:
         run: |
           set -eu
           test "$(uname -m)" = arm64
+          node -e "require('node:assert/strict').equal(process.platform + ' ' + require('node:os').release(), require('./packages/material3/fixtures/references/typography/manifest.json').os, 'Native pixel checks require the recorded reference OS')"
           VERSION=$(node -p "require('./packages/material3/fixtures/references/typography/manifest.json').browser.replace('Chrome ', '')")
           ARCHIVE="$RUNNER_TEMP/material3-chrome.zip"
           curl --fail --silent --show-error --location --retry 3 \
