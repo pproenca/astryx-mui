@@ -11,7 +11,7 @@ import {tokenReady, tokenCompletionFormula} from '../token-completion.mjs';
 import {assertCommittedEvidence} from '../evidence.mjs';
 import {clean} from '../workflow.mjs';
 import {hash} from '../workbook.mjs';
-import {retireCheck} from '../audit.mjs';
+import {retireCheck, hasHarnessDependency} from '../audit.mjs';
 import {buildRevision} from '../../../packages/material3/scripts/build-revision.mjs';
 
 async function withRepo(action) {
@@ -166,4 +166,66 @@ test('an archive without explicit valid provenance fails closed', async () => {
   } finally {
     await fs.rm(root, {recursive: true, force: true});
   }
+});
+
+test('retirement retains historical provenance but rejects executable or data dependencies', () => {
+  const trace =
+    'packages/material3/fixtures/references/motion/traces/standard-default-spatial.json';
+  const command =
+    'node internal/material3-migration/sources/motion/upstream/capture-compose-springs.mjs';
+  const data = {
+    producer: {kind: 'upstream', commit: 'a'.repeat(40), command},
+    samples: [],
+  };
+  assert.equal(hasHarnessDependency(trace, JSON.stringify(data)), false);
+  assert.equal(
+    hasHarnessDependency(
+      trace,
+      JSON.stringify({
+        ...data,
+        input: 'internal/material3-migration/missing.json',
+      }),
+    ),
+    true,
+  );
+  assert.equal(
+    hasHarnessDependency(
+      'packages/material3/package.json',
+      JSON.stringify({scripts: {test: command}}),
+    ),
+    true,
+  );
+  assert.equal(
+    hasHarnessDependency(
+      'packages/material3/src/index.ts',
+      "import 'internal/material3-migration/runtime.mjs'",
+    ),
+    true,
+  );
+  const foundation = 'packages/material3/src/foundationSource.json';
+  const sourceFiles = {
+    'internal/material3-migration/sources/color.json': 'b'.repeat(64),
+  };
+  assert.equal(
+    hasHarnessDependency(foundation, JSON.stringify({sourceFiles})),
+    false,
+  );
+  assert.equal(
+    hasHarnessDependency(
+      foundation,
+      JSON.stringify({sourceFiles, runtime: '.m3-receipts/data.json'}),
+    ),
+    true,
+  );
+  assert.equal(
+    hasHarnessDependency(
+      foundation,
+      JSON.stringify({
+        sourceFiles: {
+          'internal/material3-migration/sources/color.json': 'not-a-hash',
+        },
+      }),
+    ),
+    true,
+  );
 });

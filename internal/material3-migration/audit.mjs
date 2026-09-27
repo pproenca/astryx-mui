@@ -12,6 +12,36 @@ import {scopeMembers} from './upgrade.mjs';
 import {tokenReady} from './token-completion.mjs';
 const run = promisify(execFile);
 
+export function hasHarnessDependency(file, text) {
+  // These two permanent data formats retain historical provenance, not inputs
+  // opened or executed at runtime. Keep the metadata intact in the archive.
+  if (file === 'packages/material3/src/foundationSource.json') {
+    const data = JSON.parse(text);
+    for (const [source, sha] of Object.entries(data.sourceFiles || {}))
+      if (
+        source.startsWith('internal/material3-migration/sources/') &&
+        /^[a-f0-9]{64}$/.test(sha)
+      )
+        delete data.sourceFiles[source];
+    text = JSON.stringify(data);
+  } else if (
+    /^packages\/material3\/fixtures\/references\/motion\/traces\/[a-z-]+\.json$/.test(
+      file,
+    )
+  ) {
+    const data = JSON.parse(text);
+    if (
+      data.producer?.kind === 'upstream' &&
+      /^[a-f0-9]{40}$/.test(data.producer.commit || '') &&
+      data.producer.command ===
+        'node internal/material3-migration/sources/motion/upstream/capture-compose-springs.mjs'
+    )
+      delete data.producer.command;
+    text = JSON.stringify(data);
+  }
+  return /internal\/material3-migration|\.m3-receipts/.test(text);
+}
+
 export function coveragePlan(wb, policy, index) {
   const blockers = [],
     mappings = table(wb, sheets.components),
@@ -258,7 +288,7 @@ export async function retireCheck(repo, policy, policyHash, stateDir) {
       /\.(?:[cm]?[jt]sx?|json|css)$/.test(f),
     )) {
       const text = await fs.readFile(path.join(checkout, file), 'utf8');
-      if (/internal\/material3-migration|\.m3-receipts/.test(text))
+      if (hasHarnessDependency(file, text))
         throw new Error(
           `Product source depends on disposable migration artifacts: ${file}`,
         );
