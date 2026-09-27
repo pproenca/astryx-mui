@@ -29,6 +29,8 @@ for (const scenario of manifest.scenarios) {
 }
 for (const name of [
   'compose-default-spatial.mp4',
+  'ripple-compose-press.mp4',
+  'ripple-compose-state.mp4',
   'native-motion.webm',
   'Roboto-wdth-wght.ttf',
   'OFL.txt',

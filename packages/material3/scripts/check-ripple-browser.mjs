@@ -58,17 +58,47 @@ try {
   assert.deepEqual(geometry.timings.sort((a,b) => a-b), [75, 225, 225]);
   assert.ok(Math.abs(geometry.circleWidth - 132) < 2);
   await page.mouse.up();
-  await page.waitForTimeout(410);
+  await ripple.locator(':scope > span:nth-child(2) > span').waitFor({
+    state: 'detached',
+    timeout: 2000,
+  });
   assert.equal(await ripple.locator(':scope > span:nth-child(2) > span').count(), 0);
   assert.equal(await page.locator('#activation-count').textContent(), '1');
 
   await page.locator('#drag-toggle').check();
   assert.equal(await ripple.getAttribute('data-md-ripple-state'), 'drag');
+  const dragLayer = await ripple.evaluate(node => {
+    const animation = node.children[0].getAnimations()[0];
+    return animation.effect.getTiming().duration;
+  });
+  assert.equal(dragLayer, 45);
+  await page.waitForTimeout(60);
+  assert.equal(await ripple.evaluate(node => getComputedStyle(node.children[0]).opacity), '0.16');
   await page.locator('#disabled-toggle').check();
   assert.equal(await ripple.getAttribute('data-md-ripple-state'), 'rest');
   await bounded.dispatchEvent('pointerdown', {pointerId: 8, clientX: box.x + 32, clientY: box.y + 26});
   assert.equal(await ripple.locator(':scope > span:nth-child(2) > span').count(), 0);
   await page.locator('#disabled-toggle').uncheck();
+  assert.equal(await ripple.getAttribute('data-md-ripple-state'), 'drag');
+  await page.locator('#drag-toggle').uncheck();
+  assert.equal(await ripple.getAttribute('data-md-ripple-state'), 'rest');
+
+  await bounded.dispatchEvent('pointerdown', {pointerId: 9, clientX: box.x + 40, clientY: box.y + 30});
+  assert.equal(await ripple.locator(':scope > span:nth-child(2) > span').count(), 1);
+  await page.locator('body').dispatchEvent('pointercancel', {pointerId: 9});
+  assert.equal(await ripple.locator(':scope > span:nth-child(2) > span').count(), 0);
+
+  await bounded.dispatchEvent('pointerdown', {pointerId: 10, clientX: box.x + 40, clientY: box.y + 30});
+  await page.waitForTimeout(50);
+  await page.locator('body').dispatchEvent('pointerup', {pointerId: 10});
+  assert.equal(await ripple.locator(':scope > span:nth-child(2) > span').count(), 1);
+  assert.equal(await ripple.evaluate(node => getComputedStyle(node.children[1].children[0].children[0]).opacity), '0.1');
+  await bounded.dispatchEvent('pointerdown', {pointerId: 11, clientX: box.x + 180, clientY: box.y + 62});
+  assert.equal(await ripple.locator(':scope > span:nth-child(2) > span').count(), 2);
+  await page.locator('body').dispatchEvent('pointerup', {pointerId: 10});
+  assert.equal(await ripple.locator(':scope > span:nth-child(2) > span').count(), 2);
+  await page.locator('body').dispatchEvent('pointercancel', {pointerId: 11});
+  assert.equal(await ripple.locator(':scope > span:nth-child(2) > span').count(), 0);
 
   const unbounded = page.getByTestId('unbounded-ripple');
   assert.equal(await unbounded.evaluate(node => getComputedStyle(node).overflow), 'visible');
@@ -91,8 +121,18 @@ try {
   await page.waitForTimeout(0);
   assert.equal(await proxy.locator(':scope > span:nth-child(2) > span').count(), 0);
 
+  await bounded.focus();
+  await page.keyboard.down('Space');
+  assert.equal(await ripple.locator(':scope > span:nth-child(2) > span').count(), 1);
+  await page.keyboard.up('Space');
+  assert.equal(await page.locator('#activation-count').textContent(), '3');
+
+  await page.locator('#direction').selectOption('rtl');
+  assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
+
   await page.emulateMedia({reducedMotion: 'reduce'});
-  await page.mouse.move(box.x + 36, box.y + 30);
+  const rtlBox = await bounded.boundingBox();
+  await page.mouse.move(rtlBox.x + 36, rtlBox.y + 30);
   await page.mouse.down();
   const reduced = await ripple.evaluate(node => {
     const moving = node.children[1].children[0];
@@ -101,6 +141,15 @@ try {
   });
   assert.deepEqual(reduced, [0, 0, 0]);
   await page.mouse.up();
+  await page.emulateMedia({forcedColors: 'active'});
+  await page.locator('#drag-toggle').check();
+  await page.waitForTimeout(60);
+  const forced = await ripple.evaluate(node => ({
+    color: getComputedStyle(node.children[0]).backgroundColor,
+    adjustment: getComputedStyle(node.children[0]).forcedColorAdjust,
+  }));
+  assert.equal(forced.adjustment, 'none');
+  assert.notEqual(forced.color, 'rgba(0, 0, 0, 0)');
   assert.deepEqual(errors, []);
   await page.close();
 } finally {
