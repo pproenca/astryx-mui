@@ -1,0 +1,976 @@
+{
+  "schemaVersion": 1,
+  "authority": "draft-compose-first",
+  "status": "Draft source selection. Native preparation remains blocked until source QA and Ripple-specific browser interpolation limits are approved.",
+  "baselineId": "material3-expressive-compose-first-2026-09-26",
+  "web": {
+    "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+  },
+  "compose": {
+    "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "inventory": "internal/material3-migration/sources/compose-inventory.json",
+    "tests": [
+      {
+        "id": "RippleAnimationTest.testStartRadius",
+        "source": "compose/material3/material3-ripple/src/androidHostTest/kotlin/androidx/compose/material3/ripple/RippleAnimationTest.kt"
+      },
+      {
+        "id": "RippleAnimationTest.testEndRadiusBounded",
+        "source": "compose/material3/material3-ripple/src/androidHostTest/kotlin/androidx/compose/material3/ripple/RippleAnimationTest.kt"
+      },
+      {
+        "id": "RippleAnimationTest.testEndRadiusUnbounded",
+        "source": "compose/material3/material3-ripple/src/androidHostTest/kotlin/androidx/compose/material3/ripple/RippleAnimationTest.kt"
+      }
+    ],
+    "reason": "Pinned animation source and source-value browser render; native raster comparison remains pending.",
+    "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+  },
+  "figma": {
+    "sha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+    "inventory": "internal/material3-migration/sources/figma-kit-inventory.json"
+  },
+  "guidance": [
+    {
+      "url": "https://m3.material.io/foundations/interaction/states/state-layers",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/state-layers.md"
+    },
+    {
+      "url": "https://m3.material.io/styles/motion/overview/how-it-works",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/motion.md"
+    }
+  ],
+  "decisions": [
+    {
+      "dimension": "ripple-press-indication",
+      "concern": "design",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "Pinned Compose Ripple covers bounded and unbounded geometry with the 10% pressed state layer.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    },
+    {
+      "dimension": "ripple-press-motion",
+      "concern": "motion",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "Pinned Compose press tweens govern 75ms alpha, 225ms radius and center, 150ms exit, and finish interruption.",
+      "evidence": "internal/material3-migration/sources/ripple-reference/README.md"
+    },
+    {
+      "dimension": "browser-semantics",
+      "concern": "browser",
+      "chosen": "web",
+      "figmaSpecified": false,
+      "reason": "Native browser pointer and keyboard events govern event delivery to the visual indication.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "ripple-light-0000",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0000.png",
+      "baselineSha256": "bee5c6a127fe9b01799b22a15ada7f58ad1ee10ec0ee105b4b24ecda5fa2860f",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 0
+    },
+    {
+      "id": "ripple-light-0020",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0020.png",
+      "baselineSha256": "2325f1dddabe24523836024bcee1cbef46d6497e5c86c417ce34f1cace6764b7",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 20
+    },
+    {
+      "id": "ripple-light-0050",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0050.png",
+      "baselineSha256": "215d1a7955ff82de8dc49870302be41a154c0cf79691fc5d2a8a94c4f88e5351",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 50
+    },
+    {
+      "id": "ripple-light-0075",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0075.png",
+      "baselineSha256": "5470c87f3c8c29a65e758eeb74c4c86f90a50eda230a99a7276a1cb42179de2e",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 75
+    },
+    {
+      "id": "ripple-light-0120",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0120.png",
+      "baselineSha256": "456f2b00925835617bb473048102ea562b35c37f832b46d904e2b12eed43cb09",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 120
+    },
+    {
+      "id": "ripple-light-0160",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0160.png",
+      "baselineSha256": "42b5755bb40912e0de2a070865445fe2a47e2cfa2658502cd2c1bd592c1705fa",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 160
+    },
+    {
+      "id": "ripple-light-0180",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0180.png",
+      "baselineSha256": "4af003d5677b69049c42c8a6200ac4bad0c5bae47bb1e24c07e2bd13983d99dd",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 180
+    },
+    {
+      "id": "ripple-light-0260",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0260.png",
+      "baselineSha256": "78b2a55149191fbb4ccc6cd87fbc92c2a219f8f757b0349c96ff02b8b291d691",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 260
+    },
+    {
+      "id": "ripple-light-0300",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0300.png",
+      "baselineSha256": "084cc8cafe288102f33d00268e925224982be644ccdbeaa3b57b95589026793b",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 300
+    },
+    {
+      "id": "ripple-light-0320",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0320.png",
+      "baselineSha256": "00480ce29b9c0c599ac44021d49d2a7be813cf7bcd537a62f7cf1d23953e6b54",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 320
+    },
+    {
+      "id": "ripple-light-0385",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0385.png",
+      "baselineSha256": "a7af8894d7161bbf681e84ca9483afcacb0808a292179d7c6b75b4a993233c8e",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 385
+    },
+    {
+      "id": "ripple-light-0525",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0525.png",
+      "baselineSha256": "b550680e8b6bc71333925dac8ddcecdd3a51131b07826bd65e97e108f5598099",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 525
+    },
+    {
+      "id": "ripple-light-0535",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0535.png",
+      "baselineSha256": "14733136ecb023fa9fba36289a3d560feae789a24c6440ba2b9f93f756649ebd",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 535
+    },
+    {
+      "id": "ripple-light-0675",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-0675.png",
+      "baselineSha256": "9dc5bea03c22c31091cf3d92eb4158893d77c568c3eee8694071445fc496e274",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 675
+    },
+    {
+      "id": "ripple-light-reduced-press",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose final press geometry with immediate browser reduced-motion adaptation; Compose does not specify that fallback.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-reduced-press.png",
+      "baselineSha256": "92b3bb191e0ef580bd3601b571e76df34f0fa88e295cf5f6278208abd3481c18",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "reduced-pressed",
+        "reducedMotion": "reduce"
+      }
+    },
+    {
+      "id": "ripple-light-reduced-release",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose final press geometry with immediate browser reduced-motion adaptation; Compose does not specify that fallback.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-light-reduced-release.png",
+      "baselineSha256": "b4a12f6848aa388d1c4a9d73f3a7433d77b15211ec9eae7fefe4e3d592c2fbda",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "reduced-released",
+        "reducedMotion": "reduce"
+      }
+    },
+    {
+      "id": "ripple-dark-0000",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0000.png",
+      "baselineSha256": "cfc01b4a721b35b219d8455fd18e6a241fd2d474ea3b2dec2fe459d4d4913305",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 0
+    },
+    {
+      "id": "ripple-dark-0020",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0020.png",
+      "baselineSha256": "3d7e28e1d952564fe90a9a78f3dff8b0e022e12fb54606f953c0b652b4cc28ab",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 20
+    },
+    {
+      "id": "ripple-dark-0050",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0050.png",
+      "baselineSha256": "315ae34264367e6ce1bdd53af2d72ac18649c495926cf92f7de9b84b127808a9",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 50
+    },
+    {
+      "id": "ripple-dark-0075",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0075.png",
+      "baselineSha256": "8265e0e017a66fbd427de2e38daf99868639891d863923a1ca7bc495e3261a92",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 75
+    },
+    {
+      "id": "ripple-dark-0120",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0120.png",
+      "baselineSha256": "b3cba3c2ec92fcf69a441f04d3b8d1f4a3be245d9b39ddd9c0013dd98777c41f",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 120
+    },
+    {
+      "id": "ripple-dark-0160",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0160.png",
+      "baselineSha256": "ff910ecc0e8daef283aedb976d207c2743230631b20e9af101c81a73ea81369d",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 160
+    },
+    {
+      "id": "ripple-dark-0180",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0180.png",
+      "baselineSha256": "ca226c614bd48ff0d454f75231f68182f39aa1fb18cb87b6691a071445d6e27d",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 180
+    },
+    {
+      "id": "ripple-dark-0260",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0260.png",
+      "baselineSha256": "9c8fae7f40bd7316f2dcb33f9a4f51348d98a322635a0d3e9ae8e2d0adabe96a",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 260
+    },
+    {
+      "id": "ripple-dark-0300",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0300.png",
+      "baselineSha256": "0eee0484aa30bb1eb273da29385fa6e4ac10bb0686095d15557cd26ea7f34f54",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 300
+    },
+    {
+      "id": "ripple-dark-0320",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0320.png",
+      "baselineSha256": "0dd021ee448416afd2982dbfcb1d1e5f85f1932392ed54fed237a5db776adf98",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 320
+    },
+    {
+      "id": "ripple-dark-0385",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0385.png",
+      "baselineSha256": "92e7a3989a6c99907e78f62f3f45fd4fbabc23a167e6f39f989a95937ff4fec3",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 385
+    },
+    {
+      "id": "ripple-dark-0525",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0525.png",
+      "baselineSha256": "724fa548004fa1abf3ffbe039a3730cc025edffbe1222541965fb6a0d2d835fd",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 525
+    },
+    {
+      "id": "ripple-dark-0535",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0535.png",
+      "baselineSha256": "bbecd38fefd58e7b5fe45afae75bb7dd6f5062ba3f2e6c7c34853ee59e3e46ed",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 535
+    },
+    {
+      "id": "ripple-dark-0675",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose RippleAnimation.kt timings and geometry, rendered as a browser source-value projection.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-0675.png",
+      "baselineSha256": "02e11403daf0a4dbe19967c944f804dcac11c69d5a2fe06d76aab7c1ff7b2a49",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "early-release-overlapping-presses"
+      },
+      "timeMs": 675
+    },
+    {
+      "id": "ripple-dark-reduced-press",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose final press geometry with immediate browser reduced-motion adaptation; Compose does not specify that fallback.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-reduced-press.png",
+      "baselineSha256": "7d83488e6f6dd9f2fa66377790b4a6a0776c69c03793472f95f91c4b391e7fc5",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "reduced-pressed",
+        "reducedMotion": "reduce"
+      }
+    },
+    {
+      "id": "ripple-dark-reduced-release",
+      "dimensions": ["ripple-press-indication", "ripple-press-motion"],
+      "sourceReference": "Pinned Compose final press geometry with immediate browser reduced-motion adaptation; Compose does not specify that fallback.",
+      "baseline": "internal/material3-migration/sources/ripple-reference/ripple-dark-reduced-release.png",
+      "baselineSha256": "f2e3245e0b61a40286718d65d49f9d19f0bd0b33c618765db6196eca14fa926d",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "220 x 92 bounded and unbounded Ripple press",
+        "state": "reduced-released",
+        "reducedMotion": "reduce"
+      }
+    }
+  ],
+  "motion": {
+    "applicable": true,
+    "reference": "internal/material3-migration/sources/ripple-reference/compose-ripple.mp4",
+    "sha256": "80a47f9a4c08fc19d6d846f60ea8f1a7b0d2f20e9403fdd1b2f255b06252f4ef",
+    "evidence": "internal/material3-migration/sources/ripple-reference/README.md",
+    "numeric": {
+      "applicable": true,
+      "status": "Pending Ripple-specific pixel and tween interpolation tolerance approval",
+      "traces": [
+        {
+          "id": "compose-ripple-source-values",
+          "reference": "internal/material3-migration/sources/ripple-reference/manifest.json",
+          "unit": "alpha-radius-px-center-px",
+          "approvalReference": null,
+          "positionTolerance": null,
+          "velocityTolerance": null,
+          "settlingToleranceMs": null
+        }
+      ]
+    }
+  },
+  "performance": [
+    {
+      "id": "desktop-chrome-macos-reference",
+      "approvalReference": "human:pproenca:2026-09-26:M3-NAT-002-foundation-limits",
+      "status": "approved after native Chrome measurement and owner review on 2026-09-26",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "device": "macOS desktop reference",
+        "refreshRateHz": 60
+      },
+      "maxInputLatencyMs": 100,
+      "frameBudgetMs": 20,
+      "maxLongFrameRatio": 0.05,
+      "minInputSamples": 30,
+      "minFrameSamples": 300
+    }
+  ]
+}
