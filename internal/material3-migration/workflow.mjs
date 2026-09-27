@@ -16,7 +16,12 @@ import {
   requireMappings,
 } from './model.mjs';
 import {hash} from './workbook.mjs';
-import {fileAt, validateEvidence} from './evidence.mjs';
+import {
+  fileAt,
+  validateEvidence,
+  assertCommittedEvidence,
+} from './evidence.mjs';
+import {tokenReady} from './token-completion.mjs';
 import {prepareTask, preparationStatus} from './preparation.mjs';
 import {transition, flowMetrics, excelTime} from './flow.mjs';
 import {loadCompose, composeBrief} from './compose.mjs';
@@ -44,9 +49,9 @@ export function exec(repo, command, args, timeout = 120000) {
     );
   return output.stdout.trim();
 }
-function clean(repo) {
-  if (exec(repo, 'git', ['status', '--porcelain', '--untracked-files=no']))
-    throw new Error('Commit tracked changes before verification');
+export function clean(repo) {
+  if (exec(repo, 'git', ['status', '--porcelain', '--untracked-files=all']))
+    throw new Error('Commit tracked and untracked inputs before verification');
 }
 function checkPolicy(wb, p) {
   const m = meta(wb);
@@ -402,6 +407,13 @@ export async function dispatch(wb, command, opts) {
       )) {
         if (row['Native QA'] !== 'Approved')
           throw new Error('Native QA changed after approval');
+        if (
+          name === sheets.tokens &&
+          !tokenReady({...row, Merged: 'Yes'}, p.value.strategyId, true)
+        )
+          throw new Error(
+            `Incomplete token mapping at closure: ${row['Map ID']}`,
+          );
         write(wb, name, row._row, {Merged: 'Yes'});
       }
     transition(wb, task, 'Closed', {
@@ -558,6 +570,7 @@ export async function dispatch(wb, command, opts) {
   if (exec(repo, 'git', ['rev-parse', 'HEAD']) !== revision)
     throw new Error('Code revision changed during verification');
   clean(repo);
+  await assertCommittedEvidence(repo, revision, fingerprints);
   if (command === 'task verify') {
     const receiptName = `${opts.id}-${revision}.json`;
     await fs.mkdir(path.join(opts.stateDir, 'files'), {recursive: true});

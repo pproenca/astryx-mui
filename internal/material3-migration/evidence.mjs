@@ -8,12 +8,57 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {isDeepStrictEqual} from 'node:util';
+import {execFileSync} from 'node:child_process';
+import {createHash} from 'node:crypto';
 import {hash} from './workbook.mjs';
 import {compare} from './compare.mjs';
 import {compareTrace, measurePerformance} from './measurements.mjs';
 const required = (condition, message) => {
   if (!condition) throw new Error(message);
 };
+export async function assertCommittedEvidence(repo, revision, fingerprints) {
+  const tree = execFileSync(
+    'git',
+    ['ls-tree', '-rz', '--full-tree', revision],
+    {
+      cwd: repo,
+      encoding: 'utf8',
+      maxBuffer: 32 * 1024 * 1024,
+    },
+  );
+  const blobs = new Map(
+    tree
+      .split('\0')
+      .filter(Boolean)
+      .map(entry => {
+        const [metadata, file] = [
+          entry.slice(0, entry.indexOf('\t')),
+          entry.slice(entry.indexOf('\t') + 1),
+        ];
+        return [file, metadata.split(' ')];
+      }),
+  );
+  for (const [relative, digest] of Object.entries(fingerprints)) {
+    const [mode, type, oid] = blobs.get(relative) || [];
+    required(
+      type === 'blob' && ['100644', '100755'].includes(mode),
+      `Evidence is not a committed regular file: ${relative}`,
+    );
+    const bytes = await fs.readFile(await fileAt(repo, relative));
+    required(
+      hash(bytes) === digest,
+      `Evidence changed during verification: ${relative}`,
+    );
+    const gitHash = createHash(oid.length === 40 ? 'sha1' : 'sha256')
+      .update(`blob ${bytes.length}\0`)
+      .update(bytes)
+      .digest('hex');
+    required(
+      gitHash === oid,
+      `Evidence differs from verified commit: ${relative}`,
+    );
+  }
+}
 export async function fileAt(repo, relative) {
   required(
     typeof relative === 'string' &&

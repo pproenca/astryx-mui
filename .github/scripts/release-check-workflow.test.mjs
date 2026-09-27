@@ -27,6 +27,7 @@ const releaseJobs = [
   'pr-a11y',
   'pr-rtl-shard',
   'pr-rtl',
+  'material3-native',
   'release-check',
 ];
 const fullOutputs = {
@@ -241,6 +242,7 @@ describe('exact current main request and completion', () => {
       'pr-visual',
       'pr-a11y',
       'pr-rtl',
+      'material3-native',
     ]);
   });
 

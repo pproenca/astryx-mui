@@ -6,6 +6,7 @@
  * @position Temporary migration domain; no product package imports this module.
  */
 import {sourcePlan} from './routing.mjs';
+import {tokenReady} from './token-completion.mjs';
 export const sheets = {
   tasks: 'Tasks',
   edges: 'Dependencies',
@@ -285,12 +286,7 @@ export function requireMappings(wb, task, policy, receipt) {
   }
   for (const id of tokenIds) {
     const t = tokens.find(t => t['Map ID'] === id);
-    if (
-      !t ||
-      t.Contract !== policy.strategyId ||
-      t.Verification !== 'Pass' ||
-      !t.Evidence
-    )
+    if (!tokenReady(t, policy.strategyId))
       throw new Error(`Missing native token evidence ${id}`);
   }
   return {

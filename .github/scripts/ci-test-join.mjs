@@ -14,6 +14,7 @@ const requiredSuccess = [
   ['test-ui', process.env.TEST_UI_RESULT],
   ['test-node', process.env.TEST_NODE_RESULT],
   ['registry-contract', process.env.REGISTRY_CONTRACT_RESULT],
+  ['material3-native', process.env.MATERIAL3_NATIVE_RESULT],
 ];
 
 function fail(message) {

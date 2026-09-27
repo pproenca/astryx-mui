@@ -10,10 +10,22 @@ import {workbook} from '../workbook.mjs';
 import {sheets, table, write} from '../model.mjs';
 import {material3TokenValues} from '../../../packages/material3/dist/index.js';
 
-const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
-const revision = execFileSync('git', ['rev-parse', 'HEAD'], {cwd: repo, encoding: 'utf8'}).trim();
+const repo = path.resolve(
+  path.dirname(fileURLToPath(import.meta.url)),
+  '../../..',
+);
+const revision = execFileSync('git', ['rev-parse', 'HEAD'], {
+  cwd: repo,
+  encoding: 'utf8',
+}).trim();
 const names = Object.keys(material3TokenValues('light')).filter(name =>
-  ['--md-ref-typeface-', '--md-sys-color-', '--md-sys-typescale-', '--md-sys-shape-'].some(prefix => name.startsWith(prefix)));
+  [
+    '--md-ref-typeface-',
+    '--md-sys-color-',
+    '--md-sys-typescale-',
+    '--md-sys-shape-',
+  ].some(prefix => name.startsWith(prefix)),
+);
 assert.equal(names.length, 123);
 const nativeSource = 'packages/material3/src/foundationSource.json';
 const coverage = await workbook(process.env.M3_WORKBOOK, true, wb => {
@@ -26,11 +38,19 @@ const coverage = await workbook(process.env.M3_WORKBOOK, true, wb => {
     assert.ok(row['Map ID'].startsWith('TM-'));
     assert.notEqual(row.Merged, 'Yes');
     assert.notEqual(row['Native QA'], 'Approved');
-    const kind = name.startsWith('--md-sys-color-') ? '35 schemes × 49 role Chrome captures' :
-      name.startsWith('--md-sys-typescale-') || name.startsWith('--md-ref-typeface-') ? '30 type styles and licensed Roboto Chrome captures' :
-      '10 corners and 35 Expressive shapes Chrome captures';
-    const prior = String(row.Evidence || '').replace(/^M3-NAT-002 @ [a-f0-9]{40}; .*?; prior: /, '');
+    const kind = name.startsWith('--md-sys-color-')
+      ? '35 schemes × 49 role Chrome captures'
+      : name.startsWith('--md-sys-typescale-') ||
+          name.startsWith('--md-ref-typeface-')
+        ? '30 type styles and licensed Roboto Chrome captures'
+        : '10 corners and 35 Expressive shapes Chrome captures';
+    const prior = String(row.Evidence || '').replace(
+      /^M3-NAT-002 @ [a-f0-9]{40}; .*?; prior: /,
+      '',
+    );
     write(wb, sheets.tokens, row._row, {
+      'Astryx candidate': name,
+      Relationship: 'Confirmed',
       Verification: 'Pass',
       Evidence: `M3-NAT-002 @ ${revision}; ${nativeSource}; ${kind}; 59 exact RGBA comparisons; prior: ${prior}`,
       'Astryx source': nativeSource,
@@ -39,6 +59,14 @@ const coverage = await workbook(process.env.M3_WORKBOOK, true, wb => {
   });
   return {changed: true, data: selected};
 });
-const output = path.join(repo, 'internal/material3-migration/actual/M3-NAT-002/token-coverage.json');
-await fs.writeFile(output, `${JSON.stringify({schemaVersion: 1, taskId: 'M3-NAT-002', evidenceRevision: revision, tokens: coverage.data}, null, 2)}\n`);
-console.log(`Recorded ${coverage.data.length} canonical native token rows in the sole workbook.`);
+const output = path.join(
+  repo,
+  'internal/material3-migration/actual/M3-NAT-002/token-coverage.json',
+);
+await fs.writeFile(
+  output,
+  `${JSON.stringify({schemaVersion: 1, taskId: 'M3-NAT-002', evidenceRevision: revision, tokens: coverage.data}, null, 2)}\n`,
+);
+console.log(
+  `Recorded ${coverage.data.length} canonical native token rows in the sole workbook.`,
+);

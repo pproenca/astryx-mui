@@ -526,11 +526,39 @@ jobs:
           ASTRYX_SHADCN_USE_PUBLISHED_PACKAGES: '1'
         run: node internal/shadcn-registry/verify-full-catalog.mjs
 
-  # Historical required check name. The Vitest lanes, Build test owner, and
+  # Permanent native browser checks must survive the disposable migration harness.
+  material3-native:
+    needs: [check-scope]
+    if: ${{ (github.event_name != 'workflow_dispatch' || inputs.operation == 'release-check') && always() && !cancelled() && needs.check-scope.outputs.spec_only != 'true' }}
+    runs-on: macos-15
+    permissions:
+      contents: read
+    steps:
+      - name: Require successful scope classification
+        if: needs.check-scope.result != 'success'
+        run: exit 1
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.sha }}
+      - uses: ./.github/actions/setup
+      - name: Install Chrome for the native browser contract
+        run: pnpm exec playwright install chrome
+      - name: Build and test the native package without migration tooling
+        run: pnpm -F @astryxdesign/material3 test
+
+  # Historical required check name. The Vitest lanes, native browser checks, Build test owner, and
   # public registry contract always report or explicitly skip, so this join
   # projects their combined result without creating another surface lane.
   test:
-    needs: [check-scope, test-ui, test-node, test-build, registry-contract]
+    needs:
+      [
+        check-scope,
+        test-ui,
+        test-node,
+        test-build,
+        registry-contract,
+        material3-native,
+      ]
     if: ${{ github.event_name != 'workflow_dispatch' && always() && !cancelled() && needs.check-scope.outputs.spec_only != 'true' }}
     runs-on: ubuntu-slim
     permissions:
@@ -548,6 +576,7 @@ jobs:
           TEST_NODE_RESULT: ${{ needs.test-node.result }}
           TEST_BUILD_RESULT: ${{ needs.test-build.result }}
           REGISTRY_CONTRACT_RESULT: ${{ needs.registry-contract.result }}
+          MATERIAL3_NATIVE_RESULT: ${{ needs.material3-native.result }}
         run: node .github/scripts/ci-test-join.mjs
 
   # Build storybook + typecheck + analyze components (parallel with test and
@@ -1744,6 +1773,7 @@ jobs:
         pr-visual,
         pr-a11y,
         pr-rtl,
+        material3-native,
       ]
     if: ${{ always() && github.event_name == 'workflow_dispatch' && inputs.operation == 'release-check' }}
     runs-on: ubuntu-slim
@@ -1757,7 +1787,7 @@ jobs:
         with:
           script: |
             const needs = JSON.parse(process.env.RELEASE_NEEDS);
-            for (const name of ['check-scope', 'check-components', 'build-storybook', 'pr-visual', 'pr-a11y', 'pr-rtl']) {
+            for (const name of ['check-scope', 'check-components', 'build-storybook', 'pr-visual', 'pr-a11y', 'pr-rtl', 'material3-native']) {
               if (needs[name]?.result !== 'success') {
                 throw new Error(`Required release job ${name} did not succeed: ${needs[name]?.result}`);
               }

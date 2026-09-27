@@ -9,6 +9,7 @@ import {promisify} from 'node:util';
 import {table, meta, sheets, ids} from './model.mjs';
 import {digest, loadCompose} from './compose.mjs';
 import {scopeMembers} from './upgrade.mjs';
+import {tokenReady} from './token-completion.mjs';
 const run = promisify(execFile);
 
 export function coveragePlan(wb, policy, index) {
@@ -169,7 +170,10 @@ export async function auditCoverage(wb, policy, repo) {
                 ),
             ),
       );
-      if (!matched.length || matched.some(t => t['Fully migrated?'] !== 'Yes'))
+      if (
+        !matched.length ||
+        matched.some(t => !tokenReady(t, policy.strategyId, true))
+      )
         blockers.push(
           `${m['Map ID']}: required token mappings are incomplete.`,
         );
@@ -187,6 +191,13 @@ export async function auditCoverage(wb, policy, repo) {
         `${m['Map ID']}: classify the Astryx-only mapping with an approved reason.`,
       );
   }
+  for (const token of tokens.filter(
+    t => t.Contract === policy.strategyId && t.Merged === 'Yes',
+  ))
+    if (!tokenReady(token, policy.strategyId, true))
+      blockers.push(
+        `${token['Map ID']}: merged token does not meet completion requirements.`,
+      );
   return {
     complete: blockers.length === 0,
     baseline: policy.baselineId,
@@ -195,10 +206,11 @@ export async function auditCoverage(wb, policy, repo) {
   };
 }
 export async function retireCheck(repo, policy, policyHash, stateDir) {
-  const exec = async (c, args, cwd = repo) =>
+  const exec = async (c, args, cwd = repo, env = process.env) =>
     (
       await run(c, args, {
         cwd,
+        env,
         encoding: 'utf8',
         maxBuffer: 16 * 1024 * 1024,
         timeout: 600000,
@@ -255,7 +267,10 @@ export async function retireCheck(repo, policy, policyHash, stateDir) {
     await fs.mkdir(stateDir, {recursive: true});
     for (const [command, ...args] of policy.retirementCommands) {
       const started = Date.now(),
-        output = await exec(command, args, checkout);
+        output = await exec(command, args, checkout, {
+          ...process.env,
+          ASTRYX_BUILD_REVISION: revision,
+        });
       const log = `retirement-${revision}-${commands.length + 1}.log`;
       await fs.writeFile(path.join(stateDir, log), output);
       commands.push({

@@ -1,9 +1,9 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Built native package, package-owned comparisons, and current Git revision. @output Standalone native gallery in dist/gallery. @position Product documentation build; no migration-harness dependency. */
+/** @input Built native package, package-owned comparisons, and Git/archive revision. @output Standalone native gallery in dist/gallery. @position Product documentation build; no migration-harness dependency. */
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import {execFileSync} from 'node:child_process';
+import {buildRevision} from './build-revision.mjs';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {build} from 'esbuild';
@@ -97,16 +97,7 @@ for (const entry of await fs.readdir(dist, {withFileTypes: true})) {
     path.join(gallery, 'dist', entry.name),
   );
 }
-const revision = execFileSync('git', ['rev-parse', 'HEAD'], {
-  cwd: repo,
-  encoding: 'utf8',
-}).trim();
-const dirty = Boolean(
-  execFileSync('git', ['status', '--porcelain'], {
-    cwd: repo,
-    encoding: 'utf8',
-  }).trim(),
-);
+const {revision, dirty} = buildRevision(repo);
 await fs.writeFile(
   path.join(gallery, 'revision.json'),
   `${JSON.stringify({revision, dirty})}\n`,

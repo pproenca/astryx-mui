@@ -4,6 +4,8 @@
 
 import {execFileSync} from 'node:child_process';
 import path from 'node:path';
+import fs from 'node:fs';
+import yaml from 'yaml';
 
 import {describe, expect, it} from 'vitest';
 
@@ -17,6 +19,7 @@ const broad = {
   TEST_NODE_RESULT: 'success',
   TEST_BUILD_RESULT: 'success',
   REGISTRY_CONTRACT_RESULT: 'success',
+  MATERIAL3_NATIVE_RESULT: 'success',
 };
 
 function run(overrides = {}) {
@@ -36,6 +39,31 @@ function run(overrides = {}) {
 }
 
 describe('pull-request test join', () => {
+  it('routes the permanent native browser command into PR and release gates', () => {
+    const workflow = yaml.parse(
+      fs.readFileSync(
+        path.join(import.meta.dirname, '../workflows/ci.yml'),
+        'utf8',
+      ),
+    );
+    const native = workflow.jobs['material3-native'];
+    expect(native['continue-on-error']).not.toBe(true);
+    expect(
+      native.steps.some(
+        step =>
+          step.run === 'pnpm -F @astryxdesign/material3 test' &&
+          !step['continue-on-error'],
+      ),
+    ).toBe(true);
+    expect(workflow.jobs.test.needs).toContain('material3-native');
+    const join = workflow.jobs.test.steps.find(step =>
+      step.run?.includes('ci-test-join.mjs'),
+    );
+    expect(join.env.MATERIAL3_NATIVE_RESULT).toBe(
+      '${{ needs.material3-native.result }}',
+    );
+    expect(workflow.jobs['release-check'].needs).toContain('material3-native');
+  });
   it('requires every owner on broad scope', () => {
     expect(run()).toMatchObject({status: 0});
     for (const [name, value] of [
@@ -43,6 +71,9 @@ describe('pull-request test join', () => {
       ['TEST_NODE_RESULT', 'cancelled'],
       ['TEST_BUILD_RESULT', 'skipped'],
       ['REGISTRY_CONTRACT_RESULT', 'failure'],
+      ['MATERIAL3_NATIVE_RESULT', 'failure'],
+      ['MATERIAL3_NATIVE_RESULT', 'skipped'],
+      ['MATERIAL3_NATIVE_RESULT', ''],
     ]) {
       expect(run({[name]: value}), name).toMatchObject({status: 1});
     }

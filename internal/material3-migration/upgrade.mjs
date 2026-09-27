@@ -4,6 +4,7 @@
 import {table, write, meta, sheets, ids, graph} from './model.mjs';
 import {digest} from './compose.mjs';
 import {excelTime, transition} from './flow.mjs';
+import {tokenCompletionFormula} from './token-completion.mjs';
 
 const taskFields = [
   'Contract',
@@ -525,9 +526,7 @@ export function upgradeWorkbook(wb, p, index) {
   }
   for (const t of table(wb, sheets.tokens))
     wb.worksheets.getItem(sheets.tokens).getRange(`I${t._row}`).formulas = [
-      [
-        `=IF(AND(P${t._row}="Yes",N${t._row}="${p.value.strategyId}",O${t._row}="Approved",B${t._row}<>"",D${t._row}<>"",E${t._row}="Confirmed",F${t._row}="Pass",G${t._row}<>"",H${t._row}="Approved"),"Yes","No")`,
-      ],
+      [tokenCompletionFormula(t._row, p.value.strategyId)],
     ];
   const overview = wb.worksheets.getItem('Overview');
   const formulas = overview.getUsedRange().formulas;
