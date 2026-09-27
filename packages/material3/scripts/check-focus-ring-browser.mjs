@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Built native FocusRing gallery fixture and Chrome. @output Browser modality, geometry, proxy, theme and reduced-motion assertions after effect attachment. @position Permanent native FocusRing interaction regression. */
+/** @input Built native FocusRing gallery fixture and Chrome. @output Browser modality, geometry, proxy, theme and reduced-motion assertions after effect attachment and settled focus paint. @position Permanent native FocusRing interaction regression. */
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import http from 'node:http';
@@ -124,7 +124,14 @@ try {
   for (const pointerType of ['touch', 'pen']) {
     await page.keyboard.press('Shift+Tab');
     await page.keyboard.press('Tab');
-    await page.waitForTimeout(80);
+    await page.waitForFunction(
+      testId => {
+        const ring = document.querySelector(`[data-testid="${testId}"]`);
+        return ring && getComputedStyle(ring, '::before').borderTopWidth === '2px';
+      },
+      'inset-ring',
+      {timeout: 1500},
+    );
     assert.equal(
       await inset.evaluate(node => getComputedStyle(node, '::before').borderTopWidth),
       '2px',
