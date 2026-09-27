@@ -79,8 +79,9 @@ reconstruction discrepancies, **not** native acceptance limits. The
 light/dark frames, four reduced-motion adaptation frames, and
 [light](compose-button-elevation-light.mp4) and
 [dark](compose-button-elevation-dark.mp4) normal-speed clips. I watched both
-clips and inspected the transition and snap frames. The diagrams show pinned
-source dp values, while their shadow blur and bars are browser schematics,
+clips and inspected the transition and snap frames. The diagrams resolve
+colors from the pinned Compose palette and show pinned source dp values;
+their shadow blur and bars are browser schematics,
 **not** Compose device shadow pixels. Reduced-motion frames show immediate
 browser adaptation endpoints, not a specified Compose behavior.
 

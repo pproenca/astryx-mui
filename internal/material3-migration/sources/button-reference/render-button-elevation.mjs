@@ -1,7 +1,7 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
 /**
- * @input Pinned Compose Button elevation source-value trace and licensed Roboto.
+ * @input Pinned Compose Button elevation trace, color inventory and licensed Roboto.
  * @output Selected light/dark frames and normal-speed source-value elevation clips.
  * @position Disposable browser schematic; these are not Compose device shadow pixels.
  */
@@ -25,7 +25,18 @@ const policy = JSON.parse(
     path.join(repo, 'internal/material3-migration/policy.json'),
   ),
 );
-if (trace.producer.commit !== policy.androidxCommit)
+const inventory = JSON.parse(
+  await fs.readFile(
+    path.join(
+      repo,
+      'internal/material3-migration/sources/compose-inventory.json',
+    ),
+  ),
+);
+if (
+  trace.producer.commit !== policy.androidxCommit ||
+  inventory.commit !== policy.androidxCommit
+)
   throw new Error('Button elevation source pin differs');
 if (process.argv.slice(2).some(arg => arg !== '--check'))
   throw new Error('Usage: node render-button-elevation.mjs [--check]');
@@ -46,30 +57,46 @@ const fontUrl = `data:font/ttf;base64,${fontBytes.toString('base64')}`;
 const selectedTimes = [
   0, 40, 80, 100, 140, 180, 220, 240, 260, 320, 360, 380, 480, 500, 580, 720,
 ];
-const schemes = {
-  Light: {
-    surface: '#fef7ff',
-    ink: '#1d1b20',
-    filled: '#6750a4',
-    onFilled: '#ffffff',
-    elevated: '#f7f2fa',
-    onElevated: '#6750a4',
-    tonal: '#e8def8',
-    onTonal: '#4a4458',
-    track: '#e6e0e9',
-  },
-  Dark: {
-    surface: '#141218',
-    ink: '#e6e0e9',
-    filled: '#d0bcff',
-    onFilled: '#381e72',
-    elevated: '#211f26',
-    onElevated: '#d0bcff',
-    tonal: '#4a4458',
-    onTonal: '#e8def8',
-    track: '#49454f',
-  },
+const token = name => {
+  const item = inventory.tokens.find(candidate => candidate.name === name);
+  if (!item) throw new Error(`Missing pinned Compose token: ${name}`);
+  return new Map(
+    item.values.map(({name: key, expression}) => [key, expression]),
+  );
 };
+const palette = token('PaletteTokens');
+const color = (mode, role) => {
+  const scheme = token(`Color${mode}Tokens`);
+  const expression = scheme.get(role);
+  if (!expression?.startsWith('PaletteTokens.'))
+    throw new Error(`Unresolved pinned Compose color role: ${mode}.${role}`);
+  const value = palette.get(expression.slice('PaletteTokens.'.length));
+  const match = value?.match(
+    /^Color\(red = (\d+), green = (\d+), blue = (\d+)\)$/,
+  );
+  if (!match)
+    throw new Error(`Unresolved pinned Compose palette value: ${expression}`);
+  return `#${match
+    .slice(1)
+    .map(channel => Number(channel).toString(16).padStart(2, '0'))
+    .join('')}`;
+};
+const schemes = Object.fromEntries(
+  ['Light', 'Dark'].map(mode => [
+    mode,
+    {
+      surface: color(mode, 'Surface'),
+      ink: color(mode, 'OnSurface'),
+      filled: color(mode, 'Primary'),
+      onFilled: color(mode, 'OnPrimary'),
+      elevated: color(mode, 'SurfaceContainerLow'),
+      onElevated: color(mode, 'Primary'),
+      tonal: color(mode, 'SecondaryContainer'),
+      onTonal: color(mode, 'OnSecondaryContainer'),
+      track: color(mode, 'SurfaceContainerHighest'),
+    },
+  ]),
+);
 function html(mode) {
   const c = schemes[mode];
   const rows = [
@@ -215,10 +242,19 @@ try {
     schemaVersion: 1,
     composeCommit: policy.androidxCommit,
     sourceTraceSha256: sha256(traceBytes),
+    composeInventorySha256: sha256(
+      await fs.readFile(
+        path.join(
+          repo,
+          'internal/material3-migration/sources/compose-inventory.json',
+        ),
+      ),
+    ),
     fontSha256,
     browser: `Chrome ${browser.version()}`,
     viewport: {width: 960, height: 320, dpr: 1},
     selectedTimes,
+    schemes,
     images,
     clips,
   };

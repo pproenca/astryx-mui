@@ -28,6 +28,12 @@ const elevation = await read(sourceRoot + 'elevation-render-manifest.json');
 const state = await read(
   'internal/material3-migration/sources/state-reference/manifest.json',
 );
+const inventoryBytes = await fs.readFile(
+  path.join(
+    repo,
+    'internal/material3-migration/sources/compose-inventory.json',
+  ),
+);
 const shapeMotionBytes = await fs.readFile(
   path.join(repo, sourceRoot + 'button-shape-motion.json'),
 );
@@ -41,6 +47,7 @@ if (
   elevation.composeCommit !== policy.androidxCommit ||
   state.composeCommit !== policy.androidxCommit ||
   elevationMotion.producer.commit !== policy.androidxCommit ||
+  elevation.composeInventorySha256 !== sha256(inventoryBytes) ||
   shapeMotion.traceSha256 !== sha256(shapeMotionBytes)
 )
   throw new Error('Button source pins differ from the frozen policy');

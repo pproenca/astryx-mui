@@ -29,6 +29,9 @@ const browserShape = read(
 const elevation = read(
   '../sources/button-reference/button-elevation-motion.json',
 );
+const elevationRender = read(
+  '../sources/button-reference/elevation-render-manifest.json',
+);
 
 test('one Compose-first Button family covers five styles and 250 frozen kit variants', () => {
   validateSource(decision, policy);
@@ -74,6 +77,14 @@ test('selected source frames and all four watched clips match their pinned hashe
   );
   for (const item of decision.motion.additionalReferences)
     assert.equal(sha256(bytes(item.file)), item.sha256, item.file);
+  assert.equal(
+    elevationRender.composeInventorySha256,
+    sha256(
+      bytes('internal/material3-migration/sources/compose-inventory.json'),
+    ),
+  );
+  assert.equal(elevationRender.schemes.Light.onTonal, '#1d192b');
+  assert.equal(elevationRender.schemes.Dark.elevated, '#1d1b20');
 });
 
 test('pressed-shape reversals and elevation disable snaps retain timed source behavior', () => {

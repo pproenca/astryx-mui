@@ -936,11 +936,11 @@
       },
       {
         "file": "internal/material3-migration/sources/button-reference/compose-button-elevation-light.mp4",
-        "sha256": "71ba24492733695ddc9cdfe5b7aa2c3eec85974784e2ac311720efaba8776fb4"
+        "sha256": "a44665ad0952334afd8ebc74e7be1e58cb7890f448bee6a3a03628c6a08b6414"
       },
       {
         "file": "internal/material3-migration/sources/button-reference/compose-button-elevation-dark.mp4",
-        "sha256": "d8fd3d389b46511f9af1225c556b0cd92685c198ed120fa5d6bc87a599b6a0a2"
+        "sha256": "b83b2e4e6482407003c62cabc511fe23bc039c743200b2994e544394ee8796bd"
       }
     ],
     "evidence": "internal/material3-migration/sources/button-reference/README.md",
