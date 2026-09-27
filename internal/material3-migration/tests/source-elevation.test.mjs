@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Pinned Compose elevation/color tokens, Figma/Web shadow inventories and light/dark reference captures. @output Level, tonal and browser-shadow source decisions. @position Migration-only source decision regression. */
+/** @input Pinned Compose elevation/color tokens, Figma/Web shadow inventories, family routing and light/dark reference captures. @output Level, tonal and browser-shadow source decisions. @position Migration-only source decision regression. */
 import {test} from 'vitest';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -17,6 +17,26 @@ const web = read(
 );
 const policy = read('../policy.json');
 const reference = read('../sources/elevation-reference/manifest.json');
+const family = read('../sources/families/family-CM-0018.json');
+
+test('standalone Elevation is a Web mapping with Figma style evidence, not a Compose or kit component', () => {
+  assert.equal(
+    figma.componentSets.filter(item => /elevation/i.test(item.name)).length,
+    0,
+  );
+  assert.equal(
+    figma.styles.filter(item => /^M3\/Elevation (Light|Dark)\/[1-5]$/.test(item.name)).length,
+    10,
+  );
+  assert.equal(family.authority, 'compose-first');
+  assert.equal(family.routes.design.primary, 'compose');
+  assert.equal(family.routes.behavior.primary, 'compose');
+  assert.equal(family.routes.motion.primary, 'compose');
+  assert.equal(family.routes.browser.primary, 'web');
+  assert.equal(family.overrides[0].dimension, 'shadow-pixel-geometry');
+  assert.equal(family.overrides[0].primary, 'figma');
+  assert.equal(family.coverage.figma.status, 'present');
+});
 
 test('Compose owns six dp levels; kit/Web shadows only fill a browser rendering gap', () => {
   assert.equal(compose.commit, policy.androidxCommit);
