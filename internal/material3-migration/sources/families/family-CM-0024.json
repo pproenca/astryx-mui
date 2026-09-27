@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 2,
+  "authority": "compose-first",
+  "familyId": "family-CM-0024",
+  "scopeSha256": "8dfaccad57d531dd7296ff8ec745eadb49feefc54a9585b7d61beec3a872f5e3",
+  "pins": {
+    "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+    "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+  },
+  "coverage": {
+    "figma": {
+      "status": "absent",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0024.md",
+      "reason": "All 171 frozen component sets were checked; 21 icon-named sets are Icon button or tab compositions, with no standalone Icon set."
+    },
+    "compose": {
+      "status": "present",
+      "evidence": "internal/material3-migration/sources/compose-icons.md"
+    },
+    "web": {
+      "status": "present",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0024.md"
+    }
+  },
+  "routes": {
+    "design": {
+      "primary": "compose",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/compose-icons.md"
+    },
+    "behavior": {
+      "primary": "compose",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/compose-icons.md"
+    },
+    "motion": {
+      "primary": "compose",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0024.md"
+    },
+    "browser": {
+      "primary": "web",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0024.md"
+    }
+  },
+  "overrides": [
+    {
+      "dimension": "artwork-and-font-family",
+      "primary": "website",
+      "figmaSpecified": false,
+      "reason": "Select the optional Material Symbols presentation channel where a font glyph is used.",
+      "evidence": "internal/material3-migration/sources/guidance/icons.md",
+      "gapReason": "Pinned Compose Icon accepts supplied artwork and selects no Material Symbols family, glyph or variable axes.",
+      "gapEvidence": "internal/material3-migration/sources/compose-icons.md"
+    }
+  ]
+}
