@@ -20,16 +20,25 @@ const sha256 = input => createHash('sha256').update(input).digest('hex');
 const decision = read('../sources/baseline/ripple-compose-first.json');
 const family = read('../sources/families/family-CM-0023.json');
 const policy = read('../policy.json');
-const comparison = read('../sources/ripple-reference/browser-ripple-motion.json');
+const comparison = read(
+  '../sources/ripple-reference/browser-ripple-motion.json',
+);
 
 test('Ripple source decision retains pinned authority and every selected frame', () => {
   validateSource(decision, policy);
   validateFamilyUse(decision, [family]);
   assert.equal(decision.scenarios.length, 48);
   for (const scenario of decision.scenarios) {
-    assert.equal(sha256(bytes(scenario.baseline)), scenario.baselineSha256, scenario.id);
+    assert.equal(
+      sha256(bytes(scenario.baseline)),
+      scenario.baselineSha256,
+      scenario.id,
+    );
   }
-  assert.equal(sha256(bytes(decision.motion.reference)), decision.motion.sha256);
+  assert.equal(
+    sha256(bytes(decision.motion.reference)),
+    decision.motion.sha256,
+  );
   assert.equal(
     sha256(bytes(decision.motion.stateLayerReference)),
     decision.motion.stateLayerSha256,
@@ -50,12 +59,21 @@ test('independent browser interpolation fits owner-approved Ripple limits', () =
   assert.equal(press.approvalReference, approval);
   assert.equal(state.approvalReference, approval);
   assert.deepEqual(
-    [press.positionTolerance, press.velocityTolerance, press.alphaTolerance,
-      press.alphaVelocityTolerance, press.settlingToleranceMs],
+    [
+      press.positionTolerance,
+      press.velocityTolerance,
+      press.alphaTolerance,
+      press.alphaVelocityTolerance,
+      press.settlingToleranceMs,
+    ],
     [0.001, 0.2, 0.000001, 0.0005, 0],
   );
   assert.deepEqual(
-    [state.positionTolerance, state.velocityTolerance, state.settlingToleranceMs],
+    [
+      state.positionTolerance,
+      state.velocityTolerance,
+      state.settlingToleranceMs,
+    ],
     [0.000001, 0.0005, 0],
   );
   assert.ok(comparison.press.errors.radiusPx <= press.positionTolerance);
