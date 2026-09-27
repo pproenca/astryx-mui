@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "figmaSha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+  "webCommit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+  "focusTraceManifest": {
+    "standard": {
+      "file": "internal/material3-migration/sources/indication-reference/standard-focus.json",
+      "sha256": "d76d2c26dd57955ca10dfd7599cf5ab826972991b15d86bbf5b473a7414e89c1",
+      "settledAtMs": 880
+    },
+    "expressive": {
+      "file": "internal/material3-migration/sources/indication-reference/expressive-focus.json",
+      "sha256": "968d19f5b02e19bc66c520040be61e904c926ef2772bfd9e611461231c58e00c",
+      "settledAtMs": 880
+    }
+  },
+  "optionalWebOutward": {
+    "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+    "styleSha256": "a787452a69bb58d6998717f67aa27e3d2d5bf317cd07553c557f8f7f9f8d3e22",
+    "tokenSha256": "2aed5b14fea6e734dd970060ef787a9f6549019237740064826f696dc6146aab",
+    "restingWidthPx": 3,
+    "activeWidthPx": 8,
+    "outwardOffsetPx": 2,
+    "shape": "corner-full"
+  },
+  "renderer": "Chrome source-value browser fixture",
+  "browser": "Chrome 153.0.8010.53",
+  "os": "darwin 27.0.0",
+  "dpr": 1,
+  "viewport": {
+    "width": 960,
+    "height": 360
+  },
+  "font": {
+    "family": "Roboto",
+    "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+    "loaded": true
+  },
+  "times": [
+    0,
+    20,
+    80,
+    120,
+    140,
+    160,
+    180,
+    260,
+    600,
+    880
+  ],
+  "colors": {
+    "light": {
+      "Surface": "#fef7ff",
+      "SurfaceContainerLow": "#f7f2fa",
+      "OnSurface": "#1d1b20",
+      "Secondary": "#625b71",
+      "OnSecondary": "#ffffff"
+    },
+    "dark": {
+      "Surface": "#141218",
+      "SurfaceContainerLow": "#1d1b20",
+      "OnSurface": "#e6e0e9",
+      "Secondary": "#ccc2dc",
+      "OnSecondary": "#332d41"
+    }
+  },
+  "images": {
+    "focus-light-0000.png": "28cac7840914201d8fded2409f77062e264bfae42c2a9b507f3da0a05a00244b",
+    "focus-light-0020.png": "48af0cc6c894fdb14ccd5c2489a5653108ddcf925b32577138071f92ebfa4f49",
+    "focus-light-0080.png": "8e1e9ae2900e68a054351f7be3a75140fb42e803943bd41c143faf5a3b2d852e",
+    "focus-light-0120.png": "285c7d9efd87f9c0291b1bdc2a952b0f28421f3569c3e06f5c3ba2ebb29e66be",
+    "focus-light-0140.png": "74c6a47e4652e6c93c1d9ccbe8a6a2322c60503f718e5446037313cba9a5a04f",
+    "focus-light-0160.png": "19f6cfe34f59dec7f0b87d3a99afba77f2e222760ca36fdbe072b65e935fb1c5",
+    "focus-light-0180.png": "88c9e6cf9bbcec35f8e64524a8ffff1d8737b7b42faf29686a5687d792391d6c",
+    "focus-light-0260.png": "279b82e7885885843a6649be6eb11c1d0c4874529e4fd49293a57f1e0f7f63ee",
+    "focus-light-0600.png": "aad35fdf2b904d08abfaa17fae0aca3e5c891891d8bd46b9af30f266c73e2b74",
+    "focus-light-0880.png": "acbb78be11b75605d3e8898e4d7c7cc0a76462d056ceb868c708829570bf5d39",
+    "focus-light-reduced.png": "4063a77fa15a67bf1a8ebb3756b7f9b0aed87cd7220499d91249dc71578f2999",
+    "focus-dark-0000.png": "215d0e48633d3ad72f04d9bc40e185b89351f7e11c876b8e1d171f758ca2e706",
+    "focus-dark-0020.png": "ea8a6379f2f4d89da0172a829b382690e17385f6d421a91808b057cce40ef284",
+    "focus-dark-0080.png": "b48b0655e9e37767e2d71359ab8e91b4558f3da843482ca107504e52f6f9bcca",
+    "focus-dark-0120.png": "e172c0c4ed3dc9372d49c97fd858a6f48a2ab3442c73fd96f16a4b2b85832868",
+    "focus-dark-0140.png": "f7e0cd18c19bcbabe396003a510de0f891945487b76fc520f22b1400f4a1b364",
+    "focus-dark-0160.png": "3e5b651a471a062f4bd5ed79e34284b38ec305087ae3d6706b9176aa37474361",
+    "focus-dark-0180.png": "63abcd53677474c8634184de82ef3de84eb38d3f07926bd1fc41dad187f2357f",
+    "focus-dark-0260.png": "11c75a7ffd0cf39ab45d43002e32059055a1d7aead65330463d17a41bc138d56",
+    "focus-dark-0600.png": "fc4f21d8032a70cc3642e044f0b98284ef6343e605bff4f3faf57e20d8d3db2e",
+    "focus-dark-0880.png": "b1330881cc736dc01daf6df76e248f181fc110c0136195a918f06f95055e720e",
+    "focus-dark-reduced.png": "f576b418e6cc9e153051db1c7b0c3363daa864643be1fb14c9f7285ee9aa4913",
+    "web-outward-light-rest.png": "1aeafaede50dfedfdd68761469276962493f89358bb0cd5643b94536cccb63cc",
+    "web-outward-light-active.png": "cdbc9abafd841b21319b3f88c4638d0fe38cfeebaa500ad25dab19e4e8b2cf72",
+    "web-outward-dark-rest.png": "f8b3e437533f4ca971602badbeb38b13669f2688396438f7b3f65da9131c27f6",
+    "web-outward-dark-active.png": "9e6f5e74da0653299f459805958f569d45bf12efef532539ddf3d22e01fc8834"
+  },
+  "clip": {
+    "file": "compose-focus.mp4",
+    "sha256": "44a557098cd9204c8ef857259e8208558a3d8945cc60687f0e41b5e390666907"
+  }
+}

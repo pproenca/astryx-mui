@@ -1,0 +1,856 @@
+{
+  "schemaVersion": 1,
+  "authority": "draft-compose-first",
+  "status": "Draft source selection. Native preparation is deliberately blocked until focus interpolation limits and exact public API are approved.",
+  "baselineId": "material3-expressive-compose-first-2026-09-26",
+  "web": {
+    "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+  },
+  "compose": {
+    "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "inventory": "internal/material3-migration/sources/compose-inventory.json",
+    "tests": [
+      {
+        "id": "RippleTest.bounded_lightTheme_focused",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/RippleTest.kt#L131"
+      },
+      {
+        "id": "RippleTest.unbounded_lightTheme_focused",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/RippleTest.kt#L219"
+      },
+      {
+        "id": "RippleTest.insetFocusRing_focused",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/RippleTest.kt#L483"
+      },
+      {
+        "id": "RippleTest.insetFocusRing_focused_defaultColors",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/RippleTest.kt#L530"
+      },
+      {
+        "id": "RippleTest.rippleConfiguration_insetFocusRing_focused",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/RippleTest.kt#L575"
+      }
+    ],
+    "reason": "Selected standalone and focus-indication cases; Android device raster comparisons remain platform-specific.",
+    "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+  },
+  "figma": {
+    "sha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+    "inventory": "internal/material3-migration/sources/figma-kit-inventory.json"
+  },
+  "guidance": [
+    {
+      "url": "https://m3.material.io/foundations/interaction/states/state-layers",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/state-layers.md"
+    },
+    {
+      "url": "https://m3.material.io/styles/motion/overview/how-it-works",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/motion.md"
+    }
+  ],
+  "decisions": [
+    {
+      "dimension": "focus-indication",
+      "concern": "design",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "Pinned Compose selects a 10% opacity default and explicit two-stroke inset ring.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    },
+    {
+      "dimension": "focus-state",
+      "concern": "behavior",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "Pinned Compose Ripple interaction state and configuration select one indication style.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    },
+    {
+      "dimension": "focus-motion",
+      "concern": "motion",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "Pinned fast spatial focus and fast effects blur springs retain velocity through retargeting.",
+      "evidence": "internal/material3-migration/sources/indication-reference/README.md"
+    },
+    {
+      "dimension": "browser-semantics",
+      "concern": "browser",
+      "chosen": "web",
+      "figmaSpecified": false,
+      "reason": "Pinned Web attachment and native focus-visible semantics govern DOM behavior.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    },
+    {
+      "dimension": "optional-web-outward-ring",
+      "concern": "design",
+      "chosen": "web",
+      "figmaSpecified": false,
+      "reason": "The explicit outward presentation fills a Compose geometry gap without changing its default.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    },
+    {
+      "dimension": "optional-web-outward-animation",
+      "concern": "motion",
+      "chosen": "web",
+      "figmaSpecified": false,
+      "reason": "Pinned Web-only outward entry motion fills a Compose gap; its GIF is watched separately.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "focus-dark-0000",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-dark-0000.png",
+      "baselineSha256": "215d0e48633d3ad72f04d9bc40e185b89351f7e11c876b8e1d171f758ca2e706",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 0
+    },
+    {
+      "id": "focus-dark-0020",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-dark-0020.png",
+      "baselineSha256": "ea8a6379f2f4d89da0172a829b382690e17385f6d421a91808b057cce40ef284",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 20
+    },
+    {
+      "id": "focus-dark-0080",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-dark-0080.png",
+      "baselineSha256": "b48b0655e9e37767e2d71359ab8e91b4558f3da843482ca107504e52f6f9bcca",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 80
+    },
+    {
+      "id": "focus-dark-0120",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-dark-0120.png",
+      "baselineSha256": "e172c0c4ed3dc9372d49c97fd858a6f48a2ab3442c73fd96f16a4b2b85832868",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 120
+    },
+    {
+      "id": "focus-dark-0140",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-dark-0140.png",
+      "baselineSha256": "f7e0cd18c19bcbabe396003a510de0f891945487b76fc520f22b1400f4a1b364",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 140
+    },
+    {
+      "id": "focus-dark-0160",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-dark-0160.png",
+      "baselineSha256": "3e5b651a471a062f4bd5ed79e34284b38ec305087ae3d6706b9176aa37474361",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 160
+    },
+    {
+      "id": "focus-dark-0180",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-dark-0180.png",
+      "baselineSha256": "63abcd53677474c8634184de82ef3de84eb38d3f07926bd1fc41dad187f2357f",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 180
+    },
+    {
+      "id": "focus-dark-0260",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-dark-0260.png",
+      "baselineSha256": "11c75a7ffd0cf39ab45d43002e32059055a1d7aead65330463d17a41bc138d56",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 260
+    },
+    {
+      "id": "focus-dark-0600",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-dark-0600.png",
+      "baselineSha256": "fc4f21d8032a70cc3642e044f0b98284ef6343e605bff4f3faf57e20d8d3db2e",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 600
+    },
+    {
+      "id": "focus-dark-0880",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-dark-0880.png",
+      "baselineSha256": "b1330881cc736dc01daf6df76e248f181fc110c0136195a918f06f95055e720e",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 880
+    },
+    {
+      "id": "focus-dark-reduced",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose final inset geometry with browser reduced-motion adaptation; Compose does not specify this accessibility fallback.",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-dark-reduced.png",
+      "baselineSha256": "f576b418e6cc9e153051db1c7b0c3363daa864643be1fb14c9f7285ee9aa4913",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "immediate-focused-no-travel",
+        "reducedMotion": "reduce"
+      }
+    },
+    {
+      "id": "focus-light-0000",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-light-0000.png",
+      "baselineSha256": "28cac7840914201d8fded2409f77062e264bfae42c2a9b507f3da0a05a00244b",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 0
+    },
+    {
+      "id": "focus-light-0020",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-light-0020.png",
+      "baselineSha256": "48af0cc6c894fdb14ccd5c2489a5653108ddcf925b32577138071f92ebfa4f49",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 20
+    },
+    {
+      "id": "focus-light-0080",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-light-0080.png",
+      "baselineSha256": "8e1e9ae2900e68a054351f7be3a75140fb42e803943bd41c143faf5a3b2d852e",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 80
+    },
+    {
+      "id": "focus-light-0120",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-light-0120.png",
+      "baselineSha256": "285c7d9efd87f9c0291b1bdc2a952b0f28421f3569c3e06f5c3ba2ebb29e66be",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 120
+    },
+    {
+      "id": "focus-light-0140",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-light-0140.png",
+      "baselineSha256": "74c6a47e4652e6c93c1d9ccbe8a6a2322c60503f718e5446037313cba9a5a04f",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 140
+    },
+    {
+      "id": "focus-light-0160",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-light-0160.png",
+      "baselineSha256": "19f6cfe34f59dec7f0b87d3a99afba77f2e222760ca36fdbe072b65e935fb1c5",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 160
+    },
+    {
+      "id": "focus-light-0180",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-light-0180.png",
+      "baselineSha256": "88c9e6cf9bbcec35f8e64524a8ffff1d8737b7b42faf29686a5687d792391d6c",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 180
+    },
+    {
+      "id": "focus-light-0260",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-light-0260.png",
+      "baselineSha256": "279b82e7885885843a6649be6eb11c1d0c4874529e4fd49293a57f1e0f7f63ee",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 260
+    },
+    {
+      "id": "focus-light-0600",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-light-0600.png",
+      "baselineSha256": "aad35fdf2b904d08abfaa17fae0aca3e5c891891d8bd46b9af30f266c73e2b74",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 600
+    },
+    {
+      "id": "focus-light-0880",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose Ripple.kt and Kotlin fast spatial/effects focus trace; browser source-value rendering",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-light-0880.png",
+      "baselineSha256": "acbb78be11b75605d3e8898e4d7c7cc0a76462d056ceb868c708829570bf5d39",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "focus-blur-refocus-blur"
+      },
+      "timeMs": 880
+    },
+    {
+      "id": "focus-light-reduced",
+      "dimensions": ["focus-indication", "focus-motion"],
+      "sourceReference": "Pinned Compose final inset geometry with browser reduced-motion adaptation; Compose does not specify this accessibility fallback.",
+      "baseline": "internal/material3-migration/sources/indication-reference/focus-light-reduced.png",
+      "baselineSha256": "4063a77fa15a67bf1a8ebb3756b7f9b0aed87cd7220499d91249dc71578f2999",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Compose default 10% opacity and optional 220 x 92 inset rings",
+        "state": "immediate-focused-no-travel",
+        "reducedMotion": "reduce"
+      }
+    },
+    {
+      "id": "web-outward-dark-active",
+      "dimensions": ["optional-web-outward-ring"],
+      "sourceReference": "Pinned Material Web focus Sass geometry gap; browser source-value rendering with Compose Secondary color",
+      "baseline": "internal/material3-migration/sources/indication-reference/web-outward-dark-active.png",
+      "baselineSha256": "9e6f5e74da0653299f459805958f569d45bf12efef532539ddf3d22e01fc8834",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Optional Web outward 220 x 64 full-corner ring",
+        "state": "outward-active"
+      }
+    },
+    {
+      "id": "web-outward-dark-rest",
+      "dimensions": ["optional-web-outward-ring"],
+      "sourceReference": "Pinned Material Web focus Sass geometry gap; browser source-value rendering with Compose Secondary color",
+      "baseline": "internal/material3-migration/sources/indication-reference/web-outward-dark-rest.png",
+      "baselineSha256": "f8b3e437533f4ca971602badbeb38b13669f2688396438f7b3f65da9131c27f6",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Optional Web outward 220 x 64 full-corner ring",
+        "state": "outward-rest"
+      }
+    },
+    {
+      "id": "web-outward-light-active",
+      "dimensions": ["optional-web-outward-ring"],
+      "sourceReference": "Pinned Material Web focus Sass geometry gap; browser source-value rendering with Compose Secondary color",
+      "baseline": "internal/material3-migration/sources/indication-reference/web-outward-light-active.png",
+      "baselineSha256": "cdbc9abafd841b21319b3f88c4638d0fe38cfeebaa500ad25dab19e4e8b2cf72",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Optional Web outward 220 x 64 full-corner ring",
+        "state": "outward-active"
+      }
+    },
+    {
+      "id": "web-outward-light-rest",
+      "dimensions": ["optional-web-outward-ring"],
+      "sourceReference": "Pinned Material Web focus Sass geometry gap; browser source-value rendering with Compose Secondary color",
+      "baseline": "internal/material3-migration/sources/indication-reference/web-outward-light-rest.png",
+      "baselineSha256": "1aeafaede50dfedfdd68761469276962493f89358bb0cd5643b94536cccb63cc",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Optional Web outward 220 x 64 full-corner ring",
+        "state": "outward-rest"
+      }
+    }
+  ],
+  "motion": {
+    "applicable": true,
+    "reference": "internal/material3-migration/sources/indication-reference/compose-focus.mp4",
+    "sha256": "44a557098cd9204c8ef857259e8208558a3d8945cc60687f0e41b5e390666907",
+    "evidence": "internal/material3-migration/sources/indication-reference/README.md",
+    "optionalWebOutward": {
+      "reference": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/images/focus/usage.gif",
+      "sha256": "78356c1d36755b0b356772f069ba97717452149f20f0c6a5ddd16cc3cbcae2d0",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+    },
+    "numeric": {
+      "applicable": true,
+      "status": "Pending focus-specific interpolation tolerance approval",
+      "traces": [
+        {
+          "id": "standard-fast-focus",
+          "reference": "internal/material3-migration/sources/indication-reference/standard-focus.json",
+          "unit": "focus-interpolation",
+          "approvalReference": null,
+          "positionTolerance": null,
+          "velocityTolerance": null,
+          "settlingToleranceMs": null
+        },
+        {
+          "id": "expressive-fast-focus",
+          "reference": "internal/material3-migration/sources/indication-reference/expressive-focus.json",
+          "unit": "focus-interpolation",
+          "approvalReference": null,
+          "positionTolerance": null,
+          "velocityTolerance": null,
+          "settlingToleranceMs": null
+        }
+      ]
+    }
+  },
+  "performance": [
+    {
+      "id": "desktop-chrome-macos-reference",
+      "approvalReference": "human:pproenca:2026-09-26:M3-NAT-002-foundation-limits",
+      "status": "approved foundation browser profile; native focus run pending",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "device": "macOS desktop reference",
+        "refreshRateHz": 60
+      },
+      "maxInputLatencyMs": 100,
+      "frameBudgetMs": 20,
+      "maxLongFrameRatio": 0.05,
+      "minInputSamples": 30,
+      "minFrameSamples": 300
+    }
+  ]
+}
