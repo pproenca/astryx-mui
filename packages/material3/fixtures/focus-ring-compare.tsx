@@ -5,6 +5,7 @@ import React from 'react';
 import {flushSync} from 'react-dom';
 import {createRoot} from 'react-dom/client';
 import {FocusRing} from '../dist/FocusRing/FocusRing.js';
+import {material3ColorValues, material3LayerColor} from '../dist/foundation.js';
 
 const driver = document.getElementById('driver')!;
 const controlRef = {current: driver};
@@ -20,6 +21,16 @@ if (outward) {
     );
   });
 } else {
+  const mode = document.body.dataset.mdScheme === 'dark' ? 'dark' : 'light';
+  const colors = material3ColorValues(mode);
+  document.querySelector<HTMLElement>('.opacity')!.style.backgroundColor =
+    material3LayerColor(
+      colors['surface-container-low'],
+      colors['on-surface'],
+      0.1,
+    );
+  document.querySelector('h1')!.textContent =
+    `Compose focus indication · ${mode === 'dark' ? 'Dark' : 'Light'}`;
   const expressive = document.getElementById('expressive-target')!;
   for (const token of [
     '--md-sys-color-secondary',

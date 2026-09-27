@@ -11,6 +11,7 @@ function App() {
   const [disabled, setDisabled] = useState(false);
   const [proxy, setProxy] = useState(true);
   const inputRef = useRef<HTMLInputElement>(null);
+  const invalid = new URLSearchParams(location.search).has('invalid');
   document.body.dataset.mdScheme = scheme;
   document.documentElement.dir = direction;
 
@@ -105,6 +106,29 @@ function App() {
           its visible indicator.
         </p>
       </section>
+      {invalid && (
+        <section>
+          <h2>Invalid placement diagnostics</h2>
+          <div className="samples">
+            <button
+              className="owner"
+              id="static-owner"
+              style={{position: 'static'}}
+              type="button">
+              Unpositioned owner
+              <FocusRing placement="inset" data-testid="static-ring" />
+            </button>
+            <button
+              className="owner outward"
+              id="clipped-owner"
+              style={{overflow: 'hidden'}}
+              type="button">
+              Clipped outward owner
+              <FocusRing placement="outward" data-testid="clipped-ring" />
+            </button>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

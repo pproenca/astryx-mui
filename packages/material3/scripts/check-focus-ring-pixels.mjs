@@ -4,6 +4,7 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import http from 'node:http';
+import os from 'node:os';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import pixelmatch from 'pixelmatch';
@@ -75,11 +76,11 @@ async function compare(referenceFile, nativeBytes, x, y, width, height, label) {
   console.log(`${label}: ${changed} / ${width * height} changed pixels`);
   if (changed) {
     await fs.writeFile(
-      `/private/tmp/astryx-focus-${label.replaceAll(' ', '-')}-native.png`,
+      path.join(os.tmpdir(), `astryx-focus-${label.replaceAll(' ', '-')}-native.png`),
       PNG.sync.write(native),
     );
     await fs.writeFile(
-      `/private/tmp/astryx-focus-${label.replaceAll(' ', '-')}-diff.png`,
+      path.join(os.tmpdir(), `astryx-focus-${label.replaceAll(' ', '-')}-diff.png`),
       PNG.sync.write(diff),
     );
   }

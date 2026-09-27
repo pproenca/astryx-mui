@@ -115,7 +115,9 @@ function disabled(target: HTMLElement, owner: HTMLElement): boolean {
 
 function commonAncestor(a: HTMLElement, b: HTMLElement): HTMLElement {
   let ancestor: HTMLElement | null = a;
-  while (ancestor && !ancestor.contains(b)) {ancestor = ancestor.parentElement;}
+  while (ancestor && !ancestor.contains(b)) {
+    ancestor = ancestor.parentElement;
+  }
   return ancestor ?? a.ownerDocument.documentElement;
 }
 
@@ -154,8 +156,9 @@ export function FocusRing({
   ref,
   ...rest
 }: FocusRingProps) {
-  if (placement !== 'inset' && placement !== 'outward')
-    {throw new RangeError('FocusRing placement must be inset or outward.');}
+  if (placement !== 'inset' && placement !== 'outward') {
+    throw new RangeError('FocusRing placement must be inset or outward.');
+  }
   const safeRest = {...rest} as HTMLAttributes<HTMLSpanElement>;
   delete safeRest.role;
 
@@ -180,8 +183,11 @@ export function FocusRing({
   const assignRef = useCallback(
     (node: HTMLSpanElement | null) => {
       elementRef.current = node;
-      if (typeof ref === 'function') {ref(node);}
-      else if (ref) {ref.current = node;}
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
     },
     [ref],
   );
@@ -189,19 +195,26 @@ export function FocusRing({
   useEffect(() => {
     const element = elementRef.current;
     const owner = element?.parentElement;
-    if (!element || !owner) {return;}
-    if (!ownerCanPaint(owner, placement)) {return;}
+    if (!element || !owner) {
+      return;
+    }
+    if (!ownerCanPaint(owner, placement)) {
+      return;
+    }
     const media = owner.ownerDocument.defaultView?.matchMedia(
       '(prefers-reduced-motion: reduce)',
     );
     let target: HTMLElement | null = null;
+    let labels: HTMLLabelElement[] = [];
     let observer: MutationObserver | null = null;
     let pointerSuppressed = false;
     let disposed = false;
 
     const sampleCurrent = (now: number): Material3SpringFrame => {
       const motion = motionRef.current;
-      if (!motion) {return springFrameRef.current;}
+      if (!motion) {
+        return springFrameRef.current;
+      }
       return sampleMaterial3Spring(
         motion.spec,
         [{timeMs: 0, target: motion.target}],
@@ -211,12 +224,16 @@ export function FocusRing({
     };
 
     const stopMotion = () => {
-      if (motionRef.current) {cancelAnimationFrame(motionRef.current.frame);}
+      if (motionRef.current) {
+        cancelAnimationFrame(motionRef.current.frame);
+      }
       motionRef.current = null;
     };
 
     const setVisible = (visible: boolean, immediate = false) => {
-      if (focusedRef.current === visible && !immediate) {return;}
+      if (focusedRef.current === visible && !immediate) {
+        return;
+      }
       const now = performance.now();
       const initial = sampleCurrent(now);
       stopMotion();
@@ -243,7 +260,9 @@ export function FocusRing({
       };
       motionRef.current = motion;
       const tick = (time: number) => {
-        if (disposed || motionRef.current !== motion) {return;}
+        if (disposed || motionRef.current !== motion) {
+          return;
+        }
         const current = sampleCurrent(time);
         if (
           Math.abs(current.position - next) <= 0.0001 &&
@@ -275,10 +294,7 @@ export function FocusRing({
         resolved.matches(':focus-visible');
       setVisible(visible, immediate);
     };
-    const onFocus = () => {
-      pointerSuppressed = false;
-      syncVisible();
-    };
+    const onFocus = () => syncVisible();
     const onBlur = () => {
       pointerSuppressed = false;
       syncVisible();
@@ -290,24 +306,46 @@ export function FocusRing({
     const onKeyDown = () => {
       pointerSuppressed = false;
       queueMicrotask(() => {
-        if (!disposed) {syncVisible();}
+        if (!disposed) {
+          syncVisible();
+        }
       });
     };
-    const reconnect = () => {
+    const reconnect = (records?: MutationRecord[]) => {
       const next = validTarget();
       if (target === next) {
-        if (target) {syncVisible(true);}
+        if (
+          target &&
+          records?.some(
+            record =>
+              record.type === 'attributes' &&
+              (record.target === target || record.target === owner),
+          )
+        ) {
+          syncVisible(true);
+        }
         return;
       }
       target?.removeEventListener('focus', onFocus);
       target?.removeEventListener('blur', onBlur);
       target?.removeEventListener('pointerdown', onPointerDown);
       target?.removeEventListener('keydown', onKeyDown);
+      labels.forEach(label =>
+        label.removeEventListener('pointerdown', onPointerDown),
+      );
       target = next;
+      labels = target
+        ? Array.from(owner.ownerDocument.querySelectorAll('label')).filter(
+            label => label.control === target,
+          )
+        : [];
       target?.addEventListener('focus', onFocus);
       target?.addEventListener('blur', onBlur);
       target?.addEventListener('pointerdown', onPointerDown);
       target?.addEventListener('keydown', onKeyDown);
+      labels.forEach(label =>
+        label.addEventListener('pointerdown', onPointerDown),
+      );
       pointerSuppressed = false;
       syncVisible(true);
       observer?.disconnect();
@@ -334,6 +372,9 @@ export function FocusRing({
       target?.removeEventListener('blur', onBlur);
       target?.removeEventListener('pointerdown', onPointerDown);
       target?.removeEventListener('keydown', onKeyDown);
+      labels.forEach(label =>
+        label.removeEventListener('pointerdown', onPointerDown),
+      );
       owner.removeEventListener('pointerdown', onPointerDown);
       media?.removeEventListener('change', onMotionPreference);
     };

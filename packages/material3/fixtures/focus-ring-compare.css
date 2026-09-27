@@ -54,11 +54,7 @@ p {
   background: var(--md-sys-color-surface-container-low);
 }
 .opacity {
-  background: color-mix(
-    in srgb,
-    var(--md-sys-color-on-surface) 10%,
-    var(--md-sys-color-surface-container-low)
-  );
+  background: var(--md-sys-color-surface-container-low);
 }
 .legend {
   margin-top: 22px;

@@ -85,6 +85,27 @@ try {
     node => getComputedStyle(node, '::before').borderTopWidth,
   );
   assert.equal(focusedBorder, '2px');
+  assert.equal(
+    await inset.evaluate(node => getComputedStyle(node, '::before').borderTopColor),
+    'rgb(98, 91, 113)',
+    'Default outer stroke consumes Material Secondary',
+  );
+  await insetOwner.evaluate(node => {
+    node.style.setProperty('--md-sys-color-secondary', 'rgb(255 0 0)');
+    node.style.setProperty('--md-sys-color-on-secondary', 'rgb(0 128 0)');
+  });
+  assert.deepEqual(
+    await inset.evaluate(node => [
+      getComputedStyle(node, '::before').borderTopColor,
+      getComputedStyle(node, '::after').borderTopColor,
+    ]),
+    ['rgb(255, 0, 0)', 'rgb(0, 128, 0)'],
+    'Scoped Material role overrides select both Compose inset strokes',
+  );
+  await insetOwner.evaluate(node => {
+    node.style.removeProperty('--md-sys-color-secondary');
+    node.style.removeProperty('--md-sys-color-on-secondary');
+  });
   assert.deepEqual(await insetOwner.boundingBox(), ownerBox);
   await insetOwner.dispatchEvent('pointerdown');
   assert.equal(
@@ -135,6 +156,23 @@ try {
     ),
     '0px',
   );
+  await page.locator('#proxy-owner').evaluate(node => {
+    node.tabIndex = 0;
+    node.focus();
+  });
+  assert.equal(await proxy.evaluate(node => getComputedStyle(node, '::before').borderTopWidth), '0px', 'Missing explicit ref must not fall back to the visual owner');
+  await page.locator('#proxy-toggle').check();
+  for (let index = 0; index < 5; index++) {
+    if (await page.locator('#proxy-input').evaluate(node => document.activeElement === node)) break;
+    await page.keyboard.press('Tab');
+  }
+  assert.equal(await page.locator('#proxy-input').evaluate(node => document.activeElement === node), true, 'Restored semantic input joins focus order');
+  await page.waitForTimeout(100);
+  assert.equal(await proxy.evaluate(node => getComputedStyle(node, '::before').borderTopWidth), '2px', 'Reattached explicit ref paints the proxy owner');
+  await page.locator('#proxy-input').evaluate(node => {node.blur(); node.focus();});
+  assert.equal(await proxy.evaluate(node => getComputedStyle(node, '::before').borderTopWidth), '2px', 'Programmatic focus keeps keyboard modality');
+  await page.locator('.proxy').click();
+  assert.equal(await proxy.evaluate(node => getComputedStyle(node, '::before').borderTopWidth), '0px', 'Pointer focus suppresses the ring');
   await page.emulateMedia({reducedMotion: 'reduce'});
   await page.locator('#disabled-toggle').uncheck();
   await page.keyboard.press('Tab');
@@ -152,7 +190,28 @@ try {
     ),
     'rgba(0, 0, 0, 0)',
   );
+  await page.emulateMedia({forcedColors: 'none'});
+  await page.setViewportSize({width: 320, height: 720});
+  await page.locator('body').evaluate(node => {node.style.zoom = '2';});
+  const [ownerRect, ringRect] = await insetOwner.evaluate(node => {
+    const owner = node.getBoundingClientRect();
+    const ring = node.querySelector('span').getBoundingClientRect();
+    return [{x: owner.x, y: owner.y, width: owner.width, height: owner.height}, {x: ring.x, y: ring.y, width: ring.width, height: ring.height}];
+  });
+  assert.deepEqual(ringRect, ownerRect, 'Inset ring stays aligned at narrow RTL and 200% zoom');
   assert.deepEqual(errors, []);
+  const invalid = await browser.newPage({viewport: {width: 900, height: 700}});
+  const warnings = [];
+  invalid.on('console', message => {if (message.type() === 'warning') warnings.push(message.text());});
+  await invalid.goto(`http://127.0.0.1:${server.address().port}/fixtures/focus-ring.html?invalid`);
+  await invalid.locator('#static-owner').focus();
+  await invalid.waitForTimeout(100);
+  assert.equal(await invalid.getByTestId('static-ring').evaluate(node => getComputedStyle(node, '::before').borderTopWidth), '0px');
+  await invalid.locator('#clipped-owner').focus();
+  assert.equal(await invalid.getByTestId('clipped-ring').evaluate(node => getComputedStyle(node).visibility), 'hidden');
+  assert.equal(warnings.some(message => message.includes('must be positioned')), true);
+  assert.equal(warnings.some(message => message.includes('unclipped')), true);
+  await invalid.close();
   console.log(
     'Native FocusRing browser modalities, association and geometry passed',
   );
