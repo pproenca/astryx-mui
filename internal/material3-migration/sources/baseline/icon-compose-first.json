@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "authority": "compose-first",
+  "baselineId": "material3-expressive-compose-first-2026-09-26",
+  "web": {
+    "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+  },
+  "compose": {
+    "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "inventory": "internal/material3-migration/sources/compose-inventory.json",
+    "tests": [],
+    "reason": "Pinned Icon.kt has no standalone Icon test; IconButton embedding tests are owned by the interactive IconButton family.",
+    "evidence": "internal/material3-migration/sources/families/family-CM-0024.md"
+  },
+  "figma": {
+    "sha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+    "inventory": "internal/material3-migration/sources/figma-kit-inventory.json"
+  },
+  "guidance": [
+    {
+      "url": "https://m3.material.io/styles/icons/overview",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/icons.md"
+    }
+  ],
+  "decisions": [
+    {
+      "dimension": "icons",
+      "concern": "design",
+      "figmaSpecified": false,
+      "chosen": "compose",
+      "reason": "Pinned Compose governs standalone Icon default tint, 24dp fallback and decorative versus named semantics; the frozen kit has no standalone Icon set.",
+      "evidence": "internal/material3-migration/sources/compose-icons.md"
+    },
+    {
+      "dimension": "icon-behavior",
+      "concern": "behavior",
+      "figmaSpecified": false,
+      "chosen": "compose",
+      "reason": "Icon is presentational and never owns activation, state layers or a touch target.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0024.md"
+    },
+    {
+      "dimension": "icon-motion",
+      "concern": "motion",
+      "figmaSpecified": false,
+      "chosen": "compose",
+      "reason": "Standalone Icon is static; parent controls own their interactive motion.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0024.md"
+    },
+    {
+      "dimension": "browser-semantics",
+      "concern": "browser",
+      "figmaSpecified": false,
+      "chosen": "web",
+      "reason": "Use the pinned md-icon browser presentation channel with native accessible text and decorative hiding semantics.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0024.md"
+    },
+    {
+      "dimension": "artwork-and-font-family",
+      "concern": "design",
+      "figmaSpecified": false,
+      "chosen": "website",
+      "reason": "Material Symbols are an optional supplied-artwork channel; the app loads licensed font files.",
+      "evidence": "internal/material3-migration/sources/guidance/icons.md"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "icons-light",
+      "dimensions": ["icons"],
+      "sourceReference": "Pinned Compose Icon fallback/tint; Google Material Symbols artwork gap fill",
+      "baseline": "internal/material3-migration/sources/icon-reference/icons-light.png",
+      "baselineSha256": "676e66b5834757533369cbd22d1b3d71f424a9aa7f04e48a9b13ae7f2224c9bf",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 640
+        },
+        "fonts": [
+          {
+            "family": "Material Symbols Outlined",
+            "sha256": "c5c96fcb27145d17a04cb2fa68d33921ca4258c6bb2cf6fac8b1bce401595e57",
+            "loaded": true
+          },
+          {
+            "family": "Material Symbols Rounded",
+            "sha256": "0865c62d7fda358cd4cdb77792b758afa66fae2c4159fa3fb04a2c1d05700e9e",
+            "loaded": true
+          },
+          {
+            "family": "Material Symbols Sharp",
+            "sha256": "2349783253d47d2d1b92ab63dd4284988f05e73459aa9c8f6e9a78ed360101c9",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "close, check and search in three font families plus pinned SVG paths",
+        "state": "static-glyph-samples"
+      }
+    },
+    {
+      "id": "icons-dark",
+      "dimensions": ["icons"],
+      "sourceReference": "Pinned Compose Icon fallback/tint; Google Material Symbols artwork gap fill",
+      "baseline": "internal/material3-migration/sources/icon-reference/icons-dark.png",
+      "baselineSha256": "6f62cbf88cfdf4d902f126e8add4ed3010e7af14c0ca16aa1154b3d8ac34cc17",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 640
+        },
+        "fonts": [
+          {
+            "family": "Material Symbols Outlined",
+            "sha256": "c5c96fcb27145d17a04cb2fa68d33921ca4258c6bb2cf6fac8b1bce401595e57",
+            "loaded": true
+          },
+          {
+            "family": "Material Symbols Rounded",
+            "sha256": "0865c62d7fda358cd4cdb77792b758afa66fae2c4159fa3fb04a2c1d05700e9e",
+            "loaded": true
+          },
+          {
+            "family": "Material Symbols Sharp",
+            "sha256": "2349783253d47d2d1b92ab63dd4284988f05e73459aa9c8f6e9a78ed360101c9",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "close, check and search in three font families plus pinned SVG paths",
+        "state": "static-glyph-samples"
+      }
+    }
+  ],
+  "motion": {
+    "applicable": false,
+    "reason": "Standalone Icon has no transition; interaction motion belongs to its parent component.",
+    "evidence": "internal/material3-migration/sources/families/family-CM-0024.md"
+  },
+  "performance": [
+    {
+      "id": "desktop-chrome-macos-reference",
+      "approvalReference": "human:pproenca:2026-09-26:M3-NAT-002-foundation-limits",
+      "status": "approved after native Chrome measurement and owner review on 2026-09-26",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "device": "macOS desktop reference",
+        "refreshRateHz": 60
+      },
+      "maxInputLatencyMs": 100,
+      "frameBudgetMs": 20,
+      "maxLongFrameRatio": 0.05,
+      "minInputSamples": 30,
+      "minFrameSamples": 300
+    }
+  ]
+}
