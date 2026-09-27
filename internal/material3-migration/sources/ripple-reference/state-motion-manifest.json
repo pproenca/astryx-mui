@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 1,
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "sourceFile": {
+    "path": "compose/material3/material3-ripple/src/commonMain/kotlin/androidx/compose/material3/ripple/Ripple.kt",
+    "sha256": "f0ba3e8b3d5b40d3977f7e4dcbf2c93dec02e19705a1141f8efe6dc81c2f0aa7"
+  },
+  "sourceValues": {
+    "opacity": {
+      "hover": 0.08,
+      "focus": 0.1,
+      "drag": 0.16
+    },
+    "defaultTweenMs": 15,
+    "focusAndDragEnterMs": 45,
+    "dragExitMs": 150,
+    "events": [
+      {
+        "timeMs": 0,
+        "state": "hover",
+        "durationMs": 15,
+        "action": "hover enter"
+      },
+      {
+        "timeMs": 80,
+        "state": "drag",
+        "durationMs": 45,
+        "action": "drag over hover"
+      },
+      {
+        "timeMs": 180,
+        "state": "hover",
+        "durationMs": 15,
+        "action": "drag stop; hover remains"
+      },
+      {
+        "timeMs": 220,
+        "state": null,
+        "durationMs": 15,
+        "action": "hover exit"
+      },
+      {
+        "timeMs": 300,
+        "state": "focus",
+        "durationMs": 45,
+        "action": "focus enter"
+      },
+      {
+        "timeMs": 420,
+        "state": null,
+        "durationMs": 15,
+        "action": "focus exit"
+      },
+      {
+        "timeMs": 500,
+        "state": "drag",
+        "durationMs": 45,
+        "action": "drag enter"
+      },
+      {
+        "timeMs": 530,
+        "state": null,
+        "durationMs": 150,
+        "action": "early drag cancel"
+      },
+      {
+        "timeMs": 720,
+        "state": "drag",
+        "durationMs": 45,
+        "action": "drag enter"
+      },
+      {
+        "timeMs": 820,
+        "state": null,
+        "durationMs": 150,
+        "action": "drag exit"
+      }
+    ]
+  },
+  "renderer": "Chrome source-value browser fixture",
+  "browser": "Chrome 153.0.8010.53",
+  "os": "darwin 27.0.0",
+  "dpr": 1,
+  "viewport": {
+    "width": 960,
+    "height": 360
+  },
+  "font": {
+    "family": "Roboto",
+    "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+    "loaded": true
+  },
+  "frameTimes": [
+    0,
+    7,
+    15,
+    80,
+    100,
+    125,
+    180,
+    187,
+    195,
+    220,
+    228,
+    235,
+    300,
+    320,
+    345,
+    420,
+    435,
+    500,
+    520,
+    530,
+    580,
+    680,
+    720,
+    740,
+    765,
+    820,
+    870,
+    970
+  ],
+  "samples": {
+    "0": {
+      "alpha": 0,
+      "action": "hover enter"
+    },
+    "7": {
+      "alpha": 0.037333333333333336,
+      "action": "hover enter"
+    },
+    "15": {
+      "alpha": 0.08,
+      "action": "hover enter"
+    },
+    "80": {
+      "alpha": 0.08,
+      "action": "drag over hover"
+    },
+    "100": {
+      "alpha": 0.11555555555555555,
+      "action": "drag over hover"
+    },
+    "125": {
+      "alpha": 0.16,
+      "action": "drag over hover"
+    },
+    "180": {
+      "alpha": 0.16,
+      "action": "drag stop; hover remains"
+    },
+    "187": {
+      "alpha": 0.12266666666666667,
+      "action": "drag stop; hover remains"
+    },
+    "195": {
+      "alpha": 0.08,
+      "action": "drag stop; hover remains"
+    },
+    "220": {
+      "alpha": 0.08,
+      "action": "hover exit"
+    },
+    "228": {
+      "alpha": 0.037333333333333336,
+      "action": "hover exit"
+    },
+    "235": {
+      "alpha": 0,
+      "action": "hover exit"
+    },
+    "300": {
+      "alpha": 0,
+      "action": "focus enter"
+    },
+    "320": {
+      "alpha": 0.044444444444444446,
+      "action": "focus enter"
+    },
+    "345": {
+      "alpha": 0.1,
+      "action": "focus enter"
+    },
+    "420": {
+      "alpha": 0.1,
+      "action": "focus exit"
+    },
+    "435": {
+      "alpha": 0,
+      "action": "focus exit"
+    },
+    "500": {
+      "alpha": 0,
+      "action": "drag enter"
+    },
+    "520": {
+      "alpha": 0.07111111111111111,
+      "action": "drag enter"
+    },
+    "530": {
+      "alpha": 0.10666666666666666,
+      "action": "early drag cancel"
+    },
+    "580": {
+      "alpha": 0.07111111111111111,
+      "action": "early drag cancel"
+    },
+    "680": {
+      "alpha": 0,
+      "action": "early drag cancel"
+    },
+    "720": {
+      "alpha": 0,
+      "action": "drag enter"
+    },
+    "740": {
+      "alpha": 0.07111111111111111,
+      "action": "drag enter"
+    },
+    "765": {
+      "alpha": 0.16,
+      "action": "drag enter"
+    },
+    "820": {
+      "alpha": 0.16,
+      "action": "drag exit"
+    },
+    "870": {
+      "alpha": 0.10666666666666667,
+      "action": "drag exit"
+    },
+    "970": {
+      "alpha": 0,
+      "action": "drag exit"
+    }
+  },
+  "images": {
+    "state-motion-light-0000.png": "d56c8c1f4e24d66d3c39f8fae6b04d25a1349732bf0b2f152a7adc54397b5eb2",
+    "state-motion-light-0007.png": "03a4b9727f30e3528e90c6ed0ea248c73ea40a904671942ce6717e3f6c0c2536",
+    "state-motion-light-0015.png": "3451f94a0b522e06c17758323d25c5d039540771a2dc6fa7f4d7ed427ccab9c8",
+    "state-motion-light-0080.png": "fa148107c59729088ac0621131695487eb88ee16bbb6cb03cc5ad64fa31a43d9",
+    "state-motion-light-0100.png": "a84aa5332f1ecde46d842d479ee494248741ed0ac0e52c3385530231477ef7e7",
+    "state-motion-light-0125.png": "24f8957e0c7cbb159b93d918f692ecfb12545371dd149eabf0eecf028802e23d",
+    "state-motion-light-0180.png": "a595c069254edfb1eb8681a8e3145e77687901920ce1b3bbf51fe74a9c7bb539",
+    "state-motion-light-0187.png": "b40bafffe283eef50a27ec7bcba0ad5098c3e7d0971c67df8280fe6c9f4c870f",
+    "state-motion-light-0195.png": "49f41c4656a5987e16522ed2563193acf04ada8a80bd761b9e9b27f030c36eb9",
+    "state-motion-light-0220.png": "aa47aa0425c148e341d860a06655df80be8eec4a47acd60ca9e386b06f5f3758",
+    "state-motion-light-0228.png": "fc4f72e3a5d0c7dd3e5beabb0cae7d35461d89975069f007abf5a9ba3c4b351c",
+    "state-motion-light-0235.png": "3f4ae97f44589675f385c886d6284a7ffa3ba0b30c445bc510effb70d2b34ffb",
+    "state-motion-light-0300.png": "ab3f7e99dd0d9d1385457cb8fc0e6c5884ccaa420fb2b2d63dc8407bb32187af",
+    "state-motion-light-0320.png": "e5d5e3914df89aa9a34e478cd9cca19703d4d03c2be47bb1eace5e4cb552d189",
+    "state-motion-light-0345.png": "a03997d3f30f7a5a4d35eef8930e52970035406566857027bd071d4fdf07c20c",
+    "state-motion-light-0420.png": "6b3ab61efcd9d9d4d706d2758335b370de41816496fed9e103b2a98c5eb6d0c5",
+    "state-motion-light-0435.png": "39bad37a190b411669318cae5b431db572e7c0ae8b886c53ad85dda96ad6489c",
+    "state-motion-light-0500.png": "5164fe9dd9c95ca506d4f4fbddece4e094ed23c4f7d453508ba978da0d2bbcb3",
+    "state-motion-light-0520.png": "98415ea8b428e98bcd54952469a9ceea00b9dbbc11d444fec1395e35e621f291",
+    "state-motion-light-0530.png": "4a38ee5a976c21ef6ad527ef83e0559b49a078bebf4c3f6adaa3e01442b9a3b2",
+    "state-motion-light-0580.png": "380d4d25042822daabb58c6e977ac0aedab63de46c5e049601ed231105907ffe",
+    "state-motion-light-0680.png": "ac7ccc45911abafacea2bfde0b58864073680b9eecf207eab79eed710f54a8a1",
+    "state-motion-light-0720.png": "227a1526a7cb5f0d5f110cb78f28427167655ed9575e1242ef7b2b82e20b431b",
+    "state-motion-light-0740.png": "0cf7fb2c69dc104cf050a505e456b2d83a3918795b74b4edf187cd4ec44fe698",
+    "state-motion-light-0765.png": "78397070b3b739c38223aa55d1f99e5f06333bb1da2d54bd98ba8ab1e7ed5a7b",
+    "state-motion-light-0820.png": "a05ba95f289484cf0da8e360ac6ce5a1b6ffbed6a0199d80bffb528cdcef6514",
+    "state-motion-light-0870.png": "3690a44a0178960eb044cfe2f380adbbf0fd6692b01dd42c3a3bf205a9c10a1f",
+    "state-motion-light-0970.png": "e0ff260b79f45576c3c6ad52bd46816cdcd01e7524e0f20620771a9fe8887bf5",
+    "state-motion-light-reduced-500.png": "8846e841845ab91ea0d798d85f4c9503cea88d3d546b637ffd93d49ea851571e",
+    "state-motion-light-reduced-530.png": "f3ce74b9d543b04efacb9dc7815bdcb32d0121ed26ba8f8cf8a19e848574ea53",
+    "state-motion-dark-0000.png": "dca62a9c55bf558b99a747d0e6786d153c2618f2bd1e4e3713b42c2a11eff156",
+    "state-motion-dark-0007.png": "6a36f9e43ff548fc78fc42dee320e119c86895ca164a0a04e53d1a0c13816931",
+    "state-motion-dark-0015.png": "20295652bb99f2db2e38e606c18de9faef13b3d878c0f79deae8406e4975eddd",
+    "state-motion-dark-0080.png": "8368d89c5681a2cdb1dd2b163cea084f2511e92491b17737f2cdbc0b2a693153",
+    "state-motion-dark-0100.png": "749005d45a21d26ec781c5a78d071b73bbfdf99ae00471f0bb019f56918e755d",
+    "state-motion-dark-0125.png": "f3c7de3c97bf502cdadaff6c7e3d6c5942b80f0d6ed9a10600aa04b0ac0fbf1c",
+    "state-motion-dark-0180.png": "fd4b92faa6b87fcbf401ecd52e7feb0bacd7ac561db6679dc150bf35072b59d1",
+    "state-motion-dark-0187.png": "4aa16af656d014aee4a51291ef29f277d95209fa9de4d3fe3ea7fbd6e93675b2",
+    "state-motion-dark-0195.png": "2f6066bcb8385002582d3d6750936c86fe1682c1ae8579594e679bb3448582dd",
+    "state-motion-dark-0220.png": "9350ceba352036cc45b8f3bcbcc2a7ccd51bd9653b5cd236559c063689799a54",
+    "state-motion-dark-0228.png": "0da0ea65dee76d7f2f92402f1936fd6fa5db6de54ccc8ac70276b3e6b96bf117",
+    "state-motion-dark-0235.png": "26fce39362d0b75ee92948c0c57b1f29e05d588be7e45dfd91a3b91727366133",
+    "state-motion-dark-0300.png": "0bbce01b3e069286a2df94a6c98584d77ac34e6d9298732bc2303af147e916dd",
+    "state-motion-dark-0320.png": "ef51d39b42f684c7d0872e61b54ad65c8efddbc9413619b98ecec00e2c5151ca",
+    "state-motion-dark-0345.png": "19a90826e2a52210e53bd6b394a0acf775e0cddd26f6b80225e3c3c006d16f9c",
+    "state-motion-dark-0420.png": "01db75a71e3810a78b0dcc7e3bcedd6a7481513b70ea18d6b0511b4e0d460c89",
+    "state-motion-dark-0435.png": "79c08526c7d0b0fbda71bdc9719f07cd82baef94484b17b08557d943baa44bf5",
+    "state-motion-dark-0500.png": "b8587b65358261673b5abbba2f621669b42be42a6ec74bfdb06723589daa811b",
+    "state-motion-dark-0520.png": "535ae72a358942a05c4ec60ac025d68afe30e754145f20ada7aa8a048bd74fba",
+    "state-motion-dark-0530.png": "e4b4ee08aeae96f4cede63d088f9d8bc2131688629ce489b61e481565eab567b",
+    "state-motion-dark-0580.png": "60e91bae8b7b7e4a2e8719f691ab6a89db4a9d8833060a5200cc90f6354bc494",
+    "state-motion-dark-0680.png": "464092ffc4623e75de8d34d67c3eeda180a1ec9c5681baa98a7b40cb1598c423",
+    "state-motion-dark-0720.png": "c5737d97d3c8222afa0dc960828d0f18de781c78ea2eb254ab00fb820b637f85",
+    "state-motion-dark-0740.png": "40dbfb3e5a3b1c77e715002957f35140244a2b87c7b5f4f21fee4a914f55711f",
+    "state-motion-dark-0765.png": "ccf229a99f1b088be2c2e2bcca07f3a59ed44471e14dd146d249519ebb3ec3f2",
+    "state-motion-dark-0820.png": "01f9a77b8538e5585d81302b5b6e82292d33072ed48fdd5adbbc65ade4faad15",
+    "state-motion-dark-0870.png": "760164057bb478c4e23b2f15168b53a10c0344678f4cb1611431cb0fb7a2ab72",
+    "state-motion-dark-0970.png": "4f7c829b8ae895e591832c75722f37ce8d294633092087b93ec08ac1c82a15f1",
+    "state-motion-dark-reduced-500.png": "50f77d0f4d45a345b6515f4f1478db323c4bb6e05900f868e602f73f34ec936e",
+    "state-motion-dark-reduced-530.png": "57b81088c8d5a2766881ac751f5eeb5de0ace38e07cf91111b38236048900566"
+  },
+  "clip": {
+    "file": "compose-state-motion.mp4",
+    "sha256": "3605020e5e422a9bf37613603ee3998804914365b706d6a89cfe2317a44a03af"
+  }
+}
