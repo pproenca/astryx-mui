@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "authority": "compose-first",
   "familyId": "family-CM-0018",
-  "scopeSha256": "b329fe6e697e13ae36ce88f217ae54f970d1d0fbc908d8476df9b93718042933",
+  "scopeSha256": "90d0ce8fc1aca94b0e7ff8b992d9dc3d73a872307472c274edefb6d63b3a319c",
   "pins": {
     "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
     "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",

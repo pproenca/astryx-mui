@@ -119,8 +119,9 @@ export const material3FoundationGeometry = source.spacing;
 export const material3IconDefaults = source.icons;
 
 function colorChannels(color: string): number[] {
-  if (!/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(color))
-    {throw new RangeError(`Expected a hexadecimal Material color: ${color}`);}
+  if (!/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i.test(color)) {
+    throw new RangeError(`Expected a hexadecimal Material color: ${color}`);
+  }
   const digits =
     color.length === 4
       ? [...color.slice(1)].map(digit => digit + digit).join('')
@@ -136,8 +137,9 @@ export function material3LayerColor(
   layer: string,
   opacity: number,
 ): string {
-  if (!Number.isFinite(opacity) || opacity < 0 || opacity > 1)
-    {throw new RangeError('Material layer opacity must be within 0–1');}
+  if (!Number.isFinite(opacity) || opacity < 0 || opacity > 1) {
+    throw new RangeError('Material layer opacity must be within 0–1');
+  }
   const a = colorChannels(base);
   const b = colorChannels(layer);
   return `#${a
@@ -154,8 +156,9 @@ export function material3TonalElevation(
   scheme: Material3Scheme,
   absoluteDp: number,
 ): string {
-  if (!Number.isFinite(absoluteDp) || absoluteDp < 0)
-    {throw new RangeError('Material elevation must be non-negative');}
+  if (!Number.isFinite(absoluteDp) || absoluteDp < 0) {
+    throw new RangeError('Material elevation must be non-negative');
+  }
   const colors = material3ColorValues(scheme);
   const alpha =
     absoluteDp === 0 ? 0 : (4.5 * Math.log(absoluteDp + 1) + 2) / 100;
@@ -183,6 +186,30 @@ export function material3ElevationShadowLayers(
         source.elevation.shadowSampleColor,
         shadow,
       ),
+    },
+  };
+}
+
+/** CSS-native shadow layers keep the canonical geometry and scoped shadow token. */
+export function material3ElevationCssShadowLayers(
+  level: 0 | 1 | 2 | 3 | 4 | 5,
+) {
+  const geometry = source.elevation.shadowLayers[`level${level}`];
+  const color = 'var(--md-sys-color-shadow)';
+  return {
+    key: {
+      boxShadow: geometry.key.boxShadow.replace(
+        source.elevation.shadowSampleColor,
+        color,
+      ),
+      opacity: geometry.key.opacity,
+    },
+    ambient: {
+      boxShadow: geometry.ambient.boxShadow.replace(
+        source.elevation.shadowSampleColor,
+        color,
+      ),
+      opacity: geometry.ambient.opacity,
     },
   };
 }

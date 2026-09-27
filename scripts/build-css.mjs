@@ -2,7 +2,7 @@
 
 /**
  * @file build-css.mjs
- * @input Package source lists including native Divider paint
+ * @input Package source lists including native Divider and Elevation paint
  * @output Combined package StyleX stylesheets
  * @position Post-build StyleX CSS extraction
  * Post-build script that extracts StyleX CSS from compiled source files
@@ -100,6 +100,7 @@ const TARGETS = {
       'FocusRing/FocusRing.tsx',
       'Ripple/Ripple.tsx',
       'Divider/DividerRule.tsx',
+      'Elevation/Elevation.tsx',
     ],
     aliases: {},
   },

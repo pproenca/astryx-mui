@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "authority": "compose-first",
+  "status": "Resolved static Elevation source selection; native acceptance pending.",
+  "baselineId": "material3-expressive-compose-first-2026-09-26",
+  "web": {
+    "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+  },
+  "compose": {
+    "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "inventory": "internal/material3-migration/sources/compose-inventory.json",
+    "tests": [
+      {
+        "id": "SurfaceTest.noTonalElevationColorIsSetOnNonElevatedSurfaceColor",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceTest.kt"
+      },
+      {
+        "id": "SurfaceTest.tonalElevationColorIsSetOnElevatedSurfaceColor",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceTest.kt"
+      },
+      {
+        "id": "SurfaceTest.noTonalElevationColorIsSetOnElevatedSurfaceColor_tonalElevationDisabled",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceTest.kt"
+      },
+      {
+        "id": "SurfaceTest.tonalElevationColorIsNotSetOnNonSurfaceColor",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceTest.kt"
+      },
+      {
+        "id": "SurfaceTest.absoluteElevationCompositionLocalIsSet",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceTest.kt"
+      },
+      {
+        "id": "SurfaceTest.absoluteElevationIsNotUsedForShadows",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceTest.kt"
+      }
+    ],
+    "reason": "Surface tests cover tonal and shadow independence; Compose has no standalone public Elevation composable.",
+    "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+  },
+  "figma": {
+    "sha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+    "inventory": "internal/material3-migration/sources/figma-kit-inventory.json"
+  },
+  "guidance": [
+    {
+      "url": "https://m3.material.io/styles/elevation/overview",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/elevation.md"
+    }
+  ],
+  "decisions": [
+    {
+      "dimension": "elevation-levels",
+      "concern": "design",
+      "chosen": "compose",
+      "figmaSpecified": true,
+      "reason": "Pinned Compose selects six levels at 0, 1, 3, 6, 8 and 12 dp.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+    },
+    {
+      "dimension": "tonal-shadow-independence",
+      "concern": "behavior",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "Surface keeps tonal and shadow elevation independent and accumulates only tonal elevation through nested surfaces.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+    },
+    {
+      "dimension": "standalone-motion",
+      "concern": "motion",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "There is no standalone Compose Elevation composable or default transition; component-owned state motion stays with each component.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+    },
+    {
+      "dimension": "shadow-pixel-geometry",
+      "concern": "design",
+      "chosen": "figma",
+      "figmaSpecified": true,
+      "reason": "Frozen Figma light and dark effect styles fill the CSS shadow-pixel gap and reconcile with pinned Material Web.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+    },
+    {
+      "dimension": "browser-layer",
+      "concern": "browser",
+      "chosen": "web",
+      "figmaSpecified": false,
+      "reason": "Pinned Material Web supplies an aria-hidden decorative shadow layer attached to a positioned visual owner.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "elevation-light",
+      "dimensions": [
+        "elevation-levels",
+        "tonal-shadow-independence",
+        "shadow-pixel-geometry"
+      ],
+      "sourceReference": "Pinned Compose six levels with Figma/Web independent key and ambient CSS shadow layers, rendered as a source-value browser projection",
+      "baseline": "packages/material3/fixtures/references/elevation/native-shadow/elevation-light.png",
+      "baselineSha256": "e31888c92bb5fd4b9e03a6b2fb35aa216020fbd09b5db7d6a6e17d44a6cf30ba",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "six levels in two rows of independent shadow layers without text",
+        "state": "static"
+      }
+    },
+    {
+      "id": "elevation-dark",
+      "dimensions": [
+        "elevation-levels",
+        "tonal-shadow-independence",
+        "shadow-pixel-geometry"
+      ],
+      "sourceReference": "Pinned Compose six levels with Figma/Web independent key and ambient CSS shadow layers, rendered as a source-value browser projection",
+      "baseline": "packages/material3/fixtures/references/elevation/native-shadow/elevation-dark.png",
+      "baselineSha256": "3d8e181f53214cbf0f38a22f3fb1b56b4dc92da5a063d9ba080e993e24e49e21",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "six levels in two rows of independent shadow layers without text",
+        "state": "static"
+      }
+    }
+  ],
+  "motion": {
+    "applicable": false,
+    "reason": "Pinned standalone Elevation has no Compose composable or default transition; the Material Web 250 ms guide example is author selected.",
+    "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+  },
+  "performance": [
+    {
+      "id": "desktop-chrome-macos-reference",
+      "approvalReference": "human:pproenca:2026-09-26:M3-NAT-002-foundation-limits",
+      "status": "approved after native Chrome measurement and owner review on 2026-09-26",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "device": "macOS desktop reference",
+        "refreshRateHz": 60
+      },
+      "maxInputLatencyMs": 100,
+      "frameBudgetMs": 20,
+      "maxLongFrameRatio": 0.05,
+      "minInputSamples": 30,
+      "minFrameSamples": 300
+    }
+  ]
+}

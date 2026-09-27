@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 1,
+  "scopeSha256": "444bf8ca94f394320aa469f9bb6c105851d3dc3e464c24b9f2338e95aa30fa5d",
+  "sources": {
+    "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+    "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468"
+  },
+  "baseline": "internal/material3-migration/sources/baseline/elevation-compose-first.json",
+  "routing": [
+    {
+      "schemaVersion": 2,
+      "authority": "compose-first",
+      "familyId": "family-CM-0018",
+      "scopeSha256": "90d0ce8fc1aca94b0e7ff8b992d9dc3d73a872307472c274edefb6d63b3a319c",
+      "pins": {
+        "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+        "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+        "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+      },
+      "coverage": {
+        "figma": {
+          "status": "present",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+        },
+        "compose": {
+          "status": "present",
+          "evidence": "internal/material3-migration/sources/compose-elevation.md"
+        },
+        "web": {
+          "status": "present",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+        }
+      },
+      "routes": {
+        "design": {
+          "primary": "compose",
+          "figmaSpecified": true,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+        },
+        "behavior": {
+          "primary": "compose",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+        },
+        "motion": {
+          "primary": "compose",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+        },
+        "browser": {
+          "primary": "web",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+        }
+      },
+      "overrides": [
+        {
+          "dimension": "shadow-pixel-geometry",
+          "concern": "design",
+          "primary": "figma",
+          "figmaSpecified": true,
+          "reason": "Use the ten frozen light and dark effect styles for CSS shadow-layer pixels, reconciled with pinned Material Web.",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0018.md",
+          "gapReason": "Compose specifies shadow elevation but delegates shadow raster geometry to its platform renderer; it has no CSS key and ambient layer coordinates.",
+          "gapEvidence": "internal/material3-migration/sources/families/family-CM-0018.md"
+        }
+      ]
+    }
+  ],
+  "files": {
+    "internal/material3-migration/sources/compose-inventory.json": "0e637563f2cb1a140e04c939379fc6a90474697e272e6594146ce5cb2cbb0d0a",
+    "AGENTS.md": "ec1dab9cfad80cf4e32815ad820e8caad44dffe08ef0883f95769eca09d5c760",
+    "packages/themes/material3/material3.spec.md": "110b9cde4e12bd43102cd79e2a61c2c5845f29482fc303341be8875c7d98ab8e",
+    "docs/contributing/material3-migration.md": "fab928b10412b5e5c72c007315a425ee554d7e091ac1f5768e2616e7c2000e7f",
+    "internal/material3-migration/routing.mjs": "c498d4ef6b02164d4787b57ffb8470702ada22e47b27f2d5f3fb138cf7b1f391",
+    "internal/material3-migration/sources/baseline/elevation-compose-first.json": "bda8867f6ce6aae392d2d6f4130816c5aaf077652703bb3ecd91a28c29960d35",
+    "internal/material3-migration/sources/families/family-CM-0018.json": "2b95b9bf2912b76555c9063f9bbe1389fb7bd6087a7c2ae3194e29b5dd9c5a3f",
+    "internal/material3-migration/sources/compose-elevation.md": "33c9f27575f31e75e19ac57aeb1cc43d771ca152230ea9cb5574bab8051d2655",
+    "internal/material3-migration/sources/families/family-CM-0018.md": "b3fb0dd7c8ba318ad94fbcf91da3024f02d4e6879b5bcd6adc164ffccbcabd2b",
+    "internal/material3-migration/sources/figma-kit-inventory.json": "15ffc3bf66c2666dca228847b3bbeffc1d718beaa323967d2c118e0b3170ae6f",
+    "internal/material3-migration/sources/guidance/elevation.md": "266794a957a96a7ad278681c020c1b3f40dbbb17a73a75a01ec7aff6794d19b6",
+    "packages/material3/fixtures/references/elevation/native-shadow/elevation-light.png": "e31888c92bb5fd4b9e03a6b2fb35aa216020fbd09b5db7d6a6e17d44a6cf30ba",
+    "packages/material3/fixtures/references/elevation/native-shadow/elevation-dark.png": "3d8e181f53214cbf0f38a22f3fb1b56b4dc92da5a063d9ba080e993e24e49e21"
+  },
+  "compose": [
+    {
+      "id": "compose:Surface",
+      "name": "Surface",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Surface.kt",
+      "sha256": "b82221978167354d62462943bade5838beb4724a71155209d75debc6003bd9e2",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Surface.kt",
+      "symbols": [
+        "Surface"
+      ],
+      "expressive": false,
+      "tokens": [],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceContentColorTest.kt",
+          "sha256": "55d8d3d352904dcafc42218444fb2c14c299abc7c6a3259e4300104126b57ff2",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceContentColorTest.kt",
+          "cases": [
+            "surfaceSetsCorrectContentColors_primary",
+            "surfaceSetsCorrectContentColors_primaryContainer",
+            "surfaceSetsCorrectContentColors_secondary",
+            "surfaceSetsCorrectContentColors_secondaryContainer",
+            "surfaceSetsCorrectContentColors_tertiary",
+            "surfaceSetsCorrectContentColors_tertiaryContainer",
+            "surfaceSetsCorrectContentColors_error",
+            "surfaceSetsCorrectContentColors_errorContainer",
+            "surfaceSetsCorrectContentColors_background",
+            "surfaceSetsCorrectContentColors_surface",
+            "surfaceSetsCorrectContentColors_surfaceVariant",
+            "surfaceDoesNotSetContentColor_withCustomColor",
+            "surfaceInheritsParent_withCustomColor"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceTest.kt",
+          "sha256": "93bcaa1ce5cadfa07211acb5a55652205484854a2c35740400239da353c475aa",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/SurfaceTest.kt",
+          "cases": [
+            "noTonalElevationColorIsSetOnNonElevatedSurfaceColor",
+            "tonalElevationColorIsSetOnElevatedSurfaceColor",
+            "noTonalElevationColorIsSetOnElevatedSurfaceColor_tonalElevationDisabled",
+            "tonalElevationColorIsNotSetOnNonSurfaceColor",
+            "absoluteElevationCompositionLocalIsSet",
+            "absoluteElevationIsNotUsedForShadows",
+            "contentColorSetBeforeModifier",
+            "clickable_semantics",
+            "clickable_withCustomSemantics",
+            "clickable_clickAction",
+            "clickable_clickOutsideShapeBounds",
+            "clickable_smallTouchTarget_clickOutsideShapeBounds",
+            "clickable_enabled_disabled",
+            "clickable_interactionSource",
+            "surface_blockClicksBehind",
+            "selectable_semantics",
+            "selectable_customSemantics",
+            "selectable_clickAction",
+            "selectable_clickOutsideShapeBounds",
+            "selectable_smallTouchTarget_clickOutsideShapeBounds",
+            "toggleable_semantics",
+            "toggleable_customSemantics",
+            "toggleable_toggleAction",
+            "toggleable_clickOutsideShapeBounds",
+            "toggleable_smallTouchTarget_clickOutsideShapeBounds",
+            "surface_allowsFinalPassChildren"
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "path": "compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/SurfaceSamples.kt",
+          "sha256": "453969b7a1c2dde13627666d285b376e5b1f40f9f78e816f76b620f7b0bce166",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/SurfaceSamples.kt"
+        }
+      ]
+    }
+  ],
+  "criteria": [
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Coverage",
+      "Scenario": "Type and variant",
+      "Expected check": "Identify the corresponding Material 3 type and supported variants.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Coverage",
+      "Scenario": "Properties and slots",
+      "Expected check": "Compare public configuration, content slots, and composition.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Anatomy",
+      "Scenario": "Parts and geometry",
+      "Expected check": "Compare parts, dimensions, alignment, spacing, and icon placement.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Anatomy",
+      "Scenario": "Touch target",
+      "Expected check": "Verify the applicable Material target geometry.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Visual tokens",
+      "Scenario": "Color light",
+      "Expected check": "Verify semantic container, content, border, and state colors in light mode.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Visual tokens",
+      "Scenario": "Color dark",
+      "Expected check": "Verify semantic container, content, border, and state colors in dark mode.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Visual tokens",
+      "Scenario": "Typography",
+      "Expected check": "Verify family, scale role, size, line height, weight, and tracking.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Visual tokens",
+      "Scenario": "Shape spacing elevation",
+      "Expected check": "Verify corners, padding, gaps, borders, tonal and shadow elevation.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "States",
+      "Scenario": "Enabled",
+      "Expected check": "Verify resting visual and behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "States",
+      "Scenario": "Hover",
+      "Expected check": "Verify hover state with hover-capable pointer.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "States",
+      "Scenario": "Focus visible",
+      "Expected check": "Verify keyboard focus indicator and focus behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "States",
+      "Scenario": "Pressed",
+      "Expected check": "Verify active/pressed treatment and release behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "States",
+      "Scenario": "Selected checked",
+      "Expected check": "Verify selected or checked state where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "States",
+      "Scenario": "Disabled",
+      "Expected check": "Verify disabled visual, focus, and activation behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "States",
+      "Scenario": "Invalid error",
+      "Expected check": "Verify validation and error presentation where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "States",
+      "Scenario": "Loading",
+      "Expected check": "Verify pending feedback and geometry where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "States",
+      "Scenario": "Read only",
+      "Expected check": "Verify read-only semantics where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "States",
+      "Scenario": "Open closed dragged",
+      "Expected check": "Verify expanded, open, or dragged states where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Interaction",
+      "Scenario": "Pointer touch",
+      "Expected check": "Verify pointer, touch, gesture, and cancellation behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Interaction",
+      "Scenario": "Keyboard form",
+      "Expected check": "Verify keyboard controls and native form behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Accessibility",
+      "Scenario": "Semantics",
+      "Expected check": "Verify name, role, state, focus order, and screen reader output.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Accessibility",
+      "Scenario": "Contrast cues",
+      "Expected check": "Verify contextual contrast and non-color cues.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Motion",
+      "Scenario": "Transitions",
+      "Expected check": "Verify duration, easing, direction, and animated properties.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Motion",
+      "Scenario": "Enter exit interruption",
+      "Expected check": "Verify enter/exit and interrupted transitions where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Motion",
+      "Scenario": "Reduced motion",
+      "Expected check": "Verify reduced-motion behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Responsive",
+      "Scenario": "Viewport and container",
+      "Expected check": "Verify compact, medium, expanded, and boundary conditions as applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Responsive",
+      "Scenario": "Zoom RTL overflow",
+      "Expected check": "Verify zoom, long content, overflow, and RTL layout.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Theming",
+      "Scenario": "Color and overrides",
+      "Expected check": "Verify light/dark, dynamic color, custom theme, and scoped overrides.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Content",
+      "Scenario": "Extremes and locale",
+      "Expected check": "Verify empty/long content, icon-only content, and localization.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Composition",
+      "Scenario": "Layering and nesting",
+      "Expected check": "Verify overlays, stacking, scrolling, and nested use where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Engineering",
+      "Scenario": "Browser SSR performance",
+      "Expected check": "Verify supported browsers, SSR/hydration, layout stability, and performance as applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Evidence",
+      "Scenario": "Docs and regression",
+      "Expected check": "Link updated docs, source, unit/browser tests, and visual evidence.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/elevation.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Native contract",
+      "Scenario": "Material token contract",
+      "Expected check": "Native implementation consumes supported Material component and system roles directly; scoped overrides reach the rendered element.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Native contract",
+      "Scenario": "Native dependency boundary",
+      "Expected check": "Native CSS and behavior work without the Core theme bridge or legacy token declarations; shared Core utilities have an evidenced semantic match.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Native contract",
+      "Scenario": "Material API and defaults",
+      "Expected check": "Anatomy, defaults, variants, sizes and states follow the pinned Material source; Core compatibility lives in a separate entry point.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Native contract",
+      "Scenario": "Compatibility direction",
+      "Expected check": "Legacy exports and aliases delegate toward the native implementation without cycles or a second independently maintained value map.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Native contract",
+      "Scenario": "Native consumer preview",
+      "Expected check": "The published native entry point renders in docsite and Storybook with source, status and exact revision visible for human QA.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Native contract",
+      "Scenario": "Compose source precedence",
+      "Expected check": "Pinned Compose governs overlapping design, behavior and motion; missing concerns and approved exceptions are recorded once per family. Figma-only coverage and native web semantics remain required.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Native contract",
+      "Scenario": "Pixel comparison",
+      "Expected check": "Reference and native captures use matched conditions; exact pixel diff passes or a reviewed tolerance exception is recorded.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Native contract",
+      "Scenario": "Motion evidence",
+      "Expected check": "Watched reference media, timed frames, interruption, reversal and reduced motion are evidenced, or static behavior has a source-backed N/A.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Native contract",
+      "Scenario": "Compose behavior and tests",
+      "Expected check": "Pinned Compose defaults, variants and relevant test cases are mapped to permanent web tests; differences and missing upstream coverage are explicit.",
+      "Applicable?": "Required",
+      "Requirement source": "packages/themes/material3/material3.spec.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0018",
+      "Dimension": "Native contract",
+      "Scenario": "Native response and frame pacing",
+      "Expected check": "Recorded browser/device profiles meet the approved input response and frame pacing budgets, including active motion and interruption.",
+      "Applicable?": "Required",
+      "Requirement source": "packages/themes/material3/material3.spec.md",
+      "Notes / N/A reason": ""
+    }
+  ],
+  "decisions": "Resolved baseline required; code and interactive QA remain pending."
+}
