@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "sourceTraceSha256": "f90d9a5996abf162b58de9541d044872770804993ac3fc6f6aead8def3ad2964",
+  "fontSha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+  "browser": "Chrome 153.0.8010.53",
+  "viewport": {
+    "width": 960,
+    "height": 320,
+    "dpr": 1
+  },
+  "selectedTimes": [
+    0,
+    20,
+    100,
+    120,
+    160,
+    180,
+    260,
+    600,
+    880,
+    1000
+  ],
+  "images": {
+    "button-shape-light-0000.png": "65771102e38a75d60f5b323661d3004782b36acff951f25332301523fabcdd28",
+    "button-shape-light-0020.png": "3fccba637b06a0d304e3be11203f7b5657f39841b9acf3cc6dd1d5d54d62fdd4",
+    "button-shape-light-0100.png": "f55811b052121884fd87dc932563f2a83d8601d5e28d68f1dcddb4d7532e4941",
+    "button-shape-light-0120.png": "fdeedf27e7dad59bc96c57c44953146452cb4befed8689dd06e3ca6a6c7645b7",
+    "button-shape-light-0160.png": "dede4682ba50e3929cbdf387f35073975c3c7043f8214de671adf1e451e69621",
+    "button-shape-light-0180.png": "837a88956a5f1404ea0ceb0b54c1045ecfc83a7e6d014e1f70e8ceb0d2306217",
+    "button-shape-light-0260.png": "d416cb82c3c1404fb735e6dbb1804f8015d6e472f818486bd78699fb6dab820f",
+    "button-shape-light-0600.png": "b3adc3dc1d7bd39c4f2d201d63969afa8650ef50650f71ca1fa4eff414629b8e",
+    "button-shape-light-0880.png": "6f9cb7aba9bc2a0e7eab0041291a314229866a2f3fd391f5f0b0a42f6558777f",
+    "button-shape-light-1000.png": "ee9290d83d821429eca1702bd1673f1ed07af1da96dd4124ea5173206761688e",
+    "button-shape-light-reduced-pressed.png": "790940412c017cef65c1bd86a3c54a3be8f9ea921fdeaa0e970a967a6ad46034",
+    "button-shape-light-reduced-rest.png": "68a58296e18336c95ce824a655203986ab56f0cdd39cc8ec7f2656eb12680d2c",
+    "button-shape-dark-0000.png": "d165f3443d039147178572122be9d32c143c0c01fae4eaeea305a62220eb86cb",
+    "button-shape-dark-0020.png": "b8d928546b5df11c43fc685639785f54a7a11e5bea6ffc688d87d873487def2f",
+    "button-shape-dark-0100.png": "4c0457b9877d0849ed3337ee66d45881251bcdfd87c3f3e3bb19e59e39d9d195",
+    "button-shape-dark-0120.png": "49972d0f5478aa75a83c4bedc4c45264284f8da435d0dd76398d3423c5250c28",
+    "button-shape-dark-0160.png": "bdd207797d020d3e20c1f519ba63f751015676cb3ad83bbcec88595507e4c07f",
+    "button-shape-dark-0180.png": "8a63e3fac37d3a04b306be2e70927c655604dbc4cf64e4bb3f320a02b37533a5",
+    "button-shape-dark-0260.png": "e7e9220e8c8793a76aa5e7839dc9b42e3826ddd57399bf115d2e802430bb49d7",
+    "button-shape-dark-0600.png": "2a14620672fe09d104b4374286a952a403361a7e878cf56940486cb04090a906",
+    "button-shape-dark-0880.png": "8414d8f6f1e2b76ce27c4797f1e82b8bb0ce4142b416a38ffada9a3adf2b2de1",
+    "button-shape-dark-1000.png": "c916fcfa86ef1667002b73ec815911f8d8218f222f7a896cfd00506c0a9a83ef",
+    "button-shape-dark-reduced-pressed.png": "c79b2ed81889b30844ebd172995dce38950e6813ca4915d373a59e7c6a4f0dba",
+    "button-shape-dark-reduced-rest.png": "e5136ab62813a940d9a9e5be9336a5b25637c41705cd5ad470d61d4bcfd9c9cb"
+  },
+  "clips": {
+    "compose-button-shape-light.mp4": "b211411df2c0ac36065d8472e4fca0aba83eda7e98c0654a396510099e80e476",
+    "compose-button-shape-dark.mp4": "7ff90e426c2e865151976c2af646baaa5ae2f1bb378029187b1a41384e18eb47"
+  }
+}
