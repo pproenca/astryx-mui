@@ -31,3 +31,11 @@ and hashes in its manifest. Its pinned Roboto font is copied into
 font is used for the gallery's browser typography comparison. Existing Meta and
 Google notices in `@astryxdesign/theme-material3` remain with that
 compatibility package.
+
+The native `Icon` gallery's close, check and search SVG paths derive from
+Google LLC's Material Symbols Outlined artwork at commit
+[`bd8cb85bd4bad964fe6918f79665bb40c3a8efef`](https://github.com/google/material-design-icons/tree/bd8cb85bd4bad964fe6918f79665bb40c3a8efef).
+Copyright Google LLC, licensed Apache-2.0. `MaterialSymbol` supports the
+corresponding font presentation channel, but no Material Symbols font binary is
+redistributed. Pinned, licensed font files are used only in the ignored local
+QA build when `M3_ICON_FONT_CACHE` is set.

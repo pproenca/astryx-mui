@@ -1,0 +1,797 @@
+{
+  "schemaVersion": 1,
+  "scopeSha256": "52260294755f7499d8788af16b2c5fbfe191da8f1b74bd33e4f62fd51afc3562",
+  "sources": {
+    "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+    "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468"
+  },
+  "baseline": "internal/material3-migration/sources/baseline/icon-compose-first.json",
+  "routing": [
+    {
+      "schemaVersion": 2,
+      "authority": "compose-first",
+      "familyId": "family-CM-0024",
+      "scopeSha256": "20828a5c02b96b330d07c9c1f704fc2994a19d6a558585f1c7dc52249ac55c9c",
+      "pins": {
+        "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+        "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+        "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+      },
+      "coverage": {
+        "figma": {
+          "status": "absent",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0024.md",
+          "reason": "All 171 frozen component sets were checked; 21 icon-named sets are Icon button or tab compositions, with no standalone Icon set."
+        },
+        "compose": {
+          "status": "present",
+          "evidence": "internal/material3-migration/sources/compose-icons.md"
+        },
+        "web": {
+          "status": "present",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0024.md"
+        }
+      },
+      "routes": {
+        "design": {
+          "primary": "compose",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/compose-icons.md"
+        },
+        "behavior": {
+          "primary": "compose",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/compose-icons.md"
+        },
+        "motion": {
+          "primary": "compose",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0024.md"
+        },
+        "browser": {
+          "primary": "web",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0024.md"
+        }
+      },
+      "overrides": [
+        {
+          "dimension": "artwork-and-font-family",
+          "primary": "website",
+          "figmaSpecified": false,
+          "reason": "Select the optional Material Symbols presentation channel where a font glyph is used.",
+          "evidence": "internal/material3-migration/sources/guidance/icons.md",
+          "gapReason": "Pinned Compose Icon accepts supplied artwork and selects no Material Symbols family, glyph or variable axes.",
+          "gapEvidence": "internal/material3-migration/sources/compose-icons.md"
+        }
+      ]
+    }
+  ],
+  "files": {
+    "internal/material3-migration/sources/compose-inventory.json": "0e637563f2cb1a140e04c939379fc6a90474697e272e6594146ce5cb2cbb0d0a",
+    "AGENTS.md": "ec1dab9cfad80cf4e32815ad820e8caad44dffe08ef0883f95769eca09d5c760",
+    "packages/themes/material3/material3.spec.md": "110b9cde4e12bd43102cd79e2a61c2c5845f29482fc303341be8875c7d98ab8e",
+    "docs/contributing/material3-migration.md": "fab928b10412b5e5c72c007315a425ee554d7e091ac1f5768e2616e7c2000e7f",
+    "internal/material3-migration/routing.mjs": "c498d4ef6b02164d4787b57ffb8470702ada22e47b27f2d5f3fb138cf7b1f391",
+    "internal/material3-migration/sources/baseline/icon-compose-first.json": "39c115f4146718b9d3d4578b14517fa6147e7e218748adfc68ac840681e27c93",
+    "internal/material3-migration/sources/families/family-CM-0024.json": "13befb58312d58195f8f6287abb9835c7fb13a71aca77ed2669ff922ef705182",
+    "internal/material3-migration/sources/compose-icons.md": "b30b19517b58185725b4d2389ee659738e6d6667a9a99eb68439ffe776a5e97c",
+    "internal/material3-migration/sources/families/family-CM-0024.md": "c92a676af6c039d2019329d814538cd6730d518fca72fca306517cadc6b76143",
+    "internal/material3-migration/sources/guidance/icons.md": "5c5f418fe140c1b578e02295ee8c269371bdb974c195329bf5690415a5dc1d9d",
+    "internal/material3-migration/sources/figma-kit-inventory.json": "15ffc3bf66c2666dca228847b3bbeffc1d718beaa323967d2c118e0b3170ae6f",
+    "internal/material3-migration/sources/icon-reference/icons-light.png": "676e66b5834757533369cbd22d1b3d71f424a9aa7f04e48a9b13ae7f2224c9bf",
+    "internal/material3-migration/sources/icon-reference/icons-dark.png": "6f62cbf88cfdf4d902f126e8add4ed3010e7af14c0ca16aa1154b3d8ac34cc17"
+  },
+  "compose": [
+    {
+      "id": "compose:Icon",
+      "name": "Icon",
+      "kind": "Component",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Icon.kt",
+      "sha256": "6cd5f934957681e845282976b07fc418453ed20e50ee09dd7e0b19b7d09d40fb",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Icon.kt",
+      "symbols": [
+        "Icon"
+      ],
+      "expressive": false,
+      "tokens": [
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/IconButtonTokens.kt",
+          "sha256": "dd95472ffbbd321e72c6417ac31e6afa27ec1391efb79aacd96daeb137c7d05e",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/IconButtonTokens.kt",
+          "name": "IconButtonTokens",
+          "version": "14_1_0",
+          "values": [
+            {
+              "name": "DisabledColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 22
+            },
+            {
+              "name": "DisabledOpacity",
+              "expression": "0.38f",
+              "line": 25
+            },
+            {
+              "name": "FocusedColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 26
+            },
+            {
+              "name": "HoveredColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 29
+            },
+            {
+              "name": "Color",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 32
+            },
+            {
+              "name": "PressedColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 35
+            },
+            {
+              "name": "SelectedFocusedColor",
+              "expression": "ColorSchemeKeyTokens.Primary",
+              "line": 38
+            },
+            {
+              "name": "SelectedHoveredColor",
+              "expression": "ColorSchemeKeyTokens.Primary",
+              "line": 41
+            },
+            {
+              "name": "SelectedColor",
+              "expression": "ColorSchemeKeyTokens.Primary",
+              "line": 44
+            },
+            {
+              "name": "SelectedPressedColor",
+              "expression": "ColorSchemeKeyTokens.Primary",
+              "line": 47
+            },
+            {
+              "name": "UnselectedFocusedColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 50
+            },
+            {
+              "name": "UnselectedHoveredColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 53
+            },
+            {
+              "name": "UnselectedColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 56
+            },
+            {
+              "name": "UnselectedPressedColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 59
+            }
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/SmallIconButtonTokens.kt",
+          "sha256": "c0f800d2d2c4bfedbe24131e225448556dbee80c52c3bfea52e30bf33df5a1a0",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/SmallIconButtonTokens.kt",
+          "name": "SmallIconButtonTokens",
+          "version": "14_1_0",
+          "values": [
+            {
+              "name": "ContainerHeight",
+              "expression": "40.0.dp",
+              "line": 24
+            },
+            {
+              "name": "ContainerShapeRound",
+              "expression": "ShapeKeyTokens.CornerFull",
+              "line": 27
+            },
+            {
+              "name": "ContainerShapeSquare",
+              "expression": "ShapeKeyTokens.CornerMedium",
+              "line": 30
+            },
+            {
+              "name": "DefaultLeadingSpace",
+              "expression": "8.0.dp",
+              "line": 33
+            },
+            {
+              "name": "DefaultTrailingSpace",
+              "expression": "8.0.dp",
+              "line": 36
+            },
+            {
+              "name": "IconSize",
+              "expression": "24.0.dp",
+              "line": 39
+            },
+            {
+              "name": "NarrowLeadingSpace",
+              "expression": "4.0.dp",
+              "line": 42
+            },
+            {
+              "name": "NarrowTrailingSpace",
+              "expression": "4.0.dp",
+              "line": 45
+            },
+            {
+              "name": "OutlinedOutlineWidth",
+              "expression": "1.0.dp",
+              "line": 48
+            },
+            {
+              "name": "PressedContainerShape",
+              "expression": "ShapeKeyTokens.CornerSmall",
+              "line": 51
+            },
+            {
+              "name": "SelectedContainerShapeRound",
+              "expression": "ShapeKeyTokens.CornerMedium",
+              "line": 54
+            },
+            {
+              "name": "SelectedContainerShapeSquare",
+              "expression": "ShapeKeyTokens.CornerFull",
+              "line": 57
+            },
+            {
+              "name": "WideLeadingSpace",
+              "expression": "14.0.dp",
+              "line": 60
+            },
+            {
+              "name": "WideTrailingSpace",
+              "expression": "14.0.dp",
+              "line": 63
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/IconButtonScreenshotTest.kt",
+          "sha256": "a6ec75becf5f2dd873ffd5e312e34554b202030fa62b638d38a4195e2949bbd6",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/IconButtonScreenshotTest.kt",
+          "cases": [
+            "iconButton_lightTheme",
+            "iconButton_darkTheme",
+            "iconButton_lightTheme_disabled",
+            "iconButton_lightTheme_pressed",
+            "iconButton_lightTheme_hovered",
+            "iconButton_lightTheme_focused",
+            "iconButton_lightTheme_focused_insetFocusRings",
+            "iconButton_largeContentClipped",
+            "iconToggleButton_lightTheme",
+            "iconToggleButton_darkTheme",
+            "iconToggleButton_checked_lightTheme",
+            "iconToggleButton_checked_darkTheme",
+            "iconToggleButton_largeContentClipped",
+            "filledIconButton_lightTheme",
+            "filledIconButton_darkTheme",
+            "filledIconToggleButton_lightTheme",
+            "filledIconToggleButton_lightTheme_disabled",
+            "filledIconToggleButton_darkTheme",
+            "filledIconToggleButton_checked_lightTheme",
+            "filledIconToggleButton_checked_darkTheme",
+            "filledTonalIconButton_lightTheme",
+            "filledTonalIconButton_lightTheme_disabled",
+            "filledTonalIconButton_darkTheme",
+            "filledTonalIconToggleButton_lightTheme",
+            "filledTonalIconToggleButton_darkTheme",
+            "filledTonalIconToggleButton_checked_lightTheme",
+            "filledTonalIconToggleButton_checked_darkTheme",
+            "outlinedIconButton_lightTheme",
+            "outlinedButton_lightTheme_disabled",
+            "outlinedIconButton_darkTheme",
+            "outlinedIconToggleButton_lightTheme",
+            "outlinedIconToggleButton_darkTheme",
+            "outlinedIconToggleButton_checked_lightTheme",
+            "outlinedIconToggleButton_checked_darkTheme",
+            "assertAgainstGolden"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/IconButtonTest.kt",
+          "sha256": "54d285ce71fc4eaf484f80922aa3ebca79b9eb4b28222cfb66ddd2cccf3dd5d0",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/IconButtonTest.kt",
+          "cases": [
+            "iconButton_xsmall_visualBounds",
+            "iconButton_xSmall_semantic_bounds",
+            "iconButton_small_visualBounds",
+            "iconButton_small_semantic_bounds",
+            "iconButton_medium_size",
+            "iconButton_large_size",
+            "iconButton_xlarge_size",
+            "iconButton_sizeWithoutMinTargetEnforcement",
+            "iconButton_sizeWithCustomMinInteractiveComponentSize",
+            "iconButton_defaultSemantics",
+            "iconButton_disabledSemantics",
+            "iconButton_materialIconSize_iconPositioning",
+            "iconButton_customIconSize_iconPositioning",
+            "iconButton_defaultLocalContentColors",
+            "iconButton_defaultVibrantColors",
+            "iconButtonColors_useLocalContentColor",
+            "iconButtonVibrantColors_ignoreLocalContentColor",
+            "iconButtonColors_customValues",
+            "iconButtonColors_copy",
+            "iconToggleButton_size",
+            "iconToggleButton_sizeWithoutMinTargetEnforcement",
+            "iconToggleButton_defaultSemantics",
+            "iconToggleButton_disabledSemantics",
+            "iconToggleButton_materialIconSize_iconPositioning",
+            "iconToggleButton_customIconSize_iconPositioning",
+            "iconToggleButton_clickInMinimumTouchTarget",
+            "iconToggleButton_defaultLocalContentColors",
+            "iconToggleButton_defaultVibrantColors",
+            "filledIconButton_xsmall_visualBounds",
+            "filledIconButton_xSmall_semantic_bounds",
+            "filledIconButton_small_visualBounds",
+            "filledIconButton_small_semantic_bounds",
+            "filledIconButton_medium_size",
+            "filledIconButton_large_size",
+            "filledIconButton_xlarge_size",
+            "filledIconButton_medium_squareShape",
+            "filledIconButton_medium_pressedShape",
+            "filledIconButton_sizeWithoutMinTargetEnforcement",
+            "filledIconButton_defaultSemantics",
+            "filledIconButton_disabledSemantics",
+            "filledIconButton_materialIconSize_iconPositioning",
+            "filledIconButton_customIconSize_iconPositioning",
+            "filledIconButton_defaultColors",
+            "filledTonalIconButton_defaultSemantics",
+            "filledTonalIconButton_disabledSemantics",
+            "filledTonalIconButton_defaultColors",
+            "filledIconToggleButton_size",
+            "filledIconToggleButton_sizeWithoutMinTargetEnforcement",
+            "filledIconToggleButton_defaultSemantics",
+            "filledIconToggleButton_disabledSemantics",
+            "filledIconToggleButton_materialIconSize_iconPositioning",
+            "filledIconToggleButton_customIconSize_iconPositioning",
+            "filledIconToggleButton_defaultColors",
+            "filledIconToggleButton_checked_medium_squareShape",
+            "filledTonalIconToggleButton_defaultColors",
+            "outlinedIconButton_size",
+            "outlinedIconButton_sizeWithoutMinTargetEnforcement",
+            "outlinedIconButton_defaultSemantics",
+            "outlinedIconButton_disabledSemantics",
+            "outlinedIconButton_materialIconSize_iconPositioning",
+            "outlinedIconButton_customIconSize_iconPositioning",
+            "outlinedIconToggleButton_size",
+            "outlinedIconToggleButton_sizeWithoutMinTargetEnforcement",
+            "outlinedIconToggleButton_defaultSemantics",
+            "outlinedIconToggleButton_disabledSemantics",
+            "outlinedIconToggleButton_materialIconSize_iconPositioning",
+            "outlinedIconToggleButton_customIconSize_iconPositioning",
+            "outlinedIconButton_defaultLocalContentColors",
+            "outlinedIconButton_defaultVibrantColors",
+            "outlinedIconToggleButton_useLocalContentColors",
+            "outlinedIconToggleButton_defaultVibrantColors",
+            "outlinedIconButton_borderStroke_defaultLocalContentColor",
+            "outlinedIconToggleButton_borderStroke_defaultVibrantColor",
+            "assertVisualBounds"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/IconTest.kt",
+          "sha256": "b209040bee4ba17ca253228db561859b4ce3246bcb2e9751c9f97c870c31d6f4",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/IconTest.kt",
+          "cases": [
+            "vector_materialIconSize_dimensions",
+            "vector_customIconSize_dimensions",
+            "image_noIntrinsicSize_dimensions",
+            "image_withIntrinsicSize_dimensions",
+            "painter_noIntrinsicSize_dimensions",
+            "painter_withIntrinsicSize_dimensions",
+            "iconScalesToFitSize",
+            "iconUnspecifiedTintColorIgnored",
+            "iconSpecifiedTintColorApplied",
+            "defaultSemanticsWhenContentDescriptionProvided",
+            "iconRenderedCorrectlyInPaddedBox",
+            "iconWithSpecifiedTintRenderedCorrectlyInPaddedBox",
+            "iconRenderedCorrectlyInLargeBox",
+            "iconWithSpecifiedTintRenderedCorrectlyInLargeBox",
+            "iconRenderedCorrectlyInSmallBox",
+            "iconWithSpecifiedTintRenderedCorrectlyInSmallBox",
+            "createBitmapWithColor"
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "path": "compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/IconButtonSamples.kt",
+          "sha256": "9f5d66e82487d5d30a5e64ed17fff8429216907b8edebf05a1108c1e5df8dc1f",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/IconButtonSamples.kt"
+        }
+      ]
+    }
+  ],
+  "criteria": [
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Coverage",
+      "Scenario": "Type and variant",
+      "Expected check": "Identify the corresponding Material 3 type and supported variants.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Coverage",
+      "Scenario": "Properties and slots",
+      "Expected check": "Compare public configuration, content slots, and composition.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Anatomy",
+      "Scenario": "Parts and geometry",
+      "Expected check": "Compare parts, dimensions, alignment, spacing, and icon placement.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Anatomy",
+      "Scenario": "Touch target",
+      "Expected check": "Verify the applicable Material target geometry.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Visual tokens",
+      "Scenario": "Color light",
+      "Expected check": "Verify semantic container, content, border, and state colors in light mode.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Visual tokens",
+      "Scenario": "Color dark",
+      "Expected check": "Verify semantic container, content, border, and state colors in dark mode.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Visual tokens",
+      "Scenario": "Typography",
+      "Expected check": "Verify family, scale role, size, line height, weight, and tracking.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Visual tokens",
+      "Scenario": "Shape spacing elevation",
+      "Expected check": "Verify corners, padding, gaps, borders, tonal and shadow elevation.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "States",
+      "Scenario": "Enabled",
+      "Expected check": "Verify resting visual and behavior.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "States",
+      "Scenario": "Hover",
+      "Expected check": "Verify hover state with hover-capable pointer.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "States",
+      "Scenario": "Focus visible",
+      "Expected check": "Verify keyboard focus indicator and focus behavior.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "States",
+      "Scenario": "Pressed",
+      "Expected check": "Verify active/pressed treatment and release behavior.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "States",
+      "Scenario": "Selected checked",
+      "Expected check": "Verify selected or checked state where applicable.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "States",
+      "Scenario": "Disabled",
+      "Expected check": "Verify disabled visual, focus, and activation behavior.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "States",
+      "Scenario": "Invalid error",
+      "Expected check": "Verify validation and error presentation where applicable.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "States",
+      "Scenario": "Loading",
+      "Expected check": "Verify pending feedback and geometry where applicable.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "States",
+      "Scenario": "Read only",
+      "Expected check": "Verify read-only semantics where applicable.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "States",
+      "Scenario": "Open closed dragged",
+      "Expected check": "Verify expanded, open, or dragged states where applicable.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Interaction",
+      "Scenario": "Pointer touch",
+      "Expected check": "Verify pointer, touch, gesture, and cancellation behavior.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Interaction",
+      "Scenario": "Keyboard form",
+      "Expected check": "Verify keyboard controls and native form behavior.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Accessibility",
+      "Scenario": "Semantics",
+      "Expected check": "Verify name, role, state, focus order, and screen reader output.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Accessibility",
+      "Scenario": "Contrast cues",
+      "Expected check": "Verify contextual contrast and non-color cues.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Motion",
+      "Scenario": "Transitions",
+      "Expected check": "Verify duration, easing, direction, and animated properties.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Motion",
+      "Scenario": "Enter exit interruption",
+      "Expected check": "Verify enter/exit and interrupted transitions where applicable.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Motion",
+      "Scenario": "Reduced motion",
+      "Expected check": "Verify reduced-motion behavior.",
+      "Applicable?": "N/A",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Standalone Icon is a presentational glyph. The interactive parent owns controls, target geometry, state, and motion; Icon has no container or elevation."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Responsive",
+      "Scenario": "Viewport and container",
+      "Expected check": "Verify compact, medium, expanded, and boundary conditions as applicable.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Responsive",
+      "Scenario": "Zoom RTL overflow",
+      "Expected check": "Verify zoom, long content, overflow, and RTL layout.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Theming",
+      "Scenario": "Color and overrides",
+      "Expected check": "Verify light/dark, dynamic color, custom theme, and scoped overrides.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Content",
+      "Scenario": "Extremes and locale",
+      "Expected check": "Verify empty/long content, icon-only content, and localization.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Composition",
+      "Scenario": "Layering and nesting",
+      "Expected check": "Verify overlays, stacking, scrolling, and nested use where applicable.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Engineering",
+      "Scenario": "Browser SSR performance",
+      "Expected check": "Verify supported browsers, SSR/hydration, layout stability, and performance as applicable.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Evidence",
+      "Scenario": "Docs and regression",
+      "Expected check": "Link updated docs, source, unit/browser tests, and visual evidence.",
+      "Applicable?": "Required",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/icon.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Native contract",
+      "Scenario": "Material token contract",
+      "Expected check": "Native implementation consumes supported Material component and system roles directly; scoped overrides reach the rendered element.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Native contract",
+      "Scenario": "Native dependency boundary",
+      "Expected check": "Native CSS and behavior work without the Core theme bridge or legacy token declarations; shared Core utilities have an evidenced semantic match.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Native contract",
+      "Scenario": "Material API and defaults",
+      "Expected check": "Anatomy, defaults, variants, sizes and states follow the pinned Material source; Core compatibility lives in a separate entry point.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Native contract",
+      "Scenario": "Compatibility direction",
+      "Expected check": "Legacy exports and aliases delegate toward the native implementation without cycles or a second independently maintained value map.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Native contract",
+      "Scenario": "Native consumer preview",
+      "Expected check": "The published native entry point renders in docsite and Storybook with source, status and exact revision visible for human QA.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Native contract",
+      "Scenario": "Compose source precedence",
+      "Expected check": "Pinned Compose governs overlapping design, behavior and motion; missing concerns and approved exceptions are recorded once per family. Figma-only coverage and native web semantics remain required.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Native contract",
+      "Scenario": "Pixel comparison",
+      "Expected check": "Reference and native captures use matched conditions; exact pixel diff passes or a reviewed tolerance exception is recorded.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Native contract",
+      "Scenario": "Motion evidence",
+      "Expected check": "Watched reference media, timed frames, interruption, reversal and reduced motion are evidenced, or static behavior has a source-backed N/A.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": "Pinned standalone Compose Icon has no animation; interactive parent owns motion."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Native contract",
+      "Scenario": "Compose behavior and tests",
+      "Expected check": "Pinned Compose defaults, variants and relevant test cases are mapped to permanent web tests; differences and missing upstream coverage are explicit.",
+      "Applicable?": "Required",
+      "Requirement source": "packages/themes/material3/material3.spec.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    },
+    {
+      "Map ID": "CM-0024",
+      "Dimension": "Native contract",
+      "Scenario": "Native response and frame pacing",
+      "Expected check": "Recorded browser/device profiles meet the approved input response and frame pacing budgets, including active motion and interruption.",
+      "Applicable?": "Required",
+      "Requirement source": "packages/themes/material3/material3.spec.md",
+      "Notes / N/A reason": "Native Icon and font-backed symbol are verified independently of Core."
+    }
+  ],
+  "decisions": "Resolved baseline required; code and interactive QA remain pending."
+}

@@ -21,7 +21,9 @@
     "components"
   ],
   "type": "module",
-  "sideEffects": ["**/*.css"],
+  "sideEffects": [
+    "**/*.css"
+  ],
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
@@ -29,6 +31,20 @@
       "source": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./Icon": {
+      "source": "./src/Icon/index.ts",
+      "types": "./dist/Icon/index.d.ts",
+      "import": "./dist/Icon/index.js"
+    },
+    "./MaterialSymbol": {
+      "source": "./src/MaterialSymbol/index.ts",
+      "types": "./dist/MaterialSymbol/index.d.ts",
+      "import": "./dist/MaterialSymbol/index.js"
+    },
+    "./components.css": {
+      "types": "./components.css.d.ts",
+      "default": "./dist/components.css"
     },
     "./tokens.css": {
       "types": "./tokens.css.d.ts",
@@ -38,23 +54,40 @@
   "files": [
     "astryx.integration.mjs",
     "dist",
+    "src",
     "docs",
     "README.md",
     "THIRD_PARTY_NOTICES.md",
     "LICENSE-APACHE-2.0",
-    "tokens.css.d.ts"
+    "tokens.css.d.ts",
+    "components.css.d.ts"
   ],
   "scripts": {
-    "build": "node ../../scripts/clean-dist.mjs && tsc --project tsconfig.build.json && node scripts/build-token-css.mjs",
+    "build": "node ../../scripts/clean-dist.mjs && tsc --project tsconfig.build.json && node scripts/build-components.mjs && node scripts/build-token-css.mjs && node ../../scripts/build-css.mjs --package material3-components",
     "build:gallery": "pnpm run build && node scripts/build-gallery.mjs",
     "typecheck": "tsc --project tsconfig.json --noEmit",
-    "test": "pnpm run build:gallery && vitest run --root ../.. packages/material3/src/tokens.test.ts packages/material3/src/foundation.test.ts packages/material3/src/motion.test.ts && node scripts/check-native-fixture.mjs && node scripts/check-discovery.mjs && node scripts/check-foundation-browser.mjs && node scripts/check-layer-browser.mjs && node scripts/check-spacing-browser.mjs && node scripts/check-foundation-interaction.mjs && node scripts/check-gallery.mjs"
+    "test": "pnpm run build:gallery && vitest run --root ../.. packages/material3/src/tokens.test.ts packages/material3/src/foundation.test.ts packages/material3/src/motion.test.ts packages/material3/src/Icon/Icon.test.tsx packages/material3/src/MaterialSymbol/MaterialSymbol.test.tsx && node scripts/check-native-fixture.mjs && node scripts/check-discovery.mjs && node scripts/check-foundation-browser.mjs && node scripts/check-layer-browser.mjs && node scripts/check-spacing-browser.mjs && node scripts/check-foundation-interaction.mjs && node scripts/check-gallery.mjs && node scripts/check-icons-browser.mjs"
+  },
+  "peerDependencies": {
+    "@stylexjs/stylex": "^0.19.0",
+    "react": ">=19"
   },
   "devDependencies": {
+    "@babel/core": "catalog:",
+    "@babel/preset-react": "catalog:",
+    "@babel/preset-typescript": "catalog:",
     "@astryxdesign/cli": "workspace:*",
+    "@stylexjs/babel-plugin": "catalog:",
+    "@stylexjs/stylex": "catalog:",
+    "@testing-library/react": "catalog:",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "esbuild": "catalog:",
     "pixelmatch": "^7.2.0",
     "playwright": "^1.61.1",
     "pngjs": "^7.0.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"
   }

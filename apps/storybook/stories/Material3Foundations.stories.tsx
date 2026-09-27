@@ -17,7 +17,7 @@ const meta: Meta = {
     docs: {
       description: {
         component:
-          'The iframe runs the native Material 3 package. Source comparisons, the exact build revision, and watched motion are included. Native component previews remain pending until each component passes review.',
+          'The iframe runs the native Material 3 package. Source comparisons, the exact build revision, watched motion, and a native Icon preview are included.',
       },
     },
   },
