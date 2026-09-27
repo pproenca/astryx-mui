@@ -9,8 +9,8 @@ import {fileURLToPath} from 'node:url';
 import React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import {chromium} from 'playwright';
-import pixelmatch from 'pixelmatch';
 import {PNG} from 'pngjs';
+import {pixels} from '../compare.mjs';
 import {Icon} from '../../../packages/material3/dist/Icon/Icon.js';
 import {MaterialSymbol} from '../../../packages/material3/dist/MaterialSymbol/MaterialSymbol.js';
 
@@ -163,15 +163,8 @@ try {
     const actual = PNG.sync.read(bytes);
     assert.equal(actual.width, baseline.width);
     assert.equal(actual.height, baseline.height);
-    const diff = new PNG({width: baseline.width, height: baseline.height});
-    const changed = pixelmatch(
-      baseline.data,
-      actual.data,
-      diff.data,
-      baseline.width,
-      baseline.height,
-      {threshold: 0, includeAA: true},
-    );
+    const diff = pixels(baseline, actual);
+    const changed = diff.changedPixels;
     if (check) {
       assert.ok(
         (await fs.readFile(path.join(actualRoot, `icons-${id}.png`))).equals(
