@@ -1,0 +1,17 @@
+{
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "browser": "Chrome 153.0.8010.53",
+  "viewport": {"width": 960, "height": 360, "dpr": 1},
+  "fontSha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+  "maxChangedPixels": 5,
+  "frames": {
+    "ripple-light-0000.png": "bee5c6a127fe9b01799b22a15ada7f58ad1ee10ec0ee105b4b24ecda5fa2860f",
+    "ripple-light-0020.png": "2325f1dddabe24523836024bcee1cbef46d6497e5c86c417ce34f1cace6764b7",
+    "ripple-light-0075.png": "5470c87f3c8c29a65e758eeb74c4c86f90a50eda230a99a7276a1cb42179de2e",
+    "ripple-light-0120.png": "456f2b00925835617bb473048102ea562b35c37f832b46d904e2b12eed43cb09",
+    "ripple-dark-0000.png": "cfc01b4a721b35b219d8455fd18e6a241fd2d474ea3b2dec2fe459d4d4913305",
+    "ripple-dark-0020.png": "3d7e28e1d952564fe90a9a78f3dff8b0e022e12fb54606f953c0b652b4cc28ab",
+    "ripple-dark-0075.png": "8265e0e017a66fbd427de2e38daf99868639891d863923a1ca7bc495e3261a92",
+    "ripple-dark-0120.png": "b3cba3c2ec92fcf69a441f04d3b8d1f4a3be245d9b39ddd9c0013dd98777c41f"
+  }
+}

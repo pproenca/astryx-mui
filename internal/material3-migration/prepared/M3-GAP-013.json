@@ -1,0 +1,610 @@
+{
+  "schemaVersion": 1,
+  "scopeSha256": "ab24ffdbede9a3610f18e1cb14a9c004bdbd872b0c1fe1d450cf4d7d9f04a6f0",
+  "sources": {
+    "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+    "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468"
+  },
+  "baseline": "internal/material3-migration/sources/baseline/ripple-compose-first.json",
+  "routing": [
+    {
+      "schemaVersion": 2,
+      "authority": "compose-first",
+      "familyId": "family-CM-0023",
+      "scopeSha256": "6390ba24e5d4cf32868c76a0846af6e5333758b1d7ce32559e33878da24b3405",
+      "pins": {
+        "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+        "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+        "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+      },
+      "coverage": {
+        "figma": {
+          "status": "absent",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md",
+          "reason": "The frozen 171-set inventory has no standalone focus-ring or ripple set; 82 owning component sets offer a Show focus indicator property."
+        },
+        "compose": {
+          "status": "present",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        },
+        "web": {
+          "status": "present",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        }
+      },
+      "routes": {
+        "design": {
+          "primary": "compose",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        },
+        "behavior": {
+          "primary": "compose",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        },
+        "motion": {
+          "primary": "compose",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        },
+        "browser": {
+          "primary": "web",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        }
+      },
+      "overrides": [
+        {
+          "dimension": "optional-web-outward-ring",
+          "concern": "design",
+          "primary": "web",
+          "figmaSpecified": false,
+          "reason": "Retain the pinned outward attached ring as an explicit Web-only presentation, without changing the Compose opacity default or opt-in inset geometry.",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md",
+          "gapReason": "Pinned Compose specifies an opacity default and an opt-in inset two-stroke ring, but no outward attached ring geometry.",
+          "gapEvidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        },
+        {
+          "dimension": "optional-web-outward-animation",
+          "concern": "motion",
+          "primary": "web",
+          "figmaSpecified": false,
+          "reason": "Use the pinned Web grow/shrink animation only for the explicit outward presentation.",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0023.md",
+          "gapReason": "Pinned Compose provides no outward attached ring or its entry animation.",
+          "gapEvidence": "internal/material3-migration/sources/families/family-CM-0023.md"
+        }
+      ]
+    }
+  ],
+  "files": {
+    "internal/material3-migration/sources/compose-inventory.json": "0e637563f2cb1a140e04c939379fc6a90474697e272e6594146ce5cb2cbb0d0a",
+    "AGENTS.md": "ec1dab9cfad80cf4e32815ad820e8caad44dffe08ef0883f95769eca09d5c760",
+    "packages/themes/material3/material3.spec.md": "110b9cde4e12bd43102cd79e2a61c2c5845f29482fc303341be8875c7d98ab8e",
+    "docs/contributing/material3-migration.md": "fab928b10412b5e5c72c007315a425ee554d7e091ac1f5768e2616e7c2000e7f",
+    "internal/material3-migration/routing.mjs": "c498d4ef6b02164d4787b57ffb8470702ada22e47b27f2d5f3fb138cf7b1f391",
+    "internal/material3-migration/sources/baseline/ripple-compose-first.json": "aa5b02242e85b13907ed8d42e6dfc089fcb1d6f8d1fa62e40e59f617d8147812",
+    "internal/material3-migration/sources/families/family-CM-0023.json": "f3cef68344ad0f0a3f276216d6468a8ad2f5aad9fc8843d8de329993b71dd2ce",
+    "internal/material3-migration/sources/families/family-CM-0023.md": "83e0664592aec47c7a3721d808f4f73f1a728a8b51350fc7e389b3b3153263e8",
+    "internal/material3-migration/sources/figma-kit-inventory.json": "15ffc3bf66c2666dca228847b3bbeffc1d718beaa323967d2c118e0b3170ae6f",
+    "internal/material3-migration/sources/guidance/state-layers.md": "8e5286c9279d751750c887abc29d3d8984810448747206a2af324e6df24c5659",
+    "internal/material3-migration/sources/guidance/motion.md": "80f8c9961a724b60f29c3a7a6b591372d608382b8aa918faabc4cfdc93bb4720",
+    "internal/material3-migration/sources/ripple-reference/README.md": "45ba0dc45afa740755c6f124290ed744a61afbe336c82a76e5338466bc328f5c",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0000.png": "bee5c6a127fe9b01799b22a15ada7f58ad1ee10ec0ee105b4b24ecda5fa2860f",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0020.png": "2325f1dddabe24523836024bcee1cbef46d6497e5c86c417ce34f1cace6764b7",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0050.png": "215d1a7955ff82de8dc49870302be41a154c0cf79691fc5d2a8a94c4f88e5351",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0075.png": "5470c87f3c8c29a65e758eeb74c4c86f90a50eda230a99a7276a1cb42179de2e",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0120.png": "456f2b00925835617bb473048102ea562b35c37f832b46d904e2b12eed43cb09",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0160.png": "42b5755bb40912e0de2a070865445fe2a47e2cfa2658502cd2c1bd592c1705fa",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0180.png": "4af003d5677b69049c42c8a6200ac4bad0c5bae47bb1e24c07e2bd13983d99dd",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0260.png": "78b2a55149191fbb4ccc6cd87fbc92c2a219f8f757b0349c96ff02b8b291d691",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0300.png": "084cc8cafe288102f33d00268e925224982be644ccdbeaa3b57b95589026793b",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0320.png": "00480ce29b9c0c599ac44021d49d2a7be813cf7bcd537a62f7cf1d23953e6b54",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0385.png": "a7af8894d7161bbf681e84ca9483afcacb0808a292179d7c6b75b4a993233c8e",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0525.png": "b550680e8b6bc71333925dac8ddcecdd3a51131b07826bd65e97e108f5598099",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0535.png": "14733136ecb023fa9fba36289a3d560feae789a24c6440ba2b9f93f756649ebd",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-0675.png": "9dc5bea03c22c31091cf3d92eb4158893d77c568c3eee8694071445fc496e274",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-reduced-press.png": "92b3bb191e0ef580bd3601b571e76df34f0fa88e295cf5f6278208abd3481c18",
+    "internal/material3-migration/sources/ripple-reference/ripple-light-reduced-release.png": "b4a12f6848aa388d1c4a9d73f3a7433d77b15211ec9eae7fefe4e3d592c2fbda",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0000.png": "cfc01b4a721b35b219d8455fd18e6a241fd2d474ea3b2dec2fe459d4d4913305",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0020.png": "3d7e28e1d952564fe90a9a78f3dff8b0e022e12fb54606f953c0b652b4cc28ab",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0050.png": "315ae34264367e6ce1bdd53af2d72ac18649c495926cf92f7de9b84b127808a9",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0075.png": "8265e0e017a66fbd427de2e38daf99868639891d863923a1ca7bc495e3261a92",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0120.png": "b3cba3c2ec92fcf69a441f04d3b8d1f4a3be245d9b39ddd9c0013dd98777c41f",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0160.png": "ff910ecc0e8daef283aedb976d207c2743230631b20e9af101c81a73ea81369d",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0180.png": "ca226c614bd48ff0d454f75231f68182f39aa1fb18cb87b6691a071445d6e27d",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0260.png": "9c8fae7f40bd7316f2dcb33f9a4f51348d98a322635a0d3e9ae8e2d0adabe96a",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0300.png": "0eee0484aa30bb1eb273da29385fa6e4ac10bb0686095d15557cd26ea7f34f54",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0320.png": "0dd021ee448416afd2982dbfcb1d1e5f85f1932392ed54fed237a5db776adf98",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0385.png": "92e7a3989a6c99907e78f62f3f45fd4fbabc23a167e6f39f989a95937ff4fec3",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0525.png": "724fa548004fa1abf3ffbe039a3730cc025edffbe1222541965fb6a0d2d835fd",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0535.png": "bbecd38fefd58e7b5fe45afae75bb7dd6f5062ba3f2e6c7c34853ee59e3e46ed",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-0675.png": "02e11403daf0a4dbe19967c944f804dcac11c69d5a2fe06d76aab7c1ff7b2a49",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-reduced-press.png": "7d83488e6f6dd9f2fa66377790b4a6a0776c69c03793472f95f91c4b391e7fc5",
+    "internal/material3-migration/sources/ripple-reference/ripple-dark-reduced-release.png": "f2e3245e0b61a40286718d65d49f9d19f0bd0b33c618765db6196eca14fa926d",
+    "internal/material3-migration/sources/ripple-reference/state-motion-light-0100.png": "a84aa5332f1ecde46d842d479ee494248741ed0ac0e52c3385530231477ef7e7",
+    "internal/material3-migration/sources/ripple-reference/state-motion-light-0187.png": "b40bafffe283eef50a27ec7bcba0ad5098c3e7d0971c67df8280fe6c9f4c870f",
+    "internal/material3-migration/sources/ripple-reference/state-motion-light-0320.png": "e5d5e3914df89aa9a34e478cd9cca19703d4d03c2be47bb1eace5e4cb552d189",
+    "internal/material3-migration/sources/ripple-reference/state-motion-light-0520.png": "98415ea8b428e98bcd54952469a9ceea00b9dbbc11d444fec1395e35e621f291",
+    "internal/material3-migration/sources/ripple-reference/state-motion-light-0580.png": "380d4d25042822daabb58c6e977ac0aedab63de46c5e049601ed231105907ffe",
+    "internal/material3-migration/sources/ripple-reference/state-motion-light-0870.png": "3690a44a0178960eb044cfe2f380adbbf0fd6692b01dd42c3a3bf205a9c10a1f",
+    "internal/material3-migration/sources/ripple-reference/state-motion-light-reduced-500.png": "8846e841845ab91ea0d798d85f4c9503cea88d3d546b637ffd93d49ea851571e",
+    "internal/material3-migration/sources/ripple-reference/state-motion-light-reduced-530.png": "f3ce74b9d543b04efacb9dc7815bdcb32d0121ed26ba8f8cf8a19e848574ea53",
+    "internal/material3-migration/sources/ripple-reference/state-motion-dark-0100.png": "749005d45a21d26ec781c5a78d071b73bbfdf99ae00471f0bb019f56918e755d",
+    "internal/material3-migration/sources/ripple-reference/state-motion-dark-0187.png": "4aa16af656d014aee4a51291ef29f277d95209fa9de4d3fe3ea7fbd6e93675b2",
+    "internal/material3-migration/sources/ripple-reference/state-motion-dark-0320.png": "ef51d39b42f684c7d0872e61b54ad65c8efddbc9413619b98ecec00e2c5151ca",
+    "internal/material3-migration/sources/ripple-reference/state-motion-dark-0520.png": "535ae72a358942a05c4ec60ac025d68afe30e754145f20ada7aa8a048bd74fba",
+    "internal/material3-migration/sources/ripple-reference/state-motion-dark-0580.png": "60e91bae8b7b7e4a2e8719f691ab6a89db4a9d8833060a5200cc90f6354bc494",
+    "internal/material3-migration/sources/ripple-reference/state-motion-dark-0870.png": "760164057bb478c4e23b2f15168b53a10c0344678f4cb1611431cb0fb7a2ab72",
+    "internal/material3-migration/sources/ripple-reference/state-motion-dark-reduced-500.png": "50f77d0f4d45a345b6515f4f1478db323c4bb6e05900f868e602f73f34ec936e",
+    "internal/material3-migration/sources/ripple-reference/state-motion-dark-reduced-530.png": "57b81088c8d5a2766881ac751f5eeb5de0ace38e07cf91111b38236048900566",
+    "internal/material3-migration/sources/ripple-reference/compose-ripple.mp4": "80a47f9a4c08fc19d6d846f60ea8f1a7b0d2f20e9403fdd1b2f255b06252f4ef",
+    "internal/material3-migration/sources/ripple-reference/manifest.json": "b400645244e590841e17de243f8d31134493fa41f9249374be06f77d613047f1",
+    "internal/material3-migration/sources/ripple-reference/state-motion-manifest.json": "2913fe1e81b1597555ee652065a354c7fa4e31163cf49e99c4d61db82873036f"
+  },
+  "compose": [
+    {
+      "id": "compose:Ripple",
+      "name": "Ripple",
+      "kind": "Foundation",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Ripple.kt",
+      "sha256": "4b53b7ffb01ff48014cdc2f6af216c97f6463d5e25343d9db699ea4abb90bc00",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Ripple.kt",
+      "symbols": [
+        "ripple"
+      ],
+      "expressive": true,
+      "tokens": [
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/StateTokens.kt",
+          "sha256": "f9bddb282a3ca50e0c05bda6b5aa713441f885e3fe16866bfb44cee42059552f",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/StateTokens.kt",
+          "name": "StateTokens",
+          "version": "v0_210",
+          "values": [
+            {
+              "name": "DraggedStateLayerOpacity",
+              "expression": "0.16f",
+              "line": 22
+            },
+            {
+              "name": "FocusStateLayerOpacity",
+              "expression": "0.1f",
+              "line": 23
+            },
+            {
+              "name": "HoverStateLayerOpacity",
+              "expression": "0.08f",
+              "line": 24
+            },
+            {
+              "name": "PressedStateLayerOpacity",
+              "expression": "0.1f",
+              "line": 25
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/RippleTest.kt",
+          "sha256": "fc8756f79afbdb1ef61931c1b716d02a36a3fbf1737fdb30480c820dfe0980c1",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/RippleTest.kt",
+          "cases": [
+            "bounded_lightTheme_pressed",
+            "bounded_lightTheme_hovered",
+            "bounded_lightTheme_focused",
+            "bounded_lightTheme_dragged",
+            "unbounded_lightTheme_pressed",
+            "unbounded_lightTheme_hovered",
+            "unbounded_lightTheme_focused",
+            "unbounded_lightTheme_dragged",
+            "contentColorChangeDuringRipple_dragged",
+            "rippleConfiguration_color_dragged",
+            "rippleConfiguration_color_explicitColorSet_dragged",
+            "rippleConfiguration_alpha_dragged",
+            "rippleConfiguration_disabled_dragged",
+            "insetFocusRing_focused",
+            "insetFocusRing_focused_defaultColors",
+            "rippleConfiguration_insetFocusRing_focused",
+            "rippleConfigurationChangeDuringRipple_dragged",
+            "rippleConfigurationToggleBetweenEnabledAndDisabled",
+            "assertRippleMatches",
+            "RippleBoxWithBackground",
+            "calculateResultingRippleColor"
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "path": "compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/RippleSamples.kt",
+          "sha256": "879daba4eb82bf40291bf11102b34a69a0dbef1405dd45b8e1af94279e00fa08",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/RippleSamples.kt"
+        }
+      ]
+    }
+  ],
+  "criteria": [
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Coverage",
+      "Scenario": "Type and variant",
+      "Expected check": "Identify the corresponding Material 3 type and supported variants.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Coverage",
+      "Scenario": "Properties and slots",
+      "Expected check": "Compare public configuration, content slots, and composition.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Anatomy",
+      "Scenario": "Parts and geometry",
+      "Expected check": "Compare parts, dimensions, alignment, spacing, and icon placement.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Anatomy",
+      "Scenario": "Touch target",
+      "Expected check": "Verify the applicable Material target geometry.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Visual tokens",
+      "Scenario": "Color light",
+      "Expected check": "Verify semantic container, content, border, and state colors in light mode.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Visual tokens",
+      "Scenario": "Color dark",
+      "Expected check": "Verify semantic container, content, border, and state colors in dark mode.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Visual tokens",
+      "Scenario": "Typography",
+      "Expected check": "Verify family, scale role, size, line height, weight, and tracking.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Visual tokens",
+      "Scenario": "Shape spacing elevation",
+      "Expected check": "Verify corners, padding, gaps, borders, tonal and shadow elevation.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "States",
+      "Scenario": "Enabled",
+      "Expected check": "Verify resting visual and behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "States",
+      "Scenario": "Hover",
+      "Expected check": "Verify hover state with hover-capable pointer.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "States",
+      "Scenario": "Focus visible",
+      "Expected check": "Verify keyboard focus indicator and focus behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "States",
+      "Scenario": "Pressed",
+      "Expected check": "Verify active/pressed treatment and release behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "States",
+      "Scenario": "Selected checked",
+      "Expected check": "Verify selected or checked state where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "States",
+      "Scenario": "Disabled",
+      "Expected check": "Verify disabled visual, focus, and activation behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "States",
+      "Scenario": "Invalid error",
+      "Expected check": "Verify validation and error presentation where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "States",
+      "Scenario": "Loading",
+      "Expected check": "Verify pending feedback and geometry where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "States",
+      "Scenario": "Read only",
+      "Expected check": "Verify read-only semantics where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "States",
+      "Scenario": "Open closed dragged",
+      "Expected check": "Verify expanded, open, or dragged states where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Interaction",
+      "Scenario": "Pointer touch",
+      "Expected check": "Verify pointer, touch, gesture, and cancellation behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Interaction",
+      "Scenario": "Keyboard form",
+      "Expected check": "Verify keyboard controls and native form behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Accessibility",
+      "Scenario": "Semantics",
+      "Expected check": "Verify name, role, state, focus order, and screen reader output.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Accessibility",
+      "Scenario": "Contrast cues",
+      "Expected check": "Verify contextual contrast and non-color cues.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Motion",
+      "Scenario": "Transitions",
+      "Expected check": "Verify duration, easing, direction, and animated properties.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Motion",
+      "Scenario": "Enter exit interruption",
+      "Expected check": "Verify enter/exit and interrupted transitions where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Motion",
+      "Scenario": "Reduced motion",
+      "Expected check": "Verify reduced-motion behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Responsive",
+      "Scenario": "Viewport and container",
+      "Expected check": "Verify compact, medium, expanded, and boundary conditions as applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Responsive",
+      "Scenario": "Zoom RTL overflow",
+      "Expected check": "Verify zoom, long content, overflow, and RTL layout.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Theming",
+      "Scenario": "Color and overrides",
+      "Expected check": "Verify light/dark, dynamic color, custom theme, and scoped overrides.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Content",
+      "Scenario": "Extremes and locale",
+      "Expected check": "Verify empty/long content, icon-only content, and localization.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Composition",
+      "Scenario": "Layering and nesting",
+      "Expected check": "Verify overlays, stacking, scrolling, and nested use where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Engineering",
+      "Scenario": "Browser SSR performance",
+      "Expected check": "Verify supported browsers, SSR/hydration, layout stability, and performance as applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Evidence",
+      "Scenario": "Docs and regression",
+      "Expected check": "Link updated docs, source, unit/browser tests, and visual evidence.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/docs/components/ripple.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Native contract",
+      "Scenario": "Material token contract",
+      "Expected check": "Native implementation consumes supported Material component and system roles directly; scoped overrides reach the rendered element.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Native contract",
+      "Scenario": "Native dependency boundary",
+      "Expected check": "Native CSS and behavior work without the Core theme bridge or legacy token declarations; shared Core utilities have an evidenced semantic match.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Native contract",
+      "Scenario": "Material API and defaults",
+      "Expected check": "Anatomy, defaults, variants, sizes and states follow the pinned Material source; Core compatibility lives in a separate entry point.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Native contract",
+      "Scenario": "Compatibility direction",
+      "Expected check": "Legacy exports and aliases delegate toward the native implementation without cycles or a second independently maintained value map.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Native contract",
+      "Scenario": "Native consumer preview",
+      "Expected check": "The published native entry point renders in docsite and Storybook with source, status and exact revision visible for human QA.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Native contract",
+      "Scenario": "Compose source precedence",
+      "Expected check": "Pinned Compose governs overlapping design, behavior and motion; missing concerns and approved exceptions are recorded once per family. Figma-only coverage and native web semantics remain required.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Native contract",
+      "Scenario": "Pixel comparison",
+      "Expected check": "Reference and native captures use matched conditions; exact pixel diff passes or a reviewed tolerance exception is recorded.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Native contract",
+      "Scenario": "Motion evidence",
+      "Expected check": "Watched reference media, timed frames, interruption, reversal and reduced motion are evidenced, or static behavior has a source-backed N/A.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Native contract",
+      "Scenario": "Compose behavior and tests",
+      "Expected check": "Pinned Compose defaults, variants and relevant test cases are mapped to permanent web tests; differences and missing upstream coverage are explicit.",
+      "Applicable?": "Required",
+      "Requirement source": "packages/themes/material3/material3.spec.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0042",
+      "Dimension": "Native contract",
+      "Scenario": "Native response and frame pacing",
+      "Expected check": "Recorded browser/device profiles meet the approved input response and frame pacing budgets, including active motion and interruption.",
+      "Applicable?": "Required",
+      "Requirement source": "packages/themes/material3/material3.spec.md",
+      "Notes / N/A reason": ""
+    }
+  ],
+  "decisions": "Resolved baseline required; code and interactive QA remain pending."
+}
