@@ -70,3 +70,26 @@ Android Open Source Project, Apache-2.0; see
 [`LICENSE.androidx`](../LICENSE.androidx). The licensed Roboto asset remains
 under [`fonts/`](../fonts/README.md). Figma's frozen kit is © Material Design,
 CC BY 4.0; its owning component focus variants remain in their families.
+
+## Browser trajectory check
+
+The independent Chrome 153 calculation in
+[`capture-browser-focus.mjs`](capture-browser-focus.mjs) evaluates the pinned
+spring segments with the same focus, blur and refocus input sequence. Its
+[`standard`](browser-standard-focus.json) and
+[`Expressive`](browser-expressive-focus.json) records each contain 61 matched
+20ms samples. Maximum absolute differences from the Kotlin reference are
+0.000000080 interpolation units and 0.00000120 interpolation units per second;
+both settle at 880ms. The values include the 120ms blur, 160ms refocus and
+600ms final blur. Reproduce both records with:
+
+```sh
+node internal/material3-migration/sources/indication-reference/capture-browser-focus.mjs --check
+```
+
+This checks a browser calculation against Compose source values. It does not
+measure a native FocusRing, rendered pixels, input response or frame pacing.
+The [resolved source baseline](../baseline/focus-compose-first.json) records
+the owner's approved native comparison limits: 0.0002 interpolation units,
+0.002 interpolation units per second, and 0ms settling difference. Native
+acceptance still requires an independent trace at its verified revision.

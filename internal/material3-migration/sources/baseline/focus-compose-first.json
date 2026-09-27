@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "authority": "draft-compose-first",
-  "status": "Draft source selection. Native preparation is deliberately blocked until focus interpolation limits and exact public API are approved.",
+  "authority": "compose-first",
+  "status": "Resolved Compose-first FocusRing source selection and owner-approved trajectory limits; native acceptance pending.",
   "baselineId": "material3-expressive-compose-first-2026-09-26",
   "web": {
     "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
@@ -812,25 +812,25 @@
     },
     "numeric": {
       "applicable": true,
-      "status": "Pending focus-specific interpolation tolerance approval",
+      "status": "Approved FocusRing interpolation limits; native trajectory run pending.",
       "traces": [
         {
           "id": "standard-fast-focus",
           "reference": "internal/material3-migration/sources/indication-reference/standard-focus.json",
           "unit": "focus-interpolation",
-          "approvalReference": null,
-          "positionTolerance": null,
-          "velocityTolerance": null,
-          "settlingToleranceMs": null
+          "approvalReference": "human:pproenca:2026-09-27:M3-GAP-011-focus-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
         },
         {
           "id": "expressive-fast-focus",
           "reference": "internal/material3-migration/sources/indication-reference/expressive-focus.json",
           "unit": "focus-interpolation",
-          "approvalReference": null,
-          "positionTolerance": null,
-          "velocityTolerance": null,
-          "settlingToleranceMs": null
+          "approvalReference": "human:pproenca:2026-09-27:M3-GAP-011-focus-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
         }
       ]
     }
