@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Built native FocusRing gallery fixture and Chrome. @output Browser modality, geometry, proxy, theme and reduced-motion assertions after effect attachment. @position Permanent native FocusRing interaction regression. */
+/** @input Built native FocusRing gallery fixture and Chrome. @output Browser modality, geometry, proxy, theme and reduced-motion assertions after effect attachment and settled focus paint. @position Permanent native FocusRing interaction regression. */
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import http from 'node:http';
@@ -124,7 +124,21 @@ try {
   for (const pointerType of ['touch', 'pen']) {
     await page.keyboard.press('Shift+Tab');
     await page.keyboard.press('Tab');
-    await page.waitForTimeout(80);
+    await inset.evaluate(async node => {
+      const deadline = performance.now() + 3000;
+      let steadySince = 0;
+      while (performance.now() < deadline) {
+        await new Promise(requestAnimationFrame);
+        const now = performance.now();
+        if (getComputedStyle(node, '::before').borderTopWidth === '2px') {
+          if (!steadySince) steadySince = now;
+          if (now - steadySince >= 200) return;
+        } else {
+          steadySince = 0;
+        }
+      }
+      throw new Error('Keyboard focus ring did not settle at 2px');
+    });
     assert.equal(
       await inset.evaluate(node => getComputedStyle(node, '::before').borderTopWidth),
       '2px',
