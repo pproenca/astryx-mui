@@ -2,8 +2,8 @@
 // Ripple source equations: Copyright The Android Open Source Project, Apache-2.0.
 
 /**
- * @input Pinned Compose Ripple manifests and system Chrome.
- * @output Independent browser interpolation errors for press and state-layer motion.
+ * @input Pinned Compose Ripple manifests, approved source limits and system Chrome.
+ * @output Independent, limit-checked browser interpolation for press and state-layer motion.
  * @position Disposable source measurement before native Ripple implementation.
  */
 import fs from 'node:fs/promises';
@@ -19,11 +19,32 @@ const policy = await read(
 );
 const press = await read(path.join(here, 'manifest.json'));
 const state = await read(path.join(here, 'state-motion-manifest.json'));
+const baseline = await read(
+  path.join(here, '../baseline/ripple-compose-first.json'),
+);
 if (
   press.composeCommit !== policy.androidxCommit ||
-  state.composeCommit !== policy.androidxCommit
+  state.composeCommit !== policy.androidxCommit ||
+  baseline.compose.commit !== policy.androidxCommit ||
+  baseline.authority !== 'compose-first'
 )
   throw new Error('Pinned Ripple source revision changed');
+const traces = baseline.motion.numeric.traces;
+const pressLimits = traces.find(
+  trace => trace.id === 'compose-ripple-source-values',
+);
+const stateLimits = traces.find(
+  trace => trace.id === 'compose-ripple-state-layer',
+);
+if (
+  traces.length !== 2 ||
+  !pressLimits?.approvalReference ||
+  !stateLimits?.approvalReference ||
+  pressLimits.browserComparison !==
+    'internal/material3-migration/sources/ripple-reference/browser-ripple-motion.json' ||
+  stateLimits.browserComparison !== pressLimits.browserComparison
+)
+  throw new Error('Ripple interpolation limits need the approved baseline');
 const check = process.argv.includes('--check');
 if (process.argv.slice(2).some(arg => arg !== '--check'))
   throw new Error('Usage: node capture-browser-ripple.mjs [--check]');
@@ -334,6 +355,30 @@ try {
       ),
     );
   }
+  if (
+    pressErrors.radiusPx > pressLimits.positionTolerance ||
+    pressErrors.centerPx > pressLimits.positionTolerance ||
+    pressErrors.pxPerSecond > pressLimits.velocityTolerance ||
+    pressErrors.alpha > pressLimits.alphaTolerance ||
+    pressErrors.alphaPerSecond > pressLimits.alphaVelocityTolerance ||
+    Math.abs(
+      max(pressSettled) -
+        max(
+          values.presses.map(
+            item =>
+              Math.max(item.finishMs, item.startMs + values.radiusAndCenterMs) +
+              values.fadeOutMs,
+          ),
+        ),
+    ) > pressLimits.settlingToleranceMs ||
+    stateErrors.alpha > stateLimits.positionTolerance ||
+    stateErrors.alphaPerSecond > stateLimits.velocityTolerance ||
+    Math.abs(stateSettled - (stateFinal.timeMs + stateFinal.durationMs)) >
+      stateLimits.settlingToleranceMs
+  )
+    throw new Error(
+      'Chrome Ripple interpolation exceeds approved source limits',
+    );
   const output = {
     schemaVersion: 1,
     producer: {

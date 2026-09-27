@@ -86,9 +86,13 @@ velocity. The final press and state layer settled at the pinned 675ms and
 970ms, respectively. The trace records intermediate early-release and
 drag-cancel values; it does not certify any native component.
 
-Ripple-specific interpolation limits still require owner approval before this
-draft baseline can govern native verification. The source renderer remains a
-separate projection; this browser calculation uses Chrome's animation engine.
+The owner approved limits of 0.001px for press radius and center, 0.2px/s for
+their velocity, 0.000001 for press and state-layer alpha, 0.0005/s for alpha
+velocity, and 0ms settling difference. The
+[`source baseline`](../baseline/ripple-compose-first.json) records the decision;
+the browser capture fails when any limit is exceeded. The source renderer
+remains a separate projection from Chrome's animation engine. Native Ripple
+still needs its own interactive, pixel and motion acceptance.
 
 Reproduce the reference from the repository root with:
 
