@@ -85,6 +85,7 @@ describe('CI baseline maintenance routing', () => {
       'capture',
       'promote',
       'release-check',
+      'native-check',
     ]);
     expect(visual.name).toBe('Stable visual regression');
     expect(visual['runs-on']).toBe('ubuntu-24.04-arm');
