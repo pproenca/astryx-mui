@@ -6,7 +6,7 @@
 /**
  * @file FocusRing.tsx
  * @input A positioned visual parent, selected placement and optional semantic target ref
- * @output One decorative Material 3 focus indicator with browser focus modality
+ * @output One decorative Material 3 focus indicator with browser focus modality and attachment readiness
  * @position Opt-in native FocusRing; controls retain their own semantic focus and default indication
  *
  * SYNC: FocusRing.spec.md, FocusRing.doc.mjs and the pinned focus source baseline.
@@ -364,8 +364,10 @@ export function FocusRing({
     owner.addEventListener('pointerdown', onPointerDown);
     const onMotionPreference = () => syncVisible(true);
     media?.addEventListener('change', onMotionPreference);
+    element.dataset.mdFocusReady = 'true';
     return () => {
       disposed = true;
+      delete element.dataset.mdFocusReady;
       stopMotion();
       observer?.disconnect();
       target?.removeEventListener('focus', onFocus);

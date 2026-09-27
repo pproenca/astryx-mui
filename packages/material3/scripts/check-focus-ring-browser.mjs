@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Built native FocusRing gallery fixture and Chrome. @output Browser modality, geometry, proxy, theme and reduced-motion assertions. @position Permanent native FocusRing interaction regression. */
+/** @input Built native FocusRing gallery fixture and Chrome. @output Browser modality, geometry, proxy, theme and reduced-motion assertions after effect attachment. @position Permanent native FocusRing interaction regression. */
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import http from 'node:http';
@@ -62,6 +62,13 @@ try {
   const outward = page.getByTestId('outward-ring');
   const proxy = page.getByTestId('proxy-ring');
   for (const ring of [inset, outward, proxy]) {
+    await page.waitForFunction(
+      testId =>
+        document.querySelector(`[data-testid="${testId}"]`)?.getAttribute(
+          'data-md-focus-ready',
+        ) === 'true',
+      await ring.getAttribute('data-testid'),
+    );
     assert.equal(await ring.getAttribute('aria-hidden'), 'true');
     assert.equal(await ring.getAttribute('tabindex'), '-1');
     assert.equal(
