@@ -8,9 +8,9 @@ import os from 'node:os';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
-import pixelmatch from 'pixelmatch';
 import {PNG} from 'pngjs';
 import {chromium} from 'playwright';
+import {pixels} from '../compare.mjs';
 
 const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
 const gallery = path.join(repo, 'packages/material3/dist/gallery');
@@ -149,13 +149,12 @@ async function capture(page,name) {
   const expected = PNG.sync.read(await fs.readFile(path.join(source,name)));
   const actual = PNG.sync.read(bytes);
   assert.deepEqual([actual.width,actual.height],[expected.width,expected.height],name);
-  const diff = new PNG({width:actual.width,height:actual.height});
-  const changed = pixelmatch(expected.data,actual.data,diff.data,actual.width,actual.height,{threshold:0,includeAA:true});
-  if (changed) {
+  const diff = pixels(expected,actual);
+  if (diff.changedPixels) {
     await fs.writeFile(path.join(os.tmpdir(),`astryx-${name}`),bytes);
     await fs.writeFile(path.join(os.tmpdir(),`astryx-diff-${name}`),PNG.sync.write(diff));
   }
-  assert.equal(changed,0,`${name} source pixel difference`);
+  assert.equal(diff.changedPixels,0,`${name} source pixel difference`);
   await save(name,bytes);
   await save(`diff/${name}`,PNG.sync.write(diff));
   captured++;
