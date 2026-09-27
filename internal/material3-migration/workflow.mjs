@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Workbook, shared family decisions and task verifiers. @output Measured transitions, observable command evidence and scoped feedback. @position Disposable migration workflow. */
+/** @input Workbook, shared family decisions and task verifiers. @output Measured transitions, terminal-aware task guidance and scoped command evidence. @position Disposable migration workflow. */
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {spawnSync} from 'node:child_process';
@@ -248,8 +248,34 @@ export async function dispatch(wb, command, opts) {
     });
   }
   if (command === 'task show') {
-    const t = getTask(wb, opts.id),
-      prepared = await preparationStatus(wb, t, p.value, repo);
+    const t = getTask(wb, opts.id);
+    if (['Closed', 'Superseded'].includes(t.Status)) {
+      const historical = brief(wb, opts.id, opts.full);
+      return result('task.brief', {
+        ...historical,
+        outcome:
+          t.Status === 'Closed'
+            ? 'Closed. Acceptance, exact-revision QA and merge were recorded; continue with status.'
+            : 'Superseded. Retained for reference; continue with status.',
+        historicalNotes: historical.outcome,
+        review: [],
+        prepared: {
+          applicable: false,
+          reason: `${t.Status} task: preparation is historical and is not revalidated against current sources.`,
+        },
+        ...(t.Status === 'Closed'
+          ? {
+              completion: {
+                verifiedRevision: t['Verified SHA'],
+                mergedRevision: t['Merge SHA'],
+                pr: t.PR,
+                closedAt: t['Closed at'],
+              },
+            }
+          : {}),
+      });
+    }
+    const prepared = await preparationStatus(wb, t, p.value, repo);
     return result('task.brief', {
       ...brief(wb, opts.id, opts.full),
       ...(opts.stateDir
