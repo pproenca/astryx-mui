@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Optional M3_BROWSER_EXECUTABLE for the pinned browser; Built native package and foundation fixture. @output Pointer, keyboard, scope, RTL, interruption, reversal and reduced-motion checks. @position Permanent native foundation interaction regression. */
+/** @input Optional M3_BROWSER_EXECUTABLE for the pinned browser; built native package and foundation fixture. @output Pointer, keyboard, scope, RTL, stale-frame timing, interruption, reversal and reduced-motion checks. @position Permanent native foundation interaction regression. */
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import http from 'node:http';
@@ -92,6 +92,13 @@ try {
   assert.equal(await page.locator('html').getAttribute('dir'), 'rtl');
   await page.setViewportSize({width: 390, height: 840});
   assert.ok(await page.locator('.motion-stage').isVisible());
+  await page.evaluate(() => {
+    const schedule = window.requestAnimationFrame.bind(window);
+    window.requestAnimationFrame = callback => {
+      window.requestAnimationFrame = schedule;
+      return schedule(timestamp => callback(timestamp - 1000));
+    };
+  });
   await page.locator('#enter').click();
   await page.waitForTimeout(120);
   const before = await page.evaluate(() => window.__foundationQA.frame);
