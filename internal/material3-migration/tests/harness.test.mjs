@@ -392,3 +392,40 @@ test('motion inspection reports actual decoded timestamps and rejects invented f
   assert.throws(() => selectFrames([0, 100], [0, 40, 80, 120]), /3–12/);
   assert.throws(() => selectFrames([0, 100, 999], [0, 40, 80, 120]), /exceeds/);
 });
+
+test('closure fails closed for stale heads, missing merge ancestry and incomplete CI', () => {
+  const task = {'Verified SHA': 'accepted-head', Worktree: ''};
+  const passing = {
+    state: 'MERGED',
+    headRefOid: 'accepted-head',
+    baseRefName: 'main',
+    mergeCommit: {oid: 'merge'},
+    statusCheckRollup: [{status: 'COMPLETED', conclusion: 'SUCCESS'}],
+  };
+  for (const changed of [
+    {headRefOid: 'different-head'},
+    {baseRefName: 'other-branch'},
+    {mergeCommit: null},
+    {statusCheckRollup: []},
+    {statusCheckRollup: [{status: 'IN_PROGRESS', conclusion: 'SUCCESS'}]},
+    {statusCheckRollup: [{status: 'COMPLETED', conclusion: 'FAILURE'}]},
+    {statusCheckRollup: [{state: 'PENDING'}]},
+    {statusCheckRollup: [{state: 'ERROR'}]},
+  ])
+    assert.throws(() =>
+      validateMerge({...passing, ...changed}, task, '', true),
+    );
+  assert.throws(
+    () => validateMerge(passing, task, '', false),
+    /available locally/,
+  );
+  validateMerge(
+    {
+      ...passing,
+      statusCheckRollup: [...passing.statusCheckRollup, {state: 'SUCCESS'}],
+    },
+    task,
+    '',
+    true,
+  );
+});
