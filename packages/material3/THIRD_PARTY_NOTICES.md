@@ -57,3 +57,10 @@ source frames, traces and watched media under
 `internal/material3-migration/sources/ripple-reference/` record the pinned
 revision and capture method. The native implementation and browser integration
 are Copyright Meta Platforms, Inc. and affiliates.
+
+`fixtures/references/divider/` contains browser projections of the pinned
+AndroidX Compose `Divider.kt` and `DividerTokens.kt` geometry and color values.
+The optional 16px logical inset follows the pinned Material Web divider source
+above. Copyright The Android Open Source Project and Google LLC, licensed
+Apache-2.0. The native React implementation and browser comparison are Copyright
+Meta Platforms, Inc. and affiliates.

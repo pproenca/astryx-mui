@@ -4,8 +4,9 @@
 private while its foundation gallery and components are being migrated. The
 entry point now exposes the canonical Compose-first foundation graph, typed
 CSS-backed Material roles, source-only values, native presentational Icon and
-MaterialSymbol components, and the opt-in FocusRing and Ripple primitives. Other components
-remain in migration.
+MaterialSymbol components, the opt-in FocusRing and Ripple primitives, and
+native HorizontalDivider and VerticalDivider. Other components remain in
+migration.
 
 ```ts
 import {material3Var, resolveMaterial3Token} from '@astryxdesign/material3';
@@ -104,6 +105,29 @@ control. Light, dark and Expressive color follows the Material tokens and the
 parent's content color. The indication does not intercept pointer or keyboard
 events. Native Material controls will own their own indication.
 
+## Native Divider
+
+```tsx
+import {
+  HorizontalDivider,
+  VerticalDivider,
+} from '@astryxdesign/material3/Divider';
+import '@astryxdesign/material3/tokens.css';
+import '@astryxdesign/material3/components.css';
+
+<HorizontalDivider inset="start" />;
+<VerticalDivider role="separator" />;
+```
+
+The two Compose-named rules use OutlineVariant and 1 CSS pixel by default.
+Optional `thickness` accepts a positive CSS-pixel number or `"hairline"`, which
+occupies zero layout extent and paints one device pixel. `color` accepts a CSS
+color. Horizontal `inset` adds a 16px logical gap on `both`, `start`, or `end`;
+vertical rules have no inset. Both rules are decorative by default. Use
+`role="separator"` only when the boundary conveys structure. The container
+supplies a vertical rule's height. Core Divider remains a separate compatibility
+API for labels, strong treatment, and its existing semantic default.
+
 ## Compatibility direction
 
 The canonical value graph flows from Material reference and system roles to
@@ -145,8 +169,9 @@ a local server to interact with native color scopes, Expressive shape and spring
 entry, exit, interruption, reversal and reduced motion. The browser checks
 measure input response and frame pacing against the approved foundation
 profile. Human QA remains required at the verified revision before each slice
-can be accepted. The [gallery](gallery/index.html) includes live native Icon
-and FocusRing frames; `pnpm build:gallery` builds them without Material Symbols fonts. For a
+can be accepted. The [gallery](gallery/index.html) includes live native Icon,
+FocusRing, Ripple and Divider frames. `pnpm build:gallery` builds them without
+Material Symbols fonts. For a
 local licensed-font comparison, set `M3_ICON_FONT_CACHE` to the pinned cache
 directory before building. That optional build copies fonts only into ignored
 `dist/`; the public package remains font independent.

@@ -2,6 +2,9 @@
 
 /**
  * @file build-css.mjs
+ * @input Package source lists including native Divider paint
+ * @output Combined package StyleX stylesheets
+ * @position Post-build StyleX CSS extraction
  * Post-build script that extracts StyleX CSS from compiled source files
  * and outputs a combined stylesheet wrapped in @layer astryx-base.
  *
@@ -96,6 +99,7 @@ const TARGETS = {
       'MaterialSymbol/MaterialSymbol.tsx',
       'FocusRing/FocusRing.tsx',
       'Ripple/Ripple.tsx',
+      'Divider/DividerRule.tsx',
     ],
     aliases: {},
   },

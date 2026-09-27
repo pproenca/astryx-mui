@@ -49,7 +49,14 @@ try {
   const discovered = run('discover');
   assert.equal(discovered.data.length, 1);
   assert.equal(discovered.data[0].name, '@astryxdesign/material3');
-  assert.deepEqual(discovered.data[0].components, ['FocusRing', 'Icon', 'MaterialSymbol', 'Ripple']);
+  assert.deepEqual(discovered.data[0].components, [
+    'FocusRing',
+    'HorizontalDivider',
+    'Icon',
+    'MaterialSymbol',
+    'Ripple',
+    'VerticalDivider',
+  ]);
   const topic = run('docs', 'material3-native');
   assert.ok(
     JSON.stringify(topic).includes('Native Material 3'),
@@ -70,11 +77,14 @@ try {
     [
       '--input-type=module',
       '--eval',
-      "import {FocusRing} from '@astryxdesign/material3/FocusRing'; import {Icon} from '@astryxdesign/material3/Icon'; import {MaterialSymbol} from '@astryxdesign/material3/MaterialSymbol'; import {Ripple} from '@astryxdesign/material3/Ripple'; process.stdout.write(typeof FocusRing + ',' + typeof Icon + ',' + typeof MaterialSymbol + ',' + typeof Ripple);",
+      "import {FocusRing} from '@astryxdesign/material3/FocusRing'; import {Icon} from '@astryxdesign/material3/Icon'; import {MaterialSymbol} from '@astryxdesign/material3/MaterialSymbol'; import {Ripple} from '@astryxdesign/material3/Ripple'; import {HorizontalDivider, VerticalDivider} from '@astryxdesign/material3/Divider'; process.stdout.write([FocusRing, Icon, MaterialSymbol, Ripple, HorizontalDivider, VerticalDivider].map(value => typeof value).join(','));",
     ],
     {cwd: project, encoding: 'utf8'},
   );
-  assert.equal(nativeComponents, 'function,function,function,function');
+  assert.equal(
+    nativeComponents,
+    'function,function,function,function,function,function',
+  );
   await fs.access(path.join(packageRoot, 'dist/components.css'));
 } finally {
   await fs.rm(project, {recursive: true, force: true});

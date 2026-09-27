@@ -102,6 +102,24 @@ try {
   );
   const rippleFixture = page.frameLocator('#ripple-frame');
   await rippleFixture.getByTestId('bounded-ripple').waitFor();
+  assert.equal(
+    await page.locator('iframe#divider-frame').getAttribute('title'),
+    'Interactive native Material 3 Divider preview',
+  );
+  const dividerFixture = page.frameLocator('#divider-frame');
+  await dividerFixture
+    .getByTestId('horizontal-divider')
+    .waitFor({state: 'attached'});
+  await dividerFixture.locator('#inset').selectOption('start');
+  await dividerFixture.locator('#direction').selectOption('rtl');
+  assert.equal(
+    await dividerFixture
+      .getByTestId('horizontal-divider')
+      .getAttribute('aria-hidden'),
+    'true',
+  );
+  await dividerFixture.locator('#semantic').check();
+  assert.equal(await dividerFixture.getByRole('separator').count(), 2);
   const fixture = page.frameLocator('#native-frame');
   await fixture.locator('#flower').waitFor();
   await page.locator('#scheme').selectOption('dark');
