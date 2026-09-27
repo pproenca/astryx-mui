@@ -120,10 +120,10 @@ try {
     'Interrupted spring velocity jumped',
   );
   await page.locator('#reverse').click();
-  await page.waitForTimeout(180);
-  assert.ok(
-    (await page.evaluate(() => window.__foundationQA.frame.position)) <
-      interrupted.position,
+  await page.waitForFunction(
+    position => window.__foundationQA.frame.position < position,
+    interrupted.position,
+    {timeout: 3000},
   );
   await page.locator('#reduced').check();
   await page.locator('#enter').click();
