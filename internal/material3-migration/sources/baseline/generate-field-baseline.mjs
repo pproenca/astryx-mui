@@ -7,6 +7,7 @@
  */
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -16,6 +17,9 @@ const read = async file =>
 const policy = await read('internal/material3-migration/policy.json');
 const manifest = await read(
   'internal/material3-migration/sources/field-reference/manifest.json',
+);
+const browserMotion = await read(
+  'internal/material3-migration/sources/field-reference/browser-field-motion.json',
 );
 const family = await read(
   'internal/material3-migration/sources/families/family-CM-0021.json',
@@ -27,6 +31,18 @@ if (
   family.pins.web !== policy.materialWebCommit
 )
   throw new Error('Field source pins differ from policy');
+const motionBytes = await fs.readFile(
+  path.join(
+    repo,
+    'internal/material3-migration/sources/field-reference/field-motion.json',
+  ),
+);
+if (
+  browserMotion.composeCommit !== policy.androidxCommit ||
+  browserMotion.referenceSha256 !==
+    createHash('sha256').update(motionBytes).digest('hex')
+)
+  throw new Error('Independent browser trace differs from pinned Kotlin input');
 
 const familyEvidence =
   'internal/material3-migration/sources/families/family-CM-0021.md';
@@ -158,8 +174,9 @@ const baseline = {
       applicable: true,
       status:
         'Pinned Kotlin source traces captured; native browser tolerances require separate owner approval before implementation.',
-      evidence: motionEvidence,
+      evidence: sourceRoot + 'browser-field-motion.json',
       sourceTrace: sourceRoot + 'field-motion.json',
+      browserTrace: sourceRoot + 'browser-field-motion.json',
       traces: [],
     },
   },

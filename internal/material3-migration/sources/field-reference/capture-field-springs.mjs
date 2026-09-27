@@ -164,7 +164,7 @@ try {
           [output, stdlib].join(path.delimiter),
           'androidx.compose.animation.core.FieldSpringProbeKt',
           argument,
-          '1200',
+          '1600',
           '20',
           String(initial[property]),
         ],
@@ -180,15 +180,30 @@ try {
           return {timeMs, position, velocity};
         });
       if (
-        samples.length !== 61 ||
+        samples.length !== 81 ||
         samples[0].timeMs !== 0 ||
-        samples.at(-1).timeMs !== 1200
+        samples.at(-1).timeMs !== 1600
       )
         throw new Error(`Incomplete ${scheme} ${property} trace`);
+      const finalTarget = changes.at(-1).target;
+      const settledAtMs = samples.find(
+        (sample, index) =>
+          sample.timeMs >= changes.at(-1).timeMs &&
+          samples
+            .slice(index)
+            .every(
+              item =>
+                Math.abs(item.position - finalTarget) <= 0.0001 &&
+                Math.abs(item.velocity) <= 0.0001,
+            ),
+      )?.timeMs;
+      if (!Number.isFinite(settledAtMs))
+        throw new Error(`${scheme} ${property} did not settle`);
       traces[property] = {
         unit: property === 'indicator' ? 'dp' : 'interpolation',
         initial: initial[property],
         changes,
+        settledAtMs,
         samples,
       };
     }
@@ -209,7 +224,7 @@ try {
     },
     sequence: 'focus 0ms, blur 120ms, refocus 160ms, blur 600ms',
     stepMs: 20,
-    endMs: 1200,
+    endMs: 1600,
     schemes,
   };
   const bytes = JSON.stringify(result, null, 2) + '\n';
@@ -219,7 +234,7 @@ try {
       throw new Error('Pinned field motion trace changed');
   } else await fs.writeFile(file, bytes);
   console.log(
-    `Captured ${Object.keys(schemes).length} field schemes, ${Object.keys(targets).length} properties, 61 samples each`,
+    `Captured ${Object.keys(schemes).length} field schemes, ${Object.keys(targets).length} properties, 81 samples each`,
   );
 } finally {
   await fs.rm(temporary, {recursive: true, force: true});

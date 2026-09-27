@@ -785,8 +785,9 @@
     "numeric": {
       "applicable": true,
       "status": "Pinned Kotlin source traces captured; native browser tolerances require separate owner approval before implementation.",
-      "evidence": "internal/material3-migration/sources/field-reference/README.md",
+      "evidence": "internal/material3-migration/sources/field-reference/browser-field-motion.json",
       "sourceTrace": "internal/material3-migration/sources/field-reference/field-motion.json",
+      "browserTrace": "internal/material3-migration/sources/field-reference/browser-field-motion.json",
       "traces": []
     }
   },

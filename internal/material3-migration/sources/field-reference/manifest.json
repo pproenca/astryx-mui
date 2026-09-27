@@ -3,7 +3,7 @@
   "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
   "figmaSha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
   "webCommit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
-  "motionSha256": "d85395b5d2b453d5c12a204939a192fa569919123b982fcab99a85166fa58067",
+  "motionSha256": "e8d94ea2ef7e2127ed6a0bac5ccd5205715a132316b05e9a6083a83fb18b8ac6",
   "renderer": "Chrome source-value browser projection",
   "browser": "Chrome 153.0.8010.53",
   "os": "darwin 27.0.0",

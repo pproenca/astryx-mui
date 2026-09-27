@@ -12,8 +12,8 @@ AndroidX `SpringSimulation.kt` with a local
 [`FieldSpringProbe.kt`](FieldSpringProbe.kt). The script verifies the clean
 AndroidX commit, source hashes, and motion tokens, then writes
 [`field-motion.json`](field-motion.json): standard and Expressive label,
-placeholder, indicator-thickness, and color trajectories, 61 samples per
-property at 20 ms intervals. Focus starts at 0 ms, blur interrupts at 120 ms,
+placeholder, indicator-thickness, and color trajectories, 81 samples per
+property at 20 ms intervals through settling. Focus starts at 0 ms, blur interrupts at 120 ms,
 refocus reverses it at 160 ms, and final blur starts at 600 ms. Velocity carries
 across each retarget. Filled and outlined use the same selected spring keys;
 their source recipes differ in container and stroke geometry.
@@ -24,7 +24,7 @@ reduced-motion adaptation frames, and [light](compose-field-light.mp4) and
 four fields at once: standard and Expressive, each filled and outlined. Chrome
 153 on macOS renders at 960 × 420 CSS pixels and DPR 1 with the pinned
 SIL OFL Roboto fixture. This projection uses Compose palette roles and scalar
-spring positions. Its simplified label path and stroke raster are fixture
+spring positions through 1200 ms. Its simplified label path and stroke raster are fixture
 choices; native pixel acceptance will need a matched reference and an
 independent browser trace at the verified implementation revision.
 
@@ -38,7 +38,21 @@ and 0.908734. Indicator thickness follows the same fast spatial path from
 1 to 2 dp, while placeholder and color follow their different effects springs.
 The final blur returns the fields to their empty resting appearance. The
 Expressive label is still 0.008968 at 880 ms and 0.000044 at 1200 ms; it is
-visually settled by the last frame, but no exact settling time is inferred.
+visually settled by the last frame. The 1600 ms source probe applies the stated
+0.0001 position and velocity criteria to all later samples: standard label
+and indicator settle at 980 ms, Expressive label and indicator at 1360 ms,
+and both schemes' placeholder and color at 880 ms.
+
+The [independent Chrome calculation](browser-field-motion.json) evaluates the
+same spring segments without calling the Kotlin probe or native package. Across
+eight paths and 81 matched samples each, the largest source-to-browser
+position difference is 0.000000149 dp for indicator thickness; the largest
+indicator velocity difference is 0.000001081 dp/s. For the other paths,
+the maximum position difference is 0.000000094 interpolation units and the
+maximum velocity difference is 0.000001613 interpolation units/s. Every
+settling time matches. These are measured
+source discrepancies, **not** approved native comparison tolerances. Those
+limits require owner review before native implementation.
 
 The reduced-motion frames present the final focused state immediately. This
 is a browser accessibility adaptation; pinned Compose does not specify that
@@ -51,6 +65,7 @@ Reproduce the evidence from the repository root:
 ```sh
 M3_ANDROIDX=/path/to/pinned/androidx node internal/material3-migration/sources/field-reference/capture-field-springs.mjs --check
 node internal/material3-migration/sources/field-reference/render-field-reference.mjs --check
+node internal/material3-migration/sources/field-reference/capture-browser-field.mjs --check
 ```
 
 The AndroidX source is © The Android Open Source Project, Apache-2.0, and is
