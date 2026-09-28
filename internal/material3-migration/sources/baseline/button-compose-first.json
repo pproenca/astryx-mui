@@ -1,0 +1,993 @@
+{
+  "schemaVersion": 1,
+  "authority": "compose-first",
+  "status": "Pinned five-style Button source selection, watched motion and approved source limits captured; native API, pixel limits and acceptance pending.",
+  "baselineId": "material3-expressive-compose-first-2026-09-26",
+  "web": {
+    "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+  },
+  "compose": {
+    "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "inventory": "internal/material3-migration/sources/compose-inventory.json",
+    "tests": [
+      {
+        "id": "ButtonTest.button_positioning",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.button_withIcon_positioning",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.button_small_precisionPointerEnabled_positioning",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.button_defaultColors",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.filledTonalButton_defaultColors",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.elevatedButton_defaultColors",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.outlinedButton_defaultColors",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.textButton_defaultColors",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.button_xSmall_positioning",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.button_small_positioning",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.button_medium_positioning",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.button_large_positioning",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.button_xLarge_positioning",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.button_withAnimatedShape_defaultShape",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      },
+      {
+        "id": "ButtonTest.button_withAnimatedShape_pressedShape",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/ButtonTest.kt"
+      }
+    ],
+    "reason": "Selected geometry, color and pressed-shape tests; Android device rasterization remains platform-specific.",
+    "evidence": "internal/material3-migration/sources/families/family-CM-0002.md"
+  },
+  "figma": {
+    "sha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+    "inventory": "internal/material3-migration/sources/figma-kit-inventory.json"
+  },
+  "guidance": [
+    {
+      "url": "https://m3.material.io/styles/motion/overview/how-it-works",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/motion.md"
+    }
+  ],
+  "decisions": [
+    {
+      "dimension": "button-geometry",
+      "concern": "design",
+      "chosen": "compose",
+      "figmaSpecified": true,
+      "reason": "Pinned Compose owns five style and size tokens, default geometry, colors, outlines and elevations; Figma confirms variant axes without an exact conflicting value.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0002.md"
+    },
+    {
+      "dimension": "button-behavior",
+      "concern": "behavior",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "Pinned Compose owns momentary action, enabled/disabled and interaction state behavior.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0002.md"
+    },
+    {
+      "dimension": "button-shape-motion",
+      "concern": "motion",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "The optional Expressive ButtonShapes overload uses DefaultEffects and AnimatedShapeState reversal, probed from the pinned spring.",
+      "evidence": "internal/material3-migration/sources/button-reference/README.md"
+    },
+    {
+      "dimension": "button-elevation-motion",
+      "concern": "motion",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "Pinned ButtonElevation resolves the last active interaction and uses incoming/outgoing tweens with disabled snap.",
+      "evidence": "internal/material3-migration/sources/button-reference/README.md"
+    },
+    {
+      "dimension": "browser-semantics",
+      "concern": "browser",
+      "chosen": "web",
+      "figmaSpecified": false,
+      "reason": "Pinned Material Web and native standards supply button, link, form, keyboard and ARIA semantics.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0002.md"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "button-shape-light-0000",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0000.png",
+      "baselineSha256": "05b56ee7bdd7f401399f8a225f7f0cef181c1d3ea9c8a41ec18f725d55f42653",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 0
+    },
+    {
+      "id": "button-shape-light-0020",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0020.png",
+      "baselineSha256": "233e13db51a77efa1fa666cd169236f01ed4ea5e3107b588b72ff15ebbf40438",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 20
+    },
+    {
+      "id": "button-shape-light-0100",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0100.png",
+      "baselineSha256": "f084ac622a34b101d1e2b4c1b7dcd1ee1f4f4ff4dae7988018c48055cd2164d4",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 100
+    },
+    {
+      "id": "button-shape-light-0120",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0120.png",
+      "baselineSha256": "ddec7022deca0c3ae7ef0d8867ff8ded65de3846d459e0adbf12b8735eb13b13",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 120
+    },
+    {
+      "id": "button-shape-light-0160",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0160.png",
+      "baselineSha256": "6ee8f478270c4047f6e4aa434487b8e504c86c2bf67fd807f6ce79f97b409f1f",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 160
+    },
+    {
+      "id": "button-shape-light-0180",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0180.png",
+      "baselineSha256": "83cf2c9fa3045d01cc80240dcb8071079f3abfc24602125774255f806e82e552",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 180
+    },
+    {
+      "id": "button-shape-light-0260",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0260.png",
+      "baselineSha256": "03096599bb8fde0994080670b206ebe7c322e7545c1228401b8d1605a602ccd9",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 260
+    },
+    {
+      "id": "button-shape-light-0600",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0600.png",
+      "baselineSha256": "77a2424eb21fde937b1a8d19a0f3d20bdbfeb952199cca7c5af96db51c3415b5",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 600
+    },
+    {
+      "id": "button-shape-light-0880",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-0880.png",
+      "baselineSha256": "2f8c6da21bc06164f4f5520250b4f8bce2bcb408c25a1c04f0e083ca31f25b74",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 880
+    },
+    {
+      "id": "button-shape-light-1000",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-1000.png",
+      "baselineSha256": "eba66dcc670d92de21de51936708c8764102ac0412e88cdb835270687c29875d",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 1000
+    },
+    {
+      "id": "button-shape-light-reduced-pressed",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-reduced-pressed.png",
+      "baselineSha256": "b9c204c932838216cf5833e9bb1e008526c1e35911c13c5db794cc313ae1cca7",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "reduced-pressed",
+        "direction": "ltr"
+      }
+    },
+    {
+      "id": "button-shape-light-reduced-rest",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-light-reduced-rest.png",
+      "baselineSha256": "4f22caf4f0db3e632ed3468b3168541837ea08e02d113f34c440229b6738765f",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "reduced-rest",
+        "direction": "ltr"
+      }
+    },
+    {
+      "id": "button-shape-dark-0000",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0000.png",
+      "baselineSha256": "cc39a6c155482650c05207ae83f6ea8c9d395b764562eee6e08958d2a741f91b",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 0
+    },
+    {
+      "id": "button-shape-dark-0020",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0020.png",
+      "baselineSha256": "5470def5f6af7acd7415aa8b780f70d9379d9c8b5646ac8ff31dc2a04a4a2fc3",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 20
+    },
+    {
+      "id": "button-shape-dark-0100",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0100.png",
+      "baselineSha256": "25fb0bd412e3d529ef035ae687b324d20f81d4cab5a6d5100c146e6901b40310",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 100
+    },
+    {
+      "id": "button-shape-dark-0120",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0120.png",
+      "baselineSha256": "2eb4177c7314615944a3ab6350cc4af56698938121dcbd6a1152f83bcd9cda98",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 120
+    },
+    {
+      "id": "button-shape-dark-0160",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0160.png",
+      "baselineSha256": "37faac85032bc8736839f2a791af3af96ea37600bf8c132c994c77e2ac003317",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 160
+    },
+    {
+      "id": "button-shape-dark-0180",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0180.png",
+      "baselineSha256": "ea47c197ff384329c35bc7b2eef8093a546d18ba4482f7df5e1e48c074a9ce1e",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 180
+    },
+    {
+      "id": "button-shape-dark-0260",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0260.png",
+      "baselineSha256": "65a8bc9715aae13b97649fe1f287e84b1670af91c285fd6ce3d9338e67be4fd8",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 260
+    },
+    {
+      "id": "button-shape-dark-0600",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0600.png",
+      "baselineSha256": "765ec4f62073c8bcdd5546f05d953632449d513ee01fc7f411534bb13f0c4b70",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 600
+    },
+    {
+      "id": "button-shape-dark-0880",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-0880.png",
+      "baselineSha256": "94aa44dce90eeadd5d2725d670acb436940213b019a078078b49ba5522755314",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 880
+    },
+    {
+      "id": "button-shape-dark-1000",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-1000.png",
+      "baselineSha256": "f72c8237d4b92e8842140f82c7b7fb0d550be2dae9edb98b9e0dd43f11242c7b",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "press-release-repress-release",
+        "direction": "ltr"
+      },
+      "timeMs": 1000
+    },
+    {
+      "id": "button-shape-dark-reduced-pressed",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-reduced-pressed.png",
+      "baselineSha256": "3cfae71d21e7d6d7c59cc9e4a7ddd540539d86cf9fb6cff254025a027cfa0ee1",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "reduced-pressed",
+        "direction": "ltr"
+      }
+    },
+    {
+      "id": "button-shape-dark-reduced-rest",
+      "dimensions": [
+        "button-geometry",
+        "button-shape-motion"
+      ],
+      "sourceReference": "Pinned Compose Button.kt and AnimatedShapeState; browser source-value projection, not Android device pixels",
+      "baseline": "internal/material3-migration/sources/button-reference/button-shape-dark-reduced-rest.png",
+      "baselineSha256": "53e7ffd68a237bf4c5295e7e78a6b7f671339cd790b2ab6066fb1949fbfa3fc8",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 360
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Five Compose Button styles with small Round and Square shape source-value projections",
+        "state": "reduced-rest",
+        "direction": "ltr"
+      }
+    },
+    {
+      "id": "button-state-light",
+      "dimensions": [
+        "button-state"
+      ],
+      "sourceReference": "Pinned Compose Ripple, Surface and filled Button state token capture",
+      "baseline": "internal/material3-migration/sources/state-reference/state-light.png",
+      "baselineSha256": "ea98b4913beb1ffc8672fb85c726b55d0324f1fe84b1066a7d01059c4f5d6fd3",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 560
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134"
+          }
+        ],
+        "theme": "light",
+        "content": "Generic and filled Button rest, hover, focus, press, drag and disabled source colors",
+        "state": "rest-hover-focus-pressed-dragged-disabled",
+        "direction": "ltr"
+      }
+    },
+    {
+      "id": "button-state-dark",
+      "dimensions": [
+        "button-state"
+      ],
+      "sourceReference": "Pinned Compose Ripple, Surface and filled Button state token capture",
+      "baseline": "internal/material3-migration/sources/state-reference/state-dark.png",
+      "baselineSha256": "92e11378ae6350c4acf705d22fc35f330ba34b5429cee62c0a8d0d759864fe46",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 560
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134"
+          }
+        ],
+        "theme": "dark",
+        "content": "Generic and filled Button rest, hover, focus, press, drag and disabled source colors",
+        "state": "rest-hover-focus-pressed-dragged-disabled",
+        "direction": "ltr"
+      }
+    }
+  ],
+  "motion": {
+    "applicable": true,
+    "reference": "internal/material3-migration/sources/button-reference/compose-button-shape-light.mp4",
+    "sha256": "e47294ce7ba100ad23241373e0bfcdcdceafa6e4072f2c4ba4dffe25bb9a523a",
+    "additionalReferences": [
+      {
+        "file": "internal/material3-migration/sources/button-reference/compose-button-shape-dark.mp4",
+        "sha256": "0db20745709eb426b673b316a09a1908568fb89629d0e0df55d5465a0850f39c"
+      },
+      {
+        "file": "internal/material3-migration/sources/button-reference/compose-button-elevation-light.mp4",
+        "sha256": "a44665ad0952334afd8ebc74e7be1e58cb7890f448bee6a3a03628c6a08b6414"
+      },
+      {
+        "file": "internal/material3-migration/sources/button-reference/compose-button-elevation-dark.mp4",
+        "sha256": "b83b2e4e6482407003c62cabc511fe23bc039c743200b2994e544394ee8796bd"
+      }
+    ],
+    "evidence": "internal/material3-migration/sources/button-reference/README.md",
+    "numeric": {
+      "applicable": true,
+      "status": "Source interpolation limits approved; native motion and pixel acceptance remain pending.",
+      "evidence": "internal/material3-migration/sources/button-reference/README.md",
+      "sourceTrace": "internal/material3-migration/sources/button-reference/button-shape-motion.json",
+      "browserTrace": "internal/material3-migration/sources/button-reference/browser-button-shape-motion.json",
+      "elevationTrace": "internal/material3-migration/sources/button-reference/button-elevation-motion.json",
+      "sourceComparison": {
+        "approvalReference": "human:pproenca:2026-09-28:button-source-limits",
+        "limits": {
+          "shapePosition": 0.0002,
+          "shapeVelocityPerSecond": 0.002,
+          "elevationDp": 0.001,
+          "settlingMs": 0,
+          "eventTimingMs": 0
+        },
+        "measured": {
+          "shapePosition": 5.670913805211342e-8,
+          "shapeVelocityPerSecond": 5.157836007185779e-7,
+          "elevationDp": 0.000009025415334873443,
+          "settlingMs": 0,
+          "eventTimingMs": 0
+        },
+        "eventTimingMethod": "The browser elevation reconstruction consumes the pinned change timestamps verbatim; schedule difference is zero by construction."
+      },
+      "traces": []
+    }
+  },
+  "performance": [
+    {
+      "id": "desktop-chrome-macos-reference",
+      "approvalReference": "human:pproenca:2026-09-26:M3-NAT-002-foundation-limits",
+      "status": "Approved foundation browser profile; native Button run pending.",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "device": "macOS desktop reference",
+        "refreshRateHz": 60
+      },
+      "maxInputLatencyMs": 100,
+      "frameBudgetMs": 20,
+      "maxLongFrameRatio": 0.05,
+      "minInputSamples": 30,
+      "minFrameSamples": 300
+    }
+  ]
+}

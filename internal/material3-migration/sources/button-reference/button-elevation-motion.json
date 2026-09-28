@@ -1,0 +1,605 @@
+{
+  "schemaVersion": 1,
+  "producer": {
+    "kind": "pinned-compose-source-specification",
+    "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "command": "node internal/material3-migration/sources/button-reference/capture-button-elevation.mjs"
+  },
+  "files": {
+    "button": [
+      "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/Button.kt",
+      "9095ad12e5b26a20bf0cdc53ba01f54b7c8ca41ba4ece933d578ef28a2d97240"
+    ],
+    "elevation": [
+      "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/internal/Elevation.kt",
+      "304e9d0d7749bf1a7a2646acd7f05a7d6f5c52fe0118fd8bbfd37fbd03d08f2f"
+    ],
+    "easing": [
+      "compose/animation/animation-core/src/commonMain/kotlin/androidx/compose/animation/core/Easing.kt",
+      "4a00295b76f9dad81eccb3f9e36e7968bd05802a8b29451226954ecee831b755"
+    ],
+    "levels": [
+      "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ElevationTokens.kt",
+      "b0613cc2c1e30fb62da126f82f5870f7231e3cf4117f36132e466e1827de0a3c"
+    ],
+    "elevated": [
+      "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/ElevatedButtonTokens.kt",
+      "4cff9fca4f66e2627d8845873b74b2bcf14eadc50d50fae918869cdbb7db6545"
+    ],
+    "filled": [
+      "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/FilledButtonTokens.kt",
+      "7612e40587f9fa987a817ddd9a89c424da4e5b91edbe850bd3812156c6ee9e33"
+    ],
+    "tonal": [
+      "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/FilledTonalButtonTokens.kt",
+      "9887aa0fa5ee457e33c1bb428a5ef27fd7e0ab6319186f42f2c103d15e36e2a7"
+    ]
+  },
+  "styles": {
+    "Elevated": {
+      "rest": 1,
+      "hover": 3,
+      "press": 1,
+      "focus": 1,
+      "disabled": 0
+    },
+    "Filled": {
+      "rest": 0,
+      "hover": 1,
+      "press": 0,
+      "focus": 0,
+      "disabled": 0
+    },
+    "Tonal": {
+      "rest": 0,
+      "hover": 1,
+      "press": 0,
+      "focus": 0,
+      "disabled": 0
+    }
+  },
+  "specs": {
+    "incoming": {
+      "durationMs": 120,
+      "cubic": [
+        0.4,
+        0,
+        0.2,
+        1
+      ]
+    },
+    "hover-outgoing": {
+      "durationMs": 120,
+      "cubic": [
+        0.4,
+        0,
+        0.6,
+        1
+      ]
+    },
+    "press-outgoing": {
+      "durationMs": 150,
+      "cubic": [
+        0.4,
+        0,
+        0.6,
+        1
+      ]
+    }
+  },
+  "changes": [
+    {
+      "timeMs": 0,
+      "state": "hover",
+      "transition": "incoming"
+    },
+    {
+      "timeMs": 80,
+      "state": "press",
+      "transition": "incoming"
+    },
+    {
+      "timeMs": 140,
+      "state": "hover",
+      "transition": "incoming"
+    },
+    {
+      "timeMs": 220,
+      "state": "rest",
+      "transition": "hover-outgoing"
+    },
+    {
+      "timeMs": 240,
+      "state": "hover",
+      "transition": "incoming"
+    },
+    {
+      "timeMs": 360,
+      "state": "rest",
+      "transition": "hover-outgoing"
+    },
+    {
+      "timeMs": 500,
+      "state": "disabled",
+      "transition": "snap"
+    },
+    {
+      "timeMs": 580,
+      "state": "rest",
+      "transition": "snap"
+    }
+  ],
+  "pressExit": {
+    "from": 1,
+    "to": 1,
+    "spec": {
+      "durationMs": 150,
+      "cubic": [
+        0.4,
+        0,
+        0.6,
+        1
+      ]
+    }
+  },
+  "stepMs": 20,
+  "endMs": 720,
+  "traces": {
+    "Elevated": [
+      {
+        "timeMs": 0,
+        "elevationDp": 1
+      },
+      {
+        "timeMs": 20,
+        "elevationDp": 1.1702109632111029
+      },
+      {
+        "timeMs": 40,
+        "elevationDp": 1.9145034796337428
+      },
+      {
+        "timeMs": 60,
+        "elevationDp": 2.5511226222323957
+      },
+      {
+        "timeMs": 80,
+        "elevationDp": 2.8415515668587035
+      },
+      {
+        "timeMs": 100,
+        "elevationDp": 2.6848254338597357
+      },
+      {
+        "timeMs": 120,
+        "elevationDp": 1.9994989089500756
+      },
+      {
+        "timeMs": 140,
+        "elevationDp": 1.4133154191776789
+      },
+      {
+        "timeMs": 160,
+        "elevationDp": 1.548350974584665
+      },
+      {
+        "timeMs": 180,
+        "elevationDp": 2.1388297042992885
+      },
+      {
+        "timeMs": 200,
+        "elevationDp": 2.643886593008093
+      },
+      {
+        "timeMs": 220,
+        "elevationDp": 2.874296157139624
+      },
+      {
+        "timeMs": 240,
+        "elevationDp": 2.76204744325954
+      },
+      {
+        "timeMs": 260,
+        "elevationDp": 2.782298510200209
+      },
+      {
+        "timeMs": 280,
+        "elevationDp": 2.870851663822988
+      },
+      {
+        "timeMs": 300,
+        "elevationDp": 2.9465942401486225
+      },
+      {
+        "timeMs": 320,
+        "elevationDp": 2.9811483951112545
+      },
+      {
+        "timeMs": 340,
+        "elevationDp": 2.996040144807391
+      },
+      {
+        "timeMs": 360,
+        "elevationDp": 3
+      },
+      {
+        "timeMs": 380,
+        "elevationDp": 2.8802230763238743
+      },
+      {
+        "timeMs": 400,
+        "elevationDp": 2.523145799570927
+      },
+      {
+        "timeMs": 420,
+        "elevationDp": 2
+      },
+      {
+        "timeMs": 440,
+        "elevationDp": 1.4768542004290726
+      },
+      {
+        "timeMs": 460,
+        "elevationDp": 1.1197769236761255
+      },
+      {
+        "timeMs": 480,
+        "elevationDp": 1
+      },
+      {
+        "timeMs": 500,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 520,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 540,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 560,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 580,
+        "elevationDp": 1
+      },
+      {
+        "timeMs": 600,
+        "elevationDp": 1
+      },
+      {
+        "timeMs": 620,
+        "elevationDp": 1
+      },
+      {
+        "timeMs": 640,
+        "elevationDp": 1
+      },
+      {
+        "timeMs": 660,
+        "elevationDp": 1
+      },
+      {
+        "timeMs": 680,
+        "elevationDp": 1
+      },
+      {
+        "timeMs": 700,
+        "elevationDp": 1
+      },
+      {
+        "timeMs": 720,
+        "elevationDp": 1
+      }
+    ],
+    "Filled": [
+      {
+        "timeMs": 0,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 20,
+        "elevationDp": 0.08510548160555147
+      },
+      {
+        "timeMs": 40,
+        "elevationDp": 0.45725173981687145
+      },
+      {
+        "timeMs": 60,
+        "elevationDp": 0.7755613111161979
+      },
+      {
+        "timeMs": 80,
+        "elevationDp": 0.9207757834293517
+      },
+      {
+        "timeMs": 100,
+        "elevationDp": 0.8424127169298679
+      },
+      {
+        "timeMs": 120,
+        "elevationDp": 0.4997494544750378
+      },
+      {
+        "timeMs": 140,
+        "elevationDp": 0.20665770958883944
+      },
+      {
+        "timeMs": 160,
+        "elevationDp": 0.27417548729233254
+      },
+      {
+        "timeMs": 180,
+        "elevationDp": 0.5694148521496443
+      },
+      {
+        "timeMs": 200,
+        "elevationDp": 0.8219432965040465
+      },
+      {
+        "timeMs": 220,
+        "elevationDp": 0.9371480785698121
+      },
+      {
+        "timeMs": 240,
+        "elevationDp": 0.88102372162977
+      },
+      {
+        "timeMs": 260,
+        "elevationDp": 0.8911492551001047
+      },
+      {
+        "timeMs": 280,
+        "elevationDp": 0.9354258319114941
+      },
+      {
+        "timeMs": 300,
+        "elevationDp": 0.9732971200743114
+      },
+      {
+        "timeMs": 320,
+        "elevationDp": 0.9905741975556271
+      },
+      {
+        "timeMs": 340,
+        "elevationDp": 0.9980200724036955
+      },
+      {
+        "timeMs": 360,
+        "elevationDp": 1
+      },
+      {
+        "timeMs": 380,
+        "elevationDp": 0.9401115381619373
+      },
+      {
+        "timeMs": 400,
+        "elevationDp": 0.7615728997854637
+      },
+      {
+        "timeMs": 420,
+        "elevationDp": 0.5
+      },
+      {
+        "timeMs": 440,
+        "elevationDp": 0.23842710021453628
+      },
+      {
+        "timeMs": 460,
+        "elevationDp": 0.059888461838062734
+      },
+      {
+        "timeMs": 480,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 500,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 520,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 540,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 560,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 580,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 600,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 620,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 640,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 660,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 680,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 700,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 720,
+        "elevationDp": 0
+      }
+    ],
+    "Tonal": [
+      {
+        "timeMs": 0,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 20,
+        "elevationDp": 0.08510548160555147
+      },
+      {
+        "timeMs": 40,
+        "elevationDp": 0.45725173981687145
+      },
+      {
+        "timeMs": 60,
+        "elevationDp": 0.7755613111161979
+      },
+      {
+        "timeMs": 80,
+        "elevationDp": 0.9207757834293517
+      },
+      {
+        "timeMs": 100,
+        "elevationDp": 0.8424127169298679
+      },
+      {
+        "timeMs": 120,
+        "elevationDp": 0.4997494544750378
+      },
+      {
+        "timeMs": 140,
+        "elevationDp": 0.20665770958883944
+      },
+      {
+        "timeMs": 160,
+        "elevationDp": 0.27417548729233254
+      },
+      {
+        "timeMs": 180,
+        "elevationDp": 0.5694148521496443
+      },
+      {
+        "timeMs": 200,
+        "elevationDp": 0.8219432965040465
+      },
+      {
+        "timeMs": 220,
+        "elevationDp": 0.9371480785698121
+      },
+      {
+        "timeMs": 240,
+        "elevationDp": 0.88102372162977
+      },
+      {
+        "timeMs": 260,
+        "elevationDp": 0.8911492551001047
+      },
+      {
+        "timeMs": 280,
+        "elevationDp": 0.9354258319114941
+      },
+      {
+        "timeMs": 300,
+        "elevationDp": 0.9732971200743114
+      },
+      {
+        "timeMs": 320,
+        "elevationDp": 0.9905741975556271
+      },
+      {
+        "timeMs": 340,
+        "elevationDp": 0.9980200724036955
+      },
+      {
+        "timeMs": 360,
+        "elevationDp": 1
+      },
+      {
+        "timeMs": 380,
+        "elevationDp": 0.9401115381619373
+      },
+      {
+        "timeMs": 400,
+        "elevationDp": 0.7615728997854637
+      },
+      {
+        "timeMs": 420,
+        "elevationDp": 0.5
+      },
+      {
+        "timeMs": 440,
+        "elevationDp": 0.23842710021453628
+      },
+      {
+        "timeMs": 460,
+        "elevationDp": 0.059888461838062734
+      },
+      {
+        "timeMs": 480,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 500,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 520,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 540,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 560,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 580,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 600,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 620,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 640,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 660,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 680,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 700,
+        "elevationDp": 0
+      },
+      {
+        "timeMs": 720,
+        "elevationDp": 0
+      }
+    ]
+  },
+  "browser": "Chrome 153.0.8010.53",
+  "browserErrorsDp": {
+    "Elevated": 0.000009025415334873443,
+    "Filled": 7.448998953218933e-7,
+    "Tonal": 7.448998953218933e-7
+  }
+}

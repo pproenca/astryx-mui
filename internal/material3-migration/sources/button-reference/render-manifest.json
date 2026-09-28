@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "sourceTraceSha256": "f90d9a5996abf162b58de9541d044872770804993ac3fc6f6aead8def3ad2964",
+  "fontSha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+  "browser": "Chrome 153.0.8010.53",
+  "viewport": {
+    "width": 960,
+    "height": 360,
+    "dpr": 1
+  },
+  "selectedTimes": [
+    0,
+    20,
+    100,
+    120,
+    160,
+    180,
+    260,
+    600,
+    880,
+    1000
+  ],
+  "styles": [
+    [
+      "Filled",
+      "Primary",
+      "OnPrimary",
+      null
+    ],
+    [
+      "Elevated",
+      "SurfaceContainerLow",
+      "Primary",
+      null
+    ],
+    [
+      "Tonal",
+      "SecondaryContainer",
+      "OnSecondaryContainer",
+      null
+    ],
+    [
+      "Outlined",
+      "Surface",
+      "OnSurfaceVariant",
+      "OutlineVariant"
+    ],
+    [
+      "Text",
+      "Surface",
+      "Primary",
+      null
+    ]
+  ],
+  "shapeEndpoints": {
+    "round": {
+      "rest": 20,
+      "pressed": 8
+    },
+    "square": {
+      "rest": 12,
+      "pressed": 8
+    }
+  },
+  "images": {
+    "button-shape-light-0000.png": "05b56ee7bdd7f401399f8a225f7f0cef181c1d3ea9c8a41ec18f725d55f42653",
+    "button-shape-light-0020.png": "233e13db51a77efa1fa666cd169236f01ed4ea5e3107b588b72ff15ebbf40438",
+    "button-shape-light-0100.png": "f084ac622a34b101d1e2b4c1b7dcd1ee1f4f4ff4dae7988018c48055cd2164d4",
+    "button-shape-light-0120.png": "ddec7022deca0c3ae7ef0d8867ff8ded65de3846d459e0adbf12b8735eb13b13",
+    "button-shape-light-0160.png": "6ee8f478270c4047f6e4aa434487b8e504c86c2bf67fd807f6ce79f97b409f1f",
+    "button-shape-light-0180.png": "83cf2c9fa3045d01cc80240dcb8071079f3abfc24602125774255f806e82e552",
+    "button-shape-light-0260.png": "03096599bb8fde0994080670b206ebe7c322e7545c1228401b8d1605a602ccd9",
+    "button-shape-light-0600.png": "77a2424eb21fde937b1a8d19a0f3d20bdbfeb952199cca7c5af96db51c3415b5",
+    "button-shape-light-0880.png": "2f8c6da21bc06164f4f5520250b4f8bce2bcb408c25a1c04f0e083ca31f25b74",
+    "button-shape-light-1000.png": "eba66dcc670d92de21de51936708c8764102ac0412e88cdb835270687c29875d",
+    "button-shape-light-reduced-pressed.png": "b9c204c932838216cf5833e9bb1e008526c1e35911c13c5db794cc313ae1cca7",
+    "button-shape-light-reduced-rest.png": "4f22caf4f0db3e632ed3468b3168541837ea08e02d113f34c440229b6738765f",
+    "button-shape-dark-0000.png": "cc39a6c155482650c05207ae83f6ea8c9d395b764562eee6e08958d2a741f91b",
+    "button-shape-dark-0020.png": "5470def5f6af7acd7415aa8b780f70d9379d9c8b5646ac8ff31dc2a04a4a2fc3",
+    "button-shape-dark-0100.png": "25fb0bd412e3d529ef035ae687b324d20f81d4cab5a6d5100c146e6901b40310",
+    "button-shape-dark-0120.png": "2eb4177c7314615944a3ab6350cc4af56698938121dcbd6a1152f83bcd9cda98",
+    "button-shape-dark-0160.png": "37faac85032bc8736839f2a791af3af96ea37600bf8c132c994c77e2ac003317",
+    "button-shape-dark-0180.png": "ea47c197ff384329c35bc7b2eef8093a546d18ba4482f7df5e1e48c074a9ce1e",
+    "button-shape-dark-0260.png": "65a8bc9715aae13b97649fe1f287e84b1670af91c285fd6ce3d9338e67be4fd8",
+    "button-shape-dark-0600.png": "765ec4f62073c8bcdd5546f05d953632449d513ee01fc7f411534bb13f0c4b70",
+    "button-shape-dark-0880.png": "94aa44dce90eeadd5d2725d670acb436940213b019a078078b49ba5522755314",
+    "button-shape-dark-1000.png": "f72c8237d4b92e8842140f82c7b7fb0d550be2dae9edb98b9e0dd43f11242c7b",
+    "button-shape-dark-reduced-pressed.png": "3cfae71d21e7d6d7c59cc9e4a7ddd540539d86cf9fb6cff254025a027cfa0ee1",
+    "button-shape-dark-reduced-rest.png": "53e7ffd68a237bf4c5295e7e78a6b7f671339cd790b2ab6066fb1949fbfa3fc8"
+  },
+  "clips": {
+    "compose-button-shape-light.mp4": "e47294ce7ba100ad23241373e0bfcdcdceafa6e4072f2c4ba4dffe25bb9a523a",
+    "compose-button-shape-dark.mp4": "0db20745709eb426b673b316a09a1908568fb89629d0e0df55d5465a0850f39c"
+  }
+}

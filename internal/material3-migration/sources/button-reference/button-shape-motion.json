@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 1,
+  "producer": {
+    "kind": "upstream",
+    "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "source": "compose/animation/animation-core/src/commonMain/kotlin/androidx/compose/animation/core/SpringSimulation.kt",
+    "command": "node internal/material3-migration/sources/button-reference/capture-button-shape.mjs",
+    "runtime": "kotlinc-jvm 2.4.20; openjdk version \"26.0.2.1\" 2026-08-18"
+  },
+  "schemes": [
+    "standard",
+    "expressive"
+  ],
+  "unit": "pressed-shape-fraction",
+  "inputs": {
+    "dampingRatio": 1,
+    "stiffness": 1600,
+    "changes": [
+      {
+        "timeMs": 0,
+        "pressed": true
+      },
+      {
+        "timeMs": 120,
+        "pressed": false
+      },
+      {
+        "timeMs": 160,
+        "pressed": true
+      },
+      {
+        "timeMs": 600,
+        "pressed": false
+      }
+    ],
+    "stepMs": 20,
+    "endMs": 1200
+  },
+  "settledAtMs": 1000,
+  "samples": [
+    {
+      "timeMs": 0,
+      "pressedFraction": 0,
+      "velocity": 0
+    },
+    {
+      "timeMs": 20,
+      "pressedFraction": 0.19120787,
+      "velocity": 14.378527
+    },
+    {
+      "timeMs": 40,
+      "pressedFraction": 0.47506905,
+      "velocity": 12.921377
+    },
+    {
+      "timeMs": 60,
+      "pressedFraction": 0.69155896,
+      "velocity": 8.708923
+    },
+    {
+      "timeMs": 80,
+      "pressedFraction": 0.8287988,
+      "velocity": 5.217562
+    },
+    {
+      "timeMs": 100,
+      "pressedFraction": 0.9084218,
+      "velocity": 2.9305022
+    },
+    {
+      "timeMs": 120,
+      "pressedFraction": 0.95226747,
+      "velocity": 1.5801114
+    },
+    {
+      "timeMs": 140,
+      "pressedFraction": 0.7843862,
+      "velocity": -13.550205
+    },
+    {
+      "timeMs": 160,
+      "pressedFraction": 0.5126354,
+      "velocity": -12.496018
+    },
+    {
+      "timeMs": 180,
+      "pressedFraction": 0.4935269,
+      "velocity": 5.88462
+    },
+    {
+      "timeMs": 200,
+      "pressedFraction": 0.6432511,
+      "velocity": 7.8111634
+    },
+    {
+      "timeMs": 220,
+      "pressedFraction": 0.78165996,
+      "velocity": 5.8314795
+    },
+    {
+      "timeMs": 240,
+      "pressedFraction": 0.87581336,
+      "velocity": 3.6634586
+    },
+    {
+      "timeMs": 260,
+      "pressedFraction": 0.93248075,
+      "velocity": 2.1148407
+    },
+    {
+      "timeMs": 280,
+      "pressedFraction": 0.9643962,
+      "velocity": 1.1608788
+    },
+    {
+      "timeMs": 300,
+      "pressedFraction": 0.9816362,
+      "velocity": 0.616254
+    },
+    {
+      "timeMs": 320,
+      "pressedFraction": 0.9906855,
+      "velocity": 0.31942415
+    },
+    {
+      "timeMs": 340,
+      "pressedFraction": 0.99533707,
+      "velocity": 0.16263351
+    },
+    {
+      "timeMs": 360,
+      "pressedFraction": 0.9976902,
+      "velocity": 0.08166126
+    },
+    {
+      "timeMs": 380,
+      "pressedFraction": 0.99886566,
+      "velocity": 0.040550403
+    },
+    {
+      "timeMs": 400,
+      "pressedFraction": 0.999447,
+      "velocity": 0.019953817
+    },
+    {
+      "timeMs": 420,
+      "pressedFraction": 0.999732,
+      "velocity": 0.009744671
+    },
+    {
+      "timeMs": 440,
+      "pressedFraction": 0.99987084,
+      "velocity": 0.0047285194
+    },
+    {
+      "timeMs": 460,
+      "pressedFraction": 0.999938,
+      "velocity": 0.0022819065
+    },
+    {
+      "timeMs": 480,
+      "pressedFraction": 0.9999704,
+      "velocity": 0.0010959817
+    },
+    {
+      "timeMs": 500,
+      "pressedFraction": 0.9999859,
+      "velocity": 0.00052420364
+    },
+    {
+      "timeMs": 520,
+      "pressedFraction": 0.9999933,
+      "velocity": 0.0002498049
+    },
+    {
+      "timeMs": 540,
+      "pressedFraction": 0.99999684,
+      "velocity": 0.00011865425
+    },
+    {
+      "timeMs": 560,
+      "pressedFraction": 0.9999985,
+      "velocity": 0.000056194847
+    },
+    {
+      "timeMs": 580,
+      "pressedFraction": 0.9999993,
+      "velocity": 0.000026544063
+    },
+    {
+      "timeMs": 600,
+      "pressedFraction": 0.99999964,
+      "velocity": 0.00001250849
+    },
+    {
+      "timeMs": 620,
+      "pressedFraction": 0.808792,
+      "velocity": -14.378521
+    },
+    {
+      "timeMs": 640,
+      "pressedFraction": 0.52493083,
+      "velocity": -12.921374
+    },
+    {
+      "timeMs": 660,
+      "pressedFraction": 0.30844098,
+      "velocity": -8.708922
+    },
+    {
+      "timeMs": 680,
+      "pressedFraction": 0.17120123,
+      "velocity": -5.2175612
+    },
+    {
+      "timeMs": 700,
+      "pressedFraction": 0.091578186,
+      "velocity": -2.930502
+    },
+    {
+      "timeMs": 720,
+      "pressedFraction": 0.047732532,
+      "velocity": -1.5801113
+    },
+    {
+      "timeMs": 740,
+      "pressedFraction": 0.024405897,
+      "velocity": -0.8283214
+    },
+    {
+      "timeMs": 760,
+      "pressedFraction": 0.012295544,
+      "velocity": -0.42535862
+    },
+    {
+      "timeMs": 780,
+      "pressedFraction": 0.006121993,
+      "velocity": -0.2150167
+    },
+    {
+      "timeMs": 800,
+      "pressedFraction": 0.003019154,
+      "velocity": -0.10734803
+    },
+    {
+      "timeMs": 820,
+      "pressedFraction": 0.0014771819,
+      "velocity": -0.05305804
+    },
+    {
+      "timeMs": 840,
+      "pressedFraction": 0.00071793795,
+      "velocity": -0.026007833
+    },
+    {
+      "timeMs": 860,
+      "pressedFraction": 0.00034695864,
+      "velocity": -0.012659912
+    },
+    {
+      "timeMs": 880,
+      "pressedFraction": 0.0001668334,
+      "velocity": -0.006126039
+    },
+    {
+      "timeMs": 900,
+      "pressedFraction": 0.000079870224,
+      "velocity": -0.0029492218
+    },
+    {
+      "timeMs": 920,
+      "pressedFraction": 0.000038087368,
+      "velocity": -0.0014135154
+    },
+    {
+      "timeMs": 940,
+      "pressedFraction": 0.000018119812,
+      "velocity": -0.0006748293
+    },
+    {
+      "timeMs": 960,
+      "pressedFraction": 0.000008583069,
+      "velocity": -0.00032105684
+    },
+    {
+      "timeMs": 980,
+      "pressedFraction": 0.000004053116,
+      "velocity": -0.00015227459
+    },
+    {
+      "timeMs": 1000,
+      "pressedFraction": 0.0000019073486,
+      "velocity": -0.00007202251
+    },
+    {
+      "timeMs": 1020,
+      "pressedFraction": 8.940697e-7,
+      "velocity": -0.00003397989
+    },
+    {
+      "timeMs": 1040,
+      "pressedFraction": 4.172325e-7,
+      "velocity": -0.000015995203
+    },
+    {
+      "timeMs": 1060,
+      "pressedFraction": 1.7881393e-7,
+      "velocity": -0.0000075137946
+    },
+    {
+      "timeMs": 1080,
+      "pressedFraction": 1.1920929e-7,
+      "velocity": -0.0000035229555
+    },
+    {
+      "timeMs": 1100,
+      "pressedFraction": 5.9604645e-8,
+      "velocity": -0.0000016489228
+    },
+    {
+      "timeMs": 1120,
+      "pressedFraction": 0,
+      "velocity": -7.705451e-7
+    },
+    {
+      "timeMs": 1140,
+      "pressedFraction": 0,
+      "velocity": -3.595447e-7
+    },
+    {
+      "timeMs": 1160,
+      "pressedFraction": 0,
+      "velocity": -1.6753734e-7
+    },
+    {
+      "timeMs": 1180,
+      "pressedFraction": 0,
+      "velocity": -7.7967925e-8
+    },
+    {
+      "timeMs": 1200,
+      "pressedFraction": 0,
+      "velocity": -3.624129e-8
+    }
+  ]
+}
