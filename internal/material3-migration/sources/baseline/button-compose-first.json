@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "authority": "compose-first",
-  "status": "Pinned five-style Button source selection and watched shape/elevation motion captured; native API, comparison limits and acceptance pending.",
+  "status": "Pinned five-style Button source selection, watched motion and approved source limits captured; native API, pixel limits and acceptance pending.",
   "baselineId": "material3-expressive-compose-first-2026-09-26",
   "web": {
     "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
@@ -946,11 +946,29 @@
     "evidence": "internal/material3-migration/sources/button-reference/README.md",
     "numeric": {
       "applicable": true,
-      "status": "Pinned source motion captured; native comparison limits require separate approval before implementation.",
+      "status": "Source interpolation limits approved; native motion and pixel acceptance remain pending.",
       "evidence": "internal/material3-migration/sources/button-reference/README.md",
       "sourceTrace": "internal/material3-migration/sources/button-reference/button-shape-motion.json",
       "browserTrace": "internal/material3-migration/sources/button-reference/browser-button-shape-motion.json",
       "elevationTrace": "internal/material3-migration/sources/button-reference/button-elevation-motion.json",
+      "sourceComparison": {
+        "approvalReference": "human:pproenca:2026-09-28:button-source-limits",
+        "limits": {
+          "shapePosition": 0.0002,
+          "shapeVelocityPerSecond": 0.002,
+          "elevationDp": 0.001,
+          "settlingMs": 0,
+          "eventTimingMs": 0
+        },
+        "measured": {
+          "shapePosition": 5.670913805211342e-8,
+          "shapeVelocityPerSecond": 5.157836007185779e-7,
+          "elevationDp": 0.000009025415334873443,
+          "settlingMs": 0,
+          "eventTimingMs": 0
+        },
+        "eventTimingMethod": "The browser elevation reconstruction consumes the pinned change timestamps verbatim; schedule difference is zero by construction."
+      },
       "traces": []
     }
   },

@@ -97,6 +97,30 @@ test('selected source frames and all four watched clips match their pinned hashe
 });
 
 test('pressed-shape reversals and elevation disable snaps retain timed source behavior', () => {
+  const comparison = decision.motion.numeric.sourceComparison;
+  assert.equal(
+    comparison.approvalReference,
+    'human:pproenca:2026-09-28:button-source-limits',
+  );
+  assert.deepEqual(comparison.limits, {
+    shapePosition: 0.0002,
+    shapeVelocityPerSecond: 0.002,
+    elevationDp: 0.001,
+    settlingMs: 0,
+    eventTimingMs: 0,
+  });
+  assert.match(comparison.eventTimingMethod, /zero by construction/);
+  for (const [dimension, limit] of Object.entries(comparison.limits))
+    assert.ok(comparison.measured[dimension] <= limit, dimension);
+  assert.equal(comparison.measured.shapePosition, browserShape.errors.position);
+  assert.equal(
+    comparison.measured.shapeVelocityPerSecond,
+    browserShape.errors.velocity,
+  );
+  assert.equal(
+    comparison.measured.elevationDp,
+    Math.max(...Object.values(elevation.browserErrorsDp)),
+  );
   assert.equal(shape.samples.length, 61);
   assert.deepEqual(
     shape.inputs.changes.map(change => change.timeMs),

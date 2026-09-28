@@ -38,6 +38,9 @@ const shapeMotionBytes = await fs.readFile(
   path.join(repo, sourceRoot + 'button-shape-motion.json'),
 );
 const shapeMotion = await read(sourceRoot + 'manifest.json');
+const browserShapeMotion = await read(
+  sourceRoot + 'browser-button-shape-motion.json',
+);
 const elevationMotion = await read(sourceRoot + 'button-elevation-motion.json');
 if (
   family.pins.compose !== policy.androidxCommit ||
@@ -56,6 +59,26 @@ if (
   shape.browser !== elevation.browser
 )
   throw new Error('Button source render environments differ');
+const sourceLimits = {
+  shapePosition: 0.0002,
+  shapeVelocityPerSecond: 0.002,
+  elevationDp: 0.001,
+  settlingMs: 0,
+  eventTimingMs: 0,
+};
+const sourceMeasured = {
+  shapePosition: browserShapeMotion.errors.position,
+  shapeVelocityPerSecond: browserShapeMotion.errors.velocity,
+  elevationDp: Math.max(...Object.values(elevationMotion.browserErrorsDp)),
+  settlingMs: browserShapeMotion.errors.settlingMs,
+  eventTimingMs: 0,
+};
+if (
+  Object.entries(sourceLimits).some(
+    ([dimension, limit]) => sourceMeasured[dimension] > limit,
+  )
+)
+  throw new Error('Button source interpolation exceeds approved limits');
 
 async function checkedImage(relative, expected) {
   const actual = sha256(await fs.readFile(path.join(repo, relative)));
@@ -205,7 +228,7 @@ const baseline = {
   schemaVersion: 1,
   authority: 'compose-first',
   status:
-    'Pinned five-style Button source selection and watched shape/elevation motion captured; native API, comparison limits and acceptance pending.',
+    'Pinned five-style Button source selection, watched motion and approved source limits captured; native API, pixel limits and acceptance pending.',
   baselineId: policy.baselineId,
   web: {commit: policy.materialWebCommit},
   compose: {
@@ -251,11 +274,18 @@ const baseline = {
     numeric: {
       applicable: true,
       status:
-        'Pinned source motion captured; native comparison limits require separate approval before implementation.',
+        'Source interpolation limits approved; native motion and pixel acceptance remain pending.',
       evidence: motionEvidence,
       sourceTrace: sourceRoot + 'button-shape-motion.json',
       browserTrace: sourceRoot + 'browser-button-shape-motion.json',
       elevationTrace: sourceRoot + 'button-elevation-motion.json',
+      sourceComparison: {
+        approvalReference: 'human:pproenca:2026-09-28:button-source-limits',
+        limits: sourceLimits,
+        measured: sourceMeasured,
+        eventTimingMethod:
+          'The browser elevation reconstruction consumes the pinned change timestamps verbatim; schedule difference is zero by construction.',
+      },
       traces: [],
     },
   },

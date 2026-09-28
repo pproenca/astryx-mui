@@ -26,8 +26,10 @@ flip is equivalent to retargeting that visible fraction while retaining its
 velocity. Across 61 samples, the maximum position difference is
 0.000000057 interpolation units, the maximum velocity difference is
 0.000000516 units/s, and settling differs by 0 ms. The final release settles
-at 1000 ms under the stated 0.0001 position/velocity criteria. These are
-measured source discrepancies, **not** approved native tolerances.
+at 1000 ms under the stated 0.0001 position/velocity criteria. The owner
+approved source comparison limits of 0.0002 pressed-fraction units,
+0.002 units/s and 0 ms settling difference on 2026-09-28. The measured
+differences pass those limits; they are **not** native acceptance tolerances.
 
 The [render manifest](render-manifest.json) hashes 20 selected light/dark
 frames, four reduced-motion adaptation frames, and [light](compose-button-shape-light.mp4)
@@ -75,8 +77,12 @@ specification; default Button press and rest elevations coincide, so that
 tween has no visible default-state path. Disabled and reenabled targets snap.
 
 The independent Chrome Web Animations comparison differs by at most 0.0000091
-dp for elevated and 0.00000075 dp for filled/tonal. These are source
-reconstruction discrepancies, **not** native acceptance limits. The
+dp for elevated and 0.00000075 dp for filled/tonal. The owner approved a
+0.001 dp source comparison limit and 0 ms event-timing difference on
+2026-09-28. Both pass. The browser elevation reconstruction reuses the pinned
+change timestamps, so its 0 ms schedule difference is by construction, not an
+independent timing capture. These source limits are **not** native acceptance
+limits. The
 [elevation render manifest](elevation-render-manifest.json) hashes 32 selected
 light/dark frames, four reduced-motion adaptation frames, and
 [light](compose-button-elevation-light.mp4) and
