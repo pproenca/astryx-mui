@@ -101,6 +101,32 @@ Follow [AST-039](../specs/AST-039/spec.md) for discovery, same-stem `.doc.mjs`
 files and integration configuration. Manifests locate directories; they do not
 become item catalogs.
 
+### Complete components by default
+
+The family contract requires ordinary component usage to deliver the complete
+Material 3 appearance and behavior. Configure native components through pinned
+Compose concepts, defaults, variants, content slots and state, expressed
+idiomatically in React with native web semantics. Developers supply content,
+application state and callbacks; the component integrates its visual layers.
+
+For example, Button owns its applicable ripple, focus indication, shape,
+elevation and interaction motion. Native text fields own their filled or outlined
+container, floating label, indicator, supporting text layout and state transitions.
+Use each component's selected source defaults; a standalone primitive's options
+do not replace the component's Compose defaults.
+
+Standalone `Ripple`, `FocusRing`, `Elevation`, `FilledField` and `OutlinedField`
+exports serve advanced custom-control composition. Their opt-in status applies
+to independent use. Standard Material components must integrate the applicable
+behavior automatically, without requiring callers to import or wire those
+primitives, set implementation state, or adapt a styled Core component.
+
+Native acceptance and primary consumer examples must exercise the ordinary
+public component API with no manually supplied shells or effects. Verify its
+selected Material 3 and Expressive defaults, relevant states and motion through
+that usage. Primitive fixtures supplement this evidence; they cannot establish
+acceptance of the complete component.
+
 Native components consume supported Material component roles, with system and
 reference roles below them. Match public CSS spellings from the pinned active
 Material Web wrappers, including `--md-divider-color` and

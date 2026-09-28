@@ -99,6 +99,19 @@ presently shipped workspace implementation remains the additive
 This record owns the family token and compatibility direction. Each native
 component's direct record owns its anatomy, defaults, states and public API.
 
+Native components are complete Material 3 controls by default. Their public
+configuration follows pinned Compose concepts, defaults, variants, content slots
+and state, translated idiomatically to React and native browser semantics.
+The component owns its applicable decoration, state layers, focus indication,
+elevation and motion; ordinary callers supply content and application state
+without assembling those implementation layers or adapting a Core component.
+
+Standalone visual primitives and field shells are optional tools for advanced
+custom controls. Approval of their public exports does not make them required
+consumer wiring or opt the standard components out of Material behavior. Native
+component acceptance must exercise ordinary public usage with these layers
+integrated, including the selected Material 3 and Expressive defaults and states.
+
 Native styling consumes supported Material component and system token names
 directly. Core portable tokens remain the compatibility contract for Core
 consumers; they are not an intermediate vocabulary required by native Material
@@ -404,6 +417,13 @@ receipts must identify the pinned Material Web input and Astryx code revision.
   decision. Figma-only scope, documented fallbacks, approved exceptions and native
   browser semantics remain required. Existing source preparations and approvals
   must be revalidated under the v4 contract.
+
+- 2026-09-28: The project owner clarified that native Material components own
+  their complete appearance and behavior by default, with Compose-like public
+  configuration adapted to React and browser semantics. Standalone visual
+  primitives and field shells remain advanced composition tools. Their public
+  approval never requires ordinary component consumers to assemble those layers;
+  native acceptance must verify their automatic integration.
 
 ## Open questions
 
