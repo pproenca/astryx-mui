@@ -12,3 +12,23 @@ internal/vibe-tests/.baseline/components/ui/** linguist-generated=true binary
 
 # Lock files
 pnpm-lock.yaml linguist-generated=true
+
+# Explicit generator outputs; keep their source generators reviewable.
+*.generated.* linguist-generated=true
+packages/themes/material3/src/material3ColorSource.json linguist-generated=true
+packages/themes/material3/src/material3ElevationSource.json linguist-generated=true
+packages/themes/material3/src/material3IconSource.json linguist-generated=true
+packages/themes/material3/src/material3MotionSource.json linguist-generated=true
+packages/themes/material3/src/material3ShapeSource.json linguist-generated=true
+packages/themes/material3/src/material3SpatialSource.json linguist-generated=true
+packages/themes/material3/src/material3TypographySource.json linguist-generated=true
+
+# Captured comparison media and frozen workbook recovery artifacts.
+internal/material3-migration/sources/**/*.png linguist-generated=true binary
+internal/material3-migration/sources/**/*.mp4 linguist-generated=true binary
+internal/material3-migration/sources/**/*.webm linguist-generated=true binary
+packages/material3/fixtures/references/**/*.png linguist-generated=true binary
+packages/material3/fixtures/references/**/*.mp4 linguist-generated=true binary
+packages/material3/fixtures/references/**/*.webm linguist-generated=true binary
+internal/material3-migration/checkpoints/*.xlsx linguist-generated=true binary
+internal/material3-migration/checkpoints/*.xlsx.sha256 linguist-generated=true
