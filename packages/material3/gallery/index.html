@@ -104,6 +104,9 @@
         gap: 12px 24px;
         font-size: 13px;
       }
+      .source-line figure {
+        flex: 1 1 300px;
+      }
       .revision {
         overflow-wrap: anywhere;
         font:
@@ -368,6 +371,38 @@
           title="Interactive native Material 3 Divider preview"
           loading="eager"
           src="./fixtures/divider.html"></iframe>
+      </section>
+
+      <section class="section" aria-labelledby="native-elevation-title">
+        <div class="section-heading">
+          <h2 id="native-elevation-title">Native Elevation</h2>
+          <p>
+            Inspect six pinned levels, light, dark and Expressive schemes,
+            owner shapes, scoped shadow color and inert pointer behavior.
+          </p>
+        </div>
+        <iframe
+          class="native-frame"
+          id="elevation-frame"
+          title="Interactive native Material 3 Elevation preview"
+          loading="eager"
+          src="./fixtures/elevation.html"></iframe>
+        <div class="source-line">
+          <figure>
+            <img
+              src="./evidence/elevation-native-source/elevation-light.png"
+              alt="Pinned source shadow levels zero through five in light mode"
+              width="480" />
+            <figcaption>Pinned independent shadow layers · light</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="./evidence/elevation-native-source/elevation-dark.png"
+              alt="Pinned source shadow levels zero through five in dark mode"
+              width="480" />
+            <figcaption>Pinned independent shadow layers · dark</figcaption>
+          </figure>
+        </div>
       </section>
 
       <section class="section" aria-labelledby="comparison-title">

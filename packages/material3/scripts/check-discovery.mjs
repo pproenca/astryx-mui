@@ -50,6 +50,7 @@ try {
   assert.equal(discovered.data.length, 1);
   assert.equal(discovered.data[0].name, '@astryxdesign/material3');
   assert.deepEqual(discovered.data[0].components, [
+    'Elevation',
     'FocusRing',
     'HorizontalDivider',
     'Icon',
@@ -77,13 +78,13 @@ try {
     [
       '--input-type=module',
       '--eval',
-      "import {FocusRing} from '@astryxdesign/material3/FocusRing'; import {Icon} from '@astryxdesign/material3/Icon'; import {MaterialSymbol} from '@astryxdesign/material3/MaterialSymbol'; import {Ripple} from '@astryxdesign/material3/Ripple'; import {HorizontalDivider, VerticalDivider} from '@astryxdesign/material3/Divider'; process.stdout.write([FocusRing, Icon, MaterialSymbol, Ripple, HorizontalDivider, VerticalDivider].map(value => typeof value).join(','));",
+      "import {Elevation} from '@astryxdesign/material3/Elevation'; import {FocusRing} from '@astryxdesign/material3/FocusRing'; import {Icon} from '@astryxdesign/material3/Icon'; import {MaterialSymbol} from '@astryxdesign/material3/MaterialSymbol'; import {Ripple} from '@astryxdesign/material3/Ripple'; import {HorizontalDivider, VerticalDivider} from '@astryxdesign/material3/Divider'; process.stdout.write([Elevation, FocusRing, Icon, MaterialSymbol, Ripple, HorizontalDivider, VerticalDivider].map(value => typeof value).join(','));",
     ],
     {cwd: project, encoding: 'utf8'},
   );
   assert.equal(
     nativeComponents,
-    'function,function,function,function,function,function',
+    'function,function,function,function,function,function,function',
   );
   await fs.access(path.join(packageRoot, 'dist/components.css'));
 } finally {

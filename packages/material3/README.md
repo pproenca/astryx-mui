@@ -4,8 +4,8 @@
 private while its foundation gallery and components are being migrated. The
 entry point now exposes the canonical Compose-first foundation graph, typed
 CSS-backed Material roles, source-only values, native presentational Icon and
-MaterialSymbol components, the opt-in FocusRing and Ripple primitives, and
-native HorizontalDivider and VerticalDivider. Other components remain in
+MaterialSymbol components, the opt-in FocusRing, Ripple and Elevation primitives,
+and native HorizontalDivider and VerticalDivider. Other components remain in
 migration.
 
 ```ts
@@ -104,6 +104,27 @@ for a distinct semantic input, and `dragged` for a drag state owned by the
 control. Light, dark and Expressive color follows the Material tokens and the
 parent's content color. The indication does not intercept pointer or keyboard
 events. Native Material controls will own their own indication.
+
+## Native Elevation
+
+```tsx
+import {Elevation} from '@astryxdesign/material3/Elevation';
+import '@astryxdesign/material3/tokens.css';
+import '@astryxdesign/material3/components.css';
+
+<div className="positioned-surface">
+  <Elevation level={3} />
+  Surface content
+</div>;
+```
+
+`Elevation` is an opt-in decorative shadow layer for a custom positioned
+visual owner. Level 0 is the default and paints no shadow. Levels 1–5 follow
+the pinned 1, 3, 6, 8 and 12dp Compose levels. Key and ambient shadows remain
+separate and use `--md-sys-color-shadow` scoped on the owner. The parent
+supplies its own shape, surface color, focus, pointer behavior, z-index and
+state transitions. It can change the `level` prop without Elevation adding
+motion. Native Surface and controls will own their own tonal elevation.
 
 ## Native Divider
 

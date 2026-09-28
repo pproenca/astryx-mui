@@ -46,11 +46,21 @@ for (const name of [
   'ripple-state-compare.css',
   'divider.html',
   'divider.css',
+  'elevation.html',
+  'elevation.css',
 ])
   await fs.copyFile(
     path.join(packageRoot, 'fixtures', name),
     path.join(gallery, 'fixtures', name),
   );
+await build({
+  entryPoints: [path.join(packageRoot, 'fixtures/elevation.tsx')],
+  outfile: path.join(gallery, 'fixtures/elevation.js'),
+  bundle: true,
+  format: 'esm',
+  platform: 'browser',
+  target: ['chrome123', 'firefox120', 'safari17.5'],
+});
 await build({
   entryPoints: [path.join(packageRoot, 'fixtures/divider.tsx')],
   outfile: path.join(gallery, 'fixtures/divider.js'),
@@ -148,6 +158,11 @@ await fs.writeFile(path.join(gallery, 'fixtures/font-config.js'), fontConfig);
 await fs.cp(
   path.join(packageRoot, 'gallery/evidence'),
   path.join(gallery, 'evidence'),
+  {recursive: true},
+);
+await fs.cp(
+  path.join(packageRoot, 'fixtures/references/elevation/native-shadow'),
+  path.join(gallery, 'evidence/elevation-native-source'),
   {recursive: true},
 );
 for (const entry of await fs.readdir(dist, {withFileTypes: true})) {

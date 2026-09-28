@@ -1,6 +1,6 @@
 // Copyright (c) Meta Platforms, Inc. and affiliates.
 
-/** @input Native component TypeScript sources, including shared Divider paint. @output Babel-built ESM component entry points with compiled StyleX classes. @position Native package component build step. */
+/** @input Native component TypeScript sources, including decorative Elevation paint. @output Babel-built ESM component entry points with compiled StyleX classes. @position Native package component build step. */
 import {transformFileAsync} from '@babel/core';
 import {writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
@@ -17,6 +17,7 @@ for (const [directory, name] of [
   ['Divider', 'DividerRule'],
   ['Divider', 'HorizontalDivider'],
   ['Divider', 'VerticalDivider'],
+  ['Elevation', 'Elevation'],
 ]) {
   const source = new URL(`../src/${directory}/${name}.tsx`, import.meta.url);
   const output = new URL(`../dist/${directory}/${name}.js`, import.meta.url);

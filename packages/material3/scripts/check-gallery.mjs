@@ -130,6 +130,29 @@ try {
   );
   await dividerFixture.locator('#semantic').check();
   assert.equal(await dividerFixture.getByRole('separator').count(), 2);
+  assert.equal(
+    await page.locator('iframe#elevation-frame').getAttribute('title'),
+    'Interactive native Material 3 Elevation preview',
+  );
+  const elevationFixture = page.frameLocator('#elevation-frame');
+  await elevationFixture.getByTestId('elevation-5').waitFor();
+  assert.equal(
+    await elevationFixture.getByTestId('action-elevation').getAttribute('aria-hidden'),
+    'true',
+  );
+  await elevationFixture.getByRole('combobox', {name: 'Scheme'}).selectOption('dark');
+  await elevationFixture.getByRole('combobox', {name: 'Action shadow level'}).selectOption('5');
+  await elevationFixture.getByRole('combobox', {name: 'Scoped shadow color'}).selectOption('custom');
+  const actionShadow = elevationFixture.getByTestId('action-elevation');
+  assert.match(
+    await actionShadow.locator('span').first().evaluate(node => getComputedStyle(node).boxShadow),
+    /rgb\(37, 73, 170\)/,
+  );
+  await elevationFixture.getByRole('button', {name: 'Press or focus this owner'}).click();
+  assert.match(await elevationFixture.locator('.counter').textContent(), /1$/);
+  await elevationFixture.getByRole('button', {name: 'Press or focus this owner'}).focus();
+  await page.keyboard.press('Enter');
+  assert.match(await elevationFixture.locator('.counter').textContent(), /2$/);
   const fixture = page.frameLocator('#native-frame');
   await fixture.locator('#flower').waitFor();
   await page.locator('#scheme').selectOption('dark');
@@ -170,6 +193,12 @@ try {
   await page.setViewportSize({width: 390, height: 844});
   assert.ok(await page.locator('#native-frame').isVisible());
   assert.ok(await page.locator('#focus-ring-frame').isVisible());
+  assert.ok(
+    await elevationFixture.locator('body').evaluate(() =>
+      document.documentElement.scrollWidth <= innerWidth + 1,
+    ),
+    'Native Elevation fixture overflows narrow viewport',
+  );
   assert.ok(
     await page.evaluate(
       () => document.documentElement.scrollWidth <= innerWidth + 1,

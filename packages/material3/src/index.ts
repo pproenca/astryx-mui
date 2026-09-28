@@ -3,7 +3,7 @@
 /**
  * @file index.ts
  * @input Supported Material CSS names and the pinned Compose-first foundation graph
- * @output Native components including Divider, FocusRing and Ripple, token names, values, typed resolver and CSS-variable entry point
+ * @output Native components including Divider, Elevation, FocusRing and Ripple, token names, values, typed resolver and CSS-variable entry point
  * @position Public native Material 3 package entry point
  */
 
@@ -72,3 +72,5 @@ export {HorizontalDivider} from './Divider/HorizontalDivider.js';
 export type {HorizontalDividerProps} from './Divider/HorizontalDivider.js';
 export {VerticalDivider} from './Divider/VerticalDivider.js';
 export type {VerticalDividerProps} from './Divider/VerticalDivider.js';
+export {Elevation} from './Elevation/Elevation.js';
+export type {ElevationProps} from './Elevation/Elevation.js';

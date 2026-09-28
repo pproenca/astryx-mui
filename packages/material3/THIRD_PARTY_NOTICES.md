@@ -18,6 +18,13 @@ Apache-2.0; see `LICENSE-APACHE-2.0`. The source file records hashes for its
 inputs. Material Web at the commit above supplies supported browser CSS names
 and the documented shadow gap.
 
+`src/Elevation/Elevation.tsx` renders two decorative shadow layers using
+the six pinned Compose levels and the Material Web key and ambient CSS geometry
+recorded in `src/foundationSource.json`. The frozen Figma light/dark effect
+styles fill the browser pixel gap. Google LLC and The Android Open Source
+Project source data retain their Apache-2.0 attribution above; the frozen
+Material Design Kit is CC BY 4.0 as recorded below.
+
 The frozen Material Design kit supplies 32 named and contrast color modes as
 Figma-only scope. Material Design Kit by Google, licensed CC BY 4.0. Its
 recorded source hash is
