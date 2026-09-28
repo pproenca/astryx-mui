@@ -127,6 +127,23 @@ selected Material 3 and Expressive defaults, relevant states and motion through
 that usage. Primitive fixtures supplement this evidence; they cannot establish
 acceptance of the complete component.
 
+### Improve Astryx at the owning layer
+
+Native integration may require changes to Astryx's existing components, shared
+behavior, component anatomy or theme authoring and compilation support. Make those
+changes at the appropriate owner when they provide a coherent capability needed
+by Material 3. Existing implementation boundaries are open to refactoring.
+
+Before adding an adapter, wrapper or duplicate component recipe to overcome an
+Astryx limitation, assess whether improving the existing component or theme
+capability removes that limitation directly. Prefer that improvement when the
+semantics can be shared. Private implementation composition remains useful;
+chains of wrappers that translate props, patch anatomy or synchronize duplicated
+state merely to preserve an existing implementation are not the migration target.
+Use a dedicated native implementation when a shared design cannot preserve the
+required contracts. Extend the relevant owner record and verify affected themes
+and consumers; released public changes need an explicit compatibility plan.
+
 Native components consume supported Material component roles, with system and
 reference roles below them. Match public CSS spellings from the pinned active
 Material Web wrappers, including `--md-divider-color` and
@@ -139,10 +156,11 @@ Core token helpers and themed Core components are compatibility consumers.
 Native component styling must not require `--color-*`, `--text-*`, `--radius-*`
 or `--astryx-*` bridge declarations. Reuse behavior, focus, form, layout and
 internationalization utilities only where their semantics match the Material
-contract. When a styled Core component imposes conflicting anatomy, defaults
-or states, implement the native component rather than expanding the Core API
-solely to accommodate Material. Use CSS-native capabilities under the existing
-StyleX guidance.
+contract. A conflicting Core implementation calls for an explicit choice between
+refactoring its shared capability and implementing the native owner, based on
+the required semantics and compatibility cost. Do not compromise Material
+defaults or add wrapper layers just to keep the current Core implementation
+untouched. Use CSS-native capabilities under the existing StyleX guidance.
 
 The canonical value graph flows from Material references and system roles to
 Material component roles. Legacy aliases consume that graph in one direction.
@@ -159,6 +177,17 @@ Astryx naming from native styling does not remove Meta or Google attribution,
 license notices, or package provenance.
 
 ## Refactor completed work and sequence new work
+
+Account for every earlier compatibility-based Material 3 change in the existing
+workbook before accepting the native foundation or expanding component work.
+Trace the theme roles and generated CSS/CLI bundle, Core Icon and Divider
+integrations, MaterialSymbol and MaterialBadge, and their source fixtures,
+previews, fonts, documentation and license notices to their owning native tasks
+or mappings. Classify each as retained Core compatibility, native refactor, or
+replacement; record any source or verification gap on that owner. Recheck reused
+code and evidence against the pinned Compose-first baseline and current native
+contract. Earlier Closed tasks and human QA remain historical evidence, not
+native acceptance. Keep their records intact and do not create a second backlog.
 
 The workbook contains the actual stories and hard edges. Apply these ordering
 rules when maintaining it:

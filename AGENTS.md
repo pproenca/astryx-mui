@@ -71,8 +71,12 @@ coverage, including families absent from Web. Motion requires watched references
 intermediate frames, interruption/reversal and reduced-motion evidence.
 The current [Material 3 family contract](packages/themes/material3/material3.spec.md)
 owns its token and compatibility boundary. Native Material components consume
-supported Material tokens directly. Reuse Core behavior only where its semantics
-match; do not add Core adapters or props solely to avoid a native implementation.
+supported Material tokens directly. Refactor Astryx components, shared behavior and
+theme support where they are the correct owners for native Material integration.
+Prefer a coherent shared capability over wrapper chains that compensate for an
+existing limitation. Reuse behavior where its semantics match, retain a dedicated
+native implementation where they diverge, and handle released API changes through
+their owning contracts and compatibility plans.
 Existing Core theme support is a compatibility surface, not the target component
 architecture. Preserve attribution and licensing while changing implementation.
 The migration workbook is the task database; do not create a second backlog in
