@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 2,
+  "authority": "compose-first",
+  "familyId": "family-CM-0021",
+  "scopeSha256": "1c75ab5a82a92d481db9256289ba464e35851edebe2a1be39086656441475319",
+  "pins": {
+    "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+    "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+  },
+  "coverage": {
+    "figma": {
+      "status": "present",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+    },
+    "compose": {
+      "status": "present",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+    },
+    "web": {
+      "status": "present",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+    }
+  },
+  "routes": {
+    "design": {
+      "primary": "compose",
+      "figmaSpecified": true,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+    },
+    "behavior": {
+      "primary": "compose",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+    },
+    "motion": {
+      "primary": "compose",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+    },
+    "browser": {
+      "primary": "web",
+      "figmaSpecified": false,
+      "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+    }
+  },
+  "overrides": []
+}
