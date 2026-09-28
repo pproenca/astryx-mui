@@ -54,6 +54,26 @@ settling time matches. These are measured
 source discrepancies, **not** approved native comparison tolerances. Those
 limits require owner review before native implementation.
 
+### Proposed source comparison limits — owner decision pending
+
+The following limits are proposed for comparing the pinned Kotlin probe with
+the independent browser spring calculation. The interpolation limits mirror
+the [approved Button source limits](../button-reference/README.md); the
+indicator position limit uses their 0.001 dp elevation bound as a precedent.
+The indicator velocity limit is a separate field proposal. None of these
+limits authorizes native motion, pixel, or event-timing tolerance.
+
+| Source path                   | Largest measured position difference |    Proposed position limit | Largest measured velocity difference |     Proposed velocity limit |
+| ----------------------------- | -----------------------------------: | -------------------------: | -----------------------------------: | --------------------------: |
+| Label, placeholder, and color |      0.000000094 interpolation units | 0.0002 interpolation units |    0.000001613 interpolation units/s | 0.002 interpolation units/s |
+| Indicator thickness           |                       0.000000149 dp |                   0.001 dp |                     0.000001081 dp/s |                  0.002 dp/s |
+
+All 81 sample timestamps per path and all settling times must match exactly
+(0 ms difference). The browser calculation uses the probe's target-change
+schedule, so timestamp agreement does not independently establish runtime
+event timing. Native verification must capture its own trajectories and seek
+separate approval for any nonzero pixel or motion tolerance.
+
 The reduced-motion frames present the final focused state immediately. This
 is a browser accessibility adaptation; pinned Compose does not specify that
 reduced-motion behavior for TextField. Disabled indicator color and thickness
