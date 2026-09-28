@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "repository": "pproenca/astryx-mui",
+  "pullRequest": {
+    "number": 41,
+    "headSha": "7260a0de00854990954a366a62c2ed513e55ceec",
+    "headRef": "codex/material3-divider-native",
+    "headRepository": "pproenca/astryx-mui",
+    "headRepositoryId": "1387564506"
+  },
+  "sourceRun": {
+    "id": 36329215743,
+    "attempt": 1,
+    "conclusion": "success"
+  },
+  "targets": {
+    "storybook": {
+      "available": false,
+      "path": "pr/41/",
+      "indexSha256": null
+    },
+    "sandbox": {
+      "available": true,
+      "path": "pr/41/sandbox/",
+      "indexSha256": "8b9342dd70dbd3c0b04a8c4c597f208c90097309b2edc2cfeb725589502453a7"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "repository": "pproenca/astryx-mui",
+  "pullRequest": {
+    "number": 24,
+    "headSha": "9fe75263aab78c67dbe5fe49ef30b95ca872ee27",
+    "headRef": "codex/material3-token-graph",
+    "headRepository": "pproenca/astryx-mui",
+    "headRepositoryId": "1387564506"
+  },
+  "sourceRun": {
+    "id": 36269426079,
+    "attempt": 1,
+    "conclusion": "success"
+  },
+  "targets": {
+    "storybook": {
+      "available": false,
+      "path": "pr/24/",
+      "indexSha256": null
+    },
+    "sandbox": {
+      "available": true,
+      "path": "pr/24/sandbox/",
+      "indexSha256": "24517fae5a30bdfcc90c8694dde43e7ca45e1d7af42f4ab4682c35872ce49e3a"
+    }
+  }
+}

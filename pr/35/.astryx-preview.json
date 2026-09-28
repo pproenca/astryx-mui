@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "repository": "pproenca/astryx-mui",
+  "pullRequest": {
+    "number": 35,
+    "headSha": "4523d59b82049d7038322ce9c34d87ce91910153",
+    "headRef": "codex/material3-knowledge-gate",
+    "headRepository": "pproenca/astryx-mui",
+    "headRepositoryId": "1387564506"
+  },
+  "sourceRun": {
+    "id": 36308314873,
+    "attempt": 1,
+    "conclusion": "failure"
+  },
+  "targets": {
+    "storybook": {
+      "available": false,
+      "path": "pr/35/",
+      "indexSha256": null
+    },
+    "sandbox": {
+      "available": false,
+      "path": "pr/35/sandbox/",
+      "indexSha256": null
+    }
+  }
+}

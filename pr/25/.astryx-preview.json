@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "repository": "pproenca/astryx-mui",
+  "pullRequest": {
+    "number": 25,
+    "headSha": "2a26320fe543f352e6552c4391091df374871c24",
+    "headRef": "codex/material3-foundation-gallery",
+    "headRepository": "pproenca/astryx-mui",
+    "headRepositoryId": "1387564506"
+  },
+  "sourceRun": {
+    "id": 36277287635,
+    "attempt": 1,
+    "conclusion": "success"
+  },
+  "targets": {
+    "storybook": {
+      "available": false,
+      "path": "pr/25/",
+      "indexSha256": null
+    },
+    "sandbox": {
+      "available": true,
+      "path": "pr/25/sandbox/",
+      "indexSha256": "3ff43de1d55a4fd599691404516d654719b7c0346c0951629990c75b5ead57cd"
+    }
+  }
+}

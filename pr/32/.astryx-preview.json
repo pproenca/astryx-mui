@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "repository": "pproenca/astryx-mui",
+  "pullRequest": {
+    "number": 32,
+    "headSha": "402f63c96aba15db38f58684068965307c18e9a9",
+    "headRef": "codex/material3-ripple-reference",
+    "headRepository": "pproenca/astryx-mui",
+    "headRepositoryId": "1387564506"
+  },
+  "sourceRun": {
+    "id": 36305903572,
+    "attempt": 1,
+    "conclusion": "success"
+  },
+  "targets": {
+    "storybook": {
+      "available": false,
+      "path": "pr/32/",
+      "indexSha256": null
+    },
+    "sandbox": {
+      "available": true,
+      "path": "pr/32/sandbox/",
+      "indexSha256": "df35a69d3582c006f8ec805b516e8836b3959672b59995604e0c9a42befd2bbf"
+    }
+  }
+}
