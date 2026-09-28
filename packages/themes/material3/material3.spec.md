@@ -115,9 +115,14 @@ integrated, including the selected Material 3 and Expressive defaults and states
 Native styling consumes supported Material component and system token names
 directly. Core portable tokens remain the compatibility contract for Core
 consumers; they are not an intermediate vocabulary required by native Material
-components. Reuse existing low-level behavior only when its semantics match the
-Material component. A conflicting Core component is a candidate for a separate
-native implementation, not a reason to compromise the Material contract.
+components. Reuse existing low-level behavior when its semantics match the
+Material component. Native integration may refactor Astryx's existing components
+and shared behavior or extend theme support at its canonical owner. Prefer a
+coherent shared capability over adapter or wrapper chains that compensate for
+an existing limitation. Private composition is allowed; ordinary consumers must
+still receive the complete native component. Where semantics cannot be shared,
+use a dedicated native implementation. Changes to released contracts require
+explicit compatibility handling and verification of affected themes and consumers.
 
 The target dependency direction is canonical Material values and roles, native
 component recipes, then optional legacy adapters. Native implementations must
@@ -424,6 +429,13 @@ receipts must identify the pinned Material Web input and Astryx code revision.
   primitives and field shells remain advanced composition tools. Their public
   approval never requires ordinary component consumers to assemble those layers;
   native acceptance must verify their automatic integration.
+
+- 2026-09-28: The project owner authorized improving Astryx components and theme
+  support as part of native Material integration. Existing implementation
+  boundaries may be refactored where a shared capability is the correct owner;
+  avoid wrapper chains introduced solely to work around those boundaries.
+  Material source fidelity and explicit released-contract compatibility remain
+  required.
 
 ## Open questions
 
