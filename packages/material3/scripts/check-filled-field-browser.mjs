@@ -62,7 +62,7 @@ const indicatorWidth = () =>
   page
     .locator('[data-md-field-container]')
     .evaluate(node =>
-      Number.parseFloat(getComputedStyle(node).borderBlockEndWidth),
+      Number.parseFloat(getComputedStyle(node, '::after').height),
     );
 
 try {
@@ -110,7 +110,38 @@ try {
   });
   assert.equal(await indicatorWidth(), 1);
 
-  await input.focus();
+  const focusFrames = await input.evaluate(
+    node =>
+      new Promise(resolve => {
+        const container = node
+          .closest('[data-md-filled-field]')
+          .querySelector('[data-md-field-container]');
+        const frames = [];
+        const started = performance.now();
+        node.focus();
+        const sample = () => {
+          const indicator = getComputedStyle(container, '::after');
+          frames.push({
+            containerHeight: container.getBoundingClientRect().height,
+            indicatorHeight: Number.parseFloat(indicator.height),
+            indicatorColor: indicator.backgroundColor,
+          });
+          if (performance.now() - started < 440) requestAnimationFrame(sample);
+          else resolve(frames);
+        };
+        requestAnimationFrame(sample);
+      }),
+  );
+  assert.ok(focusFrames.length >= 15, 'Focus frames were not observed');
+  assert.ok(
+    focusFrames.every(
+      frame =>
+        frame.containerHeight === 56 &&
+        frame.indicatorHeight >= 1 &&
+        frame.indicatorColor !== 'rgba(0, 0, 0, 0)',
+    ),
+    'The active indicator must stay visible without moving the field boundary',
+  );
   assert.notEqual(await shell.getAttribute('data-md-field-focused'), null);
   await page.waitForTimeout(120);
   const focusedTop = await labelTop();

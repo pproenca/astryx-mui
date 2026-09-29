@@ -81,25 +81,34 @@ const styles = stylex.create({
     borderRadius: '4px 4px 0 0',
     backgroundColor:
       'var(--md-filled-field-container-color, var(--md-sys-color-surface-container-highest))',
-    borderBlockEndStyle: 'solid',
-    borderBlockEndColor:
-      'var(--md-filled-field-active-indicator-color, var(--md-sys-color-on-surface-variant))',
+    '::after': {
+      content: '""',
+      position: 'absolute',
+      insetInline: 0,
+      bottom: 0,
+      height: 'var(--md-filled-field-active-indicator-height, 1px)',
+      backgroundColor:
+        'var(--md-filled-field-active-indicator-color, var(--md-sys-color-on-surface-variant))',
+      pointerEvents: 'none',
+    },
     '@media (forced-colors: active)': {
-      borderBlockEndColor: 'CanvasText',
       backgroundColor: 'Canvas',
+      '::after': {backgroundColor: 'CanvasText'},
     },
   },
   indicator: (progress: number, color: string) => ({
-    borderBlockEndWidth: `max(0px, calc(var(--md-filled-field-active-indicator-height, 1px) * ${1 - progress} + var(--md-filled-field-focus-active-indicator-height, 2px) * ${progress}))`,
-    borderBlockEndColor: color,
+    '::after': {
+      height: `max(0px, calc(var(--md-filled-field-active-indicator-height, 1px) * ${1 - progress} + var(--md-filled-field-focus-active-indicator-height, 2px) * ${progress}))`,
+      backgroundColor: color,
+    },
   }),
   hoverIndicator: {
-    borderBlockEndColor: {
-      default:
-        'var(--md-filled-field-active-indicator-color, var(--md-sys-color-on-surface-variant))',
+    '@media (hover: hover)': {
       ':hover': {
-        '@media (hover: hover)':
-          'var(--md-filled-field-hover-active-indicator-color, var(--md-sys-color-on-surface))',
+        '::after': {
+          backgroundColor:
+            'var(--md-filled-field-hover-active-indicator-color, var(--md-sys-color-on-surface))',
+        },
       },
     },
   },
@@ -201,8 +210,9 @@ function visualColor(
   error: boolean,
   disabled: boolean,
 ): string {
-  if (disabled)
-    {return 'color-mix(in srgb, var(--md-filled-field-disabled-label-text-color, var(--md-sys-color-on-surface)) 38%, transparent)';}
+  if (disabled) {
+    return 'color-mix(in srgb, var(--md-filled-field-disabled-label-text-color, var(--md-sys-color-on-surface)) 38%, transparent)';
+  }
   const base = error
     ? 'var(--md-filled-field-error-label-text-color, var(--md-sys-color-error))'
     : 'var(--md-filled-field-label-text-color, var(--md-sys-color-on-surface-variant))';
@@ -215,8 +225,9 @@ function visualColor(
 }
 
 function indicatorColor(progress: number, error: boolean, disabled: boolean) {
-  if (disabled)
-    {return 'color-mix(in srgb, var(--md-filled-field-disabled-active-indicator-color, var(--md-sys-color-on-surface)) 38%, transparent)';}
+  if (disabled) {
+    return 'color-mix(in srgb, var(--md-filled-field-disabled-active-indicator-color, var(--md-sys-color-on-surface)) 38%, transparent)';
+  }
   const base = error
     ? 'var(--md-filled-field-error-active-indicator-color, var(--md-sys-color-error))'
     : 'var(--md-filled-field-active-indicator-color, var(--md-sys-color-on-surface-variant))';
@@ -232,8 +243,9 @@ function decorateControl(children: ReactNode, placeholder: number): ReactNode {
   if (
     !isValidElement(children) ||
     (children.type !== 'input' && children.type !== 'textarea')
-  )
-    {return children;}
+  ) {
+    return children;
+  }
   const control = children as ReactElement<{
     className?: string;
     style?: CSSProperties;
@@ -275,7 +287,9 @@ export function FilledField({
 
   useEffect(() => {
     const root = rootRef.current;
-    if (!root) {return;}
+    if (!root) {
+      return;
+    }
     const update = () => {
       setObservedFocus(root.contains(root.ownerDocument.activeElement));
       setExpressive(
@@ -284,19 +298,23 @@ export function FilledField({
     };
     update();
     const observer = new MutationObserver(update);
-    for (let node: Element | null = root; node; node = node.parentElement)
-      {observer.observe(node, {
+    for (let node: Element | null = root; node; node = node.parentElement) {
+      observer.observe(node, {
         attributes: true,
         attributeFilter: ['data-md-scheme'],
-      });}
+      });
+    }
     return () => observer.disconnect();
   }, []);
 
   const setRef = useCallback(
     (node: HTMLDivElement | null) => {
       rootRef.current = node;
-      if (typeof ref === 'function') {ref(node);}
-      else if (ref) {ref.current = node;}
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
     },
     [ref],
   );
@@ -305,8 +323,9 @@ export function FilledField({
     onFocusCapture?.(event);
   };
   const onBlur = (event: FocusEvent<HTMLDivElement>) => {
-    if (!event.currentTarget.contains(event.relatedTarget as Node | null))
-      {setObservedFocus(false);}
+    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+      setObservedFocus(false);
+    }
     onBlurCapture?.(event);
   };
   const color = visualColor(motion.color, error, disabled);
