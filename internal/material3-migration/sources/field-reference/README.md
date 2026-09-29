@@ -50,20 +50,20 @@ position difference is 0.000000149 dp for indicator thickness; the largest
 indicator velocity difference is 0.000001081 dp/s. For the other paths,
 the maximum position difference is 0.000000094 interpolation units and the
 maximum velocity difference is 0.000001613 interpolation units/s. Every
-settling time matches. These are measured
-source discrepancies, **not** approved native comparison tolerances. Those
-limits require owner review before native implementation.
+settling time matches. These are measured source discrepancies; the approved
+limits below govern this source comparison only.
 
-### Proposed source comparison limits — owner decision pending
+### Approved source comparison limits
 
-The following limits are proposed for comparing the pinned Kotlin probe with
+The owner approved the following limits on 2026-09-29 for comparing the pinned Kotlin probe with
 the independent browser spring calculation. The interpolation limits mirror
 the [approved Button source limits](../button-reference/README.md); the
 indicator position limit uses their 0.001 dp elevation bound as a precedent.
-The indicator velocity limit is a separate field proposal. None of these
-limits authorizes native motion, pixel, or event-timing tolerance.
+The indicator velocity limit is field-specific. Approval reference:
+`human:pproenca:2026-09-29:field-source-limits`. These limits do not authorize
+native motion, pixel, or event-timing tolerance.
 
-| Source path                   | Largest measured position difference |    Proposed position limit | Largest measured velocity difference |     Proposed velocity limit |
+| Source path                   | Largest measured position difference |    Approved position limit | Largest measured velocity difference |     Approved velocity limit |
 | ----------------------------- | -----------------------------------: | -------------------------: | -----------------------------------: | --------------------------: |
 | Label, placeholder, and color |      0.000000094 interpolation units | 0.0002 interpolation units |    0.000001613 interpolation units/s | 0.002 interpolation units/s |
 | Indicator thickness           |                       0.000000149 dp |                   0.001 dp |                     0.000001081 dp/s |                  0.002 dp/s |

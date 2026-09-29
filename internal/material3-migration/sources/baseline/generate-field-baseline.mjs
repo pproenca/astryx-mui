@@ -2,7 +2,7 @@
 
 /**
  * @input Pinned policy, shared field family route and watched source-value manifest.
- * @output Reproducible filled/outlined field source baseline for the workbook.
+ * @output Reproducible filled/outlined field source baseline with approved source comparison limits.
  * @position Disposable source decision generator; public API and native acceptance remain separate.
  */
 import fs from 'node:fs/promises';
@@ -21,6 +21,22 @@ const manifest = await read(
 const browserMotion = await read(
   'internal/material3-migration/sources/field-reference/browser-field-motion.json',
 );
+const measured = {
+  interpolationPosition: 0,
+  interpolationVelocityPerSecond: 0,
+  indicatorDp: 0,
+  indicatorVelocityDpPerSecond: 0,
+  settlingMs: 0,
+  eventTimingMs: 0,
+};
+for (const group of Object.values(browserMotion.schemes))
+  for (const trace of Object.values(group)) {
+    const position = trace.unit === 'dp' ? 'indicatorDp' : 'interpolationPosition';
+    const velocity = trace.unit === 'dp' ? 'indicatorVelocityDpPerSecond' : 'interpolationVelocityPerSecond';
+    measured[position] = Math.max(measured[position], trace.errors.position);
+    measured[velocity] = Math.max(measured[velocity], trace.errors.velocity);
+    measured.settlingMs = Math.max(measured.settlingMs, trace.errors.settlingMs);
+  }
 const family = await read(
   'internal/material3-migration/sources/families/family-CM-0021.json',
 );
@@ -137,7 +153,7 @@ const baseline = {
   schemaVersion: 1,
   authority: 'compose-first',
   status:
-    'Pinned field source selection and watched motion captured; public API ownership, native comparison limits and native acceptance pending.',
+    'Pinned field source selection, public API, and source comparison limits approved; native motion, pixel, and interactive acceptance pending.',
   baselineId: policy.baselineId,
   web: {commit: policy.materialWebCommit},
   compose: {
@@ -173,10 +189,24 @@ const baseline = {
     numeric: {
       applicable: true,
       status:
-        'Pinned Kotlin source traces captured; native browser tolerances require separate owner approval before implementation.',
-      evidence: sourceRoot + 'browser-field-motion.json',
+        'Source comparison limits approved; native motion and pixel acceptance remain pending.',
+      evidence: motionEvidence,
       sourceTrace: sourceRoot + 'field-motion.json',
       browserTrace: sourceRoot + 'browser-field-motion.json',
+      sourceComparison: {
+        approvalReference: 'human:pproenca:2026-09-29:field-source-limits',
+        limits: {
+          interpolationPosition: 0.0002,
+          interpolationVelocityPerSecond: 0.002,
+          indicatorDp: 0.001,
+          indicatorVelocityDpPerSecond: 0.002,
+          settlingMs: 0,
+          eventTimingMs: 0,
+        },
+        measured,
+        eventTimingMethod:
+          'The independent browser calculation consumes the pinned target-change timestamps verbatim; schedule difference is zero by construction.',
+      },
       traces: [],
     },
   },

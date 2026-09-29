@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "authority": "compose-first",
-  "status": "Pinned field source selection and watched motion captured; public API ownership, native comparison limits and native acceptance pending.",
+  "status": "Pinned field source selection, public API, and source comparison limits approved; native motion, pixel, and interactive acceptance pending.",
   "baselineId": "material3-expressive-compose-first-2026-09-26",
   "web": {
     "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
@@ -784,10 +784,30 @@
     "evidence": "internal/material3-migration/sources/field-reference/README.md",
     "numeric": {
       "applicable": true,
-      "status": "Pinned Kotlin source traces captured; native browser tolerances require separate owner approval before implementation.",
-      "evidence": "internal/material3-migration/sources/field-reference/browser-field-motion.json",
+      "status": "Source comparison limits approved; native motion and pixel acceptance remain pending.",
+      "evidence": "internal/material3-migration/sources/field-reference/README.md",
       "sourceTrace": "internal/material3-migration/sources/field-reference/field-motion.json",
       "browserTrace": "internal/material3-migration/sources/field-reference/browser-field-motion.json",
+      "sourceComparison": {
+        "approvalReference": "human:pproenca:2026-09-29:field-source-limits",
+        "limits": {
+          "interpolationPosition": 0.0002,
+          "interpolationVelocityPerSecond": 0.002,
+          "indicatorDp": 0.001,
+          "indicatorVelocityDpPerSecond": 0.002,
+          "settlingMs": 0,
+          "eventTimingMs": 0
+        },
+        "measured": {
+          "interpolationPosition": 9.397433964331015e-8,
+          "interpolationVelocityPerSecond": 0.0000016126641533276143,
+          "indicatorDp": 1.4906444301132638e-7,
+          "indicatorVelocityDpPerSecond": 0.000001081079352260872,
+          "settlingMs": 0,
+          "eventTimingMs": 0
+        },
+        "eventTimingMethod": "The independent browser calculation consumes the pinned target-change timestamps verbatim; schedule difference is zero by construction."
+      },
       "traces": []
     }
   },

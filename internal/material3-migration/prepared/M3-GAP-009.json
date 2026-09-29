@@ -1,0 +1,1114 @@
+{
+  "schemaVersion": 1,
+  "scopeSha256": "d476dde2639158b3f9d493e703d18607a5b122511a51359c8df26e012dc98d99",
+  "sources": {
+    "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+    "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468"
+  },
+  "baseline": "internal/material3-migration/sources/baseline/field-compose-first.json",
+  "routing": [
+    {
+      "schemaVersion": 2,
+      "authority": "compose-first",
+      "familyId": "family-CM-0021",
+      "scopeSha256": "1c75ab5a82a92d481db9256289ba464e35851edebe2a1be39086656441475319",
+      "pins": {
+        "figma": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+        "compose": "a095da93f8e98dea8748ceed79ea8427aade245f",
+        "web": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+      },
+      "coverage": {
+        "figma": {
+          "status": "present",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+        },
+        "compose": {
+          "status": "present",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+        },
+        "web": {
+          "status": "present",
+          "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+        }
+      },
+      "routes": {
+        "design": {
+          "primary": "compose",
+          "figmaSpecified": true,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+        },
+        "behavior": {
+          "primary": "compose",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+        },
+        "motion": {
+          "primary": "compose",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+        },
+        "browser": {
+          "primary": "web",
+          "figmaSpecified": false,
+          "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+        }
+      },
+      "overrides": []
+    }
+  ],
+  "files": {
+    "internal/material3-migration/sources/compose-inventory.json": "0e637563f2cb1a140e04c939379fc6a90474697e272e6594146ce5cb2cbb0d0a",
+    "AGENTS.md": "2d4d945689a9b13d3fb24627c4617bd2d1a8d843f4d8300ec72743009d119e90",
+    "packages/themes/material3/material3.spec.md": "dccedf88c88ec240914f50a83b7f09d654fab4d222d0f0be3f64754e26c7ae8f",
+    "docs/contributing/material3-migration.md": "1591ceae6d5e3d8a5a1bbdf2766321cf87a217e0c02a5d7f461c93ce5397aa16",
+    "internal/material3-migration/routing.mjs": "c498d4ef6b02164d4787b57ffb8470702ada22e47b27f2d5f3fb138cf7b1f391",
+    "internal/material3-migration/sources/baseline/field-compose-first.json": "5a369f164a50816f1920abf842fb03d7fd18ee13c9e765a124e3cb9e0a409a28",
+    "internal/material3-migration/sources/families/family-CM-0021.json": "acee67a7d69616d9fb4fcb9b831828f7f3c52e33d2fd274980642922d26ebefe",
+    "internal/material3-migration/sources/families/family-CM-0021.md": "9893ee0c27684716a9462d7b7c9453b8b61ea00075601bcaff255359b52214ed",
+    "internal/material3-migration/sources/figma-kit-inventory.json": "15ffc3bf66c2666dca228847b3bbeffc1d718beaa323967d2c118e0b3170ae6f",
+    "internal/material3-migration/sources/guidance/motion.md": "80f8c9961a724b60f29c3a7a6b591372d608382b8aa918faabc4cfdc93bb4720",
+    "internal/material3-migration/sources/field-reference/README.md": "3f68ba800d7d63ccd30a5a033b914f961268203f954575739818805e1d8f8ca7",
+    "internal/material3-migration/sources/field-reference/field-light-0000.png": "a093ea38fe9d9e6af31d26308c73a891475e5ee67b30fd031326dd7285f2007a",
+    "internal/material3-migration/sources/field-reference/field-light-0020.png": "7efb48d60de0c752b11de11b13ba4a826bb7712970d6793ff30a5af8d6f5996c",
+    "internal/material3-migration/sources/field-reference/field-light-0080.png": "57043ecf811d42760e1b7bc9bce458708d9d493fd080c7ea84f022ae6a161055",
+    "internal/material3-migration/sources/field-reference/field-light-0120.png": "4f7205a36bcd2d0d5e1384eed42a940fa4434c6a5a9d675a25ed38e4ef2ac6c9",
+    "internal/material3-migration/sources/field-reference/field-light-0160.png": "2c09e567a671970734affc138f5540af312cafc61dce6fdfe68decd2a7ec7ffb",
+    "internal/material3-migration/sources/field-reference/field-light-0180.png": "5f4dd2f202c16c72e6c4603f3aef8cbf6f4d89e4bc97aeaf25d976b10dd5b241",
+    "internal/material3-migration/sources/field-reference/field-light-0260.png": "dc86691b7125ae5477c7bb093c48bb2d32f38dc45ac9fe014b3f5269ff0f92ba",
+    "internal/material3-migration/sources/field-reference/field-light-0600.png": "bf2c190dc4de66388c64311f5263dd7aea4f53a0e3396d9626a6bf2210bcd3ab",
+    "internal/material3-migration/sources/field-reference/field-light-0880.png": "4f87441ebe3e868c3192a0ae2c3d61dc4af283b56da9dc4357807f6c04669a97",
+    "internal/material3-migration/sources/field-reference/field-light-1200.png": "e2d63ba2f2815df05411ce09f95137f65c40d0eb53720892036b9f1f1e648817",
+    "internal/material3-migration/sources/field-reference/field-light-reduced.png": "3f88bce0b9273e218183837d916eaf27eb08918f50c8536ab69d7bd2a8c1bb02",
+    "internal/material3-migration/sources/field-reference/field-dark-0000.png": "fc793c0518e50952c6538592fc46db376e97e7f27027a26b553772f56770c186",
+    "internal/material3-migration/sources/field-reference/field-dark-0020.png": "02a4c3f695a3b943966630dda1da3a1f735ef3570f7a411ca2e4683e1fb711d5",
+    "internal/material3-migration/sources/field-reference/field-dark-0080.png": "15dbfad47309ec288c26ca86fa16fabc7a50a4aca1dfea257030ec9775a26e96",
+    "internal/material3-migration/sources/field-reference/field-dark-0120.png": "2be16b44e010ca4c6e9ee245f79681e2a3e0fbf06d878b3c04c96afc6443d99a",
+    "internal/material3-migration/sources/field-reference/field-dark-0160.png": "a3f0a88e8d9957d9a3a6bae7f513c8ef676d153bf6eb168aab291a32bda785ee",
+    "internal/material3-migration/sources/field-reference/field-dark-0180.png": "390c3f4e5d5c59d7f985f414238af7000bee7f76eb120535394b02a353935733",
+    "internal/material3-migration/sources/field-reference/field-dark-0260.png": "75534e5386d4631099d415ff1de78804de6a370216e5e07cfb08432b7e86bb34",
+    "internal/material3-migration/sources/field-reference/field-dark-0600.png": "ad5f69bfeab32c4450176fbf5ff295098b9495ff3b5e9997e02c37ec5a724ddf",
+    "internal/material3-migration/sources/field-reference/field-dark-0880.png": "05dd436e67ebc9c2529204b2dc574f9745e92f648199a69278fb7fdc314c2687",
+    "internal/material3-migration/sources/field-reference/field-dark-1200.png": "cb517e1a2786ce4a42a7db690db0ee1de6abc528af14f259301bf3275da66075",
+    "internal/material3-migration/sources/field-reference/field-dark-reduced.png": "f738779e627ed1dae5f7dd42e0803df820bd9557952cd783e20039b684844f95",
+    "internal/material3-migration/sources/field-reference/compose-field-light.mp4": "33e7ea52b7dc411322f048f2f78fdfacaea600800bffd515729569d526451626"
+  },
+  "compose": [
+    {
+      "id": "compose:TextField",
+      "name": "TextField",
+      "kind": "Component",
+      "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/TextField.kt",
+      "sha256": "00ed832c27f1dd8f2f6a57b9f8ecaf13be43e08cf96c79ca5b989a5fe5855ceb",
+      "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/TextField.kt",
+      "symbols": [
+        "TextField"
+      ],
+      "expressive": true,
+      "tokens": [
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/FilledTextFieldTokens.kt",
+          "sha256": "3cceaa2d42662fbd200b1ed543de1abfd5e727baade052ab446e35669350cc11",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/FilledTextFieldTokens.kt",
+          "name": "FilledTextFieldTokens",
+          "version": "v0_210",
+          "values": [
+            {
+              "name": "ActiveIndicatorColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 24
+            },
+            {
+              "name": "ActiveIndicatorHeight",
+              "expression": "1.0.dp",
+              "line": 27
+            },
+            {
+              "name": "CaretColor",
+              "expression": "ColorSchemeKeyTokens.Primary",
+              "line": 30
+            },
+            {
+              "name": "ContainerColor",
+              "expression": "ColorSchemeKeyTokens.SurfaceContainerHighest",
+              "line": 33
+            },
+            {
+              "name": "ContainerShape",
+              "expression": "ShapeKeyTokens.CornerExtraSmallTop",
+              "line": 36
+            },
+            {
+              "name": "DisabledActiveIndicatorColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 39
+            },
+            {
+              "name": "DisabledActiveIndicatorHeight",
+              "expression": "1.0.dp",
+              "line": 42
+            },
+            {
+              "name": "DisabledActiveIndicatorOpacity",
+              "expression": "0.38f",
+              "line": 45
+            },
+            {
+              "name": "DisabledContainerColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 46
+            },
+            {
+              "name": "DisabledContainerOpacity",
+              "expression": "0.04f",
+              "line": 49
+            },
+            {
+              "name": "DisabledInputColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 50
+            },
+            {
+              "name": "DisabledInputOpacity",
+              "expression": "0.38f",
+              "line": 53
+            },
+            {
+              "name": "DisabledLabelColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 54
+            },
+            {
+              "name": "DisabledLabelOpacity",
+              "expression": "0.38f",
+              "line": 57
+            },
+            {
+              "name": "DisabledLeadingIconColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 58
+            },
+            {
+              "name": "DisabledLeadingIconOpacity",
+              "expression": "0.38f",
+              "line": 61
+            },
+            {
+              "name": "DisabledSupportingColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 62
+            },
+            {
+              "name": "DisabledSupportingOpacity",
+              "expression": "0.38f",
+              "line": 65
+            },
+            {
+              "name": "DisabledTrailingIconColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 66
+            },
+            {
+              "name": "DisabledTrailingIconOpacity",
+              "expression": "0.38f",
+              "line": 69
+            },
+            {
+              "name": "ErrorActiveIndicatorColor",
+              "expression": "ColorSchemeKeyTokens.Error",
+              "line": 70
+            },
+            {
+              "name": "ErrorFocusActiveIndicatorColor",
+              "expression": "ColorSchemeKeyTokens.Error",
+              "line": 73
+            },
+            {
+              "name": "ErrorFocusCaretColor",
+              "expression": "ColorSchemeKeyTokens.Error",
+              "line": 76
+            },
+            {
+              "name": "ErrorFocusInputColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 79
+            },
+            {
+              "name": "ErrorFocusLabelColor",
+              "expression": "ColorSchemeKeyTokens.Error",
+              "line": 82
+            },
+            {
+              "name": "ErrorFocusLeadingIconColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 85
+            },
+            {
+              "name": "ErrorFocusSupportingColor",
+              "expression": "ColorSchemeKeyTokens.Error",
+              "line": 88
+            },
+            {
+              "name": "ErrorFocusTrailingIconColor",
+              "expression": "ColorSchemeKeyTokens.Error",
+              "line": 91
+            },
+            {
+              "name": "ErrorHoverActiveIndicatorColor",
+              "expression": "ColorSchemeKeyTokens.OnErrorContainer",
+              "line": 94
+            },
+            {
+              "name": "ErrorHoverInputColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 97
+            },
+            {
+              "name": "ErrorHoverLabelColor",
+              "expression": "ColorSchemeKeyTokens.OnErrorContainer",
+              "line": 100
+            },
+            {
+              "name": "ErrorHoverLeadingIconColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 103
+            },
+            {
+              "name": "ErrorHoverSupportingColor",
+              "expression": "ColorSchemeKeyTokens.Error",
+              "line": 106
+            },
+            {
+              "name": "ErrorHoverTrailingIconColor",
+              "expression": "ColorSchemeKeyTokens.OnErrorContainer",
+              "line": 109
+            },
+            {
+              "name": "ErrorInputColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 112
+            },
+            {
+              "name": "ErrorLabelColor",
+              "expression": "ColorSchemeKeyTokens.Error",
+              "line": 115
+            },
+            {
+              "name": "ErrorLeadingIconColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 118
+            },
+            {
+              "name": "ErrorSupportingColor",
+              "expression": "ColorSchemeKeyTokens.Error",
+              "line": 121
+            },
+            {
+              "name": "ErrorTrailingIconColor",
+              "expression": "ColorSchemeKeyTokens.Error",
+              "line": 124
+            },
+            {
+              "name": "FocusActiveIndicatorColor",
+              "expression": "ColorSchemeKeyTokens.Primary",
+              "line": 127
+            },
+            {
+              "name": "FocusActiveIndicatorHeight",
+              "expression": "2.0.dp",
+              "line": 130
+            },
+            {
+              "name": "FocusInputColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 133
+            },
+            {
+              "name": "FocusLabelColor",
+              "expression": "ColorSchemeKeyTokens.Primary",
+              "line": 136
+            },
+            {
+              "name": "FocusLeadingIconColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 139
+            },
+            {
+              "name": "FocusSupportingColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 142
+            },
+            {
+              "name": "FocusTrailingIconColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 145
+            },
+            {
+              "name": "HoverActiveIndicatorColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 148
+            },
+            {
+              "name": "HoverActiveIndicatorHeight",
+              "expression": "1.0.dp",
+              "line": 151
+            },
+            {
+              "name": "HoverInputColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 154
+            },
+            {
+              "name": "HoverLabelColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 157
+            },
+            {
+              "name": "HoverLeadingIconColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 160
+            },
+            {
+              "name": "HoverSupportingColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 163
+            },
+            {
+              "name": "HoverTrailingIconColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 166
+            },
+            {
+              "name": "InputColor",
+              "expression": "ColorSchemeKeyTokens.OnSurface",
+              "line": 169
+            },
+            {
+              "name": "InputFont",
+              "expression": "TypographyKeyTokens.BodyLarge",
+              "line": 172
+            },
+            {
+              "name": "InputPlaceholderColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 175
+            },
+            {
+              "name": "InputPrefixColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 178
+            },
+            {
+              "name": "InputSuffixColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 181
+            },
+            {
+              "name": "LabelColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 184
+            },
+            {
+              "name": "LabelFont",
+              "expression": "TypographyKeyTokens.BodyLarge",
+              "line": 187
+            },
+            {
+              "name": "LeadingIconColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 190
+            },
+            {
+              "name": "LeadingIconSize",
+              "expression": "24.0.dp",
+              "line": 193
+            },
+            {
+              "name": "SupportingColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 196
+            },
+            {
+              "name": "SupportingFont",
+              "expression": "TypographyKeyTokens.BodySmall",
+              "line": 199
+            },
+            {
+              "name": "TrailingIconColor",
+              "expression": "ColorSchemeKeyTokens.OnSurfaceVariant",
+              "line": 202
+            },
+            {
+              "name": "TrailingIconSize",
+              "expression": "24.0.dp",
+              "line": 205
+            }
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/MotionSchemeKeyTokens.kt",
+          "sha256": "66a63f46bde19c92e671d2edc107e74abc7268abffc6037d4f51f03a4fe1ee9e",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/commonMain/kotlin/androidx/compose/material3/tokens/MotionSchemeKeyTokens.kt",
+          "name": "MotionSchemeKeyTokens",
+          "version": "",
+          "values": [
+            {
+              "name": "DefaultSpatial",
+              "expression": "MotionSchemeToken(0)",
+              "line": 24
+            },
+            {
+              "name": "FastSpatial",
+              "expression": "MotionSchemeToken(1)",
+              "line": 25
+            },
+            {
+              "name": "SlowSpatial",
+              "expression": "MotionSchemeToken(2)",
+              "line": 26
+            },
+            {
+              "name": "DefaultEffects",
+              "expression": "MotionSchemeToken(3)",
+              "line": 27
+            },
+            {
+              "name": "FastEffects",
+              "expression": "MotionSchemeToken(4)",
+              "line": 28
+            },
+            {
+              "name": "SlowEffects",
+              "expression": "MotionSchemeToken(5)",
+              "line": 29
+            }
+          ]
+        }
+      ],
+      "tests": [
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldDecoratorTest.kt",
+          "sha256": "ec21efd1513ef6cce10229ff27c30dd785920a07326ec5fde214bf191aa61219",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldDecoratorTest.kt",
+          "cases": [
+            "outlinedTextFieldBox_overrideTopPadding_multiLine",
+            "outlinedTextFieldBox_overrideTopPadding_singleLine",
+            "outlinedTextFieldBox_overrideBottomPadding_multiLine",
+            "outlinedTextFieldBox_overrideBottomPadding_singleLine",
+            "outlinedTextFieldBox_overrideStartPadding",
+            "outlinedTextFieldBox_overrideStartPadding_rtl",
+            "outlinedTextFieldBox_overrideEndPadding",
+            "outlinedTextFieldBox_overrideEndPadding_rtl",
+            "outlinedTextFieldBox_overrideTopPadding_multiLine_withLabel",
+            "outlinedTextFieldBox_overrideTopPadding_singleLine_withLabel",
+            "outlinedTextFieldBox_overrideBottomPadding_multiLine_withLabel",
+            "outlinedTextFieldBox_overrideBottomPadding_singleLine_withLabel",
+            "outlinedTextFieldBox_overrideStartPadding_withLabel",
+            "outlinedTextFieldBox_overrideEndPadding_withLabel",
+            "textFieldBox_overrideTopPadding_singleLine_withoutLabel",
+            "textFieldBox_overrideTopPadding_singleLine_withLabel",
+            "textFieldBox_overrideBottomPadding_singleLine_withoutLabel",
+            "textFieldBox_overrideBottomPadding_singleLine_withLabel",
+            "textFieldBox_overrideTopPadding_multiLine_withoutLabel",
+            "textFieldBox_overrideTopPadding_multiLine_withLabel",
+            "textFieldBox_overrideBottomPadding_multiLine_withoutLabel",
+            "textFieldBox_overrideBottomPadding_multiLine_withLabel",
+            "textFieldBox_overrideStartPadding_withLabel",
+            "textFieldBox_overrideStartPadding_withLabel_rtl",
+            "textFieldBox_overrideStartPadding_withoutLabel",
+            "textFieldBox_overrideStartPadding_withoutLabel_rtl",
+            "textFieldBox_overrideEndPadding_withLabel",
+            "textFieldBox_overrideEndPadding_withLabel_rtl",
+            "textFieldBox_overrideEndPadding_withoutLabel",
+            "textFieldBox_overrideEndPadding_withoutLabel_rtl",
+            "outlinedTextFieldBox_defaultBorderColor_comesFromColors",
+            "textFieldBox_defaultIndicatorLineColor_comesFromColors",
+            "textFieldBox_overridePadding_unfocusedState_withoutLabel_withPlaceholder",
+            "outlinedTextFieldBox_innerTextLocation_withMultilineLabel",
+            "outlinedTextFieldBox_singleLine_innerTextLocation_withMultilineLabel",
+            "textFieldBox_aboveLabel_measurement",
+            "outlinedTextFieldBox_aboveLabel_measurement",
+            "normalize_textFieldDefaults_attached",
+            "normalize_textFieldDefaults_inside",
+            "normalize_textFieldDefaults_cutout",
+            "normalize_textFieldDefaults_above",
+            "normalize_outlinedTextFieldDefaults_attached",
+            "normalize_outlinedTextFieldDefaults_inside",
+            "normalize_outlinedTextFieldDefaults_cutout",
+            "normalize_outlinedTextFieldDefaults_above",
+            "defaultContentPadding_textFieldDefaults",
+            "defaultContentPadding_outlinedTextFieldDefaults",
+            "assertVerticalSizeAndPosition_textField_aboveLabel",
+            "assertVerticalSizeAndPosition_outlinedTextField_aboveLabel",
+            "assertVerticalSizeAndPosition_outlinedTextField",
+            "assertHorizontalSizeAndPosition_outlinedTextField",
+            "assertVerticalSizeAndPosition_textField",
+            "assertHorizontalSizeAndPosition_textField",
+            "assertSizeAndPosition",
+            "testTextFields_TextDecoration_noCrashConstraintsInfinity"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldLabelPositionTest.kt",
+          "sha256": "0cef4543a36f1ea84ff14635ef21134a98dd09cfbc99ffb05da6a535916e37c7",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldLabelPositionTest.kt",
+          "cases": [
+            "attached_equality",
+            "attached_toString",
+            "inside_equality",
+            "inside_toString",
+            "cutout_equality",
+            "cutout_toString",
+            "above_equality",
+            "above_toString",
+            "defaultValues"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldScreenshotTest.kt",
+          "sha256": "105fd63e8b18991c64f051343691cf488ed96e6b67e61cd5934e3f1d9e27e556",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldScreenshotTest.kt",
+          "cases": [
+            "textField_withInput",
+            "textField_withInput_roundedAndTonal",
+            "textField_withInput_roundedAndTonal_darkTheme",
+            "textField_withInput_cutout",
+            "textField_withInput_cutout_roundedAndTonal",
+            "textField_withInput_cutout_roundedAndTonal_darkTheme",
+            "textField_notFocused",
+            "textField_notFocused_roundedAndTonal",
+            "textField_notFocused_roundedAndTonal_darkTheme",
+            "textField_notFocused_cutout",
+            "textField_focused",
+            "textField_focused_roundedAndTonal",
+            "textField_focused_roundedAndTonal_darkTheme",
+            "textField_focused_cutout",
+            "textField_focused_rtl",
+            "textField_error_focused",
+            "textField_error_focused_roundedAndTonal",
+            "textField_error_focused_roundedAndTonal_darkTheme",
+            "textField_error_notFocused",
+            "textField_textColor_customTextColor",
+            "textField_textSelectionColor_customColors",
+            "textField_multiLine_withLabel_textAlignedToTop",
+            "textField_multiLine_withoutLabel_textAlignedToTop",
+            "textField_multiLine_withLabel_placeholderAlignedToTop",
+            "textField_multiLine_withoutLabel_placeholderAlignedToTop",
+            "textField_multiLine_labelAlignedToTop",
+            "textField_singleLine_withLabel_textAlignedToTop",
+            "textField_singleLine_withoutLabel_textCenteredVertically",
+            "textField_singleLine_withLabel_placeholderAlignedToTop",
+            "textField_singleLine_withoutLabel_placeholderCenteredVertically",
+            "textField_singleLine_labelCenteredVertically",
+            "textField_indicatorLine_clippedToShape",
+            "textField_disabled",
+            "textField_disabled_roundedAndTonal",
+            "textField_disabled_roundedAndTonal_darkTheme",
+            "textField_disabled_notFocusable",
+            "textField_disabled_notScrolled",
+            "textField_readOnly",
+            "textField_readOnly_focused",
+            "textField_readOnly_scrolled",
+            "textField_textCenterAligned",
+            "textField_textAlignedToEnd",
+            "textField_supportingText",
+            "textField_supportingText_roundedAndTonal",
+            "textField_supportingText_roundedAndTonal_darkTheme",
+            "textField_errorSupportingText",
+            "textField_leadingTrailingIcons",
+            "textField_leadingTrailingIcons_error",
+            "textField_labelPositionAbove_withIcons_andPlaceholder_andSupporting",
+            "textField_labelPositionAbove_withIcons_andPlaceholder_andSupporting_roundedAndTonal",
+            "textField_labelPositionAbove_withIcons_andPlaceholder_andSupporting_roundedAndTonal_darkTheme",
+            "textField_labelAlignment_centerHorizontally",
+            "textField_labelAlignment_centerHorizontally_cutout",
+            "textField_alwaysMinimizeLabel_noPlaceholder",
+            "textField_alwaysMinimizeLabel_noPlaceholder_cutout",
+            "textField_alwaysMinimizeLabel_withPlaceholder",
+            "textField_alwaysMinimizeLabel_withPlaceholder_cutout",
+            "textField_prefixSuffix_withLabelAndInput",
+            "textField_prefixSuffix_withLabelAndInput_darkTheme",
+            "textField_prefixSuffix_withLabelAndInput_focused",
+            "textField_prefixSuffix_withPlaceholder",
+            "textField_prefixSuffix_withLeadingTrailingIcons",
+            "textField_withInput_darkTheme",
+            "textField_focused_darkTheme",
+            "textField_error_focused_darkTheme",
+            "textField_disabled_darkTheme",
+            "textField_leadingTrailingIcons_darkTheme",
+            "assertAgainstGolden"
+          ]
+        },
+        {
+          "path": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldTest.kt",
+          "sha256": "1ca7f017b0160e5269d6c9a10054f4f992332475048b4ae4600befe44d89f1e6",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldTest.kt",
+          "cases": [
+            "testTextField_setSmallHeight",
+            "testTextField_setSmallWidth",
+            "testTextField_defaultHeight",
+            "testTextField_defaultWidth",
+            "testTextField_heightDoesNotChange_duringFocusAnimation",
+            "testTextField_heightDoesNotChange_duringFocusAnimation_withLargeLabelText",
+            "testTextField_withSupportingText_heightDoesNotChange_duringFocusAnimation",
+            "testTextFields_singleFocus",
+            "testTextField_getFocus_whenClickedOnSurfaceArea",
+            "testTextField_showHideKeyboardBasedOnFocus",
+            "testTextField_clickingOnTextAfterDismissingKeyboard_showsKeyboard",
+            "testTextField_labelPosition_initial_singleLine",
+            "testTextField_labelPosition_initial_singleLine_cutout",
+            "testTextField_labelPosition_initial_withDefaultHeight",
+            "testTextField_labelPosition_initial_withDefaultHeight_cutout",
+            "testTextField_labelPosition_initial_withCustomHeight",
+            "testTextField_labelPosition_initial_withCustomHeight_cutout",
+            "testTextField_labelPosition_whenFocused",
+            "testTextField_labelPosition_whenFocused_cutout",
+            "testTextField_labelPosition_whenInput",
+            "testTextField_labelPosition_whenInput_cutout",
+            "testTextField_labelPosition_whenPositionedAbove",
+            "testTextField_labelPosition_customAlignment",
+            "testTextField_labelPosition_customAlignment_cutout",
+            "testTextField_labelScope_progressAndRecomposition",
+            "testTextField_placeholderPosition_withLabel",
+            "testTextField_placeholderPosition_withLabel_cutout",
+            "testTextField_placeholderPosition_whenNoLabel",
+            "testTextField_noPlaceholder_whenInputNotEmpty",
+            "testTextField_placeholderColorAndTextStyle",
+            "testTextField_placeholderColor_whenInputEmptyAndFocused",
+            "testTextField_labelAndPlaceholderPosition_whenSmallerThanMinimumHeight",
+            "testTextField_trailingAndLeading_sizeAndPosition_defaultIcon",
+            "testTextField_trailingAndLeading_sizeAndPosition_iconButton",
+            "testTextField_trailingAndLeading_sizeAndPosition_nonDefaultSizeIcon",
+            "testTextField_prefixAndSuffixAndPlaceholder_areNotDisplayed_withLabel_ifLabelCanExpand",
+            "testTextField_prefixAndSuffixAndPlaceholder_areDisplayed_withLabel_ifLabelCannotExpand",
+            "testTextField_prefixAndSuffixAndPlaceholder_areDisplayed_withLabel_ifLabelIsAbove",
+            "testTextField_prefixAndSuffixPosition_withLabel",
+            "testTextField_prefixAndSuffixPosition_whenNoLabel",
+            "testTextField_prefixAndSuffixPosition_withIcons",
+            "testTextField_labelPositionX_initial_withTrailingAndLeading",
+            "testTextField_labelPositionX_initial_withNullTrailingAndLeading",
+            "testTextField_colorInLeadingTrailing_whenValidInput",
+            "testTextField_colorInLeadingTrailing_whenInvalidInput",
+            "testTextField_supportingTextPosition_withDefaultHeight",
+            "testTextField_supportingText_widthIsNotWiderThanTextField",
+            "testTextField_supportingText_contributesToTextFieldMeasurements",
+            "testTextField_supportingText_remainsVisibleWithTallInput",
+            "testTextField_supportingText_clickFocusesTextField",
+            "testTextField_supportingText_colorAndStyle",
+            "testTextField_supportingText_error_colorAndStyle",
+            "testTextField_imeActionAndKeyboardTypePropagatedDownstream",
+            "testTextField_outputTransformationPropagated",
+            "testTextField_alphaNotApplied_toCustomContainerColorAndTransparentColors",
+            "testTextField_transformedTextIsUsed_toDefineLabelPosition",
+            "testTextField_transformedTextIsUsed_toDefineIfPlaceholderNeeded",
+            "testTextField_errorSemantics_defaultMessage",
+            "testTextField_errorSemantics_messageOverridable",
+            "testTextField_withLabel_doesNotCrash_rowHeightWithMinIntrinsics",
+            "testTextField_withLabel_doesNotCrash_columnWidthWithMinIntrinsics",
+            "testTextField_labelStyle",
+            "testTextField_labelStyle_whenBodySmallStyleColorProvided",
+            "testTextField_labelStyle_middle_whenBodySmallStyleColorProvided",
+            "testTextField_labelStyle_whenBothTypographiesColorProvided",
+            "testTextField_selectionColors_areCustomizable",
+            "testTextField_intrinsicHeight_withOnlyEmptyInput",
+            "testTextField_intrinsicHeight_withEmptyInput_andDecorations",
+            "testTextField_intrinsicHeight_withLongInput_andDecorations",
+            "textField_withTrailingIcon_inIntrinsicHeight_andTooShortWidth_doesNotCrash",
+            "textField_stringOverload_doesNotCallOnValueChange_whenCompositionUpdatesOnly",
+            "testTextField_noCrashConstraintsInfinity",
+            "testTextField_noCrash_whenOutputTransformationCallsAddStyle",
+            "testTextField_prefixAndSuffix_semantics"
+          ]
+        }
+      ],
+      "samples": [
+        {
+          "path": "compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/TextFieldSamples.kt",
+          "sha256": "2b56aae3059158661e806d00d82f868a6f83178c32579b7459ad7bd330cbc7a0",
+          "url": "https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f/compose/material3/material3/samples/src/main/java/androidx/compose/material3/samples/TextFieldSamples.kt"
+        }
+      ]
+    }
+  ],
+  "criteria": [
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Coverage",
+      "Scenario": "Type and variant",
+      "Expected check": "Identify the corresponding Material 3 type and supported variants.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Coverage",
+      "Scenario": "Properties and slots",
+      "Expected check": "Compare public configuration, content slots, and composition.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Anatomy",
+      "Scenario": "Parts and geometry",
+      "Expected check": "Compare parts, dimensions, alignment, spacing, and icon placement.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Anatomy",
+      "Scenario": "Touch target",
+      "Expected check": "Verify the applicable Material target geometry.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Visual tokens",
+      "Scenario": "Color light",
+      "Expected check": "Verify semantic container, content, border, and state colors in light mode.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Visual tokens",
+      "Scenario": "Color dark",
+      "Expected check": "Verify semantic container, content, border, and state colors in dark mode.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Visual tokens",
+      "Scenario": "Typography",
+      "Expected check": "Verify family, scale role, size, line height, weight, and tracking.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Visual tokens",
+      "Scenario": "Shape spacing elevation",
+      "Expected check": "Verify corners, padding, gaps, borders, tonal and shadow elevation.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "States",
+      "Scenario": "Enabled",
+      "Expected check": "Verify resting visual and behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "States",
+      "Scenario": "Hover",
+      "Expected check": "Verify hover state with hover-capable pointer.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "States",
+      "Scenario": "Focus visible",
+      "Expected check": "Verify keyboard focus indicator and focus behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "States",
+      "Scenario": "Pressed",
+      "Expected check": "Verify active/pressed treatment and release behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "States",
+      "Scenario": "Selected checked",
+      "Expected check": "Verify selected or checked state where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "States",
+      "Scenario": "Disabled",
+      "Expected check": "Verify disabled visual, focus, and activation behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "States",
+      "Scenario": "Invalid error",
+      "Expected check": "Verify validation and error presentation where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "States",
+      "Scenario": "Loading",
+      "Expected check": "Verify pending feedback and geometry where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "States",
+      "Scenario": "Read only",
+      "Expected check": "Verify read-only semantics where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "States",
+      "Scenario": "Open closed dragged",
+      "Expected check": "Verify expanded, open, or dragged states where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Interaction",
+      "Scenario": "Pointer touch",
+      "Expected check": "Verify pointer, touch, gesture, and cancellation behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Interaction",
+      "Scenario": "Keyboard form",
+      "Expected check": "Verify keyboard controls and native form behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Accessibility",
+      "Scenario": "Semantics",
+      "Expected check": "Verify name, role, state, focus order, and screen reader output.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Accessibility",
+      "Scenario": "Contrast cues",
+      "Expected check": "Verify contextual contrast and non-color cues.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Motion",
+      "Scenario": "Transitions",
+      "Expected check": "Verify duration, easing, direction, and animated properties.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Motion",
+      "Scenario": "Enter exit interruption",
+      "Expected check": "Verify enter/exit and interrupted transitions where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Motion",
+      "Scenario": "Reduced motion",
+      "Expected check": "Verify reduced-motion behavior.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Responsive",
+      "Scenario": "Viewport and container",
+      "Expected check": "Verify compact, medium, expanded, and boundary conditions as applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Responsive",
+      "Scenario": "Zoom RTL overflow",
+      "Expected check": "Verify zoom, long content, overflow, and RTL layout.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Theming",
+      "Scenario": "Color and overrides",
+      "Expected check": "Verify light/dark, dynamic color, custom theme, and scoped overrides.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Content",
+      "Scenario": "Extremes and locale",
+      "Expected check": "Verify empty/long content, icon-only content, and localization.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Composition",
+      "Scenario": "Layering and nesting",
+      "Expected check": "Verify overlays, stacking, scrolling, and nested use where applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Engineering",
+      "Scenario": "Browser SSR performance",
+      "Expected check": "Verify supported browsers, SSR/hydration, layout stability, and performance as applicable.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Evidence",
+      "Scenario": "Docs and regression",
+      "Expected check": "Link updated docs, source, unit/browser tests, and visual evidence.",
+      "Applicable?": "Review",
+      "Requirement source": "https://github.com/material-components/material-web/blob/cbd34a8921915af94d5ef65c2a69eece41d5b4f3/field/filled-field.ts",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Native contract",
+      "Scenario": "Material token contract",
+      "Expected check": "Native implementation consumes supported Material component and system roles directly; scoped overrides reach the rendered element.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Native contract",
+      "Scenario": "Native dependency boundary",
+      "Expected check": "Native CSS and behavior work without the Core theme bridge or legacy token declarations; shared Core utilities have an evidenced semantic match.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Native contract",
+      "Scenario": "Material API and defaults",
+      "Expected check": "Anatomy, defaults, variants, sizes and states follow the pinned Material source; Core compatibility lives in a separate entry point.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Native contract",
+      "Scenario": "Compatibility direction",
+      "Expected check": "Legacy exports and aliases delegate toward the native implementation without cycles or a second independently maintained value map.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Native contract",
+      "Scenario": "Native consumer preview",
+      "Expected check": "The published native entry point renders in docsite and Storybook with source, status and exact revision visible for human QA.",
+      "Applicable?": "Required",
+      "Requirement source": "Repository docs/contributing/material3-migration-policy.json (material3-native-v1)",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Native contract",
+      "Scenario": "Compose source precedence",
+      "Expected check": "Pinned Compose governs overlapping design, behavior and motion; missing concerns and approved exceptions are recorded once per family. Figma-only coverage and native web semantics remain required.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Native contract",
+      "Scenario": "Pixel comparison",
+      "Expected check": "Reference and native captures use matched conditions; exact pixel diff passes or a reviewed tolerance exception is recorded.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Native contract",
+      "Scenario": "Motion evidence",
+      "Expected check": "Watched reference media, timed frames, interruption, reversal and reduced motion are evidenced, or static behavior has a source-backed N/A.",
+      "Applicable?": "Required",
+      "Requirement source": "internal/material3-migration/policy.json",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Native contract",
+      "Scenario": "Compose behavior and tests",
+      "Expected check": "Pinned Compose defaults, variants and relevant test cases are mapped to permanent web tests; differences and missing upstream coverage are explicit.",
+      "Applicable?": "Required",
+      "Requirement source": "packages/themes/material3/material3.spec.md",
+      "Notes / N/A reason": ""
+    },
+    {
+      "Map ID": "CM-0021",
+      "Dimension": "Native contract",
+      "Scenario": "Native response and frame pacing",
+      "Expected check": "Recorded browser/device profiles meet the approved input response and frame pacing budgets, including active motion and interruption.",
+      "Applicable?": "Required",
+      "Requirement source": "packages/themes/material3/material3.spec.md",
+      "Notes / N/A reason": ""
+    }
+  ],
+  "decisions": "Resolved baseline required; code and interactive QA remain pending."
+}

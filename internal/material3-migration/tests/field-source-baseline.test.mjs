@@ -2,7 +2,7 @@
 
 /**
  * @input Shared field route, frozen kit scope, watched frames and independent browser spring calculation.
- * @output Pinned source ownership, media integrity and measured field-motion consistency.
+ * @output Pinned source ownership, media integrity and approved source comparison checks.
  * @position Migration-only evidence regression before native field implementation.
  */
 import {test} from 'vitest';
@@ -76,6 +76,19 @@ test('every selected field frame and both clips retain the watched source hashes
 });
 
 test('Chrome field spring errors and settling are independently recomputable', () => {
+  const comparison = decision.motion.numeric.sourceComparison;
+  assert.equal(comparison.approvalReference, 'human:pproenca:2026-09-29:field-source-limits');
+  assert.deepEqual(comparison.limits, {
+    interpolationPosition: 0.0002,
+    interpolationVelocityPerSecond: 0.002,
+    indicatorDp: 0.001,
+    indicatorVelocityDpPerSecond: 0.002,
+    settlingMs: 0,
+    eventTimingMs: 0,
+  });
+  assert.match(comparison.eventTimingMethod, /zero by construction/);
+  for (const [dimension, limit] of Object.entries(comparison.limits))
+    assert.ok(comparison.measured[dimension] <= limit, dimension);
   const sourceBytes = readFileSync(
     new URL('../sources/field-reference/field-motion.json', import.meta.url),
   );
@@ -119,4 +132,21 @@ test('Chrome field spring errors and settling are independently recomputable', (
   }
   assert.equal(source.schemes.standard.label.settledAtMs, 980);
   assert.equal(source.schemes.expressive.label.settledAtMs, 1360);
+  const measured = {
+    interpolationPosition: 0,
+    interpolationVelocityPerSecond: 0,
+    indicatorDp: 0,
+    indicatorVelocityDpPerSecond: 0,
+    settlingMs: 0,
+    eventTimingMs: 0,
+  };
+  for (const group of Object.values(browser.schemes))
+    for (const trace of Object.values(group)) {
+      const position = trace.unit === 'dp' ? 'indicatorDp' : 'interpolationPosition';
+      const velocity = trace.unit === 'dp' ? 'indicatorVelocityDpPerSecond' : 'interpolationVelocityPerSecond';
+      measured[position] = Math.max(measured[position], trace.errors.position);
+      measured[velocity] = Math.max(measured[velocity], trace.errors.velocity);
+      measured.settlingMs = Math.max(measured.settlingMs, trace.errors.settlingMs);
+    }
+  assert.deepEqual(comparison.measured, measured);
 });
