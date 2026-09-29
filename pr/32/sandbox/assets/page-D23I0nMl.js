@@ -1,1 +1,0 @@
-import{q as e}from"./padding.stylex-C-GcuG1E.js";import{t}from"./Icon-Bnw5yB-u.js";import{n}from"./BlockDocContext-Cg3uzBDh.js";var r=e();function i(){return(0,r.jsx)(t,{icon:`search`,color:`primary`,size:`md`})}function a(){return(0,r.jsx)(n,{children:(0,r.jsx)(i,{})})}export{a as default};

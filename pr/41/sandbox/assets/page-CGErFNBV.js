@@ -1,1 +1,0 @@
-import{q as e}from"./padding.stylex-C-GcuG1E.js";import{t}from"./Icon-Bnw5yB-u.js";import{P as n}from"./index-B5aWBY9S.js";import{n as r}from"./BlockDocContext-Dr_oqKcS.js";var i=e();function a(){return(0,i.jsx)(n,{label:`Settings`,icon:(0,i.jsx)(t,{icon:`wrench`,color:`inherit`})})}function o(){return(0,i.jsx)(r,{children:(0,i.jsx)(a,{})})}export{o as default};

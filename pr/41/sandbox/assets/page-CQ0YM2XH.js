@@ -1,1 +1,0 @@
-import{q as e}from"./padding.stylex-C-GcuG1E.js";import{t}from"./ProgressBar-D_ksRCEP.js";import{n}from"./BlockDocContext-Dr_oqKcS.js";var r=e();function i(){return(0,r.jsx)(t,{value:60,label:`Progress`,style:{width:300}})}function a(){return(0,r.jsx)(n,{children:(0,r.jsx)(i,{})})}export{a as default};

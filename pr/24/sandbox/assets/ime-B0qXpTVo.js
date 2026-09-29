@@ -1,1 +1,0 @@
-function e(e){return e.isComposing===!0||e.keyCode===229}export{e as t};

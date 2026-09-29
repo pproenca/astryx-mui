@@ -1,1 +1,0 @@
-import{J as e,Z as t}from"./padding.stylex-C-GcuG1E.js";var n=t(e(),1),r=typeof window<`u`?n.useLayoutEffect:n.useEffect;export{r as t};

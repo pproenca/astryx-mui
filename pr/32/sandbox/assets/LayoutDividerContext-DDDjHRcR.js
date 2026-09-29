@@ -1,1 +1,0 @@
-import{J as e,Z as t}from"./padding.stylex-C-GcuG1E.js";var n=(0,t(e(),1).createContext)(null);n.displayName=`LayoutDividerContext`;export{n as t};
