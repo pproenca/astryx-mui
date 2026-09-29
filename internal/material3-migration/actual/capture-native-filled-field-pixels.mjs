@@ -66,6 +66,10 @@ try {
       await page.getByLabel('Scheme').selectOption(scheme);
       await page.addStyleTag({content: `
         body {background: var(--md-sys-color-surface) !important;}
+        body::before {content: ""; position: fixed; left: 36px;
+          top: ${variant === 'standard' ? 131 : 269}px;
+          width: 280px; height: 56px;
+          background: var(--md-sys-color-surface); z-index: 999;}
         [data-md-filled-field] {position: fixed !important; left: 36px !important;
           top: ${variant === 'standard' ? 131 : 269}px !important;
           width: 280px !important; z-index: 1000 !important;}

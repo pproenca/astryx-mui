@@ -152,6 +152,40 @@ export const material3WebCompatLight = {
   '--md-badge-large-size': '16px',
   '--md-badge-shape': 'var(--md-sys-shape-corner-full)',
   '--md-badge-size': '6px',
+  '--md-filled-field-active-indicator-color':
+    'var(--md-sys-color-on-surface-variant)',
+  '--md-filled-field-active-indicator-height': '1px',
+  '--md-filled-field-container-color':
+    'var(--md-sys-color-surface-container-highest)',
+  '--md-filled-field-content-color': 'var(--md-sys-color-on-surface)',
+  '--md-filled-field-disabled-active-indicator-color':
+    'var(--md-sys-color-on-surface)',
+  '--md-filled-field-disabled-content-color': 'var(--md-sys-color-on-surface)',
+  '--md-filled-field-disabled-label-text-color':
+    'var(--md-sys-color-on-surface)',
+  '--md-filled-field-disabled-supporting-text-color':
+    'var(--md-sys-color-on-surface)',
+  '--md-filled-field-error-active-indicator-color': 'var(--md-sys-color-error)',
+  '--md-filled-field-error-focus-active-indicator-color':
+    'var(--md-sys-color-error)',
+  '--md-filled-field-error-focus-label-text-color': 'var(--md-sys-color-error)',
+  '--md-filled-field-error-label-text-color': 'var(--md-sys-color-error)',
+  '--md-filled-field-error-supporting-text-color': 'var(--md-sys-color-error)',
+  '--md-filled-field-focus-active-indicator-color':
+    'var(--md-sys-color-primary)',
+  '--md-filled-field-focus-active-indicator-height': '2px',
+  '--md-filled-field-focus-content-color': 'var(--md-sys-color-on-surface)',
+  '--md-filled-field-focus-label-text-color': 'var(--md-sys-color-primary)',
+  '--md-filled-field-hover-active-indicator-color':
+    'var(--md-sys-color-on-surface)',
+  '--md-filled-field-label-text-color':
+    'var(--md-sys-color-on-surface-variant)',
+  '--md-filled-field-leading-content-color':
+    'var(--md-sys-color-on-surface-variant)',
+  '--md-filled-field-supporting-text-color':
+    'var(--md-sys-color-on-surface-variant)',
+  '--md-filled-field-trailing-content-color':
+    'var(--md-sys-color-on-surface-variant)',
 } as const;
 
 export const material3WebCompatDark = {
@@ -295,4 +329,38 @@ export const material3WebCompatDark = {
   '--md-badge-large-size': '16px',
   '--md-badge-shape': 'var(--md-sys-shape-corner-full)',
   '--md-badge-size': '6px',
+  '--md-filled-field-active-indicator-color':
+    'var(--md-sys-color-on-surface-variant)',
+  '--md-filled-field-active-indicator-height': '1px',
+  '--md-filled-field-container-color':
+    'var(--md-sys-color-surface-container-highest)',
+  '--md-filled-field-content-color': 'var(--md-sys-color-on-surface)',
+  '--md-filled-field-disabled-active-indicator-color':
+    'var(--md-sys-color-on-surface)',
+  '--md-filled-field-disabled-content-color': 'var(--md-sys-color-on-surface)',
+  '--md-filled-field-disabled-label-text-color':
+    'var(--md-sys-color-on-surface)',
+  '--md-filled-field-disabled-supporting-text-color':
+    'var(--md-sys-color-on-surface)',
+  '--md-filled-field-error-active-indicator-color': 'var(--md-sys-color-error)',
+  '--md-filled-field-error-focus-active-indicator-color':
+    'var(--md-sys-color-error)',
+  '--md-filled-field-error-focus-label-text-color': 'var(--md-sys-color-error)',
+  '--md-filled-field-error-label-text-color': 'var(--md-sys-color-error)',
+  '--md-filled-field-error-supporting-text-color': 'var(--md-sys-color-error)',
+  '--md-filled-field-focus-active-indicator-color':
+    'var(--md-sys-color-primary)',
+  '--md-filled-field-focus-active-indicator-height': '2px',
+  '--md-filled-field-focus-content-color': 'var(--md-sys-color-on-surface)',
+  '--md-filled-field-focus-label-text-color': 'var(--md-sys-color-primary)',
+  '--md-filled-field-hover-active-indicator-color':
+    'var(--md-sys-color-on-surface)',
+  '--md-filled-field-label-text-color':
+    'var(--md-sys-color-on-surface-variant)',
+  '--md-filled-field-leading-content-color':
+    'var(--md-sys-color-on-surface-variant)',
+  '--md-filled-field-supporting-text-color':
+    'var(--md-sys-color-on-surface-variant)',
+  '--md-filled-field-trailing-content-color':
+    'var(--md-sys-color-on-surface-variant)',
 } as const;

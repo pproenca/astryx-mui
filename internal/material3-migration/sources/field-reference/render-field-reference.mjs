@@ -178,11 +178,7 @@ try {
       await page.evaluate(
         ({values, timeMs, resting, active}) => {
           const mix = alpha =>
-            `rgb(${resting
-              .map((value, index) =>
-                Math.round(value * (1 - alpha) + active[index] * alpha),
-              )
-              .join(',')})`;
+            `color-mix(in srgb, rgb(${active.join(',')}) ${Math.round(alpha * 10000) / 100}%, rgb(${resting.join(',')}))`;
           for (const [scheme, value] of Object.entries(values)) {
             for (const style of ['filled', 'outlined']) {
               const field = document.getElementById(`${scheme}-${style}`);

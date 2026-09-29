@@ -4,7 +4,7 @@
     "kind": "browser",
     "command": "node internal/material3-migration/actual/capture-native-filled-field-motion.mjs --record",
     "browser": "Chrome 149.0.7827.0",
-    "revision": "08883734ca466d49d603688f3fc6770f07e0637b"
+    "revision": "dbd8d276cbfeee6b815db9eece8ed3177021ac39"
   },
   "inputs": {
     "initialPosition": 1,
