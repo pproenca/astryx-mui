@@ -110,29 +110,31 @@ try {
   });
   assert.equal(await indicatorWidth(), 1);
 
-  const focusFrames = await input.evaluate(
-    node =>
-      new Promise(resolve => {
-        const container = node
-          .closest('[data-md-filled-field]')
-          .querySelector('[data-md-field-container]');
-        const frames = [];
-        const started = performance.now();
-        node.focus();
-        const sample = () => {
-          const indicator = getComputedStyle(container, '::after');
-          frames.push({
-            containerHeight: container.getBoundingClientRect().height,
-            indicatorHeight: Number.parseFloat(indicator.height),
-            indicatorColor: indicator.backgroundColor,
-          });
-          if (performance.now() - started < 440) requestAnimationFrame(sample);
-          else resolve(frames);
+  const clockPage = await browser.newPage({
+    viewport: {width: 960, height: 740},
+    deviceScaleFactor: 1,
+  });
+  await clockPage.clock.install({time: new Date('2026-09-29T00:00:00Z')});
+  await clockPage.goto(url);
+  await clockPage.locator('#native-email').waitFor();
+  await clockPage.clock.pauseAt(new Date('2026-09-29T00:01:00Z'));
+  await clockPage.locator('#native-email').evaluate(node => node.focus());
+  const focusFrames = [];
+  for (let timeMs = 0; timeMs <= 440; timeMs += 20) {
+    if (timeMs) await clockPage.clock.fastForward(20);
+    focusFrames.push(
+      await clockPage.locator('[data-md-field-container]').evaluate(node => {
+        const indicator = getComputedStyle(node, '::after');
+        return {
+          containerHeight: node.getBoundingClientRect().height,
+          indicatorHeight: Number.parseFloat(indicator.height),
+          indicatorColor: indicator.backgroundColor,
         };
-        requestAnimationFrame(sample);
       }),
-  );
-  assert.ok(focusFrames.length >= 15, 'Focus frames were not observed');
+    );
+  }
+  await clockPage.close();
+  assert.equal(focusFrames.length, 23);
   assert.ok(
     focusFrames.every(
       frame =>
@@ -142,6 +144,7 @@ try {
     ),
     'The active indicator must stay visible without moving the field boundary',
   );
+  await input.focus();
   assert.notEqual(await shell.getAttribute('data-md-field-focused'), null);
   await page.waitForTimeout(120);
   const focusedTop = await labelTop();
