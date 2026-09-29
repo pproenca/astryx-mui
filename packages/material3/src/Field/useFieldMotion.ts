@@ -18,14 +18,16 @@ import {
   type Material3SpringSpec,
 } from '../motion.js';
 
-export type FieldMotion = {
+type FieldValues = {
   label: number;
   placeholder: number;
   indicator: number;
   color: number;
 };
 
-type Key = keyof FieldMotion;
+export type FieldMotion = FieldValues & {velocity: FieldValues};
+
+type Key = keyof FieldValues;
 type Segment = {
   startMs: number;
   from: Material3SpringFrame;
@@ -37,7 +39,7 @@ function targets(
   focused: boolean,
   populated: boolean,
   hasLabel: boolean,
-): FieldMotion {
+): FieldValues {
   return {
     label: focused || populated ? 1 : 0,
     placeholder: !hasLabel || (focused && !populated) ? 1 : 0,
@@ -78,21 +80,31 @@ export function useFieldMotion(
   expressive: boolean,
 ): FieldMotion {
   const desired = targets(focused, populated, hasLabel);
-  const [motion, setMotion] = useState<FieldMotion>(desired);
+  const [motion, setMotion] = useState<FieldMotion>({
+    ...desired,
+    velocity: {label: 0, placeholder: 0, indicator: 0, color: 0},
+  });
   const segments = useRef<Record<Key, Segment> | null>(null);
   const animation = useRef<number | null>(null);
+  const settledSince = useRef<number | null>(null);
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
     const keys: Key[] = ['label', 'placeholder', 'indicator', 'color'];
     const cancel = () => {
-      if (animation.current !== null) {cancelAnimationFrame(animation.current);}
+      if (animation.current !== null) {
+        cancelAnimationFrame(animation.current);
+      }
       animation.current = null;
     };
     const snap = () => {
       cancel();
       segments.current = null;
-      setMotion(desired);
+      settledSince.current = null;
+      setMotion({
+        ...desired,
+        velocity: {label: 0, placeholder: 0, indicator: 0, color: 0},
+      });
     };
     if (media.matches) {
       snap();
@@ -117,32 +129,52 @@ export function useFieldMotion(
       };
     }
     segments.current = next;
+    settledSince.current = null;
     const paint = () => {
       const current = segments.current;
-      if (!current) {return;}
+      if (!current) {
+        return;
+      }
       const time = performance.now();
-      const value = {} as FieldMotion;
+      const value = {} as FieldValues;
+      const velocity = {} as FieldValues;
       let settled = true;
       for (const key of keys) {
         const sample = frame(current[key], time);
         value[key] = sample.position;
+        velocity[key] = sample.velocity;
         if (
           Math.abs(sample.position - current[key].target) > 0.0001 ||
           Math.abs(sample.velocity) > 0.0001
-        )
-          {settled = false;}
+        ) {
+          settled = false;
+        }
       }
-      setMotion(value);
-      if (settled || time - now >= 1600) {
+      setMotion({...value, velocity});
+      if (settled) {settledSince.current ??= time;}
+      else {settledSince.current = null;}
+      // An underdamped spring can briefly cross the position and velocity
+      // thresholds before the final oscillation has settled.
+      if (
+        (settledSince.current !== null && time - settledSince.current >= 200) ||
+        time - now >= 1600
+      ) {
         animation.current = null;
-        setMotion(desired);
-      } else {animation.current = requestAnimationFrame(paint);}
+        setMotion({
+          ...desired,
+          velocity: {label: 0, placeholder: 0, indicator: 0, color: 0},
+        });
+      } else {
+        animation.current = requestAnimationFrame(paint);
+      }
     };
     cancel();
     animation.current = requestAnimationFrame(paint);
     media.addEventListener('change', onPreferenceChange);
     function onPreferenceChange() {
-      if (media.matches) {snap();}
+      if (media.matches) {
+        snap();
+      }
     }
     return () => {
       cancel();

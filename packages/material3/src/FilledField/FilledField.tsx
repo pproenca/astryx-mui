@@ -357,7 +357,15 @@ export function FilledField({
       data-md-field-focused={visualFocus ? '' : undefined}
       data-md-field-populated={populated ? '' : undefined}
       data-md-field-disabled={disabled ? '' : undefined}
-      data-md-field-error={error ? '' : undefined}>
+      data-md-field-error={error ? '' : undefined}
+      data-md-field-label-position={motion.label}
+      data-md-field-label-velocity={motion.velocity.label}
+      data-md-field-placeholder-position={motion.placeholder}
+      data-md-field-placeholder-velocity={motion.velocity.placeholder}
+      data-md-field-indicator-position={motion.indicator}
+      data-md-field-indicator-velocity={motion.velocity.indicator}
+      data-md-field-color-position={motion.color}
+      data-md-field-color-velocity={motion.velocity.color}>
       <div {...containerPaint} data-md-field-container="">
         {leadingIcon != null && (
           <span
