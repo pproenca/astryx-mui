@@ -21,7 +21,7 @@ import {
   material3TypeStyles,
   resolveMaterial3Token,
 } from './foundation';
-import {material3SystemColorRoles} from './tokens';
+import {material3ComponentTokens, material3SystemColorRoles} from './tokens';
 
 const reference = (name: string) =>
   JSON.parse(
@@ -100,7 +100,9 @@ describe('pinned Compose-first native foundation', () => {
             scheme,
             item.level as 0 | 1 | 2 | 3 | 4 | 5,
           );
-          if (item.level === 0) {expect(shadows.key.opacity).toBe(0.3);}
+          if (item.level === 0) {
+            expect(shadows.key.opacity).toBe(0.3);
+          }
           expect(shadows.ambient.opacity).toBe(0.15);
         },
       );
@@ -109,7 +111,9 @@ describe('pinned Compose-first native foundation', () => {
       ).toBe(caseValues.nested.color);
       const stateCase = state.cases[scheme];
       for (const item of stateCase.generic) {
-        if (item.name === 'Rest') {continue;}
+        if (item.name === 'Rest') {
+          continue;
+        }
         expect(
           material3LayerColor(
             stateCase.theme.surface,
@@ -139,6 +143,17 @@ describe('pinned Compose-first native foundation', () => {
   it('resolves component defaults through scoped system overrides', () => {
     expect(resolveMaterial3Token('--md-divider-color')).toBe('#cac4d0');
     expect(
+      resolveMaterial3Token('--md-filled-field-active-indicator-height'),
+    ).toBe('1px');
+    expect(
+      resolveMaterial3Token('--md-filled-field-focus-active-indicator-height'),
+    ).toBe('2px');
+    expect(
+      resolveMaterial3Token('--md-filled-field-container-color', {
+        overrides: {'--md-sys-color-surface-container-highest': '#123456'},
+      }),
+    ).toBe('#123456');
+    expect(
       resolveMaterial3Token('--md-divider-color', {
         overrides: {'--md-sys-color-outline-variant': '#123456'},
       }),
@@ -167,8 +182,9 @@ describe('pinned Compose-first native foundation', () => {
         material3TokenValues(scheme),
       )) {
         if (
-          name.startsWith('--md-badge-') ||
-          name.startsWith('--md-divider-')
+          material3ComponentTokens.includes(
+            name as (typeof material3ComponentTokens)[number],
+          )
         ) {
           continue;
         }
