@@ -133,7 +133,7 @@ const styles = stylex.create({
     alignItems: 'center',
     flex: '1 1 auto',
     minWidth: 0,
-    minHeight: '55px',
+    minHeight: '56px',
     paddingInline: '16px',
   },
   bodyWithLeading: {paddingInlineStart: 0},
@@ -145,7 +145,12 @@ const styles = stylex.create({
     minWidth: 0,
   },
   contentWithLabel: {paddingBlockStart: '16px'},
-  affix: {flex: '0 0 auto', color: 'var(--md-sys-color-on-surface-variant)'},
+  affix: (progress: number) => ({
+    flex: '0 0 auto',
+    color: 'var(--md-sys-color-on-surface-variant)',
+    opacity: Math.max(0, Math.min(1, progress)),
+    visibility: progress > 0 ? 'visible' : 'hidden',
+  }),
   prefix: {marginInlineEnd: '2px'},
   suffix: {marginInlineStart: '2px'},
   label: (progress: number, color: string) => ({
@@ -362,6 +367,8 @@ export function FilledField({
       data-md-field-label-velocity={motion.velocity.label}
       data-md-field-placeholder-position={motion.placeholder}
       data-md-field-placeholder-velocity={motion.velocity.placeholder}
+      data-md-field-affix-position={motion.affix}
+      data-md-field-affix-velocity={motion.velocity.affix}
       data-md-field-indicator-position={motion.indicator}
       data-md-field-indicator-velocity={motion.velocity.indicator}
       data-md-field-color-position={motion.color}
@@ -393,8 +400,9 @@ export function FilledField({
           )}
           {prefix != null && (
             <span
-              {...stylex.props(styles.affix, styles.prefix)}
-              data-md-field-prefix="">
+              {...stylex.props(styles.affix(motion.affix), styles.prefix)}
+              data-md-field-prefix=""
+              aria-hidden={motion.affix <= 0 ? true : undefined}>
               {prefix}
             </span>
           )}
@@ -408,8 +416,9 @@ export function FilledField({
           </span>
           {suffix != null && (
             <span
-              {...stylex.props(styles.affix, styles.suffix)}
-              data-md-field-suffix="">
+              {...stylex.props(styles.affix(motion.affix), styles.suffix)}
+              data-md-field-suffix=""
+              aria-hidden={motion.affix <= 0 ? true : undefined}>
               {suffix}
             </span>
           )}

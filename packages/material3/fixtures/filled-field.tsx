@@ -3,7 +3,7 @@
 /**
  * @file filled-field.tsx
  * @input Built native FilledField export, Material roles, and a caller-owned input
- * @output Interactive filled field state, focus, form, theme, and direction QA
+ * @output Interactive filled field state, focus, form, theme, direction, and opt-in affix QA
  * @position Package-owned native field gallery fixture
  */
 
@@ -19,6 +19,8 @@ function App() {
   const [disabled, setDisabled] = useState(false);
   const [focus, setFocus] = useState<'auto' | 'on' | 'off'>('auto');
   const [revision, setRevision] = useState('Loading revision…');
+  const [affixValue, setAffixValue] = useState('');
+  const showAffixCheck = new URLSearchParams(location.search).has('affixes');
   const input = useRef<HTMLInputElement>(null);
   useEffect(() => {
     fetch('../revision.json')
@@ -145,6 +147,23 @@ function App() {
             error flags must also be set on the input.
           </p>
         </section>
+        {showAffixCheck && (
+          <section className="sample">
+            <h2>Affix phase</h2>
+            <FilledField
+              className="field"
+              label={<label htmlFor="affix-value">Amount</label>}
+              prefix="$"
+              suffix=".00"
+              populated={affixValue.length > 0}>
+              <input
+                id="affix-value"
+                value={affixValue}
+                onChange={event => setAffixValue(event.target.value)}
+              />
+            </FilledField>
+          </section>
+        )}
       </div>
     </main>
   );

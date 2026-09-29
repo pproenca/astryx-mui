@@ -6,7 +6,7 @@
 /**
  * @file useFieldMotion.ts
  * @input Field focus/population state, the selected Material motion scheme, and reduced-motion preference
- * @output Continuous Compose spring frames for label, placeholder, indicator, and color
+ * @output Continuous Compose spring frames for label, placeholder, affixes, indicator, and color
  * @position Shared private motion recipe for native filled and outlined fields
  */
 
@@ -21,6 +21,7 @@ import {
 type FieldValues = {
   label: number;
   placeholder: number;
+  affix: number;
   indicator: number;
   color: number;
 };
@@ -43,6 +44,7 @@ function targets(
   return {
     label: focused || populated ? 1 : 0,
     placeholder: !hasLabel || (focused && !populated) ? 1 : 0,
+    affix: !hasLabel || focused || populated ? 1 : 0,
     indicator: focused ? 2 : 1,
     color: focused ? 1 : 0,
   };
@@ -82,7 +84,7 @@ export function useFieldMotion(
   const desired = targets(focused, populated, hasLabel);
   const [motion, setMotion] = useState<FieldMotion>({
     ...desired,
-    velocity: {label: 0, placeholder: 0, indicator: 0, color: 0},
+    velocity: {label: 0, placeholder: 0, affix: 0, indicator: 0, color: 0},
   });
   const segments = useRef<Record<Key, Segment> | null>(null);
   const animation = useRef<number | null>(null);
@@ -90,7 +92,7 @@ export function useFieldMotion(
 
   useEffect(() => {
     const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const keys: Key[] = ['label', 'placeholder', 'indicator', 'color'];
+    const keys: Key[] = ['label', 'placeholder', 'affix', 'indicator', 'color'];
     const cancel = () => {
       if (animation.current !== null) {
         cancelAnimationFrame(animation.current);
@@ -103,7 +105,7 @@ export function useFieldMotion(
       settledSince.current = null;
       setMotion({
         ...desired,
-        velocity: {label: 0, placeholder: 0, indicator: 0, color: 0},
+        velocity: {label: 0, placeholder: 0, affix: 0, indicator: 0, color: 0},
       });
     };
     if (media.matches) {
@@ -151,8 +153,11 @@ export function useFieldMotion(
         }
       }
       setMotion({...value, velocity});
-      if (settled) {settledSince.current ??= time;}
-      else {settledSince.current = null;}
+      if (settled) {
+        settledSince.current ??= time;
+      } else {
+        settledSince.current = null;
+      }
       // An underdamped spring can briefly cross the position and velocity
       // thresholds before the final oscillation has settled.
       if (
@@ -162,7 +167,13 @@ export function useFieldMotion(
         animation.current = null;
         setMotion({
           ...desired,
-          velocity: {label: 0, placeholder: 0, indicator: 0, color: 0},
+          velocity: {
+            label: 0,
+            placeholder: 0,
+            affix: 0,
+            indicator: 0,
+            color: 0,
+          },
         });
       } else {
         animation.current = requestAnimationFrame(paint);

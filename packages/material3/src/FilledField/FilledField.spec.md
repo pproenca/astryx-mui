@@ -51,7 +51,7 @@ Offer Compose's filled TextField decoration recipe as an opt-in visual shell for
 
 **Owns**
 
-- Filled container, bottom indicator, inside floating label, supporting-text layout, content lanes, source state colors, and pinned label/indicator/placeholder motion.
+- Filled container, bottom indicator, inside floating label, supporting-text layout, content lanes, source state colors, and pinned label/indicator/placeholder/affix motion.
 - Scoped native Material tokens and reduced-motion visual finish.
 
 **Does not own / non-goals**
@@ -72,12 +72,12 @@ Offer Compose's filled TextField decoration recipe as an opt-in visual shell for
 
 ## Behavioral and layout contract
 
-| ID  | Candidate invariant                                                                                                                                                               | Basis                                                     | Draft review state             |
-| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------ |
-| FF1 | The default shell MUST use the pinned 56 dp minimum height, 280 dp minimum width subject to parent constraints, filled container, and 1 dp to 2 dp bottom indicator focus change. | `family-CM-0021` Compose source route.                    | Source backed; verify native.  |
-| FF2 | Label, placeholder, indicator thickness and color MUST follow the selected Compose phase and spring paths, including interrupted blur and refocus.                                | Pinned TextField implementation and watched source clips. | Source backed; verify native.  |
-| FF3 | A caller-provided visual state MUST NOT mutate the child's input semantics or value.                                                                                              | Approved shell ownership boundary and web standards.      | Owner approved; verify native. |
-| FF4 | Light, dark, Expressive, and scoped overrides MUST consume native Material field roles directly.                                                                                  | `theme:material3`.                                        | Source backed; verify native.  |
+| ID  | Candidate invariant                                                                                                                                                                                                                                | Basis                                                                                                                                                              | Draft review state             |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ |
+| FF1 | The default shell MUST use the pinned 56 dp minimum height, 280 dp minimum width subject to parent constraints, filled container, and 1 dp to 2 dp bottom indicator focus change.                                                                  | `family-CM-0021` Compose source route.                                                                                                                             | Source backed; verify native.  |
+| FF2 | Label, placeholder, prefix/suffix opacity, indicator thickness and color MUST follow the selected Compose phase and spring paths, including interrupted blur and refocus. Prefix and suffix MUST be hidden when an empty inside label is expanded. | Pinned TextField implementation, `TextFieldTest.testTextField_prefixAndSuffixAndPlaceholder_areNotDisplayed_withLabel_ifLabelCanExpand`, and watched source clips. | Source backed; verify native.  |
+| FF3 | A caller-provided visual state MUST NOT mutate the child's input semantics or value.                                                                                                                                                               | Approved shell ownership boundary and web standards.                                                                                                               | Owner approved; verify native. |
+| FF4 | Light, dark, Expressive, and scoped overrides MUST consume native Material field roles directly.                                                                                                                                                   | `theme:material3`.                                                                                                                                                 | Source backed; verify native.  |
 
 ### Allowed variation
 

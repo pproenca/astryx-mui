@@ -3,7 +3,7 @@
 /**
  * @file check-filled-field-browser.mjs
  * @input Built native gallery, Material token CSS, and a Chromium executable
- * @output Browser checks for field semantics, geometry, state, spring reversal, theme, RTL, and reduced motion
+ * @output Browser checks for field semantics, geometry, affix phases, state, spring reversal, theme, RTL, and reduced motion
  * @position Permanent native FilledField browser regression
  */
 
@@ -204,6 +204,44 @@ try {
   );
   await expressivePage.close();
 
+  const affixPage = await browser.newPage({
+    viewport: {width: 960, height: 740},
+    deviceScaleFactor: 1,
+  });
+  await affixPage.clock.install({time: new Date('2026-09-29T00:00:00Z')});
+  await affixPage.goto(`${url}?affixes=1`);
+  const affixInput = affixPage.locator('#affix-value');
+  const affixShell = affixPage.locator('[data-md-filled-field]').last();
+  const prefix = affixShell.locator('[data-md-field-prefix]');
+  const suffix = affixShell.locator('[data-md-field-suffix]');
+  await affixInput.waitFor();
+  await affixPage.clock.pauseAt(new Date('2026-09-29T00:01:00Z'));
+  assert.equal(await affixShell.getAttribute('data-md-field-affix-position'), '0');
+  assert.equal(await prefix.getAttribute('aria-hidden'), 'true');
+  assert.equal(await suffix.getAttribute('aria-hidden'), 'true');
+  await affixInput.evaluate(node => node.focus());
+  await affixPage.clock.fastForward(20);
+  const affixEntry = Number(await affixShell.getAttribute('data-md-field-affix-position'));
+  assert.ok(affixEntry > 0 && affixEntry < 1, `Affix did not enter with fast effects: ${affixEntry}`);
+  await affixPage.clock.fastForward(400);
+  assert.ok(Number(await affixShell.getAttribute('data-md-field-affix-position')) > 0.99);
+  assert.equal(await prefix.getAttribute('aria-hidden'), null);
+  assert.equal(await suffix.getAttribute('aria-hidden'), null);
+  await affixInput.fill('42');
+  await affixInput.evaluate(node => node.blur());
+  await affixPage.clock.fastForward(400);
+  assert.ok(Number(await affixShell.getAttribute('data-md-field-affix-position')) > 0.99);
+  await affixInput.fill('');
+  await affixInput.evaluate(node => node.blur());
+  await affixPage.clock.fastForward(20);
+  const affixExit = Number(await affixShell.getAttribute('data-md-field-affix-position'));
+  assert.ok(affixExit > 0 && affixExit < 1, `Affix did not exit with fast effects: ${affixExit}`);
+  await affixPage.clock.fastForward(1700);
+  assert.equal(await affixShell.getAttribute('data-md-field-affix-position'), '0');
+  assert.equal(await prefix.getAttribute('aria-hidden'), 'true');
+  assert.equal(await suffix.getAttribute('aria-hidden'), 'true');
+  await affixPage.close();
+
   await page.emulateMedia({reducedMotion: 'reduce'});
   await input.focus();
   assert.notEqual(await shell.getAttribute('data-md-field-focused'), null);
@@ -262,7 +300,7 @@ try {
   }
   assert.deepEqual(errors, []);
   console.log(
-    'FilledField browser semantics, geometry, state, interruption, theme, RTL and reduced motion pass.',
+    'FilledField browser semantics, geometry, affixes, state, interruption, theme, RTL and reduced motion pass.',
   );
 } finally {
   await browser.close();

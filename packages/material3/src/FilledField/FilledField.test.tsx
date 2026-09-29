@@ -2,7 +2,7 @@
 
 /**
  * @input Native FilledField and caller-owned semantic inputs.
- * @output Form ownership, focus observation, controlled visual states, and hydration checks.
+ * @output Form ownership, focus observation, affix phases, controlled visual states, and hydration checks.
  * @position Native field boundary regression before browser motion and pixel acceptance.
  */
 
@@ -91,6 +91,39 @@ describe('native FilledField', () => {
       </FilledField>,
     );
     expect(shell).not.toHaveAttribute('data-md-field-focused');
+  });
+
+  it('hides affixes while an empty inside label is expanded', () => {
+    const field = (props: {label?: string; populated?: boolean}) => (
+      <FilledField {...props} prefix="$" suffix=".00">
+        <input aria-label="Amount" />
+      </FilledField>
+    );
+    const empty = render(field({label: 'Amount'}));
+    expect(
+      empty.container.querySelector('[data-md-field-affix-position]'),
+    ).toHaveAttribute('data-md-field-affix-position', '0');
+    expect(
+      empty.container.querySelector('[data-md-field-prefix]'),
+    ).toHaveAttribute('aria-hidden', 'true');
+    expect(
+      empty.container.querySelector('[data-md-field-suffix]'),
+    ).toHaveAttribute('aria-hidden', 'true');
+    empty.unmount();
+
+    for (const props of [{label: 'Amount', populated: true}, {}]) {
+      const visible = render(field(props));
+      expect(
+        visible.container.querySelector('[data-md-field-affix-position]'),
+      ).toHaveAttribute('data-md-field-affix-position', '1');
+      expect(
+        visible.container.querySelector('[data-md-field-prefix]'),
+      ).not.toHaveAttribute('aria-hidden');
+      expect(
+        visible.container.querySelector('[data-md-field-suffix]'),
+      ).not.toHaveAttribute('aria-hidden');
+      visible.unmount();
+    }
   });
 
   it('rejects semantic role and tab stop injection on the shell', () => {

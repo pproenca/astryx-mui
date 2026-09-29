@@ -566,10 +566,13 @@ jobs:
         env:
           M3_FIELD_CAPTURE_DIR: ${{ runner.temp }}/filled-field-capture
           M3_FIELD_PIXEL_DIR: ${{ runner.temp }}/filled-field-capture/pixels
+          M3_FIELD_SOURCE_OUTPUT_DIR: ${{ runner.temp }}/filled-field-capture/source
         run: |
           npx playwright install ffmpeg
           node internal/material3-migration/actual/record-native-filled-field.mjs
           node internal/material3-migration/actual/capture-native-filled-field-pixels.mjs --partial
+          if ! command -v ffmpeg >/dev/null 2>&1; then brew install ffmpeg; fi
+          node internal/material3-migration/sources/field-reference/render-field-reference.mjs
       - name: Upload FilledField review candidate
         if: always() && github.event_name == 'pull_request' && github.head_ref == 'codex/material3-filled-field'
         uses: actions/upload-artifact@v4
