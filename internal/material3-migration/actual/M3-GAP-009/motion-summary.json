@@ -1,0 +1,62 @@
+{
+  "revision": "08883734ca466d49d603688f3fc6770f07e0637b",
+  "browser": "Chrome 149.0.7827.0",
+  "paths": {
+    "standard-label": {
+      "unit": "interpolation",
+      "positionDifference": 4.9720764172533904e-8,
+      "velocityDifference": 0.0000012725219722398151,
+      "settledAtMs": 980,
+      "sourceSettledAtMs": 980
+    },
+    "standard-placeholder": {
+      "unit": "interpolation",
+      "positionDifference": 3.457160951958471e-8,
+      "velocityDifference": 0.000001272949218034114,
+      "settledAtMs": 880,
+      "sourceSettledAtMs": 880
+    },
+    "standard-indicator": {
+      "unit": "dp",
+      "positionDifference": 1.5061950686678927e-7,
+      "velocityDifference": 0.0000014492187503378773,
+      "settledAtMs": 980,
+      "sourceSettledAtMs": 980
+    },
+    "standard-color": {
+      "unit": "interpolation",
+      "positionDifference": 2.771911622456713e-8,
+      "velocityDifference": 4.6447753732081765e-7,
+      "settledAtMs": 880,
+      "sourceSettledAtMs": 880
+    },
+    "expressive-label": {
+      "unit": "interpolation",
+      "positionDifference": 7.155609127451612e-8,
+      "velocityDifference": 0.0000012177124020240626,
+      "settledAtMs": 1360,
+      "sourceSettledAtMs": 1360
+    },
+    "expressive-placeholder": {
+      "unit": "interpolation",
+      "positionDifference": 3.457160951958471e-8,
+      "velocityDifference": 0.000001272949218034114,
+      "settledAtMs": 880,
+      "sourceSettledAtMs": 880
+    },
+    "expressive-indicator": {
+      "unit": "dp",
+      "positionDifference": 2.6080627435476345e-7,
+      "velocityDifference": 0.0000012177124020240626,
+      "settledAtMs": 1360,
+      "sourceSettledAtMs": 1360
+    },
+    "expressive-color": {
+      "unit": "interpolation",
+      "positionDifference": 2.771911622456713e-8,
+      "velocityDifference": 4.6447753732081765e-7,
+      "settledAtMs": 880,
+      "sourceSettledAtMs": 880
+    }
+  }
+}

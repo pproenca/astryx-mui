@@ -6,6 +6,7 @@
  * @position Disposable M3-GAP-009 motion capture; the component owns permanent regressions.
  */
 
+import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import http from 'node:http';
 import path from 'node:path';
@@ -42,6 +43,8 @@ const revision = execFileSync('git', ['rev-parse', 'HEAD'], {
   encoding: 'utf8',
 }).trim();
 const record = process.argv.includes('--record');
+const check = process.argv.includes('--check');
+if (record && check) throw new Error('Choose --record or --check');
 const command =
   'node internal/material3-migration/actual/capture-native-filled-field-motion.mjs --record';
 const keys = ['label', 'placeholder', 'indicator', 'color'];
@@ -184,10 +187,49 @@ try {
           settledAtMs,
           samples,
         });
+      } else if (check) {
+        const sourceTrace = JSON.parse(
+          await fs.readFile(
+            path.join(sourceDir, 'traces', `${name}.json`),
+            'utf8',
+          ),
+        );
+        const nativeTrace = JSON.parse(
+          await fs.readFile(path.join(actualDir, `${name}.json`), 'utf8'),
+        );
+        assert.deepEqual(sourceTrace.samples, expected.samples);
+        assert.deepEqual(nativeTrace.samples, samples);
+        assert.equal(nativeTrace.settledAtMs, settledAtMs);
+        assert.equal(nativeTrace.producer.browser, browserName);
       }
     }
   }
   if (record) await write(path.join(actualDir, 'motion-summary.json'), report);
+  if (check) {
+    const saved = JSON.parse(
+      await fs.readFile(path.join(actualDir, 'motion-summary.json'), 'utf8'),
+    );
+    assert.equal(saved.browser, browserName);
+    assert.deepEqual(saved.paths, report.paths);
+    assert.equal(
+      execFileSync(
+        'git',
+        [
+          'diff',
+          '--name-only',
+          saved.revision,
+          revision,
+          '--',
+          'packages/material3/src/Field/useFieldMotion.ts',
+          'packages/material3/src/FilledField/FilledField.tsx',
+          'packages/material3/fixtures/filled-field.tsx',
+        ],
+        {cwd: repo, encoding: 'utf8'},
+      ).trim(),
+      '',
+      'Rendered native field inputs changed since the recorded trace',
+    );
+  }
   process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
 } finally {
   await browser.close();
