@@ -11,6 +11,8 @@ import fs from 'node:fs/promises';
 import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {chromium} from 'playwright';
 
@@ -19,6 +21,10 @@ const repo = path.resolve(
   '../../..',
 );
 const gallery = path.join(repo, 'packages/material3/dist/gallery');
+const revision = execFileSync('git', ['rev-parse', 'HEAD'], {
+  cwd: repo,
+  encoding: 'utf8',
+}).trim();
 const output = path.resolve(
   process.env.M3_FIELD_CAPTURE_DIR ||
     path.join(repo, 'internal/material3-migration/actual/M3-GAP-009'),
@@ -82,10 +88,11 @@ try {
   const video = page.video();
   assert.ok(video, 'Missing FilledField native recording');
   await context.close();
-  await fs.rename(
-    await video.path(),
-    path.join(output, 'native-filled-field.webm'),
-  );
+  const videoFile = path.join(output, 'native-filled-field.webm');
+  await fs.rename(await video.path(), videoFile);
+  const videoSha256 = createHash('sha256')
+    .update(await fs.readFile(videoFile))
+    .digest('hex');
 
   const perf = await browser.newPage({
     viewport: {width: 960, height: 740},
@@ -136,6 +143,7 @@ try {
       kind: 'browser',
       command:
         'node internal/material3-migration/actual/record-native-filled-field.mjs',
+      revision,
     },
     environment: {
       browser: `Chrome ${browser.version()}`,
@@ -152,6 +160,10 @@ try {
   await fs.writeFile(
     path.join(output, 'performance.json'),
     `${JSON.stringify(performance, null, 2)}\n`,
+  );
+  await fs.writeFile(
+    path.join(output, 'capture.json'),
+    `${JSON.stringify({schemaVersion: 1, revision, video: 'native-filled-field.webm', videoSha256, environment: performance.environment}, null, 2)}\n`,
   );
   const maxInputLatencyMs = Math.max(...inputLatencyMs);
   const longFrameRatio =
