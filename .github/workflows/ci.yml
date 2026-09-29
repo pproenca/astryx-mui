@@ -565,7 +565,9 @@ jobs:
         if: always() && github.event_name == 'pull_request' && github.head_ref == 'codex/material3-filled-field'
         env:
           M3_FIELD_CAPTURE_DIR: ${{ runner.temp }}/filled-field-capture
-        run: node internal/material3-migration/actual/record-native-filled-field.mjs
+        run: |
+          npx playwright install ffmpeg
+          node internal/material3-migration/actual/record-native-filled-field.mjs
       - name: Upload FilledField review candidate
         if: always() && github.event_name == 'pull_request' && github.head_ref == 'codex/material3-filled-field'
         uses: actions/upload-artifact@v4
