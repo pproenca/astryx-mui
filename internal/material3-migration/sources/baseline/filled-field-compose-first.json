@@ -1,0 +1,1838 @@
+{
+  "schemaVersion": 1,
+  "authority": "compose-first",
+  "status": "FilledField visual crop of the approved shared family source; native pixel and interactive acceptance pending.",
+  "baselineId": "material3-expressive-compose-first-2026-09-26",
+  "web": {
+    "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+  },
+  "compose": {
+    "commit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+    "inventory": "internal/material3-migration/sources/compose-inventory.json",
+    "tests": [
+      {
+        "id": "TextFieldTest.testTextField_defaultHeight",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldTest.kt"
+      },
+      {
+        "id": "TextFieldTest.testTextField_heightDoesNotChange_duringFocusAnimation",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldTest.kt"
+      },
+      {
+        "id": "TextFieldTest.testTextField_labelPosition_whenFocused",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldTest.kt"
+      },
+      {
+        "id": "TextFieldTest.testTextField_prefixAndSuffixAndPlaceholder_areNotDisplayed_withLabel_ifLabelCanExpand",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldTest.kt"
+      },
+      {
+        "id": "TextFieldTest.testTextField_errorSemantics_defaultMessage",
+        "source": "compose/material3/material3/src/androidDeviceTest/kotlin/androidx/compose/material3/TextFieldTest.kt"
+      }
+    ],
+    "reason": "Selected visual, motion, focus, and error tests; Android device rasterization remains platform-specific.",
+    "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+  },
+  "figma": {
+    "sha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+    "inventory": "internal/material3-migration/sources/figma-kit-inventory.json"
+  },
+  "guidance": [
+    {
+      "url": "https://m3.material.io/styles/motion/overview/how-it-works",
+      "capturedAt": "2026-09-26",
+      "capture": "internal/material3-migration/sources/guidance/motion.md"
+    }
+  ],
+  "decisions": [
+    {
+      "dimension": "field-geometry",
+      "concern": "design",
+      "chosen": "compose",
+      "figmaSpecified": true,
+      "reason": "Pinned Compose owns filled and outlined geometry, token roles, label defaults, and state styling; frozen Figma axes confirm coverage without an evidenced dimensional override.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+    },
+    {
+      "dimension": "field-behavior",
+      "concern": "behavior",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "Pinned Compose owns focus, empty/nonempty label phases, decoration, error, and disabled state; web input semantics are a separate browser concern.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+    },
+    {
+      "dimension": "field-motion",
+      "concern": "motion",
+      "chosen": "compose",
+      "figmaSpecified": false,
+      "reason": "Pinned fast spatial, fast effects, and slow effects springs are probed with blur interruption and refocus reversal.",
+      "evidence": "internal/material3-migration/sources/field-reference/README.md"
+    },
+    {
+      "dimension": "browser-semantics",
+      "concern": "browser",
+      "chosen": "web",
+      "figmaSpecified": false,
+      "reason": "Pinned Material Web text-field owners bridge a native input/textarea to form, keyboard, focus, validity, and accessibility semantics.",
+      "evidence": "internal/material3-migration/sources/families/family-CM-0021.md"
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "filled-standard-field-light-0000",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-light-0000",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-light-0000.png",
+      "baselineSha256": "d386b782456a7437287caad65a6a04b4d45af29668b100f12b01a42467273794",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 0
+    },
+    {
+      "id": "filled-expressive-field-light-0000",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-light-0000",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-light-0000.png",
+      "baselineSha256": "d386b782456a7437287caad65a6a04b4d45af29668b100f12b01a42467273794",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 0
+    },
+    {
+      "id": "filled-standard-field-light-0020",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-light-0020",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-light-0020.png",
+      "baselineSha256": "4160fd53dd1490bb342086945cc5045a93b8447e1885f73a95e573ac2a3d4d50",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 20
+    },
+    {
+      "id": "filled-expressive-field-light-0020",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-light-0020",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-light-0020.png",
+      "baselineSha256": "e64e27b181f2834635fcee5cd3dd912238f0e9723df32ac3dbf19bc9ba39326b",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 20
+    },
+    {
+      "id": "filled-standard-field-light-0080",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-light-0080",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-light-0080.png",
+      "baselineSha256": "2bcb24628f050bcf9b4f872c31434f98b56e3bf40be831620c45e0e1f62fc8d4",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 80
+    },
+    {
+      "id": "filled-expressive-field-light-0080",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-light-0080",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-light-0080.png",
+      "baselineSha256": "7d73f35ce81e455fa76f251edddeb4b369fb9fa7d4fc4e146c6574196e8b75ae",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 80
+    },
+    {
+      "id": "filled-standard-field-light-0120",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-light-0120",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-light-0120.png",
+      "baselineSha256": "76b63d9ad2a59cd054ec44ce7e077dd6951507546241a77fa54cc9af3392a4db",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 120
+    },
+    {
+      "id": "filled-expressive-field-light-0120",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-light-0120",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-light-0120.png",
+      "baselineSha256": "cdce61ae1b683d6acbe2dd6626048f5ce8ae248d53b032caef2c9e53772b1a75",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 120
+    },
+    {
+      "id": "filled-standard-field-light-0160",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-light-0160",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-light-0160.png",
+      "baselineSha256": "d5dcb35de0e244a53337a8fd90b75804509c967319be8bac29a9c9130747ffff",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 160
+    },
+    {
+      "id": "filled-expressive-field-light-0160",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-light-0160",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-light-0160.png",
+      "baselineSha256": "e4d8edc76f5f4d01ee7b190b5f81903b035606ed9731cea11117bc7591a2422e",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 160
+    },
+    {
+      "id": "filled-standard-field-light-0180",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-light-0180",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-light-0180.png",
+      "baselineSha256": "da9d5d9ed130a910b4fedb91b42778d25d7634fd21e8e43d31f5387eef970551",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 180
+    },
+    {
+      "id": "filled-expressive-field-light-0180",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-light-0180",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-light-0180.png",
+      "baselineSha256": "bb72ccca445b66bfe4ec00f2c52f812d2f3270b9f6ce351093b4b9ebf176bb09",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 180
+    },
+    {
+      "id": "filled-standard-field-light-0260",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-light-0260",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-light-0260.png",
+      "baselineSha256": "f5717af315f92220c3c632922f49cafef0586b086f06bfaa1bba7b24a5211f4a",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 260
+    },
+    {
+      "id": "filled-expressive-field-light-0260",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-light-0260",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-light-0260.png",
+      "baselineSha256": "d98c024fc999160e3a7c3ee02ff80ebf348de69dc14a100e865720a84eaf48b0",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 260
+    },
+    {
+      "id": "filled-standard-field-light-0600",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-light-0600",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-light-0600.png",
+      "baselineSha256": "f2ed1883cdf83886ae4eb6282a6255b87970abddf42aa4254a755df1a805493f",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 600
+    },
+    {
+      "id": "filled-expressive-field-light-0600",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-light-0600",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-light-0600.png",
+      "baselineSha256": "d1bdd6250655032a721710e09d675ff884b7952a520dbd12eb7ab72301a15f69",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 600
+    },
+    {
+      "id": "filled-standard-field-light-0880",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-light-0880",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-light-0880.png",
+      "baselineSha256": "d386b782456a7437287caad65a6a04b4d45af29668b100f12b01a42467273794",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 880
+    },
+    {
+      "id": "filled-expressive-field-light-0880",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-light-0880",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-light-0880.png",
+      "baselineSha256": "fcc9f414a50b20af878f66eb52ba5162594db5e7369ebdee04e6f48544e1d7b3",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 880
+    },
+    {
+      "id": "filled-standard-field-light-1200",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-light-1200",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-light-1200.png",
+      "baselineSha256": "d386b782456a7437287caad65a6a04b4d45af29668b100f12b01a42467273794",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 1200
+    },
+    {
+      "id": "filled-expressive-field-light-1200",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-light-1200",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-light-1200.png",
+      "baselineSha256": "5af693ac7c103d1603caf7bebd60015058cc75fa62e396d0039597022b2016c0",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 1200
+    },
+    {
+      "id": "filled-standard-field-light-reduced",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose focused state with immediate browser reduced-motion adaptation; exact standard filled card crop from field-light-reduced",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-light-reduced.png",
+      "baselineSha256": "248d5494adeb568da57a4fb1255048ec59475465292badf5fa3dc0d2fd53578c",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "reduced-motion-focused",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      }
+    },
+    {
+      "id": "filled-expressive-field-light-reduced",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose focused state with immediate browser reduced-motion adaptation; exact expressive filled card crop from field-light-reduced",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-light-reduced.png",
+      "baselineSha256": "248d5494adeb568da57a4fb1255048ec59475465292badf5fa3dc0d2fd53578c",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "reduced-motion-focused",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      }
+    },
+    {
+      "id": "filled-standard-field-dark-0000",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-dark-0000",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-dark-0000.png",
+      "baselineSha256": "1ca5c932c9008c17e2010f1ea6b411cefa83c05f75b5cbc2acaa7f93eb0fcdc0",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 0
+    },
+    {
+      "id": "filled-expressive-field-dark-0000",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-dark-0000",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-dark-0000.png",
+      "baselineSha256": "1ca5c932c9008c17e2010f1ea6b411cefa83c05f75b5cbc2acaa7f93eb0fcdc0",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 0
+    },
+    {
+      "id": "filled-standard-field-dark-0020",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-dark-0020",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-dark-0020.png",
+      "baselineSha256": "20c06c37ca69396d0f998aeda8496a22961c166ac2e206e1b6445832f23d801c",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 20
+    },
+    {
+      "id": "filled-expressive-field-dark-0020",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-dark-0020",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-dark-0020.png",
+      "baselineSha256": "dd7d65a2a26fb3a84b507499a26096d5f0fed75908f5d262ee5e221ed6aa1166",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 20
+    },
+    {
+      "id": "filled-standard-field-dark-0080",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-dark-0080",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-dark-0080.png",
+      "baselineSha256": "9f320f3ce0ae6f9893bc1c8740d0eed4dfab8bd03d107513d2fbd3954dc232c6",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 80
+    },
+    {
+      "id": "filled-expressive-field-dark-0080",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-dark-0080",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-dark-0080.png",
+      "baselineSha256": "c76397f395c58d4b0ca9de9fd295ab718a775607acfd05f81d37be232603fef8",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 80
+    },
+    {
+      "id": "filled-standard-field-dark-0120",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-dark-0120",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-dark-0120.png",
+      "baselineSha256": "0cf5adb0a6f06b98eafef447d4d4b6ebd8d6e1985d361b2d6b3f1d63a8ba71a7",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 120
+    },
+    {
+      "id": "filled-expressive-field-dark-0120",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-dark-0120",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-dark-0120.png",
+      "baselineSha256": "2371c7db8905e213f4737689306ee335f4683eacc0cc689c7707f3fdb8ff375c",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 120
+    },
+    {
+      "id": "filled-standard-field-dark-0160",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-dark-0160",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-dark-0160.png",
+      "baselineSha256": "7d80349a469d343ecf1296bc19d79925e2a08c5ab89dcd98d25add81f3185fc3",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 160
+    },
+    {
+      "id": "filled-expressive-field-dark-0160",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-dark-0160",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-dark-0160.png",
+      "baselineSha256": "bcf179872b6433aa8b6f4f1615159e8b121da4b8a2493b89e97a1f8a26d2373a",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 160
+    },
+    {
+      "id": "filled-standard-field-dark-0180",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-dark-0180",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-dark-0180.png",
+      "baselineSha256": "b30ade407e539543d67de7931899a45ee9e88247655afa0b2a289137cc5934c8",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 180
+    },
+    {
+      "id": "filled-expressive-field-dark-0180",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-dark-0180",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-dark-0180.png",
+      "baselineSha256": "979b88981049f3160e942f36fffd606db653ff1760682a071eae91ddb3cd300b",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 180
+    },
+    {
+      "id": "filled-standard-field-dark-0260",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-dark-0260",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-dark-0260.png",
+      "baselineSha256": "9ec93d509a41f35cc82903833e50f3a9f95faf3397743fbbdbad920c10a4482b",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 260
+    },
+    {
+      "id": "filled-expressive-field-dark-0260",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-dark-0260",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-dark-0260.png",
+      "baselineSha256": "f11141c8a7ce4109be6ce42a78e5da29f82874998f0ce747720018fe57371d7b",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 260
+    },
+    {
+      "id": "filled-standard-field-dark-0600",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-dark-0600",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-dark-0600.png",
+      "baselineSha256": "c270907f4e75e989f1f2300786227c627da9c9787dcfc2b15c55946f98e0b93f",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 600
+    },
+    {
+      "id": "filled-expressive-field-dark-0600",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-dark-0600",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-dark-0600.png",
+      "baselineSha256": "2cc0cc73ed536ec9afa939e518d80523d936931409cc63519ae9ada6e4fb253b",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 600
+    },
+    {
+      "id": "filled-standard-field-dark-0880",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-dark-0880",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-dark-0880.png",
+      "baselineSha256": "1ca5c932c9008c17e2010f1ea6b411cefa83c05f75b5cbc2acaa7f93eb0fcdc0",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 880
+    },
+    {
+      "id": "filled-expressive-field-dark-0880",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-dark-0880",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-dark-0880.png",
+      "baselineSha256": "ef8dd1bd6ecffaee3b02aed776edf69fa3879427051d8645cefd5ec51e73f3f6",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 880
+    },
+    {
+      "id": "filled-standard-field-dark-1200",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact standard filled card crop from field-dark-1200",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-dark-1200.png",
+      "baselineSha256": "1ca5c932c9008c17e2010f1ea6b411cefa83c05f75b5cbc2acaa7f93eb0fcdc0",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 1200
+    },
+    {
+      "id": "filled-expressive-field-dark-1200",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels; exact expressive filled card crop from field-dark-1200",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-dark-1200.png",
+      "baselineSha256": "7fd8a9267691b48711ac1859a22d02867c227bfa0eb60fe89aa0da7f6c718075",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "focus-blur-refocus-blur",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      },
+      "timeMs": 1200
+    },
+    {
+      "id": "filled-standard-field-dark-reduced",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose focused state with immediate browser reduced-motion adaptation; exact standard filled card crop from field-dark-reduced",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/standard-field-dark-reduced.png",
+      "baselineSha256": "9a532b5be46b27d7dd0fd5a619bcf10c9d9ec344dcfa1d25b630ec369b85f9e3",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "standard 280 x 56 filled field with empty label and placeholder",
+        "state": "reduced-motion-focused",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 131,
+          "width": 280,
+          "height": 56
+        }
+      }
+    },
+    {
+      "id": "filled-expressive-field-dark-reduced",
+      "dimensions": [
+        "field-geometry",
+        "field-motion"
+      ],
+      "sourceReference": "Pinned Compose focused state with immediate browser reduced-motion adaptation; exact expressive filled card crop from field-dark-reduced",
+      "baseline": "internal/material3-migration/sources/field-reference/filled/expressive-field-dark-reduced.png",
+      "baselineSha256": "9a532b5be46b27d7dd0fd5a619bcf10c9d9ec344dcfa1d25b630ec369b85f9e3",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 960,
+          "height": 420
+        },
+        "fonts": [
+          {
+            "family": "Roboto",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "expressive 280 x 56 filled field with empty label and placeholder",
+        "state": "reduced-motion-focused",
+        "direction": "ltr",
+        "crop": {
+          "x": 36,
+          "y": 269,
+          "width": 280,
+          "height": 56
+        }
+      }
+    }
+  ],
+  "motion": {
+    "applicable": true,
+    "reference": "internal/material3-migration/sources/field-reference/compose-field-light.mp4",
+    "sha256": "33e7ea52b7dc411322f048f2f78fdfacaea600800bffd515729569d526451626",
+    "secondReference": {
+      "file": "internal/material3-migration/sources/field-reference/compose-field-dark.mp4",
+      "sha256": "7158d8fe6a0ecc86ea0c60a226d8333484fa479a596e71bf8ef13b76d58edd8f"
+    },
+    "evidence": "internal/material3-migration/sources/field-reference/README.md",
+    "numeric": {
+      "applicable": true,
+      "status": "Source and native motion limits approved; pixel and interactive acceptance remain pending.",
+      "evidence": "internal/material3-migration/sources/field-reference/README.md",
+      "sourceTrace": "internal/material3-migration/sources/field-reference/field-motion.json",
+      "browserTrace": "internal/material3-migration/sources/field-reference/browser-field-motion.json",
+      "sourceComparison": {
+        "approvalReference": "human:pproenca:2026-09-29:field-source-limits",
+        "limits": {
+          "interpolationPosition": 0.0002,
+          "interpolationVelocityPerSecond": 0.002,
+          "indicatorDp": 0.001,
+          "indicatorVelocityDpPerSecond": 0.002,
+          "settlingMs": 0,
+          "eventTimingMs": 0
+        },
+        "measured": {
+          "interpolationPosition": 9.397433964331015e-8,
+          "interpolationVelocityPerSecond": 0.0000016126641533276143,
+          "indicatorDp": 1.4906444301132638e-7,
+          "indicatorVelocityDpPerSecond": 0.000001081079352260872,
+          "settlingMs": 0,
+          "eventTimingMs": 0
+        },
+        "eventTimingMethod": "The independent browser calculation consumes the pinned target-change timestamps verbatim; schedule difference is zero by construction."
+      },
+      "traces": [
+        {
+          "id": "standard-label",
+          "reference": "internal/material3-migration/sources/field-reference/traces/standard-label.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "standard-placeholder",
+          "reference": "internal/material3-migration/sources/field-reference/traces/standard-placeholder.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "standard-indicator",
+          "reference": "internal/material3-migration/sources/field-reference/traces/standard-indicator.json",
+          "unit": "dp",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.001,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "standard-color",
+          "reference": "internal/material3-migration/sources/field-reference/traces/standard-color.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "expressive-label",
+          "reference": "internal/material3-migration/sources/field-reference/traces/expressive-label.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "expressive-placeholder",
+          "reference": "internal/material3-migration/sources/field-reference/traces/expressive-placeholder.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "expressive-indicator",
+          "reference": "internal/material3-migration/sources/field-reference/traces/expressive-indicator.json",
+          "unit": "dp",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.001,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "expressive-color",
+          "reference": "internal/material3-migration/sources/field-reference/traces/expressive-color.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        }
+      ]
+    }
+  },
+  "performance": [
+    {
+      "id": "desktop-chrome-macos-reference",
+      "approvalReference": "human:pproenca:2026-09-26:M3-NAT-002-foundation-limits",
+      "status": "Approved foundation browser profile; native field run pending.",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "device": "macOS desktop reference",
+        "refreshRateHz": 60
+      },
+      "maxInputLatencyMs": 100,
+      "frameBudgetMs": 20,
+      "maxLongFrameRatio": 0.05,
+      "minInputSamples": 30,
+      "minFrameSamples": 300
+    }
+  ],
+  "parentDecision": "internal/material3-migration/sources/baseline/field-compose-first.json"
+}

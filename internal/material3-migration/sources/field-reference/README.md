@@ -28,6 +28,18 @@ spring positions through 1200 ms. Its simplified label path and stroke raster ar
 choices; native pixel acceptance will need a matched reference and an
 independent browser trace at the verified implementation revision.
 
+For the FilledField task,
+[`generate-filled-field-baseline.mjs`](../baseline/generate-filled-field-baseline.mjs)
+copies the exact 280 × 56 RGBA rectangles of the standard and Expressive
+filled cards from each of these 22 shared frames. The 44 crops and
+[`filled-field-compose-first.json`](../baseline/filled-field-compose-first.json)
+reuse this family's source choices and motion references. Their source
+coordinates are fixed at x=36 and y=131/269; no browser rerendering, scaling,
+or masking occurs. Native captures use the same viewport and crop. The crop
+measures the filled container, label, placeholder, and indicator; supporting
+text and browser input semantics have separate behavior checks. The shared
+composite remains available for the OutlinedField task.
+
 I watched both clips at normal speed in the browser and inspected the 0, 20,
 120, 160, 180, 260, 600, 880, and 1200 ms frames. The label rises and the
 placeholder fades in on initial focus. At the 120 ms blur, standard label

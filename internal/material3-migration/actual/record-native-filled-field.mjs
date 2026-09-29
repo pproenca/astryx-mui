@@ -117,6 +117,20 @@ try {
   const inputLatencyMs = await perf.evaluate(
     () => window.__fieldInputLatencyMs,
   );
+  const idleFrameIntervalsMs = await perf.evaluate(
+    () =>
+      new Promise(resolve => {
+        const frames = [];
+        let previous;
+        const sample = now => {
+          if (previous !== undefined) frames.push(now - previous);
+          previous = now;
+          if (frames.length >= 180) resolve(frames);
+          else requestAnimationFrame(sample);
+        };
+        requestAnimationFrame(sample);
+      }),
+  );
   const frameIntervalsMs = await perf.evaluate(
     () =>
       new Promise(resolve => {
@@ -155,6 +169,7 @@ try {
       refreshRateHz: 60,
     },
     inputLatencyMs,
+    idleFrameIntervalsMs,
     frameIntervalsMs,
   };
   await fs.writeFile(
@@ -169,6 +184,9 @@ try {
   const longFrameRatio =
     frameIntervalsMs.filter(interval => interval > 20).length /
     frameIntervalsMs.length;
+  const idleLongFrameRatio =
+    idleFrameIntervalsMs.filter(interval => interval > 20).length /
+    idleFrameIntervalsMs.length;
   console.log(
     JSON.stringify({
       output,
@@ -177,6 +195,8 @@ try {
       maxInputLatencyMs,
       frameSamples: frameIntervalsMs.length,
       longFrameRatio,
+      idleFrameSamples: idleFrameIntervalsMs.length,
+      idleLongFrameRatio,
     }),
   );
   await perf.close();
