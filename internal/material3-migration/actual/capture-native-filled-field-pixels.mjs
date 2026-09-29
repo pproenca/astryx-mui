@@ -2,7 +2,7 @@
 
 /**
  * @input Built FilledField gallery and the approved filled-only source crops.
- * @output Matched native visual frames at source timestamps and browser conditions.
+ * @output Matched native visual frames with the source's plain surface backing at source timestamps.
  * @position Disposable M3-GAP-009 pixel capture; permanent visual behavior lives with FilledField.
  */
 
@@ -64,6 +64,8 @@ try {
       await page.evaluate(() => document.fonts.ready);
       assert.ok(await page.evaluate(() => document.fonts.check('16px Roboto')));
       await page.getByLabel('Scheme').selectOption(scheme);
+      // Keep gallery heading glyphs behind the rounded corners from entering
+      // the crop. This surface is behind the component, never over its pixels.
       await page.addStyleTag({content: `
         body {background: var(--md-sys-color-surface) !important;}
         body::before {content: ""; position: fixed; left: 36px;

@@ -2,7 +2,7 @@
 
 /**
  * @input Pinned Compose scalar field traces, palette roles and licensed Roboto fixture.
- * @output Matched source-value field frames, reduced-motion frames and normal-speed clips.
+ * @output Matched source-value field frames with browser color mixing, reduced-motion frames and normal-speed clips.
  * @position Disposable source renderer; these browser pixels are not Compose device captures.
  */
 import fs from 'node:fs/promises';

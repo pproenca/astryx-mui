@@ -24,8 +24,10 @@ reduced-motion adaptation frames, and [light](compose-field-light.mp4) and
 four fields at once: standard and Expressive, each filled and outlined. Chrome
 153 on macOS renders at 960 × 420 CSS pixels and DPR 1 with the pinned
 SIL OFL Roboto fixture. This projection uses Compose palette roles and scalar
-spring positions through 1200 ms. Its simplified label path and stroke raster are fixture
-choices; native pixel acceptance will need a matched reference and an
+spring positions through 1200 ms. The browser projection places input content
+below the minimized label and paints the filled indicator as a rectangle over
+the bottom edge, following the pinned Compose layout and indicator node. Its
+label raster remains a fixture choice; native pixel acceptance needs a matched reference and an
 independent browser trace at the verified implementation revision.
 
 For the FilledField task,
@@ -38,7 +40,10 @@ coordinates are fixed at x=36 and y=131/269; no browser rerendering, scaling,
 or masking occurs. Native captures use the same viewport and crop. The crop
 measures the filled container, label, placeholder, and indicator; supporting
 text and browser input semantics have separate behavior checks. The shared
-composite remains available for the OutlinedField task.
+composite remains available for the OutlinedField task. The native comparison
+fixture places an opaque Surface layer behind the field so gallery heading
+glyphs cannot show through its transparent rounded corners. The layer never
+covers component pixels.
 
 I watched both clips at normal speed in the browser and inspected the 0, 20,
 120, 160, 180, 260, 600, 880, and 1200 ms frames. The label rises and the
@@ -90,14 +95,14 @@ event timing.
 The owner separately approved the same numeric limits on 2026-09-29 for native
 FilledField trajectories against the eight pinned Kotlin source paths. Approval
 reference: `human:pproenca:2026-09-29:field-native-motion-limits`. The independent
-Chrome 149 capture at revision `08883734ca466d49d603688f3fc6770f07e0637b`
+Chrome 149 capture at revision `dbd8d276cbfeee6b815db9eece8ed3177021ac39`
 records 81 samples per path in
 [`actual/M3-GAP-009`](../../actual/M3-GAP-009/motion-summary.json). Across label,
 placeholder, and color, the maximum measured position difference is
 0.000000072 interpolation units and the maximum velocity difference is
 0.000001273 interpolation units/s. For indicator thickness, the maxima are
 0.000000261 dp and 0.000001449 dp/s. Every sample timestamp and settling time
-matches the source exactly (0 ms difference). The gallery component did not
+matches the source exactly (0 ms difference). The product component did not
 change between that recording and the current evidence commit.
 
 These limits cover native motion only. Pixel acceptance, the target browser
