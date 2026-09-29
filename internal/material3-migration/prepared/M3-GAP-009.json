@@ -63,12 +63,12 @@
     "packages/themes/material3/material3.spec.md": "dccedf88c88ec240914f50a83b7f09d654fab4d222d0f0be3f64754e26c7ae8f",
     "docs/contributing/material3-migration.md": "1591ceae6d5e3d8a5a1bbdf2766321cf87a217e0c02a5d7f461c93ce5397aa16",
     "internal/material3-migration/routing.mjs": "c498d4ef6b02164d4787b57ffb8470702ada22e47b27f2d5f3fb138cf7b1f391",
-    "internal/material3-migration/sources/baseline/field-compose-first.json": "5a369f164a50816f1920abf842fb03d7fd18ee13c9e765a124e3cb9e0a409a28",
+    "internal/material3-migration/sources/baseline/field-compose-first.json": "e0533f15fbee7574c6f7faa7733661e31ecb45510247f1e47440a33dfce00180",
     "internal/material3-migration/sources/families/family-CM-0021.json": "acee67a7d69616d9fb4fcb9b831828f7f3c52e33d2fd274980642922d26ebefe",
     "internal/material3-migration/sources/families/family-CM-0021.md": "9893ee0c27684716a9462d7b7c9453b8b61ea00075601bcaff255359b52214ed",
     "internal/material3-migration/sources/figma-kit-inventory.json": "15ffc3bf66c2666dca228847b3bbeffc1d718beaa323967d2c118e0b3170ae6f",
     "internal/material3-migration/sources/guidance/motion.md": "80f8c9961a724b60f29c3a7a6b591372d608382b8aa918faabc4cfdc93bb4720",
-    "internal/material3-migration/sources/field-reference/README.md": "3f68ba800d7d63ccd30a5a033b914f961268203f954575739818805e1d8f8ca7",
+    "internal/material3-migration/sources/field-reference/README.md": "7757cbc3669923fd8b7dc63140790839a6782ee2cdddaf7f70b6395244d82376",
     "internal/material3-migration/sources/field-reference/field-light-0000.png": "a093ea38fe9d9e6af31d26308c73a891475e5ee67b30fd031326dd7285f2007a",
     "internal/material3-migration/sources/field-reference/field-light-0020.png": "7efb48d60de0c752b11de11b13ba4a826bb7712970d6793ff30a5af8d6f5996c",
     "internal/material3-migration/sources/field-reference/field-light-0080.png": "57043ecf811d42760e1b7bc9bce458708d9d493fd080c7ea84f022ae6a161055",
@@ -91,7 +91,15 @@
     "internal/material3-migration/sources/field-reference/field-dark-0880.png": "05dd436e67ebc9c2529204b2dc574f9745e92f648199a69278fb7fdc314c2687",
     "internal/material3-migration/sources/field-reference/field-dark-1200.png": "cb517e1a2786ce4a42a7db690db0ee1de6abc528af14f259301bf3275da66075",
     "internal/material3-migration/sources/field-reference/field-dark-reduced.png": "f738779e627ed1dae5f7dd42e0803df820bd9557952cd783e20039b684844f95",
-    "internal/material3-migration/sources/field-reference/compose-field-light.mp4": "33e7ea52b7dc411322f048f2f78fdfacaea600800bffd515729569d526451626"
+    "internal/material3-migration/sources/field-reference/compose-field-light.mp4": "33e7ea52b7dc411322f048f2f78fdfacaea600800bffd515729569d526451626",
+    "internal/material3-migration/sources/field-reference/traces/standard-label.json": "e6ebec9a1164680149f2041aed823874f1e7b9306cf0ffdf42f4e2b215fc647d",
+    "internal/material3-migration/sources/field-reference/traces/standard-placeholder.json": "a16fa0607d8b9e9ca5068d59fb4508eb56600bef62e946569c3296b06719e4ae",
+    "internal/material3-migration/sources/field-reference/traces/standard-indicator.json": "d17d315cab73efec8f7f00e835362a6b31b8252d0e3068180659b67240266823",
+    "internal/material3-migration/sources/field-reference/traces/standard-color.json": "78988bdc18adba3fbc00251a7e7a101ee890434ff7cc46b4bfd0df4840ee35fa",
+    "internal/material3-migration/sources/field-reference/traces/expressive-label.json": "6bb5bb107429c928c527880e5840fd76ef376d3106422ed00e1a457ff5b26e18",
+    "internal/material3-migration/sources/field-reference/traces/expressive-placeholder.json": "a16fa0607d8b9e9ca5068d59fb4508eb56600bef62e946569c3296b06719e4ae",
+    "internal/material3-migration/sources/field-reference/traces/expressive-indicator.json": "135e8f73b8857661c17d3a24268894c3ba1c922faaf6671be935f126ab34580c",
+    "internal/material3-migration/sources/field-reference/traces/expressive-color.json": "78988bdc18adba3fbc00251a7e7a101ee890434ff7cc46b4bfd0df4840ee35fa"
   },
   "compose": [
     {

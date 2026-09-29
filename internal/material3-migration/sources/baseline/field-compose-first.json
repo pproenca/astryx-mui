@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "authority": "compose-first",
-  "status": "Pinned field source selection, public API, and source comparison limits approved; native motion, pixel, and interactive acceptance pending.",
+  "status": "Pinned field source selection, public API, source comparison, and native motion limits approved; pixel and interactive acceptance pending.",
   "baselineId": "material3-expressive-compose-first-2026-09-26",
   "web": {
     "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
@@ -784,7 +784,7 @@
     "evidence": "internal/material3-migration/sources/field-reference/README.md",
     "numeric": {
       "applicable": true,
-      "status": "Source comparison limits approved; native motion and pixel acceptance remain pending.",
+      "status": "Source and native motion limits approved; pixel and interactive acceptance remain pending.",
       "evidence": "internal/material3-migration/sources/field-reference/README.md",
       "sourceTrace": "internal/material3-migration/sources/field-reference/field-motion.json",
       "browserTrace": "internal/material3-migration/sources/field-reference/browser-field-motion.json",
@@ -808,7 +808,80 @@
         },
         "eventTimingMethod": "The independent browser calculation consumes the pinned target-change timestamps verbatim; schedule difference is zero by construction."
       },
-      "traces": []
+      "traces": [
+        {
+          "id": "standard-label",
+          "reference": "internal/material3-migration/sources/field-reference/traces/standard-label.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "standard-placeholder",
+          "reference": "internal/material3-migration/sources/field-reference/traces/standard-placeholder.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "standard-indicator",
+          "reference": "internal/material3-migration/sources/field-reference/traces/standard-indicator.json",
+          "unit": "dp",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.001,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "standard-color",
+          "reference": "internal/material3-migration/sources/field-reference/traces/standard-color.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "expressive-label",
+          "reference": "internal/material3-migration/sources/field-reference/traces/expressive-label.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "expressive-placeholder",
+          "reference": "internal/material3-migration/sources/field-reference/traces/expressive-placeholder.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "expressive-indicator",
+          "reference": "internal/material3-migration/sources/field-reference/traces/expressive-indicator.json",
+          "unit": "dp",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.001,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "expressive-color",
+          "reference": "internal/material3-migration/sources/field-reference/traces/expressive-color.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        }
+      ]
     }
   },
   "performance": [

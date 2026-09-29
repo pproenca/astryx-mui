@@ -71,8 +71,25 @@ native motion, pixel, or event-timing tolerance.
 All 81 sample timestamps per path and all settling times must match exactly
 (0 ms difference). The browser calculation uses the probe's target-change
 schedule, so timestamp agreement does not independently establish runtime
-event timing. Native verification must capture its own trajectories and seek
-separate approval for any nonzero pixel or motion tolerance.
+event timing.
+
+### Approved native FilledField motion limits
+
+The owner separately approved the same numeric limits on 2026-09-29 for native
+FilledField trajectories against the eight pinned Kotlin source paths. Approval
+reference: `human:pproenca:2026-09-29:field-native-motion-limits`. The independent
+Chrome 149 capture at revision `08883734ca466d49d603688f3fc6770f07e0637b`
+records 81 samples per path in
+[`actual/M3-GAP-009`](../../actual/M3-GAP-009/motion-summary.json). Across label,
+placeholder, and color, the maximum measured position difference is
+0.000000072 interpolation units and the maximum velocity difference is
+0.000001273 interpolation units/s. For indicator thickness, the maxima are
+0.000000261 dp and 0.000001449 dp/s. Every sample timestamp and settling time
+matches the source exactly (0 ms difference). The gallery component did not
+change between that recording and the current evidence commit.
+
+These limits cover native motion only. Pixel acceptance, the target browser
+profile, and human interaction QA still require separate verification.
 
 The reduced-motion frames present the final focused state immediately. This
 is a browser accessibility adaptation; pinned Compose does not specify that
