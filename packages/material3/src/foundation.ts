@@ -77,7 +77,7 @@ export function material3ColorValues(scheme: Material3Scheme): ColorValues {
   }
 }
 
-/** Exact CSS-backed component defaults; components declare them on their host. */
+/** Exact CSS-backed component defaults; components apply equivalent local fallbacks. */
 export const material3ComponentDefaults = {
   '--md-divider-color': 'var(--md-sys-color-outline-variant)',
   '--md-divider-thickness': '1px',
@@ -96,6 +96,40 @@ export const material3ComponentDefaults = {
   '--md-badge-large-size': '16px',
   '--md-badge-shape': 'var(--md-sys-shape-corner-full)',
   '--md-badge-size': '6px',
+  '--md-filled-field-active-indicator-color':
+    'var(--md-sys-color-on-surface-variant)',
+  '--md-filled-field-active-indicator-height': '1px',
+  '--md-filled-field-container-color':
+    'var(--md-sys-color-surface-container-highest)',
+  '--md-filled-field-content-color': 'var(--md-sys-color-on-surface)',
+  '--md-filled-field-disabled-active-indicator-color':
+    'var(--md-sys-color-on-surface)',
+  '--md-filled-field-disabled-content-color': 'var(--md-sys-color-on-surface)',
+  '--md-filled-field-disabled-label-text-color':
+    'var(--md-sys-color-on-surface)',
+  '--md-filled-field-disabled-supporting-text-color':
+    'var(--md-sys-color-on-surface)',
+  '--md-filled-field-error-active-indicator-color': 'var(--md-sys-color-error)',
+  '--md-filled-field-error-focus-active-indicator-color':
+    'var(--md-sys-color-error)',
+  '--md-filled-field-error-focus-label-text-color': 'var(--md-sys-color-error)',
+  '--md-filled-field-error-label-text-color': 'var(--md-sys-color-error)',
+  '--md-filled-field-error-supporting-text-color': 'var(--md-sys-color-error)',
+  '--md-filled-field-focus-active-indicator-color':
+    'var(--md-sys-color-primary)',
+  '--md-filled-field-focus-active-indicator-height': '2px',
+  '--md-filled-field-focus-content-color': 'var(--md-sys-color-on-surface)',
+  '--md-filled-field-focus-label-text-color': 'var(--md-sys-color-primary)',
+  '--md-filled-field-hover-active-indicator-color':
+    'var(--md-sys-color-on-surface)',
+  '--md-filled-field-label-text-color':
+    'var(--md-sys-color-on-surface-variant)',
+  '--md-filled-field-leading-content-color':
+    'var(--md-sys-color-on-surface-variant)',
+  '--md-filled-field-supporting-text-color':
+    'var(--md-sys-color-on-surface-variant)',
+  '--md-filled-field-trailing-content-color':
+    'var(--md-sys-color-on-surface-variant)',
 } as const satisfies Record<(typeof material3ComponentTokens)[number], string>;
 
 type TypeStyle = {
@@ -336,7 +370,7 @@ export function resolveMaterial3Token(
   return resolve(name);
 }
 
-/** CSS for standalone native usage. Component defaults are emitted by components. */
+/** CSS for standalone native usage. Components apply their own component-role fallbacks. */
 export function material3TokenCss(): string {
   const declarations = (values: Record<string, string>) =>
     Object.entries(values)

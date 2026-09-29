@@ -2,7 +2,7 @@
 
 /**
  * @input Pinned Compose scalar field traces, palette roles and licensed Roboto fixture.
- * @output Matched source-value field frames, reduced-motion frames and normal-speed clips.
+ * @output Matched source-value field frames with browser color mixing, reduced-motion frames and normal-speed clips.
  * @position Disposable source renderer; these browser pixels are not Compose device captures.
  */
 import fs from 'node:fs/promises';
@@ -15,6 +15,7 @@ import {chromium} from 'playwright';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const repo = path.resolve(here, '../../../..');
+const outputDir = path.resolve(process.env.M3_FIELD_SOURCE_OUTPUT_DIR || here);
 const sources = path.dirname(here);
 const read = async file => JSON.parse(await fs.readFile(file, 'utf8'));
 const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
@@ -85,9 +86,12 @@ const check = process.argv.includes('--check');
 const save = async (file, bytes) => {
   const digest = sha256(bytes);
   if (check) {
-    if (sha256(await fs.readFile(path.join(here, file))) !== digest)
+    if (sha256(await fs.readFile(path.join(outputDir, file))) !== digest)
       throw new Error(`Field reference changed: ${file}`);
-  } else await fs.writeFile(path.join(here, file), bytes);
+  } else {
+    await fs.mkdir(outputDir, {recursive: true});
+    await fs.writeFile(path.join(outputDir, file), bytes);
+  }
   return digest;
 };
 
@@ -110,6 +114,7 @@ function html(mode) {
         <div class="field ${style}" id="${scheme}-${style}">
           <span class="label">Email address</span>
           <span class="placeholder">name@example.com</span>
+          ${style === 'filled' ? '<span class="indicator"></span>' : ''}
         </div>
         <div class="support">Supporting text</div>
       </section>`,
@@ -126,11 +131,12 @@ function html(mode) {
     .sample{width:400px}.caption{font-size:13px;line-height:20px;margin-bottom:16px}
     .field{position:relative;width:280px;height:56px;overflow:visible}
     .field.filled{background:${roles.SurfaceContainerHighest};border-radius:4px 4px 0 0}
+    .filled .indicator{position:absolute;inset-inline:0;bottom:0;height:1px;background:${roles.OnSurfaceVariant}}
     .field.outlined{background:${roles.Surface};border:1px solid ${roles.OnSurfaceVariant};border-radius:4px}
     .label,.placeholder{position:absolute;left:16px;white-space:nowrap;pointer-events:none}
     .label{top:16px;color:${roles.OnSurfaceVariant};transform-origin:left top}
     .outlined .label{left:12px;padding:0 4px;background:${roles.Surface}}
-    .placeholder{top:18px;color:${roles.OnSurfaceVariant};opacity:0}
+    .placeholder{top:24px;color:${roles.OnSurfaceVariant};opacity:0}
     .support{font-size:12px;line-height:18px;margin:4px 0 0 16px;color:${roles.OnSurfaceVariant}}
     .legend{font-size:12px;line-height:18px;margin-top:18px;color:${roles.OnSurfaceVariant}}
   </style></head><body><main>
@@ -141,7 +147,11 @@ function html(mode) {
   </main></body></html>`;
 }
 
-const browser = await chromium.launch({channel: 'chrome', headless: true});
+const browser = await chromium.launch({
+  channel: process.env.M3_BROWSER_EXECUTABLE ? undefined : 'chrome',
+  executablePath: process.env.M3_BROWSER_EXECUTABLE,
+  headless: true,
+});
 const temporary = await fs.mkdtemp(
   path.join(os.tmpdir(), 'astryx-field-frames-'),
 );
@@ -168,11 +178,7 @@ try {
       await page.evaluate(
         ({values, timeMs, resting, active}) => {
           const mix = alpha =>
-            `rgb(${resting
-              .map((value, index) =>
-                Math.round(value * (1 - alpha) + active[index] * alpha),
-              )
-              .join(',')})`;
+            `color-mix(in srgb, rgb(${active.join(',')}) ${Math.round(alpha * 10000) / 100}%, rgb(${resting.join(',')}))`;
           for (const [scheme, value] of Object.entries(values)) {
             for (const style of ['filled', 'outlined']) {
               const field = document.getElementById(`${scheme}-${style}`);
@@ -189,8 +195,13 @@ try {
               const stroke = `${Math.max(0, value.indicator)}px solid ${mix(
                 Math.max(0, Math.min(1, value.color)),
               )}`;
-              if (style === 'filled') field.style.borderBottom = stroke;
-              else field.style.border = stroke;
+              if (style === 'filled') {
+                const indicator = field.querySelector('.indicator');
+                indicator.style.height = `${Math.max(0, value.indicator)}px`;
+                indicator.style.backgroundColor = mix(
+                  Math.max(0, Math.min(1, value.color)),
+                );
+              } else field.style.border = stroke;
             }
           }
           document.getElementById('stage').textContent =
@@ -221,8 +232,11 @@ try {
         label.style.fontSize = '12px';
         label.style.lineHeight = '16px';
         label.style.color = `rgb(${active.join(',')})`;
-        field.style[style === 'filled' ? 'borderBottom' : 'border'] =
-          `2px solid rgb(${active.join(',')})`;
+        if (style === 'filled') {
+          const indicator = field.querySelector('.indicator');
+          indicator.style.height = '2px';
+          indicator.style.backgroundColor = `rgb(${active.join(',')})`;
+        } else field.style.border = `2px solid rgb(${active.join(',')})`;
         field.querySelector('.placeholder').style.opacity = '1';
       }
       document.getElementById('stage').textContent =
@@ -281,9 +295,9 @@ try {
   };
   const bytes = JSON.stringify(manifest, null, 2) + '\n';
   if (check) {
-    if ((await fs.readFile(path.join(here, 'manifest.json'), 'utf8')) !== bytes)
+    if ((await fs.readFile(path.join(outputDir, 'manifest.json'), 'utf8')) !== bytes)
       throw new Error('Field reference manifest changed');
-  } else await fs.writeFile(path.join(here, 'manifest.json'), bytes);
+  } else await fs.writeFile(path.join(outputDir, 'manifest.json'), bytes);
   console.log(
     `Rendered ${Object.keys(images).length} frames and ${Object.keys(clips).length} clips`,
   );

@@ -561,6 +561,25 @@ jobs:
           printf 'M3_BROWSER_EXECUTABLE=%s\n' "$CHROME" >> "$GITHUB_ENV"
       - name: Build and test the native package without migration tooling
         run: pnpm -F @astryxdesign/material3 test
+      - name: Capture FilledField review candidate on the pinned browser
+        if: always() && github.event_name == 'pull_request' && github.head_ref == 'codex/material3-filled-field'
+        env:
+          M3_FIELD_CAPTURE_DIR: ${{ runner.temp }}/filled-field-capture
+          M3_FIELD_PIXEL_DIR: ${{ runner.temp }}/filled-field-capture/pixels
+          M3_FIELD_SOURCE_OUTPUT_DIR: ${{ runner.temp }}/filled-field-capture/source
+        run: |
+          npx playwright install ffmpeg
+          node internal/material3-migration/actual/record-native-filled-field.mjs
+          node internal/material3-migration/actual/capture-native-filled-field-pixels.mjs --partial
+          if ! command -v ffmpeg >/dev/null 2>&1; then brew install ffmpeg; fi
+          node internal/material3-migration/sources/field-reference/render-field-reference.mjs
+      - name: Upload FilledField review candidate
+        if: always() && github.event_name == 'pull_request' && github.head_ref == 'codex/material3-filled-field'
+        uses: actions/upload-artifact@v4
+        with:
+          name: filled-field-review-candidate
+          path: ${{ runner.temp }}/filled-field-capture
+          retention-days: 7
 
   # Historical required check name. The Vitest lanes, native browser checks, Build test owner, and
   # public registry contract always report or explicitly skip, so this join

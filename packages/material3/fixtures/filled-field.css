@@ -1,0 +1,129 @@
+/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+@font-face {
+  font-family: 'Roboto';
+  src: url('./fonts/Roboto-wdth-wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+}
+body {
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+  font:
+    16px/24px Roboto,
+    Arial,
+    sans-serif;
+}
+main {
+  max-width: 980px;
+  margin: auto;
+  padding: 24px;
+}
+h1,
+h2,
+p {
+  margin: 0;
+}
+h1 {
+  font-size: 30px;
+  line-height: 36px;
+}
+h2 {
+  font-size: 18px;
+  line-height: 24px;
+}
+.eyebrow {
+  color: var(--md-sys-color-primary);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.intro {
+  max-width: 70ch;
+  margin-top: 8px;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.revision {
+  margin-top: 10px;
+  color: var(--md-sys-color-on-surface-variant);
+  font:
+    12px/18px ui-monospace,
+    monospace;
+  overflow-wrap: anywhere;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin: 24px 0;
+  padding: 16px;
+  border: 1px solid var(--md-sys-color-outline-variant);
+  border-radius: 12px;
+}
+.controls label {
+  display: grid;
+  gap: 4px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.controls label.check {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+select,
+button {
+  min-height: 36px;
+  padding: 4px 9px;
+  border: 1px solid var(--md-sys-color-outline);
+  border-radius: 7px;
+  background: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+button:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--md-sys-color-primary);
+  outline-offset: 2px;
+}
+.samples {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 24px;
+}
+.sample {
+  min-width: 0;
+  padding: 18px;
+  border-radius: 16px;
+  background: var(--md-sys-color-surface-container-low);
+}
+.sample h2 {
+  margin-bottom: 16px;
+}
+.field {
+  max-width: 280px;
+}
+.note {
+  margin-top: 18px;
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 13px;
+  line-height: 20px;
+}
+@media (max-width: 600px) {
+  main {
+    padding: 16px;
+  }
+  .controls {
+    gap: 12px;
+  }
+}

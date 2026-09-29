@@ -48,11 +48,21 @@ for (const name of [
   'divider.css',
   'elevation.html',
   'elevation.css',
+  'filled-field.html',
+  'filled-field.css',
 ])
   await fs.copyFile(
     path.join(packageRoot, 'fixtures', name),
     path.join(gallery, 'fixtures', name),
   );
+await build({
+  entryPoints: [path.join(packageRoot, 'fixtures/filled-field.tsx')],
+  outfile: path.join(gallery, 'fixtures/filled-field.js'),
+  bundle: true,
+  format: 'esm',
+  platform: 'browser',
+  target: ['chrome123', 'firefox120', 'safari17.5'],
+});
 await build({
   entryPoints: [path.join(packageRoot, 'fixtures/elevation.tsx')],
   outfile: path.join(gallery, 'fixtures/elevation.js'),

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "authority": "compose-first",
-  "status": "Pinned field source selection and watched motion captured; public API ownership, native comparison limits and native acceptance pending.",
+  "status": "Pinned field source selection, public API, source comparison, and native motion limits approved; pixel and interactive acceptance pending.",
   "baselineId": "material3-expressive-compose-first-2026-09-26",
   "web": {
     "commit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
@@ -131,7 +131,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-light-0020.png",
-      "baselineSha256": "7efb48d60de0c752b11de11b13ba4a826bb7712970d6793ff30a5af8d6f5996c",
+      "baselineSha256": "04d0fcb5952acdb2235a73c816ed6525ebddd9f8143ebc85042af9f59ac359a9",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -162,7 +162,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-light-0080.png",
-      "baselineSha256": "57043ecf811d42760e1b7bc9bce458708d9d493fd080c7ea84f022ae6a161055",
+      "baselineSha256": "01a64136fc1dae248d346ddc464a927f6a6e130613211cade82bb14fec40c9f7",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -193,7 +193,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-light-0120.png",
-      "baselineSha256": "4f7205a36bcd2d0d5e1384eed42a940fa4434c6a5a9d675a25ed38e4ef2ac6c9",
+      "baselineSha256": "02aeffa64e25f965c48733884d6e1360ad43a1be08e7ba14139c4f6ee92d002f",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -224,7 +224,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-light-0160.png",
-      "baselineSha256": "2c09e567a671970734affc138f5540af312cafc61dce6fdfe68decd2a7ec7ffb",
+      "baselineSha256": "c6641ea7e2c988c72583a39e7802a795af5c4069dc76cebc2586b2ec4c2e5966",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -255,7 +255,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-light-0180.png",
-      "baselineSha256": "5f4dd2f202c16c72e6c4603f3aef8cbf6f4d89e4bc97aeaf25d976b10dd5b241",
+      "baselineSha256": "9b53facfd54b48af2c757aa20a899a315c2bc92546e634a034c895bc05c7a56c",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -286,7 +286,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-light-0260.png",
-      "baselineSha256": "dc86691b7125ae5477c7bb093c48bb2d32f38dc45ac9fe014b3f5269ff0f92ba",
+      "baselineSha256": "1611136c448adbdf1628f25c0292cae0673eff0c638133d3083ecd8c929e22d2",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -317,7 +317,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-light-0600.png",
-      "baselineSha256": "bf2c190dc4de66388c64311f5263dd7aea4f53a0e3396d9626a6bf2210bcd3ab",
+      "baselineSha256": "c1e809362407e4561e4525dd842d2e9c59b8a5cf7fce772ae1c39da94dfd57fb",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -410,7 +410,7 @@
       ],
       "sourceReference": "Pinned Compose focused state with immediate browser reduced-motion adaptation",
       "baseline": "internal/material3-migration/sources/field-reference/field-light-reduced.png",
-      "baselineSha256": "3f88bce0b9273e218183837d916eaf27eb08918f50c8536ab69d7bd2a8c1bb02",
+      "baselineSha256": "833b9141e85a59a2f549442e628df3ce65e8b6131ee3317436706e113f22a49a",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -471,7 +471,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-dark-0020.png",
-      "baselineSha256": "02a4c3f695a3b943966630dda1da3a1f735ef3570f7a411ca2e4683e1fb711d5",
+      "baselineSha256": "0ddf421c777d1a3f1a1a32138dfd02cac2aba1ccc3ba8e9306c7eb25cb4d4b19",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -502,7 +502,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-dark-0080.png",
-      "baselineSha256": "15dbfad47309ec288c26ca86fa16fabc7a50a4aca1dfea257030ec9775a26e96",
+      "baselineSha256": "747ec71450af0ea174eb495ea7c93c9b65fde19af3543d1a6a9fc5449cef05e7",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -533,7 +533,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-dark-0120.png",
-      "baselineSha256": "2be16b44e010ca4c6e9ee245f79681e2a3e0fbf06d878b3c04c96afc6443d99a",
+      "baselineSha256": "1b8452fcbf43759c0fcd3520443a9ed919ce3e9980398a2c53e19f9c30b4d02f",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -564,7 +564,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-dark-0160.png",
-      "baselineSha256": "a3f0a88e8d9957d9a3a6bae7f513c8ef676d153bf6eb168aab291a32bda785ee",
+      "baselineSha256": "7938a2f400cb6a4fc6ae5777dda4a8d58a22fead99b45ab4eb6e1e7e5f2dd4ba",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -595,7 +595,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-dark-0180.png",
-      "baselineSha256": "390c3f4e5d5c59d7f985f414238af7000bee7f76eb120535394b02a353935733",
+      "baselineSha256": "c10b7dcc09c8e4c9566caedde15f6a6a057236a663772c68b47835b417d8022b",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -626,7 +626,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-dark-0260.png",
-      "baselineSha256": "75534e5386d4631099d415ff1de78804de6a370216e5e07cfb08432b7e86bb34",
+      "baselineSha256": "902340e8f9d93f4b0d79ec8791939dab62083bab8461666ab946aa513b868d08",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -657,7 +657,7 @@
       ],
       "sourceReference": "Pinned Compose TextFieldImpl.kt and Kotlin spring probe; browser source-value projection, not Android device pixels",
       "baseline": "internal/material3-migration/sources/field-reference/field-dark-0600.png",
-      "baselineSha256": "ad5f69bfeab32c4450176fbf5ff295098b9495ff3b5e9997e02c37ec5a724ddf",
+      "baselineSha256": "5625be9e25faf4a4d20b2d4f5bc726b5b633c58c720b6cd2e5a473622c3ff2ef",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -750,7 +750,7 @@
       ],
       "sourceReference": "Pinned Compose focused state with immediate browser reduced-motion adaptation",
       "baseline": "internal/material3-migration/sources/field-reference/field-dark-reduced.png",
-      "baselineSha256": "f738779e627ed1dae5f7dd42e0803df820bd9557952cd783e20039b684844f95",
+      "baselineSha256": "a40279d14c8d0da778b45ef9a0aeb0bceef8c348380522ee9bebea04b5807495",
       "environment": {
         "browser": "Chrome 153.0.8010.53",
         "os": "darwin 27.0.0",
@@ -776,19 +776,112 @@
   "motion": {
     "applicable": true,
     "reference": "internal/material3-migration/sources/field-reference/compose-field-light.mp4",
-    "sha256": "33e7ea52b7dc411322f048f2f78fdfacaea600800bffd515729569d526451626",
+    "sha256": "7a0a513c8ae266499d28740775ac485dafe69cdbdd63c8d858981181d11ec430",
     "secondReference": {
       "file": "internal/material3-migration/sources/field-reference/compose-field-dark.mp4",
-      "sha256": "7158d8fe6a0ecc86ea0c60a226d8333484fa479a596e71bf8ef13b76d58edd8f"
+      "sha256": "3bc7aa8e368552029065c99a90f33f9516fbe139fc2066ffc93c43e0c7ff554b"
     },
     "evidence": "internal/material3-migration/sources/field-reference/README.md",
     "numeric": {
       "applicable": true,
-      "status": "Pinned Kotlin source traces captured; native browser tolerances require separate owner approval before implementation.",
-      "evidence": "internal/material3-migration/sources/field-reference/browser-field-motion.json",
+      "status": "Source and native motion limits approved; pixel and interactive acceptance remain pending.",
+      "evidence": "internal/material3-migration/sources/field-reference/README.md",
       "sourceTrace": "internal/material3-migration/sources/field-reference/field-motion.json",
       "browserTrace": "internal/material3-migration/sources/field-reference/browser-field-motion.json",
-      "traces": []
+      "sourceComparison": {
+        "approvalReference": "human:pproenca:2026-09-29:field-source-limits",
+        "limits": {
+          "interpolationPosition": 0.0002,
+          "interpolationVelocityPerSecond": 0.002,
+          "indicatorDp": 0.001,
+          "indicatorVelocityDpPerSecond": 0.002,
+          "settlingMs": 0,
+          "eventTimingMs": 0
+        },
+        "measured": {
+          "interpolationPosition": 9.397433964331015e-8,
+          "interpolationVelocityPerSecond": 0.0000016126641533276143,
+          "indicatorDp": 1.4906444301132638e-7,
+          "indicatorVelocityDpPerSecond": 0.000001081079352260872,
+          "settlingMs": 0,
+          "eventTimingMs": 0
+        },
+        "eventTimingMethod": "The independent browser calculation consumes the pinned target-change timestamps verbatim; schedule difference is zero by construction."
+      },
+      "traces": [
+        {
+          "id": "standard-label",
+          "reference": "internal/material3-migration/sources/field-reference/traces/standard-label.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "standard-placeholder",
+          "reference": "internal/material3-migration/sources/field-reference/traces/standard-placeholder.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "standard-indicator",
+          "reference": "internal/material3-migration/sources/field-reference/traces/standard-indicator.json",
+          "unit": "dp",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.001,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "standard-color",
+          "reference": "internal/material3-migration/sources/field-reference/traces/standard-color.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "expressive-label",
+          "reference": "internal/material3-migration/sources/field-reference/traces/expressive-label.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "expressive-placeholder",
+          "reference": "internal/material3-migration/sources/field-reference/traces/expressive-placeholder.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "expressive-indicator",
+          "reference": "internal/material3-migration/sources/field-reference/traces/expressive-indicator.json",
+          "unit": "dp",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.001,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        },
+        {
+          "id": "expressive-color",
+          "reference": "internal/material3-migration/sources/field-reference/traces/expressive-color.json",
+          "unit": "interpolation",
+          "approvalReference": "human:pproenca:2026-09-29:field-native-motion-limits",
+          "positionTolerance": 0.0002,
+          "velocityTolerance": 0.002,
+          "settlingToleranceMs": 0
+        }
+      ]
     }
   },
   "performance": [

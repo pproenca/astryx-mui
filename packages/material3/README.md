@@ -5,7 +5,7 @@ private while its foundation gallery and components are being migrated. The
 entry point now exposes the canonical Compose-first foundation graph, typed
 CSS-backed Material roles, source-only values, native presentational Icon and
 MaterialSymbol components, the opt-in FocusRing, Ripple and Elevation primitives,
-and native HorizontalDivider and VerticalDivider. Other components remain in
+the native FilledField shell, and HorizontalDivider and VerticalDivider. Other components remain in
 migration.
 
 ```ts
@@ -25,8 +25,9 @@ overlapping native design. Source-only palette, geometry, spring inputs,
 emphasized typography, and tracking values are deliberately absent from the
 public CSS token type. `tokens.css` emits the supported system roles for light,
 dark, Expressive light, and the Figma-only kit modes. Component token defaults
-are declared at each native component host so scoped system overrides resolve
-through the browser cascade. A `web-compat` profile preserves the released
+are applied as local fallbacks when each native component consumes its roles,
+so ancestor and component-scoped overrides resolve through the browser cascade.
+A `web-compat` profile preserves the released
 Core bridge's full-corner CSS value while the native profile uses `50%`.
 
 ## Discovery
@@ -149,6 +150,40 @@ vertical rules have no inset. Both rules are decorative by default. Use
 supplies a vertical rule's height. Core Divider remains a separate compatibility
 API for labels, strong treatment, and its existing semantic default.
 
+## Native FilledField
+
+```tsx
+import {FilledField} from '@astryxdesign/material3/FilledField';
+import '@astryxdesign/material3/tokens.css';
+import '@astryxdesign/material3/components.css';
+
+<FilledField
+  label={<label htmlFor="account-email">Email address</label>}
+  supportingText={<span id="account-email-help">Used for receipts</span>}
+  populated={email.length > 0}>
+  <input
+    id="account-email"
+    name="email"
+    type="email"
+    value={email}
+    onChange={event => setEmail(event.target.value)}
+    aria-describedby="account-email-help"
+  />
+</FilledField>;
+```
+
+`FilledField` paints Compose's filled container, label, indicator, content lanes
+and supporting text around one caller-owned control. It observes focus inside
+the shell unless `focused` is supplied. The caller controls `populated`,
+`disabled` and `error` visual flags and must set the corresponding input value,
+disabled and validity semantics on the child. A direct native `input` or
+`textarea` child receives borderless Material styling while retaining its
+form behavior and ref. The shell adds no tab stop, role or form value.
+Light, dark and Expressive schemes use scoped Material roles; reduced motion
+paints the final visual state immediately. This export is for advanced custom
+controls. The ordinary native text field will integrate its decoration by
+default when its own migration task is complete.
+
 ## Compatibility direction
 
 The canonical value graph flows from Material reference and system roles to
@@ -191,7 +226,7 @@ entry, exit, interruption, reversal and reduced motion. The browser checks
 measure input response and frame pacing against the approved foundation
 profile. Human QA remains required at the verified revision before each slice
 can be accepted. The [gallery](gallery/index.html) includes live native Icon,
-FocusRing, Ripple and Divider frames. `pnpm build:gallery` builds them without
+FocusRing, Ripple, Divider and FilledField frames. `pnpm build:gallery` builds them without
 Material Symbols fonts. For a
 local licensed-font comparison, set `M3_ICON_FONT_CACHE` to the pinned cache
 directory before building. That optional build copies fonts only into ignored

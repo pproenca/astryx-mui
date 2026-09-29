@@ -24,9 +24,26 @@ reduced-motion adaptation frames, and [light](compose-field-light.mp4) and
 four fields at once: standard and Expressive, each filled and outlined. Chrome
 153 on macOS renders at 960 × 420 CSS pixels and DPR 1 with the pinned
 SIL OFL Roboto fixture. This projection uses Compose palette roles and scalar
-spring positions through 1200 ms. Its simplified label path and stroke raster are fixture
-choices; native pixel acceptance will need a matched reference and an
+spring positions through 1200 ms. The browser projection places input content
+below the minimized label and paints the filled indicator as a rectangle over
+the bottom edge, following the pinned Compose layout and indicator node. Its
+label raster remains a fixture choice; native pixel acceptance needs a matched reference and an
 independent browser trace at the verified implementation revision.
+
+For the FilledField task,
+[`generate-filled-field-baseline.mjs`](../baseline/generate-filled-field-baseline.mjs)
+copies the exact 280 × 56 RGBA rectangles of the standard and Expressive
+filled cards from each of these 22 shared frames. The 44 crops and
+[`filled-field-compose-first.json`](../baseline/filled-field-compose-first.json)
+reuse this family's source choices and motion references. Their source
+coordinates are fixed at x=36 and y=131/269; no browser rerendering, scaling,
+or masking occurs. Native captures use the same viewport and crop. The crop
+measures the filled container, label, placeholder, and indicator; supporting
+text and browser input semantics have separate behavior checks. The shared
+composite remains available for the OutlinedField task. The native comparison
+fixture places an opaque Surface layer behind the field so gallery heading
+glyphs cannot show through its transparent rounded corners. The layer never
+covers component pixels.
 
 I watched both clips at normal speed in the browser and inspected the 0, 20,
 120, 160, 180, 260, 600, 880, and 1200 ms frames. The label rises and the
@@ -50,9 +67,46 @@ position difference is 0.000000149 dp for indicator thickness; the largest
 indicator velocity difference is 0.000001081 dp/s. For the other paths,
 the maximum position difference is 0.000000094 interpolation units and the
 maximum velocity difference is 0.000001613 interpolation units/s. Every
-settling time matches. These are measured
-source discrepancies, **not** approved native comparison tolerances. Those
-limits require owner review before native implementation.
+settling time matches. These are measured source discrepancies; the approved
+limits below govern this source comparison only.
+
+### Approved source comparison limits
+
+The owner approved the following limits on 2026-09-29 for comparing the pinned Kotlin probe with
+the independent browser spring calculation. The interpolation limits mirror
+the [approved Button source limits](../button-reference/README.md); the
+indicator position limit uses their 0.001 dp elevation bound as a precedent.
+The indicator velocity limit is field-specific. Approval reference:
+`human:pproenca:2026-09-29:field-source-limits`. These limits do not authorize
+native motion, pixel, or event-timing tolerance.
+
+| Source path                   | Largest measured position difference |    Approved position limit | Largest measured velocity difference |     Approved velocity limit |
+| ----------------------------- | -----------------------------------: | -------------------------: | -----------------------------------: | --------------------------: |
+| Label, placeholder, and color |      0.000000094 interpolation units | 0.0002 interpolation units |    0.000001613 interpolation units/s | 0.002 interpolation units/s |
+| Indicator thickness           |                       0.000000149 dp |                   0.001 dp |                     0.000001081 dp/s |                  0.002 dp/s |
+
+All 81 sample timestamps per path and all settling times must match exactly
+(0 ms difference). The browser calculation uses the probe's target-change
+schedule, so timestamp agreement does not independently establish runtime
+event timing.
+
+### Approved native FilledField motion limits
+
+The owner separately approved the same numeric limits on 2026-09-29 for native
+FilledField trajectories against the eight pinned Kotlin source paths. Approval
+reference: `human:pproenca:2026-09-29:field-native-motion-limits`. The independent
+Chrome 149 capture at revision `dbd8d276cbfeee6b815db9eece8ed3177021ac39`
+records 81 samples per path in
+[`actual/M3-GAP-009`](../../actual/M3-GAP-009/motion-summary.json). Across label,
+placeholder, and color, the maximum measured position difference is
+0.000000072 interpolation units and the maximum velocity difference is
+0.000001273 interpolation units/s. For indicator thickness, the maxima are
+0.000000261 dp and 0.000001449 dp/s. Every sample timestamp and settling time
+matches the source exactly (0 ms difference). The product component did not
+change between that recording and the current evidence commit.
+
+These limits cover native motion only. Pixel acceptance, the target browser
+profile, and human interaction QA still require separate verification.
 
 The reduced-motion frames present the final focused state immediately. This
 is a browser accessibility adaptation; pinned Compose does not specify that

@@ -2,7 +2,7 @@
 
 /**
  * @file build-css.mjs
- * @input Package source lists including native Divider and Elevation paint
+ * @input Package source lists including native FilledField, Divider and Elevation paint
  * @output Combined package StyleX stylesheets
  * @position Post-build StyleX CSS extraction
  * Post-build script that extracts StyleX CSS from compiled source files
@@ -101,6 +101,7 @@ const TARGETS = {
       'Ripple/Ripple.tsx',
       'Divider/DividerRule.tsx',
       'Elevation/Elevation.tsx',
+      'FilledField/FilledField.tsx',
     ],
     aliases: {},
   },

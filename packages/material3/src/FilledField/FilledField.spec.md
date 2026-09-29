@@ -32,7 +32,7 @@ system_specs: [spec:AST-002, spec:AST-020]
 | Behavior                | Paint Compose's filled decoration around a caller-owned control. A nested focus target is observed by default; an explicit `focused` value overrides that visual observation. `populated`, `disabled`, and `error` are caller-supplied visual state.                                                                                |
 | End-user impact         | A custom input can display Material 3 filled decoration without becoming a second form control.                                                                                                                                                                                                                                     |
 | Builder impact          | The caller supplies the semantic input, its label/description association, value, validity, disabled behavior, and populated state. Standard native text fields will integrate this decoration themselves.                                                                                                                          |
-| Compatibility/readiness | Additive native API approved on 2026-09-28; no released Core API changes. Native implementation and interactive workbook acceptance remain pending.                                                                                                                                                                                 |
+| Compatibility/readiness | Additive native API approved on 2026-09-28; no released Core API changes. Native motion limits were approved on 2026-09-29; pixel and interactive workbook acceptance remain pending.                                                                                                                                               |
 | Review checks           | Reject a Core Field wrapper, duplicated semantic input, automatic form behavior, caller-assembled decoration for standard native controls, Web values replacing specified Compose values, or an unreviewed pixel tolerance.                                                                                                         |
 | Governing rules         | `theme:material3`, pinned `family-CM-0021`, `architecture:public-component-api`, `spec:AST-002`, `spec:AST-020`.                                                                                                                                                                                                                    |
 
@@ -51,7 +51,7 @@ Offer Compose's filled TextField decoration recipe as an opt-in visual shell for
 
 **Owns**
 
-- Filled container, bottom indicator, inside floating label, supporting-text layout, content lanes, source state colors, and pinned label/indicator/placeholder motion.
+- Filled container, bottom indicator, inside floating label, supporting-text layout, content lanes, source state colors, and pinned label/indicator/placeholder/affix motion.
 - Scoped native Material tokens and reduced-motion visual finish.
 
 **Does not own / non-goals**
@@ -72,12 +72,12 @@ Offer Compose's filled TextField decoration recipe as an opt-in visual shell for
 
 ## Behavioral and layout contract
 
-| ID  | Candidate invariant                                                                                                                                                               | Basis                                                     | Draft review state             |
-| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------ |
-| FF1 | The default shell MUST use the pinned 56 dp minimum height, 280 dp minimum width subject to parent constraints, filled container, and 1 dp to 2 dp bottom indicator focus change. | `family-CM-0021` Compose source route.                    | Source backed; verify native.  |
-| FF2 | Label, placeholder, indicator thickness and color MUST follow the selected Compose phase and spring paths, including interrupted blur and refocus.                                | Pinned TextField implementation and watched source clips. | Source backed; verify native.  |
-| FF3 | A caller-provided visual state MUST NOT mutate the child's input semantics or value.                                                                                              | Approved shell ownership boundary and web standards.      | Owner approved; verify native. |
-| FF4 | Light, dark, Expressive, and scoped overrides MUST consume native Material field roles directly.                                                                                  | `theme:material3`.                                        | Source backed; verify native.  |
+| ID  | Candidate invariant                                                                                                                                                                                                                                | Basis                                                                                                                                                              | Draft review state             |
+| --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------ |
+| FF1 | The default shell MUST use the pinned 56 dp minimum height, 280 dp minimum width subject to parent constraints, filled container, and 1 dp to 2 dp bottom indicator focus change.                                                                  | `family-CM-0021` Compose source route.                                                                                                                             | Source backed; verify native.  |
+| FF2 | Label, placeholder, prefix/suffix opacity, indicator thickness and color MUST follow the selected Compose phase and spring paths, including interrupted blur and refocus. Prefix and suffix MUST be hidden when an empty inside label is expanded. | Pinned TextField implementation, `TextFieldTest.testTextField_prefixAndSuffixAndPlaceholder_areNotDisplayed_withLabel_ifLabelCanExpand`, and watched source clips. | Source backed; verify native.  |
+| FF3 | A caller-provided visual state MUST NOT mutate the child's input semantics or value.                                                                                                                                                               | Approved shell ownership boundary and web standards.                                                                                                               | Owner approved; verify native. |
+| FF4 | Light, dark, Expressive, and scoped overrides MUST consume native Material field roles directly.                                                                                                                                                   | `theme:material3`.                                                                                                                                                 | Source backed; verify native.  |
 
 ### Allowed variation
 
@@ -135,7 +135,7 @@ The owner approved publishing opt-in filled and outlined field shells and the ex
 
 ## Open questions
 
-No open public API question. Native source-motion limits, pixels, and interactive acceptance remain separate workbook decisions.
+No open public API question. Native source-motion limits are recorded in the [field source decision](../../../../internal/material3-migration/sources/baseline/field-compose-first.json). Pixel and interactive acceptance remain separate workbook decisions.
 
 ## Content boundary
 

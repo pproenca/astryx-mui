@@ -71,3 +71,12 @@ The optional 16px logical inset follows the pinned Material Web divider source
 above. Copyright The Android Open Source Project and Google LLC, licensed
 Apache-2.0. The native React implementation and browser comparison are Copyright
 Meta Platforms, Inc. and affiliates.
+
+`src/FilledField/FilledField.tsx` and `src/Field/useFieldMotion.ts` use the
+pinned AndroidX Compose `TextFieldDefaults.kt`, `TextFieldImpl.kt`,
+`FilledTextFieldTokens.kt`, `MotionScheme.kt` and `SpringSimulation.kt` field
+values and motion. The selected source frames, traces and watched media under
+`internal/material3-migration/sources/field-reference/` record the revision,
+capture method and source-only comparison limits. Copyright The Android Open
+Source Project and Google LLC, licensed Apache-2.0. The native React shell and
+browser fixture are Copyright Meta Platforms, Inc. and affiliates.

@@ -2,7 +2,7 @@
 
 /**
  * @input Shared field route, frozen kit scope, watched frames and independent browser spring calculation.
- * @output Pinned source ownership, media integrity and measured field-motion consistency.
+ * @output Pinned source ownership, media integrity and approved source/native comparison checks.
  * @position Migration-only evidence regression before native field implementation.
  */
 import {test} from 'vitest';
@@ -11,6 +11,7 @@ import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {PNG} from 'pngjs';
 import {validateSource} from '../evidence.mjs';
+import {compareTrace} from '../measurements.mjs';
 import {validateFamilyUse} from '../routing.mjs';
 
 const read = relative =>
@@ -38,7 +39,7 @@ test('one pinned field family owns all four mappings and the frozen 120-variant 
   assert.equal(set?.name, 'Text field');
   assert.equal(set?.variants, 120);
   assert.equal(decision.compose.tests.length, 8);
-  assert.equal(decision.motion.numeric.traces.length, 0);
+  assert.equal(decision.motion.numeric.traces.length, 8);
 });
 
 test('every selected field frame and both clips retain the watched source hashes', () => {
@@ -76,6 +77,19 @@ test('every selected field frame and both clips retain the watched source hashes
 });
 
 test('Chrome field spring errors and settling are independently recomputable', () => {
+  const comparison = decision.motion.numeric.sourceComparison;
+  assert.equal(comparison.approvalReference, 'human:pproenca:2026-09-29:field-source-limits');
+  assert.deepEqual(comparison.limits, {
+    interpolationPosition: 0.0002,
+    interpolationVelocityPerSecond: 0.002,
+    indicatorDp: 0.001,
+    indicatorVelocityDpPerSecond: 0.002,
+    settlingMs: 0,
+    eventTimingMs: 0,
+  });
+  assert.match(comparison.eventTimingMethod, /zero by construction/);
+  for (const [dimension, limit] of Object.entries(comparison.limits))
+    assert.ok(comparison.measured[dimension] <= limit, dimension);
   const sourceBytes = readFileSync(
     new URL('../sources/field-reference/field-motion.json', import.meta.url),
   );
@@ -119,4 +133,40 @@ test('Chrome field spring errors and settling are independently recomputable', (
   }
   assert.equal(source.schemes.standard.label.settledAtMs, 980);
   assert.equal(source.schemes.expressive.label.settledAtMs, 1360);
+  const measured = {
+    interpolationPosition: 0,
+    interpolationVelocityPerSecond: 0,
+    indicatorDp: 0,
+    indicatorVelocityDpPerSecond: 0,
+    settlingMs: 0,
+    eventTimingMs: 0,
+  };
+  for (const group of Object.values(browser.schemes))
+    for (const trace of Object.values(group)) {
+      const position = trace.unit === 'dp' ? 'indicatorDp' : 'interpolationPosition';
+      const velocity = trace.unit === 'dp' ? 'indicatorVelocityDpPerSecond' : 'interpolationVelocityPerSecond';
+      measured[position] = Math.max(measured[position], trace.errors.position);
+      measured[velocity] = Math.max(measured[velocity], trace.errors.velocity);
+      measured.settlingMs = Math.max(measured.settlingMs, trace.errors.settlingMs);
+    }
+  assert.deepEqual(comparison.measured, measured);
+});
+
+test('approved native field trajectories match all eight pinned source paths', () => {
+  const summary = read('../actual/M3-GAP-009/motion-summary.json');
+  assert.equal(summary.browser, 'Chrome 149.0.7827.0');
+  assert.equal(decision.motion.numeric.traces.length, 8);
+  for (const spec of decision.motion.numeric.traces) {
+    assert.equal(spec.approvalReference, 'human:pproenca:2026-09-29:field-native-motion-limits');
+    assert.equal(spec.positionTolerance, spec.unit === 'dp' ? 0.001 : 0.0002);
+    assert.equal(spec.velocityTolerance, 0.002);
+    assert.equal(spec.settlingToleranceMs, 0);
+    const reference = read(`../../../${spec.reference}`);
+    const actual = read(`../actual/M3-GAP-009/${spec.id}.json`);
+    const result = compareTrace(reference, actual, spec, policy.androidxCommit);
+    assert.equal(result.positionError, summary.paths[spec.id].positionDifference);
+    assert.equal(result.velocityError, summary.paths[spec.id].velocityDifference);
+    assert.equal(result.settlingErrorMs, 0);
+    assert.equal(actual.samples.length, 81);
+  }
 });
