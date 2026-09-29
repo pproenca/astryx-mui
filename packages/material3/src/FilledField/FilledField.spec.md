@@ -32,7 +32,7 @@ system_specs: [spec:AST-002, spec:AST-020]
 | Behavior                | Paint Compose's filled decoration around a caller-owned control. A nested focus target is observed by default; an explicit `focused` value overrides that visual observation. `populated`, `disabled`, and `error` are caller-supplied visual state.                                                                                |
 | End-user impact         | A custom input can display Material 3 filled decoration without becoming a second form control.                                                                                                                                                                                                                                     |
 | Builder impact          | The caller supplies the semantic input, its label/description association, value, validity, disabled behavior, and populated state. Standard native text fields will integrate this decoration themselves.                                                                                                                          |
-| Compatibility/readiness | Additive native API approved on 2026-09-28; no released Core API changes. Native implementation and interactive workbook acceptance remain pending.                                                                                                                                                                                 |
+| Compatibility/readiness | Additive native API approved on 2026-09-28; no released Core API changes. Native motion limits were approved on 2026-09-29; pixel and interactive workbook acceptance remain pending.                                                                                                                                               |
 | Review checks           | Reject a Core Field wrapper, duplicated semantic input, automatic form behavior, caller-assembled decoration for standard native controls, Web values replacing specified Compose values, or an unreviewed pixel tolerance.                                                                                                         |
 | Governing rules         | `theme:material3`, pinned `family-CM-0021`, `architecture:public-component-api`, `spec:AST-002`, `spec:AST-020`.                                                                                                                                                                                                                    |
 
@@ -135,7 +135,7 @@ The owner approved publishing opt-in filled and outlined field shells and the ex
 
 ## Open questions
 
-No open public API question. Native source-motion limits, pixels, and interactive acceptance remain separate workbook decisions.
+No open public API question. Native source-motion limits are recorded in the [field source decision](../../../../internal/material3-migration/sources/baseline/field-compose-first.json). Pixel and interactive acceptance remain separate workbook decisions.
 
 ## Content boundary
 
