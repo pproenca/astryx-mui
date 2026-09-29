@@ -562,7 +562,7 @@ jobs:
       - name: Build and test the native package without migration tooling
         run: pnpm -F @astryxdesign/material3 test
       - name: Capture FilledField review candidate on the pinned browser
-        if: github.event_name == 'pull_request' && github.head_ref == 'codex/material3-filled-field'
+        if: always() && github.event_name == 'pull_request' && github.head_ref == 'codex/material3-filled-field'
         env:
           M3_FIELD_CAPTURE_DIR: ${{ runner.temp }}/filled-field-capture
         run: node internal/material3-migration/actual/record-native-filled-field.mjs

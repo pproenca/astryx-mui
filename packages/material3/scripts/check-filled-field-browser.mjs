@@ -118,22 +118,26 @@ try {
   await clockPage.goto(url);
   await clockPage.locator('#native-email').waitFor();
   await clockPage.clock.pauseAt(new Date('2026-09-29T00:01:00Z'));
-  await clockPage.locator('#native-email').evaluate(node => node.focus());
+  const clockInput = clockPage.locator('#native-email');
+  await clockInput.evaluate(node => node.focus());
   const focusFrames = [];
   for (let timeMs = 0; timeMs <= 440; timeMs += 20) {
     if (timeMs) await clockPage.clock.fastForward(20);
+    if (timeMs === 120) await clockInput.evaluate(node => node.blur());
+    if (timeMs === 160) await clockInput.evaluate(node => node.focus());
     focusFrames.push(
       await clockPage.locator('[data-md-field-container]').evaluate(node => {
         const indicator = getComputedStyle(node, '::after');
+        const label = node.querySelector('[data-md-field-label]');
         return {
           containerHeight: node.getBoundingClientRect().height,
           indicatorHeight: Number.parseFloat(indicator.height),
           indicatorColor: indicator.backgroundColor,
+          labelTop: Number.parseFloat(getComputedStyle(label).top),
         };
       }),
     );
   }
-  await clockPage.close();
   assert.equal(focusFrames.length, 23);
   assert.ok(
     focusFrames.every(
@@ -144,30 +148,79 @@ try {
     ),
     'The active indicator must stay visible without moving the field boundary',
   );
-  await input.focus();
-  assert.notEqual(await shell.getAttribute('data-md-field-focused'), null);
-  await page.waitForTimeout(120);
-  const focusedTop = await labelTop();
-  assert.ok(focusedTop < 6, `Focus label is still at ${focusedTop}px`);
-  await input.evaluate(node => node.blur());
-  await page.waitForTimeout(40);
-  const reversingTop = await labelTop();
+  assert.ok(focusFrames[5].labelTop < 6, 'Focus did not lift the label');
   assert.ok(
-    reversingTop > focusedTop,
-    `Blur did not reverse label: ${focusedTop} -> ${reversingTop}`,
+    focusFrames[8].labelTop > focusFrames[5].labelTop,
+    'Blur did not reverse the label',
   );
-  await input.focus();
-  await page.waitForTimeout(120);
   assert.ok(
-    (await labelTop()) < reversingTop,
+    focusFrames[13].labelTop < focusFrames[8].labelTop,
     'Refocus did not reverse the running spring',
   );
-  assert.ok(Math.abs((await indicatorWidth()) - 2) < 0.05);
+  assert.ok(Math.abs(focusFrames[22].indicatorHeight - 2) < 0.05);
+
+  await clockPage.emulateMedia({reducedMotion: 'reduce'});
+  await clockInput.evaluate(node => node.blur());
+  await clockPage.clock.fastForward(20);
+  assert.equal(
+    await clockPage
+      .locator('[data-md-field-label]')
+      .evaluate(node => Number.parseFloat(getComputedStyle(node).top)),
+    16,
+  );
+  await clockInput.evaluate(node => node.focus());
+  await clockPage.clock.fastForward(20);
+  assert.equal(
+    await clockPage
+      .locator('[data-md-field-label]')
+      .evaluate(node => Number.parseFloat(getComputedStyle(node).top)),
+    3,
+  );
+  await clockPage.close();
+
+  const expressivePage = await browser.newPage({
+    viewport: {width: 960, height: 740},
+    deviceScaleFactor: 1,
+  });
+  await expressivePage.clock.install({time: new Date('2026-09-29T00:00:00Z')});
+  await expressivePage.goto(url);
+  await expressivePage.getByLabel('Scheme').selectOption('expressive-light');
+  await expressivePage.waitForTimeout(100);
+  await expressivePage.clock.pauseAt(new Date('2026-09-29T00:01:00Z'));
+  await expressivePage.locator('#native-email').evaluate(node => node.focus());
+  let expressiveTop = Infinity;
+  for (let timeMs = 0; timeMs <= 240; timeMs += 20) {
+    if (timeMs) await expressivePage.clock.fastForward(20);
+    expressiveTop = Math.min(
+      expressiveTop,
+      await expressivePage
+        .locator('[data-md-field-label]')
+        .evaluate(node => Number.parseFloat(getComputedStyle(node).top)),
+    );
+  }
+  assert.ok(
+    expressiveTop < 3,
+    `Expressive spatial spring did not overshoot: minimum label top ${expressiveTop}px`,
+  );
+  await expressivePage.close();
+
+  await page.emulateMedia({reducedMotion: 'reduce'});
+  await input.focus();
+  assert.notEqual(await shell.getAttribute('data-md-field-focused'), null);
 
   await input.fill('person@example.com');
   await input.evaluate(node => node.blur());
-  await page.waitForTimeout(180);
   assert.equal(await shell.getAttribute('data-md-field-populated'), '');
+  await page.waitForFunction(
+    () =>
+      Math.abs(
+        Number.parseFloat(
+          getComputedStyle(document.querySelector('[data-md-field-label]')).top,
+        ) - 3,
+      ) < 0.1,
+    null,
+    {polling: 50, timeout: 5000},
+  );
   assert.ok(
     Math.abs((await labelTop()) - 3) < 0.1,
     'Populated label should stay floating after blur',
@@ -199,44 +252,6 @@ try {
       node => node.getBoundingClientRect().right <= innerWidth + 1,
     ),
   );
-  await page.getByLabel('Scheme').selectOption('expressive-light');
-  await input.fill('');
-  await input.evaluate(node => node.blur());
-  await page.waitForTimeout(300);
-  const expressiveTop = await input.evaluate(
-    node =>
-      new Promise(resolve => {
-        let minimum = Infinity;
-        const start = performance.now();
-        node.focus();
-        const sample = () => {
-          const label = node
-            .closest('[data-md-filled-field]')
-            .querySelector('[data-md-field-label]');
-          minimum = Math.min(
-            minimum,
-            Number.parseFloat(getComputedStyle(label).top),
-          );
-          if (performance.now() - start < 240) requestAnimationFrame(sample);
-          else resolve(minimum);
-        };
-        requestAnimationFrame(sample);
-      }),
-  );
-  assert.ok(
-    expressiveTop < 3,
-    `Expressive spatial spring did not overshoot: minimum label top ${expressiveTop}px`,
-  );
-
-  await page.emulateMedia({reducedMotion: 'reduce'});
-  await input.evaluate(node => node.blur());
-  await page.waitForTimeout(30);
-  assert.equal(await labelTop(), 16);
-  await input.focus();
-  await page.waitForTimeout(30);
-  assert.equal(await labelTop(), 3);
-  assert.equal(await indicatorWidth(), 2);
-
   const capture = process.env.M3_CAPTURE_DIR;
   if (capture) {
     await fs.mkdir(capture, {recursive: true});
