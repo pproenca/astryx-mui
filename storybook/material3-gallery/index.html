@@ -1,0 +1,586 @@
+<!doctype html>
+<!-- Copyright (c) Meta Platforms, Inc. and affiliates. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./dist/tokens.css" />
+    <title>Native Material 3 foundation gallery</title>
+    <style>
+      @font-face {
+        font-family: 'Roboto';
+        src: url('./evidence/Roboto-wdth-wght.ttf') format('truetype');
+        font-style: normal;
+        font-weight: 100 900;
+        font-display: swap;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        font-family: 'Roboto', Arial, sans-serif;
+      }
+      body {
+        margin: 0;
+        background: var(--md-sys-color-surface);
+        color: var(--md-sys-color-on-surface);
+      }
+      main {
+        width: min(100%, 1440px);
+        margin: auto;
+        padding: clamp(16px, 3vw, 48px);
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+      h1 {
+        font-size: clamp(28px, 4vw, 42px);
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 1.25;
+      }
+      h3 {
+        font-size: 17px;
+        line-height: 1.3;
+      }
+      p {
+        line-height: 1.55;
+      }
+      a {
+        color: var(--md-sys-color-primary);
+        text-underline-offset: 3px;
+      }
+      button,
+      select {
+        font: inherit;
+        min-height: 42px;
+        border: 1px solid var(--md-sys-color-outline);
+        border-radius: var(--md-sys-shape-corner-small);
+        padding: 8px 12px;
+        background: var(--md-sys-color-surface-container-lowest);
+        color: var(--md-sys-color-on-surface);
+      }
+      button {
+        cursor: pointer;
+      }
+      button:focus-visible,
+      select:focus-visible,
+      a:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid var(--md-sys-color-primary);
+        outline-offset: 3px;
+      }
+      .eyebrow {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: var(--md-sys-shape-corner-full);
+        background: var(--md-sys-color-primary-container);
+        color: var(--md-sys-color-on-primary-container);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      .hero {
+        display: grid;
+        gap: 18px;
+        padding-bottom: 28px;
+        border-bottom: 1px solid var(--md-sys-color-outline-variant);
+      }
+      .hero p {
+        max-width: 74ch;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+      .source-line {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 24px;
+        font-size: 13px;
+      }
+      .source-line figure {
+        flex: 1 1 300px;
+      }
+      .revision {
+        overflow-wrap: anywhere;
+        font:
+          12px/1.5 ui-monospace,
+          monospace;
+        color: var(--md-sys-color-on-surface-variant);
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        gap: 12px;
+        margin: 24px 0;
+      }
+      .controls label {
+        display: grid;
+        gap: 5px;
+        font-size: 13px;
+        font-weight: 700;
+      }
+      .section {
+        margin-top: 32px;
+      }
+      .section-heading {
+        display: grid;
+        gap: 7px;
+        margin-bottom: 18px;
+      }
+      .section-heading p {
+        color: var(--md-sys-color-on-surface-variant);
+      }
+      .native-frame {
+        display: block;
+        width: 100%;
+        height: min(940px, 115vh);
+        min-height: 620px;
+        border: 1px solid var(--md-sys-color-outline-variant);
+        border-radius: var(--md-sys-shape-corner-large);
+        background: var(--md-sys-color-surface);
+      }
+      details {
+        margin: 14px 0;
+        border: 1px solid var(--md-sys-color-outline-variant);
+        border-radius: var(--md-sys-shape-corner-large);
+        background: var(--md-sys-color-surface-container-low);
+      }
+      summary {
+        cursor: pointer;
+        padding: 18px 22px;
+        font-size: 17px;
+        font-weight: 700;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+        gap: 16px;
+        padding: 0 18px 18px;
+      }
+      .comparison {
+        min-width: 0;
+        padding: 16px;
+        border-radius: var(--md-sys-shape-corner-medium);
+        background: var(--md-sys-color-surface-container-lowest);
+      }
+      .comparison .meta {
+        margin: 7px 0 12px;
+        color: var(--md-sys-color-on-surface-variant);
+        font-size: 12px;
+      }
+      .images {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+      figure {
+        min-width: 0;
+        margin: 0;
+      }
+      figure img {
+        display: block;
+        width: 100%;
+        height: 178px;
+        object-fit: contain;
+        border: 1px solid var(--md-sys-color-outline-variant);
+        border-radius: 8px;
+        background: var(--md-sys-color-surface);
+      }
+      figcaption {
+        margin-top: 6px;
+        color: var(--md-sys-color-on-surface-variant);
+        font-size: 12px;
+      }
+      .comparison > a {
+        display: inline-block;
+        margin-top: 12px;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .videos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+        gap: 16px;
+      }
+      .video-card {
+        padding: 16px;
+        border-radius: var(--md-sys-shape-corner-medium);
+        background: var(--md-sys-color-surface-container-low);
+      }
+      video {
+        display: block;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        margin-top: 12px;
+        border-radius: 8px;
+        background: #111;
+      }
+      .footnote {
+        padding: 28px 0 8px;
+        color: var(--md-sys-color-on-surface-variant);
+        font-size: 13px;
+      }
+      @media (max-width: 600px) {
+        .native-frame {
+          min-height: 720px;
+        }
+        .images {
+          grid-template-columns: 1fr;
+        }
+        figure img {
+          height: 210px;
+        }
+      }
+    </style>
+  </head>
+  <body data-md-scheme="light">
+    <main>
+      <header class="hero">
+        <span class="eyebrow">Native package · foundations verified</span>
+        <h1>Material 3 foundation gallery</h1>
+        <p>
+          Inspect the native token graph, light and dark roles, Expressive
+          geometry, interrupted spring motion, and the native component
+          previews. Other components enter this gallery after their own review.
+        </p>
+        <div class="source-line">
+          <a
+            href="https://android.googlesource.com/platform/frameworks/support/+/a095da93f8e98dea8748ceed79ea8427aade245f"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Pinned Compose source</a
+          >
+          <a
+            href="https://github.com/material-components/material-web/tree/cbd34a8921915af94d5ef65c2a69eece41d5b4f3"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Material Web CSS names</a
+          >
+          <a
+            href="./evidence/README.md"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Attribution and comparison method</a
+          >
+        </div>
+        <div class="revision" id="revision">Loading native build revision…</div>
+      </header>
+
+      <div class="controls" aria-label="Gallery controls">
+        <label for="scheme"
+          >Color scheme
+          <select id="scheme">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="expressive-light">Expressive light</option>
+          </select>
+        </label>
+        <button id="direction" type="button" aria-pressed="false">
+          RTL layout: off
+        </button>
+      </div>
+
+      <section class="section" aria-labelledby="live-title">
+        <div class="section-heading">
+          <h2 id="live-title">Live native output</h2>
+          <p>
+            This frame imports the native package build directly. Try scoped
+            color overrides, keyboard controls, interruption, reversal and
+            reduced motion inside it.
+          </p>
+        </div>
+        <iframe
+          class="native-frame"
+          id="native-frame"
+          title="Interactive native Material 3 foundation preview"
+          loading="eager"></iframe>
+      </section>
+
+      <section class="section" aria-labelledby="icon-title">
+        <div class="section-heading">
+          <h2 id="icon-title">Native Icon and Material Symbol</h2>
+          <p>
+            Change the scheme, size, direction and font axes in the native
+            component build. Font samples use a locally supplied licensed font
+            during QA; the package does not bundle Material Symbols fonts.
+          </p>
+        </div>
+        <iframe
+          class="native-frame"
+          id="icon-frame"
+          title="Interactive native Material 3 Icon preview"
+          loading="eager"
+          src="./fixtures/icons.html"></iframe>
+      </section>
+
+      <section class="section" aria-labelledby="focus-ring-title">
+        <div class="section-heading">
+          <h2 id="focus-ring-title">Native FocusRing</h2>
+          <p>
+            Keyboard and pointer focus, Compose inset and selected Web outward
+            geometry, and a separate input with a visible indicator.
+          </p>
+        </div>
+        <iframe
+          class="native-frame"
+          id="focus-ring-frame"
+          title="Interactive native Material 3 FocusRing preview"
+          loading="eager"
+          src="./fixtures/focus-ring.html"></iframe>
+      </section>
+
+      <section class="section" aria-labelledby="ripple-title">
+        <div class="section-heading">
+          <h2 id="ripple-title">Native Ripple</h2>
+          <p>
+            Press at several points; use keyboard, drag, disabled, proxy input,
+            color schemes and reduced motion to inspect the opt-in Compose
+            indication.
+          </p>
+        </div>
+        <iframe
+          class="native-frame"
+          id="ripple-frame"
+          title="Interactive native Material 3 Ripple preview"
+          loading="eager"
+          src="./fixtures/ripple.html"></iframe>
+      </section>
+
+      <section class="section" aria-labelledby="divider-title">
+        <div class="section-heading">
+          <h2 id="divider-title">
+            Native HorizontalDivider and VerticalDivider
+          </h2>
+          <p>
+            Inspect light, dark and Expressive color, logical insets in RTL,
+            CSS-pixel thickness, physical hairlines and explicit separator
+            semantics.
+          </p>
+        </div>
+        <iframe
+          class="native-frame"
+          id="divider-frame"
+          title="Interactive native Material 3 Divider preview"
+          loading="eager"
+          src="./fixtures/divider.html"></iframe>
+      </section>
+
+      <section class="section" aria-labelledby="native-elevation-title">
+        <div class="section-heading">
+          <h2 id="native-elevation-title">Native Elevation</h2>
+          <p>
+            Inspect six pinned levels, light, dark and Expressive schemes,
+            owner shapes, scoped shadow color and inert pointer behavior.
+          </p>
+        </div>
+        <iframe
+          class="native-frame"
+          id="elevation-frame"
+          title="Interactive native Material 3 Elevation preview"
+          loading="eager"
+          src="./fixtures/elevation.html"></iframe>
+        <div class="source-line">
+          <figure>
+            <img
+              src="./evidence/elevation-native-source/elevation-light.png"
+              alt="Pinned source shadow levels zero through five in light mode"
+              width="480" />
+            <figcaption>Pinned independent shadow layers · light</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="./evidence/elevation-native-source/elevation-dark.png"
+              alt="Pinned source shadow levels zero through five in dark mode"
+              width="480" />
+            <figcaption>Pinned independent shadow layers · dark</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="comparison-title">
+        <div class="section-heading">
+          <h2 id="comparison-title">Pinned source comparisons</h2>
+          <p>
+            Reference and native snapshots share viewport, DPR, font, theme,
+            content and state. Each difference image was measured at zero
+            changed pixels for the labeled capture revision.
+          </p>
+        </div>
+        <div id="comparisons" aria-live="polite">
+          Loading reference comparisons…
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="motion-title">
+        <div class="section-heading">
+          <h2 id="motion-title">Motion playback</h2>
+          <p>
+            Watch the pinned source and native recordings at normal speed, then
+            use the live controls above to interrupt, reverse and test reduced
+            motion.
+          </p>
+        </div>
+        <div class="videos">
+          <div class="video-card">
+            <h3>Pinned Compose spring</h3>
+            <video
+              controls
+              preload="metadata"
+              src="./evidence/compose-default-spatial.mp4"
+              aria-label="Pinned Compose spring recording"></video>
+          </div>
+          <div class="video-card">
+            <h3>Native browser spring</h3>
+            <video
+              controls
+              preload="metadata"
+              src="./evidence/native-motion.webm"
+              aria-label="Native spring recording"></video>
+          </div>
+          <div class="video-card">
+            <h3>Pinned Compose Ripple press</h3>
+            <video
+              controls
+              preload="metadata"
+              src="./evidence/ripple-compose-press.mp4"
+              aria-label="Pinned Compose Ripple press recording"></video>
+          </div>
+          <div class="video-card">
+            <h3>Pinned Compose Ripple state layer</h3>
+            <video
+              controls
+              preload="metadata"
+              src="./evidence/ripple-compose-state.mp4"
+              aria-label="Pinned Compose Ripple state recording"></video>
+          </div>
+        </div>
+      </section>
+      <p class="footnote">
+        Material foundation data and reference media © Google LLC and The
+        Android Open Source Project, Apache-2.0. Material Design Kit © Google,
+        CC BY 4.0. Roboto © Google, SIL Open Font License. Existing Astryx
+        implementation © Meta Platforms, Inc. and affiliates.
+      </p>
+    </main>
+    <script type="module">
+      const query = new URLSearchParams(location.search);
+      const scheme = document.querySelector('#scheme');
+      const direction = document.querySelector('#direction');
+      const frame = document.querySelector('#native-frame');
+      const revisionNode = document.querySelector('#revision');
+      const comparisons = document.querySelector('#comparisons');
+      const allowedSchemes = new Set(['light', 'dark', 'expressive-light']);
+      if (allowedSchemes.has(query.get('scheme')))
+        scheme.value = query.get('scheme');
+      let rtl = query.get('direction') === 'rtl';
+      let revision = 'local';
+      function updatePreview() {
+        document.body.dataset.mdScheme = scheme.value;
+        document.documentElement.dir = rtl ? 'rtl' : 'ltr';
+        direction.setAttribute('aria-pressed', String(rtl));
+        direction.textContent = `RTL layout: ${rtl ? 'on' : 'off'}`;
+        const params = new URLSearchParams({
+          revision,
+          scheme: scheme.value,
+          direction: rtl ? 'rtl' : 'ltr',
+        });
+        frame.src = `./fixtures/foundation.html?${params}`;
+      }
+      scheme.addEventListener('change', updatePreview);
+      direction.addEventListener('click', () => {
+        rtl = !rtl;
+        updatePreview();
+      });
+
+      const labels = new Map([
+        ['color', 'Color roles'],
+        ['typography', 'Typography'],
+        ['shape', 'Shape and Expressive geometry'],
+        ['spacing-density', 'Spacing and density'],
+        ['elevation', 'Elevation'],
+        ['icons', 'Icons'],
+        ['state-layers', 'State layers'],
+        ['motion', 'Motion frames'],
+      ]);
+      function image(url, alt, caption) {
+        const figure = document.createElement('figure');
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = alt;
+        img.loading = 'lazy';
+        const label = document.createElement('figcaption');
+        label.textContent = caption;
+        figure.append(img, label);
+        return figure;
+      }
+      function renderComparisons(manifest) {
+        comparisons.replaceChildren();
+        for (const [dimension, label] of labels) {
+          const entries = manifest.scenarios.filter(
+            item => item.dimension === dimension,
+          );
+          if (!entries.length) continue;
+          const details = document.createElement('details');
+          details.open = dimension === 'color' || dimension === 'motion';
+          const summary = document.createElement('summary');
+          summary.textContent = `${label} (${entries.length})`;
+          const cards = document.createElement('div');
+          cards.className = 'cards';
+          for (const item of entries) {
+            const card = document.createElement('article');
+            card.className = 'comparison';
+            const heading = document.createElement('h3');
+            heading.textContent = item.id.replaceAll('-', ' ');
+            const meta = document.createElement('p');
+            meta.className = 'meta';
+            meta.textContent = `${item.sourceReference} · ${item.changedPixels} changed pixels`;
+            const images = document.createElement('div');
+            images.className = 'images';
+            images.append(
+              image(
+                `./evidence/${item.files.source}`,
+                `${item.id} pinned source capture`,
+                'Pinned source',
+              ),
+              image(
+                `./evidence/${item.files.native}`,
+                `${item.id} native capture`,
+                `Native · ${manifest.capturedNativeRevision.slice(0, 9)}`,
+              ),
+            );
+            const diff = document.createElement('a');
+            diff.href = `./evidence/${item.files.diff}`;
+            diff.target = '_blank';
+            diff.rel = 'noopener noreferrer';
+            diff.textContent = 'Open measured difference image';
+            card.append(heading, meta, images, diff);
+            cards.append(card);
+          }
+          details.append(summary, cards);
+          comparisons.append(details);
+        }
+      }
+      try {
+        const [build, evidence] = await Promise.all([
+          fetch('./revision.json').then(response => response.json()),
+          fetch('./evidence/manifest.json').then(response => response.json()),
+        ]);
+        revision = build.revision;
+        revisionNode.textContent = `Current native build: ${revision}${build.dirty ? ' · local changes' : ''} · comparison capture: ${evidence.capturedNativeRevision}`;
+        renderComparisons(evidence);
+      } catch (error) {
+        revisionNode.textContent = 'Revision metadata unavailable';
+        comparisons.textContent = 'Comparison assets could not be loaded.';
+      }
+      updatePreview();
+    </script>
+  </body>
+</html>
