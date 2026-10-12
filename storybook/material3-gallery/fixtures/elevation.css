@@ -1,0 +1,34 @@
+/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--md-sys-color-surface-container-lowest);
+  color: var(--md-sys-color-on-surface);
+  font: 15px/1.5 Arial, sans-serif;
+}
+main { max-width: 1100px; margin: auto; padding: 24px; }
+h1, h2, p { margin: 0; }
+h1 { font-size: clamp(25px, 4vw, 38px); }
+h2 { font-size: 18px; }
+.eyebrow { color: var(--md-sys-color-primary); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+.intro { max-width: 70ch; color: var(--md-sys-color-on-surface-variant); }
+.source-line { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 8px; color: var(--md-sys-color-on-surface-variant); font-size: 12px; }
+.source-line a { color: var(--md-sys-color-primary); }
+.revision { margin-top: 8px; color: var(--md-sys-color-on-surface-variant); font: 12px/1.5 ui-monospace, monospace; overflow-wrap: anywhere; }
+fieldset { display: flex; flex-wrap: wrap; gap: 12px 18px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 12px; padding: 16px; margin: 20px 0; }
+legend { padding: 0 6px; font-weight: 700; }
+label { display: grid; gap: 4px; font-size: 13px; font-weight: 700; }
+select { min-height: 36px; border: 1px solid var(--md-sys-color-outline); border-radius: 7px; padding: 4px 8px; background: var(--md-sys-color-surface-container-lowest); color: var(--md-sys-color-on-surface); font: inherit; }
+.levels { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; padding: 22px 0 28px; }
+.sample { min-width: 0; padding: 18px; background: var(--md-sys-color-surface-container-low); border-radius: 20px; text-align: center; }
+.visual-owner { position: relative; display: grid; place-items: center; min-height: 74px; border-radius: var(--sample-radius); background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); }
+.sample p { margin-top: 14px; font-size: 13px; }
+.action-zone { padding: 18px; border: 1px solid var(--md-sys-color-outline-variant); border-radius: 20px; }
+.action-zone p { color: var(--md-sys-color-on-surface-variant); }
+.action-zone button { position: relative; min-height: 52px; margin-top: 22px; border: 0; border-radius: var(--sample-radius); padding: 0 20px; background: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); font: inherit; cursor: pointer; }
+.action-zone button:focus-visible { outline: 3px solid var(--md-sys-color-primary); outline-offset: 4px; }
+.action-zone button > span:last-child { position: relative; }
+.counter { margin-top: 14px; font-weight: 700; }
+.note { margin-top: 20px; color: var(--md-sys-color-on-surface-variant); }
+@media (max-width: 700px) { .levels { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 460px) { .levels { grid-template-columns: 1fr; } }
