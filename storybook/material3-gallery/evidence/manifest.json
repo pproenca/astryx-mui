@@ -1,0 +1,646 @@
+{
+  "schemaVersion": 1,
+  "capturedNativeRevision": "9fe75263aab78c67dbe5fe49ef30b95ca872ee27",
+  "composeCommit": "a095da93f8e98dea8748ceed79ea8427aade245f",
+  "webCommit": "cbd34a8921915af94d5ef65c2a69eece41d5b4f3",
+  "figmaSha256": "64fdc45c9f6dd6d4921aa33cbc2f431c16ee4ac6d2fabf27a24ac08035f9e468",
+  "scenarios": [
+    {
+      "id": "color-light",
+      "dimension": "color",
+      "sourceReference": "Pinned Compose ColorScheme and palette tokens",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; light",
+        "state": "static-role-map"
+      },
+      "files": {
+        "source": "color-light-source.png",
+        "native": "color-light-native.png",
+        "diff": "color-light-diff.png"
+      },
+      "sha256": {
+        "source": "4497067f81ff0bcb21bb655e63fff6256903c65fee2ada30cd5364883fff6239",
+        "native": "4497067f81ff0bcb21bb655e63fff6256903c65fee2ada30cd5364883fff6239",
+        "diff": "786b8ca727304fb29cc35a5002cba63292592c5175f9412dba10dc9e4151466f"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "color-dark",
+      "dimension": "color",
+      "sourceReference": "Pinned Compose ColorScheme and palette tokens",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "dark",
+        "content": "49 ordered Material color roles; dark",
+        "state": "static-role-map"
+      },
+      "files": {
+        "source": "color-dark-source.png",
+        "native": "color-dark-native.png",
+        "diff": "color-dark-diff.png"
+      },
+      "sha256": {
+        "source": "ed9774fee9a1e934a3d3266be5f8c66d76f14100af7c760d541e0e0f1652e6eb",
+        "native": "ed9774fee9a1e934a3d3266be5f8c66d76f14100af7c760d541e0e0f1652e6eb",
+        "diff": "786b8ca727304fb29cc35a5002cba63292592c5175f9412dba10dc9e4151466f"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "color-kit-light",
+      "dimension": "color",
+      "sourceReference": "Frozen Figma M3 mode values; Compose has no matching fixed mode map",
+      "environment": {
+        "browser": "deterministic RGBA source renderer",
+        "os": "portable",
+        "dpr": 1,
+        "viewport": {
+          "width": 224,
+          "height": 224
+        },
+        "fonts": [],
+        "theme": "light",
+        "content": "49 ordered Material color roles; kit-light",
+        "state": "static-role-map"
+      },
+      "files": {
+        "source": "color-kit-light-source.png",
+        "native": "color-kit-light-native.png",
+        "diff": "color-kit-light-diff.png"
+      },
+      "sha256": {
+        "source": "c97464595e176019503c471fb69dd6ae2f17c6c54ce9d2f0c928fd3e31771d39",
+        "native": "c97464595e176019503c471fb69dd6ae2f17c6c54ce9d2f0c928fd3e31771d39",
+        "diff": "786b8ca727304fb29cc35a5002cba63292592c5175f9412dba10dc9e4151466f"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "typography-light",
+      "dimension": "typography",
+      "sourceReference": "Pinned Compose baseline and emphasized TypographyTokens; licensed Roboto browser fixture",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1280,
+          "height": 1744
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "All 30 Compose type roles, Aa 0123456789",
+        "state": "static"
+      },
+      "files": {
+        "source": "typography-light-source.png",
+        "native": "typography-light-native.png",
+        "diff": "typography-light-diff.png"
+      },
+      "sha256": {
+        "source": "08601c2de84fd787e7e7d86dd380781b4c90dcf2b94a62924c4107152ad3252e",
+        "native": "5df51b162f228023cf66387f526d010fa6c730a96679a1ed9c6166a34ec99d47",
+        "diff": "f9c74df1b4bcee398362b3e269568f13f0b479bf36d51fddec05fab4c95d399f"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "typography-dark",
+      "dimension": "typography",
+      "sourceReference": "Pinned Compose baseline and emphasized TypographyTokens; licensed Roboto browser fixture",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1280,
+          "height": 1744
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "All 30 Compose type roles, Aa 0123456789",
+        "state": "static"
+      },
+      "files": {
+        "source": "typography-dark-source.png",
+        "native": "typography-dark-native.png",
+        "diff": "typography-dark-diff.png"
+      },
+      "sha256": {
+        "source": "aea5fa7e4de4b0e02800c19734e36912cc34001ac6b2204869c6d1f313a6dfd3",
+        "native": "074de15143b2e7ef28dd31b2b379ffd3331ece58affc63817459a1eec2f7198d",
+        "diff": "f9c74df1b4bcee398362b3e269568f13f0b479bf36d51fddec05fab4c95d399f"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "shape-expressive-light",
+      "dimension": "shape",
+      "sourceReference": "Pinned Compose MaterialShapes compiled cubics; kit 35-variant mapping",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1540,
+          "height": 1100
+        },
+        "fonts": [
+          {
+            "family": "Arial",
+            "purpose": "index labels only"
+          }
+        ],
+        "theme": "light",
+        "content": "All 35 compiled Compose MaterialShapes cubics",
+        "state": "static-expressive-shapes"
+      },
+      "files": {
+        "source": "shape-expressive-light-source.png",
+        "native": "shape-expressive-light-native.png",
+        "diff": "shape-expressive-light-diff.png"
+      },
+      "sha256": {
+        "source": "db0f8615a1f635bd3fc629a0a8ce0d1091bf7fcc1f44f9128bf8cf51d1187e73",
+        "native": "545edeefed33636973e73189152e0263cb77fe4d8dfd7690bfbdd9731f917db6",
+        "diff": "b806afbc7b492f6ff09dede16a4923ecadb364b7e18187059c4e14aee3538b49"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "shape-expressive-dark",
+      "dimension": "shape",
+      "sourceReference": "Pinned Compose MaterialShapes compiled cubics; kit 35-variant mapping",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1540,
+          "height": 1100
+        },
+        "fonts": [
+          {
+            "family": "Arial",
+            "purpose": "index labels only"
+          }
+        ],
+        "theme": "dark",
+        "content": "All 35 compiled Compose MaterialShapes cubics",
+        "state": "static-expressive-shapes"
+      },
+      "files": {
+        "source": "shape-expressive-dark-source.png",
+        "native": "shape-expressive-dark-native.png",
+        "diff": "shape-expressive-dark-diff.png"
+      },
+      "sha256": {
+        "source": "0ff6812d5dba50d5997d3510d5fb14cfc3fdc1ad9753653ded0ee0b83a7d0c76",
+        "native": "65eddb5b598419b835e93455357638aee8c8ccaddd623c6b4edafebc720c4fcd",
+        "diff": "b806afbc7b492f6ff09dede16a4923ecadb364b7e18187059c4e14aee3538b49"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "spacing-density-light",
+      "dimension": "spacing-density",
+      "sourceReference": "Pinned Compose baseline/expressive Button and TextField defaults",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 640
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Button and TextField default geometry diagrams",
+        "state": "static"
+      },
+      "files": {
+        "source": "spacing-density-light-source.png",
+        "native": "spacing-density-light-native.png",
+        "diff": "spacing-density-light-diff.png"
+      },
+      "sha256": {
+        "source": "b1c884485e2026701ee13b758a17a77e24cb031625d4264b7ba2f99d6e9d3170",
+        "native": "6f51318394501a74498a48635cb87a07cc56e697847573f31cbfb3a99430775b",
+        "diff": "d4c655a3ed9fae83f79d137912ad5d2067757731cde6a1fdf7950afa4d3e3a8f"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "spacing-density-rtlDark",
+      "dimension": "spacing-density",
+      "sourceReference": "Pinned Compose baseline/expressive Button and TextField defaults",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 640
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Button and TextField default geometry diagrams",
+        "state": "static-rtl",
+        "direction": "rtl"
+      },
+      "files": {
+        "source": "spacing-density-rtlDark-source.png",
+        "native": "spacing-density-rtlDark-native.png",
+        "diff": "spacing-density-rtlDark-diff.png"
+      },
+      "sha256": {
+        "source": "f4f818a5545135bac002c9f9fe4d410583d7e2af4c567712f3603e6f3837da73",
+        "native": "95c097e3f0cf24a3b25f593a18c8758e7a8a875fb6372f36da9125cb166489ed",
+        "diff": "d4c655a3ed9fae83f79d137912ad5d2067757731cde6a1fdf7950afa4d3e3a8f"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "elevation-light",
+      "dimension": "elevation",
+      "sourceReference": "Pinned Compose tonal elevation formula and independent browser shadow geometry",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1280,
+          "height": 760
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Levels 0–5, nested tonal surface, browser shadow",
+        "state": "static"
+      },
+      "files": {
+        "source": "elevation-light-source.png",
+        "native": "elevation-light-native.png",
+        "diff": "elevation-light-diff.png"
+      },
+      "sha256": {
+        "source": "abc594faeade33f7ab69b0ff53e6201dfb86c1001f042c3418fe4e41b28569a6",
+        "native": "f5cb81e64d126e19f4f9f83d15c99afa773a45c7a5be7eaa0ad279bebba6d7c3",
+        "diff": "dca6f8ba4e73ba098e6257173d5d77224d00c88578259379c9996b9ec8987ae3"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "elevation-dark",
+      "dimension": "elevation",
+      "sourceReference": "Pinned Compose tonal elevation formula and independent browser shadow geometry",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1280,
+          "height": 760
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Levels 0–5, nested tonal surface, browser shadow",
+        "state": "static"
+      },
+      "files": {
+        "source": "elevation-dark-source.png",
+        "native": "elevation-dark-native.png",
+        "diff": "elevation-dark-diff.png"
+      },
+      "sha256": {
+        "source": "0055ac6dfe15f85718699ed047e9509947ba9db84ca8c1605546fa02be5bd3d3",
+        "native": "c8e95de892a06d59787d01c267f6710f2d60920391fb7a303774a0684554f563",
+        "diff": "dca6f8ba4e73ba098e6257173d5d77224d00c88578259379c9996b9ec8987ae3"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "state-layers-light",
+      "dimension": "state-layers",
+      "sourceReference": "Pinned Compose StateTokens, Ripple and filled Button binding; kit state styles",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 560
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Generic OnSurface states and filled Button states",
+        "state": "rest-hover-focus-pressed-dragged-disabled"
+      },
+      "files": {
+        "source": "state-layers-light-source.png",
+        "native": "state-layers-light-native.png",
+        "diff": "state-layers-light-diff.png"
+      },
+      "sha256": {
+        "source": "ea98b4913beb1ffc8672fb85c726b55d0324f1fe84b1066a7d01059c4f5d6fd3",
+        "native": "fbdf085bd0a7099f7bc5946ada159221ad520b2f3efdc631176926a869416342",
+        "diff": "248e9d874df70700b2648c5c09fd8a484e1410159d3c485290d8d81aff5d2c2d"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "state-layers-dark",
+      "dimension": "state-layers",
+      "sourceReference": "Pinned Compose StateTokens, Ripple and filled Button binding; kit state styles",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 560
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Generic OnSurface states and filled Button states",
+        "state": "rest-hover-focus-pressed-dragged-disabled"
+      },
+      "files": {
+        "source": "state-layers-dark-source.png",
+        "native": "state-layers-dark-native.png",
+        "diff": "state-layers-dark-diff.png"
+      },
+      "sha256": {
+        "source": "92e11378ae6350c4acf705d22fc35f330ba34b5429cee62c0a8d0d759864fe46",
+        "native": "f2bd48746954f0d1756073e635780acd32ad4a3ea75d2fe703954041c62bd439",
+        "diff": "248e9d874df70700b2648c5c09fd8a484e1410159d3c485290d8d81aff5d2c2d"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "icons-light",
+      "dimension": "icons",
+      "sourceReference": "Pinned Compose Icon fallback/tint; Google Material Symbols artwork gap fill",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 640
+        },
+        "fonts": [
+          {
+            "family": "Material Symbols Outlined",
+            "sha256": "c5c96fcb27145d17a04cb2fa68d33921ca4258c6bb2cf6fac8b1bce401595e57",
+            "loaded": true
+          },
+          {
+            "family": "Material Symbols Rounded",
+            "sha256": "0865c62d7fda358cd4cdb77792b758afa66fae2c4159fa3fb04a2c1d05700e9e",
+            "loaded": true
+          },
+          {
+            "family": "Material Symbols Sharp",
+            "sha256": "2349783253d47d2d1b92ab63dd4284988f05e73459aa9c8f6e9a78ed360101c9",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "close, check and search in three font families plus pinned SVG paths",
+        "state": "static-glyph-samples"
+      },
+      "files": {
+        "source": "icons-light-source.png",
+        "native": "icons-light-native.png",
+        "diff": "icons-light-diff.png"
+      },
+      "sha256": {
+        "source": "676e66b5834757533369cbd22d1b3d71f424a9aa7f04e48a9b13ae7f2224c9bf",
+        "native": "676e66b5834757533369cbd22d1b3d71f424a9aa7f04e48a9b13ae7f2224c9bf",
+        "diff": "d4c655a3ed9fae83f79d137912ad5d2067757731cde6a1fdf7950afa4d3e3a8f"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "icons-dark",
+      "dimension": "icons",
+      "sourceReference": "Pinned Compose Icon fallback/tint; Google Material Symbols artwork gap fill",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 640
+        },
+        "fonts": [
+          {
+            "family": "Material Symbols Outlined",
+            "sha256": "c5c96fcb27145d17a04cb2fa68d33921ca4258c6bb2cf6fac8b1bce401595e57",
+            "loaded": true
+          },
+          {
+            "family": "Material Symbols Rounded",
+            "sha256": "0865c62d7fda358cd4cdb77792b758afa66fae2c4159fa3fb04a2c1d05700e9e",
+            "loaded": true
+          },
+          {
+            "family": "Material Symbols Sharp",
+            "sha256": "2349783253d47d2d1b92ab63dd4284988f05e73459aa9c8f6e9a78ed360101c9",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "close, check and search in three font families plus pinned SVG paths",
+        "state": "static-glyph-samples"
+      },
+      "files": {
+        "source": "icons-dark-source.png",
+        "native": "icons-dark-native.png",
+        "diff": "icons-dark-diff.png"
+      },
+      "sha256": {
+        "source": "6f62cbf88cfdf4d902f126e8add4ed3010e7af14c0ca16aa1154b3d8ac34cc17",
+        "native": "6f62cbf88cfdf4d902f126e8add4ed3010e7af14c0ca16aa1154b3d8ac34cc17",
+        "diff": "d4c655a3ed9fae83f79d137912ad5d2067757731cde6a1fdf7950afa4d3e3a8f"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "motion-light",
+      "dimension": "motion",
+      "sourceReference": "Pinned Kotlin SpringSimulation traces and watched Material guidance clips",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 520
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Standard and Expressive default spatial positions at 0, 120, 260, 600, 900 and 1380 ms",
+        "state": "retargeted-reversed-upstream-trace"
+      },
+      "files": {
+        "source": "motion-light-source.png",
+        "native": "motion-light-native.png",
+        "diff": "motion-light-diff.png"
+      },
+      "sha256": {
+        "source": "bce2b1a730268c2376635b074dd5b78c4ff7df41ae974e9db3e0c3d4ffcd833c",
+        "native": "14a61ebb0608777ac2311a0c33f04f3319c944ac67b2c4e212ed19ea0d73831c",
+        "diff": "37517de34c6d0830f5d962e27e5409303a67e6f60163d9ac1fc0eccdc9455085"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "motion-dark",
+      "dimension": "motion",
+      "sourceReference": "Pinned Kotlin SpringSimulation traces and watched Material guidance clips",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 520
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "dark",
+        "content": "Standard and Expressive default spatial positions at 0, 120, 260, 600, 900 and 1380 ms",
+        "state": "retargeted-reversed-upstream-trace"
+      },
+      "files": {
+        "source": "motion-dark-source.png",
+        "native": "motion-dark-native.png",
+        "diff": "motion-dark-diff.png"
+      },
+      "sha256": {
+        "source": "01e0b6a80febb4997e107fcab88f12f832ca20f7b8f1de594cb9d185ad53f6e0",
+        "native": "406e33cd7e99159ee424a95ff4bd33dbc0c8459114c17b5083f9d0c0a7e42a8e",
+        "diff": "37517de34c6d0830f5d962e27e5409303a67e6f60163d9ac1fc0eccdc9455085"
+      },
+      "changedPixels": 0
+    },
+    {
+      "id": "motion-light-260",
+      "dimension": "motion",
+      "sourceReference": "Pinned Kotlin SpringSimulation start, intermediate and settled panel from the source contact sheet",
+      "environment": {
+        "browser": "Chrome 153.0.8010.53",
+        "os": "darwin 27.0.0",
+        "dpr": 1,
+        "viewport": {
+          "width": 1180,
+          "height": 520
+        },
+        "fonts": [
+          {
+            "file": "packages/themes/material3/scripts/fonts/Roboto-wdth-wght.ttf",
+            "sha256": "d7598e12c5dbef095ff8272cfc55da0250bd07fbdecbac8a530b9b277872a134",
+            "loaded": true
+          }
+        ],
+        "theme": "light",
+        "content": "Standard and Expressive default spatial positions at 260 ms",
+        "state": "retargeted-reversed-upstream-trace-panel",
+        "captureRegion": {
+          "x": 786,
+          "y": 96,
+          "width": 363,
+          "height": 170
+        }
+      },
+      "files": {
+        "source": "motion-light-260-source.png",
+        "native": "motion-light-260-native.png",
+        "diff": "motion-light-260-diff.png"
+      },
+      "sha256": {
+        "source": "c55d89f3f00b27db1b67a1d68a5fd7e7d48d0766194a1450422b80b7070ea9c1",
+        "native": "c55d89f3f00b27db1b67a1d68a5fd7e7d48d0766194a1450422b80b7070ea9c1",
+        "diff": "294c6058de67ca43e68edf51a320d392f0a60f1854dff551cd7a9f710f68d75b"
+      },
+      "changedPixels": 0
+    }
+  ]
+}
