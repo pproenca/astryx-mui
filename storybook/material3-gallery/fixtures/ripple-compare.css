@@ -1,0 +1,15 @@
+/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+@font-face { font-family: SourceRoboto; src: url('./fonts/Roboto-wdth-wght.ttf') format('truetype'); font-weight: 100 900; }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 960px; height: 360px; }
+body { background: var(--md-sys-color-surface); color: var(--md-sys-color-on-surface); font: 16px/24px SourceRoboto, sans-serif; }
+main { padding: 24px 36px; }
+h1 { font-size: 22px; line-height: 30px; margin: 0 0 5px; }
+p { font-size: 13px; line-height: 20px; margin: 0 0 20px; }
+.row { display: flex; gap: 48px; }
+.sample { width: 300px; text-align: center; }
+.target { position: relative; width: 220px; height: 92px; margin: 0 auto; background: var(--md-sys-color-surface-container-low); color: var(--md-sys-color-on-surface); }
+.bounded { overflow: hidden; }
+.unbounded { overflow: visible; }
+.label { font-size: 13px; margin-top: 16px; }
+.legend { font-size: 12px; margin-top: 26px; line-height: 20px; }

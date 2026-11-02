@@ -1,0 +1,18 @@
+/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+@font-face { font-family: SourceRoboto; src: url('./fonts/Roboto-wdth-wght.ttf') format('truetype'); font-weight: 100 900; }
+body[data-md-scheme="light"] { --comparison-backdrop: #ffffff; --comparison-surface: #fef7ff; --comparison-on-surface: #1d1b20; --comparison-primary: #6750a4; --comparison-on-primary: #ffffff; }
+body[data-md-scheme="dark"] { --comparison-backdrop: #0f0d13; --comparison-surface: #141218; --comparison-on-surface: #e6e0e9; --comparison-primary: #d0bcff; --comparison-on-primary: #381e72; }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 960px; height: 360px; }
+body { background: var(--comparison-backdrop); color: var(--comparison-on-surface); font: 16px/24px SourceRoboto, sans-serif; }
+main { padding: 24px 36px; }
+h1 { font-size: 22px; line-height: 30px; margin: 0 0 5px; }
+p { font-size: 13px; line-height: 20px; margin: 0 0 20px; }
+.row { display: flex; gap: 48px; }
+.sample { width: 300px; text-align: center; }
+.target { position: relative; width: 220px; height: 92px; margin: 0 auto; overflow: hidden; outline: none; }
+.generic { background: var(--comparison-surface); color: var(--comparison-on-surface); }
+.button { background: var(--comparison-primary); border-radius: 46px; color: var(--comparison-on-primary); overflow: visible; }
+.label { font-size: 13px; margin-top: 16px; }
+.button-label { position: relative; display: block; padding-top: 34px; }
+.legend { font-size: 12px; margin-top: 26px; line-height: 20px; }
