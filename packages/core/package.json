@@ -720,6 +720,6 @@
     "@types/babel__core": "^7.20.5"
   },
   "dependencies": {
-    "intl-messageformat": "^11.2.9"
+    "intl-messageformat": "^12.1.4"
   }
 }
