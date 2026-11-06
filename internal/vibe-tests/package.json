@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@astryxdesign/cli": "*",
-    "commander": "^12.1.0"
+    "commander": "^15.0.0"
   },
   "devDependencies": {
     "@radix-ui/react-avatar": "^1.2.0",
