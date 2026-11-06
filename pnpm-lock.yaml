@@ -187,34 +187,34 @@ importers:
         version: link:../../packages/cli
       '@astryxdesign/core':
         specifier: '*'
-        version: link:../../packages/core
+        version: 0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@astryxdesign/lab':
         specifier: '*'
         version: link:../../packages/lab
       '@astryxdesign/richtext':
         specifier: '*'
-        version: link:../../packages/richtext
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(@lexical/headless@0.46.0(typescript@6.0.3))(@lexical/markdown@0.46.0(typescript@6.0.3))(@lexical/react@0.46.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3)(yjs@13.6.31))(@stylexjs/stylex@0.19.0)(lexical@0.46.0(typescript@6.0.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-butter':
         specifier: '*'
-        version: link:../../packages/themes/butter
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-gothic':
         specifier: '*'
-        version: link:../../packages/themes/gothic
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-matcha':
         specifier: '*'
-        version: link:../../packages/themes/matcha
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-material3':
         specifier: '*'
         version: link:../../packages/themes/material3
       '@astryxdesign/theme-neutral':
         specifier: '*'
-        version: link:../../packages/themes/neutral
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-stone':
         specifier: '*'
-        version: link:../../packages/themes/stone
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-y2k':
         specifier: '*'
-        version: link:../../packages/themes/y2k
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/vega':
         specifier: '*'
         version: link:../../packages/vega
@@ -323,31 +323,31 @@ importers:
         version: link:../../packages/cli
       '@astryxdesign/core':
         specifier: '*'
-        version: link:../../packages/core
+        version: 0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@astryxdesign/lab':
         specifier: '*'
         version: link:../../packages/lab
       '@astryxdesign/theme-butter':
         specifier: '*'
-        version: link:../../packages/themes/butter
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-chocolate':
         specifier: '*'
-        version: link:../../packages/themes/chocolate
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-gothic':
         specifier: '*'
-        version: link:../../packages/themes/gothic
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-matcha':
         specifier: '*'
-        version: link:../../packages/themes/matcha
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-neutral':
         specifier: '*'
-        version: link:../../packages/themes/neutral
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-stone':
         specifier: '*'
-        version: link:../../packages/themes/stone
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-y2k':
         specifier: '*'
-        version: link:../../packages/themes/y2k
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@heroicons/react':
         specifier: ^2.2.0
         version: 2.2.0(react@19.2.7)
@@ -369,7 +369,7 @@ importers:
     devDependencies:
       '@astryxdesign/build':
         specifier: '*'
-        version: link:../../packages/build
+        version: 0.7.9(@babel/core@7.29.7)(@stylexjs/babel-plugin@0.19.0)(@stylexjs/unplugin@0.19.0(unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.1.4)(rollup@4.62.2)(vite@8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.0)(yaml@2.9.0))))(postcss@8.5.25)(vite@8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.0)(yaml@2.9.0))
       '@babel/runtime':
         specifier: ^7.29.7
         version: 7.29.7
@@ -392,8 +392,8 @@ importers:
         specifier: ^5.2.0
         version: 5.2.0(vite@8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.0)(yaml@2.9.0))
       commander:
-        specifier: ^12.1.0
-        version: 12.1.0
+        specifier: ^15.0.0
+        version: 15.0.0
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -411,40 +411,40 @@ importers:
         version: link:../../packages/charts
       '@astryxdesign/core':
         specifier: '*'
-        version: link:../../packages/core
+        version: 0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@astryxdesign/lab':
         specifier: '*'
         version: link:../../packages/lab
       '@astryxdesign/richtext':
         specifier: '*'
-        version: link:../../packages/richtext
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(@lexical/headless@0.46.0(typescript@6.0.3))(@lexical/markdown@0.46.0(typescript@6.0.3))(@lexical/react@0.46.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3)(yjs@13.6.31))(@stylexjs/stylex@0.19.0)(lexical@0.46.0(typescript@6.0.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-butter':
         specifier: '*'
-        version: link:../../packages/themes/butter
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-chocolate':
         specifier: '*'
-        version: link:../../packages/themes/chocolate
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-gothic':
         specifier: '*'
-        version: link:../../packages/themes/gothic
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-matcha':
         specifier: '*'
-        version: link:../../packages/themes/matcha
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-material3':
         specifier: '*'
         version: link:../../packages/themes/material3
       '@astryxdesign/theme-neutral':
         specifier: '*'
-        version: link:../../packages/themes/neutral
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-probe':
         specifier: '*'
         version: link:../../packages/themes/probe
       '@astryxdesign/theme-stone':
         specifier: '*'
-        version: link:../../packages/themes/stone
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-y2k':
         specifier: '*'
-        version: link:../../packages/themes/y2k
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@astryxdesign/vega':
         specifier: '*'
         version: link:../../packages/vega
@@ -469,7 +469,7 @@ importers:
     devDependencies:
       '@astryxdesign/build':
         specifier: '*'
-        version: link:../../packages/build
+        version: 0.7.9(@babel/core@7.29.7)(@stylexjs/babel-plugin@0.19.0)(@stylexjs/unplugin@0.19.0(unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.1.4)(rollup@4.62.2)(vite@8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.0)(yaml@2.9.0))))(postcss@8.5.25)(vite@8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.0)(yaml@2.9.0))
       '@heroicons/react':
         specifier: ^2.2.0
         version: 2.2.0(react@19.2.7)
@@ -514,10 +514,10 @@ importers:
     dependencies:
       '@astryxdesign/core':
         specifier: '*'
-        version: link:../../packages/core
+        version: 0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@astryxdesign/theme-neutral':
         specifier: '*'
-        version: link:../../packages/themes/neutral
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@heroicons/react':
         specifier: ^2.2.0
         version: 2.2.0(react@19.2.7)
@@ -536,7 +536,7 @@ importers:
     devDependencies:
       '@astryxdesign/build':
         specifier: '*'
-        version: link:../../packages/build
+        version: 0.7.9(@babel/core@7.29.7)(@stylexjs/babel-plugin@0.19.0)(@stylexjs/unplugin@0.19.0(unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.1.4)(rollup@4.62.2)(vite@8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.0)(yaml@2.9.0))))(postcss@8.5.25)(vite@8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.0)(yaml@2.9.0))
       '@stylexjs/unplugin':
         specifier: ^0.19.0
         version: 0.19.0(unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.1.4)(rollup@4.62.2)(vite@8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.0)(yaml@2.9.0)))
@@ -596,8 +596,8 @@ importers:
         specifier: '*'
         version: link:../../packages/cli
       commander:
-        specifier: ^12.1.0
-        version: 12.1.0
+        specifier: ^15.0.0
+        version: 15.0.0
     devDependencies:
       '@radix-ui/react-avatar':
         specifier: ^1.2.0
@@ -782,8 +782,8 @@ importers:
         specifier: 0.16.3
         version: 0.16.3
       commander:
-        specifier: ^12.1.0
-        version: 12.1.0
+        specifier: ^15.0.0
+        version: 15.0.0
       jiti:
         specifier: ^2.7.0
         version: 2.7.0
@@ -811,13 +811,13 @@ importers:
         version: link:../charts
       '@astryxdesign/core':
         specifier: '*'
-        version: link:../core
+        version: 0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       '@astryxdesign/lab':
         specifier: '*'
         version: link:../lab
       '@astryxdesign/theme-neutral':
         specifier: '*'
-        version: link:../themes/neutral
+        version: 0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       '@heroicons/react':
         specifier: ^2.2.0
         version: 2.2.0(react@19.2.7)
@@ -1290,6 +1290,116 @@ packages:
 
   '@asamuzakjp/nwsapi@2.3.9':
     resolution: {integrity: sha512-n8GuYSrI9bF7FFZ/SjhwevlHc8xaVlb/7HmHelnc/PZXBD2ZR49NnN9sMMuDdEGPeeRQ5d0hqlSlEpgCX3Wl0Q==}
+
+  '@astryxdesign/build@0.7.9':
+    resolution: {integrity: sha512-R+wNyIe++mfnJQeZTt+mo9q3apQl4kJy4tWTMEMeaYXIf4ni2uXuL+CB3o5UlzL7eW+hPHCyUyXOPROWVSDpGg==}
+    peerDependencies:
+      '@babel/core': '>=7.0.0'
+      '@stylexjs/babel-plugin': '>=0.18.0'
+      '@stylexjs/unplugin': '>=0.18.0'
+      vite: ^8.1.3
+    peerDependenciesMeta:
+      '@stylexjs/unplugin':
+        optional: true
+      vite:
+        optional: true
+
+  '@astryxdesign/core@0.7.9':
+    resolution: {integrity: sha512-U+O96XMUJZ/agofF6+8UucjV1U9XTb8FfSvuJhOAVZfJSqzMWWmFg8ERUionMTt9ThHHdjeZE8SGDamnO5L/ig==}
+    peerDependencies:
+      '@stylexjs/stylex': ^0.19.0
+      react: '>=19.0.0'
+      react-dom: '>=19.0.0'
+
+  '@astryxdesign/richtext@0.7.9':
+    resolution: {integrity: sha512-/NgHc8GTD9+8JGLZkje6/+dlKkKPWU9ZdCyHUaksMqGdhXZu8u0nV7LR8da9fCQ2dZv9+PTVNeinOzrSgBDuHQ==}
+    peerDependencies:
+      '@astryxdesign/core': 0.7.9
+      '@lexical/code': ^0.52.0
+      '@lexical/extension': ^0.52.0
+      '@lexical/headless': ^0.52.0
+      '@lexical/html': ^0.52.0
+      '@lexical/link': ^0.52.0
+      '@lexical/list': ^0.52.0
+      '@lexical/markdown': ^0.52.0
+      '@lexical/react': ^0.52.0
+      '@lexical/rich-text': ^0.52.0
+      '@lexical/selection': ^0.52.0
+      '@lexical/table': ^0.52.0
+      '@lexical/utils': ^0.52.0
+      '@stylexjs/stylex': '>=0.10.0'
+      lexical: ^0.52.0
+      react: '>=19.0.0'
+      react-dom: '>=19.0.0'
+    peerDependenciesMeta:
+      '@lexical/code':
+        optional: true
+      '@lexical/extension':
+        optional: true
+      '@lexical/headless':
+        optional: true
+      '@lexical/html':
+        optional: true
+      '@lexical/link':
+        optional: true
+      '@lexical/list':
+        optional: true
+      '@lexical/markdown':
+        optional: true
+      '@lexical/react':
+        optional: true
+      '@lexical/rich-text':
+        optional: true
+      '@lexical/selection':
+        optional: true
+      '@lexical/table':
+        optional: true
+      '@lexical/utils':
+        optional: true
+      lexical:
+        optional: true
+
+  '@astryxdesign/theme-butter@0.7.9':
+    resolution: {integrity: sha512-1OSSOz0tvQb/0kJoZwHXiofBR19QLLMUsPb9vXTVG8VLXkXf/D1CuwQg86YSggFI/l5IMPqQVpwVdsmoLRbZvA==}
+    peerDependencies:
+      '@astryxdesign/core': 0.7.9
+      react: '>=19'
+
+  '@astryxdesign/theme-chocolate@0.7.9':
+    resolution: {integrity: sha512-YzoThykCZEarAz45cDfaagXA5N4hKU/R/gYAf23Mdlpr9kqPwNyGOg5LaDGFOa6eCQ3RtaF8kNGEhjYG5cTP+w==}
+    peerDependencies:
+      '@astryxdesign/core': 0.7.9
+      react: '>=19'
+
+  '@astryxdesign/theme-gothic@0.7.9':
+    resolution: {integrity: sha512-ADzTh12EteA9S9Kdf0sS2qlz8m6V/J5+YXFT5DV14j0V17Zw5NmkNcgZvZjyNkZUfI1Uv4VoM1h7NtliMlc+zA==}
+    peerDependencies:
+      '@astryxdesign/core': 0.7.9
+      react: '>=19'
+
+  '@astryxdesign/theme-matcha@0.7.9':
+    resolution: {integrity: sha512-wc9xunwnpNf9lPLLYFCsFmuOiaF+ptdtExceVOr/GixCnj1fVV1pIvgraAm+numyRXmFl/fbxFWLnhVWMshlxA==}
+    peerDependencies:
+      '@astryxdesign/core': 0.7.9
+      react: '>=19'
+
+  '@astryxdesign/theme-neutral@0.7.9':
+    resolution: {integrity: sha512-7Hz276EKw55Ym4AuY8LJxDpgKpkIkZl6VDvk07C4SKHvc3G/hrU/XixnqTXS0AF/ntVpgmmPPvXf1RzmInPd6w==}
+    peerDependencies:
+      '@astryxdesign/core': 0.7.9
+      react: '>=19'
+
+  '@astryxdesign/theme-stone@0.7.9':
+    resolution: {integrity: sha512-XWTuXVoWrAu/3AVb8GuLkrq3Y9qmV5fvChh8Ps9z0da1QEnYb6JvQQ7swe19G79zq4E9XD2SQyBWTwM8PMFQSQ==}
+    peerDependencies:
+      '@astryxdesign/core': 0.7.9
+      react: '>=19'
+
+  '@astryxdesign/theme-y2k@0.7.9':
+    resolution: {integrity: sha512-gol2GP0XjY89rVkAlm8jw/hiz/l2tetousbAhWnZS35Pym3ja7VsfUlvqTqa28Mny83mw6c49qyxJDYZx8jc6g==}
+    peerDependencies:
+      '@astryxdesign/core': 0.7.9
+      react: '>=19'
 
   '@axe-core/playwright@4.12.1':
     resolution: {integrity: sha512-rMd7xriptqKpP+w5265i4Hdkv2X5kbu6uiBi/B2I7uf3hieRBM3qDCfaKPtxfiYb2mKXfF+yLODJwIx+Jv1GDw==}
@@ -4329,13 +4439,13 @@ packages:
     resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
     engines: {node: '>=16'}
 
-  commander@12.1.0:
-    resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
-    engines: {node: '>=18'}
-
   commander@14.0.3:
     resolution: {integrity: sha512-H+y0Jo/T1RZ9qPP4Eh1pkcQcLRglraJaSLoyOtHxu6AapkjWVCy2Sit1QQ4x3Dng8qDlSsZEet7g5Pq06MvTgw==}
     engines: {node: '>=20'}
+
+  commander@15.0.0:
+    resolution: {integrity: sha512-z67u4ZhzCL/Tydu1lJARtEZYWbWaN7oYLHbsuzocr6y4N6WZAagG3RQ4FW61V1/0+jImpj293XfrcYnd1qxtPg==}
+    engines: {node: '>=22.12.0'}
 
   commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
@@ -7134,6 +7244,83 @@ snapshots:
       lru-cache: 11.5.2
 
   '@asamuzakjp/nwsapi@2.3.9': {}
+
+  '@astryxdesign/build@0.7.9(@babel/core@7.29.7)(@stylexjs/babel-plugin@0.19.0)(@stylexjs/unplugin@0.19.0(unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.1.4)(rollup@4.62.2)(vite@8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.0)(yaml@2.9.0))))(postcss@8.5.25)(vite@8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.0)(yaml@2.9.0))':
+    dependencies:
+      '@babel/core': 7.29.7
+      '@stylexjs/babel-plugin': 0.19.0
+      autoprefixer: 10.5.2(postcss@8.5.25)
+      browserslist: 4.28.4
+      fast-glob: 3.3.3
+      glob-parent: 6.0.2
+      is-glob: 4.0.3
+      lightningcss: 1.32.0
+    optionalDependencies:
+      '@stylexjs/unplugin': 0.19.0(unplugin@3.3.0(esbuild@0.28.1)(rolldown@1.1.4)(rollup@4.62.2)(vite@8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.0)(yaml@2.9.0)))
+      vite: 8.1.3(@types/node@25.9.4)(esbuild@0.28.1)(jiti@2.7.0)(tsx@4.23.0)(yaml@2.9.0)
+    transitivePeerDependencies:
+      - postcss
+
+  '@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      '@stylexjs/stylex': 0.19.0
+      intl-messageformat: 11.2.9
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
+
+  '@astryxdesign/richtext@0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(@lexical/headless@0.46.0(typescript@6.0.3))(@lexical/markdown@0.46.0(typescript@6.0.3))(@lexical/react@0.46.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3)(yjs@13.6.31))(@stylexjs/stylex@0.19.0)(lexical@0.46.0(typescript@6.0.3))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      '@astryxdesign/core': 0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      '@stylexjs/stylex': 0.19.0
+      react: 19.2.7
+      react-dom: 19.2.7(react@19.2.7)
+    optionalDependencies:
+      '@lexical/headless': 0.46.0(typescript@6.0.3)
+      '@lexical/markdown': 0.46.0(typescript@6.0.3)
+      '@lexical/react': 0.46.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)(typescript@6.0.3)(yjs@13.6.31)
+      lexical: 0.46.0(typescript@6.0.3)
+
+  '@astryxdesign/theme-butter@0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      '@astryxdesign/core': 0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      lucide-react: 1.23.0(react@19.2.7)
+      react: 19.2.7
+
+  '@astryxdesign/theme-chocolate@0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      '@astryxdesign/core': 0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      lucide-react: 1.23.0(react@19.2.7)
+      react: 19.2.7
+
+  '@astryxdesign/theme-gothic@0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      '@astryxdesign/core': 0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      lucide-react: 1.23.0(react@19.2.7)
+      react: 19.2.7
+
+  '@astryxdesign/theme-matcha@0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      '@astryxdesign/core': 0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      lucide-react: 1.23.0(react@19.2.7)
+      react: 19.2.7
+
+  '@astryxdesign/theme-neutral@0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      '@astryxdesign/core': 0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      lucide-react: 1.23.0(react@19.2.7)
+      react: 19.2.7
+
+  '@astryxdesign/theme-stone@0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      '@astryxdesign/core': 0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      lucide-react: 1.23.0(react@19.2.7)
+      react: 19.2.7
+
+  '@astryxdesign/theme-y2k@0.7.9(@astryxdesign/core@0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)':
+    dependencies:
+      '@astryxdesign/core': 0.7.9(@stylexjs/stylex@0.19.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      lucide-react: 1.23.0(react@19.2.7)
+      react: 19.2.7
 
   '@axe-core/playwright@4.12.1(playwright-core@1.61.1)':
     dependencies:
@@ -10122,9 +10309,9 @@ snapshots:
 
   commander@11.1.0: {}
 
-  commander@12.1.0: {}
-
   commander@14.0.3: {}
+
+  commander@15.0.0: {}
 
   commander@2.20.3: {}
 
