@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "repository": "pproenca/astryx-mui",
+  "pullRequest": {
+    "number": 61,
+    "headSha": "c48717c9bede281cafa132f5f278781ce199eed2",
+    "headRef": "dependabot/npm_and_yarn/babel/core-8.0.10",
+    "headRepository": "pproenca/astryx-mui",
+    "headRepositoryId": "1387564506"
+  },
+  "sourceRun": {
+    "id": 42219320755,
+    "attempt": 1,
+    "conclusion": "failure"
+  },
+  "targets": {
+    "storybook": {
+      "available": false,
+      "path": "pr/61/",
+      "indexSha256": null
+    },
+    "sandbox": {
+      "available": false,
+      "path": "pr/61/sandbox/",
+      "indexSha256": null
+    }
+  }
+}
