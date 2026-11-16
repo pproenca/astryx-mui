@@ -1,0 +1,126 @@
+/* Copyright (c) Meta Platforms, Inc. and affiliates. */
+@font-face {
+  font-family: Roboto;
+  src: url('./fonts/Roboto-wdth-wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-display: swap;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: Roboto, Arial, sans-serif;
+  background: var(--md-sys-color-surface);
+  color: var(--md-sys-color-on-surface);
+}
+main {
+  max-width: 980px;
+  margin: auto;
+  padding: 32px 40px 80px;
+}
+h1 {
+  margin: 0 0 8px;
+  font-size: 32px;
+}
+h2 {
+  margin: 0 0 12px;
+  font-size: 21px;
+}
+p {
+  line-height: 1.5;
+}
+.revision {
+  font:
+    12px ui-monospace,
+    monospace;
+  color: var(--md-sys-color-on-surface-variant);
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 24px 0;
+}
+.controls label {
+  display: grid;
+  gap: 4px;
+  font-size: 13px;
+}
+select,
+button {
+  font: inherit;
+}
+select {
+  min-height: 38px;
+}
+section {
+  padding: 20px;
+  margin: 20px 0;
+  background: var(--md-sys-color-surface-container-low);
+  border-radius: 20px;
+}
+.samples {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  margin: 22px 0;
+}
+.owner {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 190px;
+  min-height: 62px;
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 20px;
+  background: var(--md-sys-color-secondary-container);
+  color: var(--md-sys-color-on-secondary-container);
+  cursor: pointer;
+}
+.owner.outward {
+  border-radius: 9999px;
+}
+.owner:focus {
+  outline: none;
+}
+.owner:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+.proxy {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+}
+.proxy input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.indicator {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: var(--md-sys-color-secondary-container);
+  border: 1px solid var(--md-sys-color-secondary);
+}
+.proxy input:focus {
+  outline: none;
+}
+.notes {
+  color: var(--md-sys-color-on-surface-variant);
+  font-size: 14px;
+}
+@media (max-width: 600px) {
+  main {
+    padding: 20px 16px 50px;
+  }
+}

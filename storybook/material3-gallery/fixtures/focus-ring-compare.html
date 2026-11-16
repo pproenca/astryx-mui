@@ -1,0 +1,42 @@
+<!doctype html>
+<!-- Copyright (c) Meta Platforms, Inc. and affiliates. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="../dist/tokens.css" />
+    <link rel="stylesheet" href="../dist/components.css" />
+    <link rel="stylesheet" href="./focus-ring-compare.css" />
+    <title>Native FocusRing comparison</title>
+  </head>
+  <body data-md-scheme="light">
+    <button id="driver" type="button">Focus comparison</button>
+    <main>
+      <h1>Compose focus indication · Light</h1>
+      <p id="stage">Source-value browser rendering · standard and Expressive fast springs</p>
+      <div class="row">
+        <div class="sample">
+          <div class="target opacity"></div>
+          <div class="label">Default · OnSurface at 10%</div>
+        </div>
+        <div class="sample">
+          <div id="standard-target" class="target"></div>
+          <div class="label">Optional inset · standard</div>
+        </div>
+        <div class="sample">
+          <div
+            id="expressive-target"
+            class="target"
+            data-md-scheme="expressive-light"></div>
+          <div class="label">Optional inset · Expressive</div>
+        </div>
+      </div>
+      <div class="legend">
+        Outer: Secondary, 0dp inset, 2dp stroke · Inner: OnSecondary, 1dp inset,
+        3dp stroke · DPR 1
+      </div>
+    </main>
+    <script type="module" src="./focus-ring-compare.js"></script>
+  </body>
+</html>

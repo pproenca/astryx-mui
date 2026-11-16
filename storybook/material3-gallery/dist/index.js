@@ -1,0 +1,18 @@
+// Copyright (c) Meta Platforms, Inc. and affiliates.
+/**
+ * @file index.ts
+ * @input Supported Material CSS names and the pinned Compose-first foundation graph
+ * @output Native components including Divider, Elevation, FocusRing and Ripple, token names, values, typed resolver and CSS-variable entry point
+ * @position Public native Material 3 package entry point
+ */
+export { material3ComponentTokens, material3ShapeRoles, material3SystemColorRoles, material3TypeRoles, material3TypefaceRoles, material3Var, } from './tokens.js';
+export { material3ColorValues, material3ComponentDefaults, material3CornerShapes, material3ElevationLevels, material3ElevationShadowLayers, material3ExpressiveLightColors, material3ExpressiveShapes, material3FoundationGeometry, material3FilledButtonStateColors, material3IconDefaults, material3KitModeNames, material3LayerColor, material3SpringSpecs, material3StandardDarkColors, material3StandardLightColors, material3StateOpacity, material3TokenCss, material3TokenValues, material3TonalElevation, material3TypeStyles, resolveMaterial3Token, } from './foundation.js';
+export { sampleMaterial3Spring } from './motion.js';
+export { Icon } from './Icon/Icon.js';
+export { MaterialSymbol } from './MaterialSymbol/MaterialSymbol.js';
+export { FocusRing } from './FocusRing/FocusRing.js';
+export { Ripple } from './Ripple/Ripple.js';
+export { HorizontalDivider } from './Divider/HorizontalDivider.js';
+export { VerticalDivider } from './Divider/VerticalDivider.js';
+export { Elevation } from './Elevation/Elevation.js';
+//# sourceMappingURL=index.js.map
