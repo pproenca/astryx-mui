@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "repository": "pproenca/astryx-mui",
+  "pullRequest": {
+    "number": 62,
+    "headSha": "f255dc9d8e391b8139221aa77a325ff7cece3ad3",
+    "headRef": "dependabot/npm_and_yarn/commander-15.0.0",
+    "headRepository": "pproenca/astryx-mui",
+    "headRepositoryId": "1387564506"
+  },
+  "sourceRun": {
+    "id": 42219520833,
+    "attempt": 1,
+    "conclusion": "failure"
+  },
+  "targets": {
+    "storybook": {
+      "available": false,
+      "path": "pr/62/",
+      "indexSha256": null
+    },
+    "sandbox": {
+      "available": false,
+      "path": "pr/62/sandbox/",
+      "indexSha256": null
+    }
+  }
+}
